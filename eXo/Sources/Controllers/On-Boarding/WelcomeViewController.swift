@@ -33,8 +33,11 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // the navigation controller is alway hidden in this screen
         self.navigationController?.navigationBarHidden = true
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,8 +50,10 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
         if (index < 0 || index >= kNumberOfPage) {
             return nil
         }
+        // the slide will be made in storyboard with id = welcomePage0, welcomePage1 ...
         let storyboardId = "welcomePage\(index)"
         let welcomepage = self.storyboard?.instantiateViewControllerWithIdentifier(storyboardId)
+        // store the index of the slide in view.tag
         welcomepage?.view.tag = index
         return welcomepage!
     }

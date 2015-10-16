@@ -14,6 +14,9 @@
 		9C3AD25F1BCF56900094CFF9 /* eXoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD25E1BCF56900094CFF9 /* eXoTests.swift */; };
 		9C3AD26A1BCF56900094CFF9 /* eXoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2691BCF56900094CFF9 /* eXoUITests.swift */; };
 		9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2851BCF9E570094CFF9 /* defines.swift */; settings = {ASSET_TAGS = (); }; };
+		9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2871BCFA3400094CFF9 /* Server.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		9C3AD2691BCF56900094CFF9 /* eXoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoUITests.swift; sourceTree = "<group>"; };
 		9C3AD26B1BCF56900094CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController.swift; sourceTree = "<group>"; };
+		9C3AD2851BCF9E570094CFF9 /* defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defines.swift; sourceTree = "<group>"; };
+		9C3AD2871BCFA3400094CFF9 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		9C3AD2781BCF5D6E0094CFF9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9C3AD2851BCF9E570094CFF9 /* defines.swift */,
 				9C3AD2791BCF5D6E0094CFF9 /* Controllers */,
 				9C3AD27A1BCF5D6E0094CFF9 /* Models */,
 				9C3AD27B1BCF5D6E0094CFF9 /* Views */,
@@ -154,6 +161,7 @@
 		9C3AD27A1BCF5D6E0094CFF9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C3AD2871BCFA3400094CFF9 /* Server.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */,
+				9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */,
 			);
 			path = "On-Boarding";
 			sourceTree = "<group>";
@@ -304,7 +313,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
+				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
 				9C3AD24A1BCF56900094CFF9 /* eXoAppDelegate.swift in Sources */,
+				9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */,
 				9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
