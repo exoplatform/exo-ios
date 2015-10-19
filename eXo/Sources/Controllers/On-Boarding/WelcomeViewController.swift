@@ -38,6 +38,7 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
     override func viewWillAppear(animated: Bool) {
         // the navigation controller is alway hidden in this screen
         self.navigationController?.navigationBarHidden = true
+        self.navigationController?.topViewController?.title = ""
     }
 
     override func didReceiveMemoryWarning() {

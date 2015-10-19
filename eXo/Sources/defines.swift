@@ -23,6 +23,7 @@ import Foundation
 
 struct Config {
     static let communityURL:String =  "https://community.exoplatform.org"
+    static let supportVersion:Float = 4.3
 }
 
 struct UserDefaultConfig {

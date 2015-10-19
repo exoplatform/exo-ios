@@ -24,24 +24,34 @@ import UIKit
 
 class ServerSelectionViewController: UIViewController {
 
+    // MARK: Properties
     @IBOutlet weak var mostRecentServerLabel: UILabel!
-    var defaultServerURL:String?
+    var defaultServer:Server?
+    
+    
+    // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        Get the list of server from NSUserDefault
-        */
-        let listServers:NSArray? = NSUserDefaults.standardUserDefaults().valueForKey(UserDefaultConfig.listServerKey) as? NSArray
-        if (listServers?.count > 0){
-            defaultServerURL = (listServers!.lastObject as! NSDictionary).valueForKey(ServerKey.serverURL) as? String
+
+        if (ServerManager.sharedInstance.serverList.count > 0){
+            defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
         } else {
-            defaultServerURL = Config.communityURL
+            defaultServer = Server(serverURL: Config.communityURL)
         }
         // Do not show the protocol to save place
-        mostRecentServerLabel.text = self.stringURLWithoutProtocol(defaultServerURL!)
+        mostRecentServerLabel.text = self.stringURLWithoutProtocol((defaultServer?.serverURL)!)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        // the navigation controller is alway shown in this screen
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.topViewController?.title = NSLocalizedString("Sign in to eXo", comment:"")
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -50,16 +60,25 @@ class ServerSelectionViewController: UIViewController {
     /*
     // MARK: - Navigation
     Could be:
-    - Open HomePage with default Server (segue: openDefautServer)
+    - Open HomePage with default Server (segue: openDefaultServer)
     - Open HomePage with community server & point to register page (segue:openRegisterPage)
     - Open Input server screen to choose an other server (segue:openInputServer)
     */
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        self.navigationController?.topViewController?.title = ""
+        if (segue.identifier == "openDefaultServer") {
+            defaultServer?.lastConnection = NSDate().timeIntervalSince1970
+            ServerManager.sharedInstance.addServer(defaultServer!)
+            //TODO setup Destination VC
+        }
+        if (segue.identifier == "openRegisterPage") {
+            //TODO setup Destination VC
+        }        
     }
     
-    
+    // MARK: - Tool
+   
     //Remove the protocol (http:// or https://) of a URL in string
     func stringURLWithoutProtocol (stringURLWithProtocol : String) -> String {
         var stringURLWithoutProtocol = stringURLWithProtocol.stringByReplacingOccurrencesOfString("http://", withString: "");

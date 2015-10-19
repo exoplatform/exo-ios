@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "abc.exoplatform.com"; ObjectID = "6UH-Oz-HS4"; */
+"6UH-Oz-HS4.text" = "abc.exoplatform.com";
+
+/* Class = "UINavigationItem"; title = "Sign in to eXo"; ObjectID = "7S4-we-cHp"; */
+"7S4-we-cHp.title" = "Sign in to eXo";
+
+/* Class = "UILabel"; text = "community.exoplatform.com"; ObjectID = "8hg-bw-nAp"; */
+"8hg-bw-nAp.text" = "community.exoplatform.com";
+
+/* Class = "UILabel"; text = "I love eXo Platform"; ObjectID = "9K8-mA-aRQ"; */
+"9K8-mA-aRQ.text" = "I love eXo Platform";
+
+/* Class = "UINavigationItem"; title = "Sign in to eXo"; ObjectID = "BZG-X2-H0R"; */
+"BZG-X2-H0R.title" = "Sign in to eXo";
+
+/* Class = "UILabel"; text = "Discover eXo Tribe"; ObjectID = "Myl-4g-llc"; */
+"Myl-4g-llc.text" = "Discover eXo Tribe";
+
+/* Class = "UILabel"; text = "Intranet URL"; ObjectID = "Nbx-g7-yZ0"; */
+"Nbx-g7-yZ0.text" = "Intranet URL";
+
+/* Class = "UILabel"; text = "eXo is the best"; ObjectID = "SFw-1S-gHJ"; */
+"SFw-1S-gHJ.text" = "eXo is the best";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "iD2-5O-Hdw"; */
+"iD2-5O-Hdw.normalTitle" = "Get Started";
+
+/* Class = "UILabel"; text = "Others"; ObjectID = "kf8-07-HO5"; */
+"kf8-07-HO5.text" = "Others";
+
+/* Class = "UILabel"; text = "News to eXo ?"; ObjectID = "wLN-iK-TKf"; */
+"wLN-iK-TKf.text" = "News to eXo ?";
