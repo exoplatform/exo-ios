@@ -22,7 +22,8 @@ import Foundation
 
 
 struct Config {
-    static let communityURL:String =  "https://community.exoplatform.org"
+    static let communityURL:String =  "https://community.exoplatform.com"
+    static let supportVersion:Float = 4.3
 }
 
 struct UserDefaultConfig {
@@ -36,5 +37,5 @@ struct ShareExtension {
 
 struct Cookies {
     static let username:String =  "last_login_username"
-    static let domain:String =  "last_login_username"    
+    static let domain:String =  "last_login_domain"
 }

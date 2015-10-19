@@ -16,6 +16,14 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        var navitationVC = self.window!.rootViewController as? UINavigationController
+        if (ServerManager.sharedInstance.serverList != nil && ServerManager.sharedInstance.serverList.count > 0) {
+            let rootVC = navitationVC?.storyboard?.instantiateViewControllerWithIdentifier("ServerSelectionViewController")
+            navitationVC = UINavigationController(rootViewController: rootVC!)
+            
+        }
+        self.window?.rootViewController = navitationVC
+        
         return true
     }
 

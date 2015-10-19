@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  eXo
+
+  Created by Nguyen Manh Toan on 10/20/15.
+  Copyright © 2015 eXo. All rights reserved.
+*/
+
+// On-Boarding
+
+"Sign in to eXo" = "Sign in to eXo";
+
+"Enter your intranet URL" = "Enter your intranet URL";
+
+"Platform version not supported" = "Platform version not supported";
+
+"The application only supports Platform version 4.3 or later" = "The application only supports Platform version 4.3 or later";
+
+"OK" = "OK";
+
+"Server URL error" = "Server URL error";
+
+"Unable to connect the server" = "Unable to connect the server";
+
+"Recents" = "Recents";
