@@ -23,10 +23,6 @@ import UIKit
 import SVProgressHUD
 import SwiftyJSON
 
-
-struct TableViewConfig {
-}
-
 class InputServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     // MARK: Constants
     
@@ -103,40 +99,32 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
                                 } else {
                                     // this application supports only platform version 4.3 or later
                                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                        self.showPlatformVersionAlert()
+                                        Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
                                     })
                                 }
+                            } else {
+                                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                                    Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotFound)
+                                })
                             }
                             
                         } else {
                             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                self.showServerURLErrorAlert()
+                                Tool.showErrorMessageForCode(ConnectionError.URLError)
                             })
                         }
                     } else {
                         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                            self.showServerURLErrorAlert()
+                            Tool.showErrorMessageForCode(ConnectionError.URLError)
                         })
                     }
                 })
             } else {
-                self.showServerURLErrorAlert()
+                Tool.showErrorMessageForCode(ConnectionError.URLError)
             }
         }
         return true;
-    }
-    
-    func showPlatformVersionAlert () {
-        let alertView = UIAlertView.init(title: NSLocalizedString("Platform version not supported", comment:""), message: NSLocalizedString("The application only supports Platform version 4.3 or later",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("OK",comment:""))
-        alertView.show()
-    }
-    func showServerURLErrorAlert () {
-    
-        let alertView = UIAlertView.init(title: NSLocalizedString("Server URL error", comment:""), message: NSLocalizedString("Unable to connect the server",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("OK",comment:""))
-        
-        alertView.show()
-    }
-    
+    }    
     
     /*
     // MARK: - Table View Datasource & Delegate
@@ -173,6 +161,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.reloadData()
     }
     /*
     // MARK: - Navigation
@@ -185,7 +174,9 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
             self.selectedServer?.lastConnection = NSDate().timeIntervalSince1970
         }
         ServerManager.sharedInstance.addServer(self.selectedServer!)
-
         //TODO setup Destination VC
+        let homepageVC = segue.destinationViewController as! HomePageViewController
+        homepageVC.serverURL = self.selectedServer?.serverURL
+
     }
 }

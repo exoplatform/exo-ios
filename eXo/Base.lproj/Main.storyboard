@@ -217,7 +217,7 @@
                                             <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="AuK-gD-EV5" kind="modal" identifier="openRegisterPage" id="hZg-d2-wnb"/>
+                                            <segue destination="AuK-gD-EV5" kind="push" identifier="openRegisterPage" id="hZg-d2-wnb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -276,7 +276,7 @@
                                             <constraint firstAttribute="height" constant="52" id="l9Q-k4-Fbj"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="AuK-gD-EV5" kind="modal" identifier="openDefaultServer" id="jBF-a0-7IJ"/>
+                                            <segue destination="AuK-gD-EV5" kind="push" identifier="openDefaultServer" id="jBF-a0-7IJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szq-9I-ta6">
@@ -336,10 +336,10 @@
             </objects>
             <point key="canvasLocation" x="246" y="-487"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Page View Controller-->
         <scene sceneID="reM-2q-PPQ">
             <objects>
-                <viewController id="AuK-gD-EV5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomePageViewController" automaticallyAdjustsScrollViewInsets="NO" id="AuK-gD-EV5" customClass="HomePageViewController" customModule="eXo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c8g-4h-WPN"/>
                         <viewControllerLayoutGuide type="bottom" id="ruB-mn-bhM"/>
@@ -347,10 +347,36 @@
                     <view key="view" contentMode="scaleToFill" id="8lX-Vr-VKf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3j-Am-Fag">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Zi7-Lt-ihf">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <animations/>
+                                <color key="color" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="M3j-Am-Fag" secondAttribute="trailing" id="Ash-b1-Xon"/>
+                            <constraint firstItem="M3j-Am-Fag" firstAttribute="top" secondItem="c8g-4h-WPN" secondAttribute="bottom" id="MtB-75-5Se"/>
+                            <constraint firstItem="ruB-mn-bhM" firstAttribute="top" secondItem="M3j-Am-Fag" secondAttribute="bottom" id="X2U-67-Tk2"/>
+                            <constraint firstItem="Zi7-Lt-ihf" firstAttribute="centerY" secondItem="8lX-Vr-VKf" secondAttribute="centerY" id="iTW-Em-R5N"/>
+                            <constraint firstItem="Zi7-Lt-ihf" firstAttribute="centerX" secondItem="8lX-Vr-VKf" secondAttribute="centerX" id="l8T-Ep-1KL"/>
+                            <constraint firstItem="M3j-Am-Fag" firstAttribute="leading" secondItem="8lX-Vr-VKf" secondAttribute="leading" id="mZG-yU-lT2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Aex-O8-MyW"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="Zi7-Lt-ihf" id="God-tp-eg0"/>
+                        <outlet property="webViewContainer" destination="M3j-Am-Fag" id="Ie9-mF-ojL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUW-ZU-ek1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -418,15 +444,15 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServerCell" textLabel="6UH-Oz-HS4" style="IBUITableViewCellStyleDefault" id="awW-tf-Jnu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ServerCell" textLabel="6UH-Oz-HS4" style="IBUITableViewCellStyleDefault" id="awW-tf-Jnu">
                                         <rect key="frame" x="0.0" y="302" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awW-tf-Jnu" id="Kg8-eU-Gqi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="abc.exoplatform.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6UH-Oz-HS4">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -438,7 +464,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="AuK-gD-EV5" kind="modal" identifier="selectServerSegue" id="6jh-pv-CuH"/>
+                                            <segue destination="AuK-gD-EV5" kind="push" identifier="selectServerSegue" id="6jh-pv-CuH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -473,6 +499,6 @@
         <image name="right" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jBF-a0-7IJ"/>
+        <segue reference="6jh-pv-CuH"/>
     </inferredMetricsTieBreakers>
 </document>
