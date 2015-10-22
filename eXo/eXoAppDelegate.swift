@@ -12,18 +12,24 @@ import UIKit
 class eXoAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var quitTimestamp:Double? // Store the timestamps when user quit the app & Enter on Background
+    var navigationVC:UINavigationController?
+    static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        var navitationVC = self.window!.rootViewController as? UINavigationController
+        
+        // Get the root view (the enter point of storyboard)
+        navigationVC = self.window!.rootViewController as? UINavigationController
+        
+        //By default the Welcome screen will be shown at the first connection.
         if (ServerManager.sharedInstance.serverList != nil && ServerManager.sharedInstance.serverList.count > 0) {
-            let rootVC = navitationVC?.storyboard?.instantiateViewControllerWithIdentifier("ServerSelectionViewController")
-            navitationVC = UINavigationController(rootViewController: rootVC!)
+            let rootVC = navigationVC?.storyboard?.instantiateViewControllerWithIdentifier("ServerSelectionViewController")
+            navigationVC = UINavigationController(rootViewController: rootVC!)
             
         }
-        self.window?.rootViewController = navitationVC
-        
+        self.window?.rootViewController = navigationVC
+
         return true
     }
 
@@ -33,11 +39,21 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        quitTimestamp = NSDate().timeIntervalSince1970
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
+        /*
+        Verification of session timeout on server.
+        When the session is timeout, go back to On-Boarding (Loggin) screen
+        */
+        if (NSDate().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
+            if (navigationVC != nil) {
+                navigationVC?.popToRootViewControllerAnimated(false)
+            }
+        }
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 

@@ -173,6 +173,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.reloadData()
     }
     /*
     // MARK: - Navigation
@@ -185,7 +186,9 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
             self.selectedServer?.lastConnection = NSDate().timeIntervalSince1970
         }
         ServerManager.sharedInstance.addServer(self.selectedServer!)
-
         //TODO setup Destination VC
+        let homepageVC = segue.destinationViewController as! HomePageViewController
+        homepageVC.serverURL = self.selectedServer?.serverURL
+
     }
 }

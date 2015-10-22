@@ -22,6 +22,7 @@
 		9C935F7E1BD60286009C065B /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C935F7D1BD60286009C065B /* Tool.swift */; settings = {ASSET_TAGS = (); }; };
 		9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C935F7F1BD61D5A009C065B /* ServerManager.swift */; settings = {ASSET_TAGS = (); }; };
 		9C935F851BD64DAD009C065B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C935F871BD64DAD009C065B /* Localizable.strings */; };
+		9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C935F8A1BD8A079009C065B /* HomePageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB9F1001BD4A08100511E48 /* PlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		9C935F821BD64B87009C065B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9C935F861BD64DAD009C065B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C935F881BD64DB0009C065B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C935F8A1BD8A079009C065B /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		9CB9F1001BD4A08100511E48 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				9C3AD27C1BCF5D960094CFF9 /* On-Boarding */,
+				9C935F891BD8A01C009C065B /* HomePage */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +216,14 @@
 				9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */,
 			);
 			path = "On-Boarding";
+			sourceTree = "<group>";
+		};
+		9C935F891BD8A01C009C065B /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				9C935F8A1BD8A079009C065B /* HomePageViewController.swift */,
+			);
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 		F6D58A9EDB5B6B4DDE728F32 /* Pods */ = {
@@ -416,6 +427,7 @@
 				9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */,
 				9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */,
 				9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */,
+				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

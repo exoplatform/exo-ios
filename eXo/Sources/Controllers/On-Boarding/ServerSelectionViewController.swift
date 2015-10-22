@@ -70,19 +70,25 @@ class ServerSelectionViewController: UIViewController {
         if (segue.identifier == "openDefaultServer") {
             defaultServer?.lastConnection = NSDate().timeIntervalSince1970
             ServerManager.sharedInstance.addServer(defaultServer!)
-            //TODO setup Destination VC
+            //setup Destination VC
+            let homepageVC = segue.destinationViewController as! HomePageViewController
+            homepageVC.serverURL = defaultServer?.serverURL
         }
         if (segue.identifier == "openRegisterPage") {
-            //TODO setup Destination VC
-        }        
+
+            //setup Destination VC
+            let homepageVC = segue.destinationViewController as! HomePageViewController
+            homepageVC.serverURL = Config.communityURL + "/portal/intranet/register"
+        }
     }
     
     // MARK: - Tool
-   
+    
     //Remove the protocol (http:// or https://) of a URL in string
     func stringURLWithoutProtocol (stringURLWithProtocol : String) -> String {
         var stringURLWithoutProtocol = stringURLWithProtocol.stringByReplacingOccurrencesOfString("http://", withString: "");
         stringURLWithoutProtocol = stringURLWithoutProtocol.stringByReplacingOccurrencesOfString("https://", withString: "")
         return stringURLWithoutProtocol
     }
+
 }
