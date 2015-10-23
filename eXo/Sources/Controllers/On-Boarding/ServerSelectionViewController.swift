@@ -40,7 +40,7 @@ class ServerSelectionViewController: UIViewController {
             defaultServer = Server(serverURL: Config.communityURL)
         }
         // Do not show the protocol to save place
-        mostRecentServerLabel.text = self.stringURLWithoutProtocol((defaultServer?.serverURL)!)
+        mostRecentServerLabel.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -80,15 +80,6 @@ class ServerSelectionViewController: UIViewController {
             let homepageVC = segue.destinationViewController as! HomePageViewController
             homepageVC.serverURL = Config.communityURL + "/portal/intranet/register"
         }
-    }
-    
-    // MARK: - Tool
-    
-    //Remove the protocol (http:// or https://) of a URL in string
-    func stringURLWithoutProtocol (stringURLWithProtocol : String) -> String {
-        var stringURLWithoutProtocol = stringURLWithProtocol.stringByReplacingOccurrencesOfString("http://", withString: "");
-        stringURLWithoutProtocol = stringURLWithoutProtocol.stringByReplacingOccurrencesOfString("https://", withString: "")
-        return stringURLWithoutProtocol
     }
 
 }

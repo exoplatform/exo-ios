@@ -80,6 +80,10 @@ class ServerManager  {
             serverList.addObject(server)
         }
         self.saveServerList()
+        
+        if #available(iOS 9.0, *) {
+            self.updateQuickAction()
+        } 
     }
     
     func saveServerList () {
@@ -94,4 +98,28 @@ class ServerManager  {
         
     }
     
+    @available(iOS 9.0, *)
+    func updateQuickAction () {
+        var hasConnectedToCommunity:Bool = false
+        for server in serverList {
+            if (server as! Server).serverURL == Config.communityURL {
+                hasConnectedToCommunity = true
+                break
+            }
+        }
+        let items:NSMutableArray = NSMutableArray()
+        let registerItem: UIApplicationShortcutItem?
+        if !hasConnectedToCommunity {
+            registerItem = UIApplicationShortcutItem.init(type: ShortcutType.registerCommunity, localizedTitle: NSLocalizedString("Register Community", comment: ""), localizedSubtitle: nil, icon:UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.Add), userInfo: nil)
+            items.addObject (registerItem!)
+        }
+        for server in serverList {
+            if (items.count < (Config.maximunShortcutAllow - 1) && (server as! Server).serverURL != Config.communityURL) {
+                let item = UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Connect to", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "login"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject])
+                items.addObject(item)
+            }
+        }
+        UIApplication.sharedApplication().shortcutItems = items as NSArray as? [UIApplicationShortcutItem]        
+    }
+
 }

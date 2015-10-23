@@ -27,8 +27,14 @@ struct ServerKey {
     static let serverURL = "serverURL"
     static let username = "username"
     static let lastConnection = "lastConnection"
-    
 }
+
+struct ShortcutTitleConfig {
+    static let maximumCharacters:Int = 30
+    static let prefixCharacters:Int = 9
+    static let suffixCharacters:Int = 15
+}
+
 
 class Server {
 
@@ -51,8 +57,24 @@ class Server {
         self.lastConnection = lastConnection
     }
     
+    init (serverDictionary : NSDictionary) {
+        self.serverURL = serverDictionary.valueForKey(ServerKey.serverURL) as! String
+        self.username = serverDictionary.valueForKey(ServerKey.username) as! String
+        self.lastConnection = serverDictionary.valueForKey(ServerKey.lastConnection) as! Double        
+    }
+    
     func toDictionary () -> NSDictionary {
         return [ "serverURL":serverURL, "username": username, "lastConnection":lastConnection]
     }
     
+    func natureName () -> String {
+        let name: String = self.serverURL.stringURLWithoutProtocol()
+        if (name.utf8.count > ShortcutTitleConfig.maximumCharacters) {
+            var shortName = name.substringToIndex(name.startIndex.advancedBy(ShortcutTitleConfig.prefixCharacters))
+            shortName += "..."
+            shortName += name.substringFromIndex(name.endIndex.advancedBy(-ShortcutTitleConfig.suffixCharacters))
+            return shortName
+        }
+        return name
+    }
 }

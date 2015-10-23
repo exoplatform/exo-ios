@@ -29,7 +29,20 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         self.window?.rootViewController = navigationVC
+        if #available(iOS 9.0, *) {
+            ServerManager.sharedInstance.updateQuickAction()
+            
+            var launchedFromShortCut = false
+            //Check for ShortCutItem
+            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem {
+                launchedFromShortCut = true
+                handleShortcut(shortcutItem)
+            }
+            //Return false incase application was lanched from shorcut to prevent
+            //application(_:performActionForShortcutItem:completionHandler:) from being called
+            return !launchedFromShortCut
 
+        }
         return true
     }
 
@@ -65,6 +78,47 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+     /*
+    MARK: App Shortcut Handle
+    */
+    @available(iOS 9.0, *)
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        completionHandler (handleShortcut(shortcutItem))
+    }
+    
+    @available(iOS 9.0, *)
+    func handleShortcut (shortcutItem: UIApplicationShortcutItem) -> Bool {
+        var succeeded = false
+        if (shortcutItem.type == ShortcutType.connectCommunity) {
+            succeeded = true
+            let communityServer:Server = Server (serverURL: Config.communityURL)
+            ServerManager.sharedInstance.addServer(communityServer)
+            self.quickActionOpenHomePageForURL(Config.communityURL)
+        } else if (shortcutItem.type == ShortcutType.registerCommunity) {
+            self.quickActionOpenHomePageForURL(Config.communityURL + "/portal/intranet/register")
+        } else if (shortcutItem.type == ShortcutType.connectRecentServer) {
+            let serverDictionary = shortcutItem.userInfo
+            if (serverDictionary != nil) {
+                let server:Server = Server(serverDictionary: serverDictionary!)
+                ServerManager.sharedInstance.addServer(server)
+                self.quickActionOpenHomePageForURL(server.serverURL)
+            }
+        }
+        
+        return succeeded
+    }
+    
+    func quickActionOpenHomePageForURL (stringURL:String) {
+        if (navigationVC != nil) {
+            if (navigationVC?.viewControllers.count > 0) {
+                navigationVC?.popToRootViewControllerAnimated(false)
+                let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewControllerWithIdentifier("HomePageViewController")
+                (homepage as! HomePageViewController).serverURL  =  stringURL
+                navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
+            }
+        }
+        
+    }
 
 }
 

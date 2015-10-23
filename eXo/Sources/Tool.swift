@@ -9,7 +9,7 @@
 import UIKit
 
 class Tool {
-    
+    // MARK: - Tool
     static func showErrorMessageForCode (errorCode : Int) {
         switch (errorCode){
         case ConnectionError.URLError :
@@ -29,4 +29,5 @@ class Tool {
         }
     }
 
+    
 }

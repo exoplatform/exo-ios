@@ -20,10 +20,16 @@
 
 import Foundation
 
+struct ShortcutType {
+    static let connectCommunity:String =  "ios.exo.connect-community"
+    static let registerCommunity:String =  "ios.exo.register-community"
+    static let connectRecentServer:String =  "ios.exo.connect-recent-server"
+}
 
 struct Config {
     static let communityURL:String =  "https://community.exoplatform.com"
     static let supportVersion:Float = 4.3
+    static let maximunShortcutAllow:Int = 4
 }
 
 struct UserDefaultConfig {

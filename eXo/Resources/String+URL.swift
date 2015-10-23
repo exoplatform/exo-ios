@@ -1,3 +1,4 @@
+//
 // Copyright (C) 2003-2015 eXo Platform SAS.
 //
 // This is free software; you can redistribute it and/or modify it
@@ -14,6 +15,18 @@
 // License along with this software; if not, write to the Free
 // Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+//
 
 
-"Connect Community" = "Community";
+import UIKit
+
+extension String {
+    
+    //Remove the protocol (http:// or https://) of a URL in string
+    func stringURLWithoutProtocol () -> String {
+        var stringURLWithoutProtocol = self.stringByReplacingOccurrencesOfString("http://", withString: "")
+        stringURLWithoutProtocol = stringURLWithoutProtocol.stringByReplacingOccurrencesOfString("https://", withString: "")
+        return stringURLWithoutProtocol
+    }
+
+}
