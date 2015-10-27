@@ -94,6 +94,9 @@ class ServerManager  {
                 list.addObject((server as! Server).toDictionary())
             }
             NSUserDefaults.standardUserDefaults().setObject(list, forKey: UserDefaultConfig.listServerKey)
+            let groupUserDefaults = NSUserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
+            groupUserDefaults?.setObject(list, forKey: ShareExtension.AllUserNameKey)
+
         }
         
     }

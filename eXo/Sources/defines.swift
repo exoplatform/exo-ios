@@ -38,7 +38,8 @@ struct UserDefaultConfig {
 }
 
 struct ShareExtension {
-
+    static let NSUserDefaultSuite:String  = "group.com.exoplatform.ios.exo"
+    static let AllUserNameKey:String = "exo_share_all_usernames"
 }
 
 struct Cookies {

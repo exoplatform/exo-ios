@@ -40,7 +40,7 @@ class ServerSelectionViewController: UIViewController {
             defaultServer = Server(serverURL: Config.communityURL)
         }
         // Do not show the protocol to save place
-        mostRecentServerLabel.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
+        mostRecentServerLabel.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()        
     }
 
     override func viewWillAppear(animated: Bool) {

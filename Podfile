@@ -10,6 +10,11 @@ target "eXo" do
     pod 'SwiftyJSON', '~> 2.3'
 end
 
+target "share-extension" do
+    pod 'UICKeyChainStore', '~> 2.1'
+    
+end
+
 target "eXoTests" do
     
 end

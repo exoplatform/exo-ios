@@ -1,13 +1,16 @@
 PODS:
   - SVProgressHUD (1.1.3)
   - SwiftyJSON (2.3.0)
+  - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
   - SVProgressHUD (~> 1.1)
   - SwiftyJSON (~> 2.3)
+  - UICKeyChainStore (~> 2.1)
 
 SPEC CHECKSUMS:
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
+  UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
 COCOAPODS: 0.39.0
