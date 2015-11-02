@@ -1,7 +1,46 @@
 /* 
   Localizable.strings
   eXo
-
-  Created by Nguyen Manh Toan on 10/20/15.
-  Copyright © 2015 eXo. All rights reserved.
 */
+// Copyright (C) 2003-2015 eXo Platform SAS.
+//
+// This is free software; you can redistribute it and/or modify it
+// under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3 of
+// the License, or (at your option) any later version.
+//
+// This software is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this software; if not, write to the Free
+// Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+// 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+
+"OnBoarding.Title.NavigationBar" = "Se connecter à eXo";
+
+"OnBoarding.Message.EnterURL" = "Entre l'URL de votre intranet";
+
+"OnBoarding.Error.PlatformNotSupported" = "Cette version de Platform n'est pas supportée";
+
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application supporte seulement Platform depuis version 4.3 du platform";
+
+"OnBoarding.Error.PlatformNotFound" = "Version de Platform introuvable";
+
+"Word.OK" = "OK";
+
+"OnBoarding.Error.URL" = "URL incorrecte";
+
+"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter au server";
+
+"OnBoarding.Title.RecentsServer" = "Récents";
+
+"OnBoarding.Error.ConnectionError" = "Erreur de connection";
+
+//Shortcut (3D Touch)
+
+"Shortcut.Title.RegisterCommunity" = "S'enregister sur Community";
+
+"Shortcut.Title.ConnectTo" = "Se connecter à";

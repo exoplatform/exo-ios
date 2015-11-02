@@ -216,28 +216,28 @@ enum {
     
     accountItem = [[SLComposeSheetConfigurationItem alloc] init];
     // Give your configuration option a title.
-    [accountItem setTitle:NSLocalizedString(@"Account",nil)];
+    [accountItem setTitle:NSLocalizedString(@"Word.Account",nil)];
     // Give it an initial value.
     if ([AccountManager sharedManager].selectedAccount){
         switch (loggingStatus) {
             case eXoStatusLoggedIn:{
-                    [accountItem setValue:[AccountManager sharedManager].selectedAccount.natureName];
+                    [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
                 }
                 break;
             case eXoStatusLoggingIn:
-                [accountItem setValue:NSLocalizedString(@"Logging in",nil)];
+                [accountItem setValue:NSLocalizedString(@"Login.Status.Loging",nil)];
                 break;
             case eXoStatusLoggInAuthentificationFail:
-                [accountItem setValue:NSLocalizedString(@"Wrong password",nil)];
+                [accountItem setValue:NSLocalizedString(@"Login.Status.WrongPassword",nil)];
                 break;
             default:{
-                [accountItem setValue:NSLocalizedString(@"Offline",nil)];
+                [accountItem setValue:NSLocalizedString(@"Login.Status.Offline",nil)];
             }
                 break;
         }
-        [accountItem setValue:[AccountManager sharedManager].selectedAccount.natureName];
+        [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
     } else {
-        [accountItem setValue:NSLocalizedString(@"No account",nil)];
+        [accountItem setValue:NSLocalizedString(@"LogIn.Warning.NoAccount",nil)];
     }
     
     // Handle what happens when a user taps your option.
@@ -251,7 +251,7 @@ enum {
     
     // space item
     spaceItem = [[SLComposeSheetConfigurationItem alloc] init];
-    [spaceItem setTitle:NSLocalizedString(@"Space",nil)];
+    [spaceItem setTitle:NSLocalizedString(@"Word.Space",nil)];
     
     // Give it an initial value.
     // Depense on the loggin status the message value could be the name of space in loggedIn, offline in loggedFail & logging in loggingIn.
@@ -259,14 +259,14 @@ enum {
     
     switch (loggingStatus) {
         case eXoStatusLoadingSpaceId:
-            [spaceItem setValue:NSLocalizedString(@"Loading space id",nil)];
+            [spaceItem setValue:NSLocalizedString(@"Title.LoadingSpaceId",nil)];
             break;
             
         default:
             if (selectedSpace){
                 [spaceItem setValue:selectedSpace.displayName];
             } else {
-                [spaceItem setValue:NSLocalizedString(@"Public",nil)];
+                [spaceItem setValue:NSLocalizedString(@"Word.Public",nil)];
             }
 
             break;
@@ -491,8 +491,8 @@ NSMutableData * data;
 
     } else {
         // login fail (cause by: network connection/ wrong username, password/ no space id
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Cannot post",nil) message:[self logMessage] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Post.Title.ErrorMessage",nil) message:[self logMessage] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Cancel",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             [alert dismissViewControllerAnimated:YES completion:nil];
             [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
         }];
@@ -504,15 +504,15 @@ NSMutableData * data;
 }
 -(NSString *) logMessage {
     if (loggingStatus < eXoStatusLoggedIn) {
-        return NSLocalizedString(@"Login fail",nil);
+        return NSLocalizedString(@"Login.Status.LoginFail",nil);
     }
     if (loggingStatus == eXoStatusLoadingSpaceId) {
-        return NSLocalizedString(@"No Space Id",nil);
+        return NSLocalizedString(@"LogIn.Status.NoSpaceId",nil);
     }
     if (loggingStatus == eXoStatusCreatingUploadFoder || loggingStatus == eXoStatusCheckingUploadFoder) {
-        return NSLocalizedString(@"Server Problem",nil);
+        return NSLocalizedString(@"Login.Status.ServerProblem",nil);
     }
-    return NSLocalizedString(@"Unable to post",nil);
+    return NSLocalizedString(@"LogIn.Error.UnableToPost",nil);
 
 }
 
@@ -630,7 +630,7 @@ NSMutableData * data;
                             } else {
                                 item.uploadStatus = eXoItemStatusUploadFailed;
                                 nbItemMissing ++;
-                                uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"%d item(s) cannot be uploaded", nil), nbItemMissing];
+                                uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), nbItemMissing];
                             }
                             [self uploadPostItemAtIndex:itemIndex+1];
                         }];
@@ -639,7 +639,7 @@ NSMutableData * data;
                     } else {
                         item.uploadStatus = eXoItemStatusUploadFailed;
                         nbItemMissing ++;
-                        uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"%d item(s) cannot be uploaded", nil), nbItemMissing];
+                        uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), nbItemMissing];
                         [self uploadPostItemAtIndex:itemIndex+1];
                     }
                     item.fileData = nil;
@@ -651,7 +651,7 @@ NSMutableData * data;
                 item.fileData = nil;
                 item.uploadStatus = eXoItemStatusUploadFileTooLarge;
                 nbItemMissing ++;
-                uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"%d item(s) cannot be uploaded", nil), nbItemMissing];
+                uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), nbItemMissing];
                 [self uploadPostItemAtIndex:itemIndex+1];
             }
         } else {
@@ -706,22 +706,22 @@ NSMutableData * data;
             NSString * title;
 
             if (postActivity.successfulUploads.count ==0) {
-                title = NSLocalizedString(@"All uploads failed",nil);
+                title = NSLocalizedString(@"Upload.Warning.AllUploadFailed",nil);
             } else {
                 if (postActivity.items.count-postActivity.successfulUploads.count ==1){
-                    title = [NSString stringWithFormat:@"%lu %@",(postActivity.items.count-postActivity.successfulUploads.count), NSLocalizedString(@"upload failed",nil)];
+                    title = [NSString stringWithFormat:NSLocalizedString(@"Upload.Warning.UploadFailed",nil)];
                 } else {
-                    title = [NSString stringWithFormat:@"%lu %@",(postActivity.items.count-postActivity.successfulUploads.count), NSLocalizedString(@"uploads failed",nil)];
+                    title = [NSString stringWithFormat:NSLocalizedString(@"Upload.Warning.UploadsFailed",nil),(postActivity.items.count-postActivity.successfulUploads.count)];
                 }
             }
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:postActivity.getMessageError preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Cancel",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                 [alert dismissViewControllerAnimated:YES completion:nil];
                 [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
             }];
             [alert addAction:cancelAction];
-            UIAlertAction* postAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Post",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            UIAlertAction* postAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Post",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                 if (postActivity.successfulUploads.count >0){
                     PostItem * firstItem = postActivity.successfulUploads[0];
                     if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"]){

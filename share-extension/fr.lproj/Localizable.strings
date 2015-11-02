@@ -1,25 +1,76 @@
-/* 
-  Localizable.strings
-  eXo
+//
+// Copyright (C) 2003-2015 eXo Platform SAS.
+//
+// This is free software; you can redistribute it and/or modify it
+// under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3 of
+// the License, or (at your option) any later version.
+//
+// This software is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this software; if not, write to the Free
+// Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+// 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+//
 
-  Created by Nguyen Manh Toan on 9/9/15.
-  Copyright (c) 2015 eXo Platform. All rights reserved.
-*/
 
-"All uploads failed" = "Tous les téléchargements ont echoué";
+"Upload.Warning.AllUploadFailed" = "Tous les téléchargements ont echoué";
 
-"uploads failed" = "téléchargements ont echoués";
+"Upload.Warning.UploadsFailed" = "%lu téléchargements ont echoués";
 
-"upload failed" = "téléchargement a echoué";
+"Upload.Warning.UploadFailed" = "Un téléchargement a echoué";
 
-"Cancel" = "Annuler";
+"Word.Cancel" = "Annuler";
 
-"Post" = "Publier";
+"Word.Post" = "Publier";
 
-"%d item(s) cannot be uploaded" = "%d téléchargements ont echoués";
+"Upload.Warning.ItemsCannotBeUpload" = "%d téléchargements ont echoués";
 
-"File too large" = "Fichier trop large";
+"Upload.Warning.FileTooLarge" = "Fichier trop large";
 
-"Network error" = "Erreur réseau";
+"Upload.Warning.NetworkError" = "Erreur réseau";
 
-"Do you want to post the message anyway?" = "Voulez-vous quand même publier le message?";
+"Upload.Message.ConfirmationPost" = "Voulez-vous quand même publier le message?";
+
+"Title.SelectAccount" = "Selectionner un compte";
+
+"Word.Username" = "Nom d'utilisateur";
+
+"Title.UnknownPassword" = "Mode de passe: Inconnu";
+
+"Title.NeededUsernamePassoword" = "Identifiant et mot de passe manquants";
+
+"Word.Edit" = "Editer";
+
+"Word.Account" = "Compte";
+
+"Login.Status.Loging" = "Se connecter";
+
+"Login.Status.WrongPassword" = "Mot de passe incorrect";
+
+"Login.Status.Offline" ="Déconnecté";
+
+"Login.Status.LoginFail" = "Connection echouée";
+
+"LogIn.Warning.NoAccount" = "Pas de compte";
+
+"Word.Space" = "Espace";
+
+"Login.Status.ServerProblem" = "Problème de serveur";
+
+"LogIn.Status.NoSpaceId" = "Impossible de charger l'espace";
+
+"LogIn.Error.UnableToPost" = "Impossible de publier";
+
+"Title.LoadingSpaceId" = "Chargement de l'espace";
+
+"Word.Public" = "Public";
+
+"Post.Title.ErrorMessage" = "Erreur";
+
+"Title.SpaceSelection" = "Selectionner un espace";
+

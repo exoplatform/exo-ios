@@ -107,8 +107,8 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         loadingIndicator.stopAnimating()
-        let alertController = UIAlertController(title: NSLocalizedString("Connection Error", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+        let alertController = UIAlertController(title: NSLocalizedString("OnBoarding.Error.ConnectionError", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
             self.navigationController?.popViewControllerAnimated(true)
         }
         alertController.addAction(cancelAction)

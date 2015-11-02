@@ -20,8 +20,14 @@
 
 #import "Account.h"
 @implementation Account
-
--(NSString *) natureName {
+/*
+ In some case we dont have place to display full the server URL title so the save place:
+ - We display only the URL without protocol (http / https) 
+ - If the server is still to long, we display only the first 10 characters & last 15 characters & add "..." between them. 
+ Ex: http://plfent-4.3.x-pkgpriv-responsive-design-snapshot.acceptance6.exoplatform.org
+ --> plfent-4.3...exoplatform.org
+ */
+-(NSString *) shortenedServerURLWithoutProtocol {
     NSString * name = [self.serverURL stringByReplacingOccurrencesOfString:@"http://" withString:@""];
     name = [name stringByReplacingOccurrencesOfString:@"https://" withString:@""];
     if (name.length > 25) {

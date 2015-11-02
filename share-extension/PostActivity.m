@@ -45,11 +45,11 @@
         }
     }
     if (fileTooLarge && networkError){
-        return [NSString stringWithFormat:@"%@ \n %@ \n %@", NSLocalizedString(@"File too large", nil),NSLocalizedString(@"Network error", nil),NSLocalizedString(@"Do you want to post the message anyway?", nil)];
+        return [NSString stringWithFormat:@"%@ \n %@ \n %@", NSLocalizedString(@"Upload.Warning.FileTooLarge", nil),NSLocalizedString(@"Upload.Warning.NetworkError", nil),NSLocalizedString(@"Upload.Message.ConfirmationPost", nil)];
     } else if (fileTooLarge) {
-        return [NSString stringWithFormat:@"%@. %@", NSLocalizedString(@"File too large", nil),NSLocalizedString(@"Do you want to post the message anyway", nil)];
+        return [NSString stringWithFormat:@"%@. %@", NSLocalizedString(@"Upload.Warning.FileTooLarge", nil),NSLocalizedString(@"Upload.Message.ConfirmationPost", nil)];
     } else {
-        return [NSString stringWithFormat:@"%@. %@", NSLocalizedString(@"Network error", nil),NSLocalizedString(@"Do you want to post the message anyway", nil)];
+        return [NSString stringWithFormat:@"%@. %@", NSLocalizedString(@"Upload.Warning.NetworkError", nil),NSLocalizedString(@"Upload.Message.ConfirmationPost", nil)];
     }
 }
 

@@ -1,15 +1,30 @@
 
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "9TE-fk-0H0"; */
-"9TE-fk-0H0.text" = "Subtitle";
+/* Class = "UILabel"; text = "Community.exoplatform.com"; ObjectID = "6CC-Gr-x3D"; */
+"6CC-Gr-x3D.text" = "Community.exoplatform.com";
 
-/* Class = "UIButton"; normalTitle = "Annuler"; ObjectID = "OkY-2B-0HX"; */
+/* Class = "UITextField"; placeholder = "username"; ObjectID = "CDn-HS-9nD"; */
+"CDn-HS-9nD.placeholder" = "nom d'utilisateur";
+
+/* Class = "UILabel"; text = "Username: toannm Password: unknows"; ObjectID = "H9e-if-f8m"; */
+"H9e-if-f8m.text" = "Nom d'utilisateur: toannm mot de pas: inconnu";
+
+/* Class = "UILabel"; text = "community.exoplatform.com"; ObjectID = "IG8-MO-irb"; */
+"IG8-MO-irb.text" = "community.exoplatform.com";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OkY-2B-0HX"; */
 "OkY-2B-0HX.normalTitle" = "Annuler";
 
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "VvT-ZB-fan"; */
+"VvT-ZB-fan.title" = "Compte";
+
 /* Class = "UILabel"; text = "Uploading ..."; ObjectID = "aDC-u0-HMK"; */
-"aDC-u0-HMK.text" = "Uploading ...";
+"aDC-u0-HMK.text" = "Chargement ...";
+
+/* Class = "UIBarButtonItem"; title = "Login"; ObjectID = "dKi-Mf-HFJ"; */
+"dKi-Mf-HFJ.title" = "Se connecter";
 
 /* Class = "UILabel"; text = " "; ObjectID = "iFl-uU-dFq"; */
 "iFl-uU-dFq.text" = " ";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "nEb-di-ohe"; */
-"nEb-di-ohe.text" = "Title";
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "q2X-tG-66S"; */
+"q2X-tG-66S.placeholder" = "mot de passe";

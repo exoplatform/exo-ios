@@ -2,26 +2,49 @@
   Localizable.strings
   eXo
 
-  Created by Nguyen Manh Toan on 10/20/15.
-  Copyright © 2015 eXo. All rights reserved.
-*/
+ // Copyright (C) 2003-2015 eXo Platform SAS.
+ //
+ // This is free software; you can redistribute it and/or modify it
+ // under the terms of the GNU Lesser General Public License as
+ // published by the Free Software Foundation; either version 3 of
+ // the License, or (at your option) any later version.
+ //
+ // This software is distributed in the hope that it will be useful,
+ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ // Lesser General Public License for more details.
+ //
+ // You should have received a copy of the GNU Lesser General Public
+ // License along with this software; if not, write to the Free
+ // Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
 
 // On-Boarding
 
-"Sign in to eXo" = "Sign in to eXo";
+"OnBoarding.Title.NavigationBar" = "Sign in to eXo";
 
-"Enter your intranet URL" = "Enter your intranet URL";
+"OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
-"Platform version not supported" = "Platform version not supported";
+"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
 
-"The application only supports Platform version 4.3 or later" = "The application only supports Platform version 4.3 or later";
+"OnBoarding.Error.PlatformNotFound" = "Platform version not found";
 
-"OK" = "OK";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 4.3 or later";
 
-"Server URL error" = "Server URL error";
+"Word.OK" = "OK";
 
-"Unable to connect the server" = "Unable to connect the server";
+"OnBoarding.Error.URL" = "Server URL error";
 
-"Recents" = "Recents";
+"OnBoarding.Error.UnableConnectServer" = "Unable to connect the server";
 
-"Connection Error" = "Connection Error";
+"OnBoarding.Title.RecentsServer" = "Recents";
+
+"OnBoarding.Error.ConnectionError" = "Connection Error";
+
+
+//Shortcut (3D Touch)
+
+"Shortcut.Title.RegisterCommunity" = "Register Community";
+
+"Shortcut.Title.ConnectTo" = "Connect to";

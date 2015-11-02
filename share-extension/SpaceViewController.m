@@ -47,7 +47,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = NSLocalizedString(@"Space selection",nil);
+    self.navigationItem.title = NSLocalizedString(@"Title.SpaceSelection",nil);
     // init the list of spaces. & call get all space the make request to rest ws.
     _mySpaces = [[NSMutableArray alloc] init];
     if (self.account) {
@@ -150,7 +150,7 @@
     }
     cell.backgroundColor = [UIColor clearColor];
     if (indexPath.section == 0) {
-        cell.textLabel.text = NSLocalizedString(@"Public",nil);
+        cell.textLabel.text = NSLocalizedString(@"Word.Public",nil);
     } else {
         SocialSpace * space = _mySpaces[indexPath.row];
         cell.textLabel.text = space.displayName;

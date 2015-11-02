@@ -42,7 +42,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-    self.navigationItem.title = NSLocalizedString(@"Select an account",nil);
+    self.navigationItem.title = NSLocalizedString(@"Title.SelectAccount",nil);
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -64,8 +64,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([AccountManager sharedManager].allAccount){
-        return [AccountManager sharedManager].allAccount.count;
+    if ([AccountManager sharedManager].allAccounts){
+        return [AccountManager sharedManager].allAccounts.count;
     }
     return 0;
 }
@@ -76,7 +76,7 @@
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Account * account = [AccountManager sharedManager].allAccount[indexPath.row];
+    Account * account = [AccountManager sharedManager].allAccounts[indexPath.row];
     if (account == [AccountManager sharedManager].selectedAccount) {
         ((AccountCell*)cell).selectedAccountIndicator.hidden = NO;
         cell.backgroundColor = SELECTED_ACCOUNT_BG_COLOR;
@@ -90,18 +90,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountCell" forIndexPath:indexPath];
-    Account * account = [AccountManager sharedManager].allAccount[indexPath.row];
-    cell.serverNameLabel.text = account.natureName;
+    Account * account = [AccountManager sharedManager].allAccounts[indexPath.row];
+    cell.serverNameLabel.text = account.shortenedServerURLWithoutProtocol;
     
     NSString * detailText = @"";
 
     if (account.userName.length > 0) {
-        detailText = [NSString stringWithFormat:@"%@: '%@' ", NSLocalizedString(@"Username", nil), account.userName];
+        detailText = [NSString stringWithFormat:@"%@: '%@' ", NSLocalizedString(@"Word.Username", nil), account.userName];
         if (account.password.length == 0) {
-            detailText = [detailText stringByAppendingString:NSLocalizedString(@"Password: Unknown", nil)];
+            detailText = [detailText stringByAppendingString:NSLocalizedString(@"Title.UnknownPassword", nil)];
         }
     } else {
-        detailText = NSLocalizedString(@"Needed username & password", nil);
+        detailText = NSLocalizedString(@"Title.NeededUsernamePassoword", nil);
     }
     
     cell.usernameDetailLabel.text = detailText;// [NSString stringWithFormat:@"Username: %@", account.userName];
@@ -110,7 +110,7 @@
     //add edit button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0f, 0.0f, 50.0f, 30.0f);
-    [button setTitle:NSLocalizedString(@"Edit",nil) forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"Word.Edit",nil) forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     button.layer.cornerRadius = 5.0;
@@ -140,7 +140,7 @@
 
 -(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:NSLocalizedString(@"Edit",nil) handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:NSLocalizedString(@"Word.Edit",nil) handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         [self performSegueWithIdentifier:EDIT_ACCOUNT_SEGUE sender: [tableView cellForRowAtIndexPath:indexPath]];
     }];
     editAction.backgroundColor = EDITING_ACCOUNT_BG_COLOR;
@@ -151,7 +151,7 @@
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Account * account = [AccountManager sharedManager].allAccount[indexPath.row];
+    Account * account = [AccountManager sharedManager].allAccounts[indexPath.row];
     // The account is selected, if this account have a password configured: go back to ShareVC, if not: Popup a message alert to ask user to configure the password for this account. 
     if (account.userName.length > 0 && account.password.length >0){
         if (delegate && [delegate respondsToSelector:@selector(accountSelector:didSelectAccount:)]) {
@@ -175,7 +175,7 @@
             indexPath = [self.tableView indexPathForCell:sender];
         }
         InputAccountViewController * inputAccoutVC = (InputAccountViewController*) segue.destinationViewController;
-        inputAccoutVC.account = [AccountManager sharedManager].allAccount[indexPath.row];
+        inputAccoutVC.account = [AccountManager sharedManager].allAccounts[indexPath.row];
         inputAccoutVC.delegate = self.delegate;
     }
 }

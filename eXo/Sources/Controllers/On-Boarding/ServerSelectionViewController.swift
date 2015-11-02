@@ -46,7 +46,7 @@ class ServerSelectionViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         // the navigation controller is alway shown in this screen
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.topViewController?.title = NSLocalizedString("Sign in to eXo", comment:"")
+        self.navigationController?.topViewController?.title = NSLocalizedString("OnBoarding.Title.NavigationBar", comment:"")
     }
 
     override func viewWillDisappear(animated: Bool) {

@@ -113,12 +113,12 @@ class ServerManager  {
         let items:NSMutableArray = NSMutableArray()
         let registerItem: UIApplicationShortcutItem?
         if !hasConnectedToCommunity {
-            registerItem = UIApplicationShortcutItem.init(type: ShortcutType.registerCommunity, localizedTitle: NSLocalizedString("Register Community", comment: ""), localizedSubtitle: nil, icon:UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.Add), userInfo: nil)
+            registerItem = UIApplicationShortcutItem.init(type: ShortcutType.registerCommunity, localizedTitle: NSLocalizedString("Shortcut.Title.RegisterCommunity", comment: ""), localizedSubtitle: nil, icon:UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.Add), userInfo: nil)
             items.addObject (registerItem!)
         }
         for server in serverList {
             if (items.count < (Config.maximunShortcutAllow - 1) && (server as! Server).serverURL != Config.communityURL) {
-                let item = UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Connect to", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "login"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject])
+                let item = UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "login"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject])
                 items.addObject(item)
             }
         }

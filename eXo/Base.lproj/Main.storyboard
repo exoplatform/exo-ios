@@ -198,7 +198,7 @@
                                         <animations/>
                                         <color key="backgroundColor" red="1" green="0.9215686917" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="160" id="GB5-FK-4I7"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="GB5-FK-4I7"/>
                                             <constraint firstAttribute="height" constant="45" id="pel-j7-AFl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -499,6 +499,6 @@
         <image name="right" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6jh-pv-CuH"/>
+        <segue reference="jBF-a0-7IJ"/>
     </inferredMetricsTieBreakers>
 </document>

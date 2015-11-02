@@ -41,14 +41,14 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         /*
         Get the list of server from NSUserDefault
         */
-        textView.placeholder = NSLocalizedString("Enter your intranet URL", comment: "")
+        textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
         
     }
     
     override func viewWillAppear(animated: Bool) {
         // the navigation controller is alway hidden in this screen
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.topViewController?.title = NSLocalizedString("Sign in to eXo", comment:"")
+        self.navigationController?.topViewController?.title = NSLocalizedString("OnBoarding.Title.NavigationBar", comment:"")
 
     }
     
@@ -157,7 +157,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("Recents",comment:"")
+        return NSLocalizedString("OnBoarding.Title.RecentsServer",comment:"")
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

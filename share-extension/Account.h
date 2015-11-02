@@ -26,5 +26,5 @@
 @property (nonatomic,retain)  NSString * password;
 @property (nonatomic,retain)  NSString * serverURL;
 
--(NSString *) natureName;
+-(NSString *) shortenedServerURLWithoutProtocol;
 @end
