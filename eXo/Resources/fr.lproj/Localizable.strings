@@ -19,7 +19,7 @@
 // Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
-"OnBoarding.Title.NavigationBar" = "Se connecter à eXo";
+"OnBoarding.Title.SignInToeXo" = "Se connecter à eXo";
 
 "OnBoarding.Message.EnterURL" = "Entre l'URL de votre intranet";
 
@@ -29,7 +29,11 @@
 
 "OnBoarding.Error.PlatformNotFound" = "Version de Platform introuvable";
 
+"OnBoarding.Title.MostRecentServer" = "Se connecter à";
+
 "Word.OK" = "OK";
+
+"Word.Others" = "Autres";
 
 "OnBoarding.Error.URL" = "URL incorrecte";
 

@@ -15,6 +15,7 @@
 		9C032E0D1BE38DEF006F0577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD2501BCF56900094CFF9 /* Assets.xcassets */; };
 		9C032E1C1BE754F5006F0577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD24D1BCF56900094CFF9 /* Main.storyboard */; };
 		9C032E211BE75667006F0577 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C032E231BE75667006F0577 /* Localizable.strings */; };
+		9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032E301BE897CE006F0577 /* LoginViewController.swift */; };
 		9C13B4D41BE20ED9007D7645 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C13B4D31BE20ED9007D7645 /* Security.framework */; };
 		9C3AD24A1BCF56900094CFF9 /* eXoAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2491BCF56900094CFF9 /* eXoAppDelegate.swift */; };
 		9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD24D1BCF56900094CFF9 /* Main.storyboard */; };
@@ -99,6 +100,7 @@
 		9C032E251BE7566B006F0577 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C032E2C1BE76DC2006F0577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		9C032E2F1BE76DD9006F0577 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		9C032E301BE897CE006F0577 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C13B4D31BE20ED9007D7645 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9C3AD2461BCF56900094CFF9 /* eXo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eXo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3AD2491BCF56900094CFF9 /* eXoAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoAppDelegate.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */,
 				9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */,
+				9C032E301BE897CE006F0577 /* LoginViewController.swift */,
 				9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */,
 			);
 			path = "On-Boarding";
@@ -713,6 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
 				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,

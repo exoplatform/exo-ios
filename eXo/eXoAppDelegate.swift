@@ -24,8 +24,8 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         
         //By default the Welcome screen will be shown at the first connection.
         if (ServerManager.sharedInstance.serverList != nil && ServerManager.sharedInstance.serverList.count > 0) {
-            let rootVC = navigationVC?.storyboard?.instantiateViewControllerWithIdentifier("ServerSelectionViewController")
-            navigationVC = UINavigationController(rootViewController: rootVC!)
+            let rootVC = navigationVC?.storyboard?.instantiateViewControllerWithIdentifier("LoginNavigatorViewController")
+            navigationVC = rootVC as? UINavigationController
             
         }
         self.window?.rootViewController = navigationVC

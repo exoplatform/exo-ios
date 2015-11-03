@@ -23,7 +23,7 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
     
     var webView:WKWebView?
     var serverURL:String? // The WebView begin with this link (sent by Server Selection/ Input Server, Basically is the link to platform)
-    
+    var serverDomain:String?
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
@@ -45,6 +45,7 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         
         //Load the page web
         let url = NSURL(string: serverURL!)
+        serverDomain = url?.host
         let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
         webView?.loadRequest(request)
         webViewContainer.addSubview(webView!)
@@ -58,13 +59,21 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         /*
         Set the status bar to white color & the navigation bar is always hidden on this screen
         */
+        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
+        self.navigationController?.navigationBar.tintColor = nil
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default        
     }
     
     override func viewDidDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
 
     override func updateViewConstraints() {
@@ -109,7 +118,6 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         loadingIndicator.stopAnimating()
         let alertController = UIAlertController(title: NSLocalizedString("OnBoarding.Error.ConnectionError", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
-            self.navigationController?.popViewControllerAnimated(true)
         }
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: false, completion: nil)
@@ -117,11 +125,22 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         let request:NSURLRequest = navigationAction.request
-        
         // Detect the logout action in to quit this screen.
         if request.URL?.absoluteString.rangeOfString("portal:action=Logout") != nil  {
             self.navigationController?.popViewControllerAnimated(true)
         }
+        
+        // Display the navigation bar at login or register page && disable the bar when login (register) is finished
+        // Home Page Address: portal/intranet/register (hide the navigation bar)
+        if request.URL?.absoluteString.rangeOfString(serverDomain!+"/portal/intranet") != nil  {
+           self.navigationController?.setNavigationBarHidden(true, animated:true)
+        }
+        // Page Login Address: [Domain]/portal/login
+        // Page Register: [Domain]/portal/intranet/register
+        //(show navigation bar when the webview display this pages, because the pages don't contain a embedded navigation bar.
+        if (request.URL?.absoluteString.rangeOfString(serverDomain! + "/portal/login") != nil) || (request.URL?.absoluteString.rangeOfString(serverDomain! + "/portal/intranet/register") != nil) {
+            self.navigationController?.setNavigationBarHidden(false, animated:true)
+        }        
         
         decisionHandler(WKNavigationActionPolicy.Allow)
     }

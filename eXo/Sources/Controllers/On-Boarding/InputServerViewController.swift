@@ -42,16 +42,16 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         Get the list of server from NSUserDefault
         */
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        // the navigation controller is alway hidden in this screen
+        // the navigation controller is alway shown in this screen
+        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.topViewController?.title = NSLocalizedString("OnBoarding.Title.NavigationBar", comment:"")
-
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        self.title = ""
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -177,6 +177,6 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         //TODO setup Destination VC
         let homepageVC = segue.destinationViewController as! HomePageViewController
         homepageVC.serverURL = self.selectedServer?.serverURL
-
+        self.tableView.reloadData()
     }
 }

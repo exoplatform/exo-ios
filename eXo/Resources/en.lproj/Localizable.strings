@@ -22,7 +22,7 @@
 
 // On-Boarding
 
-"OnBoarding.Title.NavigationBar" = "Sign in to eXo";
+"OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
 
 "OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
@@ -41,6 +41,10 @@
 "OnBoarding.Title.RecentsServer" = "Recents";
 
 "OnBoarding.Error.ConnectionError" = "Connection Error";
+
+"OnBoarding.Title.MostRecentServer" = "Most recent server";
+
+"Word.Others" = "Others";
 
 
 //Shortcut (3D Touch)
