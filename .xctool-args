@@ -1,0 +1,5 @@
+[
+  "-workspace"  , "eXoPlatform.xcworkspace" ,
+  "-scheme"     , "eXo" ,
+  "-sdk"        , "iphonesimulator"
+]
