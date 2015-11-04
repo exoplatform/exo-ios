@@ -854,7 +854,8 @@ NSMutableData * data;
                            @"DOCLINK":docLink,
                            @"WORKSPACE":defaultWorkspace,
                            @"REPOSITORY":currentRepository,
-                           @"DOCNAME":fileName
+                           @"DOCNAME":fileName,
+                           @"MIMEType":[self MIMETypeForFile:fileName]
                            };
     }
     
@@ -1105,6 +1106,21 @@ NSMutableData * data;
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+-(NSString *) MIMETypeForFile:(NSString *)fileName {
+    NSRange lastPointRange = [fileName rangeOfString:@"." options:NSBackwardsSearch];
+    if (lastPointRange.location != NSNotFound) {
+        NSString * fileExtension = [fileName substringFromIndex:lastPointRange.location+1];
+        CFStringRef pathExtension = (__bridge CFStringRef)(fileExtension);
+        CFStringRef type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, NULL);
+        CFRelease(pathExtension);
+        // The UTI can be converted to a mime type:
+        NSString *mimeType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType);
+        return mimeType;
+    }
+    
+    return @"text/html";
 }
 
 @end

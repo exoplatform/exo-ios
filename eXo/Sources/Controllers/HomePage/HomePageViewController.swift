@@ -18,41 +18,28 @@
 import UIKit
 import WebKit
 
-class HomePageViewController: UIViewController, WKNavigationDelegate {
-    let kRequestTimeout = 10.0 //in seconds
-    
-    var webView:WKWebView?
-    var serverURL:String? // The WebView begin with this link (sent by Server Selection/ Input Server, Basically is the link to platform)
-    var serverDomain:String?
+class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate {
+
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var doneButton: UIButton!
 
     // MARK: View Controller lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupWebView()
+        self.setupWebView(self.webViewContainer)
+        webView?.navigationDelegate = self
+        webView?.UIDelegate = self
         loadingIndicator.startAnimating()
+        self.configureDoneButton()
     }
     
-    /*
-    Initilalize the WKWebView & setup
-    */
-    func setupWebView () {
-        let wkWebViewConfiguration = WKWebViewConfiguration()
-        webView = WKWebView (frame:CGRectMake(0,0,self.webViewContainer.bounds.size.width,self.webViewContainer.bounds.size.height), configuration: wkWebViewConfiguration)
-        webView?.navigationDelegate = self
-        
-        //Load the page web
-        let url = NSURL(string: serverURL!)
-        serverDomain = url?.host
-        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        webView?.loadRequest(request)
-        webViewContainer.addSubview(webView!)
-        
-        // disable the autosizing to use manual constraints
-        webView?.translatesAutoresizingMaskIntoConstraints = false;
-        
+    func configureDoneButton () {
+        doneButton.layer.cornerRadius = 5.0
+        doneButton.layer.borderWidth = 0.5
+        doneButton.layer.borderColor = UIColor.whiteColor().CGColor
+        doneButton.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,25 +62,23 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
     override func viewDidDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
     }
-
-    override func updateViewConstraints() {
-         super.updateViewConstraints()
-        
-        // Setup Constraints for WebView. All margin to superview = 0
-        webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Top, multiplier: 1.0, constant: 0.0))
-        webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Leading, multiplier: 1.0, constant: 0.0))
-        webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
-        webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Trailing, multiplier: 1.0, constant: 0.0))
-
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Actions
     
-    // MARK : WKWebViewDelegate
+    @IBAction func goBackAction(sender: AnyObject) {
+        if (webView?.canGoBack == true ) {
+            webView?.goBack()
+            doneButton.hidden = true
+        }
+    }
+    
+    // MARK: WKWebViewDelegate
+    
     func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
         /*
         Disable the Zoom on the Webview
@@ -118,16 +103,35 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         loadingIndicator.stopAnimating()
-        
-        let alertController = UIAlertController(title: NSLocalizedString("OnBoarding.Error.ConnectionError", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+        if self.presentedViewController == nil {        
+            let alertController = UIAlertController(title: NSLocalizedString("OnBoarding.Error.ConnectionError", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+            }
+            alertController.addAction(cancelAction)
+            self.presentViewController(alertController, animated: false, completion: nil)
         }
-        alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: false, completion: nil)
+
     }
+    
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
+        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
-        decisionHandler(WKNavigationResponsePolicy.Allow)
+        let response:NSURLResponse = navigationResponse.response
+        doneButton.hidden = true
+        let serverDomain = NSURL(string: self.serverURL!)?.host
+        if (response.URL?.absoluteString.rangeOfString(serverDomain!) == nil) {
+            decisionHandler(.Cancel)
+            
+            let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewNavigationController") as! UINavigationController
+            let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
+            previewController.serverURL = response.URL?.absoluteString
+            self.presentViewController(previewNavigationController, animated: true, completion: nil)
+        } else {
+            if response.MIMEType != "text/html" {
+                doneButton.hidden = false
+            }
+            decisionHandler(.Allow)
+        }
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
@@ -136,7 +140,7 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         if request.URL?.absoluteString.rangeOfString("portal:action=Logout") != nil  {
             self.navigationController?.popViewControllerAnimated(true)
         }
-        
+        let serverDomain = NSURL(string: self.serverURL!)?.host
         // Display the navigation bar at login or register page && disable the bar when login (register) is finished
         // Home Page Address: portal/intranet/register (hide the navigation bar)
         if request.URL?.absoluteString.rangeOfString(serverDomain!+"/portal/intranet") != nil  {
@@ -155,4 +159,15 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         decisionHandler(WKNavigationActionPolicy.Allow)
     }
     
+    // MARK: WKUIDelegate
+    
+    // Called when a link opens a new window (target=_blank)
+    // We simply reload the request in the existing webview
+    // Cf http://stackoverflow.com/a/25853806
+    func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if (navigationAction.targetFrame == nil) {
+            webView.loadRequest(navigationAction.request)
+        }
+        return nil
+    }
 }
