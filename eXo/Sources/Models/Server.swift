@@ -64,7 +64,7 @@ class Server {
     }
     
     func toDictionary () -> NSDictionary {
-        return [ "serverURL":serverURL, "username": username, "lastConnection":lastConnection]
+        return [ ServerKey.serverURL:serverURL, ServerKey.username: username, ServerKey.lastConnection:lastConnection]
     }
     
     func natureName () -> String {

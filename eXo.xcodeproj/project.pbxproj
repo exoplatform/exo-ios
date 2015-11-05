@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57D568331BEB15C000C13C7E /* TestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568321BEB15C000C13C7E /* TestServer.swift */; };
+		57D568351BEB41B700C13C7E /* TestServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568341BEB41B700C13C7E /* TestServerManager.swift */; };
+		57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */; };
 		5D8610FF10D986813C74996D /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99709FC6FC0B669C35F7F93F /* Pods_share_extension.framework */; };
 		6A08988846900ACFD78A6F50 /* Pods_eXo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D372826E93C6C5C43C0DDC /* Pods_eXo.framework */; };
 		9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032DC91BE31EE5006F0577 /* String+URL.swift */; };
@@ -21,7 +24,7 @@
 		9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD24D1BCF56900094CFF9 /* Main.storyboard */; };
 		9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD2501BCF56900094CFF9 /* Assets.xcassets */; };
 		9C3AD2541BCF56900094CFF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD2521BCF56900094CFF9 /* LaunchScreen.storyboard */; };
-		9C3AD25F1BCF56900094CFF9 /* eXoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD25E1BCF56900094CFF9 /* eXoTests.swift */; };
+		9C3AD25F1BCF56900094CFF9 /* eXoBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD25E1BCF56900094CFF9 /* eXoBaseTestCase.swift */; };
 		9C3AD26A1BCF56900094CFF9 /* eXoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2691BCF56900094CFF9 /* eXoUITests.swift */; };
 		9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */; };
 		9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */; };
@@ -92,6 +95,9 @@
 		22D372826E93C6C5C43C0DDC /* Pods_eXo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F462CB79FE0639714D6B50 /* Pods-share-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-share-extension/Pods-share-extension.release.xcconfig"; sourceTree = "<group>"; };
 		53E37562C6B0FB13818C9830 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
+		57D568321BEB15C000C13C7E /* TestServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServer.swift; sourceTree = "<group>"; };
+		57D568341BEB41B700C13C7E /* TestServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServerManager.swift; sourceTree = "<group>"; };
+		57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeUserDefaults.swift; sourceTree = "<group>"; };
 		95B211B4B59CC6CD07C9E3D9 /* Pods-share-extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-share-extension/Pods-share-extension.debug.xcconfig"; sourceTree = "<group>"; };
 		99709FC6FC0B669C35F7F93F /* Pods_share_extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_share_extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C032DC91BE31EE5006F0577 /* String+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
@@ -109,7 +115,7 @@
 		9C3AD2531BCF56900094CFF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C3AD2551BCF56900094CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3AD25A1BCF56900094CFF9 /* eXoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eXoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C3AD25E1BCF56900094CFF9 /* eXoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoTests.swift; sourceTree = "<group>"; };
+		9C3AD25E1BCF56900094CFF9 /* eXoBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoBaseTestCase.swift; sourceTree = "<group>"; };
 		9C3AD2601BCF56900094CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3AD2651BCF56900094CFF9 /* eXoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eXoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3AD2691BCF56900094CFF9 /* eXoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoUITests.swift; sourceTree = "<group>"; };
@@ -284,8 +290,11 @@
 		9C3AD25D1BCF56900094CFF9 /* eXoTests */ = {
 			isa = PBXGroup;
 			children = (
-				9C3AD25E1BCF56900094CFF9 /* eXoTests.swift */,
+				9C3AD25E1BCF56900094CFF9 /* eXoBaseTestCase.swift */,
 				9C3AD2601BCF56900094CFF9 /* Info.plist */,
+				57D568321BEB15C000C13C7E /* TestServer.swift */,
+				57D568341BEB41B700C13C7E /* TestServerManager.swift */,
+				57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */,
 			);
 			path = eXoTests;
 			sourceTree = "<group>";
@@ -735,7 +744,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C3AD25F1BCF56900094CFF9 /* eXoTests.swift in Sources */,
+				57D568351BEB41B700C13C7E /* TestServerManager.swift in Sources */,
+				57D568331BEB15C000C13C7E /* TestServer.swift in Sources */,
+				9C3AD25F1BCF56900094CFF9 /* eXoBaseTestCase.swift in Sources */,
+				57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
