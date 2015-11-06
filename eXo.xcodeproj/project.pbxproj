@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5711ABEA1BEC9DA200D60E4B /* fastlane in Resources */ = {isa = PBXBuildFile; fileRef = 5711ABE91BEC9DA200D60E4B /* fastlane */; };
 		57D568331BEB15C000C13C7E /* TestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568321BEB15C000C13C7E /* TestServer.swift */; };
 		57D568351BEB41B700C13C7E /* TestServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568341BEB41B700C13C7E /* TestServerManager.swift */; };
 		57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */; };
@@ -101,6 +102,7 @@
 		22D372826E93C6C5C43C0DDC /* Pods_eXo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F462CB79FE0639714D6B50 /* Pods-share-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-share-extension/Pods-share-extension.release.xcconfig"; sourceTree = "<group>"; };
 		53E37562C6B0FB13818C9830 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
+		5711ABE91BEC9DA200D60E4B /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		57D568321BEB15C000C13C7E /* TestServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServer.swift; sourceTree = "<group>"; };
 		57D568341BEB41B700C13C7E /* TestServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServerManager.swift; sourceTree = "<group>"; };
 		57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeUserDefaults.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		9C3AD23D1BCF56900094CFF9 = {
 			isa = PBXGroup;
 			children = (
+				5711ABE91BEC9DA200D60E4B /* fastlane */,
 				9C3AD2481BCF56900094CFF9 /* eXo */,
 				9C3AD25D1BCF56900094CFF9 /* eXoTests */,
 				9C3AD2681BCF56900094CFF9 /* eXoUITests */,
@@ -636,6 +639,7 @@
 				9C935F851BD64DAD009C065B /* Localizable.strings in Resources */,
 				9C3D7D1E1BDF6BA3002873CB /* eXo.entitlements in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
+				5711ABEA1BEC9DA200D60E4B /* fastlane in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
 			);

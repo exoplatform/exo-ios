@@ -18,6 +18,9 @@ DerivedData
 *.xcuserstate
 **/build/
 
+# Fastlane
+fastlane/test_output/
+fastlane/report.xml
 
 # Binaries
 *.7z
