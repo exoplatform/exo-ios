@@ -463,7 +463,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="uvw-ra-Tgy">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="KXN-0f-0dV">
+                        <barButtonItem key="rightBarButtonItem" id="KXN-0f-0dV">
                             <view key="customView" contentMode="scaleToFill" id="bnp-SL-OPs">
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -646,7 +646,7 @@
         <image name="right" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6jh-pv-CuH"/>
         <segue reference="M0p-Gk-7WA"/>
+        <segue reference="Qfi-QR-8nv"/>
     </inferredMetricsTieBreakers>
 </document>

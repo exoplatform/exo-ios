@@ -107,20 +107,27 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         Stop loading indicator after finished loading
         */
         loadingIndicator.stopAnimating()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }
     
     func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
         print(error.localizedDescription)
         loadingIndicator.stopAnimating()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         loadingIndicator.stopAnimating()
+        
         let alertController = UIAlertController(title: NSLocalizedString("OnBoarding.Error.ConnectionError", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
         }
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: false, completion: nil)
+    }
+    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+        decisionHandler(WKNavigationResponsePolicy.Allow)
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
@@ -141,7 +148,10 @@ class HomePageViewController: UIViewController, WKNavigationDelegate {
         if (request.URL?.absoluteString.rangeOfString(serverDomain! + "/portal/login") != nil) || (request.URL?.absoluteString.rangeOfString(serverDomain! + "/portal/intranet/register") != nil) {
             self.navigationController?.setNavigationBarHidden(false, animated:true)
         }        
-        
+        if !UIApplication.sharedApplication().networkActivityIndicatorVisible {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
+        }
+
         decisionHandler(WKNavigationActionPolicy.Allow)
     }
     
