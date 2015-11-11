@@ -21,6 +21,8 @@
 		9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032E301BE897CE006F0577 /* LoginViewController.swift */; };
 		9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032E371BEA1495006F0577 /* eXoWebBaseViewController.swift */; };
 		9C032E3A1BEA17DE006F0577 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032E391BEA17DE006F0577 /* PreviewController.swift */; };
+		9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032E461BF3064C006F0577 /* SettingViewController.swift */; };
+		9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032E4F1BF34BF1006F0577 /* ServerEditViewController.swift */; };
 		9C13B4D41BE20ED9007D7645 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C13B4D31BE20ED9007D7645 /* Security.framework */; };
 		9C3AD24A1BCF56900094CFF9 /* eXoAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2491BCF56900094CFF9 /* eXoAppDelegate.swift */; };
 		9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD24D1BCF56900094CFF9 /* Main.storyboard */; };
@@ -97,8 +99,6 @@
 		22D372826E93C6C5C43C0DDC /* Pods_eXo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F462CB79FE0639714D6B50 /* Pods-share-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-share-extension/Pods-share-extension.release.xcconfig"; sourceTree = "<group>"; };
 		53E37562C6B0FB13818C9830 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
-		5726DB0E1BF9CDDE0056A897 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		5726DB0F1BF9CDE20056A897 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		57D568321BEB15C000C13C7E /* TestServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServer.swift; sourceTree = "<group>"; };
 		57D568341BEB41B700C13C7E /* TestServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServerManager.swift; sourceTree = "<group>"; };
 		57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeUserDefaults.swift; sourceTree = "<group>"; };
@@ -113,6 +113,10 @@
 		9C032E301BE897CE006F0577 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C032E371BEA1495006F0577 /* eXoWebBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eXoWebBaseViewController.swift; sourceTree = "<group>"; };
 		9C032E391BEA17DE006F0577 /* PreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		9C032E461BF3064C006F0577 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9C032E4F1BF34BF1006F0577 /* ServerEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEditViewController.swift; sourceTree = "<group>"; };
+		9C032E541BF9EED3006F0577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		9C032E561BF9EF0D006F0577 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		9C13B4D31BE20ED9007D7645 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9C3AD2461BCF56900094CFF9 /* eXo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eXo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3AD2491BCF56900094CFF9 /* eXoAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoAppDelegate.swift; sourceTree = "<group>"; };
@@ -260,6 +264,15 @@
 			path = Basic;
 			sourceTree = "<group>";
 		};
+		9C032E451BF30623006F0577 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9C032E461BF3064C006F0577 /* SettingViewController.swift */,
+				9C032E4F1BF34BF1006F0577 /* ServerEditViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		9C3AD23D1BCF56900094CFF9 = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +361,7 @@
 				9C032E361BEA1495006F0577 /* Basic */,
 				9C3AD27C1BCF5D960094CFF9 /* On-Boarding */,
 				9C935F891BD8A01C009C065B /* HomePage */,
+				9C032E451BF30623006F0577 /* Setting */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -741,9 +755,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */,
+				9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
 				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
+				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
 				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,
 				9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */,
 				9C935F7E1BD60286009C065B /* Tool.swift in Sources */,
@@ -829,8 +845,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C3AD24E1BCF56900094CFF9 /* Base */,
-				5726DB0E1BF9CDDE0056A897 /* en */,
-				5726DB0F1BF9CDE20056A897 /* fr */,
+				9C032E541BF9EED3006F0577 /* en */,
+				9C032E561BF9EF0D006F0577 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -34,6 +34,8 @@
 
 "Word.OK" = "OK";
 
+"Word.Cancel" = "Cancel";
+
 "OnBoarding.Error.URL" = "Server URL error";
 
 "OnBoarding.Error.UnableConnectServer" = "Unable to connect the server";
@@ -52,3 +54,13 @@
 "Shortcut.Title.RegisterCommunity" = "Register Community";
 
 "Shortcut.Title.ConnectTo" = "Connect to";
+
+//Setting
+
+"Setting.Title.Server" = "Servers";
+
+"Setting.Title.DeleteServer" = "Delete Server";
+
+"Setting.Message.DeleteServer" = "Do you really want to delete this server?";
+
+

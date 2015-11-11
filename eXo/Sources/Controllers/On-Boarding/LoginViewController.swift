@@ -23,24 +23,17 @@ class LoginViewController: UITableViewController {
     let kCellHeight:CGFloat = 80.0
     var defaultServer:Server?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         if (ServerManager.sharedInstance.serverList.count > 0){
             defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
         } else {
             defaultServer = Server(serverURL: Config.communityURL)
         }
-    }
-
-    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
         // the navigation controller is alway shown in this screen
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /*
@@ -89,6 +82,7 @@ class LoginViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         self.navigationController?.topViewController?.title = ""

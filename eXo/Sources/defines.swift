@@ -28,8 +28,9 @@ struct ShortcutType {
 
 struct Config {
     static let communityURL:String =  "https://community.exoplatform.com"
-    static let supportVersion:Float = 4.3
-    static let maximunShortcutAllow:Int = 4
+    static let minimumPlatformVersionSupported:Float = 4.3
+    static let maximumShortcutAllow:Int = 4
+    static let timeout:NSTimeInterval = 60.0 // in seconds
 }
 
 struct UserDefaultConfig {

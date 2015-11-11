@@ -64,7 +64,7 @@ class PlaceholderTextView: UITextView {
 
     private func setup() {
         self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        self.font = UIFont.systemFontOfSize(15.0)
+        self.font = UIFont.systemFontOfSize(16.0)
         
         self.placeholderLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.placeholderLabel.numberOfLines = 0
