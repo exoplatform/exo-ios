@@ -103,14 +103,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         loadingIndicator.stopAnimating()
-        if self.presentedViewController == nil {        
-            let alertController = UIAlertController(title: NSLocalizedString("OnBoarding.Error.ConnectionError", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
-            }
-            alertController.addAction(cancelAction)
-            self.presentViewController(alertController, animated: false, completion: nil)
-        }
-
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {

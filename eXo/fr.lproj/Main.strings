@@ -1,9 +1,12 @@
 
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "18S-gT-Ft0"; */
+"18S-gT-Ft0.title" = "Sauvegarder";
+
 /* Class = "UILabel"; text = "abc.exoplatform.com"; ObjectID = "6UH-Oz-HS4"; */
 "6UH-Oz-HS4.text" = "abc.exoplatform.com";
 
-/* Class = "UINavigationItem"; title = "Se connecter à eXo"; ObjectID = "7S4-we-cHp"; */
-"7S4-we-cHp.title" = "Se connecter à eXo";
+/* Class = "UINavigationItem"; title = "Sign in to eXo"; ObjectID = "7S4-we-cHp"; */
+"7S4-we-cHp.title" = "Se Connecter à eXo";
 
 /* Class = "UILabel"; text = "Community.exoplatform.com"; ObjectID = "7jK-Ln-BVS"; */
 "7jK-Ln-BVS.text" = "Community.exoplatform.com";
@@ -14,38 +17,44 @@
 /* Class = "UILabel"; text = "J'aime eXo Platform"; ObjectID = "9K8-mA-aRQ"; */
 "9K8-mA-aRQ.text" = "J'aime eXo Platform";
 
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "Aqo-MA-qAy"; */
+"Aqo-MA-qAy.normalTitle" = "Supprimer";
+
 /* Class = "UINavigationItem"; title = "Se connecter à eXo"; ObjectID = "BZG-X2-H0R"; */
 "BZG-X2-H0R.title" = "Se connecter à eXo";
 
 /* Class = "UILabel"; text = "Discover eXo Tribe"; ObjectID = "Myl-4g-llc"; */
-"Myl-4g-llc.text" = "Discover eXo Tribe";
+"Myl-4g-llc.text" = "Decouvrir eXo Tribe";
 
 /* Class = "UILabel"; text = "Intranet URL"; ObjectID = "Nbx-g7-yZ0"; */
 "Nbx-g7-yZ0.text" = "Intranet URL";
 
-/* Class = "UINavigationItem"; title = "Setting"; ObjectID = "QJB-zi-ZCk"; */
-"QJB-zi-ZCk.title" = "Setting";
-
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "QLL-K8-afL"; */
-"QLL-K8-afL.title" = "Back";
+"QLL-K8-afL.title" = "Retour";
 
-/* Class = "UILabel"; text = "eXo est le meilleur"; ObjectID = "SFw-1S-gHJ"; */
+/* Class = "UILabel"; text = "eXo is the best"; ObjectID = "SFw-1S-gHJ"; */
 "SFw-1S-gHJ.text" = "eXo est le meilleur";
 
-/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "c6M-67-QCM"; */
-"c6M-67-QCM.title" = "Back";
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Sdh-rB-Tjw"; */
+"Sdh-rB-Tjw.title" = "Réglages";
+
+/* Class = "UINavigationItem"; title = "Server Editer"; ObjectID = "VHJ-3K-666"; */
+"VHJ-3K-666.title" = "Éditeur";
+
+/* Class = "UILabel"; text = "Enter new intranet URL"; ObjectID = "dfO-1K-jpi"; */
+"dfO-1K-jpi.text" = "Entrer une nouvelle adresse";
 
 /* Class = "UIButton"; normalTitle = "Demarrer"; ObjectID = "iD2-5O-Hdw"; */
 "iD2-5O-Hdw.normalTitle" = "Demarrer";
 
-/* Class = "UILabel"; text = "Autres"; ObjectID = "kf8-07-HO5"; */
-"kf8-07-HO5.text" = "Autres";
+/* Class = "UILabel"; text = "Others"; ObjectID = "kf8-07-HO5"; */
+"kf8-07-HO5.text" = "Autre";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "pn1-xm-mpQ"; */
 "pn1-xm-mpQ.normalTitle" = "Fermer";
 
-/* Class = "UILabel"; text = "Others"; ObjectID = "s9H-sV-TqG"; */
-"s9H-sV-TqG.text" = "Others";
+/* Class = "UILabel"; text = "Autres"; ObjectID = "s9H-sV-TqG"; */
+"s9H-sV-TqG.text" = "Autres";
 
 /* Class = "UILabel"; text = "News to eXo ?"; ObjectID = "wLN-iK-TKf"; */
-"wLN-iK-TKf.text" = "News to eXo ?";
+"wLN-iK-TKf.text" = "Debutant à eXo ?";

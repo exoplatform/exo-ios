@@ -38,9 +38,6 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        Get the list of server from NSUserDefault
-        */
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
     }
     
@@ -49,9 +46,15 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.navigationBarHidden = false
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         self.title = ""
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -75,7 +78,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
                 SVProgressHUD.showWithMaskType(.Black)
                 let operationQueue = NSOperationQueue.init()
                 operationQueue.name = "URLVerification"
-                let request = NSURLRequest.init(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 1000.0)
+                let request = NSURLRequest.init(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: Config.timeout)
 
                 NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue, completionHandler: { (response, data, error) -> Void in
                     // dismiss the HUD
@@ -90,7 +93,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
                             let json = JSON(data: data!)
                             if let platformVersion = json["platformVersion"].string {
                                 let version = (platformVersion as NSString).floatValue
-                                if (version >= Config.supportVersion){
+                                if (version >= Config.minimumPlatformVersionSupported){
                                     self.selectedServer = Server (serverURL: serverURL)
                                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                                         self.performSegueWithIdentifier("selectServerSegue", sender: serverURL)

@@ -28,6 +28,11 @@ class Tool {
             break
         }
     }
-
+    
+    static func applyBorderForView (view:UIView) {
+        view.layer.cornerRadius = 5.0
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = UIColor.lightGrayColor().CGColor
+    }
     
 }

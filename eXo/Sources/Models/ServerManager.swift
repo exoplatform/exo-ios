@@ -81,9 +81,12 @@ class ServerManager  {
         }
         self.saveServerList()
         
-        if #available(iOS 9.0, *) {
-            self.updateQuickAction()
-        } 
+    }
+    
+    //Remove a server from servers list
+    func removeServer (server : Server) {
+        serverList.removeObject(server)
+        self.saveServerList()
     }
     
     func saveServerList () {
@@ -97,10 +100,16 @@ class ServerManager  {
             let groupUserDefaults = NSUserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
             groupUserDefaults?.setObject(list, forKey: ShareExtension.AllUserNameKey)
 
+            if #available(iOS 9.0, *) {
+                self.updateQuickAction()
+            }
+
         }
         
     }
-    
+    /*
+    Re-initialize the list of dynamic shortcuts
+    */
     @available(iOS 9.0, *)
     func updateQuickAction () {
         var hasConnectedToCommunity:Bool = false
@@ -117,7 +126,7 @@ class ServerManager  {
             items.addObject (registerItem!)
         }
         for server in serverList {
-            if (items.count < (Config.maximunShortcutAllow - 1) && (server as! Server).serverURL != Config.communityURL) {
+            if (items.count < (Config.maximumShortcutAllow - 1) && (server as! Server).serverURL != Config.communityURL) {
                 let item = UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "login"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject])
                 items.addObject(item)
             }

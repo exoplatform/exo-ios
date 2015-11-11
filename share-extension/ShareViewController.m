@@ -29,7 +29,7 @@
 #import "share_extension-swift.h"
 #import "AccountManager.h"
 
-#define kJPEGCompressionLevel 1.0 // 0.0 for maximun compression & 1.0 minimun compression. Actually the image is aready JPEG so we keep the same quality while making new image.
+#define kJPEGCompressionLevel 1.0 // 0.0 for maximum compression & 1.0 minimum compression. Actually the image is aready JPEG so we keep the same quality while making new image.
 
 
 @interface ShareViewController () {

@@ -33,6 +33,8 @@
 
 "Word.OK" = "OK";
 
+"Word.Cancel" = "Annuler";
+
 "Word.Others" = "Autres";
 
 "OnBoarding.Error.URL" = "URL incorrecte";
@@ -48,3 +50,10 @@
 "Shortcut.Title.RegisterCommunity" = "S'enregister sur Community";
 
 "Shortcut.Title.ConnectTo" = "Se connecter à";
+
+//Setting
+"Setting.Title.Server" = "Serveur";
+
+"Setting.Title.DeleteServer" = "Supprimer";
+
+"Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer ce serveur?";
