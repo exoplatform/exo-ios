@@ -35,7 +35,7 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>eXoLogo</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Connect Community</string>
+			<string>eXo Tribe</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>ios.exo.connect-community</string>
 		</dict>

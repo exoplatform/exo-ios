@@ -766,8 +766,9 @@ NSMutableData * data;
             if (postItem.fileUploadedName!=nil && postItem.fileUploadedURL!=nil){
                 message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.fileUploadedURL, postItem.fileUploadedName];
                 NSString * thumbnailURL = [postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"];
+                NSURL * url = [NSURL URLWithString:thumbnailURL];
                 if (postItem.isImageItem){
-                    message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",thumbnailURL]];
+                    message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",url.relativePath]];
                 }
             }
         } else if ([postItem.type isEqualToString:@"LINK_ACTIVITY"]) {
