@@ -764,11 +764,10 @@ NSMutableData * data;
         NSString * message =@"";
         if ([postItem.type isEqualToString:@"DOC_ACTIVITY"]) {
             if (postItem.fileUploadedName!=nil && postItem.fileUploadedURL!=nil){
-                message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.fileUploadedURL, postItem.fileUploadedName];
-                NSString * thumbnailURL = [postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"];
-                NSURL * url = [NSURL URLWithString:thumbnailURL];
+                message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", [NSURL URLWithString:postItem.fileUploadedURL].relativePath, postItem.fileUploadedName];
+                NSURL * thumbnailURL = [NSURL URLWithString:[postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"]];
                 if (postItem.isImageItem){
-                    message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",url.relativePath]];
+                    message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",thumbnailURL.relativePath]];
                 }
             }
         } else if ([postItem.type isEqualToString:@"LINK_ACTIVITY"]) {
@@ -776,7 +775,7 @@ NSMutableData * data;
             if (!title || title.length ==0){
                 title = postItem.url.absoluteString;
             }
-            message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.url, title];
+            message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.url.relativePath, title];
             
         }
 
