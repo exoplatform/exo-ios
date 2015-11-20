@@ -33,17 +33,17 @@ class ServerSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
+    override func viewWillAppear(animated: Bool) {
         if (ServerManager.sharedInstance.serverList.count > 0){
             defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
         } else {
             defaultServer = Server(serverURL: Config.communityURL)
         }
         // Do not show the protocol to save place
-        mostRecentServerLabel.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()        
-    }
+        mostRecentServerLabel.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
 
-    override func viewWillAppear(animated: Bool) {
         // the navigation controller is alway shown in this screen
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.topViewController?.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")

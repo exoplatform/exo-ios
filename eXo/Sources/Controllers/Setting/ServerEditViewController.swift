@@ -17,8 +17,6 @@
 
 
 import UIKit
-import SVProgressHUD
-import SwiftyJSON
 
 class ServerEditViewController: UIViewController {
 
@@ -65,8 +63,8 @@ class ServerEditViewController: UIViewController {
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if  (text.characters.last == "\n" ){
-            save()
             textView.resignFirstResponder()
+            save()
             return false
         } else {
             return true
@@ -75,65 +73,13 @@ class ServerEditViewController: UIViewController {
     
     func save () {
         //verification of URL, http is the default protocol
-        var serverURL = textView.text
-        if ( serverURL.rangeOfString("http://") == nil && serverURL.rangeOfString("https://") == nil ) {
-            serverURL = "http://" + serverURL
-        }
-        let platformInfoURL = serverURL + "/rest/platform/info"
-        
-        let url = NSURL.init(string: platformInfoURL)
-        if (url != nil) {
-            SVProgressHUD.showWithMaskType(.Black)
-            let operationQueue = NSOperationQueue.init()
-            operationQueue.name = "URLVerification"
-            let request = NSURLRequest.init(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: Config.timeout)
-            
-            NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue, completionHandler: { (response, data, error) -> Void in
-                // dismiss the HUD
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    SVProgressHUD.dismiss()
-                })
-                
-                if (error == nil) {
-                    let statusCode = (response as! NSHTTPURLResponse).statusCode
-                    if (statusCode >= 200  && statusCode < 300) {
-                        // Check platform version
-                        let json = JSON(data: data!)
-                        if let platformVersion = json["platformVersion"].string {
-                            let version = (platformVersion as NSString).floatValue
-                            if (version >= Config.minimumPlatformVersionSupported){
-                                self.server.serverURL = serverURL
-                                ServerManager.sharedInstance.saveServerList()
-                                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                    self.navigationController?.popViewControllerAnimated(true)
-                                })
-                                
-                            } else {
-                                // this application supports only platform version 4.3 or later
-                                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                    Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
-                                })
-                            }
-                        } else {
-                            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotFound)
-                            })
-                        }
-                        
-                    } else {
-                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                            Tool.showErrorMessageForCode(ConnectionError.URLError)
-                        })
-                    }
-                } else {
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        Tool.showErrorMessageForCode(ConnectionError.URLError)
-                    })
-                }
+        Tool.verificationServerURL(textView.text, handleSucces: { (serverURL) -> Void in
+            self.server.serverURL = serverURL
+            ServerManager.sharedInstance.saveServerList()
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.navigationController?.popViewControllerAnimated(true)
             })
-        } else {
-            Tool.showErrorMessageForCode(ConnectionError.URLError)
-        }
+        })
     }
     
     //MARK : KeyBoard handle
@@ -162,7 +108,7 @@ class ServerEditViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         
-    }
+    }        
 
 
 }

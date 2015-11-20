@@ -94,20 +94,24 @@ class SettingViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-
-            let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
-            }
-            alertController.addAction(cancelAction)
-            let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Destructive) { (confirmAction) -> Void in                
-                let server:Server = (ServerManager.sharedInstance.serverList?[indexPath.row])! as! Server
-                ServerManager.sharedInstance.removeServer(server)
-                self.tableView.reloadData()
-                
-            }
-            alertController.addAction(confirmAction)
-            self.presentViewController(alertController, animated: false, completion: nil)
+            self.deleteServer(indexPath)
         }
+    }
+    
+    func deleteServer(indexPath: NSIndexPath) {
+        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+        }
+        alertController.addAction(cancelAction)
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Destructive) { (confirmAction) -> Void in
+            let server:Server = (ServerManager.sharedInstance.serverList?[indexPath.row])! as! Server
+            ServerManager.sharedInstance.removeServer(server)
+            self.tableView.reloadData()
+            
+        }
+        alertController.addAction(confirmAction)
+        self.presentViewController(alertController, animated: false, completion: nil)
+        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
