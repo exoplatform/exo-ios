@@ -99,7 +99,7 @@ class ServerEditViewController: UIViewController {
     // Set up the position of the delete button to a visiable position (on portrait only)
 
     func keyboardWillShow(notification: NSNotification) {
-        if UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation) {
+        if UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation) == true {
             if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
                 self.view.layoutIfNeeded()
                 // Animate the movement of the deleteButton

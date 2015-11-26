@@ -42,7 +42,7 @@
 "dfO-1K-jpi.text" = "Enter new intranet URL";
 
 /* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "iD2-5O-Hdw"; */
-"iD2-5O-Hdw.normalTitle" = "Get Started";
+"iD2-5O-Hdw.normalTitle" = "Got it";
 
 /* Class = "UILabel"; text = "Others"; ObjectID = "kf8-07-HO5"; */
 "kf8-07-HO5.text" = "Others";

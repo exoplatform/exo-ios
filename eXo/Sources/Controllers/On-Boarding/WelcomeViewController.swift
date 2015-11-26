@@ -25,11 +25,17 @@ import UIKit
 
 
 class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
     // the number of slides in the presentation
     let kNumberOfPage = 2
     
+    
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var getStartedButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        contentView.clipsToBounds = true
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,9 +43,9 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
         self.navigationController?.navigationBarHidden = true
         self.navigationController?.topViewController?.title = ""
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    @IBAction func closeWelcomeView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     // MARK: - Page View Delegate & Data Source

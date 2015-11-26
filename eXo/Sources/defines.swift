@@ -31,6 +31,7 @@ struct Config {
     static let minimumPlatformVersionSupported:Float = 4.3
     static let maximumShortcutAllow:Int = 4
     static let timeout:NSTimeInterval = 60.0 // in seconds
+    static let onboardingDidShow: String = "onboardingDidShow"    
 }
 
 struct UserDefaultConfig {

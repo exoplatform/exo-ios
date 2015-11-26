@@ -63,7 +63,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         super.viewDidDisappear(animated)
         self.navigationController?.navigationBarHidden = false
     }
-        
+    
     // MARK: Actions
     
     @IBAction func goBackAction(sender: AnyObject) {
@@ -89,6 +89,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         */
         loadingIndicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+        
+        //Check if need to display the welcome view
+        if (NSUserDefaults.standardUserDefaults().objectForKey(Config.onboardingDidShow) == nil){
+            loadStateStatusPage ()
+        }
+
     }
     
     func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
@@ -104,9 +110,21 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
-        let response:NSURLResponse = navigationResponse.response
+        let response:NSHTTPURLResponse = navigationResponse.response as! NSHTTPURLResponse
         doneButton.hidden = true
         let serverDomain = NSURL(string: self.serverURL!)?.host
+        
+        /*
+        Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
+        */
+        if response.URL?.absoluteString.rangeOfString(serverDomain!+"/rest/state/status") != nil  {
+            if (response.statusCode >= 200  && response.statusCode < 300) {
+                self.showOnBoardingIfNeed()
+            }
+            decisionHandler(.Cancel)
+            return
+        }
+        
         if (response.URL?.absoluteString.rangeOfString(serverDomain!) == nil) {
             decisionHandler(.Cancel)
             
@@ -120,6 +138,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             }
             decisionHandler(.Allow)
         }
+        
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
@@ -157,5 +176,50 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             webView.loadRequest(navigationAction.request)
         }
         return nil
+    }
+    
+    /*
+    Display the Onboarding View Controller if:
+    - The view has never been shown
+    - After use has logged in
+    */
+    func showOnBoardingIfNeed () {
+        if (NSUserDefaults.standardUserDefaults().objectForKey(Config.onboardingDidShow) == nil){
+            let welcomeVC:WelcomeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WelcomeViewController") as! WelcomeViewController
+            welcomeVC.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+            welcomeVC.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+            self.presentViewController(welcomeVC, animated: true, completion: {})
+            NSUserDefaults.standardUserDefaults().setObject(NSNumber(bool: true), forKey: Config.onboardingDidShow)
+        }
+    }
+    
+    /*
+    Ask to load the page <serverURL>/rest/state/status 
+    - If the user has connected the response status code of this request = 200
+    */
+    func loadStateStatusPage () {
+        let serverDomain = NSURL(string: self.serverURL!)?.host
+        if self.webView?.URL!.absoluteString.rangeOfString(serverDomain!+"/portal/intranet") != nil  {
+            let statusURL = self.serverDomainWithProtocolAndPort() + "/rest/state/status"
+            let url = NSURL(string: statusURL)
+            let request = NSURLRequest(URL: url!, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: Config.timeout)
+            self.webView?.loadRequest(request)
+            
+        }
+    }
+    
+    /*
+    Return the serverURL with protocol & port (if need)
+    example: serverURL = http://localhost:8080/portal/intranet 
+    -> full domain with protocol & port = http://localhost:8080
+    */
+    func serverDomainWithProtocolAndPort () -> String {
+        let url = NSURL(string: self.serverURL!)
+        var fullDomain = url!.scheme + "://" + url!.host!
+        if (url!.port != nil) {
+            fullDomain += ":\(url!.port)"
+        }
+        return fullDomain
+
     }
 }

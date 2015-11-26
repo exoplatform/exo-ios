@@ -45,7 +45,7 @@
 "dfO-1K-jpi.text" = "Entrer une nouvelle adresse";
 
 /* Class = "UIButton"; normalTitle = "Demarrer"; ObjectID = "iD2-5O-Hdw"; */
-"iD2-5O-Hdw.normalTitle" = "Demarrer";
+"iD2-5O-Hdw.normalTitle" = "Fermer";
 
 /* Class = "UILabel"; text = "Others"; ObjectID = "kf8-07-HO5"; */
 "kf8-07-HO5.text" = "Autre";

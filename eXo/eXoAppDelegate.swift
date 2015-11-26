@@ -21,14 +21,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         
         // Get the root view (the enter point of storyboard)
         navigationVC = self.window!.rootViewController as? UINavigationController
-        
-        //By default the Welcome screen will be shown at the first connection.
-        if (ServerManager.sharedInstance.serverList != nil && ServerManager.sharedInstance.serverList.count > 0) {
-            let rootVC = navigationVC?.storyboard?.instantiateViewControllerWithIdentifier("LoginNavigatorViewController")
-            navigationVC = rootVC as? UINavigationController
-            
-        }
-        self.window?.rootViewController = navigationVC
+                
         if #available(iOS 9.0, *) {
             ServerManager.sharedInstance.updateQuickAction()
             
