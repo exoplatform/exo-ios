@@ -31,11 +31,9 @@ class ServerSelectionViewController: UIViewController {
     
     // MARK: View Controller lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         if (ServerManager.sharedInstance.serverList.count > 0){
             defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
         } else {
@@ -48,13 +46,6 @@ class ServerSelectionViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.topViewController?.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
     }
-
-    override func viewWillDisappear(animated: Bool) {
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
 
     /*
@@ -66,6 +57,7 @@ class ServerSelectionViewController: UIViewController {
     */
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
         self.navigationController?.topViewController?.title = ""
         if (segue.identifier == "openDefaultServer") {
             defaultServer?.lastConnection = NSDate().timeIntervalSince1970

@@ -31,11 +31,8 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
     
     @IBOutlet weak var getStartedButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         // the navigation controller is alway hidden in this screen
         self.navigationController?.navigationBarHidden = true
         self.navigationController?.topViewController?.title = ""
@@ -81,7 +78,7 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
     // In a storyboard-based application, you will often want to do a little preparation before navigation 
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        super.prepareForSegue(segue, sender: sender)
         // embeded segue of the container view
         if (segue.identifier == "wellcomePageSegue") {
             let pageViewController = segue.destinationViewController as? UIPageViewController

@@ -42,23 +42,22 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         // the navigation controller is alway shown in this screen
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.navigationBarHidden = false
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.tableView.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.title = ""
+        super.viewWillDisappear(animated)
+        self.title = "" // to remove the longue text of the Back button (on the left of navigation bar)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     // MARK: Input Text View Handle
     
     //detect when the return key is pressed
@@ -67,7 +66,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
             //dismiss the keyboard
             textView.resignFirstResponder()
             //verification of URL, http is the default protocol
-            Tool.verificationServerURL(textView.text, handleSucces: { (serverURL) -> Void in
+            Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
                 self.selectedServer = Server (serverURL: serverURL)
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     self.performSegueWithIdentifier("selectServerSegue", sender: serverURL)
@@ -119,6 +118,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     // selectServerSegue
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
         let indexPath:NSIndexPath? = self.tableView.indexPathForSelectedRow
         if (indexPath != nil) {
             self.selectedServer = ServerManager.sharedInstance.serverList?[indexPath!.row] as? Server

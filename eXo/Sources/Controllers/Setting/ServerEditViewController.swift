@@ -33,34 +33,30 @@ class ServerEditViewController: UIViewController {
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
         Tool.applyBorderForView(self.deleteButton)
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardDidHideNotification, object: nil)
-
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidHideNotification, object: nil)
+        
     }
     
+    //MARK : User Action 
     @IBAction func saveAction(sender: AnyObject) {
         save()
     }
     
     @IBAction func deleteAction(sender: AnyObject) {
-        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
-        }
-        alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Destructive) { (confirmAction) -> Void in
-            ServerManager.sharedInstance.removeServer(self.server);
-            self.navigationController?.popViewControllerAnimated(true)
-
-        }
-        alertController.addAction(confirmAction)
-        self.presentViewController(alertController, animated: false, completion: nil)
+        delete()
     }
 
-    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if  (text.characters.last == "\n" ){
             textView.resignFirstResponder()
@@ -71,15 +67,32 @@ class ServerEditViewController: UIViewController {
         }
     }
     
+
     func save () {
         //verification of URL, http is the default protocol
-        Tool.verificationServerURL(textView.text, handleSucces: { (serverURL) -> Void in
+        Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
             self.server.serverURL = serverURL
             ServerManager.sharedInstance.saveServerList()
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                 self.navigationController?.popViewControllerAnimated(true)
             })
         })
+    }
+    
+    func delete() {
+        //Ask for confirmation first
+        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+        }
+        alertController.addAction(cancelAction)
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Destructive) { (confirmAction) -> Void in
+            ServerManager.sharedInstance.removeServer(self.server);
+            self.navigationController?.popViewControllerAnimated(true)
+            
+        }
+        alertController.addAction(confirmAction)
+        self.presentViewController(alertController, animated: false, completion: nil)
+
     }
     
     //MARK : KeyBoard handle

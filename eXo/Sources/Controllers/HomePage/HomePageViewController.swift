@@ -36,13 +36,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func configureDoneButton () {
-        doneButton.layer.cornerRadius = 5.0
-        doneButton.layer.borderWidth = 0.5
-        doneButton.layer.borderColor = UIColor.whiteColor().CGColor
+        Tool.applyBorderForView(doneButton)
         doneButton.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         /*
         Set the status bar to white color & the navigation bar is always hidden on this screen
         */
@@ -54,20 +53,17 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
         self.navigationController?.navigationBar.tintColor = nil
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default        
     }
     
     override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         self.navigationController?.navigationBarHidden = false
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+        
     // MARK: Actions
     
     @IBAction func goBackAction(sender: AnyObject) {

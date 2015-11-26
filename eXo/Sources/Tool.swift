@@ -1,10 +1,19 @@
+// Copyright (C) 2003-2015 eXo Platform SAS.
 //
-//  Tool.swift
-//  eXo
+// This is free software; you can redistribute it and/or modify it
+// under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3 of
+// the License, or (at your option) any later version.
 //
-//  Created by Nguyen Manh Toan on 10/20/15.
-//  Copyright © 2015 eXo. All rights reserved.
+// This software is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
 //
+// You should have received a copy of the GNU Lesser General Public
+// License along with this software; if not, write to the Free
+// Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+// 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
 import UIKit
 import SVProgressHUD
@@ -17,9 +26,9 @@ class Tool {
     /*
     - Check the input text enter by user, verify if the URL is valid & the version of the platform is satisfied
     - Display a alert in case of an error occur
-    - Return the valid ServerURL via a bloc (handleSucces)
+    - Return the valid ServerURL via a bloc (handleSuccess)
     */
-    static func verificationServerURL(string:String, handleSucces: (serverURL:String) ->Void) {
+    static func verificationServerURL(string:String, handleSuccess: (serverURL:String) ->Void) {
         
         let serverURL = domainOfStringURL(string)
         
@@ -46,7 +55,7 @@ class Tool {
                         if let platformVersion = json["platformVersion"].string {
                             let version = (platformVersion as NSString).floatValue
                             if (version >= Config.minimumPlatformVersionSupported){
-                                handleSucces(serverURL: serverURL)
+                                handleSuccess(serverURL: serverURL)
                             } else {
                                 // this application supports only platform version 4.3 or later
                                 Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)

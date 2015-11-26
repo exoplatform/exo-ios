@@ -29,14 +29,9 @@ class SettingViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-         self.tableView.reloadData()
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation
@@ -44,6 +39,7 @@ class SettingViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
         let indexPath = self.tableView.indexPathForSelectedRow
         let server:Server = ServerManager.sharedInstance.serverList![(indexPath?.row)!]
          as! Server
