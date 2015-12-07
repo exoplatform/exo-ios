@@ -442,7 +442,7 @@
         <!--Input Server View Controller-->
         <scene sceneID="LRn-gg-LYn">
             <objects>
-                <viewController id="Vkg-Xd-8eS" customClass="InputServerViewController" customModule="eXo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InputServerViewController" id="Vkg-Xd-8eS" customClass="InputServerViewController" customModule="eXo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OtR-P1-lJm"/>
                         <viewControllerLayoutGuide type="bottom" id="cy6-6S-5sl"/>

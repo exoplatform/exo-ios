@@ -80,16 +80,26 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @available(iOS 9.0, *)
+    /*
+    Handle all kinds of shortcuts
+    
+    - Add a new server: visible when no server has been configured. Using this shortcut, the app will open directly the InputServerViewController where user can enter the URL of the server
+    
+    - Open a recent server: Direct link to a configured Server (Maxi 4 most recent servers are availabel). The App will open a HomePageViewController configured with the selected server.
+    */
     func handleShortcut (shortcutItem: UIApplicationShortcutItem) -> Bool {
         var succeeded = false
-        if (shortcutItem.type == ShortcutType.connectCommunity) {
+        if (shortcutItem.type == ShortcutType.addNewServer) {
             succeeded = true
-            let communityServer:Server = Server (serverURL: Config.communityURL)
-            ServerManager.sharedInstance.addServer(communityServer)
-            self.quickActionOpenHomePageForURL(Config.communityURL)
-        } else if (shortcutItem.type == ShortcutType.registerCommunity) {
-            self.quickActionOpenHomePageForURL(Config.communityURL + "/portal/intranet/register")
+            if (navigationVC != nil) {
+                if (navigationVC?.viewControllers.count > 0) {
+                    navigationVC?.popToRootViewControllerAnimated(false)
+                    let inputServer = navigationVC?.viewControllers.last?.storyboard?.instantiateViewControllerWithIdentifier("InputServerViewController")
+                    navigationVC?.pushViewController(inputServer! as UIViewController, animated: false)
+                }
+            }
         } else if (shortcutItem.type == ShortcutType.connectRecentServer) {
+            succeeded = true
             let serverDictionary = shortcutItem.userInfo
             if (serverDictionary != nil) {
                 let server:Server = Server(serverDictionary: serverDictionary!)

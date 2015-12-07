@@ -21,9 +21,8 @@
 import Foundation
 
 struct ShortcutType {
-    static let connectCommunity:String =  "ios.exo.connect-community"
-    static let registerCommunity:String =  "ios.exo.register-community"
     static let connectRecentServer:String =  "ios.exo.connect-recent-server"
+    static let addNewServer:String = "ios.exo.add-new-server"
 }
 
 struct Config {

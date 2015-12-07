@@ -55,6 +55,9 @@
 
 "Shortcut.Title.ConnectTo" = "Connect to";
 
+"Shortcut.Title.AddServer" = "Add server";
+
+"Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 //Setting
 
 "Setting.Title.Server" = "Servers";

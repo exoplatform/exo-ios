@@ -109,29 +109,34 @@ class ServerManager  {
     }
     /*
     Re-initialize the list of dynamic shortcuts
+    2 Kind of shortcuts available:
+    - Add New Server: availabel when the list of server is empty.
+    - Open a Server: Link direct to the most recent Server (4 Maximum)
     */
     @available(iOS 9.0, *)
     func updateQuickAction () {
-        var hasConnectedToCommunity:Bool = false
-        for server in serverList {
-            if (server as! Server).serverURL == Config.communityURL {
-                hasConnectedToCommunity = true
-                break
-            }
-        }
         let items:NSMutableArray = NSMutableArray()
-        let registerItem: UIApplicationShortcutItem?
-        if !hasConnectedToCommunity {
-            registerItem = UIApplicationShortcutItem.init(type: ShortcutType.registerCommunity, localizedTitle: NSLocalizedString("Shortcut.Title.RegisterCommunity", comment: ""), localizedSubtitle: nil, icon:UIApplicationShortcutIcon(type: UIApplicationShortcutIconType.Add), userInfo: nil)
-            items.addObject (registerItem!)
-        }
-        for server in serverList {
-            if (items.count < (Config.maximumShortcutAllow - 1) && (server as! Server).serverURL != Config.communityURL) {
-                let item = UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "login"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject])
-                items.addObject(item)
+        if (serverList.count > 0) {
+            for server in serverList {
+                if (items.count < Config.maximumShortcutAllow) {
+                    if (server as! Server).serverURL == Config.communityURL {
+                        // A different Logo for eXo Community
+                        items.addObject(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject]))
+                    } else {
+                        // A common Logo for the others servers
+                        items.addObject(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject]))
+                        
+                    }
+                
+                }
             }
+        } else {
+            // when the list is empty
+            let item = UIApplicationShortcutItem.init(type: ShortcutType.addNewServer, localizedTitle: NSLocalizedString("Shortcut.Title.AddServer", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .Add), userInfo: nil)
+            items.addObject(item)
         }
-        UIApplication.sharedApplication().shortcutItems = items as NSArray as? [UIApplicationShortcutItem]        
+        UIApplication.sharedApplication().shortcutItems = items as NSArray as? [UIApplicationShortcutItem]
+
     }
 
 }

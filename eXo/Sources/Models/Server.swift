@@ -30,8 +30,8 @@ struct ServerKey {
 }
 
 struct ShortcutTitleConfig {
-    static let maximumCharacters:Int = 30
-    static let prefixCharacters:Int = 9
+    static let maximumCharacters:Int = 29
+    static let prefixCharacters:Int = 8
     static let suffixCharacters:Int = 15
 }
 
