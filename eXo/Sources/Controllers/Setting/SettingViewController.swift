@@ -27,7 +27,10 @@ class SettingViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()

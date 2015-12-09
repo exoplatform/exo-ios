@@ -24,6 +24,14 @@
 
 "OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
 
+"OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
+
+"OnBoarding.Title.AddServer" = "Add server";
+
+"OnBoarding.Title.Others" = "Others";
+
+"OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
+
 "OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
 "OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
@@ -45,8 +53,6 @@
 "OnBoarding.Error.ConnectionError" = "Connection Error";
 
 "OnBoarding.Title.MostRecentServer" = "Most recent server";
-
-"Word.Others" = "Others";
 
 
 //Shortcut (3D Touch)

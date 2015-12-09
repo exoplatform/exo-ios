@@ -573,6 +573,11 @@
 					9C3AD2451BCF56900094CFF9 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = FEM998T42U;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9C3AD2591BCF56900094CFF9 = {
 						CreatedOnToolsVersion = 7.0;
@@ -978,6 +983,7 @@
 			baseConfigurationReference = 53E37562C6B0FB13818C9830 /* Pods-eXo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = eXo/eXo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = eXo/Info.plist;
@@ -993,6 +999,7 @@
 			baseConfigurationReference = 1EE1988A01AD07CE19F50B0E /* Pods-eXo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = eXo/eXo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = eXo/Info.plist;

@@ -21,7 +21,15 @@
 
 "OnBoarding.Title.SignInToeXo" = "Se connecter à eXo";
 
-"OnBoarding.Message.EnterURL" = "Entre l'URL de votre intranet";
+"OnBoarding.Title.DiscovereXo" = "Decouvrir le eXo Tribe";
+
+"OnBoarding.Title.AddServer" = "Ajouter un serveur";
+
+"OnBoarding.Title.Others" = "Autres";
+
+"OnBoarding.Title.eXoPlatformDescription" = "Se connecter, partager et travailler ensemble";
+
+"OnBoarding.Message.EnterURL" = "Entrez l'URL de votre intranet";
 
 "OnBoarding.Error.PlatformNotSupported" = "Cette version de Platform n'est pas supportée";
 
@@ -34,8 +42,6 @@
 "Word.OK" = "OK";
 
 "Word.Cancel" = "Annuler";
-
-"Word.Others" = "Autres";
 
 "OnBoarding.Error.URL" = "URL incorrecte";
 

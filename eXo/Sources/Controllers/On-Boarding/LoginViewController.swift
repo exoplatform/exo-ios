@@ -71,7 +71,7 @@ class LoginViewController: UITableViewController {
             cell!.textLabel?.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
         } else {
             cell = tableView.dequeueReusableCellWithIdentifier("OthersServerCell", forIndexPath: indexPath)
-            cell!.textLabel?.text = NSLocalizedString("Word.Others", comment: "")
+            cell!.textLabel?.text = NSLocalizedString("OnBoarding.Title.Others", comment: "")
         }
         return cell!
     }

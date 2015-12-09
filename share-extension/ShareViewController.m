@@ -848,15 +848,28 @@ NSMutableData * data;
         NSRange rangeOfDocLink = [fileURL rangeOfString:@"jcr"];
         NSString* docLink = [NSString stringWithFormat:@"/rest/%@", [fileURL substringFromIndex:rangeOfDocLink.location]];
         title = [NSString stringWithFormat:@"Shared a document <a href=\"%@\">%@</a>\"", docLink, fileName];
-        templateParams = @{
-                           @"DOCPATH":docPath,
-                           @"MESSAGE":message,
-                           @"DOCLINK":docLink,
-                           @"WORKSPACE":defaultWorkspace,
-                           @"REPOSITORY":currentRepository,
-                           @"DOCNAME":fileName,
-                           @"MIMEType":[self MIMETypeForFile:fileName]
-                           };
+        NSString * mimeType = [self MIMETypeForFile:fileName];
+        if (mimeType && mimeType.length > 0) {
+            templateParams = @{
+                               @"DOCPATH":docPath,
+                               @"MESSAGE":message,
+                               @"DOCLINK":docLink,
+                               @"WORKSPACE":defaultWorkspace,
+                               @"REPOSITORY":currentRepository,
+                               @"DOCNAME":fileName,
+                               @"MIMEType":[self MIMETypeForFile:fileName]
+                               };
+        } else {
+            templateParams = @{
+                               @"DOCPATH":docPath,
+                               @"MESSAGE":message,
+                               @"DOCLINK":docLink,
+                               @"WORKSPACE":defaultWorkspace,
+                               @"REPOSITORY":currentRepository,
+                               @"DOCNAME":fileName,
+                               };
+
+        }
     }
     
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
@@ -1114,13 +1127,12 @@ NSMutableData * data;
         NSString * fileExtension = [fileName substringFromIndex:lastPointRange.location+1];
         CFStringRef pathExtension = (__bridge CFStringRef)(fileExtension);
         CFStringRef type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, NULL);
-        CFRelease(pathExtension);
         // The UTI can be converted to a mime type:
         NSString *mimeType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType);
         return mimeType;
     }
     
-    return @"text/html";
+    return nil;
 }
 
 @end

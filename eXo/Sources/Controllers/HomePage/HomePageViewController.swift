@@ -77,7 +77,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
         /*
-        Disable the Zoom on the Webview
+        Disable the Zoom on the Webview & more responsible tapping 
+        https://webkit.org/blog/5610/more-responsive-tapping-on-ios/
         */
         let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);"
         webView.evaluateJavaScript(javascript, completionHandler: nil)

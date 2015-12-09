@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "BD-2750_logox1.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "BD-2750_logox2.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "BD-2750_logox3.jpg",
+      "filename" : "BD-2750_banner2.jpg",
       "scale" : "3x"
     }
   ],

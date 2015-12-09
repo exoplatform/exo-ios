@@ -55,7 +55,7 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
     // MARK : WKWebViewDelegate
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        self.navigationItem.title  = webView.title
+        self.updateNavigationStatus()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }
     
@@ -64,9 +64,7 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        self.navigationItem.title  = webView.title
-        goBackButton.enabled = webView.canGoBack
-        goForwardButton.enabled = webView.canGoForward
+        self.updateNavigationStatus()
         if !UIApplication.sharedApplication().networkActivityIndicatorVisible {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
         }
@@ -75,7 +73,15 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
     
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+        self.updateNavigationStatus()
         decisionHandler(WKNavigationResponsePolicy.Allow)
+    }
+    
+    func updateNavigationStatus () {
+        self.navigationItem.title  = webView!.title
+        goBackButton.enabled = webView!.canGoBack
+        goForwardButton.enabled = webView!.canGoForward
+
     }
     
     

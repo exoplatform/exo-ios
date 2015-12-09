@@ -33,11 +33,6 @@ struct Config {
     static let onboardingDidShow: String = "onboardingDidShow"    
 }
 
-struct UserDefaultConfig {
-    static let listServerKey:String = "all_servers"
-    
-}
-
 struct ShareExtension {
     static let NSUserDefaultSuite:String  = "group.com.exoplatform.ios.exo"
     static let AllUserNameKey:String = "exo_share_all_usernames"

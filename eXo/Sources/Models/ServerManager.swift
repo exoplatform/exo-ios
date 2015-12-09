@@ -38,7 +38,8 @@ class ServerManager  {
     
     
     func serverListFromNSUserDefault () -> NSMutableArray {
-        let list = NSUserDefaults.standardUserDefaults().valueForKey(UserDefaultConfig.listServerKey) as? NSArray
+        let groupUserDefaults = NSUserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
+        let list = groupUserDefaults!.valueForKey(ShareExtension.AllUserNameKey) as? NSArray
         if (list == nil) {
             return NSMutableArray ()
         }
@@ -65,18 +66,21 @@ class ServerManager  {
         }
     }
     
-    func addServer (server : Server ) {
-        
-        var exist = false
+    func isExist (server : Server) -> Bool {
         if (serverList != nil ){
             for s in serverList! {
                 if (s as! Server).serverURL == server.serverURL {
                     (s as! Server).lastConnection = server.lastConnection
-                    exist = true
+                    return true
                 }
             }
         }
-        if (!exist) {
+        return false
+    }
+    
+    func addServer (server : Server ) {
+        
+        if (!self.isExist(server)) {
             serverList.addObject(server)
         }
         self.saveServerList()
@@ -96,9 +100,9 @@ class ServerManager  {
             for server in serverList {
                 list.addObject((server as! Server).toDictionary())
             }
-            NSUserDefaults.standardUserDefaults().setObject(list, forKey: UserDefaultConfig.listServerKey)
             let groupUserDefaults = NSUserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
             groupUserDefaults?.setObject(list, forKey: ShareExtension.AllUserNameKey)
+            groupUserDefaults?.synchronize()
 
             if #available(iOS 9.0, *) {
                 self.updateQuickAction()

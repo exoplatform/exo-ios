@@ -58,7 +58,7 @@
 
     NSArray * list =[mySharedDefaults valueForKey:EXO_SHARE_EXTENSION_ALL_ACCOUNTS];
     if (!list) {
-        return [NSMutableArray init];
+        return [[NSMutableArray alloc] init];
     }
     NSMutableArray * accounts = [[NSMutableArray alloc] init];
     for (NSDictionary * dict in list) {

@@ -28,25 +28,64 @@ class ServerSelectionViewController: UIViewController {
     @IBOutlet weak var mostRecentServerLabel: UILabel!
     var defaultServer:Server?
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var defaultServerButton: UIButton!
+    @IBOutlet weak var addServerButton: UIButton!
     
+    @IBOutlet weak var discovereXoTribeButton: UIButton!
+    
+    @IBOutlet weak var eXoPlatformDescriptionLabel: UILabel!
     // MARK: View Controller lifecycle
     
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        Tool.applyBorderForView(defaultServerButton)
+        Tool.applyBorderForView(addServerButton)
+        eXoPlatformDescriptionLabel.text = NSLocalizedString("OnBoarding.Title.eXoPlatformDescription", comment: "")
+        
+        // set random background photo
+        let bgNumber = Int(arc4random_uniform(4) + 1)
+        backgroundImageView.image = UIImage(named: "background\(bgNumber)")
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if (ServerManager.sharedInstance.serverList.count > 0){
             defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
+            defaultServerButton.setTitle(defaultServer?.serverURL.stringURLWithoutProtocol(), forState: .Normal)
         } else {
             defaultServer = Server(serverURL: Config.communityURL)
         }
-        // Do not show the protocol to save place
-        mostRecentServerLabel.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
-
+        
+        self.setButtonsTitle()
+        
         // the navigation controller is alway shown in this screen
-        self.navigationController?.navigationBarHidden = false
-        self.navigationController?.topViewController?.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationController?.navigationBarHidden = true
     }
     
+    func setButtonsTitle () {
+        /*
+        Set the buttons titles
+        */
+        if ServerManager.sharedInstance.serverList.count == 0 {
+            
+            defaultServerButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo",comment:""), forState: .Normal)
+            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), forState: .Normal)
+            
+        } else if ServerManager.sharedInstance.serverList.count == 1 {
+            
+            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), forState: .Normal)
+            
+        } else {
+            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.Others",comment:""), forState: .Normal)
+        }
+        
+        discovereXoTribeButton.hidden = ServerManager.sharedInstance.serverList.count == 0 || ServerManager.sharedInstance.isExist(Server(serverURL: Config.communityURL))
+        
+        discovereXoTribeButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo", comment: ""), forState: .Normal)
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -65,12 +104,17 @@ class ServerSelectionViewController: UIViewController {
             //setup Destination VC
             let homepageVC = segue.destinationViewController as! HomePageViewController
             homepageVC.serverURL = defaultServer?.serverURL
-        }
-        if (segue.identifier == "openRegisterPage") {
+        } else if (segue.identifier == "openRegisterPage") {
 
             //setup Destination VC
             let homepageVC = segue.destinationViewController as! HomePageViewController
             homepageVC.serverURL = Config.communityURL + "/portal/intranet/register"
+        } else if (segue.identifier == "discovereXoCommunity") {
+            let community = Server(serverURL: Config.communityURL)
+            ServerManager.sharedInstance.addServer(community)
+            let homepageVC = segue.destinationViewController as! HomePageViewController
+            homepageVC.serverURL = community.serverURL
+            
         }
     }
 

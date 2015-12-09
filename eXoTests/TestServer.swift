@@ -97,7 +97,7 @@ class TestServer: eXoBaseTestCase {
     func testServerNaturalNameWithLongURL() {
         let now:Double = NSDate().timeIntervalSince1970
         let url:String = "https://secure.community.exoplatform.com"
-        let shortUrl:String = "secure.co...exoplatform.com"
+        let shortUrl:String = "secure.c...exoplatform.com"
         let user:String = "john"
         let server:Server = Server(serverURL: url, username: user, lastConnection: now)
         XCTAssertEqual(server.natureName(), shortUrl, "Short URL did not match")
