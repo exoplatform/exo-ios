@@ -23,7 +23,7 @@ class ServerEditViewController: UIViewController {
     
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var deleteButtonConstraintToBottom: NSLayoutConstraint!
-    let kDeleteButtonBottomMargin:CGFloat = 20.0
+    let kDeleteButtonBottomMargin:CGFloat = 30.0
     
     @IBOutlet weak var textView: PlaceholderTextView!
     var server:Server!

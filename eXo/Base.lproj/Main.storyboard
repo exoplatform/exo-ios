@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1Gd-AS-isw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1Gd-AS-isw">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -177,13 +177,13 @@
                                 <color key="color" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn1-xm-mpQ">
-                                <rect key="frame" x="253" y="20" width="47" height="30"/>
+                                <rect key="frame" x="132" y="498" width="57" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OP0-IM-DgN"/>
+                                    <constraint firstAttribute="height" constant="40" id="QdX-yl-JyS"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -195,14 +195,14 @@
                         <animations/>
                         <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pn1-xm-mpQ" secondAttribute="trailing" constant="20" id="42z-uF-kl0"/>
                             <constraint firstAttribute="trailing" secondItem="M3j-Am-Fag" secondAttribute="trailing" id="Ash-b1-Xon"/>
                             <constraint firstItem="M3j-Am-Fag" firstAttribute="top" secondItem="c8g-4h-WPN" secondAttribute="bottom" id="MtB-75-5Se"/>
                             <constraint firstItem="ruB-mn-bhM" firstAttribute="top" secondItem="M3j-Am-Fag" secondAttribute="bottom" id="X2U-67-Tk2"/>
-                            <constraint firstItem="pn1-xm-mpQ" firstAttribute="top" secondItem="c8g-4h-WPN" secondAttribute="bottom" constant="20" id="XWZ-XS-QMd"/>
                             <constraint firstItem="Zi7-Lt-ihf" firstAttribute="centerY" secondItem="8lX-Vr-VKf" secondAttribute="centerY" id="iTW-Em-R5N"/>
                             <constraint firstItem="Zi7-Lt-ihf" firstAttribute="centerX" secondItem="8lX-Vr-VKf" secondAttribute="centerX" id="l8T-Ep-1KL"/>
                             <constraint firstItem="M3j-Am-Fag" firstAttribute="leading" secondItem="8lX-Vr-VKf" secondAttribute="leading" id="mZG-yU-lT2"/>
+                            <constraint firstItem="ruB-mn-bhM" firstAttribute="top" secondItem="pn1-xm-mpQ" secondAttribute="bottom" constant="30" id="nYc-8l-oQx"/>
+                            <constraint firstItem="pn1-xm-mpQ" firstAttribute="centerX" secondItem="8lX-Vr-VKf" secondAttribute="centerX" id="pTT-Ur-Mql"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Aex-O8-MyW">
@@ -610,14 +610,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-MA-qAy">
-                                <rect key="frame" x="115" y="508" width="90" height="40"/>
+                                <rect key="frame" x="125" y="498" width="70" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="GID-vP-5dE"/>
                                     <constraint firstAttribute="height" constant="40" id="IHf-NE-dQl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -630,7 +630,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uFr-8j-xpT" secondAttribute="trailing" id="Ff9-BG-5w8"/>
-                            <constraint firstItem="LmC-wJ-9n6" firstAttribute="top" secondItem="Aqo-MA-qAy" secondAttribute="bottom" constant="20" id="GsU-cS-5PV"/>
+                            <constraint firstItem="LmC-wJ-9n6" firstAttribute="top" secondItem="Aqo-MA-qAy" secondAttribute="bottom" constant="30" id="GsU-cS-5PV"/>
                             <constraint firstItem="uFr-8j-xpT" firstAttribute="top" secondItem="GAl-bF-P7g" secondAttribute="bottom" constant="8" id="eXf-fQ-r3X"/>
                             <constraint firstItem="uFr-8j-xpT" firstAttribute="leading" secondItem="F7B-wA-j3H" secondAttribute="leading" id="ha1-Q3-M1t"/>
                             <constraint firstItem="Aqo-MA-qAy" firstAttribute="centerX" secondItem="F7B-wA-j3H" secondAttribute="centerX" id="iiL-Na-Kq2"/>

@@ -125,19 +125,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             return
         }
         
-        if (response.URL?.absoluteString.rangeOfString(serverDomain!) == nil) {
-            decisionHandler(.Cancel)
-            
-            let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewNavigationController") as! UINavigationController
-            let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
-            previewController.serverURL = response.URL?.absoluteString
-            self.presentViewController(previewNavigationController, animated: true, completion: nil)
-        } else {
-            if response.MIMEType != "text/html" {
-                doneButton.hidden = false
-            }
-            decisionHandler(.Allow)
+        if response.MIMEType != "text/html" {
+            doneButton.hidden = false
         }
+        decisionHandler(.Allow)
+
         
     }
     
@@ -163,6 +155,18 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
         }
 
+        /*
+        Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
+        - WKNavigationType of a automatic request is always = .Others
+        */
+        if (request.URL?.absoluteString.rangeOfString(serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.Other) {
+            let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("PreviewNavigationController") as! UINavigationController
+            let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
+            previewController.serverURL = request.URL?.absoluteString
+            self.presentViewController(previewNavigationController, animated: true, completion: nil)
+            decisionHandler(.Cancel)
+            return
+        }
         decisionHandler(WKNavigationActionPolicy.Allow)
     }
     
