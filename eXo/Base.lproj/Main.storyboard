@@ -288,6 +288,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flx-09-aqa">
                                 <rect key="frame" x="37" y="372" width="247" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.79607843140000001" blue="0.031372549020000001" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="button.discover.tribe"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="b5F-tq-tPx"/>
                                 </constraints>
@@ -303,6 +304,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HkS-Wp-fne">
                                 <rect key="frame" x="36" y="448" width="249" height="60"/>
                                 <color key="backgroundColor" red="0.71372549019607845" green="0.71764705882352942" blue="0.72941176470588232" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="button.new.server"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="lbJ-o7-o4K"/>
                                 </constraints>
@@ -328,6 +330,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-qr-bFi">
                                 <rect key="frame" x="81" y="533" width="159" height="22"/>
+                                <accessibility key="accessibilityConfiguration" identifier="link.discover.tribe"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                 <state key="normal" title="Discover the eXo Tribe">
@@ -350,7 +353,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect, share and work together" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBj-Vv-8Li">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect, share and work together" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HBj-Vv-8Li">
                                 <rect key="frame" x="16" y="253" width="288" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -721,6 +724,6 @@
         <image name="right" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6jh-pv-CuH"/>
+        <segue reference="w4C-Oj-R0R"/>
     </inferredMetricsTieBreakers>
 </document>
