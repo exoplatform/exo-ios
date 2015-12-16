@@ -26,7 +26,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     // the number of slides in the presentation
-    let kNumberOfPage = 2
+    let kNumberOfPage = 4
     
     
     @IBOutlet weak var contentView: UIView!
@@ -35,6 +35,7 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.clipsToBounds = true
+        Tool.applyBorderForView(getStartedButton)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -95,7 +96,7 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
             // customize the spine's dots & background
             let pageControl = UIPageControl.appearance()
             pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-            pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
+            pageControl.currentPageIndicatorTintColor = UIColor(red: 250.0/255, green: 210.0/255, blue: 20.0/255, alpha: 1.0)
             pageControl.backgroundColor = UIColor.clearColor()
 
 

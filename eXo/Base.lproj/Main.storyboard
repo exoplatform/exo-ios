@@ -22,14 +22,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD2-5O-Hdw">
-                                        <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                        <rect key="frame" x="40" y="468" width="240" height="60"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="1" green="0.9215686917" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" red="0.98431372549019602" green="0.84313725490196079" blue="0.078431372549019607" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" priority="750" constant="50" id="bGl-od-cP7"/>
+                                            <constraint firstAttribute="height" priority="750" constant="60" id="bGl-od-cP7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Got it">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <state key="normal" title="GOT IT">
                                             <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -37,7 +37,7 @@
                                         </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGY-qg-aSg">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
                                         <animations/>
                                         <connections>
                                             <segue destination="Qzz-sx-cSx" kind="embed" identifier="wellcomePageSegue" id="51h-zP-IBW"/>
@@ -47,11 +47,11 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="iD2-5O-Hdw" secondAttribute="bottom" id="FUQ-iD-83Z"/>
-                                    <constraint firstItem="iD2-5O-Hdw" firstAttribute="leading" secondItem="vfB-1A-ZSA" secondAttribute="leading" id="HDO-ua-dNw"/>
+                                    <constraint firstAttribute="bottom" secondItem="iD2-5O-Hdw" secondAttribute="bottom" constant="40" id="FUQ-iD-83Z"/>
+                                    <constraint firstItem="iD2-5O-Hdw" firstAttribute="leading" secondItem="vfB-1A-ZSA" secondAttribute="leading" constant="40" id="HDO-ua-dNw"/>
                                     <constraint firstItem="kGY-qg-aSg" firstAttribute="top" secondItem="vfB-1A-ZSA" secondAttribute="top" id="Huf-uM-pRh"/>
                                     <constraint firstAttribute="trailing" secondItem="kGY-qg-aSg" secondAttribute="trailing" id="OoA-aF-ED9"/>
-                                    <constraint firstAttribute="trailing" secondItem="iD2-5O-Hdw" secondAttribute="trailing" id="Ypy-qF-B6G"/>
+                                    <constraint firstAttribute="trailing" secondItem="iD2-5O-Hdw" secondAttribute="trailing" constant="40" id="Ypy-qF-B6G"/>
                                     <constraint firstItem="iD2-5O-Hdw" firstAttribute="top" secondItem="kGY-qg-aSg" secondAttribute="bottom" id="gss-mH-Cj0"/>
                                     <constraint firstItem="kGY-qg-aSg" firstAttribute="leading" secondItem="vfB-1A-ZSA" secondAttribute="leading" id="vLK-OC-y2l"/>
                                 </constraints>
@@ -82,38 +82,6 @@
             </objects>
             <point key="canvasLocation" x="746" y="-447"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="oTy-2c-yWy">
-            <objects>
-                <viewController storyboardIdentifier="welcomePage0" id="Sgc-21-6Ic" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FXT-e2-7eO"/>
-                        <viewControllerLayoutGuide type="bottom" id="IyS-vn-bCW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4gM-8B-juK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eXo is the best" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFw-1S-gHJ">
-                                <rect key="frame" x="46" y="263" width="229" height="42"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="SFw-1S-gHJ" firstAttribute="centerX" secondItem="4gM-8B-juK" secondAttribute="centerX" id="8SA-8p-cIJ"/>
-                            <constraint firstItem="SFw-1S-gHJ" firstAttribute="centerY" secondItem="4gM-8B-juK" secondAttribute="centerY" id="fYG-k9-GTc"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L5c-aC-TeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2120" y="-447"/>
-        </scene>
         <!--Page View Controller-->
         <scene sceneID="1mW-bA-nF5">
             <objects>
@@ -134,25 +102,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I love eXo Platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K8-mA-aRQ">
-                                <rect key="frame" x="25" y="264" width="271" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Op3-xn-Wvg">
+                                <rect key="frame" x="68" y="266" width="185" height="36"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="H71-Sl-Z9l">
+                                <rect key="frame" x="108" y="142" width="104" height="104"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="sBU-Pp-gDn"/>
+                                    <constraint firstAttribute="width" constant="104" id="vdY-mp-pwm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration feautures, such as spaces and calendars are conbined together to facilitate la communication and collaboration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daN-j0-dYL">
+                                <rect key="frame" x="20" y="322" width="280" height="114"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9K8-mA-aRQ" firstAttribute="centerX" secondItem="HmZ-6B-zkK" secondAttribute="centerX" id="6YR-lR-wOb"/>
-                            <constraint firstItem="9K8-mA-aRQ" firstAttribute="centerY" secondItem="HmZ-6B-zkK" secondAttribute="centerY" id="lLF-D5-DZZ"/>
+                            <constraint firstItem="Op3-xn-Wvg" firstAttribute="centerX" secondItem="HmZ-6B-zkK" secondAttribute="centerX" id="AoS-Ez-Rcj"/>
+                            <constraint firstItem="daN-j0-dYL" firstAttribute="centerX" secondItem="HmZ-6B-zkK" secondAttribute="centerX" id="K8A-BJ-zgb"/>
+                            <constraint firstItem="Op3-xn-Wvg" firstAttribute="centerY" secondItem="HmZ-6B-zkK" secondAttribute="centerY" id="TKO-kT-eiS"/>
+                            <constraint firstAttribute="trailing" secondItem="daN-j0-dYL" secondAttribute="trailing" constant="20" id="bwR-42-Ij2"/>
+                            <constraint firstItem="daN-j0-dYL" firstAttribute="leading" secondItem="HmZ-6B-zkK" secondAttribute="leading" constant="20" id="gbc-Oy-Ltk"/>
+                            <constraint firstItem="Op3-xn-Wvg" firstAttribute="top" secondItem="H71-Sl-Z9l" secondAttribute="bottom" constant="20" id="iJX-oP-YBE"/>
+                            <constraint firstItem="daN-j0-dYL" firstAttribute="top" secondItem="Op3-xn-Wvg" secondAttribute="bottom" constant="20" id="lu7-S0-dFy"/>
+                            <constraint firstItem="H71-Sl-Z9l" firstAttribute="centerX" secondItem="HmZ-6B-zkK" secondAttribute="centerX" id="pSM-3K-JJZ"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKX-eK-4nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="-447"/>
+            <point key="canvasLocation" x="1815" y="-447"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="reM-2q-PPQ">
@@ -685,6 +674,165 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zH8-2w-JqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="312" y="941"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Pap-jF-rP8">
+            <objects>
+                <viewController storyboardIdentifier="welcomePage2" id="azR-hn-USM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lkf-xi-1k9"/>
+                        <viewControllerLayoutGuide type="bottom" id="I30-L9-mhw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JmC-5g-4cf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBC-Rf-aZA">
+                                <rect key="frame" x="68" y="266" width="185" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bO7-Yh-S7C">
+                                <rect key="frame" x="108" y="142" width="104" height="104"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="BxU-pB-wkD"/>
+                                    <constraint firstAttribute="height" constant="104" id="wbK-tr-5V7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration feautures, such as spaces and calendars are conbined together to facilitate la communication and collaboration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AI7-zp-tc0">
+                                <rect key="frame" x="20" y="322" width="280" height="114"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zBC-Rf-aZA" firstAttribute="top" secondItem="bO7-Yh-S7C" secondAttribute="bottom" constant="20" id="5Q0-Tr-B7G"/>
+                            <constraint firstItem="bO7-Yh-S7C" firstAttribute="centerX" secondItem="JmC-5g-4cf" secondAttribute="centerX" id="9hH-hs-Otb"/>
+                            <constraint firstItem="zBC-Rf-aZA" firstAttribute="centerY" secondItem="JmC-5g-4cf" secondAttribute="centerY" id="Iqi-d1-zsY"/>
+                            <constraint firstItem="AI7-zp-tc0" firstAttribute="leading" secondItem="JmC-5g-4cf" secondAttribute="leading" constant="20" id="hQb-lv-jzW"/>
+                            <constraint firstItem="zBC-Rf-aZA" firstAttribute="centerX" secondItem="JmC-5g-4cf" secondAttribute="centerX" id="j2Z-Jm-bC3"/>
+                            <constraint firstAttribute="trailing" secondItem="AI7-zp-tc0" secondAttribute="trailing" constant="20" id="jrL-SS-oVu"/>
+                            <constraint firstItem="AI7-zp-tc0" firstAttribute="top" secondItem="zBC-Rf-aZA" secondAttribute="bottom" constant="20" id="l3E-K9-PWs"/>
+                            <constraint firstItem="AI7-zp-tc0" firstAttribute="centerX" secondItem="JmC-5g-4cf" secondAttribute="centerX" id="xSd-hP-NMi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1g-UV-LBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169" y="-453"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LUT-X0-tuI">
+            <objects>
+                <viewController storyboardIdentifier="welcomePage3" id="iNx-Nc-BTi" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BOk-0k-oyD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Peg-pl-R1E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fZQ-Ua-UgH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qn1-sJ-nh0">
+                                <rect key="frame" x="68" y="266" width="185" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="r3x-FY-8DH">
+                                <rect key="frame" x="108" y="142" width="104" height="104"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="Q4j-uy-hXc"/>
+                                    <constraint firstAttribute="width" constant="104" id="rB1-tL-jal"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration feautures, such as spaces and calendars are conbined together to facilitate la communication and collaboration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-Dp-Zih">
+                                <rect key="frame" x="20" y="322" width="280" height="114"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qn1-sJ-nh0" firstAttribute="centerY" secondItem="fZQ-Ua-UgH" secondAttribute="centerY" id="EZq-tR-J05"/>
+                            <constraint firstItem="hDa-Dp-Zih" firstAttribute="leading" secondItem="fZQ-Ua-UgH" secondAttribute="leading" constant="20" id="IB9-hq-CGG"/>
+                            <constraint firstItem="qn1-sJ-nh0" firstAttribute="top" secondItem="r3x-FY-8DH" secondAttribute="bottom" constant="20" id="IVO-tM-5PX"/>
+                            <constraint firstAttribute="trailing" secondItem="hDa-Dp-Zih" secondAttribute="trailing" constant="20" id="PaH-y4-ZRE"/>
+                            <constraint firstItem="r3x-FY-8DH" firstAttribute="centerX" secondItem="fZQ-Ua-UgH" secondAttribute="centerX" id="Tar-zx-T3C"/>
+                            <constraint firstItem="hDa-Dp-Zih" firstAttribute="top" secondItem="qn1-sJ-nh0" secondAttribute="bottom" constant="20" id="U1I-SQ-wwG"/>
+                            <constraint firstItem="qn1-sJ-nh0" firstAttribute="centerX" secondItem="fZQ-Ua-UgH" secondAttribute="centerX" id="nR5-pi-bfi"/>
+                            <constraint firstItem="hDa-Dp-Zih" firstAttribute="centerX" secondItem="fZQ-Ua-UgH" secondAttribute="centerX" id="qpi-G4-aWA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQa-dJ-IqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2549" y="-453"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9Jh-xa-qld">
+            <objects>
+                <viewController storyboardIdentifier="welcomePage4" id="MQY-EO-mGa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="olr-lb-e3X"/>
+                        <viewControllerLayoutGuide type="bottom" id="HWI-BU-7JZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MQf-6T-jGd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-gj-atf">
+                                <rect key="frame" x="68" y="266" width="185" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ktA-i1-QBl">
+                                <rect key="frame" x="108" y="142" width="104" height="104"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="a3t-HV-5TP"/>
+                                    <constraint firstAttribute="width" constant="104" id="let-Ka-xlM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration feautures, such as spaces and calendars are conbined together to facilitate la communication and collaboration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2m-JF-BBA">
+                                <rect key="frame" x="20" y="322" width="280" height="114"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vFl-gj-atf" firstAttribute="centerY" secondItem="MQf-6T-jGd" secondAttribute="centerY" id="0Ri-Ss-60B"/>
+                            <constraint firstItem="g2m-JF-BBA" firstAttribute="centerX" secondItem="MQf-6T-jGd" secondAttribute="centerX" id="8ob-QI-HPp"/>
+                            <constraint firstItem="vFl-gj-atf" firstAttribute="top" secondItem="ktA-i1-QBl" secondAttribute="bottom" constant="20" id="VWf-SL-ziD"/>
+                            <constraint firstAttribute="trailing" secondItem="g2m-JF-BBA" secondAttribute="trailing" constant="20" id="ZZx-hb-Xhe"/>
+                            <constraint firstItem="g2m-JF-BBA" firstAttribute="leading" secondItem="MQf-6T-jGd" secondAttribute="leading" constant="20" id="aPR-b5-PHb"/>
+                            <constraint firstItem="ktA-i1-QBl" firstAttribute="centerX" secondItem="MQf-6T-jGd" secondAttribute="centerX" id="gGs-o9-GTM"/>
+                            <constraint firstItem="vFl-gj-atf" firstAttribute="centerX" secondItem="MQf-6T-jGd" secondAttribute="centerX" id="kAK-Gj-Gho"/>
+                            <constraint firstItem="g2m-JF-BBA" firstAttribute="top" secondItem="vFl-gj-atf" secondAttribute="bottom" constant="20" id="pN8-0e-3Md"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFE-gp-AOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2913" y="-453"/>
         </scene>
     </scenes>
     <resources>
