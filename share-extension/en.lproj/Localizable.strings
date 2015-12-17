@@ -48,9 +48,11 @@
 
 "Word.Account" = "Account";
 
-"Login.Status.Loging" = "Logging in";
+"Login.Status.Loging" = "Signing in";
 
 "Login.Status.WrongPassword" = "Wrong password";
+
+"Login.Status.AskToSignIn" = "Please sign in to post";
 
 "Login.Status.Offline" ="Offline";
 

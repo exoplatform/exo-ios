@@ -75,14 +75,14 @@ enum {
     eXoStatusLoggInAuthentificationFail = 3,
     eXoStatusLoggedIn = 4,
     eXoStatusLoadingSpaceId = 5,
-    eXoStatusCheckingUploadFoder = 6,
-    eXoStatusCreatingUploadFoder = 7
+    eXoStatusCheckingUploadFolder = 6,
+    eXoStatusCreatingUploadFolder = 7
 };
 
 #pragma mark - Share VC life cycle
 
 - (BOOL)isContentValid {
-    return self.contentText != nil;
+    return loggingStatus >= eXoStatusLoggedIn && loggingStatus != eXoStatusLoadingSpaceId; // all status >= eXoStatusLoggedIn means user have logged in.
 }
 
 -(void) viewDidLoad {
@@ -168,7 +168,7 @@ enum {
                         postItem.url = url;
                     } else if ([url isKindOfClass:[NSData class]]){
                         postItem.fileData = (NSData*)url;
-                        postItem.fileExtension = @"MOV";
+                        postItem.fileExtension = @"mov";
                     }
                 }
             }];
@@ -219,34 +219,25 @@ enum {
     [accountItem setTitle:NSLocalizedString(@"Word.Account",nil)];
     // Give it an initial value.
     if ([AccountManager sharedManager].selectedAccount){
-        switch (loggingStatus) {
-            case eXoStatusLoggedIn:{
-                    [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
-                }
-                break;
-            case eXoStatusLoggingIn:
-                [accountItem setValue:NSLocalizedString(@"Login.Status.Loging",nil)];
-                break;
-            case eXoStatusLoggInAuthentificationFail:
-                [accountItem setValue:NSLocalizedString(@"Login.Status.WrongPassword",nil)];
-                break;
-            default:{
-                [accountItem setValue:NSLocalizedString(@"Login.Status.Offline",nil)];
-            }
-                break;
+        if (loggingStatus == eXoStatusLoggingIn) {
+            [accountItem setValue:NSLocalizedString(@"Login.Status.Loging",nil)];
+        } else if (loggingStatus >= eXoStatusLoggedIn) {
+            [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
+        } else {
+             [accountItem setValue:NSLocalizedString(@"Login.Status.AskToSignIn",nil)];
         }
-        [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
     } else {
         [accountItem setValue:NSLocalizedString(@"LogIn.Warning.NoAccount",nil)];
     }
     
     // Handle what happens when a user taps your option.
+    __weak ShareViewController * weak_self = self;
     [accountItem setTapHandler:^(void){
         // Create an instance of your configuration view controller.
         // Transfer to your configuration view controller.
-        AccountViewController * accountVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountViewController"];
-        accountVC.delegate = self;
-        [self.navigationController pushViewController:accountVC animated:YES];
+        AccountViewController * accountVC = [weak_self.storyboard instantiateViewControllerWithIdentifier:@"AccountViewController"];
+        accountVC.delegate = weak_self;
+        [weak_self.navigationController pushViewController:accountVC animated:YES];
     }];
     
     // space item
@@ -277,9 +268,9 @@ enum {
         // User can select a space only after authentification.
         if (loggingStatus == eXoStatusLoggedIn){
             SpaceViewController  * spaceSelectionVC = [[SpaceViewController alloc] initWithStyle:UITableViewStylePlain];
-            spaceSelectionVC.delegate = self;
+            spaceSelectionVC.delegate = weak_self;
             spaceSelectionVC.account  = [AccountManager sharedManager].selectedAccount;
-            [self.navigationController pushViewController:spaceSelectionVC animated:YES];
+            [weak_self.navigationController pushViewController:spaceSelectionVC animated:YES];
         }
     }];
     if (loggingStatus >= eXoStatusLoggedIn) {
@@ -304,6 +295,7 @@ NSMutableData * data;
         session  = [NSURLSession sessionWithConfiguration:sessionConfig];
         
         loggingStatus = eXoStatusLoggingIn;
+
         NSString * stringURL = [NSString stringWithFormat:@"%@/rest/private/platform/info#",[AccountManager sharedManager].selectedAccount.serverURL];
         NSURL * url = [NSURL URLWithString:stringURL];
         
@@ -317,6 +309,9 @@ NSMutableData * data;
         data = [[NSMutableData alloc] init];
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [connection start];
+        //update views
+        [self validateContent];
+        [self reloadConfigurationItems];
     }
 }
 
@@ -352,13 +347,21 @@ NSMutableData * data;
     }
     
     [[AccountManager sharedManager] saveAccounts];
-    loggingStatus =eXoStatusLoggedIn;
-    [self createMobileFolderIfNeed];
+    loggingStatus = eXoStatusLoggedIn;
+
+    //update views
+    [self validateContent];
     [self reloadConfigurationItems];
+
+    // prepare for the post
+    [self createMobileFolderIfNeed];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     loggingStatus = eXoStatusLoggedFailed;
+    [AccountManager sharedManager].selectedAccount.password = @"";
+    [[AccountManager sharedManager] saveAccounts];
     [self reloadConfigurationItems];
 }
 
@@ -509,7 +512,7 @@ NSMutableData * data;
     if (loggingStatus == eXoStatusLoadingSpaceId) {
         return NSLocalizedString(@"LogIn.Status.NoSpaceId",nil);
     }
-    if (loggingStatus == eXoStatusCreatingUploadFoder || loggingStatus == eXoStatusCheckingUploadFoder) {
+    if (loggingStatus == eXoStatusCreatingUploadFolder || loggingStatus == eXoStatusCheckingUploadFolder) {
         return NSLocalizedString(@"Login.Status.ServerProblem",nil);
     }
     return NSLocalizedString(@"LogIn.Error.UnableToPost",nil);
