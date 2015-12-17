@@ -39,6 +39,8 @@
 
 "OnBoarding.Title.MostRecentServer" = "Se connecter à";
 
+"OnBoarding.Title.SavingServer" = "Enregistrement du serveur ...";
+
 "Word.OK" = "OK";
 
 "Word.Cancel" = "Annuler";

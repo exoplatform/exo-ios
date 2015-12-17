@@ -36,7 +36,7 @@ class Tool {
         
         let url = NSURL.init(string: platformInfoURL)
         if (url != nil) {
-            SVProgressHUD.showWithMaskType(.Black)
+            SVProgressHUD.showWithStatus(NSLocalizedString("OnBoarding.Title.SavingServer", comment:""), maskType: .Black)
             let operationQueue = NSOperationQueue.init()
             operationQueue.name = "URLVerification"
             let request = NSURLRequest.init(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: Config.timeout)
@@ -44,7 +44,7 @@ class Tool {
             NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue, completionHandler: { (response, data, error) -> Void in
                 // dismiss the HUD
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    SVProgressHUD.dismiss()
+                    SVProgressHUD.popActivity()
                 })
                 
                 if (error == nil) {

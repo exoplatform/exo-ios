@@ -32,6 +32,8 @@
 
 "OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
 
+"OnBoarding.Title.SavingServer" = "Saving Server ...";
+
 "OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
 "OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
