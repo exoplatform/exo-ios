@@ -52,6 +52,8 @@
 
 "Login.Status.WrongPassword" = "Mot de passe incorrect";
 
+"Login.Status.AskToSignIn" = "Veuillez se connecter";
+
 "Login.Status.Offline" ="Déconnecté";
 
 "Login.Status.LoginFail" = "Connection echouée";

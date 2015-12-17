@@ -82,7 +82,7 @@ enum {
 #pragma mark - Share VC life cycle
 
 - (BOOL)isContentValid {
-    return self.contentText != nil;
+    return self.contentText != nil && loggingStatus >= eXoStatusLoggedIn && loggingStatus != eXoStatusLoadingSpaceId; // all status >= eXoStatusLoggedIn means user have logged in.
 }
 
 -(void) viewDidLoad {
@@ -219,23 +219,13 @@ enum {
     [accountItem setTitle:NSLocalizedString(@"Word.Account",nil)];
     // Give it an initial value.
     if ([AccountManager sharedManager].selectedAccount){
-        switch (loggingStatus) {
-            case eXoStatusLoggedIn:{
-                    [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
-                }
-                break;
-            case eXoStatusLoggingIn:
-                [accountItem setValue:NSLocalizedString(@"Login.Status.Loging",nil)];
-                break;
-            case eXoStatusLoggInAuthentificationFail:
-                [accountItem setValue:NSLocalizedString(@"Login.Status.WrongPassword",nil)];
-                break;
-            default:{
-                [accountItem setValue:NSLocalizedString(@"Login.Status.Offline",nil)];
-            }
-                break;
+        if (loggingStatus == eXoStatusLoggingIn) {
+            [accountItem setValue:NSLocalizedString(@"Login.Status.Loging",nil)];
+        } else if (loggingStatus >= eXoStatusLoggedIn) {
+            [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
+        } else {
+             [accountItem setValue:NSLocalizedString(@"Login.Status.AskToSignIn",nil)];
         }
-        [accountItem setValue:[AccountManager sharedManager].selectedAccount.shortenedServerURLWithoutProtocol];
     } else {
         [accountItem setValue:NSLocalizedString(@"LogIn.Warning.NoAccount",nil)];
     }
@@ -304,6 +294,7 @@ NSMutableData * data;
         session  = [NSURLSession sessionWithConfiguration:sessionConfig];
         
         loggingStatus = eXoStatusLoggingIn;
+
         NSString * stringURL = [NSString stringWithFormat:@"%@/rest/private/platform/info#",[AccountManager sharedManager].selectedAccount.serverURL];
         NSURL * url = [NSURL URLWithString:stringURL];
         
@@ -317,6 +308,9 @@ NSMutableData * data;
         data = [[NSMutableData alloc] init];
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [connection start];
+        //update views
+        [self validateContent];
+        [self reloadConfigurationItems];
     }
 }
 
@@ -352,13 +346,21 @@ NSMutableData * data;
     }
     
     [[AccountManager sharedManager] saveAccounts];
-    loggingStatus =eXoStatusLoggedIn;
-    [self createMobileFolderIfNeed];
+    loggingStatus = eXoStatusLoggedIn;
+
+    //update views
+    [self validateContent];
     [self reloadConfigurationItems];
+
+    // prepare for the post
+    [self createMobileFolderIfNeed];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     loggingStatus = eXoStatusLoggedFailed;
+    [AccountManager sharedManager].selectedAccount.password = @"";
+    [[AccountManager sharedManager] saveAccounts];
     [self reloadConfigurationItems];
 }
 
