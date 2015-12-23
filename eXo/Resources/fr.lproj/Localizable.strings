@@ -49,7 +49,7 @@
 
 "OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter au server";
 
-"OnBoarding.Title.RecentsServer" = "Récents";
+"OnBoarding.Title.RecentsServer" = "Serveurs récents";
 
 "OnBoarding.Error.ConnectionError" = "Erreur de connection";
 

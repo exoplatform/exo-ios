@@ -27,7 +27,7 @@
 "Myl-4g-llc.text" = "Decouvrir eXo Tribe";
 
 /* Class = "UILabel"; text = "Intranet URL"; ObjectID = "Nbx-g7-yZ0"; */
-"Nbx-g7-yZ0.text" = "Intranet URL";
+"Nbx-g7-yZ0.text" = "Nouveau Serveur";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "QLL-K8-afL"; */
 "QLL-K8-afL.title" = "Retour";
@@ -42,7 +42,7 @@
 "VHJ-3K-666.title" = "Éditeur";
 
 /* Class = "UILabel"; text = "Enter new intranet URL"; ObjectID = "dfO-1K-jpi"; */
-"dfO-1K-jpi.text" = "Entrer une nouvelle adresse";
+"dfO-1K-jpi.text" = "Entrer l'URL de votre intranet";
 
 /* Class = "UIButton"; normalTitle = "Demarrer"; ObjectID = "iD2-5O-Hdw"; */
 "iD2-5O-Hdw.normalTitle" = "Fermer";
@@ -58,3 +58,5 @@
 
 /* Class = "UILabel"; text = "News to eXo ?"; ObjectID = "wLN-iK-TKf"; */
 "wLN-iK-TKf.text" = "Debutant à eXo ?";
+
+"XzK-eh-cIw.text" = "Recent Serveurs";

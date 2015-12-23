@@ -47,7 +47,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         */
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.navigationBarHidden = true
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackOpaque
+        self.navigationController?.navigationBar.barTintColor = nil
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
@@ -55,7 +56,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
-        self.navigationController?.navigationBar.tintColor = nil
+        self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default        
     }
     

@@ -18,14 +18,11 @@
 import UIKit
 
 class SettingViewController: UITableViewController {
-
-    let kCellHeight:CGFloat = 80.0
-    let kHeaderHeight:CGFloat = 30.0
-
+    let kTableHeaderViewIdentifient:String = "table-header"
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        // Do any additional setup after loading the view.
+        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifient)
+        self.tableView.backgroundColor = UIColor(white: 238.0/255.0, alpha: 1.0)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,11 +74,11 @@ class SettingViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return kHeaderHeight
+        return Config.kTableHeaderHeight
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return kCellHeight
+        return Config.kTableCellHeight
     }
     
     
@@ -100,12 +97,14 @@ class SettingViewController: UITableViewController {
 
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView:TableHeaderView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(kTableHeaderViewIdentifient) as! TableHeaderView
         if (section == 0) {
-            return NSLocalizedString("Setting.Title.Server",comment:"")
+            headerView.title.text =  NSLocalizedString("Setting.Title.Server",comment:"")
         } else {
-            return NSLocalizedString("Setting.Title.About",comment:"")
+            headerView.title.text =  NSLocalizedString("Setting.Title.About",comment:"")
         }
+        return headerView
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

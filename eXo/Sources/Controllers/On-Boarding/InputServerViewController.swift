@@ -24,21 +24,25 @@ import SVProgressHUD
 import SwiftyJSON
 
 class InputServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
-    // MARK: Constants
-    
-    let kCellHeight:CGFloat = 50.0
-    let kHeaderHeight:CGFloat = 30.0
 
+    let kTableHeaderViewIdentifient:String = "table-header"
     // MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: PlaceholderTextView!
+    
+    @IBOutlet weak var recentServerHeader: UIView!
+    
     var selectedServer : Server?
+    
     
     // MARK: View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor.clearColor()
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
+        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifient)
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -91,25 +95,26 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return kHeaderHeight
+        return Config.kTableHeaderHeight
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return kCellHeight
+        return Config.kTableCellHeight
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
-        cell.textLabel?.text =  (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL
+        cell.textLabel?.text =  (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("OnBoarding.Title.RecentsServer",comment:"")
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return recentServerHeader
     }
     
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.reloadData()
     }
