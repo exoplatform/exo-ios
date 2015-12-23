@@ -490,7 +490,7 @@
                                     <rect key="frame" x="0.0" y="44" width="320" height="210"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jat-Ex-lt0" customClass="PlaceholderTextView" customModule="eXo" customModuleProvider="target">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jat-Ex-lt0" customClass="PlaceholderTextView" customModule="eXo" customModuleProvider="target">
                                             <rect key="frame" x="15" y="53" width="290" height="142"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
@@ -499,20 +499,20 @@
                                             </connections>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q86-T1-c7U">
-                                            <rect key="frame" x="0.0" y="8" width="320" height="30"/>
+                                            <rect key="frame" x="0.0" y="8" width="320" height="50"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intranet URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbx-g7-yZ0">
-                                                    <rect key="frame" x="15" y="5" width="94" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Server" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbx-g7-yZ0">
+                                                    <rect key="frame" x="96" y="10" width="128" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="5Gw-pK-Txq"/>
+                                                <constraint firstAttribute="height" constant="50" id="5Gw-pK-Txq"/>
                                                 <constraint firstItem="Nbx-g7-yZ0" firstAttribute="centerY" secondItem="q86-T1-c7U" secondAttribute="centerY" id="DpS-Kx-lbB"/>
-                                                <constraint firstItem="Nbx-g7-yZ0" firstAttribute="leading" secondItem="q86-T1-c7U" secondAttribute="leading" constant="15" id="pR6-fN-ach"/>
+                                                <constraint firstItem="Nbx-g7-yZ0" firstAttribute="centerX" secondItem="q86-T1-c7U" secondAttribute="centerX" id="bUc-SE-FBe"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -566,11 +566,29 @@
                     <navigationItem key="navigationItem" id="BZG-X2-H0R"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="recentServerHeader" destination="zs1-Df-9ue" id="az6-9Y-7iF"/>
                         <outlet property="tableView" destination="ypa-Ry-GkA" id="BNp-3P-WgG"/>
                         <outlet property="textView" destination="Jat-Ex-lt0" id="Txk-F5-DAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P2d-Fz-Hm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="zs1-Df-9ue">
+                    <rect key="frame" x="0.0" y="0.0" width="318" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Servers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzK-eh-cIw">
+                            <rect key="frame" x="75" y="49" width="169" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="XzK-eh-cIw" firstAttribute="centerX" secondItem="zs1-Df-9ue" secondAttribute="centerX" id="oKK-OD-tyV"/>
+                        <constraint firstItem="XzK-eh-cIw" firstAttribute="centerY" secondItem="zs1-Df-9ue" secondAttribute="centerY" id="xPp-Hq-4ao"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="289" y="-351"/>
         </scene>
@@ -681,6 +699,6 @@
         <image name="right" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7wY-TZ-UnR"/>
+        <segue reference="6jh-pv-CuH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,13 +27,17 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: Constants
     
     let kCellHeight:CGFloat = 50.0
-    let kHeaderHeight:CGFloat = 30.0
+    let kHeaderHeight:CGFloat = 50.0
 
     // MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: PlaceholderTextView!
+    
+    @IBOutlet weak var recentServerHeader: UIView!
+    
     var selectedServer : Server?
+    
     
     // MARK: View Controller lifecycle
     override func viewDidLoad() {
@@ -102,14 +106,15 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
-        cell.textLabel?.text =  (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL
+        cell.textLabel?.text =  (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("OnBoarding.Title.RecentsServer",comment:"")
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return recentServerHeader
     }
     
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.reloadData()
     }

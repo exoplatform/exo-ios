@@ -19,6 +19,7 @@
 // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
 import Foundation
+import UIKit
 
 struct ShortcutType {
     static let connectRecentServer:String =  "ios.exo.connect-recent-server"
@@ -30,7 +31,8 @@ struct Config {
     static let minimumPlatformVersionSupported:Float = 4.3
     static let maximumShortcutAllow:Int = 4
     static let timeout:NSTimeInterval = 60.0 // in seconds
-    static let onboardingDidShow: String = "onboardingDidShow"    
+    static let onboardingDidShow: String = "onboardingDidShow"
+    static let eXoColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)
 }
 
 struct ShareExtension {
