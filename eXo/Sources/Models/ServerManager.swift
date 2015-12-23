@@ -45,7 +45,7 @@ class ServerManager  {
         }
         let servers = NSMutableArray ()
         for dict in list! {
-            let s:Server = Server (serverURL: dict.valueForKey(ServerKey.serverURL) as! String , username: dict.valueForKey(ServerKey.username) as! String, lastConnection: dict.valueForKey(ServerKey.lastConnection) as! Double)
+            let s:Server = Server (serverDictionary: dict as! NSDictionary)
             servers.addObject(s)
         }
         return servers
@@ -67,21 +67,29 @@ class ServerManager  {
     }
     
     func isExist (server : Server) -> Bool {
+        let foundServer:Server? = self.findServerByURL(server.serverURL)
+        return foundServer != nil
+    }
+    
+    func findServerByURL (serverURL : String) -> Server? {
         if (serverList != nil ){
             for s in serverList! {
-                if (s as! Server).serverURL == server.serverURL {
-                    (s as! Server).lastConnection = server.lastConnection
-                    return true
+                if (s as! Server).serverURL == serverURL {
+                    return s as? Server
                 }
             }
         }
-        return false
+        return nil
     }
     
     func addServer (server : Server ) {
         
-        if (!self.isExist(server)) {
+        let foundServer:Server? = self.findServerByURL(server.serverURL)
+        if (foundServer == nil) {
             serverList.addObject(server)
+        } else {
+            //update attributed
+            foundServer?.setDictionary(server.toDictionary())
         }
         self.saveServerList()
         

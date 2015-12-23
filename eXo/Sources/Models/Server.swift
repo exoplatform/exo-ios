@@ -27,6 +27,11 @@ struct ServerKey {
     static let serverURL = "serverURL"
     static let username = "username"
     static let lastConnection = "lastConnection"
+    static let platformVersion = "platformVersion"
+    static let platformEdition = "platformEdition"
+    static let platformBuildNumber = "platformBuildNumber"
+    static let platformRevision = "platformRevision"
+
 }
 
 struct ShortcutTitleConfig {
@@ -41,7 +46,10 @@ class Server {
     var serverURL:String = ""
     var username:String = ""
     var lastConnection:Double = 0
-    
+    var platformVersion: String = ""
+    var platformEdition: String = ""
+    var platformBuildNumber: String = ""
+    var platformRevision: String = ""
     init () {
         
     }
@@ -58,13 +66,23 @@ class Server {
     }
     
     init (serverDictionary : NSDictionary) {
+        self.setDictionary(serverDictionary)
+    }
+        
+    func setDictionary (serverDictionary : NSDictionary)  -> Void {
         self.serverURL = serverDictionary.valueForKey(ServerKey.serverURL) as! String
         self.username = serverDictionary.valueForKey(ServerKey.username) as! String
-        self.lastConnection = serverDictionary.valueForKey(ServerKey.lastConnection) as! Double        
+        self.lastConnection = serverDictionary.valueForKey(ServerKey.lastConnection) as! Double
+        
+        self.platformVersion = serverDictionary.valueForKey(ServerKey.platformVersion) as! String
+        self.platformEdition = serverDictionary.valueForKey(ServerKey.platformEdition) as! String
+        self.platformBuildNumber = serverDictionary.valueForKey(ServerKey.platformBuildNumber) as! String
+        self.platformRevision = serverDictionary.valueForKey(ServerKey.platformRevision) as! String
+   
     }
     
     func toDictionary () -> NSDictionary {
-        return [ ServerKey.serverURL:serverURL, ServerKey.username: username, ServerKey.lastConnection:lastConnection]
+        return [ ServerKey.serverURL:serverURL, ServerKey.username: username, ServerKey.lastConnection:lastConnection, ServerKey.platformVersion:platformVersion, ServerKey.platformEdition: platformEdition, ServerKey.platformBuildNumber:platformBuildNumber , ServerKey.platformRevision:platformRevision ]
     }
     
     func natureName () -> String {

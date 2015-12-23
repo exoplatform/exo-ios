@@ -74,4 +74,18 @@
 
 "Setting.Message.DeleteServer" = "Do you really want to delete this server?";
 
+"Setting.Title.ServerInfo" = "Server Information";
+
+"Setting.Title.PlatformVersion" = "Version";
+
+"Setting.Title.Edition" = "Edition";
+
+"Setting.Title.BuildNumber" = "Build Number";
+
+"Setting.Title.Secured" = "Secured";
+
+"Setting.Title.Revision" = "Revision";
+
+
+
 

@@ -68,3 +68,13 @@
 "Setting.Title.DeleteServer" = "Supprimer";
 
 "Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer ce serveur?";
+
+"Setting.Title.PlatformVersion" = "Version";
+
+"Setting.Title.Edition" = "Edition";
+
+"Setting.Title.BuildNumber" = "Build Number";
+
+"Setting.Title.Secured" = "Securité";
+
+"Setting.Title.Revision" = "Revision";

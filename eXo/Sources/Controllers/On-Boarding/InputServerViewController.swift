@@ -66,10 +66,11 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
             //dismiss the keyboard
             textView.resignFirstResponder()
             //verification of URL, http is the default protocol
-            Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
-                self.selectedServer = Server (serverURL: serverURL)
+            Tool.verificationServerURL(textView.text, handleSuccess: { (server) -> Void in
+                self.selectedServer = server
+                ServerManager.sharedInstance.addServer(server)
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    self.performSegueWithIdentifier("selectServerSegue", sender: serverURL)
+                    self.performSegueWithIdentifier("selectServerSegue", sender: self.selectedServer)
                 })
             })
         }

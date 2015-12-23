@@ -21,6 +21,7 @@ import UIKit
 class ServerEditViewController: UIViewController {
 
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var deleteButtonConstraintToBottom: NSLayoutConstraint!
     let kDeleteButtonBottomMargin:CGFloat = 30.0
@@ -70,11 +71,11 @@ class ServerEditViewController: UIViewController {
 
     func save () {
         //verification of URL, http is the default protocol
-        Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
-            self.server.serverURL = serverURL
-            ServerManager.sharedInstance.saveServerList()
+        Tool.verificationServerURL(textView.text, handleSuccess: { (server) -> Void in
+            self.server = server
+            ServerManager.sharedInstance.addServer(server)
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.navigationController?.popViewControllerAnimated(true)
+                self.tableView.reloadData()
             })
         })
     }
@@ -124,4 +125,60 @@ class ServerEditViewController: UIViewController {
     }        
 
 
+    
+    /*
+    // MARK: - Table View Datasource & Delegate
+    */
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5;
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return NSLocalizedString("Setting.Title.ServerInfo",comment:"")
+    }
+
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("ServerInfo", forIndexPath: indexPath)
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.PlatformVersion", comment: "")
+            cell.detailTextLabel?.text = server.platformVersion
+            break
+        case 1:
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.Edition", comment: "")
+            cell.detailTextLabel?.text = server.platformEdition
+            break
+        case 2:
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.Secured", comment: "")
+            cell.detailTextLabel?.text = server.serverURL.rangeOfString("https://") != nil ? "YES" : "NO"
+            break
+        case 3:
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.BuildNumber", comment: "")
+            cell.detailTextLabel?.text = server.platformBuildNumber
+            break
+        case 4:
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.Revision", comment: "")
+            cell.detailTextLabel?.text = server.platformRevision
+            break
+
+        default:
+            break
+        }
+        return cell
+    }
+    
 }

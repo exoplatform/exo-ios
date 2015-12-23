@@ -28,7 +28,7 @@ class Tool {
     - Display a alert in case of an error occur
     - Return the valid ServerURL via a bloc (handleSuccess)
     */
-    static func verificationServerURL(string:String, handleSuccess: (serverURL:String) ->Void) {
+    static func verificationServerURL(string:String, handleSuccess: (server: Server) ->Void) {
         
         let serverURL = domainOfStringURL(string)
         
@@ -52,10 +52,16 @@ class Tool {
                     if (statusCode >= 200  && statusCode < 300) {
                         // Check platform version
                         let json = JSON(data: data!)
+                        
                         if let platformVersion = json["platformVersion"].string {
                             let version = (platformVersion as NSString).floatValue
                             if (version >= Config.minimumPlatformVersionSupported){
-                                handleSuccess(serverURL: serverURL)
+                                let server = Server (serverURL: serverURL)
+                                server.platformVersion = json["platformVersion"].string!
+                                server.platformEdition = json["platformEdition"].string!
+                                server.platformBuildNumber = json["platformBuildNumber"].string!
+                                server.platformRevision = json["platformRevision"].string!
+                                handleSuccess(server: server)
                             } else {
                                 // this application supports only platform version 4.3 or later
                                 Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
