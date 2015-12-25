@@ -57,12 +57,19 @@ class SettingViewController: UITableViewController {
     */
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int{
-        return 1
+        //servers & about section
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ( ServerManager.sharedInstance.serverList != nil) {
-            return ServerManager.sharedInstance.serverList!.count
+        if (section == 0) {
+            if ( ServerManager.sharedInstance.serverList != nil) {
+                return ServerManager.sharedInstance.serverList!.count
+            }
+        }
+        if (section == 1) {
+            // about section: application version / help
+            return 2;
         }
         return 0;
     }
@@ -77,18 +84,45 @@ class SettingViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
-        cell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
-        return cell
+        if (indexPath.section == 0 ) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
+            cell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
+            
+            return cell
+        }
+        if (indexPath.row == 0 ) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SettingRightDetail", forIndexPath: indexPath)
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.ApplicationVersion", comment: "");
+            //First get the nsObject by defining as an optional anyObject
+            let version: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+            
+            //Then just cast the object as a String, but be careful, you may want to double check for nil
+            cell.detailTextLabel?.text = version as? String
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SettingHelp", forIndexPath: indexPath)
+            cell.textLabel?.text = NSLocalizedString("Setting.Title.Help", comment: "");
+            
+            return cell
+            
+        }
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("Setting.Title.Server",comment:"")
+        switch section {
+        case 0 :
+            return NSLocalizedString("Setting.Title.Server",comment:"")
+        case 1 :
+            return NSLocalizedString("Setting.Title.About",comment:"")
+        default :
+            return ""
+        }
+
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true;
+        return indexPath.section == 0
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

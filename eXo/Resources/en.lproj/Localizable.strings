@@ -70,6 +70,12 @@
 
 "Setting.Title.Server" = "Servers";
 
+"Setting.Title.About" = "About";
+
+"Setting.Title.Help" = "Help";
+
+"Setting.Title.ApplicationVersion" = "Application Version";
+
 "Setting.Title.DeleteServer" = "Delete Server";
 
 "Setting.Message.DeleteServer" = "Do you really want to delete this server?";
@@ -85,6 +91,8 @@
 "Setting.Title.Secured" = "Secured";
 
 "Setting.Title.Revision" = "Revision";
+
+
 
 
 
