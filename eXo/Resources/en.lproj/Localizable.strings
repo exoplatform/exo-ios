@@ -74,4 +74,8 @@
 
 "Setting.Message.DeleteServer" = "Do you really want to delete this server?";
 
+"Setting.Title.ApplicationVersion" = "Application Version";
+
+"Setting.Title.About" = "About";
+
 

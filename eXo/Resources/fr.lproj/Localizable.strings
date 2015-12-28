@@ -68,3 +68,8 @@
 "Setting.Title.DeleteServer" = "Supprimer";
 
 "Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer ce serveur?";
+
+"Setting.Title.ApplicationVersion" = "Version de l'application";
+
+"Setting.Title.About" = "Informations";
+

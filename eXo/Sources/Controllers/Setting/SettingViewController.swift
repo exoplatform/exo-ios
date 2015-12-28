@@ -57,14 +57,23 @@ class SettingViewController: UITableViewController {
     */
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int{
-        return 1
+        /*
+        List Servers & About Sections
+        */
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ( ServerManager.sharedInstance.serverList != nil) {
-            return ServerManager.sharedInstance.serverList!.count
+        if (section == 0) {
+            // List Servers Section
+            if ( ServerManager.sharedInstance.serverList != nil) {
+                return ServerManager.sharedInstance.serverList!.count
+            } else {
+                return 0;
+            }
         }
-        return 0;
+        // About Section --> Application Version Row.
+        return 1
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -77,18 +86,31 @@ class SettingViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
-        cell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
+        if (indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
+            cell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
+            return cell
+        }
+        // About Section 
+        let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell", forIndexPath: indexPath)
+        cell.textLabel?.text = NSLocalizedString("Setting.Title.ApplicationVersion",comment:"")
+        let version: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+        cell.detailTextLabel?.text = version as? String
         return cell
+
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("Setting.Title.Server",comment:"")
+        if (section == 0) {
+            return NSLocalizedString("Setting.Title.Server",comment:"")
+        } else {
+            return NSLocalizedString("Setting.Title.About",comment:"")
+        }
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true;
+        // Can only edit row in section 0 (list servers)
+        return indexPath.section == 0
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
