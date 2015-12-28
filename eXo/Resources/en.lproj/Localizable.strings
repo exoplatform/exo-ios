@@ -48,7 +48,7 @@
 
 "OnBoarding.Error.URL" = "Server URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Unable to connect the server";
+"OnBoarding.Error.UnableConnectServer" = "Unable to connect to the server";
 
 "OnBoarding.Title.RecentsServer" = "Recent Servers";
 
