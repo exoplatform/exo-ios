@@ -82,7 +82,7 @@ enum {
 #pragma mark - Share VC life cycle
 
 - (BOOL)isContentValid {
-    return self.contentText != nil && loggingStatus >= eXoStatusLoggedIn && loggingStatus != eXoStatusLoadingSpaceId; // all status >= eXoStatusLoggedIn means user have logged in.
+    return loggingStatus >= eXoStatusLoggedIn && loggingStatus != eXoStatusLoadingSpaceId; // all status >= eXoStatusLoggedIn means user have logged in.
 }
 
 -(void) viewDidLoad {

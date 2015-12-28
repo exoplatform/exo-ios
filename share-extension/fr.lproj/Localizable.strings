@@ -52,11 +52,11 @@
 
 "Login.Status.WrongPassword" = "Mot de passe incorrect";
 
-"Login.Status.AskToSignIn" = "Veuillez se connecter";
+"Login.Status.AskToSignIn" = "Veuillez vous connecter";
 
 "Login.Status.Offline" ="Déconnecté";
 
-"Login.Status.LoginFail" = "Connection echouée";
+"Login.Status.LoginFail" = "Connexion echouée";
 
 "LogIn.Warning.NoAccount" = "Pas de compte";
 
