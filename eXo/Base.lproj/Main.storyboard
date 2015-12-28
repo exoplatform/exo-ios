@@ -182,7 +182,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="M3j-Am-Fag" secondAttribute="trailing" id="Ash-b1-Xon"/>
                             <constraint firstItem="M3j-Am-Fag" firstAttribute="top" secondItem="c8g-4h-WPN" secondAttribute="bottom" id="MtB-75-5Se"/>
