@@ -75,8 +75,8 @@ enum {
     eXoStatusLoggInAuthentificationFail = 3,
     eXoStatusLoggedIn = 4,
     eXoStatusLoadingSpaceId = 5,
-    eXoStatusCheckingUploadFoder = 6,
-    eXoStatusCreatingUploadFoder = 7
+    eXoStatusCheckingUploadFolder = 6,
+    eXoStatusCreatingUploadFolder = 7
 };
 
 #pragma mark - Share VC life cycle
@@ -168,7 +168,7 @@ enum {
                         postItem.url = url;
                     } else if ([url isKindOfClass:[NSData class]]){
                         postItem.fileData = (NSData*)url;
-                        postItem.fileExtension = @"MOV";
+                        postItem.fileExtension = @"mov";
                     }
                 }
             }];
@@ -231,12 +231,13 @@ enum {
     }
     
     // Handle what happens when a user taps your option.
+    __weak ShareViewController * weak_self = self;
     [accountItem setTapHandler:^(void){
         // Create an instance of your configuration view controller.
         // Transfer to your configuration view controller.
-        AccountViewController * accountVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountViewController"];
-        accountVC.delegate = self;
-        [self.navigationController pushViewController:accountVC animated:YES];
+        AccountViewController * accountVC = [weak_self.storyboard instantiateViewControllerWithIdentifier:@"AccountViewController"];
+        accountVC.delegate = weak_self;
+        [weak_self.navigationController pushViewController:accountVC animated:YES];
     }];
     
     // space item
@@ -267,9 +268,9 @@ enum {
         // User can select a space only after authentification.
         if (loggingStatus == eXoStatusLoggedIn){
             SpaceViewController  * spaceSelectionVC = [[SpaceViewController alloc] initWithStyle:UITableViewStylePlain];
-            spaceSelectionVC.delegate = self;
+            spaceSelectionVC.delegate = weak_self;
             spaceSelectionVC.account  = [AccountManager sharedManager].selectedAccount;
-            [self.navigationController pushViewController:spaceSelectionVC animated:YES];
+            [weak_self.navigationController pushViewController:spaceSelectionVC animated:YES];
         }
     }];
     if (loggingStatus >= eXoStatusLoggedIn) {
@@ -511,7 +512,7 @@ NSMutableData * data;
     if (loggingStatus == eXoStatusLoadingSpaceId) {
         return NSLocalizedString(@"LogIn.Status.NoSpaceId",nil);
     }
-    if (loggingStatus == eXoStatusCreatingUploadFoder || loggingStatus == eXoStatusCheckingUploadFoder) {
+    if (loggingStatus == eXoStatusCreatingUploadFolder || loggingStatus == eXoStatusCheckingUploadFolder) {
         return NSLocalizedString(@"Login.Status.ServerProblem",nil);
     }
     return NSLocalizedString(@"LogIn.Error.UnableToPost",nil);
