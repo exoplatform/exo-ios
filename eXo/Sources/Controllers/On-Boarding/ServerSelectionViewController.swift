@@ -47,8 +47,8 @@ class ServerSelectionViewController: UIViewController {
         let bgNumber = Int(arc4random_uniform(4) + 1)
         backgroundImageView.image = UIImage(named: "background\(bgNumber)")
         
-        self.navigationController?.navigationBar.barTintColor = Config.eXoColor
-        
+        self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
     
     override func viewWillAppear(animated: Bool) {

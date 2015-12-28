@@ -32,7 +32,10 @@ struct Config {
     static let maximumShortcutAllow:Int = 4
     static let timeout:NSTimeInterval = 60.0 // in seconds
     static let onboardingDidShow: String = "onboardingDidShow"
-    static let eXoColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)
+    static let eXoYellowColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)
+    
+    static let kTableCellHeight: CGFloat = 80.0
+    static let kTableHeaderHeight: CGFloat = 50.0
 }
 
 struct ShareExtension {

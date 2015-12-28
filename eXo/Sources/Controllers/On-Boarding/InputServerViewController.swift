@@ -24,10 +24,6 @@ import SVProgressHUD
 import SwiftyJSON
 
 class InputServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
-    // MARK: Constants
-    
-    let kCellHeight:CGFloat = 50.0
-    let kHeaderHeight:CGFloat = 50.0
 
     // MARK: Properties
     
@@ -42,6 +38,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor.clearColor()
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
     }
     
@@ -95,11 +92,11 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return kHeaderHeight
+        return Config.kTableHeaderHeight
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return kCellHeight
+        return Config.kTableCellHeight
     }
     
     
