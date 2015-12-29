@@ -39,7 +39,7 @@
 "VHJ-3K-666.title" = "Server Editer";
 
 /* Class = "UILabel"; text = "Enter new intranet URL"; ObjectID = "dfO-1K-jpi"; */
-"dfO-1K-jpi.text" = "Enter new intranet URL";
+"dfO-1K-jpi.text" = "Enter your intranet URL";
 
 /* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "iD2-5O-Hdw"; */
 "iD2-5O-Hdw.normalTitle" = "Got it";

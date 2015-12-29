@@ -42,7 +42,7 @@
 "VHJ-3K-666.title" = "Éditeur";
 
 /* Class = "UILabel"; text = "Enter new intranet URL"; ObjectID = "dfO-1K-jpi"; */
-"dfO-1K-jpi.text" = "Entrer une nouvelle adresse";
+"dfO-1K-jpi.text" = "Entrer l'URL de votre intranet";
 
 /* Class = "UIButton"; normalTitle = "Demarrer"; ObjectID = "iD2-5O-Hdw"; */
 "iD2-5O-Hdw.normalTitle" = "Fermer";
