@@ -17,23 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eXo Platform" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ox1-lu-F8v">
-                                <rect key="frame" x="187" y="276" width="226" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-gc-WMF">
+                                <rect key="frame" x="248" y="98" width="104" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="104" id="7mu-va-gsK"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="104" id="Iwa-Dz-aFk"/>
+                                    <constraint firstAttribute="height" constant="104" id="Kt0-ca-rjZ"/>
+                                    <constraint firstAttribute="width" constant="104" id="iro-De-xou"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7mu-va-gsK"/>
+                                        <exclude reference="Iwa-Dz-aFk"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97620211207816543" green="0.96952656664769432" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Ox1-lu-F8v" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ErS-QP-XQn"/>
-                            <constraint firstItem="Ox1-lu-F8v" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wYG-Pt-8cS"/>
+                            <constraint firstItem="NxM-gc-WMF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JPH-y4-9YL"/>
+                            <constraint firstItem="NxM-gc-WMF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-150" id="nEO-9k-Bgt"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-20" y="256"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eXoLogo" width="104" height="104"/>
+    </resources>
 </document>
