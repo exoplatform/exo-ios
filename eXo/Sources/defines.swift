@@ -1,0 +1,56 @@
+//
+//  defines.swift
+//  eXoHybrid
+//
+//  Created by Nguyen Manh Toan on 10/7/15.
+// This is free software; you can redistribute it and/or modify it
+// under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3 of
+// the License, or (at your option) any later version.
+//
+// This software is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this software; if not, write to the Free
+// Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+// 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+
+import Foundation
+import UIKit
+
+struct ShortcutType {
+    static let connectRecentServer:String =  "ios.exo.connect-recent-server"
+    static let addNewServer:String = "ios.exo.add-new-server"
+}
+
+struct Config {
+    static let communityURL:String =  "https://community.exoplatform.com"
+    static let minimumPlatformVersionSupported:Float = 4.3
+    static let maximumShortcutAllow:Int = 4
+    static let timeout:NSTimeInterval = 60.0 // in seconds
+    static let onboardingDidShow: String = "onboardingDidShow"
+    static let eXoYellowColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)
+    
+    static let kTableCellHeight: CGFloat = 80.0
+    static let kTableHeaderHeight: CGFloat = 50.0
+}
+
+struct ShareExtension {
+    static let NSUserDefaultSuite:String  = "group.com.exoplatform.ios.exo"
+    static let AllUserNameKey:String = "exo_share_all_usernames"
+}
+
+struct Cookies {
+    static let username:String =  "last_login_username"
+    static let domain:String =  "last_login_domain"
+}
+
+
+struct ConnectionError {
+    static let URLError = 400
+    static let ServerVersionNotSupport = 403
+    static let ServerVersionNotFound = 404
+}

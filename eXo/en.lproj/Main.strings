@@ -1,0 +1,59 @@
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "18S-gT-Ft0"; */
+"18S-gT-Ft0.title" = "Save";
+
+/* Class = "UILabel"; text = "abc.exoplatform.com"; ObjectID = "6UH-Oz-HS4"; */
+"6UH-Oz-HS4.text" = "abc.exoplatform.com";
+
+/* Class = "UINavigationItem"; title = "Sign in to eXo"; ObjectID = "7S4-we-cHp"; */
+"7S4-we-cHp.title" = "Sign in to eXo";
+
+/* Class = "UILabel"; text = "Community.exoplatform.com"; ObjectID = "7jK-Ln-BVS"; */
+"7jK-Ln-BVS.text" = "Community.exoplatform.com";
+
+/* Class = "UILabel"; text = "community.exoplatform.com"; ObjectID = "8hg-bw-nAp"; */
+"8hg-bw-nAp.text" = "community.exoplatform.com";
+
+/* Class = "UILabel"; text = "I love eXo Platform"; ObjectID = "9K8-mA-aRQ"; */
+"9K8-mA-aRQ.text" = "I love eXo Platform";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "Aqo-MA-qAy"; */
+"Aqo-MA-qAy.normalTitle" = "Delete";
+
+/* Class = "UILabel"; text = "Discover eXo Tribe"; ObjectID = "Myl-4g-llc"; */
+"Myl-4g-llc.text" = "Discover eXo Tribe";
+
+/* Class = "UILabel"; text = "Intranet URL"; ObjectID = "Nbx-g7-yZ0"; */
+"Nbx-g7-yZ0.text" = "New Server";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "QLL-K8-afL"; */
+"QLL-K8-afL.title" = "Back";
+
+/* Class = "UILabel"; text = "eXo is the best"; ObjectID = "SFw-1S-gHJ"; */
+"SFw-1S-gHJ.text" = "eXo is the best";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Sdh-rB-Tjw"; */
+"Sdh-rB-Tjw.title" = "Settings";
+
+/* Class = "UINavigationItem"; title = "Server Editer"; ObjectID = "VHJ-3K-666"; */
+"VHJ-3K-666.title" = "Server Editer";
+
+/* Class = "UILabel"; text = "Enter new intranet URL"; ObjectID = "dfO-1K-jpi"; */
+"dfO-1K-jpi.text" = "Enter your intranet URL";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "iD2-5O-Hdw"; */
+"iD2-5O-Hdw.normalTitle" = "Got it";
+
+/* Class = "UILabel"; text = "Others"; ObjectID = "kf8-07-HO5"; */
+"kf8-07-HO5.text" = "Others";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "pn1-xm-mpQ"; */
+"pn1-xm-mpQ.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "Others"; ObjectID = "s9H-sV-TqG"; */
+"s9H-sV-TqG.text" = "Others";
+
+/* Class = "UILabel"; text = "News to eXo ?"; ObjectID = "wLN-iK-TKf"; */
+"wLN-iK-TKf.text" = "News to eXo ?";
+
+"XzK-eh-cIw.text" = "Recent Servers";
