@@ -21,7 +21,6 @@ class SettingViewController: UITableViewController {
     let kTableHeaderViewIdentifient:String = "table-header"
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifient)
         self.tableView.backgroundColor = UIColor(white: 238.0/255.0, alpha: 1.0)
     }
