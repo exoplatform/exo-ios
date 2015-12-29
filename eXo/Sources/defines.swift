@@ -32,7 +32,10 @@ struct Config {
     static let maximumShortcutAllow:Int = 4
     static let timeout:NSTimeInterval = 60.0 // in seconds
     static let onboardingDidShow: String = "onboardingDidShow"
+    // based on hex code #FFCB08
     static let eXoYellowColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)
+    // based on hex code #2F5E92
+    static let eXoBlueColor: UIColor = UIColor(red: 68/255, green: 93/255, blue: 147/255, alpha: 1.0)
     
     static let kTableCellHeight: CGFloat = 80.0
     static let kTableHeaderHeight: CGFloat = 50.0
@@ -47,7 +50,6 @@ struct Cookies {
     static let username:String =  "last_login_username"
     static let domain:String =  "last_login_domain"
 }
-
 
 struct ConnectionError {
     static let URLError = 400

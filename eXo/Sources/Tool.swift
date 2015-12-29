@@ -125,16 +125,23 @@ class Tool {
         }
         
         // in case of unable to create the url, just return the origin URL with protocol
+       
         return urlWithProtocol
     }
     /*
     Configure the layer of a normal view to border (radius 5.0), use this frequently for the buttons
     */
     static func applyBorderForView (view:UIView) {
-        view.layer.cornerRadius = 5.0
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = UIColor.lightGrayColor().CGColor
+        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.5, borderColor: UIColor.lightGrayColor())
     }
     
-
+    static func applyBlueBorderForView (view:UIView) {
+        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.5, borderColor: Config.eXoBlueColor)
+    }
+    
+    static func applyBorderForView (view:UIView, cornerRadius:CGFloat, borderWidth: CGFloat, borderColor: UIColor) {
+        view.layer.cornerRadius = cornerRadius
+        view.layer.borderWidth = borderWidth
+        view.layer.borderColor = borderColor.CGColor
+    }
 }

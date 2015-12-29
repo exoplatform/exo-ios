@@ -130,7 +130,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
             self.selectedServer?.lastConnection = NSDate().timeIntervalSince1970
         }
         ServerManager.sharedInstance.addServer(self.selectedServer!)
-        //TODO setup Destination VC
+        // Open the selected server in the WebView
         let homepageVC = segue.destinationViewController as! HomePageViewController
         homepageVC.serverURL = self.selectedServer?.serverURL
         self.tableView.reloadData()
