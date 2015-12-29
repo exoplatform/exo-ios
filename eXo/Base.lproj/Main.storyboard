@@ -338,7 +338,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9b5-s2-eDM">
-                                <rect key="frame" x="108" y="85" width="104" height="104"/>
+                                <rect key="frame" x="108" y="82" width="104" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="HoW-y5-H6q"/>
                                     <constraint firstAttribute="height" constant="104" id="KUh-E2-Hoh"/>
@@ -362,10 +362,11 @@
                             <constraint firstItem="ll5-Q5-C9d" firstAttribute="top" secondItem="HkS-Wp-fne" secondAttribute="bottom" constant="60" id="0c7-b9-FYz"/>
                             <constraint firstItem="HBj-Vv-8Li" firstAttribute="top" secondItem="AUh-0V-O56" secondAttribute="bottom" constant="14" id="3RW-y2-Hqy"/>
                             <constraint firstAttribute="trailing" secondItem="fU1-pM-sJo" secondAttribute="trailing" id="9aY-oq-Ubd"/>
-                            <constraint firstItem="AUh-0V-O56" firstAttribute="top" secondItem="9b5-s2-eDM" secondAttribute="bottom" constant="14" id="CsA-2k-9pk"/>
+                            <constraint firstItem="AUh-0V-O56" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9b5-s2-eDM" secondAttribute="bottom" constant="5" id="CsA-2k-9pk"/>
                             <constraint firstItem="HkS-Wp-fne" firstAttribute="centerX" secondItem="EkX-5f-0Wb" secondAttribute="centerX" id="Ekm-IX-Jnr"/>
                             <constraint firstItem="fU1-pM-sJo" firstAttribute="leading" secondItem="EkX-5f-0Wb" secondAttribute="leading" id="HLH-wm-VHZ"/>
                             <constraint firstItem="AUh-0V-O56" firstAttribute="centerX" secondItem="EkX-5f-0Wb" secondAttribute="centerX" id="Iq4-3x-Dp2"/>
+                            <constraint firstItem="9b5-s2-eDM" firstAttribute="centerY" secondItem="EkX-5f-0Wb" secondAttribute="centerY" priority="750" constant="-150" id="JRd-rc-LJ0"/>
                             <constraint firstItem="ll5-Q5-C9d" firstAttribute="top" secondItem="fU1-pM-sJo" secondAttribute="bottom" id="OLz-hl-wjA"/>
                             <constraint firstItem="flx-09-aqa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HBj-Vv-8Li" secondAttribute="bottom" constant="10" id="Y4j-3c-ZC2"/>
                             <constraint firstItem="ll5-Q5-C9d" firstAttribute="top" secondItem="s9r-qr-bFi" secondAttribute="bottom" constant="13" id="YIs-Fd-qWi"/>
@@ -737,6 +738,6 @@
         <image name="right" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6jh-pv-CuH"/>
+        <segue reference="w4C-Oj-R0R"/>
     </inferredMetricsTieBreakers>
 </document>
