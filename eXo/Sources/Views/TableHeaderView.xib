@@ -11,17 +11,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j6-Rs-XAu">
-                    <rect key="frame" x="119" y="35" width="83" height="30"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHO-0M-nwP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j6-Rs-XAu">
+                            <rect key="frame" x="118" y="35" width="83" height="30"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="5j6-Rs-XAu" firstAttribute="centerX" secondItem="fHO-0M-nwP" secondAttribute="centerX" id="AbW-mZ-SeX"/>
+                        <constraint firstItem="5j6-Rs-XAu" firstAttribute="centerY" secondItem="fHO-0M-nwP" secondAttribute="centerY" id="JqV-oO-A5P"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="5j6-Rs-XAu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="X6y-Uh-Ymb"/>
-                <constraint firstItem="5j6-Rs-XAu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cAa-FX-FhL"/>
+                <constraint firstAttribute="bottom" secondItem="fHO-0M-nwP" secondAttribute="bottom" id="4XC-Gy-Na9"/>
+                <constraint firstItem="fHO-0M-nwP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yhz-bk-Ix5"/>
+                <constraint firstItem="fHO-0M-nwP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="f8v-be-lpQ"/>
+                <constraint firstAttribute="trailing" secondItem="fHO-0M-nwP" secondAttribute="trailing" id="mvC-ON-co5"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

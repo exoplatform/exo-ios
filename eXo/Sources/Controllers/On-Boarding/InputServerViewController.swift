@@ -129,7 +129,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
             self.selectedServer = ServerManager.sharedInstance.serverList?[indexPath!.row] as? Server
             self.selectedServer?.lastConnection = NSDate().timeIntervalSince1970
         }
-        ServerManager.sharedInstance.addServer(self.selectedServer!)
+        ServerManager.sharedInstance.addEditServer(self.selectedServer!)
         // Open the selected server in the WebView
         let homepageVC = segue.destinationViewController as! HomePageViewController
         homepageVC.serverURL = self.selectedServer?.serverURL

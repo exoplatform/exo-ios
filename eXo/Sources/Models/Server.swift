@@ -47,18 +47,19 @@ class Server {
     }
     
     init (serverURL: String) {
-        self.serverURL = serverURL
+        self.serverURL = serverURL.lowercaseString
         self.lastConnection = NSDate ().timeIntervalSince1970
     }
     
     init (serverURL: String, username: String, lastConnection:Double) {
-        self.serverURL = serverURL
+        self.serverURL = serverURL.lowercaseString
         self.username  = username
         self.lastConnection = lastConnection
     }
     
     init (serverDictionary : NSDictionary) {
-        self.serverURL = serverDictionary.valueForKey(ServerKey.serverURL) as! String
+        let url:String = serverDictionary.valueForKey(ServerKey.serverURL) as! String
+        self.serverURL = url.lowercaseString
         self.username = serverDictionary.valueForKey(ServerKey.username) as! String
         self.lastConnection = serverDictionary.valueForKey(ServerKey.lastConnection) as! Double        
     }
@@ -76,5 +77,19 @@ class Server {
             return shortName
         }
         return name
+    }
+    
+    /**
+     
+    Check if an other server is equal to this server.
+
+     */
+    func isEqual (server : Server) -> Bool {
+        let self_url = NSURL(string: self.serverURL)
+        let url = NSURL(string: server.serverURL)
+        if (self_url != nil && url != nil && self_url?.host != nil && url?.host != nil) {
+           return self_url?.host == url?.host
+        }
+        return false
     }
 }

@@ -23,10 +23,11 @@ class ServerEditViewController: UIViewController {
     
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var deleteButtonConstraintToBottom: NSLayoutConstraint!
-    let kDeleteButtonBottomMargin:CGFloat = 30.0
-    
     @IBOutlet weak var textView: PlaceholderTextView!
+    
+    let kDeleteButtonBottomMargin:CGFloat = 30.0
     var server:Server!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textView.text = server.serverURL
@@ -66,11 +67,16 @@ class ServerEditViewController: UIViewController {
             return true
         }
     }
-    
 
     func save () {
         //verification of URL, http is the default protocol
         Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
+            let tempServer:Server = Server(serverURL: serverURL)
+            let existingServer:Server! = ServerManager.sharedInstance.getServerIfExists(tempServer)
+            if (existingServer != nil && !existingServer.isEqual(self.server)) {
+                // if another server already has the new URL, delete it
+                ServerManager.sharedInstance.removeServer(existingServer)
+            }
             self.server.serverURL = serverURL
             ServerManager.sharedInstance.saveServerList()
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in

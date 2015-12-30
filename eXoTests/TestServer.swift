@@ -103,6 +103,44 @@ class TestServer: eXoBaseTestCase {
         XCTAssertEqual(server.natureName(), shortUrl, "Short URL did not match")
     }
     
+    func testServerAlreadyExists() {
+        
+        var serverBase:Server = Server(serverURL: "http://server.com")
+        // the exact same url
+        let server1:Server = Server(serverURL: "http://server.com")
+        // protocol is ignored in the comparison
+        let server2:Server = Server(serverURL: "https://server.com")
+        // path is ignored
+        let server3:Server = Server(serverURL: "http://server.com/portal")
+        // port is ignored
+        let server4:Server = Server(serverURL: "http://server.com:80")
+        // font case is ignored
+        let server5:Server = Server(serverURL: "HTTP://SERVER.COM")
+        
+        XCTAssertTrue(serverBase.isEqual(server1), String(format: "Server %@ should be equal to server base %@", server1.serverURL, serverBase.serverURL))
+        XCTAssertTrue(serverBase.isEqual(server2), String(format: "Server %@ should be equal to server base %@", server2.serverURL, serverBase.serverURL))
+        XCTAssertTrue(serverBase.isEqual(server3), String(format: "Server %@ should be equal to server base %@", server3.serverURL, serverBase.serverURL))
+        XCTAssertTrue(serverBase.isEqual(server4), String(format: "Server %@ should be equal to server base %@", server4.serverURL, serverBase.serverURL))
+        XCTAssertTrue(serverBase.isEqual(server5), String(format: "Server %@ should be equal to server base %@", server5.serverURL, serverBase.serverURL))
+        
+        serverBase = Server(serverURL: "http://server.com:80")
+        // port is ignored
+        let server6:Server = Server(serverURL: "http://server.com:8080")
+        
+        XCTAssertTrue(serverBase.isEqual(server6), String(format: "Server %@ should be equal to server base %@", server6.serverURL, serverBase.serverURL))
+    }
+    
+    func testServerDoesNotExist() {
+        
+        let serverBase:Server = Server(serverURL: "http://server.com")
+        
+        let server1:Server = Server(serverURL: "http://my.server.com")
+        let server2:Server = Server(serverURL: "http://server.fr")
+        
+        XCTAssertFalse(serverBase.isEqual(server1), String(format: "Server %@ should be different than server base %@", server1.serverURL, serverBase.serverURL))
+        XCTAssertFalse(serverBase.isEqual(server2), String(format: "Server %@ should be different than server base %@", server2.serverURL, serverBase.serverURL))
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {

@@ -103,7 +103,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             let serverDictionary = shortcutItem.userInfo
             if (serverDictionary != nil) {
                 let server:Server = Server(serverDictionary: serverDictionary!)
-                ServerManager.sharedInstance.addServer(server)
+                ServerManager.sharedInstance.addEditServer(server)
                 self.quickActionOpenHomePageForURL(server.serverURL)
             }
         }

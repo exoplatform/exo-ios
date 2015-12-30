@@ -22,7 +22,7 @@ class SettingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifient)
-        self.tableView.backgroundColor = UIColor(white: 238.0/255.0, alpha: 1.0)
+        self.tableView.backgroundColor = UIColor.whiteColor()
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

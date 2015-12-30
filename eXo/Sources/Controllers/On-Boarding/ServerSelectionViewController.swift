@@ -242,7 +242,7 @@ class ServerSelectionViewController: UIViewController {
         self.navigationController?.topViewController?.title = ""
         if (segue.identifier == "openDefaultServer") {
             defaultServer?.lastConnection = NSDate().timeIntervalSince1970
-            ServerManager.sharedInstance.addServer(defaultServer!)
+            ServerManager.sharedInstance.addEditServer(defaultServer!)
             //setup Destination VC
             let homepageVC = segue.destinationViewController as! HomePageViewController
             homepageVC.serverURL = defaultServer?.serverURL
@@ -253,7 +253,7 @@ class ServerSelectionViewController: UIViewController {
             homepageVC.serverURL = Config.communityURL + "/portal/intranet/register"
         } else if (segue.identifier == "discovereXoCommunity") {
             let community = Server(serverURL: Config.communityURL)
-            ServerManager.sharedInstance.addServer(community)
+            ServerManager.sharedInstance.addEditServer(community)
             let homepageVC = segue.destinationViewController as! HomePageViewController
             homepageVC.serverURL = community.serverURL
             

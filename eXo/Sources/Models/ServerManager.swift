@@ -69,7 +69,7 @@ class ServerManager  {
     func isExist (server : Server) -> Bool {
         if (serverList != nil ){
             for s in serverList! {
-                if (s as! Server).serverURL == server.serverURL {
+                if (s as! Server).isEqual(server) {
                     (s as! Server).lastConnection = server.lastConnection
                     return true
                 }
@@ -78,13 +78,26 @@ class ServerManager  {
         return false
     }
     
-    func addServer (server : Server ) {
-        
-        if (!self.isExist(server)) {
+    func getServerIfExists (server : Server) -> Server? {
+        if (serverList != nil ){
+            for s in serverList! {
+                if (s as! Server).isEqual(server) {
+                    (s as! Server).lastConnection = server.lastConnection
+                    return (s as! Server)
+                }
+            }
+        }
+        return nil
+    }
+    
+    func addEditServer (server : Server ) {
+        let originalServer:Server! = self.getServerIfExists(server)
+        if (originalServer == nil) {
             serverList.addObject(server)
+        } else {
+            originalServer.serverURL = server.serverURL
         }
         self.saveServerList()
-        
     }
     
     //Remove a server from servers list
@@ -107,10 +120,9 @@ class ServerManager  {
             if #available(iOS 9.0, *) {
                 self.updateQuickAction()
             }
-
         }
-        
     }
+    
     /*
     Re-initialize the list of dynamic shortcuts
     2 Kind of shortcuts available:
@@ -140,7 +152,6 @@ class ServerManager  {
             items.addObject(item)
         }
         UIApplication.sharedApplication().shortcutItems = items as NSArray as? [UIApplicationShortcutItem]
-
     }
 
 }

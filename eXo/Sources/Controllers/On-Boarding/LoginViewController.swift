@@ -88,7 +88,7 @@ class LoginViewController: UITableViewController {
         self.navigationController?.topViewController?.title = ""
         if (segue.identifier == "openDefaultServer") {
             defaultServer?.lastConnection = NSDate().timeIntervalSince1970
-            ServerManager.sharedInstance.addServer(defaultServer!)
+            ServerManager.sharedInstance.addEditServer(defaultServer!)
             //setup Destination VC
             let homepageVC = segue.destinationViewController as! HomePageViewController
             homepageVC.serverURL = defaultServer?.serverURL
