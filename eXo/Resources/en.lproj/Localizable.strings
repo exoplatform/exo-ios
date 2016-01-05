@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  eXo
+
+ // Copyright (C) 2003-2015 eXo Platform SAS.
+ //
+ // This is free software; you can redistribute it and/or modify it
+ // under the terms of the GNU Lesser General Public License as
+ // published by the Free Software Foundation; either version 3 of
+ // the License, or (at your option) any later version.
+ //
+ // This software is distributed in the hope that it will be useful,
+ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ // Lesser General Public License for more details.
+ //
+ // You should have received a copy of the GNU Lesser General Public
+ // License along with this software; if not, write to the Free
+ // Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+
+// On-Boarding
+
+"OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
+
+"OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
+
+"OnBoarding.Title.AddServer" = "Add server";
+
+"OnBoarding.Title.Others" = "Others";
+
+"OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
+
+"OnBoarding.Title.SavingServer" = "Saving Server ...";
+
+"OnBoarding.Message.EnterURL" = "Enter your intranet URL";
+
+"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
+
+"OnBoarding.Error.PlatformNotFound" = "Platform version not found";
+
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 4.3 or later";
+
+"Word.OK" = "OK";
+
+"Word.Cancel" = "Cancel";
+
+"OnBoarding.Error.URL" = "Server URL error";
+
+"OnBoarding.Error.UnableConnectServer" = "Unable to connect to the server";
+
+"OnBoarding.Title.RecentsServer" = "Recent Servers";
+
+"OnBoarding.Error.ConnectionError" = "Connection Error";
+
+"OnBoarding.Title.MostRecentServer" = "Most recent server";
+
+
+//Shortcut (3D Touch)
+
+"Shortcut.Title.RegisterCommunity" = "Register Community";
+
+"Shortcut.Title.ConnectTo" = "Connect to";
+
+"Shortcut.Title.AddServer" = "Add server";
+
+"Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
+//Setting
+
+"Setting.Title.Server" = "Servers";
+
+"Setting.Title.DeleteServer" = "Delete Server";
+
+"Setting.Message.DeleteServer" = "Do you really want to delete this server?";
+
+"Setting.Title.ApplicationVersion" = "Application Version";
+
+"Setting.Title.About" = "About";
+
+
