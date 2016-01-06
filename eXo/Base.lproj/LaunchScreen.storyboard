@@ -33,7 +33,7 @@
                                 </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.97620211207816543" green="0.96952656664769432" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NxM-gc-WMF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JPH-y4-9YL"/>
                             <constraint firstItem="NxM-gc-WMF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-150" id="nEO-9k-Bgt"/>

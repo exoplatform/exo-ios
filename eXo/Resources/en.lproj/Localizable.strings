@@ -26,13 +26,13 @@
 
 "OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Add server";
+"OnBoarding.Title.AddServer" = "Add intranet";
 
 "OnBoarding.Title.Others" = "Others";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
 
-"OnBoarding.Title.SavingServer" = "Saving Server ...";
+"OnBoarding.Title.SavingServer" = "Saving intranet ...";
 
 "OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
@@ -46,15 +46,15 @@
 
 "Word.Cancel" = "Cancel";
 
-"OnBoarding.Error.URL" = "Server URL error";
+"OnBoarding.Error.URL" = "Intranet URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Unable to connect to the server";
+"OnBoarding.Error.UnableConnectServer" = "Unable to connect to the intranet";
 
-"OnBoarding.Title.RecentsServer" = "Recent Servers";
+"OnBoarding.Title.RecentsServer" = "My intranets";
 
 "OnBoarding.Error.ConnectionError" = "Connection Error";
 
-"OnBoarding.Title.MostRecentServer" = "Most recent server";
+"OnBoarding.Title.MostRecentServer" = "Most recent intranet";
 
 
 //Shortcut (3D Touch)
@@ -63,16 +63,16 @@
 
 "Shortcut.Title.ConnectTo" = "Connect to";
 
-"Shortcut.Title.AddServer" = "Add server";
+"Shortcut.Title.AddServer" = "Add intranet";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 //Setting
 
-"Setting.Title.Server" = "Servers";
+"Setting.Title.Server" = "Intranets";
 
-"Setting.Title.DeleteServer" = "Delete Server";
+"Setting.Title.DeleteServer" = "Delete intranet";
 
-"Setting.Message.DeleteServer" = "Do you really want to delete this server?";
+"Setting.Message.DeleteServer" = "Do you really want to delete this intranet?";
 
 "Setting.Title.ApplicationVersion" = "Application Version";
 

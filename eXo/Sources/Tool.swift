@@ -132,11 +132,11 @@ class Tool {
     Configure the layer of a normal view to border (radius 5.0), use this frequently for the buttons
     */
     static func applyBorderForView (view:UIView) {
-        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.5, borderColor: UIColor.lightGrayColor())
+        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.0, borderColor: UIColor.lightGrayColor())
     }
     
     static func applyBlueBorderForView (view:UIView) {
-        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.5, borderColor: Config.eXoBlueColor)
+        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.0, borderColor: Config.eXoBlueColor)
     }
     
     static func applyBorderForView (view:UIView, cornerRadius:CGFloat, borderWidth: CGFloat, borderColor: UIColor) {
