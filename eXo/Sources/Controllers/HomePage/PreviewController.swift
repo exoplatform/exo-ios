@@ -33,6 +33,16 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
         goForwardButton.enabled = false
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
     // MARK: Navigation Action: Close, GoBack, GoForward
     
     @IBAction func doneAction(sender: AnyObject) {
