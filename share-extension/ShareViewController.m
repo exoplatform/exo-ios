@@ -283,7 +283,14 @@ enum {
 
 }
 
-#pragma mark - Loggin
+#pragma mark - Login - Logout
+
+-(void) logout {
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie* cookie in cookies.cookies) {
+        [cookies deleteCookie:cookie];
+    }
+}
 
 NSMutableData * data;
 -(void) login {
@@ -417,7 +424,8 @@ NSMutableData * data;
         [AccountManager sharedManager].selectedAccount  = account;
         loggingStatus = eXoStatusNotLogin;
         selectedSpace = nil;
-        [self login];
+        [self logout]; // logout first to clear the session
+        [self login]; // then login with the selected account
         [self reloadConfigurationItems];
     }
 }
