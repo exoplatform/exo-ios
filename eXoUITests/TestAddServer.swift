@@ -47,13 +47,14 @@ class TestAddServer: eXoUIBaseTestCase {
         let tablesQuery = app.tables
         tablesQuery.textViews.containingType(.StaticText, identifier:"Enter your intranet URL").element.tap()
         tablesQuery.textViews.staticTexts["Enter your intranet URL"].tap()
-        app.typeText("http://plfent-4.2.x-snapshot.acceptance5.exoplatform.org/\n") //TODO: update the test URL incase server is down
+        // TODO: add a request interceptor to avoid hitting the real server, and return a predefined response
+        app.typeText("https://exoplatform.exoplatform.net/\n")
         let alert = app.alerts.elementBoundByIndex(0)
         let existePredicate = NSPredicate (format: "exists == 1", argumentArray: nil)
         self.expectationForPredicate(existePredicate, evaluatedWithObject: alert, handler: nil)
         self.waitForExpectationsWithTimeout(100.0) { (error) -> Void in
             if error == nil {
-                XCTAssertEqual(alert.label, "Intranet URL error")
+                XCTAssertEqual(alert.label, "Platform version not supported")
                 let okButton = alert.buttons["OK"]
                 okButton.tap()
             } else {
@@ -61,7 +62,6 @@ class TestAddServer: eXoUIBaseTestCase {
             }
         }
     }
-//    app.typeText("http://plfent-4.2.x-snapshot.acceptance5.exoplatform.org/\n") //TODO: update the test URL incase server is down
 
     
     func testAddServerInvalidURL() {

@@ -29,9 +29,7 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
     func testOpenDefaultServer () {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
-//        XCTAssertTrue(app.buttons.elementBoundByIndex(1).label == "Decouvrir le eXo Tribe" || app.buttons.elementBoundByIndex(1).label.containsString("Connect to"), "found instead \(app.buttons.elementBoundByIndex(1).description)" )
         app.buttons["button.discover.tribe"].tap()
-//        app.buttons.elementBoundByIndex(1).tap()
         _ = self.expectationForPredicate(
             NSPredicate(format: "count == 1"),
             evaluatedWithObject: app.webViews,
@@ -47,9 +45,7 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
     func testOpenAddServer () {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
-//        XCTAssertTrue(app.buttons.elementBoundByIndex(2).label == "Add server" || app.buttons.elementBoundByIndex(2).label == "Others", "found instead \(app.buttons.elementBoundByIndex(2).description)")
         app.buttons["button.new.server"].tap()
-//        app.buttons.elementBoundByIndex(2).tap()
         XCTAssertEqual(app.textViews.count,1)
         XCTAssertEqual(app.tables.count,1)
     }
