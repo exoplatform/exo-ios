@@ -21,25 +21,25 @@
 
 "OnBoarding.Title.SignInToeXo" = "Se connecter à eXo";
 
-"OnBoarding.Title.DiscovereXo" = "Decouvrir le eXo Tribe";
+"OnBoarding.Title.DiscovereXo" = "Découvrez eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Ajouter un serveur";
+"OnBoarding.Title.AddServer" = "Connectez votre intranet";
 
 "OnBoarding.Title.Others" = "Autres";
 
-"OnBoarding.Title.eXoPlatformDescription" = "Se connecter, partager et travailler ensemble";
+"OnBoarding.Title.eXoPlatformDescription" = "Connectez-vous, partagez et travaillez ensemble";
+
+"OnBoarding.Title.SavingServer" = "Enregistrement de l'intranet ...";
 
 "OnBoarding.Message.EnterURL" = "Entrez l'URL de votre intranet";
 
-"OnBoarding.Error.PlatformNotSupported" = "Cette version de Platform n'est pas supportée";
+"OnBoarding.Error.PlatformNotSupported" = "Version de Platform non supportée";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application supporte seulement Platform depuis version 4.3 du platform";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application supporte seulement Platform depuis la version 4.3";
 
 "OnBoarding.Error.PlatformNotFound" = "Version de Platform introuvable";
 
 "OnBoarding.Title.MostRecentServer" = "Se connecter à";
-
-"OnBoarding.Title.SavingServer" = "Enregistrement du serveur ...";
 
 "Word.OK" = "OK";
 
@@ -47,27 +47,29 @@
 
 "OnBoarding.Error.URL" = "URL incorrecte";
 
-"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter au server";
+"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter à l'intranet";
 
-"OnBoarding.Title.RecentsServer" = "Serveurs récents";
+"OnBoarding.Title.RecentsServer" = "Mes intranets";
 
-"OnBoarding.Error.ConnectionError" = "Erreur de connection";
+"OnBoarding.Error.ConnectionError" = "Erreur de connexion";
 
 //Shortcut (3D Touch)
 
-"Shortcut.Title.RegisterCommunity" = "S'enregister sur Community";
+"Shortcut.Title.RegisterCommunity" = "Découvrez eXo Tribe";
 
-"Shortcut.Title.ConnectTo" = "Se connecter à";
+"Shortcut.Title.ConnectTo" = "Connectez-vous à";
 
-"Shortcut.Title.AddServer" = "Ajouter serveur";
+"Shortcut.Title.AddServer" = "Connectez votre intranet";
 
-"Shortcut.Title.ConnnecteXoTribe" = "Se connecter à eXo Tribe";
+"Shortcut.Title.ConnnecteXoTribe" = "Connectez-vous à eXo Tribe";
+
 //Setting
-"Setting.Title.Server" = "Serveurs";
+
+"Setting.Title.Server" = "Intranets";
 
 "Setting.Title.DeleteServer" = "Supprimer";
 
-"Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer ce serveur?";
+"Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer cet intranet?";
 
 "Setting.Title.ApplicationVersion" = "Version de l'application";
 

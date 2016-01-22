@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Add intranet";
+"OnBoarding.Title.AddServer" = "Connect your intranet";
 
 "OnBoarding.Title.Others" = "Others";
 
@@ -59,11 +59,11 @@
 
 //Shortcut (3D Touch)
 
-"Shortcut.Title.RegisterCommunity" = "Register Community";
+"Shortcut.Title.RegisterCommunity" = "Register on eXo Tribe";
 
 "Shortcut.Title.ConnectTo" = "Connect to";
 
-"Shortcut.Title.AddServer" = "Add intranet";
+"Shortcut.Title.AddServer" = "Connect your intranet";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 //Setting

@@ -279,7 +279,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="4" maxX="10" maxY="4"/>
-                                <state key="normal" title="Discover the eXo Tribe">
+                                <state key="normal" title="Discover eXo Tribe">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -313,12 +313,12 @@
                                     <segue destination="jbf-dJ-ios" kind="push" id="Zel-Pe-4XU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-qr-bFi">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-qr-bFi">
                                 <rect key="frame" x="81" y="533" width="159" height="22"/>
                                 <accessibility key="accessibilityConfiguration" identifier="link.discover.tribe"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
-                                <state key="normal" title="Discover the eXo Tribe">
+                                <state key="normal" title="Discover eXo Tribe">
                                     <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -737,7 +737,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome-collab" translatesAutoresizingMaskIntoConstraints="NO" id="bO7-Yh-S7C">
                                 <rect key="frame" x="120" y="180" width="80" height="70"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration feautures, such as spaces and calendars are conbined together to facilitate la communication and collaboration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AI7-zp-tc0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration features, such as spaces and calendars are combined together to facilitate la communication and collaboration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AI7-zp-tc0">
                                 <rect key="frame" x="20" y="319" width="280" height="77"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -865,6 +865,6 @@
         <image name="welcome-social" width="80" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6jh-pv-CuH"/>
+        <segue reference="w4C-Oj-R0R"/>
     </inferredMetricsTieBreakers>
 </document>

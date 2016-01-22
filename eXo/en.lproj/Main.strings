@@ -1,36 +1,45 @@
 
+/* Class = "UILabel"; text = "4.3"; ObjectID = "0CW-xn-nTU"; */
+"0CW-xn-nTU.text" = "4.3";
+
 /* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "18S-gT-Ft0"; */
 "18S-gT-Ft0.title" = "Save";
 
 /* Class = "UILabel"; text = "abc.exoplatform.com"; ObjectID = "6UH-Oz-HS4"; */
 "6UH-Oz-HS4.text" = "abc.exoplatform.com";
 
-/* Class = "UINavigationItem"; title = "Sign in to eXo"; ObjectID = "7S4-we-cHp"; */
-"7S4-we-cHp.title" = "Sign in to eXo";
+/* Class = "UILabel"; text = "Collaboration feautures, such as spaces and calendars are conbined together to facilitate la communication and collaboration"; ObjectID = "AI7-zp-tc0"; */
+"AI7-zp-tc0.text" = "Collaboration features, such as spaces and calendars are combined together to facilitate teamwork and communication";
 
-/* Class = "UILabel"; text = "Community.exoplatform.com"; ObjectID = "7jK-Ln-BVS"; */
-"7jK-Ln-BVS.text" = "Community.exoplatform.com";
-
-/* Class = "UILabel"; text = "community.exoplatform.com"; ObjectID = "8hg-bw-nAp"; */
-"8hg-bw-nAp.text" = "community.exoplatform.com";
-
-/* Class = "UILabel"; text = "I love eXo Platform"; ObjectID = "9K8-mA-aRQ"; */
-"9K8-mA-aRQ.text" = "I love eXo Platform";
+/* Class = "UILabel"; text = "eXo Platform"; ObjectID = "AUh-0V-O56"; */
+"AUh-0V-O56.text" = "eXo Platform";
 
 /* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "Aqo-MA-qAy"; */
 "Aqo-MA-qAy.normalTitle" = "Delete";
 
-/* Class = "UILabel"; text = "Discover eXo Tribe"; ObjectID = "Myl-4g-llc"; */
-"Myl-4g-llc.text" = "Discover eXo Tribe";
+/* Class = "UILabel"; text = "Connect, share and work together"; ObjectID = "HBj-Vv-8Li"; */
+"HBj-Vv-8Li.text" = "Connect, share and work together";
 
-/* Class = "UILabel"; text = "Intranet URL"; ObjectID = "Nbx-g7-yZ0"; */
+/* Class = "UIButton"; accessibilityIdentifier = "button.new.server"; ObjectID = "HkS-Wp-fne"; */
+"HkS-Wp-fne.accessibilityIdentifier" = "button.new.server";
+
+/* Class = "UIButton"; normalTitle = "Add a new server"; ObjectID = "HkS-Wp-fne"; */
+"HkS-Wp-fne.normalTitle" = "Connect your intranet";
+
+/* Class = "UILabel"; text = "Recent Servers"; ObjectID = "KI4-DN-y4x"; */
+"KI4-DN-y4x.text" = "My intranets";
+
+/* Class = "UILabel"; text = "New Server"; ObjectID = "Nbx-g7-yZ0"; */
 "Nbx-g7-yZ0.text" = "New intranet";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Nhb-yr-uuD"; */
+"Nhb-yr-uuD.text" = "Title";
+
+/* Class = "UILabel"; text = "Welcome to eXo!"; ObjectID = "Op3-xn-Wvg"; */
+"Op3-xn-Wvg.text" = "Welcome to eXo!";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "QLL-K8-afL"; */
 "QLL-K8-afL.title" = "Back";
-
-/* Class = "UILabel"; text = "eXo is the best"; ObjectID = "SFw-1S-gHJ"; */
-"SFw-1S-gHJ.text" = "eXo is the best";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Sdh-rB-Tjw"; */
 "Sdh-rB-Tjw.title" = "Settings";
@@ -38,22 +47,44 @@
 /* Class = "UINavigationItem"; title = "Server Editer"; ObjectID = "VHJ-3K-666"; */
 "VHJ-3K-666.title" = "Edit";
 
-/* Class = "UILabel"; text = "Enter new intranet URL"; ObjectID = "dfO-1K-jpi"; */
+/* Class = "UILabel"; text = "Recent Servers"; ObjectID = "XzK-eh-cIw"; */
+"XzK-eh-cIw.text" = "My intranets";
+
+/* Class = "UILabel"; text = "eXo Platform is a social intranet solution whose features and design are centered around the user"; ObjectID = "daN-j0-dYL"; */
+"daN-j0-dYL.text" = "eXo Platform is a social intranet solution whose features and design are centered around the user";
+
+/* Class = "UILabel"; text = "Enter your intranet URL"; ObjectID = "dfO-1K-jpi"; */
 "dfO-1K-jpi.text" = "Enter your intranet URL";
 
-/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "iD2-5O-Hdw"; */
-"iD2-5O-Hdw.normalTitle" = "GOT IT";
+/* Class = "UIButton"; accessibilityIdentifier = "button.discover.tribe"; ObjectID = "flx-09-aqa"; */
+"flx-09-aqa.accessibilityIdentifier" = "button.discover.tribe";
 
-/* Class = "UILabel"; text = "Others"; ObjectID = "kf8-07-HO5"; */
-"kf8-07-HO5.text" = "Others";
+/* Class = "UIButton"; normalTitle = "Discover the eXo Tribe"; ObjectID = "flx-09-aqa"; */
+"flx-09-aqa.normalTitle" = "Discover eXo Tribe";
+
+/* Class = "UILabel"; text = "Discover, find and connect to people in your network with shared interests, so you can collaborate and work together"; ObjectID = "g2m-JF-BBA"; */
+"g2m-JF-BBA.text" = "Discover, find and connect to people in your network with shared interests, so you can collaborate and work together";
+
+/* Class = "UILabel"; text = "Work together better through wikis, documents, forums, or calendars, all integrated with activity streams"; ObjectID = "hDa-Dp-Zih"; */
+"hDa-Dp-Zih.text" = "Work together better through wikis, documents, forums, or calendars, all integrated with activity streams";
+
+/* Class = "UIButton"; normalTitle = "GOT IT"; ObjectID = "iD2-5O-Hdw"; */
+"iD2-5O-Hdw.normalTitle" = "GOT IT";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "pn1-xm-mpQ"; */
 "pn1-xm-mpQ.normalTitle" = "Done";
 
-/* Class = "UILabel"; text = "Others"; ObjectID = "s9H-sV-TqG"; */
-"s9H-sV-TqG.text" = "Others";
+/* Class = "UILabel"; text = "Engagement"; ObjectID = "qn1-sJ-nh0"; */
+"qn1-sJ-nh0.text" = "Engagement";
 
-/* Class = "UILabel"; text = "News to eXo ?"; ObjectID = "wLN-iK-TKf"; */
-"wLN-iK-TKf.text" = "News to eXo ?";
+/* Class = "UIButton"; accessibilityIdentifier = "link.discover.tribe"; ObjectID = "s9r-qr-bFi"; */
+"s9r-qr-bFi.accessibilityIdentifier" = "link.discover.tribe";
 
-"XzK-eh-cIw.text" = "My intranets";
+/* Class = "UIButton"; normalTitle = "Discover the eXo Tribe"; ObjectID = "s9r-qr-bFi"; */
+"s9r-qr-bFi.normalTitle" = "Discover eXo Tribe";
+
+/* Class = "UILabel"; text = "Social Networking"; ObjectID = "vFl-gj-atf"; */
+"vFl-gj-atf.text" = "Social Networking";
+
+/* Class = "UILabel"; text = "Collaboration"; ObjectID = "zBC-Rf-aZA"; */
+"zBC-Rf-aZA.text" = "Collaboration";
