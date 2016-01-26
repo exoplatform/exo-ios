@@ -67,6 +67,10 @@
 
 "Setting.Title.Server" = "Intranets";
 
+"Setting.Title.NoServer" = "Aucun intranet";
+
+"Setting.Title.AddServer" = "Connectez votre intranet";
+
 "Setting.Title.DeleteServer" = "Supprimer";
 
 "Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer cet intranet?";

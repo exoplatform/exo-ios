@@ -405,7 +405,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Xqu-rV-W4l" kind="push" id="vP4-9J-CCr"/>
+                                    <segue destination="Xqu-rV-W4l" kind="push" identifier="EditServerSegue" id="vP4-9J-CCr"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" textLabel="Nhb-yr-uuD" detailTextLabel="0CW-xn-nTU" style="IBUITableViewCellStyleValue1" id="ZVg-dq-RN4">
@@ -431,6 +431,17 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoServerCell" id="eQ1-DF-4v3">
+                                <rect key="frame" x="0.0" y="188" width="320" height="69"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eQ1-DF-4v3" id="MP6-Wn-zuN">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="68"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Vkg-Xd-8eS" kind="push" identifier="AddServerSegue" id="hS9-Pp-Xgd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -865,6 +876,7 @@
         <image name="welcome-social" width="80" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hS9-Pp-Xgd"/>
         <segue reference="w4C-Oj-R0R"/>
     </inferredMetricsTieBreakers>
 </document>

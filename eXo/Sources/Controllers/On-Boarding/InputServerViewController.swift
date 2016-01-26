@@ -25,7 +25,7 @@ import SwiftyJSON
 
 class InputServerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
-    let kTableHeaderViewIdentifient:String = "table-header"
+    let kTableHeaderViewIdentifier:String = "table-header"
     // MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
@@ -41,7 +41,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.clearColor()
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
-        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifient)
+        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
 
     }
     

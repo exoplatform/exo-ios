@@ -18,16 +18,20 @@
 import UIKit
 
 class SettingViewController: UITableViewController {
-    let kTableHeaderViewIdentifient:String = "table-header"
+    
+    let kTableHeaderViewIdentifier:String = "table-header"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifient)
+        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
         self.tableView.backgroundColor = UIColor.whiteColor()
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
@@ -40,11 +44,13 @@ class SettingViewController: UITableViewController {
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        let indexPath = self.tableView.indexPathForSelectedRow
-        let server:Server = ServerManager.sharedInstance.serverList![(indexPath?.row)!]
-         as! Server
-        let serverEditVC:ServerEditViewController =  segue.destinationViewController as! ServerEditViewController
-        serverEditVC.server = server
+        if (segue.identifier == "EditServerSegue") {
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let server:Server = ServerManager.sharedInstance.serverList![(indexPath?.row)!]
+                    as! Server
+            let serverEditVC:ServerEditViewController =  segue.destinationViewController as! ServerEditViewController
+            serverEditVC.server = server
+        }
     }
 
 
@@ -54,19 +60,19 @@ class SettingViewController: UITableViewController {
     */
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int{
-        /*
-        List Servers & About Sections
-        */
+        // List Servers & About Sections
         return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             // List Servers Section
-            if ( ServerManager.sharedInstance.serverList != nil) {
+            if (ServerManager.sharedInstance.serverList != nil &&
+                ServerManager.sharedInstance.serverList.count > 0) {
                 return ServerManager.sharedInstance.serverList!.count
             } else {
-                return 0;
+                // If there's no server, we display the NoServerCell
+                return 1;
             }
         }
         // About Section --> Application Version Row.
@@ -84,23 +90,38 @@ class SettingViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
-            cell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
-            return cell
+            if (ServerManager.sharedInstance.serverList.count > 0) {
+                // A cell that displays the server at the specified position
+                let srvcell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
+                srvcell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
+                return srvcell
+            } else {
+                // A cell that displays a label "Connect your intranet" and directs to the input server screen
+                let ctacell = tableView.dequeueReusableCellWithIdentifier("NoServerCell", forIndexPath: indexPath)
+                ctacell.textLabel?.text = NSLocalizedString("Setting.Title.AddServer", comment: "")
+                ctacell.textLabel?.font = UIFont.boldSystemFontOfSize(16)
+                return ctacell
+            }
         }
         // About Section 
-        let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell", forIndexPath: indexPath)
-        cell.textLabel?.text = NSLocalizedString("Setting.Title.ApplicationVersion",comment:"")
+        let abtcell = tableView.dequeueReusableCellWithIdentifier("AboutCell", forIndexPath: indexPath)
+        abtcell.textLabel?.text = NSLocalizedString("Setting.Title.ApplicationVersion",comment:"")
         let version: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
-        cell.detailTextLabel?.text = version as? String
-        return cell
+        abtcell.detailTextLabel?.text = version as? String
+        return abtcell
 
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView:TableHeaderView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(kTableHeaderViewIdentifient) as! TableHeaderView
+        let headerView:TableHeaderView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(kTableHeaderViewIdentifier) as! TableHeaderView
         if (section == 0) {
-            headerView.title.text =  NSLocalizedString("Setting.Title.Server",comment:"")
+            if (ServerManager.sharedInstance.serverList.count > 0) {
+                // Title: My intranets
+                headerView.title.text =  NSLocalizedString("Setting.Title.Server",comment:"")
+            } else {
+                // Title: No intranet
+                headerView.title.text = NSLocalizedString("Setting.Title.NoServer", comment: "")
+            }
         } else {
             headerView.title.text =  NSLocalizedString("Setting.Title.About",comment:"")
         }
@@ -108,8 +129,8 @@ class SettingViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Can only edit row in section 0 (list servers)
-        return indexPath.section == 0
+        // Can only edit server rows (not the NoServerCell) in the servers section (0)
+        return (indexPath.section == 0 && ServerManager.sharedInstance.serverList.count > 0 )
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -120,14 +141,14 @@ class SettingViewController: UITableViewController {
     
     func deleteServer(indexPath: NSIndexPath) {
         let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) {
+            (cancelAction) -> Void in
         }
         alertController.addAction(cancelAction)
         let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Destructive) { (confirmAction) -> Void in
             let server:Server = (ServerManager.sharedInstance.serverList?[indexPath.row])! as! Server
             ServerManager.sharedInstance.removeServer(server)
             self.tableView.reloadData()
-            
         }
         alertController.addAction(confirmAction)
         self.presentViewController(alertController, animated: false, completion: nil)
