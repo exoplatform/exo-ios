@@ -509,6 +509,9 @@
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jat-Ex-lt0" customClass="PlaceholderTextView" customModule="eXo" customModuleProvider="target">
                                             <rect key="frame" x="15" y="65" width="290" height="130"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="new-server-url-textfield">
+                                                <accessibilityTraits key="traits" staticText="YES"/>
+                                            </accessibility>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
                                             <connections>
@@ -877,6 +880,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hS9-Pp-Xgd"/>
-        <segue reference="w4C-Oj-R0R"/>
+        <segue reference="6jh-pv-CuH"/>
     </inferredMetricsTieBreakers>
 </document>

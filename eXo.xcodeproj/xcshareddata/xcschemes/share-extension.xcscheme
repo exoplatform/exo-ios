@@ -43,13 +43,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "57DFE9D11C59D05C00A91DA5"
+               BuildableName = "eXoSnapshots.xctest"
+               BlueprintName = "eXoSnapshots"
+               ReferencedContainer = "container:eXo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9C3D7CEF1BDF64E0002873CB"
-            BuildableName = "share-extension.appex"
-            BlueprintName = "share-extension"
+            BlueprintIdentifier = "9C3AD2451BCF56900094CFF9"
+            BuildableName = "eXo.app"
+            BlueprintName = "eXo"
             ReferencedContainer = "container:eXo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

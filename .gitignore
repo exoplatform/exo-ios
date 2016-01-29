@@ -21,6 +21,7 @@ DerivedData
 # Fastlane
 fastlane/test_output/
 fastlane/report.xml
+fastlane/screenshots
 
 # Binaries
 *.7z
