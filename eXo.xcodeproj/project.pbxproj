@@ -11,8 +11,9 @@
 		57D568331BEB15C000C13C7E /* TestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568321BEB15C000C13C7E /* TestServer.swift */; };
 		57D568351BEB41B700C13C7E /* TestServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568341BEB41B700C13C7E /* TestServerManager.swift */; };
 		57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */; };
-		57DFE9D51C59D05C00A91DA5 /* eXoSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFE9D41C59D05C00A91DA5 /* eXoSnapshots.swift */; };
-		57DFE9E11C59D52D00A91DA5 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFE9E01C59D52D00A91DA5 /* SnapshotHelper.swift */; };
+		57DFE9E51C5B81D800A91DA5 /* eXoSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFE9E21C5B81D800A91DA5 /* eXoSnapshots.swift */; };
+		57DFE9E61C5B81D800A91DA5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57DFE9E31C5B81D800A91DA5 /* Info.plist */; };
+		57DFE9E71C5B81D800A91DA5 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFE9E41C5B81D800A91DA5 /* SnapshotHelper.swift */; };
 		5D8610FF10D986813C74996D /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99709FC6FC0B669C35F7F93F /* Pods_share_extension.framework */; };
 		6A08988846900ACFD78A6F50 /* Pods_eXo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D372826E93C6C5C43C0DDC /* Pods_eXo.framework */; };
 		9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032DC91BE31EE5006F0577 /* String+URL.swift */; };
@@ -121,9 +122,9 @@
 		57D568341BEB41B700C13C7E /* TestServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestServerManager.swift; sourceTree = "<group>"; };
 		57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeUserDefaults.swift; sourceTree = "<group>"; };
 		57DFE9D21C59D05C00A91DA5 /* eXoSnapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eXoSnapshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57DFE9D41C59D05C00A91DA5 /* eXoSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoSnapshots.swift; sourceTree = "<group>"; };
-		57DFE9D61C59D05C00A91DA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57DFE9E01C59D52D00A91DA5 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		57DFE9E21C5B81D800A91DA5 /* eXoSnapshots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eXoSnapshots.swift; sourceTree = "<group>"; };
+		57DFE9E31C5B81D800A91DA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57DFE9E41C5B81D800A91DA5 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		95B211B4B59CC6CD07C9E3D9 /* Pods-share-extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-share-extension/Pods-share-extension.debug.xcconfig"; sourceTree = "<group>"; };
 		99709FC6FC0B669C35F7F93F /* Pods_share_extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_share_extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C032DC91BE31EE5006F0577 /* String+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
@@ -251,9 +252,9 @@
 		57DFE9D31C59D05C00A91DA5 /* eXoSnapshots */ = {
 			isa = PBXGroup;
 			children = (
-				57DFE9E01C59D52D00A91DA5 /* SnapshotHelper.swift */,
-				57DFE9D41C59D05C00A91DA5 /* eXoSnapshots.swift */,
-				57DFE9D61C59D05C00A91DA5 /* Info.plist */,
+				57DFE9E21C5B81D800A91DA5 /* eXoSnapshots.swift */,
+				57DFE9E31C5B81D800A91DA5 /* Info.plist */,
+				57DFE9E41C5B81D800A91DA5 /* SnapshotHelper.swift */,
 			);
 			path = eXoSnapshots;
 			sourceTree = "<group>";
@@ -699,6 +700,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DFE9E61C5B81D800A91DA5 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,8 +857,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57DFE9D51C59D05C00A91DA5 /* eXoSnapshots.swift in Sources */,
-				57DFE9E11C59D52D00A91DA5 /* SnapshotHelper.swift in Sources */,
+				57DFE9E51C5B81D800A91DA5 /* eXoSnapshots.swift in Sources */,
+				57DFE9E71C5B81D800A91DA5 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,12 +1014,14 @@
 		57DFE9DA1C59D05D00A91DA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = eXoSnapshots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.exoplatform.ios.exo.eXoSnapshots;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c4f02e29-bea2-49a4-94b9-9ac733c82f51";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = eXo;
 				USES_XCTRUNNER = YES;
 			};
@@ -1026,6 +1030,7 @@
 		57DFE9DB1C59D05D00A91DA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = eXoSnapshots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1259,6 +1264,7 @@
 				57DFE9DB1C59D05D00A91DA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C3AD2411BCF56900094CFF9 /* Build configuration list for PBXProject "eXo" */ = {
 			isa = XCConfigurationList;

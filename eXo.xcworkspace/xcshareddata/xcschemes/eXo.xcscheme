@@ -20,20 +20,6 @@
                ReferencedContainer = "container:eXo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "57DFE9D11C59D05C00A91DA5"
-               BuildableName = "eXoSnapshots.xctest"
-               BlueprintName = "eXoSnapshots"
-               ReferencedContainer = "container:eXo.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
