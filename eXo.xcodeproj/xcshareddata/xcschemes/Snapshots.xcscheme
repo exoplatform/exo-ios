@@ -22,15 +22,43 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "57DFE9D11C59D05C00A91DA5"
                BuildableName = "eXoSnapshots.xctest"
                BlueprintName = "eXoSnapshots"
+               ReferencedContainer = "container:eXo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C3AD2591BCF56900094CFF9"
+               BuildableName = "eXoTests.xctest"
+               BlueprintName = "eXoTests"
+               ReferencedContainer = "container:eXo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C3AD2641BCF56900094CFF9"
+               BuildableName = "eXoUITests.xctest"
+               BlueprintName = "eXoUITests"
                ReferencedContainer = "container:eXo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -94,7 +122,8 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C3AD2451BCF56900094CFF9"
@@ -102,7 +131,7 @@
             BlueprintName = "eXo"
             ReferencedContainer = "container:eXo.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
