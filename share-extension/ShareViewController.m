@@ -421,12 +421,29 @@ NSMutableData * data;
 // User did selected an account.
 -(void) accountSelector:(AccountViewController *)accountSelector didSelectAccount:(Account *)account {
     if (account){
-        [AccountManager sharedManager].selectedAccount  = account;
-        loggingStatus = eXoStatusNotLogin;
-        selectedSpace = nil;
-        [self logout]; // logout first to clear the session
-        [self login]; // then login with the selected account
-        [self reloadConfigurationItems];
+        [[AccountManager sharedManager] checkAccountValidity:account completionHandler:^(BOOL isValid) {
+            if (!isValid) {
+                UIAlertController* alert = [UIAlertController
+                                            alertControllerWithTitle:NSLocalizedString(@"Login.Warning.Title.PlatformVersionNotSupported", nil)
+                                            message:NSLocalizedString(@"Login.Warning.Message.PlatformVersionNotSupported", nil)
+                                            preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* action = [UIAlertAction
+                                         actionWithTitle:NSLocalizedString(@"Word.Back", nil)
+                                         style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+                    AccountViewController* accounts = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountViewController"];
+                    [self.navigationController pushViewController:accounts animated:YES];
+                }];
+                [alert addAction:action];
+                [self presentViewController:alert animated:YES completion:nil];
+            } else {
+                [AccountManager sharedManager].selectedAccount  = account;
+                loggingStatus = eXoStatusNotLogin;
+                selectedSpace = nil;
+                [self logout]; // logout first to clear the session
+                [self login]; // then login with the selected account
+                [self reloadConfigurationItems];
+            }
+        }];
     }
 }
 

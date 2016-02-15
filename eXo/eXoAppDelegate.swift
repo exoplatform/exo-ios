@@ -21,7 +21,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         
         // Get the root view (the enter point of storyboard)
         navigationVC = self.window!.rootViewController as? UINavigationController
-                
+        
+        // Create the server manager instance to prepare the list of servers
+        ServerManager.sharedInstance
+        // Quick actions
         if #available(iOS 9.0, *) {
             ServerManager.sharedInstance.updateQuickAction()
             
@@ -36,6 +39,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             return !launchedFromShortCut
 
         }
+        
         return true
     }
 

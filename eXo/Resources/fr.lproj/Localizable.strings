@@ -45,6 +45,8 @@
 
 "Word.Cancel" = "Annuler";
 
+"Word.Back" = "Retour";
+
 "OnBoarding.Error.URL" = "URL incorrecte";
 
 "OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter à l'intranet";
@@ -53,7 +55,7 @@
 
 "OnBoarding.Error.ConnectionError" = "Erreur de connexion";
 
-//Shortcut (3D Touch)
+// Shortcut (3D Touch)
 
 "Shortcut.Title.RegisterCommunity" = "Découvrez eXo Tribe";
 
@@ -63,7 +65,7 @@
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connectez-vous à eXo Tribe";
 
-//Setting
+// Setting
 
 "Setting.Title.Server" = "Intranets";
 
@@ -79,3 +81,8 @@
 
 "Setting.Title.About" = "Informations";
 
+// Server Manager
+
+"ServerManager.Title.Warning" = "Platform version not supported";
+
+"ServerManager.Message.WarningVersionNotSupported" = "Your intranet uses a version of Platform lower than 4.3.";

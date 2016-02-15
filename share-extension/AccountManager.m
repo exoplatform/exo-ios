@@ -98,4 +98,23 @@
     }
 }
 
+-(void) checkAccountValidity:(Account*)account completionHandler:(checkAccountValidityCompletion)completionBlock {
+    NSURLRequest* req = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/rest/platform/info", account.serverURL]]];
+    NSOperationQueue* queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:req queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        BOOL valid = NO;
+        NSError *e = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+        if (jsonDict) {
+            NSString* versionStr = [jsonDict valueForKey:@"platformVersion"];
+            if (versionStr) {
+                valid = [versionStr floatValue] >= 4.3;
+            }
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            completionBlock(valid);
+        }];
+    }];
+}
+
 @end

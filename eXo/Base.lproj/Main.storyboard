@@ -258,7 +258,7 @@
         <!--Server Selection View Controller-->
         <scene sceneID="S55-zv-Oiv">
             <objects>
-                <viewController id="f88-9w-Msy" customClass="ServerSelectionViewController" customModule="eXo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServerSelectionViewController" id="f88-9w-Msy" customClass="ServerSelectionViewController" customModule="eXo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RNl-BW-tc2"/>
                         <viewControllerLayoutGuide type="bottom" id="ll5-Q5-C9d"/>
@@ -876,7 +876,7 @@
         <image name="welcome-social" width="80" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hS9-Pp-Xgd"/>
-        <segue reference="6jh-pv-CuH"/>
+        <segue reference="w4C-Oj-R0R"/>
+        <segue reference="PQ5-c7-Tfq"/>
     </inferredMetricsTieBreakers>
 </document>

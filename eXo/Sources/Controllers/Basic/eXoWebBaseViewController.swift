@@ -40,6 +40,18 @@ class eXoWebBaseController: UIViewController {
         webView = WKWebView (frame:CGRectMake(0,0,webViewContainer.bounds.size.width, webViewContainer.bounds.size.height), configuration: wkWebViewConfiguration)        
         //Load the page web
         let url = NSURL(string: serverURL!)
+        // check PLF version and go back if it's less than 4.3
+        Tool.getPlatformVersion(url!, success: { (version) -> Void in
+            if (version < Config.minimumPlatformVersionSupported) {
+                // show warning message from main thread
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    self.alertPlatformVersionNotSupported()
+                })
+            }
+        }) { (errorCode) -> Void in
+            // failure during the execution of the request, let go...
+        }
+        // load URL in webview
         let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
         webView?.loadRequest(request)
         webViewContainer.addSubview(webView!)
@@ -60,8 +72,29 @@ class eXoWebBaseController: UIViewController {
             webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Trailing, multiplier: 1.0, constant: 0.0))
             
         }
-        
     }
-
+    
+    func alertPlatformVersionNotSupported() {
+        let alert:UIAlertController = UIAlertController.init(
+            title: NSLocalizedString("ServerManager.Title.Warning", comment:""),
+            message: NSLocalizedString("ServerManager.Message.WarningVersionNotSupported",comment:""),
+            preferredStyle: UIAlertControllerStyle.Alert)
+        let action:UIAlertAction = UIAlertAction.init(
+            title: NSLocalizedString("Word.Back",comment:""),
+            style: UIAlertActionStyle.Default,
+            handler: { (action) -> Void in
+                let navigationVC:UINavigationController = self.navigationController!
+//                if (navigationVC.viewControllers.count > 1) {
+                    // come back to the previous screen
+                    navigationVC.popViewControllerAnimated(true)
+//                } else {
+                    // probably started from the quick action
+                    // open the home screen
+//                    navigationVC.popToRootViewControllerAnimated(true)
+//                }
+        })
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
 }

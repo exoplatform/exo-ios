@@ -21,9 +21,11 @@
 #import "Account.h"
 @interface AccountManager : NSObject
 
+typedef void (^checkAccountValidityCompletion)(BOOL);
 
 + (AccountManager *)sharedManager;
 - (void) saveAccounts;
+- (void) checkAccountValidity:(Account*)account completionHandler:(checkAccountValidityCompletion)completionBlock ;
 
 @property (nonatomic, retain) NSMutableArray * allAccounts;
 

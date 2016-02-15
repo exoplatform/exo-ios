@@ -131,7 +131,7 @@ class ServerSelectionViewController: UIViewController {
      
     */
     func setDiscoverTribeLinkTitle() {
-        
+        // link is hidden if 0 server exists, or if the community website is one of the servers
         discovereXoTribeButton.hidden = ServerManager.sharedInstance.serverList.count == 0 || ServerManager.sharedInstance.isExist(Server(serverURL: Config.communityURL))
         
         discovereXoTribeButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo", comment: ""), forState: .Normal)
@@ -148,11 +148,11 @@ class ServerSelectionViewController: UIViewController {
         defaultServerButton?.setAttributedTitle(NSMutableAttributedString(string: "", attributes: nil), forState: .Normal)
 
         if (ServerManager.sharedInstance.serverList.count == 0) {
-            
+            // no server -> show button Discover eXo Tribe
             defaultServerButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo",comment:""), forState: .Normal)
             
-        } else if (Config.communityURL.containsString((defaultServer?.serverURL)!)) {
-            
+        } else if (Config.communityURL.containsString((defaultServer?.serverURL.stringURLWithoutProtocol())!)) {
+            // server is community website
             defaultServerButton.setTitle(NSLocalizedString("Shortcut.Title.ConnnecteXoTribe",comment:""), forState: .Normal)
             
         } else {

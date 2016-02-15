@@ -45,7 +45,11 @@ class ServerManager  {
         }
         let servers = NSMutableArray ()
         for dict in list! {
-            let s:Server = Server (serverURL: dict.valueForKey(ServerKey.serverURL) as! String , username: dict.valueForKey(ServerKey.username) as! String, lastConnection: dict.valueForKey(ServerKey.lastConnection) as! Double)
+            let s:Server = Server (serverURL: dict.valueForKey(ServerKey.serverURL) as! String , username: dict.valueForKey(ServerKey.username) as! String, lastConnection: 0)
+            if ((dict.valueForKey(ServerKey.lastConnection)) != nil) {
+                // servers created on MOB v2.x don't have a last connection info
+                s.lastConnection = dict.valueForKey(ServerKey.lastConnection) as! Double
+            }
             servers.addObject(s)
         }
         return servers
@@ -135,15 +139,13 @@ class ServerManager  {
         if (serverList.count > 0) {
             for server in serverList {
                 if (items.count < Config.maximumShortcutAllow) {
-                    if (server as! Server).serverURL == Config.communityURL {
-                        // A different Logo for eXo Community
+                    if (Config.communityURL.containsString((server as! Server).serverURL.stringURLWithoutProtocol())) {
+                        // A different Logo and title for eXo Tribe website
                         items.addObject(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject]))
                     } else {
-                        // A common Logo for the others servers
+                        // A common Logo for the other servers
                         items.addObject(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject]))
-                        
                     }
-                
                 }
             }
         } else {
@@ -153,5 +155,4 @@ class ServerManager  {
         }
         UIApplication.sharedApplication().shortcutItems = items as NSArray as? [UIApplicationShortcutItem]
     }
-
 }

@@ -29,36 +29,59 @@ import XCTest
 class TestServerManager: eXoBaseTestCase {
     
     static let serverValues:NSDictionary = [
-        ServerKey.serverURL:      "https://community.exoplatform.com",
+        ServerKey.serverURL:      "https://test.exoplatform.com",
         ServerKey.username:       "john",
         ServerKey.lastConnection: NSDate().timeIntervalSince1970
     ]
     
+    let server:Server = Server(serverDictionary: TestServerManager.serverValues)
+    
+    let manager:ServerManager = ServerManager.sharedInstance
+    
     override func setUp() {
         super.setUp()
+        removeAllServers()
     }
     
     override func tearDown() {
+        removeAllServers()
         super.tearDown()
     }
     
-    func testInitServerManager() {
-//        let mgr:ServerManager = ServerManager.sharedInstance
-//        mgr.userDefaults = NSUserDefaults.mockDefaults()
-//        XCTAssertNotNil(mgr.serverList, "Server List must not be nil")
-//        XCTAssertEqual(NSMutableArray(), mgr.serverList, "Server List is not initiated as NSMutableArray")
+    func removeAllServers() {
+        for server in manager.serverList {
+            manager.removeServer(server as! Server)
+        }
     }
     
-    func testAddServer() {
-//        let defaults:NSUserDefaults = NSUserDefaults.mockDefaults()
-//        let server:Server = Server(serverDictionary: TestServerManager.serverValues)
-//        let mgr:ServerManager = ServerManager.sharedInstance
-//        mgr.userDefaults = defaults
-//        mgr.addServer(server)
-//        let serverList:NSMutableArray = defaults.objectForKey(UserDefaultConfig.listServerKey) as! NSMutableArray
-//        XCTAssertEqual(mgr.serverList.count, 1, "Server List should contain 1 server")
-//        XCTAssertEqual(serverList.count, 1, "Server List should contain 1 server")
+    func testInitServerManager() {
+        XCTAssertNotNil(manager.serverList, "Server List must not be nil")
     }
+    
+    func testAddDeleteServer() {
+        manager.addEditServer(server)
+        XCTAssertEqual(manager.serverList.count, 1, "Server List should contain 1 server")
+        manager.removeServer(server)
+        XCTAssertEqual(manager.serverList.count, 0, "Server List should be empty")
+    }
+    
+    func testServerExists() {
+        manager.addEditServer(server)
+        XCTAssertTrue(manager.isExist(server), "Server should exist")
+        manager.removeServer(server)
+        XCTAssertFalse(manager.isExist(server), "Server should not exist")
+    }
+    
+//    func testParseServer() {
+//        let attributes:[String : String] = {[
+//            "serverURL" : "https://test.exoplatform.com" ,
+//            "username"  : "john"
+//        ]}()
+//        let parser:ServerManager.ServersXmlParser = ServerManager.ServersXmlParser()
+//        let server:Server = parser.parseServer(attributes)
+//        XCTAssertEqual(server.serverURL, "https://test.exoplatform.com")
+//        XCTAssertEqual(server.username, "john")
+//    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

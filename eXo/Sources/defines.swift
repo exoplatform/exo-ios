@@ -42,7 +42,7 @@ struct Config {
 }
 
 struct ShareExtension {
-    static let NSUserDefaultSuite:String  = "group.com.exoplatform.ios.exo"
+    static let NSUserDefaultSuite:String  = "group.com.exoplatform.mob.eXoPlatformiPHone"
     static let AllUserNameKey:String = "exo_share_all_usernames"
 }
 

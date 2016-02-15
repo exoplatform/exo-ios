@@ -76,6 +76,41 @@ class Tool {
         }
 
     }
+    
+    static func getPlatformVersion(url:NSURL, success:(version:Float) -> Void, failure:(errorCode:Int) -> Void) {
+        
+        let serverURL = domainOfStringURL(url.absoluteString)
+        
+        let platformInfoURL = serverURL + "/rest/platform/info"
+        
+        let plfInfoUrl = NSURL.init(string: platformInfoURL)
+        
+        let request = NSURLRequest.init(URL: plfInfoUrl!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: Config.timeout)
+        let operationQueue = NSOperationQueue.init()
+        operationQueue.name = "PLFVersion"
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue) { (response, data, error) -> Void in
+            if (error == nil) {
+                let statusCode = (response as! NSHTTPURLResponse).statusCode
+                if (statusCode >= 200  && statusCode < 300) {
+                    // Check platform version
+                    let json = JSON(data: data!)
+                    if let platformVersion = json["platformVersion"].string {
+                        let version = (platformVersion as NSString).floatValue
+                        success(version: version)
+                    } else {
+                        failure(errorCode: ConnectionError.ServerVersionNotFound)
+                    }
+                } else {
+                    failure(errorCode: ConnectionError.URLError)
+                }
+            } else {
+                failure(errorCode: ConnectionError.URLError)
+            }
+        }
+    }
+    
+   
     /*
     Display an error alert corresponse to the error code
     */

@@ -39,4 +39,4 @@
 #define EXO_SHARE_EXTENSION_ALL_ACCOUNTS    @"exo_share_all_usernames"
 #define EXO_SHARE_EXTENSION_SELECTED_ACCOUNT_INDEX   @"exo_share_selected_account_index"
 
-#define SHARE_EXTENSION_USERDEFAULT_SUITE @"group.com.exoplatform.ios.exo"
+#define SHARE_EXTENSION_USERDEFAULT_SUITE @"group.com.exoplatform.mob.eXoPlatformiPHone"
