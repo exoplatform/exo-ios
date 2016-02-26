@@ -14,10 +14,7 @@ class TestAddServer: eXoUIBaseTestCase {
     func gotoAddServerScreen () {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
-        
-//        XCTAssertTrue(app.buttons.elementBoundByIndex(2).label == "Add server" || app.buttons.elementBoundByIndex(2).label == "Others", "found instead \(app.buttons.elementBoundByIndex(2).description)" )
         app.buttons["button.new.server"].tap()
-//        app.buttons.elementBoundByIndex(2).tap()
         XCTAssertEqual(app.textViews.count,1)
         XCTAssertEqual(app.tables.count,1)
     }
@@ -28,7 +25,7 @@ class TestAddServer: eXoUIBaseTestCase {
         let tablesQuery = app.tables
         tablesQuery.textViews.containingType(.StaticText, identifier:"Enter your intranet URL").element.tap()
         tablesQuery.textViews.staticTexts["Enter your intranet URL"].tap()
-        app.typeText("http://community.exoplatform.com\n")
+        app.typeText("https://community.exoplatform.com\n")
         _ = self.expectationForPredicate(
             NSPredicate(format: "count == 1"),
             evaluatedWithObject: app.webViews,
