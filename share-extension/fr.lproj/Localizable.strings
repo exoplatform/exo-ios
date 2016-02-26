@@ -76,8 +76,8 @@
 
 "Title.SpaceSelection" = "Selectionner un espace";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Version non supportée";
+"Login.Warning.Title.PlatformVersionNotSupported" = "Version de Platform non supportée";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.3 or use the application version 2.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.3, ou installer l'application version 2.";
 
 "Word.Back" = "Retour";

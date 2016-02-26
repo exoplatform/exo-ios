@@ -83,6 +83,6 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Platform version not supported";
+"ServerManager.Title.Warning" = "Version de Platform non supportée";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Your intranet uses a version of Platform lower than 4.3.";
+"ServerManager.Message.WarningVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.3, ou installer l'application version 2.";
