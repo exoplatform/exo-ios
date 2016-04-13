@@ -191,7 +191,7 @@ enum {
                 if (!error && url) {
                     postItem.url = url;
                     postItem.type = @"LINK_ACTIVITY";
-                    [postItem searchForImageInURL];
+                    [postItem extractMetadata];
                 }
             }];
         }  else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePlainText]) {
@@ -510,9 +510,17 @@ NSMutableData * data;
     
     postActivity.message = self.contentText;
     
-    if (loggingStatus == eXoStatusLoggedIn){
-        if (postActivity.items.count >0){
-            [self uploadPostItemAtIndex:0];
+    if (loggingStatus == eXoStatusLoggedIn) {
+        if (postActivity.items.count > 0) {
+            PostItem * item = postActivity.items[0];
+            if (item.type != nil && [item.type isEqualToString:@"DOC_ACTIVITY"]) {
+                // Sharing one or more documents
+                [self uploadPostItemAtIndex:0];
+            } else if (item.type != nil && [item.type isEqualToString:@"LINK_ACTIVITY"]) {
+                // Sharing a link, skip upload step
+                // The link URL is stored in a PostItem whose type is "LINK_ACTIVITY"
+                [self postLinkActivity:item];
+            }
         } else {
             [self postMessage:postActivity.message fileURL:nil fileName:nil];
         }
@@ -721,22 +729,24 @@ NSMutableData * data;
  - If there are items to post, atleast one upload failed --> Ask user if continue anyway.
  */
 -(void) postActivityAction {
-    if (postActivity.items.count >0) {
-        if (postActivity.successfulUploads.count == postActivity.items.count){
+    if (postActivity.items.count > 0) {
+        if (postActivity.successfulUploads.count == postActivity.items.count) {
             PostItem * firstItem = postActivity.successfulUploads[0];
-            if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"]){
+            if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"]) {
+                // Should always be DOC_ACTIVITY
                 [self postMessage:postActivity.message fileURL:firstItem.fileUploadedURL fileName:firstItem.fileUploadedName];
-            } else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
-                [self postLinkActivity:firstItem];
             }
+//            TODO remove this code
+//            else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
+//                [self postLinkActivity:firstItem];
+//            }
         } else {
-
             NSString * title;
 
-            if (postActivity.successfulUploads.count ==0) {
+            if (postActivity.successfulUploads.count == 0) {
                 title = NSLocalizedString(@"Upload.Warning.AllUploadFailed",nil);
             } else {
-                if (postActivity.items.count-postActivity.successfulUploads.count ==1){
+                if (postActivity.items.count-postActivity.successfulUploads.count == 1) {
                     title = [NSString stringWithFormat:NSLocalizedString(@"Upload.Warning.UploadFailed",nil)];
                 } else {
                     title = [NSString stringWithFormat:NSLocalizedString(@"Upload.Warning.UploadsFailed",nil),(postActivity.items.count-postActivity.successfulUploads.count)];
@@ -750,13 +760,15 @@ NSMutableData * data;
             }];
             [alert addAction:cancelAction];
             UIAlertAction* postAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Post",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                if (postActivity.successfulUploads.count >0){
+                if (postActivity.successfulUploads.count > 0) {
                     PostItem * firstItem = postActivity.successfulUploads[0];
                     if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"]){
                         [self postMessage:postActivity.message fileURL:firstItem.fileUploadedURL fileName:firstItem.fileUploadedName];
-                    } else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
-                        [self postLinkActivity:firstItem];
                     }
+//                    TODO remove this code
+//                    else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
+//                        [self postLinkActivity:firstItem];
+//                    }
                 } else {
                     [self postMessage:postActivity.message fileURL:nil fileName:nil];
                 }
@@ -767,8 +779,6 @@ NSMutableData * data;
             } else {
                 [self presentViewController:alert animated:YES completion:nil];
             }
-
-
         }
     } else {
         [self postMessage:postActivity.message fileURL:nil fileName:nil];
@@ -933,23 +943,24 @@ NSMutableData * data;
  URL: the URL to the page 
  title: the title of the page
  */
--(void) postLinkActivity:(PostItem*) item {
+-(void) postLinkActivity: (PostItem*) item  {
     NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName];
 
-    if (selectedSpace && selectedSpace.spaceId.length > 0){
+    if (selectedSpace && selectedSpace.spaceId.length > 0) {
         postURL = [NSString stringWithFormat:@"%@?identity_id=%@", postURL, selectedSpace.spaceId];
     }
-    NSString * imgSrc = item.imageURLFromLink? item.imageURLFromLink : @"";
-    
+    NSString * imgSrc = item.imageURLFromLink ? item.imageURLFromLink : @"";
+    NSString * pageDesc = item.pageDescription ? item.pageDescription : @"";
+    NSString * pageTitle = item.pageWebTitle ? item.pageWebTitle : @" ";
     NSDictionary * templateParams = @{
                        @"comment":postActivity.message,
                        @"link":item.url.absoluteString,
-                       @"description":@"",
+                       @"description":pageDesc,
                        @"image":imgSrc,
-                       @"title":@" "
+                       @"title":pageTitle
                        };
     NSDictionary * dictionary = @{@"type": item.type,
-                                  @"title":postActivity.message,
+                                  @"title":item.url.absoluteString,
                                   @"templateParams": templateParams
                                   };
     NSError *error = nil;

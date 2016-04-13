@@ -1,14 +1,17 @@
 PODS:
+  - HTMLKit (0.9.1)
   - SVProgressHUD (1.1.3)
   - SwiftyJSON (2.3.2)
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
+  - HTMLKit (~> 0.9.1)
   - SVProgressHUD (~> 1.1)
   - SwiftyJSON (~> 2.3)
   - UICKeyChainStore (~> 2.1)
 
 SPEC CHECKSUMS:
+  HTMLKit: b40dde98be95a15526a58a5ac96e05d7c1f5b630
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432

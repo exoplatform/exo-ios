@@ -19,7 +19,10 @@
 
 
 #import <Foundation/Foundation.h>
+#import "HTMLKit.h"
 #import <UIKit/UIKit.h>
+
+
 @interface PostItem : NSObject <UIWebViewDelegate>
 enum {
     eXoItemStatusReadyToUpload = 0,
@@ -27,12 +30,21 @@ enum {
     eXoItemStatusUploadFailed = -1,
     eXoItemStatusUploadFileTooLarge = -2,
 };
+// DEFAULT_ACTIVITY for a simple text activities
+// LINK_ACTIVITY for shared links
+// DOC_ACTIVITY for shared documents
+@property (nonatomic, retain) NSString * type;
 
+// Can be URL in LINK_ACTIVITY, FileURL or NSData for DOC_ACTIVITY
+@property (nonatomic, retain) NSURL * url;
+
+// In DOC_ACTIVITY only
 @property (nonatomic, retain) NSData * fileData;
 @property (nonatomic, retain) NSString * fileExtension;
-@property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) NSURL * url; // could be URL in LINK Activity, FileURL or NSData for Post File Activity
-@property (nonatomic, retain) NSString * pageWebTitle; // in LINK Activty
+
+// In LINK_ACTIVITY only
+@property (nonatomic, retain) NSString * pageWebTitle;
+@property (nonatomic, retain) NSString * pageDescription;
 @property (nonatomic, retain) NSString * imageURLFromLink;
 
 @property (nonatomic) int uploadStatus;
@@ -46,6 +58,6 @@ enum {
 -(NSString *) generateUploadFileName ;
 
 #pragma mark - link activity
--(void) searchForImageInURL;
+-(void) extractMetadata;
 
 @end
