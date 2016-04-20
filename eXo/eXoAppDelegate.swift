@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class eXoAppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,11 +19,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
     static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
+        // Start Crashlytics
+        Fabric.with([Crashlytics.self])
         // Get the root view (the enter point of storyboard)
         navigationVC = self.window!.rootViewController as? UINavigationController
-        
         // Create the server manager instance to prepare the list of servers
         ServerManager.sharedInstance
         // Quick actions
@@ -39,7 +40,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             return !launchedFromShortCut
 
         }
-        
         return true
     }
 

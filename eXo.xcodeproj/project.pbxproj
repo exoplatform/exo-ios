@@ -562,6 +562,7 @@
 				BC75DD29A0610A6E3864EFB5 /* Embed Pods Frameworks */,
 				40189E7401A2B4AA8294B784 /* Copy Pods Resources */,
 				9C3D7CFF1BDF64E0002873CB /* Embed App Extensions */,
+				57F3EF461CC72C4A0023A7BE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -774,6 +775,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\n  rm -fr Frameworks\nfi";
+		};
+		57F3EF461CC72C4A0023A7BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8421f485868032ad402cef01a4bd7c70263d97e 6b8bd5297ac216c6a0a79351084947edba67104633f611c471f5c1fe96cca005";
 		};
 		759100C4F1DE45FF8DA18DD5 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

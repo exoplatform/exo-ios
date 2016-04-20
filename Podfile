@@ -10,6 +10,8 @@ target "eXo" do
     pod 'SwiftyJSON', '~> 2.3'
     pod 'UICKeyChainStore', '~> 2.1'
     pod 'HTMLKit', '~> 0.9.1'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 
 target "share-extension" do
