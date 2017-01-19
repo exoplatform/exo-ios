@@ -51,7 +51,7 @@ class TestAddServer: eXoUIBaseTestCase {
         self.expectationForPredicate(existePredicate, evaluatedWithObject: alert, handler: nil)
         self.waitForExpectationsWithTimeout(100.0) { (error) -> Void in
             if error == nil {
-                XCTAssertEqual(alert.label, "Platform version not supported")
+                XCTAssertEqual(alert.label, "Intranet URL error")
                 let okButton = alert.buttons["OK"]
                 okButton.tap()
             } else {
