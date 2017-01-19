@@ -46,7 +46,7 @@ class PlaceholderTextView: UITextView {
         }
     }
 
-    override var font: UIFont! {
+    override var font: UIFont? {
         set {
             super.font = newValue
             self.placeholderLabel.font = newValue
@@ -86,7 +86,7 @@ class PlaceholderTextView: UITextView {
         self.textChanged(nil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         self.setup()
     }

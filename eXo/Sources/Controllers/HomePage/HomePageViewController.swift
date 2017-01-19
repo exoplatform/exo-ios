@@ -101,7 +101,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
-        print(error.localizedDescription)
+        print(error.localizedDescription, terminator: "")
         loadingIndicator.stopAnimating()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }

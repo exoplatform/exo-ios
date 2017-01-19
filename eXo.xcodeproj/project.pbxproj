@@ -637,6 +637,7 @@
 		9C3AD23E1BCF56900094CFF9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = eXo;
