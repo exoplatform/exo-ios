@@ -4,3 +4,6 @@ language: objective-c
 xcode_workspace: eXo.xcworkspace
 
 xcode_scheme: eXo
+
+script:
+ - xcodebuild -workspace eXo.xcworkspace -scheme eXo -sdk iphonesimulator build test
