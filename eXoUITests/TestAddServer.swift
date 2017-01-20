@@ -18,7 +18,7 @@ class TestAddServer: eXoUIBaseTestCase {
         XCTAssertEqual(app.textViews.count,1)
         XCTAssertEqual(app.tables.count,1)
     }
-    
+    /**
     func testAddServer() {
         self.gotoAddServerScreen()
         let app = XCUIApplication()
@@ -36,7 +36,8 @@ class TestAddServer: eXoUIBaseTestCase {
             }
         }
     }
-    
+ */
+ /**
     func testAddServerNotSupport() {
         
         self.gotoAddServerScreen()
@@ -82,5 +83,6 @@ class TestAddServer: eXoUIBaseTestCase {
             }
         }
     }
+ */
 
 }
