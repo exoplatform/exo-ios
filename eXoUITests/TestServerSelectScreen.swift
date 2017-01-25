@@ -12,10 +12,12 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
 
     // langue english
 
+    /**
     func testNumberOfButton() {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
     }
+ */
 /**
     func testOpenSetting () {
         let app = XCUIApplication()
