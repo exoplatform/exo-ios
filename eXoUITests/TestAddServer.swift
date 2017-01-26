@@ -15,10 +15,10 @@ class TestAddServer: eXoUIBaseTestCase {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
         app.buttons["button.new.server"].tap()
-        XCTAssertEqual(app.textViews.count,1)
-        XCTAssertEqual(app.tables.count,1)
+        //XCTAssertEqual(app.textViews.count,1)
+        //XCTAssertEqual(app.tables.count,1)
     }
-    /**
+   /**
     func testAddServer() {
         self.gotoAddServerScreen()
         let app = XCUIApplication()
@@ -60,8 +60,9 @@ class TestAddServer: eXoUIBaseTestCase {
             }
         }
     }
+ */
 
-    
+    /**
     func testAddServerInvalidURL() {
         
         self.gotoAddServerScreen()
@@ -84,5 +85,6 @@ class TestAddServer: eXoUIBaseTestCase {
         }
     }
  */
+ 
 
 }
