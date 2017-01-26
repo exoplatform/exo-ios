@@ -66,7 +66,7 @@ class TestSetting: eXoUIBaseTestCase {
     }
 
     
-    /**
+    
     func testDeleteFirstServer () {
         self.gotoSettingScreen()
         let app = XCUIApplication()
@@ -85,6 +85,6 @@ class TestSetting: eXoUIBaseTestCase {
         }
         
     }
- */
+ 
     
 }
