@@ -23,7 +23,7 @@ class TestSetting: eXoUIBaseTestCase {
     func testOpenSetting() {
         self.gotoSettingScreen()
     }
-    /**
+    
     func testEditServerError() {
 
         self.gotoSettingScreen()
@@ -50,7 +50,7 @@ class TestSetting: eXoUIBaseTestCase {
             }
         }
     }
- */
+ 
     
     func testEditServer() {
         self.gotoSettingScreen()
