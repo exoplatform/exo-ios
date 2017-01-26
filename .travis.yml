@@ -7,4 +7,4 @@ xcode_workspace: eXo.xcworkspace
 xcode_scheme: eXo
 
 script:
- - xcodebuild -workspace eXo.xcworkspace -scheme eXo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 4s,OS=8.1' build test
+ - xcodebuild -workspace eXo.xcworkspace -scheme eXo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1' build test
