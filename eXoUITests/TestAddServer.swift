@@ -39,6 +39,7 @@ class TestAddServer: eXoUIBaseTestCase {
  
         
     }
+    //--- crachs randomly
     
     func testAddServerNotSupport() {
         
@@ -67,6 +68,7 @@ class TestAddServer: eXoUIBaseTestCase {
     
     }
     
+    //--- crachs randomly
     func testAddServerInvalidURL() {
         
         let app = XCUIApplication()

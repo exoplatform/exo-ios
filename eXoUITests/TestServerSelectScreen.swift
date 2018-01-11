@@ -19,6 +19,7 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
     }
  
 
+    //--- crachs randomly
     func testOpenSetting () {
 
         let app = XCUIApplication()
