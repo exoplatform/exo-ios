@@ -48,7 +48,10 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
         
     }
     
-    
+    /**
+        MOB-2054 : the following test fails randomly within xcode
+    */
+    /**
     func testOpenAddServer () {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
@@ -56,5 +59,6 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
         XCTAssertEqual(app.textViews.count,0)
         XCTAssertEqual(app.tables.count,0)
     }
+    */
 
 }

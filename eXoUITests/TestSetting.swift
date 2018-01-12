@@ -65,7 +65,10 @@ class TestSetting: eXoUIBaseTestCase {
         }
     }
 
-//KMenzli: Test fail on Travis CI when activated
+    /**
+        MOB-2054: The following test fails randomly on xcode
+    */
+    
     /**
     
     func testDeleteFirstServer () {
