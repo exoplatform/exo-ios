@@ -46,9 +46,12 @@ struct ShareExtension {
     static let AllUserNameKey:String = "exo_share_all_usernames"
 }
 
-struct Cookies {
-    static let username:String =  "last_login_username"
-    static let domain:String =  "last_login_domain"
+enum Cookies: String {
+    case username = "last_login_username"
+    case domain = "last_login_domain"
+    case session = "JSESSIONID"
+    case sessionSso = "JSESSIONIDSSO"
+    case rememberMe = "rememberme"
 }
 
 struct ConnectionError {

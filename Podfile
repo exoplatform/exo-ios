@@ -13,6 +13,8 @@ target "eXo" do
     pod 'HTMLKit', '~> 2.0.0'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
 end
 
 target "share-extension" do

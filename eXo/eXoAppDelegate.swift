@@ -9,6 +9,9 @@
 import UIKit
 import Fabric
 import Crashlytics
+import Firebase
+import UserNotifications
+
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -35,7 +38,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 @UIApplicationMain
-class eXoAppDelegate: UIResponder, UIApplicationDelegate {
+class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var quitTimestamp:Double? // Store the timestamps when user quit the app & Enter on Background
@@ -49,6 +52,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         navigationVC = self.window!.rootViewController as? UINavigationController
         // Create the server manager instance to prepare the list of servers
         ServerManager.sharedInstance
+        // Push notifications
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        tryToRegisterForRemoteNotifications(application: application)
         // Quick actions
         if #available(iOS 9.0, *) {
             ServerManager.sharedInstance.updateQuickAction()
@@ -97,6 +104,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Reveived token! \(deviceToken.debugDescription)")
     }
 
      /*
@@ -149,6 +160,36 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+    }
+    
+    /*
+     MARK: Firebase messaging
+     */
+    private func tryToRegisterForRemoteNotifications(application: UIApplication) {
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        PushTokenSynchronizer.shared.token = fcmToken
+        print("Push token reveived: \(fcmToken)")
+    }
+    
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print(remoteMessage.debugDescription)
     }
 
 }
