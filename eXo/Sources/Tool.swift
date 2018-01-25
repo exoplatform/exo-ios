@@ -28,34 +28,34 @@ class Tool {
     - Display a alert in case of an error occur
     - Return the valid ServerURL via a bloc (handleSuccess)
     */
-    static func verificationServerURL(string:String, handleSuccess: (serverURL:String) ->Void) {
+    static func verificationServerURL(_ string:String, handleSuccess: @escaping (_ serverURL:String) ->Void) {
         
         let serverURL = domainOfStringURL(string)
         
         let platformInfoURL = serverURL + "/rest/platform/info"
         
-        let url = NSURL.init(string: platformInfoURL)
+        let url = URL.init(string: platformInfoURL)
         if (url != nil) {
-            SVProgressHUD.showWithStatus(NSLocalizedString("OnBoarding.Title.SavingServer", comment:""), maskType: .Black)
-            let operationQueue = NSOperationQueue.init()
+            SVProgressHUD.show(withStatus: NSLocalizedString("OnBoarding.Title.SavingServer", comment:""), maskType: .black)
+            let operationQueue = OperationQueue.init()
             operationQueue.name = "URLVerification"
-            let request = NSURLRequest.init(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: Config.timeout)
+            let request = URLRequest.init(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: Config.timeout)
             
             NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue, completionHandler: { (response, data, error) -> Void in
                 // dismiss the HUD
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                OperationQueue.main.addOperation({ () -> Void in
                     SVProgressHUD.popActivity()
                 })
                 
                 if (error == nil) {
-                    let statusCode = (response as! NSHTTPURLResponse).statusCode
+                    let statusCode = (response as! HTTPURLResponse).statusCode
                     if (statusCode >= 200  && statusCode < 300) {
                         // Check platform version
                         let json = JSON(data: data!)
                         if let platformVersion = json["platformVersion"].string {
                             let version = (platformVersion as NSString).floatValue
                             if (version >= Config.minimumPlatformVersionSupported){
-                                handleSuccess(serverURL: serverURL)
+                                handleSuccess(serverURL)
                             } else {
                                 // this application supports only platform version 4.3 or later
                                 Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
@@ -77,35 +77,35 @@ class Tool {
 
     }
     
-    static func getPlatformVersion(url:NSURL, success:(version:Float) -> Void, failure:(errorCode:Int) -> Void) {
+    static func getPlatformVersion(_ url:URL, success:@escaping (_ version:Float) -> Void, failure:@escaping (_ errorCode:Int) -> Void) {
         
         let serverURL = domainOfStringURL(url.absoluteString)
         
         let platformInfoURL = serverURL + "/rest/platform/info"
         
-        let plfInfoUrl = NSURL.init(string: platformInfoURL)
+        let plfInfoUrl = URL.init(string: platformInfoURL)
         
-        let request = NSURLRequest.init(URL: plfInfoUrl!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: Config.timeout)
-        let operationQueue = NSOperationQueue.init()
+        let request = URLRequest.init(url: plfInfoUrl!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: Config.timeout)
+        let operationQueue = OperationQueue.init()
         operationQueue.name = "PLFVersion"
         
         NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue) { (response, data, error) -> Void in
             if (error == nil) {
-                let statusCode = (response as! NSHTTPURLResponse).statusCode
+                let statusCode = (response as! HTTPURLResponse).statusCode
                 if (statusCode >= 200  && statusCode < 300) {
                     // Check platform version
                     let json = JSON(data: data!)
                     if let platformVersion = json["platformVersion"].string {
                         let version = (platformVersion as NSString).floatValue
-                        success(version: version)
+                        success(version)
                     } else {
-                        failure(errorCode: ConnectionError.ServerVersionNotFound)
+                        failure(ConnectionError.ServerVersionNotFound)
                     }
                 } else {
-                    failure(errorCode: ConnectionError.URLError)
+                    failure(ConnectionError.URLError)
                 }
             } else {
-                failure(errorCode: ConnectionError.URLError)
+                failure(ConnectionError.URLError)
             }
         }
     }
@@ -114,8 +114,8 @@ class Tool {
     /*
     Display an error alert corresponse to the error code
     */
-    static func showErrorMessageForCode (errorCode : Int) {
-        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+    static func showErrorMessageForCode (_ errorCode : Int) {
+        OperationQueue.main.addOperation({ () -> Void in
             switch (errorCode){
             case ConnectionError.URLError :
                 let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.URL", comment:""), message: NSLocalizedString("OnBoarding.Error.UnableConnectServer",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
@@ -138,21 +138,21 @@ class Tool {
     /*
     The the scheme & host part with port (if exist) of a URL enter by user to
     */
-    static func domainOfStringURL(theURL: String) -> String {
+    static func domainOfStringURL(_ theURL: String) -> String {
         
         //Add a protocol for the user's input URL if not exist. The default protocol is http://
         var urlWithProtocol = theURL
-        if ( urlWithProtocol.rangeOfString("http://") == nil && urlWithProtocol.rangeOfString("https://") == nil ) {
+        if ( urlWithProtocol.range(of: "http://") == nil && urlWithProtocol.range(of: "https://") == nil ) {
             urlWithProtocol = "http://" + urlWithProtocol
         }
         // make a NSURL with this protocol
-        let url = NSURL(string: urlWithProtocol)
+        let url = URL(string: urlWithProtocol)
         if (url != nil) {
             if (url?.host != nil) {
                 var domain = (url?.scheme)! + "://" + (url?.host)!
                 // check if URL contains a port.
-                if (url?.port != nil){
-                    let port:Int! = url?.port?.integerValue
+                if ((url as NSURL?)?.port != nil){
+                    let port:Int! = (url as NSURL?)?.port?.intValue
                     domain += ":\(port)"
                 }
                 return domain
@@ -166,17 +166,17 @@ class Tool {
     /*
     Configure the layer of a normal view to border (radius 5.0), use this frequently for the buttons
     */
-    static func applyBorderForView (view:UIView) {
-        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.0, borderColor: UIColor.lightGrayColor())
+    static func applyBorderForView (_ view:UIView) {
+        applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.0, borderColor: UIColor.lightGray)
     }
     
-    static func applyBlueBorderForView (view:UIView) {
+    static func applyBlueBorderForView (_ view:UIView) {
         applyBorderForView(view, cornerRadius: 5.0, borderWidth: 0.0, borderColor: Config.eXoBlueColor)
     }
     
-    static func applyBorderForView (view:UIView, cornerRadius:CGFloat, borderWidth: CGFloat, borderColor: UIColor) {
+    static func applyBorderForView (_ view:UIView, cornerRadius:CGFloat, borderWidth: CGFloat, borderColor: UIColor) {
         view.layer.cornerRadius = cornerRadius
         view.layer.borderWidth = borderWidth
-        view.layer.borderColor = borderColor.CGColor
+        view.layer.borderColor = borderColor.cgColor
     }
 }

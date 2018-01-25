@@ -9,6 +9,30 @@
 import UIKit
 import Fabric
 import Crashlytics
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 @UIApplicationMain
 class eXoAppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +42,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
     var navigationVC:UINavigationController?
     static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Start Crashlytics
         Fabric.with([Crashlytics.self])
         // Get the root view (the enter point of storyboard)
@@ -31,7 +55,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             
             var launchedFromShortCut = false
             //Check for ShortCutItem
-            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem {
+            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
                 launchedFromShortCut = true
                 handleShortcut(shortcutItem)
             }
@@ -43,35 +67,35 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
-        quitTimestamp = NSDate().timeIntervalSince1970
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        quitTimestamp = Date().timeIntervalSince1970
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         /*
         Verification of session timeout on server.
         When the session is timeout, go back to On-Boarding (Loggin) screen
         */
-        if (NSDate().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
+        if (Date().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
             if (navigationVC != nil) {
-                navigationVC?.popToRootViewControllerAnimated(false)
+                navigationVC?.popToRootViewController(animated: false)
             }
         }
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
@@ -79,7 +103,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
     MARK: App Shortcut Handle
     */
     @available(iOS 9.0, *)
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         completionHandler (handleShortcut(shortcutItem))
     }
     
@@ -91,14 +115,14 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
     
     - Open a recent server: Direct link to a configured Server (Maxi 4 most recent servers are availabel). The App will open a HomePageViewController configured with the selected server.
     */
-    func handleShortcut (shortcutItem: UIApplicationShortcutItem) -> Bool {
+    func handleShortcut (_ shortcutItem: UIApplicationShortcutItem) -> Bool {
         var succeeded = false
         if (shortcutItem.type == ShortcutType.addNewServer) {
             succeeded = true
             if (navigationVC != nil) {
                 if (navigationVC?.viewControllers.count > 0) {
-                    navigationVC?.popToRootViewControllerAnimated(false)
-                    let inputServer = navigationVC?.viewControllers.last?.storyboard?.instantiateViewControllerWithIdentifier("InputServerViewController")
+                    navigationVC?.popToRootViewController(animated: false)
+                    let inputServer = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "InputServerViewController")
                     navigationVC?.pushViewController(inputServer! as UIViewController, animated: false)
                 }
             }
@@ -106,7 +130,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
             succeeded = true
             let serverDictionary = shortcutItem.userInfo
             if (serverDictionary != nil) {
-                let server:Server = Server(serverDictionary: serverDictionary!)
+                let server:Server = Server(serverDictionary: serverDictionary! as NSDictionary)
                 ServerManager.sharedInstance.addEditServer(server)
                 self.quickActionOpenHomePageForURL(server.serverURL)
             }
@@ -115,11 +139,11 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate {
         return succeeded
     }
     
-    func quickActionOpenHomePageForURL (stringURL:String) {
+    func quickActionOpenHomePageForURL (_ stringURL:String) {
         if (navigationVC != nil) {
             if (navigationVC?.viewControllers.count > 0) {
-                navigationVC?.popToRootViewControllerAnimated(false)
-                let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewControllerWithIdentifier("HomePageViewController")
+                navigationVC?.popToRootViewController(animated: false)
+                let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController")
                 (homepage as! HomePageViewController).serverURL  =  stringURL
                 navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
             }

@@ -35,16 +35,16 @@ class eXoWebBaseController: UIViewController {
     /*
     Initilalize the WKWebView & setup
     */
-    func setupWebView (webViewContainer : UIView) {
+    func setupWebView (_ webViewContainer : UIView) {
         let wkWebViewConfiguration = WKWebViewConfiguration()
-        webView = WKWebView (frame:CGRectMake(0,0,webViewContainer.bounds.size.width, webViewContainer.bounds.size.height), configuration: wkWebViewConfiguration)        
+        webView = WKWebView (frame:CGRect(x: 0,y: 0,width: webViewContainer.bounds.size.width, height: webViewContainer.bounds.size.height), configuration: wkWebViewConfiguration)        
         //Load the page web
-        let url = NSURL(string: serverURL!)
+        let url = URL(string: serverURL!)
         // check PLF version and go back if it's less than 4.3
         Tool.getPlatformVersion(url!, success: { (version) -> Void in
             if (version < Config.minimumPlatformVersionSupported) {
                 // show warning message from main thread
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                OperationQueue.main.addOperation({ () -> Void in
                     self.alertPlatformVersionNotSupported()
                 })
             }
@@ -52,8 +52,8 @@ class eXoWebBaseController: UIViewController {
             // failure during the execution of the request, let go...
         }
         // load URL in webview
-        let request = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        webView?.loadRequest(request)
+        let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
+        webView?.load(request)
         webViewContainer.addSubview(webView!)
         
         // disable the autosizing to use manual constraints
@@ -66,10 +66,10 @@ class eXoWebBaseController: UIViewController {
         if (webView?.superview != nil) {
             let webViewContainer = webView?.superview!
             // Setup Constraints for WebView. All margin to superview = 0
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Top, multiplier: 1.0, constant: 0.0))
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Leading, multiplier: 1.0, constant: 0.0))
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: webView!, attribute: .Trailing, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .top, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .leading, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .trailing, multiplier: 1.0, constant: 0.0))
             
         }
     }
@@ -78,15 +78,15 @@ class eXoWebBaseController: UIViewController {
         let alert:UIAlertController = UIAlertController.init(
             title: NSLocalizedString("ServerManager.Title.Warning", comment:""),
             message: NSLocalizedString("ServerManager.Message.WarningVersionNotSupported",comment:""),
-            preferredStyle: UIAlertControllerStyle.Alert)
+            preferredStyle: UIAlertControllerStyle.alert)
         let action:UIAlertAction = UIAlertAction.init(
             title: NSLocalizedString("Word.Back",comment:""),
-            style: UIAlertActionStyle.Default,
+            style: UIAlertActionStyle.default,
             handler: { (action) -> Void in
                 let navigationVC:UINavigationController = self.navigationController!
 //                if (navigationVC.viewControllers.count > 1) {
                     // come back to the previous screen
-                    navigationVC.popViewControllerAnimated(true)
+                    navigationVC.popViewController(animated: true)
 //                } else {
                     // probably started from the quick action
                     // open the home screen
@@ -94,7 +94,7 @@ class eXoWebBaseController: UIViewController {
 //                }
         })
         alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

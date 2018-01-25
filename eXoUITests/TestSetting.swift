@@ -16,7 +16,7 @@ class TestSetting: eXoUIBaseTestCase {
         
     func gotoSettingScreen () {
         let app = XCUIApplication()
-        app.buttons.elementBoundByIndex(0).tap()
+        app.buttons.element(boundBy: 0).tap()
         XCTAssertEqual(app.tables.count, 1)
     }
     
@@ -30,14 +30,14 @@ class TestSetting: eXoUIBaseTestCase {
         let app = XCUIApplication()
 
         if app.tables.cells.count > 0 {
-            app.tables.cells.elementBoundByIndex(0).tap()
+            app.tables.cells.element(boundBy: 0).tap()
             if (app.textViews.count > 0) {
-                app.textViews.elementBoundByIndex(0).tap()
+                app.textViews.element(boundBy: 0).tap()
                 app.typeText("invalide\n")
-                let alert = app.alerts.elementBoundByIndex(0)
+                let alert = app.alerts.element(boundBy: 0)
                 let existePredicate = NSPredicate (format: "exists == 1", argumentArray: nil)
-                self.expectationForPredicate(existePredicate, evaluatedWithObject: alert, handler: nil)
-                self.waitForExpectationsWithTimeout(100.0) { (error) -> Void in
+                self.expectation(for: existePredicate, evaluatedWith: alert, handler: nil)
+                self.waitForExpectations(timeout: 100.0) { (error) -> Void in
                     if error == nil {
                         XCTAssertEqual(alert.label, "Intranet URL error")
                         let okButton = alert.buttons["OK"]
@@ -56,9 +56,9 @@ class TestSetting: eXoUIBaseTestCase {
         let app = XCUIApplication()
         
         if app.tables.cells.count > 0 {
-            app.tables.cells.elementBoundByIndex(0).tap()
+            app.tables.cells.element(boundBy: 0).tap()
             if (app.textViews.count > 0) {
-                app.textViews.elementBoundByIndex(0).tap()
+                app.textViews.element(boundBy: 0).tap()
                 app.typeText("\n")
             }
         }
@@ -73,7 +73,7 @@ class TestSetting: eXoUIBaseTestCase {
         let tablesQuery = app.tables
         let nb_server = tablesQuery.cells.count
         if app.tables.cells.count > 0 {
-            let cell = tablesQuery.cells.elementBoundByIndex(0)
+            let cell = tablesQuery.cells.element(boundBy: 0)
             cell.swipeLeft()
             if (app.textViews.count > 0) {
                 app.tables.buttons["Delete"].tap()

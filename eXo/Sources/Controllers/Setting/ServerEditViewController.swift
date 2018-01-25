@@ -36,29 +36,29 @@ class ServerEditViewController: UIViewController {
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ServerEditViewController.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ServerEditViewController.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         
     }
     
     //MARK : User Action 
-    @IBAction func saveAction(sender: AnyObject) {
+    @IBAction func saveAction(_ sender: AnyObject) {
         save()
     }
     
-    @IBAction func deleteAction(sender: AnyObject) {
+    @IBAction func deleteAction(_ sender: AnyObject) {
         delete()
     }
 
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if  (text.characters.last == "\n" ){
             textView.resignFirstResponder()
             save()
@@ -79,37 +79,37 @@ class ServerEditViewController: UIViewController {
             }
             self.server.serverURL = serverURL
             ServerManager.sharedInstance.saveServerList()
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.navigationController?.popViewControllerAnimated(true)
+            OperationQueue.main.addOperation({ () -> Void in
+                self.navigationController?.popViewController(animated: true)
             })
         })
     }
     
     func delete() {
         //Ask for confirmation first
-        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (cancelAction) -> Void in
+        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.cancel) { (cancelAction) -> Void in
         }
         alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.Destructive) { (confirmAction) -> Void in
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.destructive) { (confirmAction) -> Void in
             ServerManager.sharedInstance.removeServer(self.server);
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
             
         }
         alertController.addAction(confirmAction)
-        self.presentViewController(alertController, animated: false, completion: nil)
+        self.present(alertController, animated: false, completion: nil)
 
     }
     
     //MARK : KeyBoard handle
     // Set up the position of the delete button to a visiable position (on portrait only)
 
-    func keyboardWillShow(notification: NSNotification) {
-        if UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation) == true {
-            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+    func keyboardWillShow(_ notification: Notification) {
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) == true {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 self.view.layoutIfNeeded()
                 // Animate the movement of the deleteButton
-                UIView.animateKeyframesWithDuration(0.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.LayoutSubviews, animations: { () -> Void in
+                UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.layoutSubviews, animations: { () -> Void in
                     self.deleteButtonConstraintToBottom.constant = keyboardSize.height + self.kDeleteButtonBottomMargin
                     self.view.layoutIfNeeded()
                     }, completion: nil)
@@ -120,9 +120,9 @@ class ServerEditViewController: UIViewController {
         }
     }
     // Re-initialize the position of the Delete Button when the keyboard is off.
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
             self.view.layoutIfNeeded()
-            UIView.animateKeyframesWithDuration(0.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.LayoutSubviews, animations: { () -> Void in
+            UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.layoutSubviews, animations: { () -> Void in
                 self.deleteButtonConstraintToBottom.constant = self.kDeleteButtonBottomMargin
                 self.view.layoutIfNeeded()
                 }, completion: nil)

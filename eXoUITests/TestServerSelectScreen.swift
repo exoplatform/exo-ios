@@ -21,7 +21,7 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
         // tap the 3 dots button
-        app.buttons.elementBoundByIndex(0).tap()
+        app.buttons.element(boundBy: 0).tap()
         XCTAssertEqual(app.tables.count,1)
         XCTAssert(app.navigationBars["Settings"].exists)
     }
@@ -30,11 +30,11 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
         let app = XCUIApplication()
         XCTAssertEqual(app.buttons.count, 4)
         app.buttons["button.discover.tribe"].tap()
-        _ = self.expectationForPredicate(
-            NSPredicate(format: "count == 1"),
-            evaluatedWithObject: app.webViews,
+        _ = self.expectation(
+            for: NSPredicate(format: "count == 1"),
+            evaluatedWith: app.webViews,
             handler: nil)
-        self.waitForExpectationsWithTimeout(100.0) { (error) -> Void in
+        self.waitForExpectations(timeout: 100.0) { (error) -> Void in
             if error != nil {
                 XCTFail("Expect webview to be shown")
             }
