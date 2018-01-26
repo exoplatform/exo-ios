@@ -13,7 +13,6 @@ class TestAddServer: eXoUIBaseTestCase {
     
     func gotoAddServerScreen () {
         let app = XCUIApplication()
-        XCTAssertEqual(app.buttons.count, 4)
         app.buttons["button.new.server"].tap()
         XCTAssertEqual(app.textViews.count,1)
         XCTAssertEqual(app.tables.count,1)

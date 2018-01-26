@@ -14,12 +14,11 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
 
     func testNumberOfButton() {
         let app = XCUIApplication()
-        XCTAssertEqual(app.buttons.count, 4)
+        XCTAssertEqual(app.buttons.count, 3)
     }
     
     func testOpenSetting () {
         let app = XCUIApplication()
-        XCTAssertEqual(app.buttons.count, 4)
         // tap the 3 dots button
         app.buttons.element(boundBy: 0).tap()
         XCTAssertEqual(app.tables.count,1)
@@ -28,7 +27,6 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
 
     func testOpenDefaultServer () {
         let app = XCUIApplication()
-        XCTAssertEqual(app.buttons.count, 4)
         app.buttons["button.discover.tribe"].tap()
         _ = self.expectation(
             for: NSPredicate(format: "count == 1"),
@@ -44,7 +42,6 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
 
     func testOpenAddServer () {
         let app = XCUIApplication()
-        XCTAssertEqual(app.buttons.count, 4)
         app.buttons["button.new.server"].tap()
         XCTAssertEqual(app.textViews.count,1)
         XCTAssertEqual(app.tables.count,1)

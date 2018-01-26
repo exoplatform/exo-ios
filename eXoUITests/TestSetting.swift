@@ -71,7 +71,7 @@ class TestSetting: eXoUIBaseTestCase {
         let app = XCUIApplication()
         
         let tablesQuery = app.tables
-        let nb_server = tablesQuery.cells.count
+        let nb_server = Int(tablesQuery.cells.count)
         if app.tables.cells.count > 0 {
             let cell = tablesQuery.cells.element(boundBy: 0)
             cell.swipeLeft()
@@ -79,7 +79,7 @@ class TestSetting: eXoUIBaseTestCase {
                 app.tables.buttons["Delete"].tap()
                 XCTAssertNotNil(app.alerts["Delete Server"])
                 app.alerts["Delete Server"].collectionViews.buttons["OK"].tap()
-                XCTAssertEqual(nb_server-1, tablesQuery.cells.count)
+                XCTAssertEqual(nb_server-1, Int(tablesQuery.cells.count))
             }
         }
         
