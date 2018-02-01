@@ -63,6 +63,10 @@
 		9CD8445D1C1E866700A824D2 /* TestAddServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8445C1C1E866700A824D2 /* TestAddServer.swift */; };
 		9CF2861A1BE1DE7D00DC4C26 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF286191BE1DE7D00DC4C26 /* AccountManager.m */; };
 		B05A19D2AA577577D7DA932A /* Pods_eXoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A052336FD41FD7E16D9AB51C /* Pods_eXoTests.framework */; };
+		B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C73359201F1B0700A2EA71 /* PushTokenSynchronizer.swift */; };
+		B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335B201F1D0800A2EA71 /* PushTokenRestClient.swift */; };
+		B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335E201F266800A2EA71 /* StringExtension.swift */; };
+		B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */; };
 		F270FB83B60AC70D8B45093A /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F604E8A56F9C9304EA5286 /* Pods_share_extension.framework */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +201,10 @@
 		9CF286191BE1DE7D00DC4C26 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		A052336FD41FD7E16D9AB51C /* Pods_eXoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B058A906AB28AC95A0483B47 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
+		B5C73359201F1B0700A2EA71 /* PushTokenSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenSynchronizer.swift; sourceTree = "<group>"; };
+		B5C7335B201F1D0800A2EA71 /* PushTokenRestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenRestClient.swift; sourceTree = "<group>"; };
+		B5C7335E201F266800A2EA71 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesInterceptor.swift; sourceTree = "<group>"; };
 		D206C018F830186C99982959 /* Pods-eXo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.release.xcconfig"; sourceTree = "<group>"; };
 		F8133069F7CAB26385260E0B /* Pods-eXoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXoTests/Pods-eXoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -418,6 +426,7 @@
 				9C3AD2791BCF5D6E0094CFF9 /* Controllers */,
 				9C3AD27A1BCF5D6E0094CFF9 /* Models */,
 				9C3AD27B1BCF5D6E0094CFF9 /* Views */,
+				B5C7335D201F264F00A2EA71 /* Utils */,
 				9C935F7D1BD60286009C065B /* Tool.swift */,
 			);
 			path = Sources;
@@ -437,8 +446,11 @@
 		9C3AD27A1BCF5D6E0094CFF9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5C73360201F2EB700A2EA71 /* Cookies */,
 				9C3AD2871BCFA3400094CFF9 /* Server.swift */,
 				9C935F7F1BD61D5A009C065B /* ServerManager.swift */,
+				B5C73359201F1B0700A2EA71 /* PushTokenSynchronizer.swift */,
+				B5C7335B201F1D0800A2EA71 /* PushTokenRestClient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -536,6 +548,22 @@
 				9C032E391BEA17DE006F0577 /* PreviewController.swift */,
 			);
 			path = HomePage;
+			sourceTree = "<group>";
+		};
+		B5C7335D201F264F00A2EA71 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B5C7335E201F266800A2EA71 /* StringExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B5C73360201F2EB700A2EA71 /* Cookies */ = {
+			isa = PBXGroup;
+			children = (
+				B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */,
+			);
+			path = Cookies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,6 +689,9 @@
 						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -876,17 +907,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-eXo/Pods-eXo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HTMLKit/HTMLKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTMLKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -946,7 +983,10 @@
 				9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
+				B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */,
+				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
+				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
 				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,
 				9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */,
@@ -959,6 +999,7 @@
 				9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */,
 				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
+				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,6 +1349,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.exoplatform.mob.eXoPlatformiPHone.share-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.exoplatform.mob.eXoPlatformiPHone.debug.share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

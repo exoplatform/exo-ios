@@ -23,6 +23,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
+    
+    private let cookiesInterceptor: CookiesInterceptor = CookiesInterceptorFactory().create()
 
     // MARK: View Controller lifecycle
     
@@ -97,7 +99,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
             loadStateStatusPage ()
         }
-
+        
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -131,15 +133,28 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if response.mimeType != "text/html" {
             doneButton.isHidden = false
         }
-        decisionHandler(.allow)
-
         
+        if #available(iOS 11.0, *) {
+            WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
+                if let url = response.url {
+                    self.cookiesInterceptor.intercept(cookies, url: url)
+                }
+            })
+        }
+        
+        if let headers = response.allHeaderFields as? [String: String], let url = response.url {
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: headers, for: url)
+            cookiesInterceptor.intercept(cookies, url: url)
+            cookiesInterceptor.intercept(HTTPCookieStorage.shared.cookies ?? [], url: url)
+        }
+        decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+            PushTokenSynchronizer.shared.tryDestroyToken()
             self.navigationController?.popViewController(animated: true)
         }
         let serverDomain = URL(string: self.serverURL!)?.host
@@ -205,28 +220,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     - If the user has connected the response status code of this request = 200
     */
     func loadStateStatusPage () {
-        let serverDomain = URL(string: self.serverURL!)?.host
-        if self.webView?.url!.absoluteString.range(of: serverDomain!+"/portal/intranet") != nil  {
-            let statusURL = self.serverDomainWithProtocolAndPort() + "/rest/state/status"
+        guard let serverUrl = self.serverURL, let serverDomain = URL(string: serverUrl)?.host else { return }
+        if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/intranet") != nil  {
+            let statusURL = serverUrl.serverDomainWithProtocolAndPort! + "/rest/state/status"
             let url = URL(string: statusURL)
             let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Config.timeout)
             self.webView?.load(request)
-            
         }
-    }
-    
-    /*
-    Return the serverURL with protocol & port (if need)
-    example: serverURL = http://localhost:8080/portal/intranet 
-    -> full domain with protocol & port = http://localhost:8080
-    */
-    func serverDomainWithProtocolAndPort () -> String {
-        let url = URL(string: self.serverURL!)
-        var fullDomain = url!.scheme! + "://" + url!.host!
-        if ((url! as NSURL).port != nil) {
-            fullDomain += ":\((url! as NSURL).port)"
-        }
-        return fullDomain
-
     }
 }
