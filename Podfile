@@ -23,7 +23,7 @@ target "share-extension" do
 end
 
 target "eXoTests" do
-    
+    pod 'Firebase/Core'
 end
 
 # Fix xcode Warning for Release config
