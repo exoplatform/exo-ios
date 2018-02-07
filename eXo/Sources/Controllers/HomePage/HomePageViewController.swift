@@ -25,6 +25,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     @IBOutlet weak var doneButton: UIButton!
     
     private let cookiesInterceptor: CookiesInterceptor = CookiesInterceptorFactory().create()
+    private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
 
     // MARK: View Controller lifecycle
     
@@ -140,10 +141,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                     self.cookiesInterceptor.intercept(cookies, url: url)
                 }
             })
-        }
-        
-        if let headers = response.allHeaderFields as? [String: String], let url = response.url {
+        } else if let headers = response.allHeaderFields as? [String: String], let url = response.url {
+            let cookiesFromAuthHeader = cookiesFromAuthFetcher.fetch(headerValue: headers["X-Authorization"], url: url)
             let cookies = HTTPCookie.cookies(withResponseHeaderFields: headers, for: url)
+            cookiesInterceptor.intercept(cookiesFromAuthHeader, url: url)
             cookiesInterceptor.intercept(cookies, url: url)
             cookiesInterceptor.intercept(HTTPCookieStorage.shared.cookies ?? [], url: url)
         }

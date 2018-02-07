@@ -15,9 +15,9 @@ class PushTokenRestClient {
     var sessionCookieValue: String?
     var sessionSsoCookieValue: String?
     var rememberMeCookieValue: String?
-    var isInSync = false
+    var isDuringSync = false
     var canDoRequest: Bool {
-        return !isInSync && sessionCookieValue != nil && rememberMeCookieValue != nil && sessionSsoCookieValue != nil
+        return !isDuringSync && sessionCookieValue != nil && rememberMeCookieValue != nil && sessionSsoCookieValue != nil
     }
     
     func registerToken(username: String, token: String, baseUrl: URL, completion: @escaping (Bool) -> Void) {
@@ -30,7 +30,14 @@ class PushTokenRestClient {
     func unregisterToken(token: String, baseUrl: URL, completion: @escaping (Bool) -> Void) {
         let unregisterTokenUrl = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/rest/private/v1/messaging/device/\(token)")!
         let request = createRequest(url: unregisterTokenUrl, method: "DELETE", data: nil)
-        doRequest(request, completion: completion)
+        doRequest(request) { result in
+            if result {
+                self.sessionSsoCookieValue = nil
+                self.sessionCookieValue = nil
+                self.rememberMeCookieValue = nil
+            }
+            completion(result)
+        }
     }
     
     private func createRequest(url: URL, method: String, data: Data?) -> URLRequest {
@@ -47,9 +54,9 @@ class PushTokenRestClient {
     
     private func doRequest(_ request: URLRequest, completion: @escaping (Bool) -> Void) {
         guard canDoRequest else { return }
-        isInSync = true
+        isDuringSync = true
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            self.isInSync = false
+            self.isDuringSync = false
             if let error = error {
                 print("---REST:\tPush token request has failed \(error.localizedDescription)")
             }

@@ -22,5 +22,5 @@ target "share-extension" do
 end
 
 target "eXoTests" do
-    
+    pod 'Firebase/Core'
 end
