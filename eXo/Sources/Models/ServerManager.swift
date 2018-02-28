@@ -38,19 +38,19 @@ class ServerManager  {
     
     
     func serverListFromNSUserDefault () -> NSMutableArray {
-        let groupUserDefaults = NSUserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
-        let list = groupUserDefaults!.valueForKey(ShareExtension.AllUserNameKey) as? NSArray
+        let groupUserDefaults = UserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
+        let list = groupUserDefaults!.value(forKey: ShareExtension.AllUserNameKey) as? NSArray
         if (list == nil) {
             return NSMutableArray ()
         }
         let servers = NSMutableArray ()
         for dict in list! {
-            let s:Server = Server (serverURL: dict.valueForKey(ServerKey.serverURL) as! String , username: dict.valueForKey(ServerKey.username) as! String, lastConnection: 0)
-            if ((dict.valueForKey(ServerKey.lastConnection)) != nil) {
+            let s:Server = Server (serverURL: (dict as AnyObject).value(forKey: ServerKey.serverURL) as! String , username: (dict as AnyObject).value(forKey: ServerKey.username) as! String, lastConnection: 0)
+            if (((dict as AnyObject).value(forKey: ServerKey.lastConnection)) != nil) {
                 // servers created on MOB v2.x don't have a last connection info
-                s.lastConnection = dict.valueForKey(ServerKey.lastConnection) as! Double
+                s.lastConnection = (dict as AnyObject).value(forKey: ServerKey.lastConnection) as! Double
             }
-            servers.addObject(s)
+            servers.add(s)
         }
         return servers
     }
@@ -61,16 +61,16 @@ class ServerManager  {
     
     
     func sortServerList () {
-        serverList.sortUsingComparator { (server1, server2) -> NSComparisonResult in
+        serverList.sort (comparator: { (server1, server2) -> ComparisonResult in
             if (server1 as! Server).lastConnection >= (server2 as! Server).lastConnection {
-                return NSComparisonResult.OrderedAscending
+                return ComparisonResult.orderedAscending
             } else {
-                return NSComparisonResult.OrderedDescending
+                return ComparisonResult.orderedDescending
             }
-        }
+        })
     }
     
-    func isExist (server : Server) -> Bool {
+    func isExist (_ server : Server) -> Bool {
         if (serverList != nil ){
             for s in serverList! {
                 if (s as! Server).isEqual(server) {
@@ -82,7 +82,7 @@ class ServerManager  {
         return false
     }
     
-    func getServerIfExists (server : Server) -> Server? {
+    func getServerIfExists (_ server : Server) -> Server? {
         if (serverList != nil ){
             for s in serverList! {
                 if (s as! Server).isEqual(server) {
@@ -94,10 +94,10 @@ class ServerManager  {
         return nil
     }
     
-    func addEditServer (server : Server ) {
+    func addEditServer (_ server : Server ) {
         let originalServer:Server! = self.getServerIfExists(server)
         if (originalServer == nil) {
-            serverList.addObject(server)
+            serverList.add(server)
         } else {
             originalServer.serverURL = server.serverURL
         }
@@ -105,8 +105,8 @@ class ServerManager  {
     }
     
     //Remove a server from servers list
-    func removeServer (server : Server) {
-        serverList.removeObject(server)
+    func removeServer (_ server : Server) {
+        serverList.remove(server)
         self.saveServerList()
     }
     
@@ -115,10 +115,10 @@ class ServerManager  {
             self.sortServerList()
             let list = NSMutableArray ()
             for server in serverList {
-                list.addObject((server as! Server).toDictionary())
+                list.add((server as! Server).toDictionary())
             }
-            let groupUserDefaults = NSUserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
-            groupUserDefaults?.setObject(list, forKey: ShareExtension.AllUserNameKey)
+            let groupUserDefaults = UserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
+            groupUserDefaults?.set(list, forKey: ShareExtension.AllUserNameKey)
             groupUserDefaults?.synchronize()
 
             if #available(iOS 9.0, *) {
@@ -139,20 +139,20 @@ class ServerManager  {
         if (serverList.count > 0) {
             for server in serverList {
                 if (items.count < Config.maximumShortcutAllow) {
-                    if (Config.communityURL.containsString((server as! Server).serverURL.stringURLWithoutProtocol())) {
+                    if (Config.communityURL.contains((server as! Server).serverURL.stringURLWithoutProtocol())) {
                         // A different Logo and title for eXo Tribe website
-                        items.addObject(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject]))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: (server as! Server).toDictionary() as! [AnyHashable: Any]))
                     } else {
                         // A common Logo for the other servers
-                        items.addObject(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: (server as! Server).toDictionary() as [NSObject : AnyObject]))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: (server as! Server).toDictionary() as! [AnyHashable: Any]))
                     }
                 }
             }
         } else {
             // when the list is empty
-            let item = UIApplicationShortcutItem.init(type: ShortcutType.addNewServer, localizedTitle: NSLocalizedString("Shortcut.Title.AddServer", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .Add), userInfo: nil)
-            items.addObject(item)
+            let item = UIApplicationShortcutItem.init(type: ShortcutType.addNewServer, localizedTitle: NSLocalizedString("Shortcut.Title.AddServer", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
+            items.add(item)
         }
-        UIApplication.sharedApplication().shortcutItems = items as NSArray as? [UIApplicationShortcutItem]
+        UIApplication.shared.shortcutItems = items as NSArray as? [UIApplicationShortcutItem]
     }
 }

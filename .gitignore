@@ -73,3 +73,6 @@ target/
 # Carthage/Checkouts
 
 Carthage/Build
+
+# Google services #
+**/GoogleService-Info.plist

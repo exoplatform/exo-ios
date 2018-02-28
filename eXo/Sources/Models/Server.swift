@@ -47,21 +47,21 @@ class Server {
     }
     
     init (serverURL: String) {
-        self.serverURL = serverURL.lowercaseString
-        self.lastConnection = NSDate ().timeIntervalSince1970
+        self.serverURL = serverURL.lowercased()
+        self.lastConnection = Date ().timeIntervalSince1970
     }
     
     init (serverURL: String, username: String, lastConnection:Double) {
-        self.serverURL = serverURL.lowercaseString
+        self.serverURL = serverURL.lowercased()
         self.username  = username
         self.lastConnection = lastConnection
     }
     
     init (serverDictionary : NSDictionary) {
-        let url:String = serverDictionary.valueForKey(ServerKey.serverURL) as! String
-        self.serverURL = url.lowercaseString
-        self.username = serverDictionary.valueForKey(ServerKey.username) as! String
-        self.lastConnection = serverDictionary.valueForKey(ServerKey.lastConnection) as! Double        
+        let url:String = serverDictionary.value(forKey: ServerKey.serverURL) as! String
+        self.serverURL = url.lowercased()
+        self.username = serverDictionary.value(forKey: ServerKey.username) as! String
+        self.lastConnection = serverDictionary.value(forKey: ServerKey.lastConnection) as! Double        
     }
     
     func toDictionary () -> NSDictionary {
@@ -71,9 +71,9 @@ class Server {
     func natureName () -> String {
         let name: String = self.serverURL.stringURLWithoutProtocol()
         if (name.utf8.count > ShortcutTitleConfig.maximumCharacters) {
-            var shortName = name.substringToIndex(name.startIndex.advancedBy(ShortcutTitleConfig.prefixCharacters))
+            var shortName = name.substring(to: name.characters.index(name.startIndex, offsetBy: ShortcutTitleConfig.prefixCharacters))
             shortName += "..."
-            shortName += name.substringFromIndex(name.endIndex.advancedBy(-ShortcutTitleConfig.suffixCharacters))
+            shortName += name.substring(from: name.characters.index(name.endIndex, offsetBy: -ShortcutTitleConfig.suffixCharacters))
             return shortName
         }
         return name
@@ -84,9 +84,9 @@ class Server {
     Check if an other server is equal to this server.
 
      */
-    func isEqual (server : Server) -> Bool {
-        let self_url = NSURL(string: self.serverURL)
-        let url = NSURL(string: server.serverURL)
+    func isEqual (_ server : Server) -> Bool {
+        let self_url = URL(string: self.serverURL)
+        let url = URL(string: server.serverURL)
         if (self_url != nil && url != nil && self_url?.host != nil && url?.host != nil) {
            return self_url?.host == url?.host
         }

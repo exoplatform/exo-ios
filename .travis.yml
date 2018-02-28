@@ -1,4 +1,4 @@
-osx_image: xcode7.2
+osx_image: xcode9.2
 
 language: objective-c
 
@@ -6,3 +6,5 @@ language: objective-c
 xcode_workspace: eXo.xcworkspace
 
 xcode_scheme: eXo
+
+script: pod update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO

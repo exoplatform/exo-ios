@@ -13,7 +13,7 @@ class PlaceholderTextView: UITextView {
     
     var placeholderLabel: UILabel = UILabel()
 
-    var _placeholderColor: UIColor = UIColor.lightGrayColor()
+    var _placeholderColor: UIColor = UIColor.lightGray
     var placeholderColor: UIColor {
         set {
             _placeholderColor = newValue
@@ -57,19 +57,19 @@ class PlaceholderTextView: UITextView {
         }
     }
     
-    private func placeholderSizeToFit() {
-        self.placeholderLabel.frame = CGRectMake(PLACEHOLDER_LEFT_MARGIN, PLACEHOLDER_TOP_MARGIN, self.frame.width - PLACEHOLDER_LEFT_MARGIN * 2, 0.0)
+    fileprivate func placeholderSizeToFit() {
+        self.placeholderLabel.frame = CGRect(x: PLACEHOLDER_LEFT_MARGIN, y: PLACEHOLDER_TOP_MARGIN, width: self.frame.width - PLACEHOLDER_LEFT_MARGIN * 2, height: 0.0)
         self.placeholderLabel.sizeToFit()
     }
 
-    private func setup() {
+    fileprivate func setup() {
         self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        self.font = UIFont.systemFontOfSize(16.0)
+        self.font = UIFont.systemFont(ofSize: 16.0)
         
-        self.placeholderLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.placeholderLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         self.placeholderLabel.numberOfLines = 0
         self.placeholderLabel.font = self.font
-        self.placeholderLabel.backgroundColor = UIColor.clearColor()
+        self.placeholderLabel.backgroundColor = UIColor.clear
         self.placeholderLabel.alpha = 1.0
         self.placeholderLabel.tag = 999
         
@@ -78,10 +78,10 @@ class PlaceholderTextView: UITextView {
         self.placeholderSizeToFit()
         self.addSubview(placeholderLabel)
 
-        self.sendSubviewToBack(placeholderLabel)
+        self.sendSubview(toBack: placeholderLabel)
 
-        let center = NSNotificationCenter.defaultCenter()
-        center.addObserver(self, selector: "textChanged:", name: UITextViewTextDidChangeNotification, object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(PlaceholderTextView.textChanged(_:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
         
         self.textChanged(nil)
     }
@@ -97,7 +97,7 @@ class PlaceholderTextView: UITextView {
     }
     
     convenience init() {
-        self.init(frame: CGRectZero, textContainer: nil)
+        self.init(frame: CGRect.zero, textContainer: nil)
     }
     
     convenience init(frame: CGRect) {
@@ -105,7 +105,7 @@ class PlaceholderTextView: UITextView {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func awakeFromNib() {
@@ -114,7 +114,7 @@ class PlaceholderTextView: UITextView {
         self.setup()
     }
 
-    func textChanged(notification:NSNotification?) {
+    func textChanged(_ notification:Notification?) {
         self.viewWithTag(999)?.alpha = self.text.isEmpty ? 1.0 : 0.0
     }
 }

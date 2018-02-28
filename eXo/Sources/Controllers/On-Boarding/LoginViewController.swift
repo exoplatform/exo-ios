@@ -23,7 +23,7 @@ class LoginViewController: UITableViewController {
     let kCellHeight:CGFloat = 80.0
     var defaultServer:Server?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (ServerManager.sharedInstance.serverList.count > 0){
             defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
@@ -32,7 +32,7 @@ class LoginViewController: UITableViewController {
         }
         self.tableView.reloadData()
         // the navigation controller is alway shown in this screen
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
     }
     
@@ -42,35 +42,35 @@ class LoginViewController: UITableViewController {
      - Connect to the most recent server
      - Open the Input Server to select an other server
     */
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+    override func numberOfSections(in tableView: UITableView) -> Int{
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1;
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (section == 0) {
             return NSLocalizedString("OnBoarding.Title.MostRecentServer", comment:"")
         } else {
             return ""
         }
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
         if (indexPath.section == 0) {
-            cell = tableView.dequeueReusableCellWithIdentifier("LastServerCell", forIndexPath: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "LastServerCell", for: indexPath)
             cell!.textLabel?.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier("OthersServerCell", forIndexPath: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "OthersServerCell", for: indexPath)
             cell!.textLabel?.text = NSLocalizedString("OnBoarding.Title.Others", comment: "")
         }
         return cell!
@@ -81,16 +81,16 @@ class LoginViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation */
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         self.navigationController?.topViewController?.title = ""
         if (segue.identifier == "openDefaultServer") {
-            defaultServer?.lastConnection = NSDate().timeIntervalSince1970
+            defaultServer?.lastConnection = Date().timeIntervalSince1970
             ServerManager.sharedInstance.addEditServer(defaultServer!)
             //setup Destination VC
-            let homepageVC = segue.destinationViewController as! HomePageViewController
+            let homepageVC = segue.destination as! HomePageViewController
             homepageVC.serverURL = defaultServer?.serverURL
         }
     }

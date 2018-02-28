@@ -30,7 +30,7 @@ struct Config {
     static let communityURL:String =  "https://community.exoplatform.com"
     static let minimumPlatformVersionSupported:Float = 4.3
     static let maximumShortcutAllow:Int = 4
-    static let timeout:NSTimeInterval = 60.0 // in seconds
+    static let timeout:TimeInterval = 60.0 // in seconds
     static let onboardingDidShow: String = "onboardingDidShow"
     // based on hex code #FFCB08
     static let eXoYellowColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)
@@ -46,9 +46,12 @@ struct ShareExtension {
     static let AllUserNameKey:String = "exo_share_all_usernames"
 }
 
-struct Cookies {
-    static let username:String =  "last_login_username"
-    static let domain:String =  "last_login_domain"
+enum Cookies: String {
+    case username = "last_login_username"
+    case domain = "last_login_domain"
+    case session = "JSESSIONID"
+    case sessionSso = "JSESSIONIDSSO"
+    case rememberMe = "rememberme"
 }
 
 struct ConnectionError {

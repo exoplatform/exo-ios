@@ -18,6 +18,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class InputAccountViewController: UIViewController, AccountSelectorDelegate {
 
@@ -41,7 +65,7 @@ class InputAccountViewController: UIViewController, AccountSelectorDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginAction(sender: AnyObject) {
+    @IBAction func loginAction(_ sender: AnyObject) {
         if (usernameTextField.text != nil && usernameTextField.text?.characters.count > 0) {
             account?.userName = usernameTextField.text
             
@@ -50,9 +74,9 @@ class InputAccountViewController: UIViewController, AccountSelectorDelegate {
             account?.password = passwordTextField.text
         }
         if (delegate != nil) {
-            delegate?.accountSelector!(nil, didSelectAccount: account!)
+            delegate?.accountSelector!(nil, didSelect: account!)
         }
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popToRootViewController(animated: true)
         
     }
 

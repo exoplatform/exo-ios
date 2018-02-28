@@ -78,6 +78,6 @@
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "Version de Platform non supportée";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.3, ou installer l'application version 2.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.4, ou installer l'application version 2.";
 
 "Word.Back" = "Retour";
