@@ -7,140 +7,151 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E701A899A23C5AE0365660209CC978 /* HTMLKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A99F1A1CAE9C4D607E6C621B2DEF1079 /* HTMLKit-dummy.m */; };
-		03E778D7322C3E6EAFAE3C9541D58478 /* CSSSelectorParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2805DB827258E17246B75AEB2BEA4560 /* CSSSelectorParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04C16365CF59C4D0A68EF85AC65802B2 /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB4D7169939D160BA9E6D304B71C8C7 /* HTMLTokenizer.m */; };
-		065E65434C303B0993E1B89A8EFAD37E /* CSSPseudoClassSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EAF35EBEEEFB79275F77DD097A31FA1 /* CSSPseudoClassSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C75E44AEEE0A6FDC3AA1204AAE46042 /* HTMLEOFToken.h in Headers */ = {isa = PBXBuildFile; fileRef = C63C76A0C3242FF966FC60E285E558EB /* HTMLEOFToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		0E8EFCAC8CD39E184ACD33521EDF1127 /* HTMLNode+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C8412B7993B34AE145C921EB3237E71A /* HTMLNode+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		0F309DA08DD6285FB410D98C36850696 /* HTMLTreeWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD631C4E2DC35B26DFDAD835B99D575 /* HTMLTreeWalker.m */; };
-		0F6089C2360875DCA01F71B4373000B7 /* NSString+HTMLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8D19373966C414B3312DBF18E1018C /* NSString+HTMLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		11E866398F2DA26A56A516229A537D17 /* HTMLKitErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = DEA741D4A850C5DF31E052CB2DEB0DA2 /* HTMLKitErrorDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		138597F3F76E3524F08AD230669F5590 /* CSSAttributeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 49ADD2CBDFD1F5DC0EF189C2E483D752 /* CSSAttributeSelector.m */; };
+		03F9ED6006F1274DA84FD473C4E5F817 /* HTMLDocument+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DF890C03B8C0CC107544C3E0B3FB4DD4 /* HTMLDocument+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		06DCED56DE057DAA6B4C0300991A6183 /* HTMLDocumentType.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A5190E917FDF5F49DD2FA1793CB188 /* HTMLDocumentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D166F60D1ABF48A02CE63D8C33548D9 /* HTMLRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB19DE13E09F0497978CDD2662FA4 /* HTMLRange.m */; };
+		0EBB45E9B07385B940C6A74AF62CAF88 /* HTMLTagToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BEA94D98C47E35E311E8C0AE1DA7AF /* HTMLTagToken.m */; };
+		12AE254B80805E215A40412C7AD553EC /* CSSTypeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8481B68A2E5E28EB271A8F31B899B7 /* CSSTypeSelector.m */; };
+		12D248CC6DD5635DCCD92A565376B101 /* HTMLTokenizerStates.h in Headers */ = {isa = PBXBuildFile; fileRef = AB098ACE05A5679CE66D4D16580DDC2E /* HTMLTokenizerStates.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		13B12ACCAA9A07CDE02637C10425DD9E /* CSSNthExpressionSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B2926F2062B27BD764B9A6C510771D /* CSSNthExpressionSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1440CB56764668C04F6E12A914E37123 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		145C48BA048E558F9A71A82173308FF6 /* HTMLKitDOMExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = A56E201BE103B35782D84A16C28FA894 /* HTMLKitDOMExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1491187E44076B9847D57500233F9257 /* HTMLListOfActiveFormattingElements.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC71C2DE09027F1F4F672ACE4534E18 /* HTMLListOfActiveFormattingElements.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		153D763115BBD18E3A0B2B20DC123266 /* Pods-eXo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F209009D8B4EF0C7504A76583ACA32 /* Pods-eXo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1594A2F4C5062A92154124AB7B1509C7 /* NSString+HTMLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A74652ADD23FD39FC5F850CD59E3D439 /* NSString+HTMLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15F7E036F4B5CF6C067882D7AEE81D17 /* HTMLNodeIterator+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = CB1694C71E03FB1AF7DF76AA4D177158 /* HTMLNodeIterator+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		18A6EB352EEBA229D4067E6BF62D6AC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		1982DA19D7AD5DC429D82ED47B2D6417 /* HTMLText.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F97FE52474E4BE7728BF789990F428A /* HTMLText.m */; };
-		19B4772D2D7D44EE6C34BE07848C2A11 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 543DE63A7CF671E0C1C94485D5DA97D4 /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B787C852AE843B890DCA42E6B8DA6E1 /* HTMLTagToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D3E655F58283D4FA0C7E646E9987E4 /* HTMLTagToken.m */; };
-		1D1F6286470B7B4E7D93F95C96B4493F /* CSSStructuralPseudoSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CF599774E536085F36031EC84B868A /* CSSStructuralPseudoSelectors.m */; };
-		1E665FBF6B388A96F0CCE8DD594B7A82 /* HTMLCharacterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = CF53D6739D51E1A056F8ECCE3EBFAA65 /* HTMLCharacterToken.m */; };
-		22BBE7AC3C07126BF0F1AA3FBA78D168 /* HTMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = AC8226CEE95E20C7390F75DB9F495BB7 /* HTMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23143F0F6FA029DC7F0A9360D4FE3590 /* CSSPseudoClassSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5997503ED0B4D2E12D9006DFD5074 /* CSSPseudoClassSelector.m */; };
-		23302493717DD8FCA4EC146E29DBDBB1 /* HTMLTagToken.h in Headers */ = {isa = PBXBuildFile; fileRef = FE65AB5C92B9BEAF041E65764FA5B2EB /* HTMLTagToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		23549B13A3B84F688580B95560F7D4EB /* HTMLNodeIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D68FC09E702444D4D4B4E4613AB1172 /* HTMLNodeIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23B27C127C7170953EF286F6047E908D /* HTMLTokenizerCharacters.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D386B2FD4BF639E36554F7094C6A832 /* HTMLTokenizerCharacters.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		261E59B90598FB2AED68129B4C5301DD /* HTMLNodeFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A86794277D0110299D132B484C02131 /* HTMLNodeFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27BA1232F4D43E52E25C56AA89C198E1 /* CSSSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = BACD6A166A9F6344865FDE5DF0B6120D /* CSSSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27DA2B8D04879E260FA160DC6ECA5904 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D23BB800F182C9B4D84FAF74304BB /* SVProgressHUD.m */; };
-		296AD02EA3CA355C106D53947D531855 /* CSSNthExpressionSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = EA4D05900E78330C6F15E85F2039B266 /* CSSNthExpressionSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2ED466F415F7205F8E828F0F1EE4936A /* HTMLListOfActiveFormattingElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C6436E2C5D7F056EEE8401B860B873 /* HTMLListOfActiveFormattingElements.m */; };
-		301916E1F930B36C9A79E2F016BD90F0 /* CSSSelectorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5945D8883D7C65DEDB42742F939B6894 /* CSSSelectorParser.m */; };
-		309DFE7A4318201FE1D67FD259CB196B /* HTMLQuirksMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 21B54675F1155EC4A966E3609D875021 /* HTMLQuirksMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3249556137BD22CC89BB1F27A108FC7C /* HTMLNamespaces.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A750B6DC4C8ACEE3BE31B404075AFB1 /* HTMLNamespaces.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19B4772D2D7D44EE6C34BE07848C2A11 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC942E4234539FB39B71E140602077D4 /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BBF07D075167145AC240AAA7DD0FE71 /* HTMLListOfActiveFormattingElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AD58A4AE1167943B9A04D052371B /* HTMLListOfActiveFormattingElements.m */; };
+		1BCC613A3BAD5C42DF6B617BC0A4A88E /* HTMLEOFToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 7879E901B2A8FCAC9CE047209EA17C9B /* HTMLEOFToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1D152239DF14B26C37A3F8AA57A9017F /* HTMLDOCTYPEToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 510B1BABB87AC2DCD9194704CF6C5885 /* HTMLDOCTYPEToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1D4D99E8F476591E37D276F410351CFD /* HTMLCharacterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA54C56EEC5C28334979615812974C /* HTMLCharacterToken.m */; };
+		1DCCC04D5C075AAA96B35409CC34CC19 /* HTMLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0800714D57E9323EC75E5307A95DB28E /* HTMLMarker.m */; };
+		210FB25A68E3501A484AA2B0DB8F678D /* CSSCompoundSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A2A239DFFCC7716E177F464B3065479 /* CSSCompoundSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27DA2B8D04879E260FA160DC6ECA5904 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB49867E8920C3215761E739AC8697 /* SVProgressHUD.m */; };
+		320A1F72342D5138D4909F63FF94E8E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
 		35362417A1A2675F20B61E1DD690E26B /* Pods-share-extension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5C84179598A83FA6A4933C28A8C0DA /* Pods-share-extension-dummy.m */; };
-		35EF1988B2AD2BB5493859468F555BC7 /* HTMLTokenizerStates.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9BB4C394971387B973BCDE177B53A1 /* HTMLTokenizerStates.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3620CF21568F926BBD41EE4B0E81ED89 /* HTMLDOMTokenList.m in Sources */ = {isa = PBXBuildFile; fileRef = BB88347AF987B80D363A5F4A885CB74B /* HTMLDOMTokenList.m */; };
+		35FAA09F59F20A835F7040381CEDF065 /* HTMLCharacterData.h in Headers */ = {isa = PBXBuildFile; fileRef = 877EA64A8B66F69D37A68F96743BAA2A /* HTMLCharacterData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36DFC10096BA82F333E74CE26E7926BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		36E69CA8230E17D3290FB89D7F3C4F1B /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A7484AE8644E3FADC5CD7242013FF0E0 /* HTMLComment.m */; };
-		377372B6B54A3745793A8538F9B90AB6 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = D1CC095E294495E36B3E221CCB52F8EC /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3BC927CFBA81FD4742294238B9CF4E61 /* CSSNthExpressionParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F6D35FE57565C631DBB661AD0D54D0C /* CSSNthExpressionParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C2CEBA81D6BC74B4495BC0626E9799C /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9FD61128F5FA378EA5515EBD32AD1 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3D8F9CBEEFBEE448E8E35E48A9C01838 /* CSSSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6AE3395BEFA96080BF74A25A8F96A6 /* CSSSelector.m */; };
-		3E9824586ED7A5BD1A8011F0F4D24552 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDCBCF0ED30D486B372AD23EDF8AA1 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		484A3711DE9D960156D2E208780A744C /* HTMLDocumentType.h in Headers */ = {isa = PBXBuildFile; fileRef = A1FEB7BA105EE2DCFC312E940C4EFEFD /* HTMLDocumentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D9032DF25EBC069ED83BDC8CF393B6E /* SVProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E92D2E0ECB3DDCA1FCF6E3BA01219FD9 /* SVProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4EDF93E49C86BFBCA7861BDF52758736 /* CSSPseudoFunctionSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = F705677703E989EA643E4A4F94E8980B /* CSSPseudoFunctionSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F4D5966466C304206EB70336D33FB63 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAB689649E0B125C57402CE4713E8DA /* SVProgressHUD-dummy.m */; };
-		5282C2E9651E90C6FCDA31E742208243 /* HTMLNodeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F590BFE4E1944B9D009250E7A10D7B /* HTMLNodeFilter.m */; };
-		530BB58C3396B6C269FBB00227891B48 /* HTMLParserInsertionModes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1AB0FC673DEC14E872B25B0D484C07 /* HTMLParserInsertionModes.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		54DACD71A6C4C128F16784471E081745 /* HTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E9B84D93DA13F58AC4264565F835B /* HTMLElement.m */; };
-		5590DEAAFDA54E6F6BB0DD74A65F93DB /* HTMLTokenizerEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = B08C84990FE524955A85F7555990A6AD /* HTMLTokenizerEntities.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		566529BAE13CB46F7C794D0DCD9DDB97 /* HTMLToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E849AC019A207788A6BFA17F678377F5 /* HTMLToken.m */; };
-		585DF468EF448F029C4EC8211FC8E631 /* HTMLKitDOMExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 142198E54DDE31FDAEBA9C5B20622025 /* HTMLKitDOMExceptions.m */; };
-		5A9E3BB282657D484864A5CBC6781FEF /* HTMLTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = C854ED77F242E794422B44CB72868D4E /* HTMLTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C6D05836EDDF6008BEB783462C41A24 /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E93BC771D9DD0FF2345AD1CA860080 /* HTMLDocument.m */; };
-		5E37711C8893F3D57F8B6D85495C96BF /* CSSCompoundSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F99E4EBF4132827FA867851912568F /* CSSCompoundSelector.m */; };
-		5F2ECAF036CB366F385C1C205442572A /* NSString+HTMLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A33A7A1E07F7207264FC39BDD774E5 /* NSString+HTMLKit.m */; };
-		5FC13EDE98F7D546582BD03F89009539 /* HTMLMarker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7367DDE0678EF16AC228103FA0CFEB /* HTMLMarker.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6252622CD78F1E9B283543EFE8FD1271 /* HTMLNodeTraversal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BF4D4402C517EF8D5E27C5F858CDB /* HTMLNodeTraversal.m */; };
-		67235935A8E99B35FC4564B113434CD6 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7CED280DF91FF599CD6F30EF8D2873 /* HTMLNode.m */; };
-		6785343EC42C9C96F91053CAB5951C41 /* NSCharacterSet+HTMLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E8C6BDE091C7CC6286D9492C9F160EC /* NSCharacterSet+HTMLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6911E975641A73272F6E038F87F02417 /* CSSCodePoints.h in Headers */ = {isa = PBXBuildFile; fileRef = 36CB020465B55100C852549D19E76BB6 /* CSSCodePoints.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		69517B323092D86D41618272E2681E1B /* HTMLOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 062B41D223C02B3D0D61958FDBB9828B /* HTMLOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		377372B6B54A3745793A8538F9B90AB6 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 678E87D3B57F0E939ED86B0B2A2F7235 /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C2CEBA81D6BC74B4495BC0626E9799C /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71414AB7D44C24F4DED2501A8E043437 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3C865A0268FA65F2E0E420F9CC16C187 /* HTMLToken.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC3A74BAD9B8D7D69BEE2306A8C563C /* HTMLToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3D6A4990F8A8F2BEA2C9CB6EF152E29A /* HTMLComment.h in Headers */ = {isa = PBXBuildFile; fileRef = F044EAAD04A4E3F54A60B907588D10E9 /* HTMLComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E9824586ED7A5BD1A8011F0F4D24552 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 271C204A2D70E28B96561365337619B8 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F7FEA2190810C4807730CA6732E4461 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 86821F06521FAE3CE5978F53CE933390 /* HTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47CC62839C4E3A54E685E381B1A0A3F3 /* HTMLNode+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E59FE016FC78EBE95167C27DF508BEC3 /* HTMLNode+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4863FF6DD4B204BC779E432E41D42DF6 /* HTMLKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C9DAB998648462F1687CB5BADABAD8 /* HTMLKit-dummy.m */; };
+		49E6A4F5345E0B4825CC8EEA4D22074B /* NSCharacterSet+HTMLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6254B41C55FBBF1A043E8ABCFEE5DCD3 /* NSCharacterSet+HTMLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D5D9EC9BFDB7F92CBDA018CB74C9B0C /* CSSInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4440E8A93430795A4BC7991F8340B923 /* CSSInputStream.m */; };
+		4D69320E8C9603DAD5FB8FA252F39DE2 /* HTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B90DB85D173B3E545CA9529CD4E01412 /* HTMLElement.m */; };
+		4D9032DF25EBC069ED83BDC8CF393B6E /* SVProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 729433561F31BBFC5F22CC8CCABC2690 /* SVProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DA1E3F68C226B0E714B7D6FDB1E790D /* HTMLCommentToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B54E57C3B5DB097E622604AC2AB6FD3 /* HTMLCommentToken.m */; };
+		4DABF3C6277FD53A8DA2EDB0BD8EAB29 /* HTMLStackOfOpenElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 598DAD125E105C1526AE973A234F957A /* HTMLStackOfOpenElements.m */; };
+		4E8BB3CC835482FCAAFA0DB8A247A3BC /* HTMLNodeIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C46807EFE453F536B98C525F5A8F5BE /* HTMLNodeIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F4D5966466C304206EB70336D33FB63 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4719757F40075F2077DF80F941F1A8 /* SVProgressHUD-dummy.m */; };
+		50179F203593EC002F0425C45DE7C786 /* CSSSelectorBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6699B086411BD94A246EC1FDBD692888 /* CSSSelectorBlock.m */; };
+		537486179B0F1D7AC9F649B1A7E0B297 /* CSSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EA7415B8CEFAA58C7B9E0F90BC6AAEE /* CSSInputStream.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		539EF496CF555228D628F6037595F78F /* HTMLCharacterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = B478A9FAD22F8EA183A05BFDD8529149 /* HTMLCharacterToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5432DBE2468B7914FB4CE5C867F1EF03 /* HTMLCommentToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC6DC3C809DACC69A73BDC8310332BF /* HTMLCommentToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		567050257C96324FBEC4145CA8B66A59 /* HTMLToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DBC39BFEE345AFED4926E98BB6BF0C /* HTMLToken.m */; };
+		56955A893D3B0B94E74A8C9117BFE6A7 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63374E45F3438298C5BEE4B387601843 /* HTMLParser.m */; };
+		5877B7F496E7633CC2312C90A1185352 /* HTMLDOMTokenList.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F6DA14FBF6A0A136C99DE29300D5BC8 /* HTMLDOMTokenList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CC3CCA46EB15D359619375F08B3D437 /* HTMLNamespaces.h in Headers */ = {isa = PBXBuildFile; fileRef = F6CD1617B704BEE4EEC2FD3137E7399C /* HTMLNamespaces.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F059790A1AC08184EDF7F69331C4CF3 /* HTMLEOFToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223DD69B32AF1D5E5A0A0D0ED290AAF /* HTMLEOFToken.m */; };
+		5F8AFCEED9A5289FB372AB03A97C44E5 /* HTMLInputStreamReader.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B150CE1C2D001604E367F5C9B117AB /* HTMLInputStreamReader.m */; };
+		60C59F03BCF433908A3CE340DDC10DBA /* HTMLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A87C9EE449A39A6CD27DFAE4B7E36D20 /* HTMLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61CD0D746A44B2D97A636BD8585CC0FD /* NSCharacterSet+HTMLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE8A2BB783F26F549B556FD3E54925C /* NSCharacterSet+HTMLKit.m */; };
+		62D617C36D43DFF198152B866611E94D /* CSSSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A98A1662CA7E4BD8CF97CFC634EB0C /* CSSSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64034019BD874E8E6491F911D1CECF45 /* CSSCombinatorSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 31990E08DEF277EF2BEEFE64C61A63DE /* CSSCombinatorSelector.m */; };
+		64D0D0A473FFD467CC2D768581AB9A72 /* CSSSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = A77FB6E0122129502030E444E80F438F /* CSSSelectors.m */; };
+		68C0E62DA30F91BED7FE89BAD45C4967 /* HTMLCharacterData+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = A369D2EDC0971877E6635778E2CEAE00 /* HTMLCharacterData+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		69B1F46BAF5AC29C80D90D76B0104D2E /* CSSPseudoFunctionSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = EE5C46ECB51FCFBF9F730DC67F3F02BB /* CSSPseudoFunctionSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6AB5F178CB2D4C21C1ECC171F434BCE6 /* Pods-eXo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6FB38A4FC60D5C9D9C32DBBD1170A /* Pods-eXo-dummy.m */; };
-		71E326E09AB20CA6C2BEA86FE3D17FF1 /* HTMLToken.h in Headers */ = {isa = PBXBuildFile; fileRef = B928C7FAF48A013496BC2FBA73958B69 /* HTMLToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6B09CC266CC15DA34F6EB04979CADCBD /* HTMLCharacterData.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3E2D9CBEC926FE90520ED79963CB /* HTMLCharacterData.m */; };
+		6BC010D0BE74DB76857AEBF5F52A6A05 /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD95DE653E65613920F1602555AE1C /* HTMLTokenizer.m */; };
+		6D1AE3AD75CE9591EC2227777DF3273E /* CSSNthExpressionSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFAE831753F5D0DE5CE8C02C12B70E6 /* CSSNthExpressionSelector.m */; };
+		6DB790C2E98FEA8D3AD6D76420D504F6 /* HTMLDOMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EFAE1158B23F67320B72D0E7174946 /* HTMLDOMUtils.m */; };
 		726BA9CD590E1B31479C85C59104F1D5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F20100941FEDA6D1EF9FB280B41B8C /* Security.framework */; };
-		73736CA2236AC2996FD7B9B662C5F0A3 /* HTMLElementAdjustment.h in Headers */ = {isa = PBXBuildFile; fileRef = 61FB5B743706C9F32546CE920C75F238 /* HTMLElementAdjustment.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		7496FEF35E2D196FDF3FF9C0ECBC3D40 /* CSSSelectorBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = D603E6BB6D928B0CD7F49D9311B7F0C1 /* CSSSelectorBlock.m */; };
-		74D8DA70884F1E250CB28E31DE426CB3 /* HTMLDocumentFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F729FD63B42DAD8AC9E31B2BA5A7A53D /* HTMLDocumentFragment.m */; };
-		757BFA4C7CA1DDB6EEA5A93EDE472845 /* CSSAttributeSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DCDAC47A8D5B199C4E45CFC75FAE7A9 /* CSSAttributeSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76B1CCEC7528F2821AD483F940F63058 /* HTMLTreeWalker.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3813BA217D3AD441171A4107BE8A67 /* HTMLTreeWalker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		771F6BF51FEF53FF546BAE32B3B4079C /* HTMLEOFToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CFC1E03729A4E1B169B60C4788614E /* HTMLEOFToken.m */; };
-		79614A0A914377503883A29CA68A9C11 /* CSSSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DBEA30BA0349F322F4E5C7A458F925 /* CSSSelectors.m */; };
-		79E79C0F31F172EFDC5B76C7EB6F5544 /* HTMLInputStreamReader.h in Headers */ = {isa = PBXBuildFile; fileRef = C741E1CAB9E8BCB5821C684C1125749F /* HTMLInputStreamReader.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		7F0AB7496D1AF7E7E4249F1FD4758141 /* CSSStructuralPseudoSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = B5DE88FBA44C36AE7EBFB2629E9447DF /* CSSStructuralPseudoSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		80E8BB0ECA940C6BE35ED348F4D00147 /* CSSSelectorBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 67434001BF32F841B826790577F6493C /* CSSSelectorBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7346E4C48D763F1066074180B1CAFC78 /* HTMLKitDOMExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D0044B1B15C8FDE0C0A143B692BDB6 /* HTMLKitDOMExceptions.m */; };
+		77C0BF5ADACD9F011FBF4006B7FFA842 /* HTMLTokenizerCharacters.h in Headers */ = {isa = PBXBuildFile; fileRef = DD686789D104435D0F8FC439E321D41A /* HTMLTokenizerCharacters.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		7ABA7854F7EC83DA273F23100EB8C3F1 /* HTMLStackOfOpenElements.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE68D41DCE0A3F885742D9674ABB09A /* HTMLStackOfOpenElements.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		7AFF4400FEAABF4469046B1B5C55FFFE /* HTMLTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A82E4137BBCE901D73EE488C83F5A2 /* HTMLTokenizer.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		7C0DEA489F6B2164462867D3200FC3B9 /* HTMLTokenizerEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = D8A23064D19A79FC9CA42675909120C6 /* HTMLTokenizerEntities.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		7E86305BE015175BD72FDE753C492E6D /* HTMLTagToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 36CE004FCD5F3951A9E9BCC171C6771C /* HTMLTagToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		818CCDB279ED7FE97393D59E0BBE749C /* Pods-eXoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF40A47BCB9A7CBBA23FBD2893E3DA9 /* Pods-eXoTests-dummy.m */; };
-		826DA3DE2AB6C96D1623FED686D128AE /* HTMLParseErrorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF8FFD905B749757C1D2ACFB175AB2F /* HTMLParseErrorToken.m */; };
-		8444DD2335D396DF694E6629AB99974B /* HTMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 3603E0D83C003289107A2ADEF49BF3D0 /* HTMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83BC42C39A4CFD06704518D182698999 /* CSSNthExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D981BCAADCFDC3C89A596276617CB523 /* CSSNthExpressionParser.m */; };
+		849FF124E3DE25AFEEFE60B05F20F3EF /* CSSSelectorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E08A130600243BD4F2A50EF5D0D00EC2 /* CSSSelectorParser.m */; };
+		85157EAC66767FE12764FC715A6BCA51 /* HTMLNodeTraversal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F16FD96D6112E5086FC43A48B4AC331 /* HTMLNodeTraversal.m */; };
+		85D42E9EF7F6CB9DCD834EF0364A30BB /* HTMLParseErrorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8261D56F1761E539544843F67C9687 /* HTMLParseErrorToken.m */; };
 		86929B59953111592F60D3E797DCAAF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		86E4D4192D37DDA1647270273F9BAED7 /* HTMLTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A33DE24C77BA20EE86BEF167E9157C /* HTMLTemplate.m */; };
-		87229CF8CFBBD60B9020BB5065AD4771 /* HTMLDOCTYPEToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD4B368CEE2BB855AC8812CD59C4653 /* HTMLDOCTYPEToken.m */; };
-		88AF7EA12DC469C9D8A75DB95B39CDDE /* HTMLTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = 15F220B4E849A09FEDA39BAA3D1B0E62 /* HTMLTokens.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		898A2B84E1C6C75EEF9FB84613329845 /* HTMLCommentToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FD4B1D22199CD6CDBEEBBAA23FC62C9 /* HTMLCommentToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		887FFB328591D8CCB59189733EDFBE82 /* HTMLOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EE20944C28A050A699C22129CD73CB7 /* HTMLOrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8938962045148287C6B33BADB44F6ECC /* HTMLKitDOMExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C5B437240C69967575DE1D762C4B17E /* HTMLKitDOMExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8978BB7FD70F599595BC023E92D3C485 /* HTMLNodeFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 68468E924BF2F21A94A5C0D03632DA20 /* HTMLNodeFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D5AE38FD8E1796326594C3A7D5B9A8 /* CSSSelectorBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 1487372D437F4C872A939BCDF865D6E9 /* CSSSelectorBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA1070C16FCADB9FD6CA866EDD1B786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		8BCED44C0C15B2820CCAAB0A50181589 /* HTMLStackOfOpenElements.h in Headers */ = {isa = PBXBuildFile; fileRef = 36FF91638D0EB04DAEC49FE3F736A705 /* HTMLStackOfOpenElements.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		8CC726539A9FEB57802F49B2DCE07FF4 /* HTMLNodeIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 730DBAAA5D942AB2F14DA38763BA9C19 /* HTMLNodeIterator.m */; };
+		8BACB168E46C1A25CFFAB24299E9C2D4 /* HTMLParseErrorToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 356AAA00B5B52F8303B1EB98FC814B4E /* HTMLParseErrorToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		8FD73610F2B473290AE6F84879C66E2F /* CSSSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD0595E2A7BF0F6154DC97AA65EDB1B /* CSSSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9240807F6B3871364E6A2A16549F00D9 /* CSSSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D7860DD242201B5B890F06352906C1 /* CSSSelector.m */; };
+		9350C6FB94D1E50F17745C1715F56BB2 /* HTMLNodeIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = A65133BE05717D342E08A850EBDBEC46 /* HTMLNodeIterator.m */; };
+		93FB8786EC786EE2714DC8CA944E9AC4 /* HTMLTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9738E657F4BACE641C8377219391B06D /* HTMLTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94557AB0DDB4582569D079CD970BC6B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		9659EB916882F5B4EC108B23A3E292EC /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D32CF03765F175E367A8E4137891F7B /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		998577D0FBFE5C63CB61413780A0A448 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 214744E2D557A293DF6689F4A1993337 /* SVProgressHUD.bundle */; };
-		9EDFDE4E1E976C00658478F1C48BB9FF /* HTMLTokenizerEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BB9D663C81C8077EDFF3C5BA3199A2 /* HTMLTokenizerEntities.m */; };
-		A04964B93364180B5E81D143317C2E40 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 079092D0D738A3C867D404B728BC3F79 /* HTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A2DFC05228DFA9F366D4EB2030663385 /* HTMLDOCTYPEToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FBA8C27F0E26868C0D6702B17904B2A /* HTMLDOCTYPEToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		A3D4F1C73BC23EEC9C0E47C65F45ED68 /* HTMLText.h in Headers */ = {isa = PBXBuildFile; fileRef = 24223D88F63BE7E38E063C9187F37058 /* HTMLText.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4EE8526D8E3A492B4A9F4FF286781EE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623E79D69CB58D810B3FADD3272C967 /* SwiftyJSON.swift */; };
-		A80E7F3672D8A811843D6A5453C3C7A7 /* HTMLParseErrorToken.h in Headers */ = {isa = PBXBuildFile; fileRef = CAFE3A3AB2391D41715C2FA826387C03 /* HTMLParseErrorToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9659EB916882F5B4EC108B23A3E292EC /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = ED10D01B0B027A9A09B7E0DD73FE44CE /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9710BFFB5286ED10B8981B9E6E6E433B /* CSSTypeSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = DE47133D2803B211458DB3BA6D87CD6F /* CSSTypeSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98584CA55A24217AC07D3FF3DDA77432 /* HTMLMarker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF3F43F2BC9568ED211501AE985C69D /* HTMLMarker.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		998577D0FBFE5C63CB61413780A0A448 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E3154701DEF64CC094EF335FF9F16799 /* SVProgressHUD.bundle */; };
+		9EEB270D327F9912ADAD604F3E2C421E /* CSSCompoundSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3F99B2F9A3A46CCEDCDBFBDACC7F7 /* CSSCompoundSelector.m */; };
+		9F116C43F8B1D1A93DFF886A9B88B222 /* CSSStructuralPseudoSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = 633B373517D5AC751F0F757094CF5C77 /* CSSStructuralPseudoSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F24582964532541F345C6654E046CD7 /* HTMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = C65C673B34CF09219FDAB65E82ED0B14 /* HTMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A14E3A05070D48C318CF8B5915A8E460 /* HTMLTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7A5137C1D11337EC7F27E11A1E5BD4 /* HTMLTokens.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		A2EFAEABB5CA98D4CF32700231BBD139 /* NSString+HTMLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6F7980018CD39A5498CE46D5F7A18F /* NSString+HTMLKit.m */; };
+		A4EE8526D8E3A492B4A9F4FF286781EE /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AF68A3DE5D33930934AD4B9C8A9C2 /* SwiftyJSON.swift */; };
+		A6855D9D7029C3B3A1C6D4BD59D00A44 /* CSSSelectorParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6376EF689F877D1228708086A4E82B /* CSSSelectorParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A80042E1C598A2BB9890B29224775B45 /* HTMLQuirksMode.h in Headers */ = {isa = PBXBuildFile; fileRef = C4E943F639FF29104075323220B99AD1 /* HTMLQuirksMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8BFB9CA5135F3FB523FFCD7BE0CE2B6 /* Pods-eXoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F75E5C3CBC28840C9DA88A9DEE844E0 /* Pods-eXoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8EEB6AD35D5F44A17897547B5E08863 /* CSSInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B395D43EE1B6D09CDE07ACE2FCB1BA1 /* CSSInputStream.m */; };
-		AFA6A249FD2B17D248E059BC8D11D9F5 /* HTMLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 22364E623EBC3C2EDAD0F3BC248844A2 /* HTMLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFA6FADB393A3321FCDEEC52C5523E3D /* HTMLInputStreamReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DD10F3FB34359AB4EE8518D5A3D391 /* HTMLInputStreamReader.m */; };
-		B0DE0114ED1851FD5CB0BFCAACF5A086 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2748810AB7C846C8D3B8BCE59E18E /* SVIndefiniteAnimatedView.m */; };
+		AB1ADFEF768199ED44C568B107A42D59 /* HTMLInputStreamReader.h in Headers */ = {isa = PBXBuildFile; fileRef = B12112B62720B659F236058F5023ECD3 /* HTMLInputStreamReader.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B0DE0114ED1851FD5CB0BFCAACF5A086 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B567419BFAA645D947DAE3A7EFFD5F /* SVIndefiniteAnimatedView.m */; };
 		B131243ECCBF4D906A586530D9D98AC7 /* Pods-share-extension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E62F3F831EACF87BEA59C5A6B037694A /* Pods-share-extension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B522CDAD008371BD5A14A6E1F96889FF /* HTMLCharacterToken.h in Headers */ = {isa = PBXBuildFile; fileRef = F0267370B9F53D22364D6BEC216087F5 /* HTMLCharacterToken.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		B71AAF65B3CCB63EC447071DC5AE9EFA /* HTMLDOMTokenList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C9B4D86243EA3EBA20E34CA67BB1B7 /* HTMLDOMTokenList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B720CE23579A4AF1C73B9466A77CD7DE /* CSSNthExpressionSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 007D451A694BD5B7B9B55319FD22886E /* CSSNthExpressionSelector.m */; };
-		B85750793C8F42DA3BEB0DD40D068BF6 /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 59747685696FF4E2702B7D3A26FACE7C /* HTMLDocumentType.m */; };
-		BC04335A72EA89E61388621BB6BC7A30 /* HTMLComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 73924B9117602B3D01B12CC1FA0E69DF /* HTMLComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BEB602CCF5D3C5397AE332B06B56430F /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 423BAC07C5E5A35416E83AECDC1B5ABF /* HTMLParser.m */; };
-		C28539B26DC359B2D9AF4B72389079A5 /* CSSTypeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F649DC3227AD02241398322FFACC441 /* CSSTypeSelector.m */; };
-		C324C1F2362911863A372A3E25E21861 /* CSSCompoundSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = E736A8EF10214BDF05945B5919469C3F /* CSSCompoundSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C541343FBFF923A6C41B96D5E93A3E7C /* HTMLListOfActiveFormattingElements.h in Headers */ = {isa = PBXBuildFile; fileRef = EFFFC1F624EAD969764959E671F70B25 /* HTMLListOfActiveFormattingElements.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		C6D9B7CA8E901DE5C69C2D7BD32E78A0 /* CSSCombinatorSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8896BF90229996A0462B940322BD0B91 /* CSSCombinatorSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB260327CE6FEA7AF671828F3D96116A /* HTMLDocumentFragment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DE7FF26454D17D318D3E792B8E63BB2 /* HTMLDocumentFragment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CBA66F1F8815D834CF511D659C0E21A7 /* CSSCombinatorSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D945859A90FB16C0E5D8B8A2E0737E4F /* CSSCombinatorSelector.m */; };
-		CDACEC8AA2FEC9BC6F1742812113DC30 /* HTMLCommentToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FCEF0DE67AE3019A722B6102DFBD1F /* HTMLCommentToken.m */; };
-		CDC889322C9A5C6CA4FBFB8C5DF4D50A /* HTMLDOM.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DDFBF51BB08783C2663957E204CA429 /* HTMLDOM.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CEEE39274DC7BFAC46455A59EEFDAF56 /* HTMLKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D5396C7F86D4583A102876D289A446 /* HTMLKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D0C715FEE119CAA4ED074BB053408903 /* HTMLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 05542CE4D795FEC3310B6EF4CB65DCAD /* HTMLMarker.m */; };
-		D7B492DA416605DDC83EBB56EE6C624B /* HTMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCB8847AAEAE1CD854DDAB76114B827 /* HTMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA17986508B3A5C9569AD28E7DD514C6 /* HTMLNodeTraversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 628B187DA6C39F0437AB0945C8D4CFDA /* HTMLNodeTraversal.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		DE2F98B08A1995A9F477061B95A721AD /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D9AC025779A9D5AEA14F27B7BE6866A0 /* SVProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E316AEB857BCDF36E71396E68937F517 /* CSSSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = 0791617143D87E77422C05CF0DE7234F /* CSSSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1BD187AC337DA5AC610CD512EA6FAA7 /* HTMLText.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F2CAB22AEFA83795EE5CEF19A365DB9 /* HTMLText.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B21C2DAE7E63F4B7C63844707603E407 /* HTMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F3FD373E498C1FCF74977238AB36F863 /* HTMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2FD1210FA19F06D76D2326D016145E7 /* HTMLParserInsertionModes.h in Headers */ = {isa = PBXBuildFile; fileRef = 871FA22BBD818D4B88FA8BD4F4F227BC /* HTMLParserInsertionModes.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B4BF06D8ACEC7F628431DB8DDE4F6E64 /* CSSCombinatorSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = E3983E3BF351CD7207B1EB909AE40D64 /* CSSCombinatorSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B658AD1632440B356219D56B5BF6B548 /* HTMLNodeTraversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7F7FE1473EC4C5F691C969ED0856BC /* HTMLNodeTraversal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B6BE246670ACF7A9A95028107661AC2A /* CSSCodePoints.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A5681FAAE01A6B42922FD01B105494 /* CSSCodePoints.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B8268C62BA593DBAB07027780007B3DA /* HTMLDOMTokenList.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E5E1A79823645D6B9A494DD1EBC9AB /* HTMLDOMTokenList.m */; };
+		B8BC9C8BE49CE6B2D9AA488F66FC3C88 /* HTMLTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C492F68E82BE1D7CB128CA6A309945 /* HTMLTemplate.m */; };
+		BB25A1A6882E6304700266BA1870F467 /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E6F04CB169E34FAF0B8FF70BE6B812 /* HTMLOrderedDictionary.m */; };
+		BD6B1B9BE888A2B288A09F6E73B88D0F /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9894440914613C6C20F83C74E5D1EDDD /* HTMLDocument.m */; };
+		BDFD9B4FB3359883CABEF8B747F3F3C0 /* HTMLTreeWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AADA96FAB627BDE588041B51BA0DC58 /* HTMLTreeWalker.m */; };
+		BF8C97D476C799A349FBCDD79301CF30 /* HTMLTokenizerEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53808BA5617665B0B728CF073F0188 /* HTMLTokenizerEntities.m */; };
+		C27EDC31F29522B5B89E9E8FE589515A /* HTMLText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC650F7EF7B193E95C57295CB457253 /* HTMLText.m */; };
+		C35EFCF86015D931C2266D7DF9D556B4 /* HTMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = E1A243B5796940042C7D63CF84CC516D /* HTMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4383137DE4310785C6314BAC483BB93 /* HTMLDocumentFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = B15E3B87910D228CFC7AF6A9E8BC8545 /* HTMLDocumentFragment.m */; };
+		C5FEF695F41DBB13BE833E19C3787572 /* HTMLElementAdjustment.h in Headers */ = {isa = PBXBuildFile; fileRef = B64F81C3527D645CABA6FDE1A4E3460F /* HTMLElementAdjustment.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C631A9B04B3E601BAF938152254FE6D6 /* CSSStructuralPseudoSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DC34F60B6F9050FC148BE6E022BC7A /* CSSStructuralPseudoSelectors.m */; };
+		C6DD558984DBF077CDA7DBCC3C8519D0 /* HTMLTreeWalker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4412CFFC24B8893F0B028D48AB4022C6 /* HTMLTreeWalker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C929D661B38FCE3A377FE0376131D6B6 /* HTMLDOCTYPEToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 482345E2334929F730DD9F3DDF63E36C /* HTMLDOCTYPEToken.m */; };
+		CBCF07999909DFC7FDCC923063B5D514 /* HTMLParser+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F544B3C5CA96EB66FC4D0B6724EB3151 /* HTMLParser+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		CC85AED975030AF662CA3FCF10B20802 /* HTMLRange+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AED358C3290931411C8AE8F3C6894F49 /* HTMLRange+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D3D3D9470CC251A20DF75A5623AE3976 /* CSSPseudoClassSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 031DB756160005D2E98EEA5BDD916A6D /* CSSPseudoClassSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D69A6A7FF5C56CD3912779E69366B5DC /* HTMLRange.h in Headers */ = {isa = PBXBuildFile; fileRef = A6689FBF41484B4D62D7968FC23A78C6 /* HTMLRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8673935AE2F4E568F353F2D77A6DBB7 /* CSSPseudoFunctionSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E5FE685A7905893FE899FAAB29FB7F /* CSSPseudoFunctionSelector.m */; };
+		DB983D6B4F3EEF8CFF7852BFD09F0A90 /* HTMLDOMUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 51E2EFEF09FC08564A74C26A0191F315 /* HTMLDOMUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD340F7F2E2D3DB97FE1D136568C3D0D /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A562C563631E5CFC6D45CFBF61A90D96 /* HTMLComment.m */; };
+		DE2F98B08A1995A9F477061B95A721AD /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 20465EA4750CF73E5EC7E76C06263545 /* SVProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E08438C1041A50BD7DF353A1B3AD699D /* HTMLElementTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C31D13B5A1CDA04AB06FA61319E1E15 /* HTMLElementTypes.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		E30D5FE32CF0ED3C633EE3DEA7084782 /* HTMLDocumentFragment.h in Headers */ = {isa = PBXBuildFile; fileRef = AEE280F64FE703F803698F98D0547653 /* HTMLDocumentFragment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E36D228F7C01A89FF0EA669F0F37D3DB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94509B870C78D6C47B5C9E11AC69A400 /* QuartzCore.framework */; };
-		E410EB6ADFA020136ACF28E31DF963B8 /* NSCharacterSet+HTMLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B14E6D6FA1F7E6193D072707F20848 /* NSCharacterSet+HTMLKit.m */; };
-		E435FFB63BC0491F392E102275A8F0DC /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7553EA52858E6947FEC1282E0D3BA3DC /* UICKeyChainStore-dummy.m */; };
-		EA917231713CD32D037B597DE5DE342A /* HTMLTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = F3B16C02D393489D847F938050B567F9 /* HTMLTokenizer.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		EDEBACD06157887C1EB7B1EA760F3DD1 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D42B71A5425A91B1E6B96E5274ED5FFC /* SwiftyJSON-dummy.m */; };
-		EE8E66BADAB12AD3B922FC90096BA85A /* CSSNthExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E565C48D435A4FB2D480F02462285767 /* CSSNthExpressionParser.m */; };
-		F2F9A647C42561E108FD1AE57A432812 /* CSSTypeSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 122A4AFE8DB6014C350DBDDE28C782FE /* CSSTypeSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F30E0A17211F6769041DE05AB761A74F /* CSSInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 68C28DA37CD4EA1585D9A1BE11529F3F /* CSSInputStream.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		F386548F1E2EEEAAF3BA46B17BFFC707 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */; };
-		F3E769BEDF7019E1499AC0BB4BA81E43 /* HTMLElementTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 67141341829F278BBD1E70A0B49E2679 /* HTMLElementTypes.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		F935162742443CABB5031665B3DA0070 /* HTMLStackOfOpenElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 190EE8E9D1E86074594812B6F34C1C80 /* HTMLStackOfOpenElements.m */; };
-		FF7FC3099858207ADC95D883712BACAA /* CSSPseudoFunctionSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7628DF39A0F3CBCA4F98D34FDE976E16 /* CSSPseudoFunctionSelector.m */; };
-		FFDBD4F521023687AEEBD0A1192EEEB4 /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3710D64881CFDEA8959E13D4E1B71DE3 /* HTMLOrderedDictionary.m */; };
+		E435FFB63BC0491F392E102275A8F0DC /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CCA930C2F2CEB3AE50B516EE8D0DC /* UICKeyChainStore-dummy.m */; };
+		E5BD95AB9698817005392D50FFD1000A /* CSSPseudoClassSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 433D7D5B7CB2C7D2335B11FEFDAD4613 /* CSSPseudoClassSelector.m */; };
+		E94ED1978BAA4BEF36F5F4180BAE903F /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF0913DDF8B5F71AE2AA2001D8F214 /* HTMLNode.m */; };
+		EAF6A2BD87CBEC03E30A2E7F09418C2A /* HTMLKitErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 59FEB55F10C46EE6F6A05849F5C1C2F7 /* HTMLKitErrorDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDEBACD06157887C1EB7B1EA760F3DD1 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629F80EE890EA0F8D90AA8658432644 /* SwiftyJSON-dummy.m */; };
+		F34C265960DF1E85DCA53F7BF8BF1197 /* HTMLDOM.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CF0645FB5F56A1FF902CDB94DA77C7F /* HTMLDOM.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F53A1B33D201EB24D812325F2B7397FF /* CSSAttributeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C65B523B57F978BCEB395F83BE4C0FA /* CSSAttributeSelector.m */; };
+		F7C75909CAA3A3B28EB0464F791B559E /* CSSAttributeSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 36598C3D6A6D2D8FC06BC6F83C45C7FF /* CSSAttributeSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA5623B686387F57A60252AC93CEC678 /* CSSNthExpressionParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9355C7DBD68CE653F8673E3D992E76 /* CSSNthExpressionParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB2DF9C1CB25C940A964E8CFC6CE96DA /* HTMLNodeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 241F0A46355A7BA092B8DCD6C88F32C9 /* HTMLNodeFilter.m */; };
+		FDB9EB7855A47CC5D595527F4B98AD30 /* HTMLKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCFE28399D5139CF5CDCA847CBD0771 /* HTMLKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FECBD8251E86C223E8193ACE963D0484 /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = F83B5A7E9CA2AFCD3B77AAD42C655C84 /* HTMLDocumentType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,7 +166,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 042D899C47AFDA7015E6504E7E600EE2;
+			remoteGlobalIDString = 7DF885F31CE63E4CAA6D8BB2EF575028;
 			remoteInfo = HTMLKit;
 		};
 		28DC2903D65A3EFEFC8B072D97057779 /* PBXContainerItemProxy */ = {
@@ -176,7 +187,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 042D899C47AFDA7015E6504E7E600EE2;
+			remoteGlobalIDString = 7DF885F31CE63E4CAA6D8BB2EF575028;
 			remoteInfo = HTMLKit;
 		};
 		EE4B7D4F01EC1C66CCBE509AA1B93019 /* PBXContainerItemProxy */ = {
@@ -189,192 +200,203 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		007D451A694BD5B7B9B55319FD22886E /* CSSNthExpressionSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSNthExpressionSelector.m; path = Sources/CSSNthExpressionSelector.m; sourceTree = "<group>"; };
-		01F50F7C874FD23B83388F3BFF032953 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02D0044B1B15C8FDE0C0A143B692BDB6 /* HTMLKitDOMExceptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLKitDOMExceptions.m; path = Sources/HTMLKitDOMExceptions.m; sourceTree = "<group>"; };
+		031DB756160005D2E98EEA5BDD916A6D /* CSSPseudoClassSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSPseudoClassSelector.h; path = Sources/include/CSSPseudoClassSelector.h; sourceTree = "<group>"; };
+		0453AD58A4AE1167943B9A04D052371B /* HTMLListOfActiveFormattingElements.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLListOfActiveFormattingElements.m; path = Sources/HTMLListOfActiveFormattingElements.m; sourceTree = "<group>"; };
 		04CFFD6240DE957C43F883B46EC7A525 /* Pods-share-extension-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-share-extension-acknowledgements.plist"; sourceTree = "<group>"; };
-		05542CE4D795FEC3310B6EF4CB65DCAD /* HTMLMarker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLMarker.m; path = Sources/HTMLMarker.m; sourceTree = "<group>"; };
 		05A0B4B32A50812ADE205637464991D2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		062B41D223C02B3D0D61958FDBB9828B /* HTMLOrderedDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLOrderedDictionary.h; path = Sources/include/HTMLOrderedDictionary.h; sourceTree = "<group>"; };
-		079092D0D738A3C867D404B728BC3F79 /* HTMLParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = Sources/include/HTMLParser.h; sourceTree = "<group>"; };
-		0791617143D87E77422C05CF0DE7234F /* CSSSelectors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelectors.h; path = Sources/include/CSSSelectors.h; sourceTree = "<group>"; };
+		0800714D57E9323EC75E5307A95DB28E /* HTMLMarker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLMarker.m; path = Sources/HTMLMarker.m; sourceTree = "<group>"; };
+		0AADA96FAB627BDE588041B51BA0DC58 /* HTMLTreeWalker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeWalker.m; path = Sources/HTMLTreeWalker.m; sourceTree = "<group>"; };
 		0ABF0DAD28A0AC3EA3FDC365F7B371BD /* Pods-eXoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eXoTests.release.xcconfig"; sourceTree = "<group>"; };
-		0ACFD6DD8DD398E6F75E9CB81359CBFC /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
-		0B8BF4D4402C517EF8D5E27C5F858CDB /* HTMLNodeTraversal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNodeTraversal.m; path = Sources/HTMLNodeTraversal.m; sourceTree = "<group>"; };
-		0DD2F85F55A486D342CCCD10F422A6E1 /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
-		0F062DE11021C3B708BC3FCE80B194A3 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
-		122A4AFE8DB6014C350DBDDE28C782FE /* CSSTypeSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSTypeSelector.h; path = Sources/include/CSSTypeSelector.h; sourceTree = "<group>"; };
-		142198E54DDE31FDAEBA9C5B20622025 /* HTMLKitDOMExceptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLKitDOMExceptions.m; path = Sources/HTMLKitDOMExceptions.m; sourceTree = "<group>"; };
+		0C65B523B57F978BCEB395F83BE4C0FA /* CSSAttributeSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSAttributeSelector.m; path = Sources/CSSAttributeSelector.m; sourceTree = "<group>"; };
+		0EE20944C28A050A699C22129CD73CB7 /* HTMLOrderedDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLOrderedDictionary.h; path = Sources/include/HTMLOrderedDictionary.h; sourceTree = "<group>"; };
+		0F0F2AD26AA52B2D22F1F07D22CED51F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F2CAB22AEFA83795EE5CEF19A365DB9 /* HTMLText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLText.h; path = Sources/include/HTMLText.h; sourceTree = "<group>"; };
+		0FC6DC3C809DACC69A73BDC8310332BF /* HTMLCommentToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLCommentToken.h; path = Sources/include/HTMLCommentToken.h; sourceTree = "<group>"; };
+		10DC34F60B6F9050FC148BE6E022BC7A /* CSSStructuralPseudoSelectors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSStructuralPseudoSelectors.m; path = Sources/CSSStructuralPseudoSelectors.m; sourceTree = "<group>"; };
+		11B3F99B2F9A3A46CCEDCDBFBDACC7F7 /* CSSCompoundSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSCompoundSelector.m; path = Sources/CSSCompoundSelector.m; sourceTree = "<group>"; };
+		11DBC39BFEE345AFED4926E98BB6BF0C /* HTMLToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLToken.m; path = Sources/HTMLToken.m; sourceTree = "<group>"; };
+		1487372D437F4C872A939BCDF865D6E9 /* CSSSelectorBlock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelectorBlock.h; path = Sources/include/CSSSelectorBlock.h; sourceTree = "<group>"; };
 		1596D8FA5996F7703154C55CAE0A6C13 /* Pods-share-extension-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-share-extension-acknowledgements.markdown"; sourceTree = "<group>"; };
-		15ABDD8B4AF9CFBE837AEC652BBE8097 /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
 		15F03D5E1B128B0F6DA6A70079430115 /* Pods_eXo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_eXo.framework; path = "Pods-eXo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		15F220B4E849A09FEDA39BAA3D1B0E62 /* HTMLTokens.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokens.h; path = Sources/include/HTMLTokens.h; sourceTree = "<group>"; };
-		18C6436E2C5D7F056EEE8401B860B873 /* HTMLListOfActiveFormattingElements.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLListOfActiveFormattingElements.m; path = Sources/HTMLListOfActiveFormattingElements.m; sourceTree = "<group>"; };
-		190EE8E9D1E86074594812B6F34C1C80 /* HTMLStackOfOpenElements.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLStackOfOpenElements.m; path = Sources/HTMLStackOfOpenElements.m; sourceTree = "<group>"; };
+		160BB106243B2D4D00B9C8C866241379 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		18B2926F2062B27BD764B9A6C510771D /* CSSNthExpressionSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSNthExpressionSelector.h; path = Sources/include/CSSNthExpressionSelector.h; sourceTree = "<group>"; };
 		19314E2541977DBE9E054EAD446FADAD /* Pods-eXoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eXoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		198B8D6D561AB25AB78838116CA6D8D6 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
 		1A80F759CF0B119DDA34A31692DB90E6 /* Pods-eXoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-eXoTests.modulemap"; sourceTree = "<group>"; };
-		1AD11A6139E56993EA92019E604CAE31 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A8261D56F1761E539544843F67C9687 /* HTMLParseErrorToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLParseErrorToken.m; path = Sources/HTMLParseErrorToken.m; sourceTree = "<group>"; };
 		1B31EA13E4C67543C220B73675D17CF5 /* Pods-share-extension-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-share-extension-resources.sh"; sourceTree = "<group>"; };
-		1B395D43EE1B6D09CDE07ACE2FCB1BA1 /* CSSInputStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSInputStream.m; path = Sources/CSSInputStream.m; sourceTree = "<group>"; };
-		1D386B2FD4BF639E36554F7094C6A832 /* HTMLTokenizerCharacters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerCharacters.h; path = Sources/include/HTMLTokenizerCharacters.h; sourceTree = "<group>"; };
-		1FD4B1D22199CD6CDBEEBBAA23FC62C9 /* HTMLCommentToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLCommentToken.h; path = Sources/include/HTMLCommentToken.h; sourceTree = "<group>"; };
+		1BFA54C56EEC5C28334979615812974C /* HTMLCharacterToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLCharacterToken.m; path = Sources/HTMLCharacterToken.m; sourceTree = "<group>"; };
+		1C9355C7DBD68CE653F8673E3D992E76 /* CSSNthExpressionParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSNthExpressionParser.h; path = Sources/include/CSSNthExpressionParser.h; sourceTree = "<group>"; };
+		1F5B52F21AB566CAC60F41222238ACC0 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
+		1F6376EF689F877D1228708086A4E82B /* CSSSelectorParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelectorParser.h; path = Sources/include/CSSSelectorParser.h; sourceTree = "<group>"; };
+		1FDAC217584F14C6BD013EC97EC60971 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20465EA4750CF73E5EC7E76C06263545 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		20AFB176291FEE53867F196774BBF440 /* Pods-eXo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eXo.release.xcconfig"; sourceTree = "<group>"; };
-		214744E2D557A293DF6689F4A1993337 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
-		21B54675F1155EC4A966E3609D875021 /* HTMLQuirksMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLQuirksMode.h; path = Sources/include/HTMLQuirksMode.h; sourceTree = "<group>"; };
-		21CDCBCF0ED30D486B372AD23EDF8AA1 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		21F209009D8B4EF0C7504A76583ACA32 /* Pods-eXo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-eXo-umbrella.h"; sourceTree = "<group>"; };
-		22364E623EBC3C2EDAD0F3BC248844A2 /* HTMLKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLKit.h; path = Sources/include/HTMLKit.h; sourceTree = "<group>"; };
-		2370EE44D1FEEE2D51B8A8591B26D95A /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		24223D88F63BE7E38E063C9187F37058 /* HTMLText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLText.h; path = Sources/include/HTMLText.h; sourceTree = "<group>"; };
-		24F66E6382D2C5D6871117B790A5669C /* HTMLKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HTMLKit-prefix.pch"; sourceTree = "<group>"; };
+		2223DD69B32AF1D5E5A0A0D0ED290AAF /* HTMLEOFToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLEOFToken.m; path = Sources/HTMLEOFToken.m; sourceTree = "<group>"; };
+		241F0A46355A7BA092B8DCD6C88F32C9 /* HTMLNodeFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNodeFilter.m; path = Sources/HTMLNodeFilter.m; sourceTree = "<group>"; };
 		25BD2B257483E08B6D8150EFFD91DBAC /* Pods_eXoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_eXoTests.framework; path = "Pods-eXoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C9B4D86243EA3EBA20E34CA67BB1B7 /* HTMLDOMTokenList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOMTokenList.h; path = Sources/include/HTMLDOMTokenList.h; sourceTree = "<group>"; };
-		2805DB827258E17246B75AEB2BEA4560 /* CSSSelectorParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelectorParser.h; path = Sources/include/CSSSelectorParser.h; sourceTree = "<group>"; };
-		2A86794277D0110299D132B484C02131 /* HTMLNodeFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNodeFilter.h; path = Sources/include/HTMLNodeFilter.h; sourceTree = "<group>"; };
-		2DCDAC47A8D5B199C4E45CFC75FAE7A9 /* CSSAttributeSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSAttributeSelector.h; path = Sources/include/CSSAttributeSelector.h; sourceTree = "<group>"; };
-		2DE7FF26454D17D318D3E792B8E63BB2 /* HTMLDocumentFragment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDocumentFragment.h; path = Sources/include/HTMLDocumentFragment.h; sourceTree = "<group>"; };
+		2629F80EE890EA0F8D90AA8658432644 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		271C204A2D70E28B96561365337619B8 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		2E2584684786EB2F3DF7FE77A22FFFB4 /* Pods-eXo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-eXo.modulemap"; sourceTree = "<group>"; };
-		2FBA8C27F0E26868C0D6702B17904B2A /* HTMLDOCTYPEToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOCTYPEToken.h; path = Sources/include/HTMLDOCTYPEToken.h; sourceTree = "<group>"; };
-		32D0EA438E2CABB68C3C1C6F79801825 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
-		3603E0D83C003289107A2ADEF49BF3D0 /* HTMLElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLElement.h; path = Sources/include/HTMLElement.h; sourceTree = "<group>"; };
-		36CB020465B55100C852549D19E76BB6 /* CSSCodePoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSCodePoints.h; path = Sources/include/CSSCodePoints.h; sourceTree = "<group>"; };
-		36FF91638D0EB04DAEC49FE3F736A705 /* HTMLStackOfOpenElements.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLStackOfOpenElements.h; path = Sources/include/HTMLStackOfOpenElements.h; sourceTree = "<group>"; };
-		3710D64881CFDEA8959E13D4E1B71DE3 /* HTMLOrderedDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLOrderedDictionary.m; path = Sources/HTMLOrderedDictionary.m; sourceTree = "<group>"; };
-		38A5997503ED0B4D2E12D9006DFD5074 /* CSSPseudoClassSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSPseudoClassSelector.m; path = Sources/CSSPseudoClassSelector.m; sourceTree = "<group>"; };
-		398E9B84D93DA13F58AC4264565F835B /* HTMLElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLElement.m; path = Sources/HTMLElement.m; sourceTree = "<group>"; };
-		3DCB8847AAEAE1CD854DDAB76114B827 /* HTMLNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Sources/include/HTMLNode.h; sourceTree = "<group>"; };
-		3EF2748810AB7C846C8D3B8BCE59E18E /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		2E95885DCB5C5E44CDABF0C4DC16C9B3 /* HTMLKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HTMLKit.xcconfig; sourceTree = "<group>"; };
+		2F16FD96D6112E5086FC43A48B4AC331 /* HTMLNodeTraversal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNodeTraversal.m; path = Sources/HTMLNodeTraversal.m; sourceTree = "<group>"; };
+		31990E08DEF277EF2BEEFE64C61A63DE /* CSSCombinatorSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSCombinatorSelector.m; path = Sources/CSSCombinatorSelector.m; sourceTree = "<group>"; };
+		356AAA00B5B52F8303B1EB98FC814B4E /* HTMLParseErrorToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLParseErrorToken.h; path = Sources/include/HTMLParseErrorToken.h; sourceTree = "<group>"; };
+		36598C3D6A6D2D8FC06BC6F83C45C7FF /* CSSAttributeSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSAttributeSelector.h; path = Sources/include/CSSAttributeSelector.h; sourceTree = "<group>"; };
+		36B689385F718155DEE421B25292887A /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
+		36CE004FCD5F3951A9E9BCC171C6771C /* HTMLTagToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTagToken.h; path = Sources/include/HTMLTagToken.h; sourceTree = "<group>"; };
+		3BC650F7EF7B193E95C57295CB457253 /* HTMLText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLText.m; path = Sources/HTMLText.m; sourceTree = "<group>"; };
+		3D53808BA5617665B0B728CF073F0188 /* HTMLTokenizerEntities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTokenizerEntities.m; path = Sources/HTMLTokenizerEntities.m; sourceTree = "<group>"; };
 		404529662265513945C9E593D735F088 /* Pods-eXoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-eXoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		40998A62EE70374F5DF393C2BE3D727C /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
-		423BAC07C5E5A35416E83AECDC1B5ABF /* HTMLParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Sources/HTMLParser.m; sourceTree = "<group>"; };
+		42F8CED613C3D3CA3808802AA68A3C1B /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		433D7D5B7CB2C7D2335B11FEFDAD4613 /* CSSPseudoClassSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSPseudoClassSelector.m; path = Sources/CSSPseudoClassSelector.m; sourceTree = "<group>"; };
 		438A9245BD57986D91C11626D3CA5AAC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4412CFFC24B8893F0B028D48AB4022C6 /* HTMLTreeWalker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTreeWalker.h; path = Sources/include/HTMLTreeWalker.h; sourceTree = "<group>"; };
+		4440E8A93430795A4BC7991F8340B923 /* CSSInputStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSInputStream.m; path = Sources/CSSInputStream.m; sourceTree = "<group>"; };
+		4501D8E67B059C5318A3BA7A54E644FB /* HTMLKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HTMLKit.modulemap; sourceTree = "<group>"; };
 		4556C49F628223FA8503F56FB9A32B8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		49ADD2CBDFD1F5DC0EF189C2E483D752 /* CSSAttributeSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSAttributeSelector.m; path = Sources/CSSAttributeSelector.m; sourceTree = "<group>"; };
-		4AEF5F4A16CE9CDED1E10BC4CD622431 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
-		4D9BB4C394971387B973BCDE177B53A1 /* HTMLTokenizerStates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerStates.h; path = Sources/include/HTMLTokenizerStates.h; sourceTree = "<group>"; };
-		4DB9FD61128F5FA378EA5515EBD32AD1 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
-		4F7367DDE0678EF16AC228103FA0CFEB /* HTMLMarker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLMarker.h; path = Sources/include/HTMLMarker.h; sourceTree = "<group>"; };
-		4F97FE52474E4BE7728BF789990F428A /* HTMLText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLText.m; path = Sources/HTMLText.m; sourceTree = "<group>"; };
-		543DE63A7CF671E0C1C94485D5DA97D4 /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
-		55B14E6D6FA1F7E6193D072707F20848 /* NSCharacterSet+HTMLKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCharacterSet+HTMLKit.m"; path = "Sources/NSCharacterSet+HTMLKit.m"; sourceTree = "<group>"; };
-		55F590BFE4E1944B9D009250E7A10D7B /* HTMLNodeFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNodeFilter.m; path = Sources/HTMLNodeFilter.m; sourceTree = "<group>"; };
+		47E6F04CB169E34FAF0B8FF70BE6B812 /* HTMLOrderedDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLOrderedDictionary.m; path = Sources/HTMLOrderedDictionary.m; sourceTree = "<group>"; };
+		482345E2334929F730DD9F3DDF63E36C /* HTMLDOCTYPEToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDOCTYPEToken.m; path = Sources/HTMLDOCTYPEToken.m; sourceTree = "<group>"; };
+		48C492F68E82BE1D7CB128CA6A309945 /* HTMLTemplate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTemplate.m; path = Sources/HTMLTemplate.m; sourceTree = "<group>"; };
+		49AB49867E8920C3215761E739AC8697 /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		49B567419BFAA645D947DAE3A7EFFD5F /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		4AF3F43F2BC9568ED211501AE985C69D /* HTMLMarker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLMarker.h; path = Sources/include/HTMLMarker.h; sourceTree = "<group>"; };
+		4B8DB19DE13E09F0497978CDD2662FA4 /* HTMLRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLRange.m; path = Sources/HTMLRange.m; sourceTree = "<group>"; };
+		4CF0645FB5F56A1FF902CDB94DA77C7F /* HTMLDOM.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOM.h; path = Sources/include/HTMLDOM.h; sourceTree = "<group>"; };
+		4DE8A2BB783F26F549B556FD3E54925C /* NSCharacterSet+HTMLKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCharacterSet+HTMLKit.m"; path = "Sources/NSCharacterSet+HTMLKit.m"; sourceTree = "<group>"; };
+		510B1BABB87AC2DCD9194704CF6C5885 /* HTMLDOCTYPEToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOCTYPEToken.h; path = Sources/include/HTMLDOCTYPEToken.h; sourceTree = "<group>"; };
+		51E2EFEF09FC08564A74C26A0191F315 /* HTMLDOMUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOMUtils.h; path = Sources/include/HTMLDOMUtils.h; sourceTree = "<group>"; };
+		54CFF29D9DC7E5CC10BE57A81A76E288 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
 		574C4FFB10D812F9B7100D701B790CC1 /* Pods-eXo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eXo-resources.sh"; sourceTree = "<group>"; };
-		58FC0904F5924DAE59BF4CC730827A9B /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		5945D8883D7C65DEDB42742F939B6894 /* CSSSelectorParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorParser.m; path = Sources/CSSSelectorParser.m; sourceTree = "<group>"; };
-		59747685696FF4E2702B7D3A26FACE7C /* HTMLDocumentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDocumentType.m; path = Sources/HTMLDocumentType.m; sourceTree = "<group>"; };
+		57B3355A04581F542A61B5A5CD1F3340 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57BF145784E0E4EDC10CE85AC724AD40 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
+		58881D9F05344AA67B892C47E0587814 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		593796D8AD6492DC135B5399ECE321AE /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
+		598DAD125E105C1526AE973A234F957A /* HTMLStackOfOpenElements.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLStackOfOpenElements.m; path = Sources/HTMLStackOfOpenElements.m; sourceTree = "<group>"; };
 		59A3B46F775C36A042ECF6E71EF8078A /* Pods-eXoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eXoTests-frameworks.sh"; sourceTree = "<group>"; };
-		5A750B6DC4C8ACEE3BE31B404075AFB1 /* HTMLNamespaces.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNamespaces.h; path = Sources/include/HTMLNamespaces.h; sourceTree = "<group>"; };
+		59FEB55F10C46EE6F6A05849F5C1C2F7 /* HTMLKitErrorDomain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLKitErrorDomain.h; path = Sources/include/HTMLKitErrorDomain.h; sourceTree = "<group>"; };
+		5C5B437240C69967575DE1D762C4B17E /* HTMLKitDOMExceptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLKitDOMExceptions.h; path = Sources/include/HTMLKitDOMExceptions.h; sourceTree = "<group>"; };
 		5D6A6A960322F6F463E40679B6436470 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
-		5E8C6BDE091C7CC6286D9492C9F160EC /* NSCharacterSet+HTMLKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCharacterSet+HTMLKit.h"; path = "Sources/include/NSCharacterSet+HTMLKit.h"; sourceTree = "<group>"; };
-		61FB5B743706C9F32546CE920C75F238 /* HTMLElementAdjustment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLElementAdjustment.h; path = Sources/include/HTMLElementAdjustment.h; sourceTree = "<group>"; };
-		628B187DA6C39F0437AB0945C8D4CFDA /* HTMLNodeTraversal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNodeTraversal.h; path = Sources/include/HTMLNodeTraversal.h; sourceTree = "<group>"; };
+		5EA7415B8CEFAA58C7B9E0F90BC6AAEE /* CSSInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSInputStream.h; path = Sources/include/CSSInputStream.h; sourceTree = "<group>"; };
+		5F87E6E8FA72E0A74B2C191906A87443 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6084F0EF5A766BC8D622B3C5241126AE /* CLSStackFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSStackFrame.h; path = iOS/Crashlytics.framework/Headers/CLSStackFrame.h; sourceTree = "<group>"; };
+		6254B41C55FBBF1A043E8ABCFEE5DCD3 /* NSCharacterSet+HTMLKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCharacterSet+HTMLKit.h"; path = "Sources/include/NSCharacterSet+HTMLKit.h"; sourceTree = "<group>"; };
+		62BEA94D98C47E35E311E8C0AE1DA7AF /* HTMLTagToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTagToken.m; path = Sources/HTMLTagToken.m; sourceTree = "<group>"; };
+		63374E45F3438298C5BEE4B387601843 /* HTMLParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Sources/HTMLParser.m; sourceTree = "<group>"; };
+		633B373517D5AC751F0F757094CF5C77 /* CSSStructuralPseudoSelectors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSStructuralPseudoSelectors.h; path = Sources/include/CSSStructuralPseudoSelectors.h; sourceTree = "<group>"; };
 		634AFFE3C862149BE30A9046108830B9 /* Pods-eXo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-eXo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		657C9F8D8CB7931F0EC45E800BBCCC58 /* HTMLKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HTMLKit.modulemap; sourceTree = "<group>"; };
-		65A46DCFB70B6EBFB98FD611ADDA2B75 /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
 		65C258C096611DB4FE991136451639F4 /* Pods-share-extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-share-extension.debug.xcconfig"; sourceTree = "<group>"; };
-		65DD10F3FB34359AB4EE8518D5A3D391 /* HTMLInputStreamReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLInputStreamReader.m; path = Sources/HTMLInputStreamReader.m; sourceTree = "<group>"; };
-		67141341829F278BBD1E70A0B49E2679 /* HTMLElementTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLElementTypes.h; path = Sources/include/HTMLElementTypes.h; sourceTree = "<group>"; };
-		67434001BF32F841B826790577F6493C /* CSSSelectorBlock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelectorBlock.h; path = Sources/include/CSSSelectorBlock.h; sourceTree = "<group>"; };
-		68C28DA37CD4EA1585D9A1BE11529F3F /* CSSInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSInputStream.h; path = Sources/include/CSSInputStream.h; sourceTree = "<group>"; };
-		69FCEF0DE67AE3019A722B6102DFBD1F /* HTMLCommentToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLCommentToken.m; path = Sources/HTMLCommentToken.m; sourceTree = "<group>"; };
-		6DDFBF51BB08783C2663957E204CA429 /* HTMLDOM.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOM.h; path = Sources/include/HTMLDOM.h; sourceTree = "<group>"; };
-		6EAF35EBEEEFB79275F77DD097A31FA1 /* CSSPseudoClassSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSPseudoClassSelector.h; path = Sources/include/CSSPseudoClassSelector.h; sourceTree = "<group>"; };
-		6F6AE3395BEFA96080BF74A25A8F96A6 /* CSSSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelector.m; path = Sources/CSSSelector.m; sourceTree = "<group>"; };
-		730DBAAA5D942AB2F14DA38763BA9C19 /* HTMLNodeIterator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNodeIterator.m; path = Sources/HTMLNodeIterator.m; sourceTree = "<group>"; };
-		73924B9117602B3D01B12CC1FA0E69DF /* HTMLComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = Sources/include/HTMLComment.h; sourceTree = "<group>"; };
-		7553EA52858E6947FEC1282E0D3BA3DC /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
-		75EE66E53D690513587BF269B197B633 /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
-		761D23BB800F182C9B4D84FAF74304BB /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
-		7628DF39A0F3CBCA4F98D34FDE976E16 /* CSSPseudoFunctionSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSPseudoFunctionSelector.m; path = Sources/CSSPseudoFunctionSelector.m; sourceTree = "<group>"; };
-		79BB9D663C81C8077EDFF3C5BA3199A2 /* HTMLTokenizerEntities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTokenizerEntities.m; path = Sources/HTMLTokenizerEntities.m; sourceTree = "<group>"; };
-		7F649DC3227AD02241398322FFACC441 /* CSSTypeSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSTypeSelector.m; path = Sources/CSSTypeSelector.m; sourceTree = "<group>"; };
-		7F6D35FE57565C631DBB661AD0D54D0C /* CSSNthExpressionParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSNthExpressionParser.h; path = Sources/include/CSSNthExpressionParser.h; sourceTree = "<group>"; };
+		665E746FDD9A168923354B6936CE8B93 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
+		6699B086411BD94A246EC1FDBD692888 /* CSSSelectorBlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorBlock.m; path = Sources/CSSSelectorBlock.m; sourceTree = "<group>"; };
+		678E87D3B57F0E939ED86B0B2A2F7235 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		68468E924BF2F21A94A5C0D03632DA20 /* HTMLNodeFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNodeFilter.h; path = Sources/include/HTMLNodeFilter.h; sourceTree = "<group>"; };
+		6A2A239DFFCC7716E177F464B3065479 /* CSSCompoundSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSCompoundSelector.h; path = Sources/include/CSSCompoundSelector.h; sourceTree = "<group>"; };
+		6F6DA14FBF6A0A136C99DE29300D5BC8 /* HTMLDOMTokenList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDOMTokenList.h; path = Sources/include/HTMLDOMTokenList.h; sourceTree = "<group>"; };
+		71414AB7D44C24F4DED2501A8E043437 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
+		729433561F31BBFC5F22CC8CCABC2690 /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		765332B13F9A800B317A2F922DC8B860 /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
+		76620E429367C37FB3B88D134AC26415 /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
+		7879E901B2A8FCAC9CE047209EA17C9B /* HTMLEOFToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLEOFToken.h; path = Sources/include/HTMLEOFToken.h; sourceTree = "<group>"; };
+		78E5E1A79823645D6B9A494DD1EBC9AB /* HTMLDOMTokenList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDOMTokenList.m; path = Sources/HTMLDOMTokenList.m; sourceTree = "<group>"; };
+		79A82E4137BBCE901D73EE488C83F5A2 /* HTMLTokenizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizer.h; path = Sources/include/HTMLTokenizer.h; sourceTree = "<group>"; };
+		7A226D16C459D8E8EE8A90DA70E17EAE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		7AE68D41DCE0A3F885742D9674ABB09A /* HTMLStackOfOpenElements.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLStackOfOpenElements.h; path = Sources/include/HTMLStackOfOpenElements.h; sourceTree = "<group>"; };
+		7B54E57C3B5DB097E622604AC2AB6FD3 /* HTMLCommentToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLCommentToken.m; path = Sources/HTMLCommentToken.m; sourceTree = "<group>"; };
 		7F75E5C3CBC28840C9DA88A9DEE844E0 /* Pods-eXoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-eXoTests-umbrella.h"; sourceTree = "<group>"; };
-		821355631BD1BB7B751010FD8C46948A /* CLSStackFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSStackFrame.h; path = iOS/Crashlytics.framework/Headers/CLSStackFrame.h; sourceTree = "<group>"; };
-		84FFBFF9FF9F416954605BD5EE6D3CE7 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
-		87E93BC771D9DD0FF2345AD1CA860080 /* HTMLDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDocument.m; path = Sources/HTMLDocument.m; sourceTree = "<group>"; };
-		8896BF90229996A0462B940322BD0B91 /* CSSCombinatorSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSCombinatorSelector.h; path = Sources/include/CSSCombinatorSelector.h; sourceTree = "<group>"; };
-		8A8D19373966C414B3312DBF18E1018C /* NSString+HTMLKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLKit.h"; path = "Sources/include/NSString+HTMLKit.h"; sourceTree = "<group>"; };
-		8D68FC09E702444D4D4B4E4613AB1172 /* HTMLNodeIterator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNodeIterator.h; path = Sources/include/HTMLNodeIterator.h; sourceTree = "<group>"; };
-		90A33A7A1E07F7207264FC39BDD774E5 /* NSString+HTMLKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLKit.m"; path = "Sources/NSString+HTMLKit.m"; sourceTree = "<group>"; };
+		86821F06521FAE3CE5978F53CE933390 /* HTMLParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = Sources/include/HTMLParser.h; sourceTree = "<group>"; };
+		871FA22BBD818D4B88FA8BD4F4F227BC /* HTMLParserInsertionModes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLParserInsertionModes.h; path = Sources/include/HTMLParserInsertionModes.h; sourceTree = "<group>"; };
+		877EA64A8B66F69D37A68F96743BAA2A /* HTMLCharacterData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLCharacterData.h; path = Sources/include/HTMLCharacterData.h; sourceTree = "<group>"; };
+		8B7F7FE1473EC4C5F691C969ED0856BC /* HTMLNodeTraversal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNodeTraversal.h; path = Sources/include/HTMLNodeTraversal.h; sourceTree = "<group>"; };
+		8C31D13B5A1CDA04AB06FA61319E1E15 /* HTMLElementTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLElementTypes.h; path = Sources/include/HTMLElementTypes.h; sourceTree = "<group>"; };
+		8EFAE831753F5D0DE5CE8C02C12B70E6 /* CSSNthExpressionSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSNthExpressionSelector.m; path = Sources/CSSNthExpressionSelector.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94509B870C78D6C47B5C9E11AC69A400 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		96D5396C7F86D4583A102876D289A446 /* HTMLKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HTMLKit-umbrella.h"; sourceTree = "<group>"; };
+		95D7860DD242201B5B890F06352906C1 /* CSSSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelector.m; path = Sources/CSSSelector.m; sourceTree = "<group>"; };
+		9738E657F4BACE641C8377219391B06D /* HTMLTemplate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTemplate.h; path = Sources/include/HTMLTemplate.h; sourceTree = "<group>"; };
+		9894440914613C6C20F83C74E5D1EDDD /* HTMLDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDocument.m; path = Sources/HTMLDocument.m; sourceTree = "<group>"; };
+		9AC71C2DE09027F1F4F672ACE4534E18 /* HTMLListOfActiveFormattingElements.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLListOfActiveFormattingElements.h; path = Sources/include/HTMLListOfActiveFormattingElements.h; sourceTree = "<group>"; };
 		9B59ACCC545B21BCF33DB89F51BE5468 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C1AB0FC673DEC14E872B25B0D484C07 /* HTMLParserInsertionModes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLParserInsertionModes.h; path = Sources/include/HTMLParserInsertionModes.h; sourceTree = "<group>"; };
-		9D32CF03765F175E367A8E4137891F7B /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
+		9C46807EFE453F536B98C525F5A8F5BE /* HTMLNodeIterator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNodeIterator.h; path = Sources/include/HTMLNodeIterator.h; sourceTree = "<group>"; };
 		9DA088C1FB1B5F2285EDF15E73CC0833 /* Pods-share-extension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-share-extension.modulemap"; sourceTree = "<group>"; };
-		9F21E3427DB4384558886A51BC9950AC /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
-		A00C36176A67E4F8FEC992F70F464322 /* HTMLKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HTMLKit.xcconfig; sourceTree = "<group>"; };
-		A1FEB7BA105EE2DCFC312E940C4EFEFD /* HTMLDocumentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDocumentType.h; path = Sources/include/HTMLDocumentType.h; sourceTree = "<group>"; };
-		A56E201BE103B35782D84A16C28FA894 /* HTMLKitDOMExceptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLKitDOMExceptions.h; path = Sources/include/HTMLKitDOMExceptions.h; sourceTree = "<group>"; };
-		A7484AE8644E3FADC5CD7242013FF0E0 /* HTMLComment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = Sources/HTMLComment.m; sourceTree = "<group>"; };
-		A8A33DE24C77BA20EE86BEF167E9157C /* HTMLTemplate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTemplate.m; path = Sources/HTMLTemplate.m; sourceTree = "<group>"; };
-		A99F1A1CAE9C4D607E6C621B2DEF1079 /* HTMLKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HTMLKit-dummy.m"; sourceTree = "<group>"; };
+		9E6F7980018CD39A5498CE46D5F7A18F /* NSString+HTMLKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLKit.m"; path = "Sources/NSString+HTMLKit.m"; sourceTree = "<group>"; };
+		A369D2EDC0971877E6635778E2CEAE00 /* HTMLCharacterData+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLCharacterData+Private.h"; path = "Sources/include/HTMLCharacterData+Private.h"; sourceTree = "<group>"; };
+		A562C563631E5CFC6D45CFBF61A90D96 /* HTMLComment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = Sources/HTMLComment.m; sourceTree = "<group>"; };
+		A5C9DAB998648462F1687CB5BADABAD8 /* HTMLKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HTMLKit-dummy.m"; sourceTree = "<group>"; };
+		A65133BE05717D342E08A850EBDBEC46 /* HTMLNodeIterator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNodeIterator.m; path = Sources/HTMLNodeIterator.m; sourceTree = "<group>"; };
+		A6689FBF41484B4D62D7968FC23A78C6 /* HTMLRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLRange.h; path = Sources/include/HTMLRange.h; sourceTree = "<group>"; };
+		A74652ADD23FD39FC5F850CD59E3D439 /* NSString+HTMLKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLKit.h"; path = "Sources/include/NSString+HTMLKit.h"; sourceTree = "<group>"; };
+		A77FB6E0122129502030E444E80F438F /* CSSSelectors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelectors.m; path = Sources/CSSSelectors.m; sourceTree = "<group>"; };
+		A80D3E2D9CBEC926FE90520ED79963CB /* HTMLCharacterData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLCharacterData.m; path = Sources/HTMLCharacterData.m; sourceTree = "<group>"; };
+		A87C9EE449A39A6CD27DFAE4B7E36D20 /* HTMLKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLKit.h; path = Sources/include/HTMLKit.h; sourceTree = "<group>"; };
+		AAD0595E2A7BF0F6154DC97AA65EDB1B /* CSSSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelector.h; path = Sources/include/CSSSelector.h; sourceTree = "<group>"; };
+		AB098ACE05A5679CE66D4D16580DDC2E /* HTMLTokenizerStates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerStates.h; path = Sources/include/HTMLTokenizerStates.h; sourceTree = "<group>"; };
+		AB4719757F40075F2077DF80F941F1A8 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		AB9DAC5B4C036BAFB6F59E6085520564 /* Pods_share_extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_share_extension.framework; path = "Pods-share-extension.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC8226CEE95E20C7390F75DB9F495BB7 /* HTMLDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = Sources/include/HTMLDocument.h; sourceTree = "<group>"; };
+		AC7AF68A3DE5D33930934AD4B9C8A9C2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		ACACEDC157BFE8049FC5D9482C9132DB /* Pods-share-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-share-extension.release.xcconfig"; sourceTree = "<group>"; };
-		AEDEB0E73D6EEE7DE9C7D5372E3A7D87 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		AED358C3290931411C8AE8F3C6894F49 /* HTMLRange+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLRange+Private.h"; path = "Sources/include/HTMLRange+Private.h"; sourceTree = "<group>"; };
+		AEE280F64FE703F803698F98D0547653 /* HTMLDocumentFragment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDocumentFragment.h; path = Sources/include/HTMLDocumentFragment.h; sourceTree = "<group>"; };
 		AEF40A47BCB9A7CBBA23FBD2893E3DA9 /* Pods-eXoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-eXoTests-dummy.m"; sourceTree = "<group>"; };
-		B08C84990FE524955A85F7555990A6AD /* HTMLTokenizerEntities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerEntities.h; path = Sources/include/HTMLTokenizerEntities.h; sourceTree = "<group>"; };
-		B5DE88FBA44C36AE7EBFB2629E9447DF /* CSSStructuralPseudoSelectors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSStructuralPseudoSelectors.h; path = Sources/include/CSSStructuralPseudoSelectors.h; sourceTree = "<group>"; };
+		B0A5190E917FDF5F49DD2FA1793CB188 /* HTMLDocumentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDocumentType.h; path = Sources/include/HTMLDocumentType.h; sourceTree = "<group>"; };
+		B12112B62720B659F236058F5023ECD3 /* HTMLInputStreamReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLInputStreamReader.h; path = Sources/include/HTMLInputStreamReader.h; sourceTree = "<group>"; };
+		B15E3B87910D228CFC7AF6A9E8BC8545 /* HTMLDocumentFragment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDocumentFragment.m; path = Sources/HTMLDocumentFragment.m; sourceTree = "<group>"; };
+		B478A9FAD22F8EA183A05BFDD8529149 /* HTMLCharacterToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLCharacterToken.h; path = Sources/include/HTMLCharacterToken.h; sourceTree = "<group>"; };
+		B4EFAE1158B23F67320B72D0E7174946 /* HTMLDOMUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDOMUtils.m; path = Sources/HTMLDOMUtils.m; sourceTree = "<group>"; };
+		B64F81C3527D645CABA6FDE1A4E3460F /* HTMLElementAdjustment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLElementAdjustment.h; path = Sources/include/HTMLElementAdjustment.h; sourceTree = "<group>"; };
 		B6E6FB38A4FC60D5C9D9C32DBBD1170A /* Pods-eXo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-eXo-dummy.m"; sourceTree = "<group>"; };
+		B73CCA930C2F2CEB3AE50B516EE8D0DC /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
 		B76E73F7E824A5C34CC2197D9A1A5509 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B7F99E4EBF4132827FA867851912568F /* CSSCompoundSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSCompoundSelector.m; path = Sources/CSSCompoundSelector.m; sourceTree = "<group>"; };
-		B928C7FAF48A013496BC2FBA73958B69 /* HTMLToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLToken.h; path = Sources/include/HTMLToken.h; sourceTree = "<group>"; };
-		B9CF599774E536085F36031EC84B868A /* CSSStructuralPseudoSelectors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSStructuralPseudoSelectors.m; path = Sources/CSSStructuralPseudoSelectors.m; sourceTree = "<group>"; };
-		BACD6A166A9F6344865FDE5DF0B6120D /* CSSSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelector.h; path = Sources/include/CSSSelector.h; sourceTree = "<group>"; };
-		BAD631C4E2DC35B26DFDAD835B99D575 /* HTMLTreeWalker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeWalker.m; path = Sources/HTMLTreeWalker.m; sourceTree = "<group>"; };
-		BB88347AF987B80D363A5F4A885CB74B /* HTMLDOMTokenList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDOMTokenList.m; path = Sources/HTMLDOMTokenList.m; sourceTree = "<group>"; };
-		BC3813BA217D3AD441171A4107BE8A67 /* HTMLTreeWalker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTreeWalker.h; path = Sources/include/HTMLTreeWalker.h; sourceTree = "<group>"; };
+		B8A98A1662CA7E4BD8CF97CFC634EB0C /* CSSSelectors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSSelectors.h; path = Sources/include/CSSSelectors.h; sourceTree = "<group>"; };
+		B90DB85D173B3E545CA9529CD4E01412 /* HTMLElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLElement.m; path = Sources/HTMLElement.m; sourceTree = "<group>"; };
+		BCCD95DE653E65613920F1602555AE1C /* HTMLTokenizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTokenizer.m; path = Sources/HTMLTokenizer.m; sourceTree = "<group>"; };
+		C0B150CE1C2D001604E367F5C9B117AB /* HTMLInputStreamReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLInputStreamReader.m; path = Sources/HTMLInputStreamReader.m; sourceTree = "<group>"; };
 		C0EDFB1F721869D6FAED7D99847FB5BD /* Pods-eXo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eXo-frameworks.sh"; sourceTree = "<group>"; };
-		C623E79D69CB58D810B3FADD3272C967 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		C63C76A0C3242FF966FC60E285E558EB /* HTMLEOFToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLEOFToken.h; path = Sources/include/HTMLEOFToken.h; sourceTree = "<group>"; };
-		C741E1CAB9E8BCB5821C684C1125749F /* HTMLInputStreamReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLInputStreamReader.h; path = Sources/include/HTMLInputStreamReader.h; sourceTree = "<group>"; };
-		C8412B7993B34AE145C921EB3237E71A /* HTMLNode+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLNode+Private.h"; path = "Sources/include/HTMLNode+Private.h"; sourceTree = "<group>"; };
-		C854ED77F242E794422B44CB72868D4E /* HTMLTemplate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTemplate.h; path = Sources/include/HTMLTemplate.h; sourceTree = "<group>"; };
-		C8DBEA30BA0349F322F4E5C7A458F925 /* CSSSelectors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelectors.m; path = Sources/CSSSelectors.m; sourceTree = "<group>"; };
-		CAFE3A3AB2391D41715C2FA826387C03 /* HTMLParseErrorToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLParseErrorToken.h; path = Sources/include/HTMLParseErrorToken.h; sourceTree = "<group>"; };
-		CF53D6739D51E1A056F8ECCE3EBFAA65 /* HTMLCharacterToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLCharacterToken.m; path = Sources/HTMLCharacterToken.m; sourceTree = "<group>"; };
-		CF7CED280DF91FF599CD6F30EF8D2873 /* HTMLNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Sources/HTMLNode.m; sourceTree = "<group>"; };
-		D1CC095E294495E36B3E221CCB52F8EC /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		D42B71A5425A91B1E6B96E5274ED5FFC /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		D540A2CD3826AE2E6596480F13DD1FA8 /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
-		D603E6BB6D928B0CD7F49D9311B7F0C1 /* CSSSelectorBlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorBlock.m; path = Sources/CSSSelectorBlock.m; sourceTree = "<group>"; };
+		C1FF0913DDF8B5F71AE2AA2001D8F214 /* HTMLNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Sources/HTMLNode.m; sourceTree = "<group>"; };
+		C4E943F639FF29104075323220B99AD1 /* HTMLQuirksMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLQuirksMode.h; path = Sources/include/HTMLQuirksMode.h; sourceTree = "<group>"; };
+		C65C673B34CF09219FDAB65E82ED0B14 /* HTMLElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLElement.h; path = Sources/include/HTMLElement.h; sourceTree = "<group>"; };
+		C6C9770785A2E1EEAF2E5E5C675F67BB /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
+		C88DB25751764498241183DA90A7A6B6 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		C902F4AA3A98C5BCF05685AE352FB88C /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
+		CB1694C71E03FB1AF7DF76AA4D177158 /* HTMLNodeIterator+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLNodeIterator+Private.h"; path = "Sources/include/HTMLNodeIterator+Private.h"; sourceTree = "<group>"; };
+		CDE020D8A5746CB8FA627245881552A1 /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
+		CFC3A74BAD9B8D7D69BEE2306A8C563C /* HTMLToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLToken.h; path = Sources/include/HTMLToken.h; sourceTree = "<group>"; };
+		D3A5681FAAE01A6B42922FD01B105494 /* CSSCodePoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSCodePoints.h; path = Sources/include/CSSCodePoints.h; sourceTree = "<group>"; };
 		D6322C013A04577CD222EC76686FA805 /* Pods-eXoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eXoTests-resources.sh"; sourceTree = "<group>"; };
-		D6D3E655F58283D4FA0C7E646E9987E4 /* HTMLTagToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTagToken.m; path = Sources/HTMLTagToken.m; sourceTree = "<group>"; };
-		D945859A90FB16C0E5D8B8A2E0737E4F /* CSSCombinatorSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSCombinatorSelector.m; path = Sources/CSSCombinatorSelector.m; sourceTree = "<group>"; };
-		D9AC025779A9D5AEA14F27B7BE6866A0 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
-		DCAB689649E0B125C57402CE4713E8DA /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		DEA741D4A850C5DF31E052CB2DEB0DA2 /* HTMLKitErrorDomain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLKitErrorDomain.h; path = Sources/include/HTMLKitErrorDomain.h; sourceTree = "<group>"; };
-		DEB4D7169939D160BA9E6D304B71C8C7 /* HTMLTokenizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLTokenizer.m; path = Sources/HTMLTokenizer.m; sourceTree = "<group>"; };
-		DEF8FFD905B749757C1D2ACFB175AB2F /* HTMLParseErrorToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLParseErrorToken.m; path = Sources/HTMLParseErrorToken.m; sourceTree = "<group>"; };
-		E565C48D435A4FB2D480F02462285767 /* CSSNthExpressionParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSNthExpressionParser.m; path = Sources/CSSNthExpressionParser.m; sourceTree = "<group>"; };
-		E56F906205387D3D912C682E0354EF82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6E5FE685A7905893FE899FAAB29FB7F /* CSSPseudoFunctionSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSPseudoFunctionSelector.m; path = Sources/CSSPseudoFunctionSelector.m; sourceTree = "<group>"; };
+		D8A23064D19A79FC9CA42675909120C6 /* HTMLTokenizerEntities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerEntities.h; path = Sources/include/HTMLTokenizerEntities.h; sourceTree = "<group>"; };
+		D95DBE80ADFB17D0942A4E08DE527041 /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
+		D981BCAADCFDC3C89A596276617CB523 /* CSSNthExpressionParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSNthExpressionParser.m; path = Sources/CSSNthExpressionParser.m; sourceTree = "<group>"; };
+		D9F99E7132AECEE164EE56DC2F17242F /* HTMLKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HTMLKit-prefix.pch"; sourceTree = "<group>"; };
+		DA7A5137C1D11337EC7F27E11A1E5BD4 /* HTMLTokens.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokens.h; path = Sources/include/HTMLTokens.h; sourceTree = "<group>"; };
+		DBCFE28399D5139CF5CDCA847CBD0771 /* HTMLKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HTMLKit-umbrella.h"; sourceTree = "<group>"; };
+		DC942E4234539FB39B71E140602077D4 /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
+		DD686789D104435D0F8FC439E321D41A /* HTMLTokenizerCharacters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerCharacters.h; path = Sources/include/HTMLTokenizerCharacters.h; sourceTree = "<group>"; };
+		DE47133D2803B211458DB3BA6D87CD6F /* CSSTypeSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSTypeSelector.h; path = Sources/include/CSSTypeSelector.h; sourceTree = "<group>"; };
+		DE8481B68A2E5E28EB271A8F31B899B7 /* CSSTypeSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSTypeSelector.m; path = Sources/CSSTypeSelector.m; sourceTree = "<group>"; };
+		DF890C03B8C0CC107544C3E0B3FB4DD4 /* HTMLDocument+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLDocument+Private.h"; path = "Sources/include/HTMLDocument+Private.h"; sourceTree = "<group>"; };
+		E08A130600243BD4F2A50EF5D0D00EC2 /* CSSSelectorParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorParser.m; path = Sources/CSSSelectorParser.m; sourceTree = "<group>"; };
+		E1A243B5796940042C7D63CF84CC516D /* HTMLDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = Sources/include/HTMLDocument.h; sourceTree = "<group>"; };
+		E3154701DEF64CC094EF335FF9F16799 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		E3983E3BF351CD7207B1EB909AE40D64 /* CSSCombinatorSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSCombinatorSelector.h; path = Sources/include/CSSCombinatorSelector.h; sourceTree = "<group>"; };
+		E49F94F09D7D7F79E1A853EECCC16581 /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
+		E59FE016FC78EBE95167C27DF508BEC3 /* HTMLNode+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLNode+Private.h"; path = "Sources/include/HTMLNode+Private.h"; sourceTree = "<group>"; };
 		E61A70AF78451B842262B13976A02EB1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E62F3F831EACF87BEA59C5A6B037694A /* Pods-share-extension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-share-extension-umbrella.h"; sourceTree = "<group>"; };
-		E6934E5AC0E7DE540FF92A5128FF9C0C /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
-		E736A8EF10214BDF05945B5919469C3F /* CSSCompoundSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSCompoundSelector.h; path = Sources/include/CSSCompoundSelector.h; sourceTree = "<group>"; };
 		E75FB0E37D2E9E6B4FAE0BA4AF617720 /* Pods-eXoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-eXoTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E849AC019A207788A6BFA17F678377F5 /* HTMLToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLToken.m; path = Sources/HTMLToken.m; sourceTree = "<group>"; };
-		E92D2E0ECB3DDCA1FCF6E3BA01219FD9 /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
 		E93F550CA7A41F519F6B936EF2B89141 /* HTMLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HTMLKit.framework; path = HTMLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA4D05900E78330C6F15E85F2039B266 /* CSSNthExpressionSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSNthExpressionSelector.h; path = Sources/include/CSSNthExpressionSelector.h; sourceTree = "<group>"; };
-		EFE9E5B3899447802DAD746DCA89AB15 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
-		EFFFC1F624EAD969764959E671F70B25 /* HTMLListOfActiveFormattingElements.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLListOfActiveFormattingElements.h; path = Sources/include/HTMLListOfActiveFormattingElements.h; sourceTree = "<group>"; };
-		F0267370B9F53D22364D6BEC216087F5 /* HTMLCharacterToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLCharacterToken.h; path = Sources/include/HTMLCharacterToken.h; sourceTree = "<group>"; };
+		ED10D01B0B027A9A09B7E0DD73FE44CE /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
+		EE5C46ECB51FCFBF9F730DC67F3F02BB /* CSSPseudoFunctionSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSPseudoFunctionSelector.h; path = Sources/include/CSSPseudoFunctionSelector.h; sourceTree = "<group>"; };
+		F044EAAD04A4E3F54A60B907588D10E9 /* HTMLComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = Sources/include/HTMLComment.h; sourceTree = "<group>"; };
 		F08374850CD1BEA73B6F00B055F0DA4C /* Pods-eXo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-eXo-acknowledgements.plist"; sourceTree = "<group>"; };
-		F3B16C02D393489D847F938050B567F9 /* HTMLTokenizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizer.h; path = Sources/include/HTMLTokenizer.h; sourceTree = "<group>"; };
+		F39B12D9FC142EC784F157484D969B37 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		F3FD373E498C1FCF74977238AB36F863 /* HTMLNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Sources/include/HTMLNode.h; sourceTree = "<group>"; };
+		F544B3C5CA96EB66FC4D0B6724EB3151 /* HTMLParser+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HTMLParser+Private.h"; path = "Sources/include/HTMLParser+Private.h"; sourceTree = "<group>"; };
 		F5B694537AB9EB69DF7884B593E7DCB4 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UICKeyChainStore.framework; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5CFC1E03729A4E1B169B60C4788614E /* HTMLEOFToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLEOFToken.m; path = Sources/HTMLEOFToken.m; sourceTree = "<group>"; };
-		F6036990C6E340BFFA563B6A35B40A8A /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		F705677703E989EA643E4A4F94E8980B /* CSSPseudoFunctionSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSSPseudoFunctionSelector.h; path = Sources/include/CSSPseudoFunctionSelector.h; sourceTree = "<group>"; };
-		F729FD63B42DAD8AC9E31B2BA5A7A53D /* HTMLDocumentFragment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDocumentFragment.m; path = Sources/HTMLDocumentFragment.m; sourceTree = "<group>"; };
+		F6CD1617B704BEE4EEC2FD3137E7399C /* HTMLNamespaces.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLNamespaces.h; path = Sources/include/HTMLNamespaces.h; sourceTree = "<group>"; };
+		F83B5A7E9CA2AFCD3B77AAD42C655C84 /* HTMLDocumentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDocumentType.m; path = Sources/HTMLDocumentType.m; sourceTree = "<group>"; };
 		F9F20100941FEDA6D1EF9FB280B41B8C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		FAD4B368CEE2BB855AC8812CD59C4653 /* HTMLDOCTYPEToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTMLDOCTYPEToken.m; path = Sources/HTMLDOCTYPEToken.m; sourceTree = "<group>"; };
-		FE3658F406673F3E959A12DB4418324F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE5C84179598A83FA6A4933C28A8C0DA /* Pods-share-extension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-share-extension-dummy.m"; sourceTree = "<group>"; };
-		FE65AB5C92B9BEAF041E65764FA5B2EB /* HTMLTagToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTMLTagToken.h; path = Sources/include/HTMLTagToken.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +426,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4030AD47D03A9D03E9D0D635BCDCB178 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				320A1F72342D5138D4909F63FF94E8E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47BFB99EDDF22D2024F6C4A3434BB6C4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,28 +458,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DE03F593013352C2A05D1D36D0F8B5F6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F386548F1E2EEEAAF3BA46B17BFFC707 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01887B50A7E7B10679BFD8904B5908B4 /* Fabric */ = {
-			isa = PBXGroup;
-			children = (
-				84FFBFF9FF9F416954605BD5EE6D3CE7 /* FABAttributes.h */,
-				EFE9E5B3899447802DAD746DCA89AB15 /* Fabric.h */,
-				AEF4CAAFE162397EFA830B72E3C45339 /* Frameworks */,
-			);
-			name = Fabric;
-			path = Fabric;
-			sourceTree = "<group>";
-		};
 		07EA5FA4241D7126B7355463E3A719E7 /* Pods-eXo */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,32 +479,6 @@
 			path = "Target Support Files/Pods-eXo";
 			sourceTree = "<group>";
 		};
-		0AEC4C8ECE9DC62B29A3CA739BDC679C /* Crashlytics */ = {
-			isa = PBXGroup;
-			children = (
-				65A46DCFB70B6EBFB98FD611ADDA2B75 /* ANSCompatibility.h */,
-				40998A62EE70374F5DF393C2BE3D727C /* Answers.h */,
-				0DD2F85F55A486D342CCCD10F422A6E1 /* CLSAttributes.h */,
-				9F21E3427DB4384558886A51BC9950AC /* CLSLogging.h */,
-				E6934E5AC0E7DE540FF92A5128FF9C0C /* CLSReport.h */,
-				821355631BD1BB7B751010FD8C46948A /* CLSStackFrame.h */,
-				0F062DE11021C3B708BC3FCE80B194A3 /* Crashlytics.h */,
-				88671451AF3FCCB18368D53FF7980258 /* Frameworks */,
-			);
-			name = Crashlytics;
-			path = Crashlytics;
-			sourceTree = "<group>";
-		};
-		10A9E3B1C4275D287E348B6B0420C20D /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				C623E79D69CB58D810B3FADD3272C967 /* SwiftyJSON.swift */,
-				A0A4BA6E4BD964E2007B0FE3B85761CF /* Support Files */,
-			);
-			name = SwiftyJSON;
-			path = SwiftyJSON;
-			sourceTree = "<group>";
-		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,124 +487,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		18885AA18E51A3F5E5830C4F501178FF /* HTMLKit */ = {
+		1B19DC136FD770265B0D8D5BBF6B136C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2DCDAC47A8D5B199C4E45CFC75FAE7A9 /* CSSAttributeSelector.h */,
-				49ADD2CBDFD1F5DC0EF189C2E483D752 /* CSSAttributeSelector.m */,
-				36CB020465B55100C852549D19E76BB6 /* CSSCodePoints.h */,
-				8896BF90229996A0462B940322BD0B91 /* CSSCombinatorSelector.h */,
-				D945859A90FB16C0E5D8B8A2E0737E4F /* CSSCombinatorSelector.m */,
-				E736A8EF10214BDF05945B5919469C3F /* CSSCompoundSelector.h */,
-				B7F99E4EBF4132827FA867851912568F /* CSSCompoundSelector.m */,
-				68C28DA37CD4EA1585D9A1BE11529F3F /* CSSInputStream.h */,
-				1B395D43EE1B6D09CDE07ACE2FCB1BA1 /* CSSInputStream.m */,
-				7F6D35FE57565C631DBB661AD0D54D0C /* CSSNthExpressionParser.h */,
-				E565C48D435A4FB2D480F02462285767 /* CSSNthExpressionParser.m */,
-				EA4D05900E78330C6F15E85F2039B266 /* CSSNthExpressionSelector.h */,
-				007D451A694BD5B7B9B55319FD22886E /* CSSNthExpressionSelector.m */,
-				6EAF35EBEEEFB79275F77DD097A31FA1 /* CSSPseudoClassSelector.h */,
-				38A5997503ED0B4D2E12D9006DFD5074 /* CSSPseudoClassSelector.m */,
-				F705677703E989EA643E4A4F94E8980B /* CSSPseudoFunctionSelector.h */,
-				7628DF39A0F3CBCA4F98D34FDE976E16 /* CSSPseudoFunctionSelector.m */,
-				BACD6A166A9F6344865FDE5DF0B6120D /* CSSSelector.h */,
-				6F6AE3395BEFA96080BF74A25A8F96A6 /* CSSSelector.m */,
-				67434001BF32F841B826790577F6493C /* CSSSelectorBlock.h */,
-				D603E6BB6D928B0CD7F49D9311B7F0C1 /* CSSSelectorBlock.m */,
-				2805DB827258E17246B75AEB2BEA4560 /* CSSSelectorParser.h */,
-				5945D8883D7C65DEDB42742F939B6894 /* CSSSelectorParser.m */,
-				0791617143D87E77422C05CF0DE7234F /* CSSSelectors.h */,
-				C8DBEA30BA0349F322F4E5C7A458F925 /* CSSSelectors.m */,
-				B5DE88FBA44C36AE7EBFB2629E9447DF /* CSSStructuralPseudoSelectors.h */,
-				B9CF599774E536085F36031EC84B868A /* CSSStructuralPseudoSelectors.m */,
-				122A4AFE8DB6014C350DBDDE28C782FE /* CSSTypeSelector.h */,
-				7F649DC3227AD02241398322FFACC441 /* CSSTypeSelector.m */,
-				F0267370B9F53D22364D6BEC216087F5 /* HTMLCharacterToken.h */,
-				CF53D6739D51E1A056F8ECCE3EBFAA65 /* HTMLCharacterToken.m */,
-				73924B9117602B3D01B12CC1FA0E69DF /* HTMLComment.h */,
-				A7484AE8644E3FADC5CD7242013FF0E0 /* HTMLComment.m */,
-				1FD4B1D22199CD6CDBEEBBAA23FC62C9 /* HTMLCommentToken.h */,
-				69FCEF0DE67AE3019A722B6102DFBD1F /* HTMLCommentToken.m */,
-				2FBA8C27F0E26868C0D6702B17904B2A /* HTMLDOCTYPEToken.h */,
-				FAD4B368CEE2BB855AC8812CD59C4653 /* HTMLDOCTYPEToken.m */,
-				AC8226CEE95E20C7390F75DB9F495BB7 /* HTMLDocument.h */,
-				87E93BC771D9DD0FF2345AD1CA860080 /* HTMLDocument.m */,
-				2DE7FF26454D17D318D3E792B8E63BB2 /* HTMLDocumentFragment.h */,
-				F729FD63B42DAD8AC9E31B2BA5A7A53D /* HTMLDocumentFragment.m */,
-				A1FEB7BA105EE2DCFC312E940C4EFEFD /* HTMLDocumentType.h */,
-				59747685696FF4E2702B7D3A26FACE7C /* HTMLDocumentType.m */,
-				6DDFBF51BB08783C2663957E204CA429 /* HTMLDOM.h */,
-				27C9B4D86243EA3EBA20E34CA67BB1B7 /* HTMLDOMTokenList.h */,
-				BB88347AF987B80D363A5F4A885CB74B /* HTMLDOMTokenList.m */,
-				3603E0D83C003289107A2ADEF49BF3D0 /* HTMLElement.h */,
-				398E9B84D93DA13F58AC4264565F835B /* HTMLElement.m */,
-				61FB5B743706C9F32546CE920C75F238 /* HTMLElementAdjustment.h */,
-				67141341829F278BBD1E70A0B49E2679 /* HTMLElementTypes.h */,
-				C63C76A0C3242FF966FC60E285E558EB /* HTMLEOFToken.h */,
-				F5CFC1E03729A4E1B169B60C4788614E /* HTMLEOFToken.m */,
-				C741E1CAB9E8BCB5821C684C1125749F /* HTMLInputStreamReader.h */,
-				65DD10F3FB34359AB4EE8518D5A3D391 /* HTMLInputStreamReader.m */,
-				22364E623EBC3C2EDAD0F3BC248844A2 /* HTMLKit.h */,
-				A56E201BE103B35782D84A16C28FA894 /* HTMLKitDOMExceptions.h */,
-				142198E54DDE31FDAEBA9C5B20622025 /* HTMLKitDOMExceptions.m */,
-				DEA741D4A850C5DF31E052CB2DEB0DA2 /* HTMLKitErrorDomain.h */,
-				EFFFC1F624EAD969764959E671F70B25 /* HTMLListOfActiveFormattingElements.h */,
-				18C6436E2C5D7F056EEE8401B860B873 /* HTMLListOfActiveFormattingElements.m */,
-				4F7367DDE0678EF16AC228103FA0CFEB /* HTMLMarker.h */,
-				05542CE4D795FEC3310B6EF4CB65DCAD /* HTMLMarker.m */,
-				5A750B6DC4C8ACEE3BE31B404075AFB1 /* HTMLNamespaces.h */,
-				3DCB8847AAEAE1CD854DDAB76114B827 /* HTMLNode.h */,
-				CF7CED280DF91FF599CD6F30EF8D2873 /* HTMLNode.m */,
-				C8412B7993B34AE145C921EB3237E71A /* HTMLNode+Private.h */,
-				2A86794277D0110299D132B484C02131 /* HTMLNodeFilter.h */,
-				55F590BFE4E1944B9D009250E7A10D7B /* HTMLNodeFilter.m */,
-				8D68FC09E702444D4D4B4E4613AB1172 /* HTMLNodeIterator.h */,
-				730DBAAA5D942AB2F14DA38763BA9C19 /* HTMLNodeIterator.m */,
-				628B187DA6C39F0437AB0945C8D4CFDA /* HTMLNodeTraversal.h */,
-				0B8BF4D4402C517EF8D5E27C5F858CDB /* HTMLNodeTraversal.m */,
-				062B41D223C02B3D0D61958FDBB9828B /* HTMLOrderedDictionary.h */,
-				3710D64881CFDEA8959E13D4E1B71DE3 /* HTMLOrderedDictionary.m */,
-				CAFE3A3AB2391D41715C2FA826387C03 /* HTMLParseErrorToken.h */,
-				DEF8FFD905B749757C1D2ACFB175AB2F /* HTMLParseErrorToken.m */,
-				079092D0D738A3C867D404B728BC3F79 /* HTMLParser.h */,
-				423BAC07C5E5A35416E83AECDC1B5ABF /* HTMLParser.m */,
-				9C1AB0FC673DEC14E872B25B0D484C07 /* HTMLParserInsertionModes.h */,
-				21B54675F1155EC4A966E3609D875021 /* HTMLQuirksMode.h */,
-				36FF91638D0EB04DAEC49FE3F736A705 /* HTMLStackOfOpenElements.h */,
-				190EE8E9D1E86074594812B6F34C1C80 /* HTMLStackOfOpenElements.m */,
-				FE65AB5C92B9BEAF041E65764FA5B2EB /* HTMLTagToken.h */,
-				D6D3E655F58283D4FA0C7E646E9987E4 /* HTMLTagToken.m */,
-				C854ED77F242E794422B44CB72868D4E /* HTMLTemplate.h */,
-				A8A33DE24C77BA20EE86BEF167E9157C /* HTMLTemplate.m */,
-				24223D88F63BE7E38E063C9187F37058 /* HTMLText.h */,
-				4F97FE52474E4BE7728BF789990F428A /* HTMLText.m */,
-				B928C7FAF48A013496BC2FBA73958B69 /* HTMLToken.h */,
-				E849AC019A207788A6BFA17F678377F5 /* HTMLToken.m */,
-				F3B16C02D393489D847F938050B567F9 /* HTMLTokenizer.h */,
-				DEB4D7169939D160BA9E6D304B71C8C7 /* HTMLTokenizer.m */,
-				1D386B2FD4BF639E36554F7094C6A832 /* HTMLTokenizerCharacters.h */,
-				B08C84990FE524955A85F7555990A6AD /* HTMLTokenizerEntities.h */,
-				79BB9D663C81C8077EDFF3C5BA3199A2 /* HTMLTokenizerEntities.m */,
-				4D9BB4C394971387B973BCDE177B53A1 /* HTMLTokenizerStates.h */,
-				15F220B4E849A09FEDA39BAA3D1B0E62 /* HTMLTokens.h */,
-				BC3813BA217D3AD441171A4107BE8A67 /* HTMLTreeWalker.h */,
-				BAD631C4E2DC35B26DFDAD835B99D575 /* HTMLTreeWalker.m */,
-				5E8C6BDE091C7CC6286D9492C9F160EC /* NSCharacterSet+HTMLKit.h */,
-				55B14E6D6FA1F7E6193D072707F20848 /* NSCharacterSet+HTMLKit.m */,
-				8A8D19373966C414B3312DBF18E1018C /* NSString+HTMLKit.h */,
-				90A33A7A1E07F7207264FC39BDD774E5 /* NSString+HTMLKit.m */,
-				D95D4C477B79BFB0F741E0D58C272572 /* Support Files */,
-			);
-			name = HTMLKit;
-			path = HTMLKit;
-			sourceTree = "<group>";
-		};
-		23543DD92968EF858B07DE1C3DAFCCA8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				214744E2D557A293DF6689F4A1993337 /* SVProgressHUD.bundle */,
+				E3154701DEF64CC094EF335FF9F16799 /* SVProgressHUD.bundle */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		3083E847858569EE1012351F64837154 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				AC7AF68A3DE5D33930934AD4B9C8A9C2 /* SwiftyJSON.swift */,
+				E03CC97EE4176D175C0A38C498727907 /* Support Files */,
+			);
+			name = SwiftyJSON;
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		34B62E6548D93185B4AE5560D92AEB82 /* Targets Support Files */ = {
@@ -632,43 +515,75 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5330EEB3CB224E295F1573D919BFE7DE /* Support Files */ = {
+		35E9442B4046D00EA6859DE00FD1E1CD /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				01F50F7C874FD23B83388F3BFF032953 /* Info.plist */,
-				0ACFD6DD8DD398E6F75E9CB81359CBFC /* SVProgressHUD.modulemap */,
-				75EE66E53D690513587BF269B197B633 /* SVProgressHUD.xcconfig */,
-				DCAB689649E0B125C57402CE4713E8DA /* SVProgressHUD-dummy.m */,
-				2370EE44D1FEEE2D51B8A8591B26D95A /* SVProgressHUD-prefix.pch */,
-				E92D2E0ECB3DDCA1FCF6E3BA01219FD9 /* SVProgressHUD-umbrella.h */,
+				4501D8E67B059C5318A3BA7A54E644FB /* HTMLKit.modulemap */,
+				2E95885DCB5C5E44CDABF0C4DC16C9B3 /* HTMLKit.xcconfig */,
+				A5C9DAB998648462F1687CB5BADABAD8 /* HTMLKit-dummy.m */,
+				D9F99E7132AECEE164EE56DC2F17242F /* HTMLKit-prefix.pch */,
+				DBCFE28399D5139CF5CDCA847CBD0771 /* HTMLKit-umbrella.h */,
+				57B3355A04581F542A61B5A5CD1F3340 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SVProgressHUD";
+			path = "../Target Support Files/HTMLKit";
 			sourceTree = "<group>";
 		};
-		5B3B6A28446A4855CCB6B5B06094C807 /* SVProgressHUD */ = {
+		48D2FA5CD782D4CEBA507D923BA6153D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D1CC095E294495E36B3E221CCB52F8EC /* SVIndefiniteAnimatedView.h */,
-				3EF2748810AB7C846C8D3B8BCE59E18E /* SVIndefiniteAnimatedView.m */,
-				D9AC025779A9D5AEA14F27B7BE6866A0 /* SVProgressHUD.h */,
-				761D23BB800F182C9B4D84FAF74304BB /* SVProgressHUD.m */,
-				23543DD92968EF858B07DE1C3DAFCCA8 /* Resources */,
-				5330EEB3CB224E295F1573D919BFE7DE /* Support Files */,
+				C4C24CB90A9D4D57EDD69E4B6B0A05DF /* Crashlytics */,
+				4BD3E40944E2D9796DD0EA6F718C8A4D /* Fabric */,
+				728EBC533D81C73A5AE24C08BEBCBA9C /* HTMLKit */,
+				73D582C0A1B134721E35BEBC4590017E /* SVProgressHUD */,
+				3083E847858569EE1012351F64837154 /* SwiftyJSON */,
+				67468EBE7C406AB12196770C539B8AEC /* UICKeyChainStore */,
 			);
-			name = SVProgressHUD;
-			path = SVProgressHUD;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		640DBBBC0354D568FE20CA44A2F2F96F /* UICKeyChainStore */ = {
+		4BD3E40944E2D9796DD0EA6F718C8A4D /* Fabric */ = {
 			isa = PBXGroup;
 			children = (
-				9D32CF03765F175E367A8E4137891F7B /* UICKeyChainStore.h */,
-				4DB9FD61128F5FA378EA5515EBD32AD1 /* UICKeyChainStore.m */,
-				7B4ABA7422129BA09B40594068348EBD /* Support Files */,
+				1F5B52F21AB566CAC60F41222238ACC0 /* FABAttributes.h */,
+				57BF145784E0E4EDC10CE85AC724AD40 /* Fabric.h */,
+				63FD03DFB68679D3D6350DC3D6246BDF /* Frameworks */,
+			);
+			name = Fabric;
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		63FD03DFB68679D3D6350DC3D6246BDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F39B12D9FC142EC784F157484D969B37 /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67468EBE7C406AB12196770C539B8AEC /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				ED10D01B0B027A9A09B7E0DD73FE44CE /* UICKeyChainStore.h */,
+				71414AB7D44C24F4DED2501A8E043437 /* UICKeyChainStore.m */,
+				6891DE781E1306CE1863F6033A368780 /* Support Files */,
 			);
 			name = UICKeyChainStore;
 			path = UICKeyChainStore;
+			sourceTree = "<group>";
+		};
+		6891DE781E1306CE1863F6033A368780 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1FDAC217584F14C6BD013EC97EC60971 /* Info.plist */,
+				D95DBE80ADFB17D0942A4E08DE527041 /* UICKeyChainStore.modulemap */,
+				593796D8AD6492DC135B5399ECE321AE /* UICKeyChainStore.xcconfig */,
+				B73CCA930C2F2CEB3AE50B516EE8D0DC /* UICKeyChainStore-dummy.m */,
+				C902F4AA3A98C5BCF05685AE352FB88C /* UICKeyChainStore-prefix.pch */,
+				DC942E4234539FB39B71E140602077D4 /* UICKeyChainStore-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UICKeyChainStore";
 			sourceTree = "<group>";
 		};
 		6D0E31DECBFE8A8B879C041D0A3E40B4 /* Pods-eXoTests */ = {
@@ -689,18 +604,141 @@
 			path = "Target Support Files/Pods-eXoTests";
 			sourceTree = "<group>";
 		};
-		7B4ABA7422129BA09B40594068348EBD /* Support Files */ = {
+		728EBC533D81C73A5AE24C08BEBCBA9C /* HTMLKit */ = {
 			isa = PBXGroup;
 			children = (
-				E56F906205387D3D912C682E0354EF82 /* Info.plist */,
-				D540A2CD3826AE2E6596480F13DD1FA8 /* UICKeyChainStore.modulemap */,
-				15ABDD8B4AF9CFBE837AEC652BBE8097 /* UICKeyChainStore.xcconfig */,
-				7553EA52858E6947FEC1282E0D3BA3DC /* UICKeyChainStore-dummy.m */,
-				198B8D6D561AB25AB78838116CA6D8D6 /* UICKeyChainStore-prefix.pch */,
-				543DE63A7CF671E0C1C94485D5DA97D4 /* UICKeyChainStore-umbrella.h */,
+				36598C3D6A6D2D8FC06BC6F83C45C7FF /* CSSAttributeSelector.h */,
+				0C65B523B57F978BCEB395F83BE4C0FA /* CSSAttributeSelector.m */,
+				D3A5681FAAE01A6B42922FD01B105494 /* CSSCodePoints.h */,
+				E3983E3BF351CD7207B1EB909AE40D64 /* CSSCombinatorSelector.h */,
+				31990E08DEF277EF2BEEFE64C61A63DE /* CSSCombinatorSelector.m */,
+				6A2A239DFFCC7716E177F464B3065479 /* CSSCompoundSelector.h */,
+				11B3F99B2F9A3A46CCEDCDBFBDACC7F7 /* CSSCompoundSelector.m */,
+				5EA7415B8CEFAA58C7B9E0F90BC6AAEE /* CSSInputStream.h */,
+				4440E8A93430795A4BC7991F8340B923 /* CSSInputStream.m */,
+				1C9355C7DBD68CE653F8673E3D992E76 /* CSSNthExpressionParser.h */,
+				D981BCAADCFDC3C89A596276617CB523 /* CSSNthExpressionParser.m */,
+				18B2926F2062B27BD764B9A6C510771D /* CSSNthExpressionSelector.h */,
+				8EFAE831753F5D0DE5CE8C02C12B70E6 /* CSSNthExpressionSelector.m */,
+				031DB756160005D2E98EEA5BDD916A6D /* CSSPseudoClassSelector.h */,
+				433D7D5B7CB2C7D2335B11FEFDAD4613 /* CSSPseudoClassSelector.m */,
+				EE5C46ECB51FCFBF9F730DC67F3F02BB /* CSSPseudoFunctionSelector.h */,
+				D6E5FE685A7905893FE899FAAB29FB7F /* CSSPseudoFunctionSelector.m */,
+				AAD0595E2A7BF0F6154DC97AA65EDB1B /* CSSSelector.h */,
+				95D7860DD242201B5B890F06352906C1 /* CSSSelector.m */,
+				1487372D437F4C872A939BCDF865D6E9 /* CSSSelectorBlock.h */,
+				6699B086411BD94A246EC1FDBD692888 /* CSSSelectorBlock.m */,
+				1F6376EF689F877D1228708086A4E82B /* CSSSelectorParser.h */,
+				E08A130600243BD4F2A50EF5D0D00EC2 /* CSSSelectorParser.m */,
+				B8A98A1662CA7E4BD8CF97CFC634EB0C /* CSSSelectors.h */,
+				A77FB6E0122129502030E444E80F438F /* CSSSelectors.m */,
+				633B373517D5AC751F0F757094CF5C77 /* CSSStructuralPseudoSelectors.h */,
+				10DC34F60B6F9050FC148BE6E022BC7A /* CSSStructuralPseudoSelectors.m */,
+				DE47133D2803B211458DB3BA6D87CD6F /* CSSTypeSelector.h */,
+				DE8481B68A2E5E28EB271A8F31B899B7 /* CSSTypeSelector.m */,
+				877EA64A8B66F69D37A68F96743BAA2A /* HTMLCharacterData.h */,
+				A80D3E2D9CBEC926FE90520ED79963CB /* HTMLCharacterData.m */,
+				A369D2EDC0971877E6635778E2CEAE00 /* HTMLCharacterData+Private.h */,
+				B478A9FAD22F8EA183A05BFDD8529149 /* HTMLCharacterToken.h */,
+				1BFA54C56EEC5C28334979615812974C /* HTMLCharacterToken.m */,
+				F044EAAD04A4E3F54A60B907588D10E9 /* HTMLComment.h */,
+				A562C563631E5CFC6D45CFBF61A90D96 /* HTMLComment.m */,
+				0FC6DC3C809DACC69A73BDC8310332BF /* HTMLCommentToken.h */,
+				7B54E57C3B5DB097E622604AC2AB6FD3 /* HTMLCommentToken.m */,
+				510B1BABB87AC2DCD9194704CF6C5885 /* HTMLDOCTYPEToken.h */,
+				482345E2334929F730DD9F3DDF63E36C /* HTMLDOCTYPEToken.m */,
+				E1A243B5796940042C7D63CF84CC516D /* HTMLDocument.h */,
+				9894440914613C6C20F83C74E5D1EDDD /* HTMLDocument.m */,
+				DF890C03B8C0CC107544C3E0B3FB4DD4 /* HTMLDocument+Private.h */,
+				AEE280F64FE703F803698F98D0547653 /* HTMLDocumentFragment.h */,
+				B15E3B87910D228CFC7AF6A9E8BC8545 /* HTMLDocumentFragment.m */,
+				B0A5190E917FDF5F49DD2FA1793CB188 /* HTMLDocumentType.h */,
+				F83B5A7E9CA2AFCD3B77AAD42C655C84 /* HTMLDocumentType.m */,
+				4CF0645FB5F56A1FF902CDB94DA77C7F /* HTMLDOM.h */,
+				6F6DA14FBF6A0A136C99DE29300D5BC8 /* HTMLDOMTokenList.h */,
+				78E5E1A79823645D6B9A494DD1EBC9AB /* HTMLDOMTokenList.m */,
+				51E2EFEF09FC08564A74C26A0191F315 /* HTMLDOMUtils.h */,
+				B4EFAE1158B23F67320B72D0E7174946 /* HTMLDOMUtils.m */,
+				C65C673B34CF09219FDAB65E82ED0B14 /* HTMLElement.h */,
+				B90DB85D173B3E545CA9529CD4E01412 /* HTMLElement.m */,
+				B64F81C3527D645CABA6FDE1A4E3460F /* HTMLElementAdjustment.h */,
+				8C31D13B5A1CDA04AB06FA61319E1E15 /* HTMLElementTypes.h */,
+				7879E901B2A8FCAC9CE047209EA17C9B /* HTMLEOFToken.h */,
+				2223DD69B32AF1D5E5A0A0D0ED290AAF /* HTMLEOFToken.m */,
+				B12112B62720B659F236058F5023ECD3 /* HTMLInputStreamReader.h */,
+				C0B150CE1C2D001604E367F5C9B117AB /* HTMLInputStreamReader.m */,
+				A87C9EE449A39A6CD27DFAE4B7E36D20 /* HTMLKit.h */,
+				5C5B437240C69967575DE1D762C4B17E /* HTMLKitDOMExceptions.h */,
+				02D0044B1B15C8FDE0C0A143B692BDB6 /* HTMLKitDOMExceptions.m */,
+				59FEB55F10C46EE6F6A05849F5C1C2F7 /* HTMLKitErrorDomain.h */,
+				9AC71C2DE09027F1F4F672ACE4534E18 /* HTMLListOfActiveFormattingElements.h */,
+				0453AD58A4AE1167943B9A04D052371B /* HTMLListOfActiveFormattingElements.m */,
+				4AF3F43F2BC9568ED211501AE985C69D /* HTMLMarker.h */,
+				0800714D57E9323EC75E5307A95DB28E /* HTMLMarker.m */,
+				F6CD1617B704BEE4EEC2FD3137E7399C /* HTMLNamespaces.h */,
+				F3FD373E498C1FCF74977238AB36F863 /* HTMLNode.h */,
+				C1FF0913DDF8B5F71AE2AA2001D8F214 /* HTMLNode.m */,
+				E59FE016FC78EBE95167C27DF508BEC3 /* HTMLNode+Private.h */,
+				68468E924BF2F21A94A5C0D03632DA20 /* HTMLNodeFilter.h */,
+				241F0A46355A7BA092B8DCD6C88F32C9 /* HTMLNodeFilter.m */,
+				9C46807EFE453F536B98C525F5A8F5BE /* HTMLNodeIterator.h */,
+				A65133BE05717D342E08A850EBDBEC46 /* HTMLNodeIterator.m */,
+				CB1694C71E03FB1AF7DF76AA4D177158 /* HTMLNodeIterator+Private.h */,
+				8B7F7FE1473EC4C5F691C969ED0856BC /* HTMLNodeTraversal.h */,
+				2F16FD96D6112E5086FC43A48B4AC331 /* HTMLNodeTraversal.m */,
+				0EE20944C28A050A699C22129CD73CB7 /* HTMLOrderedDictionary.h */,
+				47E6F04CB169E34FAF0B8FF70BE6B812 /* HTMLOrderedDictionary.m */,
+				356AAA00B5B52F8303B1EB98FC814B4E /* HTMLParseErrorToken.h */,
+				1A8261D56F1761E539544843F67C9687 /* HTMLParseErrorToken.m */,
+				86821F06521FAE3CE5978F53CE933390 /* HTMLParser.h */,
+				63374E45F3438298C5BEE4B387601843 /* HTMLParser.m */,
+				F544B3C5CA96EB66FC4D0B6724EB3151 /* HTMLParser+Private.h */,
+				871FA22BBD818D4B88FA8BD4F4F227BC /* HTMLParserInsertionModes.h */,
+				C4E943F639FF29104075323220B99AD1 /* HTMLQuirksMode.h */,
+				A6689FBF41484B4D62D7968FC23A78C6 /* HTMLRange.h */,
+				4B8DB19DE13E09F0497978CDD2662FA4 /* HTMLRange.m */,
+				AED358C3290931411C8AE8F3C6894F49 /* HTMLRange+Private.h */,
+				7AE68D41DCE0A3F885742D9674ABB09A /* HTMLStackOfOpenElements.h */,
+				598DAD125E105C1526AE973A234F957A /* HTMLStackOfOpenElements.m */,
+				36CE004FCD5F3951A9E9BCC171C6771C /* HTMLTagToken.h */,
+				62BEA94D98C47E35E311E8C0AE1DA7AF /* HTMLTagToken.m */,
+				9738E657F4BACE641C8377219391B06D /* HTMLTemplate.h */,
+				48C492F68E82BE1D7CB128CA6A309945 /* HTMLTemplate.m */,
+				0F2CAB22AEFA83795EE5CEF19A365DB9 /* HTMLText.h */,
+				3BC650F7EF7B193E95C57295CB457253 /* HTMLText.m */,
+				CFC3A74BAD9B8D7D69BEE2306A8C563C /* HTMLToken.h */,
+				11DBC39BFEE345AFED4926E98BB6BF0C /* HTMLToken.m */,
+				79A82E4137BBCE901D73EE488C83F5A2 /* HTMLTokenizer.h */,
+				BCCD95DE653E65613920F1602555AE1C /* HTMLTokenizer.m */,
+				DD686789D104435D0F8FC439E321D41A /* HTMLTokenizerCharacters.h */,
+				D8A23064D19A79FC9CA42675909120C6 /* HTMLTokenizerEntities.h */,
+				3D53808BA5617665B0B728CF073F0188 /* HTMLTokenizerEntities.m */,
+				AB098ACE05A5679CE66D4D16580DDC2E /* HTMLTokenizerStates.h */,
+				DA7A5137C1D11337EC7F27E11A1E5BD4 /* HTMLTokens.h */,
+				4412CFFC24B8893F0B028D48AB4022C6 /* HTMLTreeWalker.h */,
+				0AADA96FAB627BDE588041B51BA0DC58 /* HTMLTreeWalker.m */,
+				6254B41C55FBBF1A043E8ABCFEE5DCD3 /* NSCharacterSet+HTMLKit.h */,
+				4DE8A2BB783F26F549B556FD3E54925C /* NSCharacterSet+HTMLKit.m */,
+				A74652ADD23FD39FC5F850CD59E3D439 /* NSString+HTMLKit.h */,
+				9E6F7980018CD39A5498CE46D5F7A18F /* NSString+HTMLKit.m */,
+				35E9442B4046D00EA6859DE00FD1E1CD /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/UICKeyChainStore";
+			name = HTMLKit;
+			path = HTMLKit;
+			sourceTree = "<group>";
+		};
+		73D582C0A1B134721E35BEBC4590017E /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				678E87D3B57F0E939ED86B0B2A2F7235 /* SVIndefiniteAnimatedView.h */,
+				49B567419BFAA645D947DAE3A7EFFD5F /* SVIndefiniteAnimatedView.m */,
+				20465EA4750CF73E5EC7E76C06263545 /* SVProgressHUD.h */,
+				49AB49867E8920C3215761E739AC8697 /* SVProgressHUD.m */,
+				1B19DC136FD770265B0D8D5BBF6B136C /* Resources */,
+				95EA682AF6E4503DF3D389C96DDD5FA2 /* Support Files */,
+			);
+			name = SVProgressHUD;
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -708,16 +746,16 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				96B32D6B9194CADC9DDC42634B1A9A38 /* Pods */,
+				48D2FA5CD782D4CEBA507D923BA6153D /* Pods */,
 				E429BCFAD75429D39DC294DA9BFDF135 /* Products */,
 				34B62E6548D93185B4AE5560D92AEB82 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		88671451AF3FCCB18368D53FF7980258 /* Frameworks */ = {
+		852CACA9C40A834870587EE8095CF732 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				32D0EA438E2CABB68C3C1C6F79801825 /* Crashlytics.framework */,
+				7A226D16C459D8E8EE8A90DA70E17EAE /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -732,53 +770,48 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		96B32D6B9194CADC9DDC42634B1A9A38 /* Pods */ = {
+		95EA682AF6E4503DF3D389C96DDD5FA2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0AEC4C8ECE9DC62B29A3CA739BDC679C /* Crashlytics */,
-				01887B50A7E7B10679BFD8904B5908B4 /* Fabric */,
-				18885AA18E51A3F5E5830C4F501178FF /* HTMLKit */,
-				5B3B6A28446A4855CCB6B5B06094C807 /* SVProgressHUD */,
-				10A9E3B1C4275D287E348B6B0420C20D /* SwiftyJSON */,
-				640DBBBC0354D568FE20CA44A2F2F96F /* UICKeyChainStore */,
+				5F87E6E8FA72E0A74B2C191906A87443 /* Info.plist */,
+				54CFF29D9DC7E5CC10BE57A81A76E288 /* SVProgressHUD.modulemap */,
+				E49F94F09D7D7F79E1A853EECCC16581 /* SVProgressHUD.xcconfig */,
+				AB4719757F40075F2077DF80F941F1A8 /* SVProgressHUD-dummy.m */,
+				42F8CED613C3D3CA3808802AA68A3C1B /* SVProgressHUD-prefix.pch */,
+				729433561F31BBFC5F22CC8CCABC2690 /* SVProgressHUD-umbrella.h */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SVProgressHUD";
 			sourceTree = "<group>";
 		};
-		A0A4BA6E4BD964E2007B0FE3B85761CF /* Support Files */ = {
+		C4C24CB90A9D4D57EDD69E4B6B0A05DF /* Crashlytics */ = {
 			isa = PBXGroup;
 			children = (
-				1AD11A6139E56993EA92019E604CAE31 /* Info.plist */,
-				58FC0904F5924DAE59BF4CC730827A9B /* SwiftyJSON.modulemap */,
-				AEDEB0E73D6EEE7DE9C7D5372E3A7D87 /* SwiftyJSON.xcconfig */,
-				D42B71A5425A91B1E6B96E5274ED5FFC /* SwiftyJSON-dummy.m */,
-				F6036990C6E340BFFA563B6A35B40A8A /* SwiftyJSON-prefix.pch */,
-				21CDCBCF0ED30D486B372AD23EDF8AA1 /* SwiftyJSON-umbrella.h */,
+				CDE020D8A5746CB8FA627245881552A1 /* ANSCompatibility.h */,
+				76620E429367C37FB3B88D134AC26415 /* Answers.h */,
+				36B689385F718155DEE421B25292887A /* CLSAttributes.h */,
+				765332B13F9A800B317A2F922DC8B860 /* CLSLogging.h */,
+				C6C9770785A2E1EEAF2E5E5C675F67BB /* CLSReport.h */,
+				6084F0EF5A766BC8D622B3C5241126AE /* CLSStackFrame.h */,
+				665E746FDD9A168923354B6936CE8B93 /* Crashlytics.h */,
+				852CACA9C40A834870587EE8095CF732 /* Frameworks */,
+			);
+			name = Crashlytics;
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
+		E03CC97EE4176D175C0A38C498727907 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F0F2AD26AA52B2D22F1F07D22CED51F /* Info.plist */,
+				C88DB25751764498241183DA90A7A6B6 /* SwiftyJSON.modulemap */,
+				58881D9F05344AA67B892C47E0587814 /* SwiftyJSON.xcconfig */,
+				2629F80EE890EA0F8D90AA8658432644 /* SwiftyJSON-dummy.m */,
+				160BB106243B2D4D00B9C8C866241379 /* SwiftyJSON-prefix.pch */,
+				271C204A2D70E28B96561365337619B8 /* SwiftyJSON-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyJSON";
-			sourceTree = "<group>";
-		};
-		AEF4CAAFE162397EFA830B72E3C45339 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4AEF5F4A16CE9CDED1E10BC4CD622431 /* Fabric.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D95D4C477B79BFB0F741E0D58C272572 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				657C9F8D8CB7931F0EC45E800BBCCC58 /* HTMLKit.modulemap */,
-				A00C36176A67E4F8FEC992F70F464322 /* HTMLKit.xcconfig */,
-				A99F1A1CAE9C4D607E6C621B2DEF1079 /* HTMLKit-dummy.m */,
-				24F66E6382D2C5D6871117B790A5669C /* HTMLKit-prefix.pch */,
-				96D5396C7F86D4583A102876D289A446 /* HTMLKit-umbrella.h */,
-				FE3658F406673F3E959A12DB4418324F /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/HTMLKit";
 			sourceTree = "<group>";
 		};
 		E429BCFAD75429D39DC294DA9BFDF135 /* Products */ = {
@@ -841,6 +874,80 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4E3CE49252A6F2C43D1258875C08E18E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C75909CAA3A3B28EB0464F791B559E /* CSSAttributeSelector.h in Headers */,
+				B6BE246670ACF7A9A95028107661AC2A /* CSSCodePoints.h in Headers */,
+				B4BF06D8ACEC7F628431DB8DDE4F6E64 /* CSSCombinatorSelector.h in Headers */,
+				210FB25A68E3501A484AA2B0DB8F678D /* CSSCompoundSelector.h in Headers */,
+				537486179B0F1D7AC9F649B1A7E0B297 /* CSSInputStream.h in Headers */,
+				FA5623B686387F57A60252AC93CEC678 /* CSSNthExpressionParser.h in Headers */,
+				13B12ACCAA9A07CDE02637C10425DD9E /* CSSNthExpressionSelector.h in Headers */,
+				D3D3D9470CC251A20DF75A5623AE3976 /* CSSPseudoClassSelector.h in Headers */,
+				69B1F46BAF5AC29C80D90D76B0104D2E /* CSSPseudoFunctionSelector.h in Headers */,
+				8FD73610F2B473290AE6F84879C66E2F /* CSSSelector.h in Headers */,
+				89D5AE38FD8E1796326594C3A7D5B9A8 /* CSSSelectorBlock.h in Headers */,
+				A6855D9D7029C3B3A1C6D4BD59D00A44 /* CSSSelectorParser.h in Headers */,
+				62D617C36D43DFF198152B866611E94D /* CSSSelectors.h in Headers */,
+				9F116C43F8B1D1A93DFF886A9B88B222 /* CSSStructuralPseudoSelectors.h in Headers */,
+				9710BFFB5286ED10B8981B9E6E6E433B /* CSSTypeSelector.h in Headers */,
+				68C0E62DA30F91BED7FE89BAD45C4967 /* HTMLCharacterData+Private.h in Headers */,
+				35FAA09F59F20A835F7040381CEDF065 /* HTMLCharacterData.h in Headers */,
+				539EF496CF555228D628F6037595F78F /* HTMLCharacterToken.h in Headers */,
+				3D6A4990F8A8F2BEA2C9CB6EF152E29A /* HTMLComment.h in Headers */,
+				5432DBE2468B7914FB4CE5C867F1EF03 /* HTMLCommentToken.h in Headers */,
+				1D152239DF14B26C37A3F8AA57A9017F /* HTMLDOCTYPEToken.h in Headers */,
+				03F9ED6006F1274DA84FD473C4E5F817 /* HTMLDocument+Private.h in Headers */,
+				C35EFCF86015D931C2266D7DF9D556B4 /* HTMLDocument.h in Headers */,
+				E30D5FE32CF0ED3C633EE3DEA7084782 /* HTMLDocumentFragment.h in Headers */,
+				06DCED56DE057DAA6B4C0300991A6183 /* HTMLDocumentType.h in Headers */,
+				F34C265960DF1E85DCA53F7BF8BF1197 /* HTMLDOM.h in Headers */,
+				5877B7F496E7633CC2312C90A1185352 /* HTMLDOMTokenList.h in Headers */,
+				DB983D6B4F3EEF8CFF7852BFD09F0A90 /* HTMLDOMUtils.h in Headers */,
+				9F24582964532541F345C6654E046CD7 /* HTMLElement.h in Headers */,
+				C5FEF695F41DBB13BE833E19C3787572 /* HTMLElementAdjustment.h in Headers */,
+				E08438C1041A50BD7DF353A1B3AD699D /* HTMLElementTypes.h in Headers */,
+				1BCC613A3BAD5C42DF6B617BC0A4A88E /* HTMLEOFToken.h in Headers */,
+				AB1ADFEF768199ED44C568B107A42D59 /* HTMLInputStreamReader.h in Headers */,
+				FDB9EB7855A47CC5D595527F4B98AD30 /* HTMLKit-umbrella.h in Headers */,
+				60C59F03BCF433908A3CE340DDC10DBA /* HTMLKit.h in Headers */,
+				8938962045148287C6B33BADB44F6ECC /* HTMLKitDOMExceptions.h in Headers */,
+				EAF6A2BD87CBEC03E30A2E7F09418C2A /* HTMLKitErrorDomain.h in Headers */,
+				1491187E44076B9847D57500233F9257 /* HTMLListOfActiveFormattingElements.h in Headers */,
+				98584CA55A24217AC07D3FF3DDA77432 /* HTMLMarker.h in Headers */,
+				5CC3CCA46EB15D359619375F08B3D437 /* HTMLNamespaces.h in Headers */,
+				47CC62839C4E3A54E685E381B1A0A3F3 /* HTMLNode+Private.h in Headers */,
+				B21C2DAE7E63F4B7C63844707603E407 /* HTMLNode.h in Headers */,
+				8978BB7FD70F599595BC023E92D3C485 /* HTMLNodeFilter.h in Headers */,
+				15F7E036F4B5CF6C067882D7AEE81D17 /* HTMLNodeIterator+Private.h in Headers */,
+				4E8BB3CC835482FCAAFA0DB8A247A3BC /* HTMLNodeIterator.h in Headers */,
+				B658AD1632440B356219D56B5BF6B548 /* HTMLNodeTraversal.h in Headers */,
+				887FFB328591D8CCB59189733EDFBE82 /* HTMLOrderedDictionary.h in Headers */,
+				8BACB168E46C1A25CFFAB24299E9C2D4 /* HTMLParseErrorToken.h in Headers */,
+				CBCF07999909DFC7FDCC923063B5D514 /* HTMLParser+Private.h in Headers */,
+				3F7FEA2190810C4807730CA6732E4461 /* HTMLParser.h in Headers */,
+				B2FD1210FA19F06D76D2326D016145E7 /* HTMLParserInsertionModes.h in Headers */,
+				A80042E1C598A2BB9890B29224775B45 /* HTMLQuirksMode.h in Headers */,
+				CC85AED975030AF662CA3FCF10B20802 /* HTMLRange+Private.h in Headers */,
+				D69A6A7FF5C56CD3912779E69366B5DC /* HTMLRange.h in Headers */,
+				7ABA7854F7EC83DA273F23100EB8C3F1 /* HTMLStackOfOpenElements.h in Headers */,
+				7E86305BE015175BD72FDE753C492E6D /* HTMLTagToken.h in Headers */,
+				93FB8786EC786EE2714DC8CA944E9AC4 /* HTMLTemplate.h in Headers */,
+				B1BD187AC337DA5AC610CD512EA6FAA7 /* HTMLText.h in Headers */,
+				3C865A0268FA65F2E0E420F9CC16C187 /* HTMLToken.h in Headers */,
+				7AFF4400FEAABF4469046B1B5C55FFFE /* HTMLTokenizer.h in Headers */,
+				77C0BF5ADACD9F011FBF4006B7FFA842 /* HTMLTokenizerCharacters.h in Headers */,
+				7C0DEA489F6B2164462867D3200FC3B9 /* HTMLTokenizerEntities.h in Headers */,
+				12D248CC6DD5635DCCD92A565376B101 /* HTMLTokenizerStates.h in Headers */,
+				A14E3A05070D48C318CF8B5915A8E460 /* HTMLTokens.h in Headers */,
+				C6DD558984DBF077CDA7DBCC3C8519D0 /* HTMLTreeWalker.h in Headers */,
+				49E6A4F5345E0B4825CC8EEA4D22074B /* NSCharacterSet+HTMLKit.h in Headers */,
+				1594A2F4C5062A92154124AB7B1509C7 /* NSString+HTMLKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50A0131DE2C0D6EA40DDBFFBED9042A6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -866,92 +973,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC21643CDE658FBF937B99D728496439 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				757BFA4C7CA1DDB6EEA5A93EDE472845 /* CSSAttributeSelector.h in Headers */,
-				6911E975641A73272F6E038F87F02417 /* CSSCodePoints.h in Headers */,
-				C6D9B7CA8E901DE5C69C2D7BD32E78A0 /* CSSCombinatorSelector.h in Headers */,
-				C324C1F2362911863A372A3E25E21861 /* CSSCompoundSelector.h in Headers */,
-				F30E0A17211F6769041DE05AB761A74F /* CSSInputStream.h in Headers */,
-				3BC927CFBA81FD4742294238B9CF4E61 /* CSSNthExpressionParser.h in Headers */,
-				296AD02EA3CA355C106D53947D531855 /* CSSNthExpressionSelector.h in Headers */,
-				065E65434C303B0993E1B89A8EFAD37E /* CSSPseudoClassSelector.h in Headers */,
-				4EDF93E49C86BFBCA7861BDF52758736 /* CSSPseudoFunctionSelector.h in Headers */,
-				27BA1232F4D43E52E25C56AA89C198E1 /* CSSSelector.h in Headers */,
-				80E8BB0ECA940C6BE35ED348F4D00147 /* CSSSelectorBlock.h in Headers */,
-				03E778D7322C3E6EAFAE3C9541D58478 /* CSSSelectorParser.h in Headers */,
-				E316AEB857BCDF36E71396E68937F517 /* CSSSelectors.h in Headers */,
-				7F0AB7496D1AF7E7E4249F1FD4758141 /* CSSStructuralPseudoSelectors.h in Headers */,
-				F2F9A647C42561E108FD1AE57A432812 /* CSSTypeSelector.h in Headers */,
-				B522CDAD008371BD5A14A6E1F96889FF /* HTMLCharacterToken.h in Headers */,
-				BC04335A72EA89E61388621BB6BC7A30 /* HTMLComment.h in Headers */,
-				898A2B84E1C6C75EEF9FB84613329845 /* HTMLCommentToken.h in Headers */,
-				A2DFC05228DFA9F366D4EB2030663385 /* HTMLDOCTYPEToken.h in Headers */,
-				22BBE7AC3C07126BF0F1AA3FBA78D168 /* HTMLDocument.h in Headers */,
-				CB260327CE6FEA7AF671828F3D96116A /* HTMLDocumentFragment.h in Headers */,
-				484A3711DE9D960156D2E208780A744C /* HTMLDocumentType.h in Headers */,
-				CDC889322C9A5C6CA4FBFB8C5DF4D50A /* HTMLDOM.h in Headers */,
-				B71AAF65B3CCB63EC447071DC5AE9EFA /* HTMLDOMTokenList.h in Headers */,
-				8444DD2335D396DF694E6629AB99974B /* HTMLElement.h in Headers */,
-				73736CA2236AC2996FD7B9B662C5F0A3 /* HTMLElementAdjustment.h in Headers */,
-				F3E769BEDF7019E1499AC0BB4BA81E43 /* HTMLElementTypes.h in Headers */,
-				0C75E44AEEE0A6FDC3AA1204AAE46042 /* HTMLEOFToken.h in Headers */,
-				79E79C0F31F172EFDC5B76C7EB6F5544 /* HTMLInputStreamReader.h in Headers */,
-				CEEE39274DC7BFAC46455A59EEFDAF56 /* HTMLKit-umbrella.h in Headers */,
-				AFA6A249FD2B17D248E059BC8D11D9F5 /* HTMLKit.h in Headers */,
-				145C48BA048E558F9A71A82173308FF6 /* HTMLKitDOMExceptions.h in Headers */,
-				11E866398F2DA26A56A516229A537D17 /* HTMLKitErrorDomain.h in Headers */,
-				C541343FBFF923A6C41B96D5E93A3E7C /* HTMLListOfActiveFormattingElements.h in Headers */,
-				5FC13EDE98F7D546582BD03F89009539 /* HTMLMarker.h in Headers */,
-				3249556137BD22CC89BB1F27A108FC7C /* HTMLNamespaces.h in Headers */,
-				0E8EFCAC8CD39E184ACD33521EDF1127 /* HTMLNode+Private.h in Headers */,
-				D7B492DA416605DDC83EBB56EE6C624B /* HTMLNode.h in Headers */,
-				261E59B90598FB2AED68129B4C5301DD /* HTMLNodeFilter.h in Headers */,
-				23549B13A3B84F688580B95560F7D4EB /* HTMLNodeIterator.h in Headers */,
-				DA17986508B3A5C9569AD28E7DD514C6 /* HTMLNodeTraversal.h in Headers */,
-				69517B323092D86D41618272E2681E1B /* HTMLOrderedDictionary.h in Headers */,
-				A80E7F3672D8A811843D6A5453C3C7A7 /* HTMLParseErrorToken.h in Headers */,
-				A04964B93364180B5E81D143317C2E40 /* HTMLParser.h in Headers */,
-				530BB58C3396B6C269FBB00227891B48 /* HTMLParserInsertionModes.h in Headers */,
-				309DFE7A4318201FE1D67FD259CB196B /* HTMLQuirksMode.h in Headers */,
-				8BCED44C0C15B2820CCAAB0A50181589 /* HTMLStackOfOpenElements.h in Headers */,
-				23302493717DD8FCA4EC146E29DBDBB1 /* HTMLTagToken.h in Headers */,
-				5A9E3BB282657D484864A5CBC6781FEF /* HTMLTemplate.h in Headers */,
-				A3D4F1C73BC23EEC9C0E47C65F45ED68 /* HTMLText.h in Headers */,
-				71E326E09AB20CA6C2BEA86FE3D17FF1 /* HTMLToken.h in Headers */,
-				EA917231713CD32D037B597DE5DE342A /* HTMLTokenizer.h in Headers */,
-				23B27C127C7170953EF286F6047E908D /* HTMLTokenizerCharacters.h in Headers */,
-				5590DEAAFDA54E6F6BB0DD74A65F93DB /* HTMLTokenizerEntities.h in Headers */,
-				35EF1988B2AD2BB5493859468F555BC7 /* HTMLTokenizerStates.h in Headers */,
-				88AF7EA12DC469C9D8A75DB95B39CDDE /* HTMLTokens.h in Headers */,
-				76B1CCEC7528F2821AD483F940F63058 /* HTMLTreeWalker.h in Headers */,
-				6785343EC42C9C96F91053CAB5951C41 /* NSCharacterSet+HTMLKit.h in Headers */,
-				0F6089C2360875DCA01F71B4373000B7 /* NSString+HTMLKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		042D899C47AFDA7015E6504E7E600EE2 /* HTMLKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 42A85AE6AC5897FAB8477A39B3EB0F8B /* Build configuration list for PBXNativeTarget "HTMLKit" */;
-			buildPhases = (
-				58F64F99858479F4D8D5F0842DE030FF /* Sources */,
-				DE03F593013352C2A05D1D36D0F8B5F6 /* Frameworks */,
-				AC21643CDE658FBF937B99D728496439 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HTMLKit;
-			productName = HTMLKit;
-			productReference = E93F550CA7A41F519F6B936EF2B89141 /* HTMLKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		1C0FDD68BA4A6289800C65446D160B18 /* Pods-share-extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D6C1D8B9CF41A975EA14DD6D884BE53 /* Build configuration list for PBXNativeTarget "Pods-share-extension" */;
@@ -986,6 +1010,23 @@
 			name = UICKeyChainStore;
 			productName = UICKeyChainStore;
 			productReference = F5B694537AB9EB69DF7884B593E7DCB4 /* UICKeyChainStore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7DF885F31CE63E4CAA6D8BB2EF575028 /* HTMLKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3565844D833CBD5A14CFADB8CF2D559E /* Build configuration list for PBXNativeTarget "HTMLKit" */;
+			buildPhases = (
+				93F9F3CF718C4A2F9142241E10964AC1 /* Sources */,
+				4030AD47D03A9D03E9D0D635BCDCB178 /* Frameworks */,
+				4E3CE49252A6F2C43D1258875C08E18E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HTMLKit;
+			productName = HTMLKit;
+			productReference = E93F550CA7A41F519F6B936EF2B89141 /* HTMLKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A9DB9BB42ACB99B92525058F0DBD3AFD /* Pods-eXo */ = {
@@ -1082,7 +1123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				042D899C47AFDA7015E6504E7E600EE2 /* HTMLKit */,
+				7DF885F31CE63E4CAA6D8BB2EF575028 /* HTMLKit */,
 				A9DB9BB42ACB99B92525058F0DBD3AFD /* Pods-eXo */,
 				F4EACBC5908CAAAE3BD2C0587972FE01 /* Pods-eXoTests */,
 				1C0FDD68BA4A6289800C65446D160B18 /* Pods-share-extension */,
@@ -1113,64 +1154,67 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58F64F99858479F4D8D5F0842DE030FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				138597F3F76E3524F08AD230669F5590 /* CSSAttributeSelector.m in Sources */,
-				CBA66F1F8815D834CF511D659C0E21A7 /* CSSCombinatorSelector.m in Sources */,
-				5E37711C8893F3D57F8B6D85495C96BF /* CSSCompoundSelector.m in Sources */,
-				A8EEB6AD35D5F44A17897547B5E08863 /* CSSInputStream.m in Sources */,
-				EE8E66BADAB12AD3B922FC90096BA85A /* CSSNthExpressionParser.m in Sources */,
-				B720CE23579A4AF1C73B9466A77CD7DE /* CSSNthExpressionSelector.m in Sources */,
-				23143F0F6FA029DC7F0A9360D4FE3590 /* CSSPseudoClassSelector.m in Sources */,
-				FF7FC3099858207ADC95D883712BACAA /* CSSPseudoFunctionSelector.m in Sources */,
-				3D8F9CBEEFBEE448E8E35E48A9C01838 /* CSSSelector.m in Sources */,
-				7496FEF35E2D196FDF3FF9C0ECBC3D40 /* CSSSelectorBlock.m in Sources */,
-				301916E1F930B36C9A79E2F016BD90F0 /* CSSSelectorParser.m in Sources */,
-				79614A0A914377503883A29CA68A9C11 /* CSSSelectors.m in Sources */,
-				1D1F6286470B7B4E7D93F95C96B4493F /* CSSStructuralPseudoSelectors.m in Sources */,
-				C28539B26DC359B2D9AF4B72389079A5 /* CSSTypeSelector.m in Sources */,
-				1E665FBF6B388A96F0CCE8DD594B7A82 /* HTMLCharacterToken.m in Sources */,
-				36E69CA8230E17D3290FB89D7F3C4F1B /* HTMLComment.m in Sources */,
-				CDACEC8AA2FEC9BC6F1742812113DC30 /* HTMLCommentToken.m in Sources */,
-				87229CF8CFBBD60B9020BB5065AD4771 /* HTMLDOCTYPEToken.m in Sources */,
-				5C6D05836EDDF6008BEB783462C41A24 /* HTMLDocument.m in Sources */,
-				74D8DA70884F1E250CB28E31DE426CB3 /* HTMLDocumentFragment.m in Sources */,
-				B85750793C8F42DA3BEB0DD40D068BF6 /* HTMLDocumentType.m in Sources */,
-				3620CF21568F926BBD41EE4B0E81ED89 /* HTMLDOMTokenList.m in Sources */,
-				54DACD71A6C4C128F16784471E081745 /* HTMLElement.m in Sources */,
-				771F6BF51FEF53FF546BAE32B3B4079C /* HTMLEOFToken.m in Sources */,
-				AFA6FADB393A3321FCDEEC52C5523E3D /* HTMLInputStreamReader.m in Sources */,
-				00E701A899A23C5AE0365660209CC978 /* HTMLKit-dummy.m in Sources */,
-				585DF468EF448F029C4EC8211FC8E631 /* HTMLKitDOMExceptions.m in Sources */,
-				2ED466F415F7205F8E828F0F1EE4936A /* HTMLListOfActiveFormattingElements.m in Sources */,
-				D0C715FEE119CAA4ED074BB053408903 /* HTMLMarker.m in Sources */,
-				67235935A8E99B35FC4564B113434CD6 /* HTMLNode.m in Sources */,
-				5282C2E9651E90C6FCDA31E742208243 /* HTMLNodeFilter.m in Sources */,
-				8CC726539A9FEB57802F49B2DCE07FF4 /* HTMLNodeIterator.m in Sources */,
-				6252622CD78F1E9B283543EFE8FD1271 /* HTMLNodeTraversal.m in Sources */,
-				FFDBD4F521023687AEEBD0A1192EEEB4 /* HTMLOrderedDictionary.m in Sources */,
-				826DA3DE2AB6C96D1623FED686D128AE /* HTMLParseErrorToken.m in Sources */,
-				BEB602CCF5D3C5397AE332B06B56430F /* HTMLParser.m in Sources */,
-				F935162742443CABB5031665B3DA0070 /* HTMLStackOfOpenElements.m in Sources */,
-				1B787C852AE843B890DCA42E6B8DA6E1 /* HTMLTagToken.m in Sources */,
-				86E4D4192D37DDA1647270273F9BAED7 /* HTMLTemplate.m in Sources */,
-				1982DA19D7AD5DC429D82ED47B2D6417 /* HTMLText.m in Sources */,
-				566529BAE13CB46F7C794D0DCD9DDB97 /* HTMLToken.m in Sources */,
-				04C16365CF59C4D0A68EF85AC65802B2 /* HTMLTokenizer.m in Sources */,
-				9EDFDE4E1E976C00658478F1C48BB9FF /* HTMLTokenizerEntities.m in Sources */,
-				0F309DA08DD6285FB410D98C36850696 /* HTMLTreeWalker.m in Sources */,
-				E410EB6ADFA020136ACF28E31DF963B8 /* NSCharacterSet+HTMLKit.m in Sources */,
-				5F2ECAF036CB366F385C1C205442572A /* NSString+HTMLKit.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7E65EA1EE34CCFE227BCB921387B20D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				818CCDB279ED7FE97393D59E0BBE749C /* Pods-eXoTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93F9F3CF718C4A2F9142241E10964AC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F53A1B33D201EB24D812325F2B7397FF /* CSSAttributeSelector.m in Sources */,
+				64034019BD874E8E6491F911D1CECF45 /* CSSCombinatorSelector.m in Sources */,
+				9EEB270D327F9912ADAD604F3E2C421E /* CSSCompoundSelector.m in Sources */,
+				4D5D9EC9BFDB7F92CBDA018CB74C9B0C /* CSSInputStream.m in Sources */,
+				83BC42C39A4CFD06704518D182698999 /* CSSNthExpressionParser.m in Sources */,
+				6D1AE3AD75CE9591EC2227777DF3273E /* CSSNthExpressionSelector.m in Sources */,
+				E5BD95AB9698817005392D50FFD1000A /* CSSPseudoClassSelector.m in Sources */,
+				D8673935AE2F4E568F353F2D77A6DBB7 /* CSSPseudoFunctionSelector.m in Sources */,
+				9240807F6B3871364E6A2A16549F00D9 /* CSSSelector.m in Sources */,
+				50179F203593EC002F0425C45DE7C786 /* CSSSelectorBlock.m in Sources */,
+				849FF124E3DE25AFEEFE60B05F20F3EF /* CSSSelectorParser.m in Sources */,
+				64D0D0A473FFD467CC2D768581AB9A72 /* CSSSelectors.m in Sources */,
+				C631A9B04B3E601BAF938152254FE6D6 /* CSSStructuralPseudoSelectors.m in Sources */,
+				12AE254B80805E215A40412C7AD553EC /* CSSTypeSelector.m in Sources */,
+				6B09CC266CC15DA34F6EB04979CADCBD /* HTMLCharacterData.m in Sources */,
+				1D4D99E8F476591E37D276F410351CFD /* HTMLCharacterToken.m in Sources */,
+				DD340F7F2E2D3DB97FE1D136568C3D0D /* HTMLComment.m in Sources */,
+				4DA1E3F68C226B0E714B7D6FDB1E790D /* HTMLCommentToken.m in Sources */,
+				C929D661B38FCE3A377FE0376131D6B6 /* HTMLDOCTYPEToken.m in Sources */,
+				BD6B1B9BE888A2B288A09F6E73B88D0F /* HTMLDocument.m in Sources */,
+				C4383137DE4310785C6314BAC483BB93 /* HTMLDocumentFragment.m in Sources */,
+				FECBD8251E86C223E8193ACE963D0484 /* HTMLDocumentType.m in Sources */,
+				B8268C62BA593DBAB07027780007B3DA /* HTMLDOMTokenList.m in Sources */,
+				6DB790C2E98FEA8D3AD6D76420D504F6 /* HTMLDOMUtils.m in Sources */,
+				4D69320E8C9603DAD5FB8FA252F39DE2 /* HTMLElement.m in Sources */,
+				5F059790A1AC08184EDF7F69331C4CF3 /* HTMLEOFToken.m in Sources */,
+				5F8AFCEED9A5289FB372AB03A97C44E5 /* HTMLInputStreamReader.m in Sources */,
+				4863FF6DD4B204BC779E432E41D42DF6 /* HTMLKit-dummy.m in Sources */,
+				7346E4C48D763F1066074180B1CAFC78 /* HTMLKitDOMExceptions.m in Sources */,
+				1BBF07D075167145AC240AAA7DD0FE71 /* HTMLListOfActiveFormattingElements.m in Sources */,
+				1DCCC04D5C075AAA96B35409CC34CC19 /* HTMLMarker.m in Sources */,
+				E94ED1978BAA4BEF36F5F4180BAE903F /* HTMLNode.m in Sources */,
+				FB2DF9C1CB25C940A964E8CFC6CE96DA /* HTMLNodeFilter.m in Sources */,
+				9350C6FB94D1E50F17745C1715F56BB2 /* HTMLNodeIterator.m in Sources */,
+				85157EAC66767FE12764FC715A6BCA51 /* HTMLNodeTraversal.m in Sources */,
+				BB25A1A6882E6304700266BA1870F467 /* HTMLOrderedDictionary.m in Sources */,
+				85D42E9EF7F6CB9DCD834EF0364A30BB /* HTMLParseErrorToken.m in Sources */,
+				56955A893D3B0B94E74A8C9117BFE6A7 /* HTMLParser.m in Sources */,
+				0D166F60D1ABF48A02CE63D8C33548D9 /* HTMLRange.m in Sources */,
+				4DABF3C6277FD53A8DA2EDB0BD8EAB29 /* HTMLStackOfOpenElements.m in Sources */,
+				0EBB45E9B07385B940C6A74AF62CAF88 /* HTMLTagToken.m in Sources */,
+				B8BC9C8BE49CE6B2D9AA488F66FC3C88 /* HTMLTemplate.m in Sources */,
+				C27EDC31F29522B5B89E9E8FE589515A /* HTMLText.m in Sources */,
+				567050257C96324FBEC4145CA8B66A59 /* HTMLToken.m in Sources */,
+				6BC010D0BE74DB76857AEBF5F52A6A05 /* HTMLTokenizer.m in Sources */,
+				BF8C97D476C799A349FBCDD79301CF30 /* HTMLTokenizerEntities.m in Sources */,
+				BDFD9B4FB3359883CABEF8B747F3F3C0 /* HTMLTreeWalker.m in Sources */,
+				61CD0D746A44B2D97A636BD8585CC0FD /* NSCharacterSet+HTMLKit.m in Sources */,
+				A2EFAEABB5CA98D4CF32700231BBD139 /* NSString+HTMLKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1222,7 +1266,7 @@
 		47E03AB8E639D8BB3E0EDE27B5E072ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = HTMLKit;
-			target = 042D899C47AFDA7015E6504E7E600EE2 /* HTMLKit */;
+			target = 7DF885F31CE63E4CAA6D8BB2EF575028 /* HTMLKit */;
 			targetProxy = 15E39B211B993C7D5EBDD6632D9FED7C /* PBXContainerItemProxy */;
 		};
 		7FC016737FC086CD617BC2C3CABFC025 /* PBXTargetDependency */ = {
@@ -1234,7 +1278,7 @@
 		889E2FC6953D1353361C05CAFA239408 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = HTMLKit;
-			target = 042D899C47AFDA7015E6504E7E600EE2 /* HTMLKit */;
+			target = 7DF885F31CE63E4CAA6D8BB2EF575028 /* HTMLKit */;
 			targetProxy = EA35344E89CEBD01FA583AE429696D9A /* PBXContainerItemProxy */;
 		};
 		8EC009892C2BFF1CAF93A58179AF6BA8 /* PBXTargetDependency */ = {
@@ -1254,7 +1298,7 @@
 /* Begin XCBuildConfiguration section */
 		10EFBAC63BFF65F3D85C72CBC88F81C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15ABDD8B4AF9CFBE837AEC652BBE8097 /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = 593796D8AD6492DC135B5399ECE321AE /* UICKeyChainStore.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1283,37 +1327,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		21CD39264E6C506C4DE6C02A60BD7E68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A00C36176A67E4F8FEC992F70F464322 /* HTMLKit.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/HTMLKit/HTMLKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/HTMLKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/HTMLKit/HTMLKit.modulemap";
-				PRODUCT_NAME = HTMLKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		597D039CA8F05332A370A09E0EA28231 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1349,7 +1362,7 @@
 		};
 		7284E99FDE4348F4DEA2339863B2E0A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75EE66E53D690513587BF269B197B633 /* SVProgressHUD.xcconfig */;
+			baseConfigurationReference = E49F94F09D7D7F79E1A853EECCC16581 /* SVProgressHUD.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1377,6 +1390,37 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		7C24DB4D3EF26E722A35B6E67401868E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E95885DCB5C5E44CDABF0C4DC16C9B3 /* HTMLKit.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HTMLKit/HTMLKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HTMLKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HTMLKit/HTMLKit.modulemap";
+				PRODUCT_NAME = HTMLKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		7CA1C98A2D702F030A5E3EB8A932E411 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1414,7 +1458,7 @@
 		};
 		8785C01F1221FC300810E1B5719AA541 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75EE66E53D690513587BF269B197B633 /* SVProgressHUD.xcconfig */;
+			baseConfigurationReference = E49F94F09D7D7F79E1A853EECCC16581 /* SVProgressHUD.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1444,7 +1488,7 @@
 		};
 		95702F754361DD0B7A461F2DAFBE68D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEDEB0E73D6EEE7DE9C7D5372E3A7D87 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 58881D9F05344AA67B892C47E0587814 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1476,7 +1520,7 @@
 		};
 		967D7AC6A93E9F325C7B49756BC53726 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEDEB0E73D6EEE7DE9C7D5372E3A7D87 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 58881D9F05344AA67B892C47E0587814 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1596,7 +1640,7 @@
 		};
 		BDE50F39BBD308D77327CDDF662A6450 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15ABDD8B4AF9CFBE837AEC652BBE8097 /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = 593796D8AD6492DC135B5399ECE321AE /* UICKeyChainStore.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1624,38 +1668,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		BF41BE503361C4F4014A1835213B24B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A00C36176A67E4F8FEC992F70F464322 /* HTMLKit.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/HTMLKit/HTMLKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/HTMLKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/HTMLKit/HTMLKit.modulemap";
-				PRODUCT_NAME = HTMLKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		CB97B3ABB0910C4186DC7D7355BF6442 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1716,6 +1728,38 @@
 				PRODUCT_NAME = Pods_eXoTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DDEA3AD7214807C77C6131A0BB0EE9D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E95885DCB5C5E44CDABF0C4DC16C9B3 /* HTMLKit.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HTMLKit/HTMLKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HTMLKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HTMLKit/HTMLKit.modulemap";
+				PRODUCT_NAME = HTMLKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1838,11 +1882,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		42A85AE6AC5897FAB8477A39B3EB0F8B /* Build configuration list for PBXNativeTarget "HTMLKit" */ = {
+		3565844D833CBD5A14CFADB8CF2D559E /* Build configuration list for PBXNativeTarget "HTMLKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				21CD39264E6C506C4DE6C02A60BD7E68 /* Debug */,
-				BF41BE503361C4F4014A1835213B24B2 /* Release */,
+				7C24DB4D3EF26E722A35B6E67401868E /* Debug */,
+				DDEA3AD7214807C77C6131A0BB0EE9D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
