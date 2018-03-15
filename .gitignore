@@ -19,6 +19,8 @@ DerivedData
 **/build/
 
 # Fastlane
+fastlane/output/
+fastlane/output-log/
 fastlane/test_output/
 fastlane/report.xml
 fastlane/screenshots

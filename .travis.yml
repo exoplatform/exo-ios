@@ -7,4 +7,8 @@ xcode_workspace: eXo.xcworkspace
 
 xcode_scheme: eXo
 
-script: pod update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO
+before_install: 
+  - brew update
+  - gem install cocoapods && pod --version # Since Travis is not always on latest version
+
+script: pod install --repo-update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO

@@ -27,8 +27,8 @@ class eXoSnapshots: XCTestCase {
 
         let app = XCUIApplication()
         app.buttons["more"].tap()
-        while (app.tables.cells.elementBoundByIndex(0).exists) {
-            app.tables.cells.elementBoundByIndex(0).tap()
+        while (app.tables.cells.element(boundBy:0).exists) {
+            app.tables.cells.element(boundBy:0).tap()
             if (app.buttons["Delete"].exists) {
                 app.buttons["Delete"].tap()
                 app.alerts["Delete intranet"].collectionViews.buttons["OK"].tap()

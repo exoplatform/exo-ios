@@ -38,3 +38,6 @@ This command will generate screenshots of the following screens: Home, New Intra
 
 * `fastlane adhoc`
 This command will build and create an ipa bundle for adhoc distribution, e.g. on Appaloosa or TestFlight.
+
+* `fastlane sync_certificates`
+This command will fetch and install localy all needed certificates and provisionning profiles (some authorization will be needed to execute this command).

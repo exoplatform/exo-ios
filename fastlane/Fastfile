@@ -1,42 +1,148 @@
-# Customise this file, documentation can be found here:
-# https://github.com/KrauseFx/fastlane/tree/master/docs
+# Fastlane configuration file
+# 
+# More information about multiple platforms in fastlane: https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
 # All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
-# can also be listed using the `fastlane actions` command
 
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# By default, fastlane will send which actions are used
-# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# By default, fastlane will send which actions are used, no personal data is shared, more information on https://github.com/fastlane/enhancer
 # Uncomment the following line to opt out
-# opt_out_usage
+opt_out_usage
 
 # If you want to automatically update fastlane if a new version is available:
 # update_fastlane
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.37.0"
+fastlane_version "2.87.0"
 
 default_platform :ios
-
 platform :ios do
 
-### BEFORE ALL
-
-  before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-
-    # cocoapods
-    
-    # increment_build_number
+  desc "Sync (or create if needed) all keys, certs and profiles (development, adhoc, appstore)"
+  lane :certificates do
+    match(
+      app_identifier: [
+        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+      ] ,
+      type: "development",
+      force_for_new_devices: true,
+      readonly: true
+    )
+    match(
+      app_identifier: [
+        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+      ] ,
+      type: "adhoc",
+      force_for_new_devices: true,
+      readonly: true
+    )
+    match(
+      app_identifier: [
+        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+      ] ,
+      type: "appstore",
+      readonly: true
+    )
+  end
+  
+  desc "Sync all keys, certs and profiles (development and adhoc)"
+  lane :sync_certificates do
+    match(
+      app_identifier: [
+        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+      ] ,
+      type: "development",
+      readonly: true
+    )
+    match(
+      app_identifier: [
+        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+      ] ,
+      type: "adhoc",
+      readonly: true
+    )
   end
 
-### BUILD & TEST
+  desc "Build version for the Development"
+  lane :build_dev do
+    cocoapods
+    match(
+      app_identifier: ["com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"],
+      type: "development",
+      readonly: true
+    )
+    # use 'xcodebuild -showsdks' to list all installed SDK
+    build_ios_app(
+      workspace: "eXo.xcworkspace",
+      configuration: "Debug",
+      scheme: "eXo",
+      # silent: true,
+      clean: true,
+      buildlog_path: "./fastlane/output-log",
+      output_directory: "./fastlane/output",
+      output_name: "eXoDebug.ipa",
+      sdk: "iphoneos11.2",
+      export_method: "development"
+    )
+  end
 
+  desc "Build version for the AppStore"
+  lane :build do
+    cocoapods
+    # increment_build_number(build_number: 5)
+    match(
+      app_identifier: ["com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"],
+      type: "appstore",
+      readonly: true
+    )
+    # use 'xcodebuild -showsdks' to list all installed SDK
+    build_ios_app(
+      workspace: "eXo.xcworkspace",
+      configuration: "Release",
+      scheme: "eXo",
+      # silent: true,
+      clean: true,
+      buildlog_path: "./fastlane/output-log",
+      output_directory: "./fastlane/output",
+      output_name: "eXo.ipa",
+      sdk: "iphoneos11.2",
+      export_method: "appstore"
+    )
+  end
+
+  desc "Build a beta version and upload to Appaloosa"
+  lane :beta do
+    cocoapods
+    match(
+      app_identifier: ["com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"],
+      type: "adhoc",
+      readonly: true
+    )
+    # use 'xcodebuild -showsdks' to list all installed SDK
+    build_ios_app(
+      workspace: "eXo.xcworkspace",
+      configuration: "Release",
+      scheme: "eXo",
+      # silent: true,
+      clean: true,
+      buildlog_path: "./fastlane/output-log",
+      output_directory: "./fastlane/output",
+      output_name: "eXoBeta.ipa",
+      sdk: "iphoneos11.2",
+      export_method: "ad-hoc"
+    )
+    appaloosa(
+      binary: "./fastlane/output/eXoBeta.ipa",
+      store_id: ENV['APPALOOSA_EXO_STORE_ID'],
+      api_token: ENV['APPALOOSA_EXO_API_TOKEN'],
+      group_ids: '8782', # eXo
+      # group_ids: '16486', # fdr
+      screenshots: ''
+    )
+  end
+
+  ### BUILD & TEST
   desc "Run all the tests"
   lane :test do
-    # snapshot
     scan(
         workspace: "eXo.xcworkspace",
         scheme: "eXo",
@@ -44,44 +150,17 @@ platform :ios do
     )
   end
 
-### BUILD & BUNDLE IPA
-
-  desc "Create a new Adhoc Bundle (IPA)"
-  desc "This will also make sure the provisioning profile is up to date"
-  lane :adhoc do
-    # snapshot
-    sigh(
-        output_path:"/tmp",
-        adhoc:true
+  desc "Create screenshots of the application"
+  lane :screenshots do
+    capture_screenshots(
+      stop_after_first_error: true, 
+      reinstall_app: true, 
+      configuration: "Release", 
+      sdk: "iphonesimulator"
     )
-    gym(
-        scheme: "eXo",
-        output_directory:"/tmp"
-    )
+    frame_screenshots(white: true)
 
-    # pilot
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+    # upload_to_app_store
   end
-
-### AFTER ALL
-
-  after_all do |lane|
-    # This block is called, only if the executed lane was successful
-    
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
-  end
-
-  error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
-  end
+  
 end
-
-# More information about multiple platforms in fastlane: https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
-# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md

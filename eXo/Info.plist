@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Fabric</key>
-    <dict>
-        <key>APIKey</key>
-        <string>b8421f485868032ad402cef01a4bd7c70263d97e</string>
-    </dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -27,6 +22,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>4.4.0-RC01.20161223.01</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>b8421f485868032ad402cef01a4bd7c70263d97e</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

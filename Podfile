@@ -1,7 +1,7 @@
 platform :ios, '8.0'
 
 workspace 'eXo'
-xcodeproj 'eXo.xcodeproj'
+project 'eXo.xcodeproj'
 
 use_frameworks!
 
