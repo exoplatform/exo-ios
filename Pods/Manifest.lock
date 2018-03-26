@@ -1,7 +1,7 @@
 PODS:
-  - Crashlytics (3.9.3):
-    - Fabric (~> 1.7.2)
-  - Fabric (1.7.2)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - Fabric (1.7.6)
   - HTMLKit (2.0.6)
   - SVProgressHUD (1.1.3)
   - SwiftyJSON (3.0.0)
@@ -16,13 +16,13 @@ DEPENDENCIES:
   - UICKeyChainStore (~> 2.1)
 
 SPEC CHECKSUMS:
-  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
-  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
   HTMLKit: 9e1bde384fbc20be51eb62f2c1ad331d6ceccfa2
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
 
-PODFILE CHECKSUM: fc1eb6b1ef9e395efe5ff1c1e693030dc9244cc6
+PODFILE CHECKSUM: 8dbf8777fb87318ec9e6844bbff4c0dc94d7a75b
 
 COCOAPODS: 1.4.0
