@@ -29,33 +29,33 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
         super.viewDidLoad()
         self.setupWebView(self.view)
         webView?.navigationDelegate = self
-        goBackButton.enabled = false
-        goForwardButton.enabled = false
+        goBackButton.isEnabled = false
+        goForwardButton.isEnabled = false
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.sharedApplication().statusBarHidden = true
+        UIApplication.shared.isStatusBarHidden = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.sharedApplication().statusBarHidden = false
+        UIApplication.shared.isStatusBarHidden = false
     }
     
     // MARK: Navigation Action: Close, GoBack, GoForward
     
-    @IBAction func doneAction(sender: AnyObject) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doneAction(_ sender: AnyObject) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func goBackAction(sender: AnyObject) {
+    @IBAction func goBackAction(_ sender: AnyObject) {
         if (webView != nil && webView?.canGoBack == true) {
             webView?.goBack()
         }
     }
     
-    @IBAction func forwardAction(sender: AnyObject) {
+    @IBAction func forwardAction(_ sender: AnyObject) {
         if (webView != nil && webView?.canGoForward == true) {
             webView?.goForward()
         }
@@ -64,33 +64,33 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
     
     // MARK : WKWebViewDelegate
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.updateNavigationStatus()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false;
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false;
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         self.updateNavigationStatus()
-        if !UIApplication.sharedApplication().networkActivityIndicatorVisible {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true;
+        if !UIApplication.shared.isNetworkActivityIndicatorVisible {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
-        decisionHandler(.Allow)
+        decisionHandler(.allow)
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         self.updateNavigationStatus()
-        decisionHandler(WKNavigationResponsePolicy.Allow)
+        decisionHandler(WKNavigationResponsePolicy.allow)
     }
     
     func updateNavigationStatus () {
         self.navigationItem.title  = webView!.title
-        goBackButton.enabled = webView!.canGoBack
-        goForwardButton.enabled = webView!.canGoForward
+        goBackButton.isEnabled = webView!.canGoBack
+        goForwardButton.isEnabled = webView!.canGoForward
 
     }
     

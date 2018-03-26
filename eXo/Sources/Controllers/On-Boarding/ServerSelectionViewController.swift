@@ -49,10 +49,10 @@ class ServerSelectionViewController: UIViewController {
         backgroundImageView.image = UIImage(named: "background\(bgNumber)")
         
         self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (ServerManager.sharedInstance.serverList.count > 0){
             defaultServer = ServerManager.sharedInstance.serverList.firstObject as? Server
@@ -60,10 +60,10 @@ class ServerSelectionViewController: UIViewController {
             defaultServer = Server(serverURL: Config.communityURL)
         }
         // the navigation controller is alway shown in this screen
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         // Buttons labels are updated in viewDidAppear
         // because in viewWillAppear there is a bug:
         // when we swipe back from another screen,
@@ -72,7 +72,7 @@ class ServerSelectionViewController: UIViewController {
         self.setButtonsTitleWithoutAnimation()
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         // Update the default button when the orientation changes
         // so the URL label can use all the screen width with a larger font
         UIView.performWithoutAnimation({ () -> Void in
@@ -112,15 +112,15 @@ class ServerSelectionViewController: UIViewController {
         
         if ServerManager.sharedInstance.serverList.count == 0 {
             
-            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), forState: .Normal)
+            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), for: UIControlState())
             
         } else if ServerManager.sharedInstance.serverList.count == 1 {
             
-            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), forState: .Normal)
+            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), for: UIControlState())
             
         } else {
             
-            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.Others",comment:""), forState: .Normal)
+            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.Others",comment:""), for: UIControlState())
         }
     }
     
@@ -132,9 +132,9 @@ class ServerSelectionViewController: UIViewController {
     */
     func setDiscoverTribeLinkTitle() {
         // link is hidden if 0 server exists, or if the community website is one of the servers
-        discovereXoTribeButton.hidden = ServerManager.sharedInstance.serverList.count == 0 || ServerManager.sharedInstance.isExist(Server(serverURL: Config.communityURL))
+        discovereXoTribeButton.isHidden = ServerManager.sharedInstance.serverList.count == 0 || ServerManager.sharedInstance.isExist(Server(serverURL: Config.communityURL))
         
-        discovereXoTribeButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo", comment: ""), forState: .Normal)
+        discovereXoTribeButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo", comment: ""), for: UIControlState())
     }
     
     /**
@@ -144,20 +144,20 @@ class ServerSelectionViewController: UIViewController {
     */
     func setDefaultServerButtonTitle() {
         // clear existing title
-        defaultServerButton?.setTitle("", forState: .Normal)
-        defaultServerButton?.setAttributedTitle(NSMutableAttributedString(string: "", attributes: nil), forState: .Normal)
+        defaultServerButton?.setTitle("", for: UIControlState())
+        defaultServerButton?.setAttributedTitle(NSMutableAttributedString(string: "", attributes: nil), for: UIControlState())
 
         if (ServerManager.sharedInstance.serverList.count == 0) {
             // no server -> show button Discover eXo Tribe
-            defaultServerButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo",comment:""), forState: .Normal)
+            defaultServerButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo",comment:""), for: UIControlState())
             
-        } else if (Config.communityURL.containsString((defaultServer?.serverURL.stringURLWithoutProtocol())!)) {
+        } else if (Config.communityURL.contains((defaultServer?.serverURL.stringURLWithoutProtocol())!)) {
             // server is community website
-            defaultServerButton.setTitle(NSLocalizedString("Shortcut.Title.ConnnecteXoTribe",comment:""), forState: .Normal)
+            defaultServerButton.setTitle(NSLocalizedString("Shortcut.Title.ConnnecteXoTribe",comment:""), for: UIControlState())
             
         } else {
             // word wrapping allows to display multiple lines in the button label
-            self.defaultServerButton?.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            self.defaultServerButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             
             // creating the button title string with the URL on the 2nd line
             let buttonTitle:NSString = NSString(format: "%@\n%@",
@@ -165,42 +165,42 @@ class ServerSelectionViewController: UIViewController {
                 (defaultServer?.serverURL.stringURLWithoutProtocol())!)
         
             // getting the range to separate the button text and the button URL
-            let newlineRange: NSRange = buttonTitle.rangeOfString("\n")
+            let newlineRange: NSRange = buttonTitle.range(of: "\n")
             
             // getting both substrings
             var buttonText: NSString = ""
             var buttonURL: NSString = ""
             if(newlineRange.location != NSNotFound) {
-                buttonText = buttonTitle.substringToIndex(newlineRange.location)
-                buttonURL = buttonTitle.substringFromIndex(newlineRange.location)
+                buttonText = buttonTitle.substring(to: newlineRange.location) as NSString
+                buttonURL = buttonTitle.substring(from: newlineRange.location) as NSString
             }
             
             // assigning different styles to both substrings
-            let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-            paragraphStyle.alignment = NSTextAlignment.Center
-            paragraphStyle.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+            let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+            paragraphStyle.alignment = NSTextAlignment.center
+            paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
             
-            let buttonTextAttributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(17.0),
+            let buttonTextAttributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17.0),
                 NSParagraphStyleAttributeName : paragraphStyle,
-                NSForegroundColorAttributeName: UIColor.blackColor()]
+                NSForegroundColorAttributeName: UIColor.black]
             let attrStrTitle = NSMutableAttributedString(
                 string: buttonText as String,
                 attributes: buttonTextAttributes)
             
             // font size calculated from screen width and URL length, cf method description below
-            let fontSizeURL = calculateURLFontSize(Int(UIScreen.mainScreen().bounds.width), urlLength: buttonURL.length)
-            let buttonURLAttributes = [NSFontAttributeName : UIFont.systemFontOfSize(fontSizeURL),
+            let fontSizeURL = calculateURLFontSize(Int(UIScreen.main.bounds.width), urlLength: buttonURL.length)
+            let buttonURLAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: fontSizeURL),
                 NSParagraphStyleAttributeName : paragraphStyle,
-                NSForegroundColorAttributeName: UIColor.blackColor()]
+                NSForegroundColorAttributeName: UIColor.black]
             let attrStrURL = NSMutableAttributedString(
                 string: buttonURL as String,
                 attributes: buttonURLAttributes)
             
             // appending both attributed strings
-            attrStrTitle.appendAttributedString(attrStrURL)
+            attrStrTitle.append(attrStrURL)
             
             // assigning the result attributed strings to the button
-            self.defaultServerButton?.setAttributedTitle(attrStrTitle, forState: .Normal)
+            self.defaultServerButton?.setAttributedTitle(attrStrTitle, for: UIControlState())
         }
     }
     
@@ -217,7 +217,7 @@ class ServerSelectionViewController: UIViewController {
      - **12 pts** for *plfent-4.3.0-rc1-1.acceptance5.exoplatform.org* on **iPhone 6S**
      
      */
-    func calculateURLFontSize(screenWidth: Int, urlLength: Int) -> CGFloat {
+    func calculateURLFontSize(_ screenWidth: Int, urlLength: Int) -> CGFloat {
         let ratio = screenWidth / urlLength
         if (ratio >= 8) {
             return 12.0
@@ -237,24 +237,24 @@ class ServerSelectionViewController: UIViewController {
     - Open Input server screen to choose an other server (segue:openInputServer)
     */
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         self.navigationController?.topViewController?.title = ""
         if (segue.identifier == "openDefaultServer") {
-            defaultServer?.lastConnection = NSDate().timeIntervalSince1970
+            defaultServer?.lastConnection = Date().timeIntervalSince1970
             ServerManager.sharedInstance.addEditServer(defaultServer!)
             //setup Destination VC
-            let homepageVC = segue.destinationViewController as! HomePageViewController
+            let homepageVC = segue.destination as! HomePageViewController
             homepageVC.serverURL = defaultServer?.serverURL
         } else if (segue.identifier == "openRegisterPage") {
 
             //setup Destination VC
-            let homepageVC = segue.destinationViewController as! HomePageViewController
+            let homepageVC = segue.destination as! HomePageViewController
             homepageVC.serverURL = Config.communityURL + "/portal/intranet/register"
         } else if (segue.identifier == "discovereXoCommunity") {
             let community = Server(serverURL: Config.communityURL)
             ServerManager.sharedInstance.addEditServer(community)
-            let homepageVC = segue.destinationViewController as! HomePageViewController
+            let homepageVC = segue.destination as! HomePageViewController
             homepageVC.serverURL = community.serverURL
             
         }

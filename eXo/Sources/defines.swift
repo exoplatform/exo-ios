@@ -30,7 +30,7 @@ struct Config {
     static let communityURL:String =  "https://community.exoplatform.com"
     static let minimumPlatformVersionSupported:Float = 4.3
     static let maximumShortcutAllow:Int = 4
-    static let timeout:NSTimeInterval = 60.0 // in seconds
+    static let timeout:TimeInterval = 60.0 // in seconds
     static let onboardingDidShow: String = "onboardingDidShow"
     // based on hex code #FFCB08
     static let eXoYellowColor: UIColor = UIColor(red: 255.0/255, green: 203.0/255.0, blue: 8.0/255.0, alpha: 1.0)

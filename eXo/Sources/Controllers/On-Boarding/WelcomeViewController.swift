@@ -38,44 +38,44 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
         Tool.applyBorderForView(getStartedButton)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // the navigation controller is alway hidden in this screen
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.topViewController?.title = ""
     }
     
-    @IBAction func closeWelcomeView(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+    @IBAction func closeWelcomeView(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: {})
     }
     
     // MARK: - Page View Delegate & Data Source
     
-    func welcomePageAtIndex(index : Int) -> UIViewController? {
+    func welcomePageAtIndex(_ index : Int) -> UIViewController? {
         if (index < 0 || index >= kNumberOfPage) {
             return nil
         }
         // the slide will be made in storyboard with id = welcomePage1-4 ...
         let storyboardId = "welcomePage\(index+1)"
-        let welcomepage = self.storyboard?.instantiateViewControllerWithIdentifier(storyboardId)
+        let welcomepage = self.storyboard?.instantiateViewController(withIdentifier: storyboardId)
         // store the index of the slide in view.tag
         welcomepage?.view.tag = index
         return welcomepage!
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return self.welcomePageAtIndex(viewController.view.tag-1)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return self.welcomePageAtIndex(viewController.view.tag+1)
     }
 
     //Spines
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return kNumberOfPage
     }
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return (pageViewController.viewControllers?.last?.view.tag)!
     }
     
@@ -84,20 +84,20 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation 
     */
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         // embeded segue of the container view
         if (segue.identifier == "wellcomePageSegue") {
-            let pageViewController = segue.destinationViewController as? UIPageViewController
+            let pageViewController = segue.destination as? UIPageViewController
             pageViewController?.delegate = self
             pageViewController?.dataSource = self
-            pageViewController?.setViewControllers([ self.welcomePageAtIndex(0)!], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            pageViewController?.setViewControllers([ self.welcomePageAtIndex(0)!], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
 
             // customize the spine's dots & background
             let pageControl = UIPageControl.appearance()
-            pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+            pageControl.pageIndicatorTintColor = UIColor.lightGray
             pageControl.currentPageIndicatorTintColor = Config.eXoYellowColor
-            pageControl.backgroundColor = UIColor.clearColor()
+            pageControl.backgroundColor = UIColor.clear
 
 
         }

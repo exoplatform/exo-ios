@@ -2,7 +2,7 @@
 
 import Foundation
 
-class FakeUserDefaults : NSUserDefaults {
+class FakeUserDefaults : UserDefaults {
     
     typealias FakeDefaults = Dictionary<String, AnyObject?>
     var data : FakeDefaults
@@ -20,51 +20,51 @@ class FakeUserDefaults : NSUserDefaults {
     
     // Accessors
     
-    override func objectForKey(defaultName: String) -> AnyObject? {
+    override func object(forKey defaultName: String) -> Any? {
         return data[defaultName]!
     }
     
-    override func valueForKey(key: String) -> AnyObject? {
+    override func value(forKey key: String) -> Any? {
         return data[key]!
     }
     
-    override func boolForKey(defaultName: String) -> Bool {
+    override func bool(forKey defaultName: String) -> Bool {
         return data[defaultName] as! Bool
     }
     
-    override func integerForKey(defaultName: String) -> Int {
+    override func integer(forKey defaultName: String) -> Int {
         return data[defaultName] as! Int
     }
     
-    override func floatForKey(defaultName: String) -> Float {
+    override func float(forKey defaultName: String) -> Float {
         return data[defaultName] as! Float
     }
     
     // Mutators
     
-    override func setObject(value: AnyObject?, forKey defaultName: String) {
-        data[defaultName] = value
+    override func set(_ value: Any?, forKey defaultName: String) {
+        data[defaultName] = value as AnyObject
     }
     
-    override func setValue(value: AnyObject?, forKey key: String) {
-        data[key] = value
+    override func setValue(_ value: Any?, forKey key: String) {
+        data[key] = value as AnyObject
     }
     
-    override func setBool(value: Bool, forKey defaultName: String) {
-        data[defaultName] = value as Bool
+    override func set(_ value: Bool, forKey defaultName: String) {
+        data[defaultName] = value as Bool as AnyObject
     }
     
-    override func setInteger(value: Int, forKey defaultName: String) {
-        data[defaultName] = value as Int
+    override func set(_ value: Int, forKey defaultName: String) {
+        data[defaultName] = value as Int as AnyObject
     }
     
-    override func setFloat(value: Float, forKey defaultName: String) {
-        data[defaultName] = value as Float
+    override func set(_ value: Float, forKey defaultName: String) {
+        data[defaultName] = value as Float as AnyObject
     }
     
 }
 
-extension NSUserDefaults {
+extension UserDefaults {
     
     @objc class func mockDefaults() -> FakeUserDefaults {
         return FakeUserDefaults()

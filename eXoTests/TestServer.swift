@@ -50,7 +50,7 @@ class TestServer: eXoBaseTestCase {
     }
     
     func testInitServerWithValues() {
-        let now:Double = NSDate().timeIntervalSince1970
+        let now:Double = Date().timeIntervalSince1970
         let url:String = "https://community.exoplatform.com"
         let user:String = "john"
         let server:Server = Server(serverURL: url, username: user, lastConnection: now)
@@ -60,7 +60,7 @@ class TestServer: eXoBaseTestCase {
     }
     
     func testInitServerWithDictionary() {
-        let now:Double = NSDate().timeIntervalSince1970
+        let now:Double = Date().timeIntervalSince1970
         let url:String = "https://community.exoplatform.com"
         let user:String = "john"
         let values:NSDictionary = [
@@ -75,18 +75,18 @@ class TestServer: eXoBaseTestCase {
     }
     
     func testServerToDictionary() {
-        let now:Double = NSDate().timeIntervalSince1970
+        let now:Double = Date().timeIntervalSince1970
         let url:String = "https://community.exoplatform.com"
         let user:String = "john"
         let server:Server = Server(serverURL: url, username: user, lastConnection: now)
         let values:NSDictionary = server.toDictionary()
-        XCTAssertEqual(values.valueForKey(ServerKey.serverURL) as? String, url, "Server URL did not match")
-        XCTAssertEqual(values.valueForKey(ServerKey.username) as? String, user, "Username did not match")
-        XCTAssertEqual(values.valueForKey(ServerKey.lastConnection) as? Double, now, "Last connection did not match")
+        XCTAssertEqual(values.value(forKey: ServerKey.serverURL) as? String, url, "Server URL did not match")
+        XCTAssertEqual(values.value(forKey: ServerKey.username) as? String, user, "Username did not match")
+        XCTAssertEqual(values.value(forKey: ServerKey.lastConnection) as? Double, now, "Last connection did not match")
     }
     
     func testServerNaturalNameWithShortURL() {
-        let now:Double = NSDate().timeIntervalSince1970
+        let now:Double = Date().timeIntervalSince1970
         let url:String = "https://int.company.com"
         let shortUrl:String = "int.company.com"
         let user:String = "john"
@@ -95,7 +95,7 @@ class TestServer: eXoBaseTestCase {
     }
     
     func testServerNaturalNameWithLongURL() {
-        let now:Double = NSDate().timeIntervalSince1970
+        let now:Double = Date().timeIntervalSince1970
         let url:String = "https://secure.community.exoplatform.com"
         let shortUrl:String = "secure.c...exoplatform.com"
         let user:String = "john"
@@ -143,7 +143,7 @@ class TestServer: eXoBaseTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

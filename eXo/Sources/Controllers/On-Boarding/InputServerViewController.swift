@@ -39,25 +39,25 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundColor = UIColor.clear
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
-        self.tableView.registerNib(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
+        self.tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // the navigation controller is alway shown in this screen
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.title = "" // to remove the longue text of the Back button (on the left of navigation bar)
     }
@@ -65,15 +65,15 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: Input Text View Handle
     
     //detect when the return key is pressed
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if  (text.characters.last == "\n" ){
             //dismiss the keyboard
             textView.resignFirstResponder()
             //verification of URL, http is the default protocol
             Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
                 self.selectedServer = Server (serverURL: serverURL)
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    self.performSegueWithIdentifier("selectServerSegue", sender: serverURL)
+                OperationQueue.main.addOperation({ () -> Void in
+                    self.performSegue(withIdentifier: "selectServerSegue", sender: serverURL)
                 })
             })
         }
@@ -83,55 +83,55 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     /*
     // MARK: - Table View Datasource & Delegate
     */
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+    func numberOfSections(in tableView: UITableView) -> Int{
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if ( ServerManager.sharedInstance.serverList != nil) {
             return ServerManager.sharedInstance.serverList!.count
         }
         return 0;
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Config.kTableHeaderHeight
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Config.kTableCellHeight
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ServerCell", for: indexPath)
         cell.textLabel?.text =  (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return recentServerHeader
     }
     
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadData()
     }
     /*
     // MARK: - Navigation
     // selectServerSegue
     */
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        let indexPath:NSIndexPath? = self.tableView.indexPathForSelectedRow
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        let indexPath:IndexPath? = self.tableView.indexPathForSelectedRow
         if (indexPath != nil) {
             self.selectedServer = ServerManager.sharedInstance.serverList?[indexPath!.row] as? Server
-            self.selectedServer?.lastConnection = NSDate().timeIntervalSince1970
+            self.selectedServer?.lastConnection = Date().timeIntervalSince1970
         }
         ServerManager.sharedInstance.addEditServer(self.selectedServer!)
         // Open the selected server in the WebView
-        let homepageVC = segue.destinationViewController as! HomePageViewController
+        let homepageVC = segue.destination as! HomePageViewController
         homepageVC.serverURL = self.selectedServer?.serverURL
         self.tableView.reloadData()
     }
