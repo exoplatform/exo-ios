@@ -16,126 +16,177 @@ fastlane_version "2.87.0"
 
 default_platform :ios
 platform :ios do
-
-  desc "Sync (or create if needed) all keys, certs and profiles (development, adhoc, appstore)"
-  lane :certificates do
-    match(
-      app_identifier: [
-        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
-      ] ,
-      type: "development",
-      force_for_new_devices: true,
-      readonly: true
-    )
-    match(
-      app_identifier: [
-        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
-      ] ,
-      type: "adhoc",
-      force_for_new_devices: true,
-      readonly: true
-    )
-    match(
-      app_identifier: [
-        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
-      ] ,
-      type: "appstore",
-      readonly: true
-    )
-  end
   
+  desc "Sync (or create if needed) all keys, certs and profiles (development, adhoc, appstore)"
+  lane :certificates do |options|
+
+		bundleID = UI.input "Please enter your bundle id:"
+		UI.header("Certicates will be generated following parameters")
+	  UI.message("bundleID: #{bundleID}")
+		if UI.confirm("Confirm ?")
+      UI.success "Starting build"
+      ENV["EXO_APP_IDENTIFIERS"] = "#{bundleID},#{bundleID}.share-extension"
+      appIdentifiers = ENV["EXO_APP_IDENTIFIERS"].split(",")
+      match(
+        app_identifier: appIdentifiers ,
+        type: "development",
+        force_for_new_devices: true,
+      )
+      match(
+        app_identifier: appIdentifiers ,
+        type: "adhoc",
+        force_for_new_devices: true,
+      )
+			match(
+        app_identifier: appIdentifiers ,
+        type: "appstore",
+			)
+    else
+      UI.error "Certificates will no be executed"
+    end
+  end
+
   desc "Sync all keys, certs and profiles (development and adhoc)"
-  lane :sync_certificates do
+  lane :sync_certificates do |options|
+
+    bundleID = UI.input "Please enter your bundle id:"
+    UI.header("Certicates will be generated following parameters")
+    UI.message("bundleID: #{bundleID}")
+    if UI.confirm("Confirm ?")
+      UI.success "Starting build"
+      ENV["EXO_APP_IDENTIFIERS"] = "#{bundleID},#{bundleID}.share-extension"
+      appIdentifiers = ENV["EXO_APP_IDENTIFIERS"].split(",")
+      match(
+        app_identifier: appIdentifiers,
+        type: "development",
+        readonly: true
+      )
+      match(
+        app_identifier: appIdentifiers,
+        type: "adhoc",
+        readonly: true
+      )
+    else
+      UI.error "Certificates will no be executed"
+    end
+  end
+
+  #####################
+  # PUBLIC LANES
+  #####################
+
+  desc "Dynamic build using multi parameters : app id / base url / env name / app name"
+  lane :dynamic_build do
+    if UI.interactive?
+
+      ENV["EXO_APP_ID"] = UI.input "Please enter your bundle id:"
+      ENV["EXO_APP_BASE_URL"] = UI.input "Please enter the base URL:"
+      ENV["EXO_APP_ENV_NAME"] = UI.input "Please enter the environment name:"
+      ENV["EXO_BUILD_TYPE"] = UI.select "Please select the build type from the following list:", %w{APPSTORE ADHOC}
+
+      UI.header("App will be build following parameters")
+      UI.message("bundleID: #{ENV["EXO_APP_ID"]}")
+      UI.message("base URL: #{ENV["EXO_APP_BASE_URL"]}, environment name: #{ENV["EXO_APP_ENV_NAME"]}")
+      UI.message("build type: #{ENV["EXO_BUILD_TYPE"]}")
+
+      if UI.confirm("Confirm ?")
+        ENV["EXO_APP_IDENTIFIERS"] = "#{bundleID},#{bundleID}.share-extension"
+        case ENV["EXO_BUILD_TYPE"]
+          when "APPSTORE"
+            build_appstore()
+          when "ADHOC"
+            badge(shield: "ENV-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
+            ENV["EXO_APP_DISPLAY_NAME"] = "#{ENV["EXO_APP_DISPLAY_NAME"]}-#{ENV["EXO_APP_ENV_NAME"]}"
+            build_beta()
+        end
+      else
+        UI.error "Build will no be executed"
+      end
+    end
+  end
+
+  #####################
+  # BUILD LANES
+  #####################
+
+  private_lane :internal_build do |options|
+
+    appBundleID = ENV["EXO_APP_ID"]
+    appEnvironment = ENV["EXO_APP_ENVIRONMENT"]
+    appIdentifiers = ENV["EXO_APP_IDENTIFIERS"].split(",")
+    exportMethod = ENV["EXO_APP_EXPORT_METHOD"]
+    exportType = ENV["EXO_APP_EXPORT_TYPE"]
+    appConfiguration = ENV["EXO_APP_CONFIGURATION"]
+    appBaseUrl = ENV["EXO_APP_BASE_URL"]
+
+    UI.header("App will be build following parameters")
+    UI.message("EXO_APP_ID: #{ENV["EXO_APP_ID"]}")
+    UI.message("EXO_APP_ENVIRONMENT: #{ENV["EXO_APP_ENVIRONMENT"]}")
+    UI.message("appIdentifiers: #{appIdentifiers}")
+    UI.message("EXO_APP_EXPORT_METHOD: #{ENV["EXO_APP_EXPORT_METHOD"]}")
+    UI.message("EXO_APP_EXPORT_TYPE: #{ENV["EXO_APP_EXPORT_TYPE"]}")
+    UI.message("EXO_APP_CONFIGURATION: #{ENV["EXO_APP_CONFIGURATION"]}")
+    UI.message("EXO_APP_BASE_URL: #{ENV["EXO_APP_BASE_URL"]}")
+
+    cocoapods
     match(
-      app_identifier: [
-        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
-      ] ,
-      type: "development",
+      app_identifier: appIdentifiers,
+      type: exportType,
       readonly: true
     )
-    match(
-      app_identifier: [
-        "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
-      ] ,
-      type: "adhoc",
-      readonly: true
+    # use 'xcodebuild -showsdks' to list all installed SDK
+    build_ios_app(
+      workspace: "eXo.xcworkspace",
+      configuration: appConfiguration,
+      scheme: "eXo",
+      # silent: true,
+      clean: true,
+      buildlog_path: "./fastlane/output-log",
+      xcargs: "APP_ENVIRONMENT=#{appEnvironment} APP_BUNDLE_ID=#{appBundleID} APP_BASE_URL=#{appBaseUrl}",
+      output_directory: "./fastlane/output",
+      output_name: "exo.ipa",
+      sdk: "iphoneos11.2",
+      export_method: exportMethod
     )
   end
 
   desc "Build version for the Development"
-  lane :build_dev do
-    cocoapods
-    match(
-      app_identifier: ["com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"],
-      type: "development",
-      readonly: true
-    )
-    # use 'xcodebuild -showsdks' to list all installed SDK
-    build_ios_app(
-      workspace: "eXo.xcworkspace",
-      configuration: "Debug",
-      scheme: "eXo",
-      # silent: true,
-      clean: true,
-      buildlog_path: "./fastlane/output-log",
-      output_directory: "./fastlane/output",
-      output_name: "eXoDebug.ipa",
-      sdk: "iphoneos11.2",
-      export_method: "development"
-    )
+  private_lane :build_dev do
+    ENV["EXO_APP_EXPORT_METHOD"] = "development"
+    ENV["EXO_APP_EXPORT_TYPE"] = "development"
+    ENV["EXO_APP_CONFIGURATION"] = "Debug"
+    internal_build()
   end
 
   desc "Build version for the AppStore"
-  lane :build do
-    cocoapods
-    # increment_build_number(build_number: 5)
-    match(
-      app_identifier: ["com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"],
-      type: "appstore",
-      readonly: true
-    )
-    # use 'xcodebuild -showsdks' to list all installed SDK
-    build_ios_app(
-      workspace: "eXo.xcworkspace",
-      configuration: "Release",
-      scheme: "eXo",
-      # silent: true,
-      clean: true,
-      buildlog_path: "./fastlane/output-log",
-      output_directory: "./fastlane/output",
-      output_name: "eXo.ipa",
-      sdk: "iphoneos11.2",
-      export_method: "appstore"
-    )
+  private_lane :build_appstore do
+    ENV["EXO_APP_EXPORT_METHOD"] = "appstore"
+    ENV["EXO_APP_EXPORT_TYPE"] = "appstore"
+    ENV["EXO_APP_CONFIGURATION"] = "Release"
+    internal_build()
   end
 
   desc "Build a beta version and upload to Appaloosa"
-  lane :beta do
-    cocoapods
-    match(
-      app_identifier: ["com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"],
-      type: "adhoc",
-      readonly: true
-    )
-    # use 'xcodebuild -showsdks' to list all installed SDK
-    build_ios_app(
-      workspace: "eXo.xcworkspace",
-      configuration: "Release",
-      scheme: "eXo",
-      # silent: true,
-      clean: true,
-      buildlog_path: "./fastlane/output-log",
-      output_directory: "./fastlane/output",
-      output_name: "eXoBeta.ipa",
-      sdk: "iphoneos11.2",
-      export_method: "ad-hoc"
-    )
+  lane :build_beta_ppr do
+    ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
+    ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
+    ENV["EXO_APP_CONFIGURATION"] = "Release"
+
+    ENV["EXO_APP_BASE_URL"] = "https://connect-preprod.atis-network.be"
+    ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
+    ENV["EXO_APP_ENVIRONMENT"]="PPR"
+    ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+
+    add_badge(shield: "ENV-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
+    internal_build()
     appaloosa(
-      binary: "./fastlane/output/eXoBeta.ipa",
+      binary: "./fastlane/output/exo.ipa",
       store_id: ENV['APPALOOSA_EXO_STORE_ID'],
       api_token: ENV['APPALOOSA_EXO_API_TOKEN'],
-      group_ids: '8782', # eXo
-      # group_ids: '16486', # fdr
+      # User group_ids visibility (ex: '123, 456, 789') 
+      # if it's not specified we'll publish the app for all users in your store'
+      # group_ids: '8782', # eXo
+      group_ids: '16486', # fdr
       screenshots: ''
     )
   end
@@ -144,9 +195,9 @@ platform :ios do
   desc "Run all the tests"
   lane :test do
     scan(
-        workspace: "eXo.xcworkspace",
-        scheme: "eXo",
-        clean: true
+      workspace: "eXo.xcworkspace",
+      scheme: "eXo",
+      clean: true
     )
   end
 
@@ -159,8 +210,6 @@ platform :ios do
       sdk: "iphonesimulator"
     )
     frame_screenshots(white: true)
-
     # upload_to_app_store
   end
-  
 end

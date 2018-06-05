@@ -26,19 +26,14 @@ Sync (or create if needed) all keys, certs and profiles (development, adhoc, app
 fastlane ios sync_certificates
 ```
 Sync all keys, certs and profiles (development and adhoc)
-### ios build_dev
+### ios dynamic_build
 ```
-fastlane ios build_dev
+fastlane ios dynamic_build
 ```
-Build version for the Development
-### ios build
+Dynamic build using multi parameters : app id / base url / env name / app name
+### ios build_beta_ppr
 ```
-fastlane ios build
-```
-Build version for the AppStore
-### ios beta
-```
-fastlane ios beta
+fastlane ios build_beta_ppr
 ```
 Build a beta version and upload to Appaloosa
 ### ios test

@@ -1,12 +1,5 @@
 # Fastlane Match configuration file
-# For all available options run `fastlane match --help`
-
+# For all available options run `fastlane match --help`	
 git_url("git@github.com:exoplatform/exo-ios-certificates.git")
-
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
-
-app_identifier([
-    "com.exoplatform.mob.eXoPlatformiPHone", "com.exoplatform.mob.eXoPlatformiPHone.share-extension"
-])
 # Your Apple Developer Portal username
 username("apple-dev@exoplatform.com")
