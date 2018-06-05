@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5711ABEA1BEC9DA200D60E4B /* fastlane in Resources */ = {isa = PBXBuildFile; fileRef = 5711ABE91BEC9DA200D60E4B /* fastlane */; };
-		52635078206A9824004852D4 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52635075206A9824004852D4 /* AppEnvironment.swift */; };
 		57D568331BEB15C000C13C7E /* TestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568321BEB15C000C13C7E /* TestServer.swift */; };
 		57D568351BEB41B700C13C7E /* TestServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568341BEB41B700C13C7E /* TestServerManager.swift */; };
 		57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */; };

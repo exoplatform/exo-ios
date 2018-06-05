@@ -188,10 +188,11 @@ platform :ios do
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
-    ENV["EXO_APP_ENVIRONMENT"]="PPR"
+    ENV["EXO_APP_ENVIRONMENT"]="5.1.M1"
     ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
 
-    add_badge(shield: "ENV-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
+    # add_badge(shield: "VER-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
+    add_badge(shield: "5.1-M02-blue", dark: true)
     internal_build()
     appaloosa(
       binary: "./fastlane/output/exo.ipa",
@@ -199,8 +200,8 @@ platform :ios do
       api_token: ENV['APPALOOSA_EXO_API_TOKEN'],
       # User group_ids visibility (ex: '123, 456, 789') 
       # if it's not specified we'll publish the app for all users in your store'
-      # group_ids: '8782', # eXo
-      group_ids: '16486', # fdr
+      group_ids: '8782', # eXo
+      # group_ids: '16486', # fdr
       screenshots: ''
     )
   end
