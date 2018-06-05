@@ -158,12 +158,26 @@ platform :ios do
     internal_build()
   end
 
-  desc "Build version for the AppStore"
-  private_lane :build_appstore do
-    ENV["EXO_APP_EXPORT_METHOD"] = "appstore"
+  desc "Build the AppStore version and upload it"
+  lane :build_appstore do
+    ENV["EXO_APP_EXPORT_METHOD"] = "app-store"
     ENV["EXO_APP_EXPORT_TYPE"] = "appstore"
     ENV["EXO_APP_CONFIGURATION"] = "Release"
+
+    ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
+    ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
+    ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+
     internal_build()
+
+    upload_to_app_store(
+      team_id: "11998951888", # eXo
+      app_identifier: "#{ENV["EXO_APP_ID"]}",
+      copyright: "2018 eXo Platform SAS",
+      skip_metadata: true,
+      skip_screenshots: true,
+      submit_for_review: false
+    )
   end
 
   desc "Build a beta version and upload to Appaloosa"
@@ -172,7 +186,7 @@ platform :ios do
     ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
     ENV["EXO_APP_CONFIGURATION"] = "Release"
 
-    ENV["EXO_APP_BASE_URL"] = "https://connect-preprod.atis-network.be"
+    ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
     ENV["EXO_APP_ENVIRONMENT"]="PPR"
     ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"

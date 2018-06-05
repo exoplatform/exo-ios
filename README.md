@@ -1,43 +1,37 @@
-[![Build Status](https://travis-ci.org/exoplatform/exo-ios.svg)](https://travis-ci.org/exoplatform/exo-ios)
+# eXo Platform mobile
 
-eXo Mobile
-==========
+## Develop
 
-eXo Mobile connects to your eXo social intranet. Keep track of what's happening in your intranet and increase your productivity with an access to your activity stream or your documents while on the go.
+Pre-requisites :
 
-*  **Access your news feed:**
-Easy access to your social intranet news feed. You can receive messages from other users and update your status. The news feed also provides notifications about wiki page updates, new forum posts, new events in your calendar or new documents added to the repository. This helps you keep track of all recent and relevant activity, and lets you comment on this activity as needed.
+- Xcode 9.2
+- CocoaPod
+- Fastlane (for people on charge of release)
 
-*  **Upload documents:**
-Share important documents and images on-the-go with your mobile device, and upload them instantly to your news feed.
+To get and install locally the needed Provisioning Profiles you need to execute the command :
 
-*  **Access your documents from everywhere:**
-No matter where your business takes you, you’ll always have access to your document repository. You’ll also be able upload pictures, organize your documents, comment or vote.
+    fastlane sync_certificates
 
+and give `com.exoplatform.mob.eXoPlatformiPHone` as BundleID.
 
-Read More
-=========
+## Release
 
-Visit our website for more information: http://www.exoplatform.com/company/en/products/mobile
+For each release we must update the version
 
-Download
-========
+    # increase the technical version
+    xcrun agvtool new-version -all 12
+    # increase the marketing version (not always needed)
+    xcrun agvtool new-marketing-version 1.0.0
 
-The app is available for download on the Apple AppStore: 
+### beta on Appaloosa
 
-Build
-=====
+To build a beta version of the app and upload it to Appaloosa, execute the following command :
 
-There are 3 interesting commands you can execute to build, test and package the app:
+    fastlane build_beta_ppr
 
-* `fastlane test`
-This will build and run tests (unit tests and UI tests)
+### release on AppStore
 
-* `snapshot`
-This command will generate screenshots of the following screens: Home, New Intranet, Settings and Edit Intranet.
+To build a official version of the app and upload it to the AppStore, execute the following commands :
 
-* `fastlane adhoc`
-This command will build and create an ipa bundle for adhoc distribution, e.g. on Appaloosa or TestFlight.
+    fastlane build_appstore
 
-* `fastlane sync_certificates`
-This command will fetch and install localy all needed certificates and provisionning profiles (some authorization will be needed to execute this command).

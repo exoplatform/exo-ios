@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5711ABEA1BEC9DA200D60E4B /* fastlane in Resources */ = {isa = PBXBuildFile; fileRef = 5711ABE91BEC9DA200D60E4B /* fastlane */; };
+		52635078206A9824004852D4 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52635075206A9824004852D4 /* AppEnvironment.swift */; };
 		57D568331BEB15C000C13C7E /* TestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568321BEB15C000C13C7E /* TestServer.swift */; };
 		57D568351BEB41B700C13C7E /* TestServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568341BEB41B700C13C7E /* TestServerManager.swift */; };
 		57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */; };
@@ -772,7 +773,6 @@
 				9C935F851BD64DAD009C065B /* Localizable.strings in Resources */,
 				9C3D7D1E1BDF6BA3002873CB /* eXo.entitlements in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
-				5711ABEA1BEC9DA200D60E4B /* fastlane in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
 			);
@@ -1233,7 +1233,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1278,7 +1278,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEAM_ID = FEM998T42U;
@@ -1321,7 +1321,7 @@
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
 				PROVISIONING_PROFILE = "53d4aa0e-13c0-4842-b8e3-62e9a246330f";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.exoplatform.mob.eXoPlatformiPHone";
 				SWIFT_VERSION = 3.0;

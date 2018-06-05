@@ -31,6 +31,11 @@ Sync all keys, certs and profiles (development and adhoc)
 fastlane ios dynamic_build
 ```
 Dynamic build using multi parameters : app id / base url / env name / app name
+### ios build_appstore
+```
+fastlane ios build_appstore
+```
+Build the AppStore version and upload it
 ### ios build_beta_ppr
 ```
 fastlane ios build_beta_ppr

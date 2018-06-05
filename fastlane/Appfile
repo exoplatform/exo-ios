@@ -3,7 +3,7 @@
 # team selection in case you're in multiple teams
 team_name "eXo"
 team_id "FEM998T42U"
-
+apple_id "apple-dev@exoplatform.com"
 
 # you can even provide different app identifiers, Apple IDs and team names per lane:
 # https://github.com/KrauseFx/fastlane/blob/master/docs/Appfile.md
