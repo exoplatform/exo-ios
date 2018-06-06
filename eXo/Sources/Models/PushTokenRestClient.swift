@@ -21,7 +21,7 @@ class PushTokenRestClient {
     }
     
     func registerToken(username: String, token: String, baseUrl: URL, completion: @escaping (Bool) -> Void) {
-        let params = ["username": username, "token": token, "device": "ios"]
+        let params = ["username": username, "token": token, "type": "ios"]
         let registerTokenUrl = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/rest/private/v1/messaging/device")!
         let request = createRequest(url: registerTokenUrl, method: "POST", data: try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted))
         doRequest(request, completion: completion)
