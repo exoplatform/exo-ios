@@ -180,18 +180,18 @@ class ServerSelectionViewController: UIViewController {
             paragraphStyle.alignment = NSTextAlignment.center
             paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
             
-            let buttonTextAttributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17.0),
-                NSParagraphStyleAttributeName : paragraphStyle,
-                NSForegroundColorAttributeName: UIColor.black]
+            let buttonTextAttributes = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17.0),
+                NSAttributedStringKey.paragraphStyle : paragraphStyle,
+                NSAttributedStringKey.foregroundColor: UIColor.black]
             let attrStrTitle = NSMutableAttributedString(
                 string: buttonText as String,
                 attributes: buttonTextAttributes)
             
             // font size calculated from screen width and URL length, cf method description below
             let fontSizeURL = calculateURLFontSize(Int(UIScreen.main.bounds.width), urlLength: buttonURL.length)
-            let buttonURLAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: fontSizeURL),
-                NSParagraphStyleAttributeName : paragraphStyle,
-                NSForegroundColorAttributeName: UIColor.black]
+            let buttonURLAttributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: fontSizeURL),
+                NSAttributedStringKey.paragraphStyle : paragraphStyle,
+                NSAttributedStringKey.foregroundColor: UIColor.black]
             let attrStrURL = NSMutableAttributedString(
                 string: buttonURL as String,
                 attributes: buttonURLAttributes)

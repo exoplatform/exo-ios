@@ -21,73 +21,74 @@ import UIKit
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+	switch (lhs, rhs) {
+	case let (l?, r?):
+		return l < r
+	case (nil, _?):
+		return true
+	default:
+		return false
+	}
 }
 
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
+	switch (lhs, rhs) {
+	case let (l?, r?):
+		return l > r
+	default:
+		return rhs < lhs
+	}
 }
 
 
 class InputAccountViewController: UIViewController, AccountSelectorDelegate {
 
-    var account: Account?
-    var delegate:AccountSelectorDelegate?
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var serverURLLabel: UILabel!
+	@objc var account: Account?
+	@objc var delegate:AccountSelectorDelegate?
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        serverURLLabel.text = (account?.serverURL)!.stringURLWithoutProtocol()
-        usernameTextField.text = account?.userName
-        passwordTextField.text = account?.password
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func loginAction(_ sender: AnyObject) {
-        if (usernameTextField.text != nil && usernameTextField.text?.characters.count > 0) {
-            account?.userName = usernameTextField.text
-            
-        }
-        if (passwordTextField.text != nil && passwordTextField.text?.characters.count > 0) {
-            account?.password = passwordTextField.text
-        }
-        if (delegate != nil) {
-            delegate?.accountSelector!(nil, didSelect: account!)
-        }
-        self.navigationController?.popToRootViewController(animated: true)
-        
-    }
+	@IBOutlet weak var usernameTextField: UITextField!
+	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var serverURLLabel: UILabel!
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		serverURLLabel.text = (account?.serverURL)!.stringURLWithoutProtocol()
+		usernameTextField.text = account?.userName
+		passwordTextField.text = account?.password
+
+	}
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
+	@IBAction func loginAction(_ sender: AnyObject) {
+
+		if let username = usernameTextField.text, !username.isEmpty {
+			account?.userName = username
+		}
+		if let password = passwordTextField.text, !password.isEmpty {
+			account?.password = password
+		}
+
+		if (delegate != nil) {
+			delegate?.accountSelector!(nil, didSelect: account!)
+		}
+		self.navigationController?.popToRootViewController(animated: true)
+
+	}
+
+	/*
+	// MARK: - Navigation
+
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	// Get the new view controller using segue.destinationViewController.
+	// Pass the selected object to the new view controller.
+	}
+	*/
 
 }

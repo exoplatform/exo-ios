@@ -66,7 +66,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     
     //detect when the return key is pressed
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if  (text.characters.last == "\n" ){
+        if  (text.last == "\n" ){
             //dismiss the keyboard
             textView.resignFirstResponder()
             //verification of URL, http is the default protocol
