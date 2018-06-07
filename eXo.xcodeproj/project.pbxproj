@@ -1299,7 +1299,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
-				PROVISIONING_PROFILE = "c51a6518-5824-41bb-9d12-c880017590c5";
+				PROVISIONING_PROFILE = "a2399f62-2b7a-4cab-912d-c273903ce543";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.exoplatform.mob.eXoPlatformiPHone";
 				SWIFT_VERSION = 3.0;
 			};

@@ -192,5 +192,25 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         print(remoteMessage.debugDescription)
     }
 
+	func handleNotification(userInfo: [AnyHashable: Any]) {
+		if let url = userInfo["url"] as? String {
+			print("url : \(url)")
+			let server:Server = Server(serverURL: url)
+			ServerManager.sharedInstance.addEditServer(server)
+			self.quickActionOpenHomePageForURL(server.serverURL)
+		}
+	}
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+		handleNotification(userInfo: userInfo);
+	}
+
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+									 fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+		handleNotification(userInfo: userInfo);
+		completionHandler(UIBackgroundFetchResult.newData)
+	}
+
+
 }
 
