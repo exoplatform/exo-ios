@@ -15,6 +15,14 @@ target "eXo" do
     pod 'Crashlytics'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+
+	target "eXoTests" do
+		inherit! :search_paths
+	end
+	target "eXoUITests" do
+		inherit! :search_paths
+	end
+
 end
 
 target "share-extension" do
@@ -22,9 +30,7 @@ target "share-extension" do
     pod 'HTMLKit', '~> 2.0.0'
 end
 
-target "eXoTests" do
-    pod 'Firebase/Core'
-end
+
 
 # Fix xcode Warning for Release config
 # https://github.com/CocoaPods/CocoaPods/issues/4439

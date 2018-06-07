@@ -50,8 +50,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         Fabric.with([Crashlytics.self])
         // Get the root view (the enter point of storyboard)
         navigationVC = self.window!.rootViewController as? UINavigationController
-        // Create the server manager instance to prepare the list of servers
-        ServerManager.sharedInstance
         // Push notifications
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
@@ -64,7 +62,8 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             //Check for ShortCutItem
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
                 launchedFromShortCut = true
-                handleShortcut(shortcutItem)
+                let didHandleShortcut = handleShortcut(shortcutItem)
+								print("Shortcut handle \(didHandleShortcut)")
             }
             //Return false incase application was lanched from shorcut to prevent
             //application(_:performActionForShortcutItem:completionHandler:) from being called

@@ -1,0 +1,6 @@
+framework module Pods_eXoUITests {
+  umbrella header "Pods-eXoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

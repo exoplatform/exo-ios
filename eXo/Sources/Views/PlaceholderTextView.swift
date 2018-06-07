@@ -114,7 +114,7 @@ class PlaceholderTextView: UITextView {
         self.setup()
     }
 
-    func textChanged(_ notification:Notification?) {
+    @objc func textChanged(_ notification:Notification?) {
         self.viewWithTag(999)?.alpha = self.text.isEmpty ? 1.0 : 0.0
     }
 }

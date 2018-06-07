@@ -71,9 +71,10 @@ class Server {
     func natureName () -> String {
         let name: String = self.serverURL.stringURLWithoutProtocol()
         if (name.utf8.count > ShortcutTitleConfig.maximumCharacters) {
-            var shortName = name.substring(to: name.characters.index(name.startIndex, offsetBy: ShortcutTitleConfig.prefixCharacters))
+						var shortName =  String(name[..<name.index(name.startIndex, offsetBy:ShortcutTitleConfig.prefixCharacters)])
             shortName += "..."
-            shortName += name.substring(from: name.characters.index(name.endIndex, offsetBy: -ShortcutTitleConfig.suffixCharacters))
+						shortName += String(name[(name.index(name.endIndex, offsetBy: -ShortcutTitleConfig.suffixCharacters))...])
+
             return shortName
         }
         return name
