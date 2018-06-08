@@ -20,10 +20,10 @@ platform :ios do
   desc "Sync (or create if needed) all keys, certs and profiles (development, adhoc, appstore)"
   lane :certificates do |options|
 
-		bundleID = UI.input "Please enter your bundle id:"
-		UI.header("Certicates will be generated following parameters")
-	  UI.message("bundleID: #{bundleID}")
-		if UI.confirm("Confirm ?")
+    bundleID = UI.input "Please enter your bundle id:"
+    UI.header("Certicates will be generated following parameters")
+    UI.message("bundleID: #{bundleID}")
+    if UI.confirm("Confirm ?")
       UI.success "Starting build"
       ENV["EXO_APP_IDENTIFIERS"] = "#{bundleID},#{bundleID}.share-extension"
       appIdentifiers = ENV["EXO_APP_IDENTIFIERS"].split(",")
@@ -37,10 +37,10 @@ platform :ios do
         type: "adhoc",
         force_for_new_devices: true,
       )
-			match(
+      match(
         app_identifier: appIdentifiers ,
         type: "appstore",
-			)
+      )
     else
       UI.error "Certificates will no be executed"
     end
@@ -90,14 +90,21 @@ platform :ios do
       UI.message("build type: #{ENV["EXO_BUILD_TYPE"]}")
 
       if UI.confirm("Confirm ?")
-        ENV["EXO_APP_IDENTIFIERS"] = "#{bundleID},#{bundleID}.share-extension"
+        ENV["EXO_APP_IDENTIFIERS"] = "#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
+        ENV["EXO_APP_CONFIGURATION"] = "Release"
         case ENV["EXO_BUILD_TYPE"]
           when "APPSTORE"
-            build_appstore()
+            ENV["EXO_APP_EXPORT_METHOD"] = "app-store";
+            ENV["EXO_APP_EXPORT_TYPE"] = "appstore"
+            ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AppStore"
+            internal_build()
           when "ADHOC"
-            badge(shield: "ENV-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
+            ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
+            ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
+            ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AdHoc"
+            add_badge(shield: "ENV-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", dark: true)
             ENV["EXO_APP_DISPLAY_NAME"] = "#{ENV["EXO_APP_DISPLAY_NAME"]}-#{ENV["EXO_APP_ENV_NAME"]}"
-            build_beta()
+            internal_build()
         end
       else
         UI.error "Build will no be executed"
@@ -118,6 +125,8 @@ platform :ios do
     exportType = ENV["EXO_APP_EXPORT_TYPE"]
     appConfiguration = ENV["EXO_APP_CONFIGURATION"]
     appBaseUrl = ENV["EXO_APP_BASE_URL"]
+    appProvProfil = "match #{ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"]} #{appBundleID}"
+    extProvProfil = "match #{ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"]} #{appBundleID}.share-extension"
 
     UI.header("App will be build following parameters")
     UI.message("EXO_APP_ID: #{ENV["EXO_APP_ID"]}")
@@ -128,7 +137,7 @@ platform :ios do
     UI.message("EXO_APP_CONFIGURATION: #{ENV["EXO_APP_CONFIGURATION"]}")
     UI.message("EXO_APP_BASE_URL: #{ENV["EXO_APP_BASE_URL"]}")
 
-    cocoapods
+    #cocoapods
     match(
       app_identifier: appIdentifiers,
       type: exportType,
@@ -139,14 +148,21 @@ platform :ios do
       workspace: "eXo.xcworkspace",
       configuration: appConfiguration,
       scheme: "eXo",
-      # silent: true,
+      #silent: true,
       clean: true,
       buildlog_path: "./fastlane/output-log",
-      xcargs: "APP_ENVIRONMENT=#{appEnvironment} APP_BUNDLE_ID=#{appBundleID} APP_BASE_URL=#{appBaseUrl}",
+      xcargs: "APP_BUNDLE_ID=#{appBundleID} -allowProvisioningUpdates",
+      xcargs: {
+        :APP_BUNDLE_ID => appBundleID,
+        :APP_PROV_PROFIL => appProvProfil,
+        :EXT_PROV_PROFIL => extProvProfil
+      },
+      export_xcargs: "-allowProvisioningUpdates",
       output_directory: "./fastlane/output",
       output_name: "exo.ipa",
-      sdk: "iphoneos11.2",
-      export_method: exportMethod
+      sdk: "iphoneos11.4",
+      export_method: exportMethod,
+      skip_profile_detection: true
     )
   end
 
@@ -162,6 +178,7 @@ platform :ios do
   lane :build_appstore do
     ENV["EXO_APP_EXPORT_METHOD"] = "app-store"
     ENV["EXO_APP_EXPORT_TYPE"] = "appstore"
+    ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AppStore"
     ENV["EXO_APP_CONFIGURATION"] = "Release"
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
@@ -184,14 +201,14 @@ platform :ios do
   lane :build_beta_ppr do
     ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
     ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
+    ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AdHoc"
     ENV["EXO_APP_CONFIGURATION"] = "Release"
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
     ENV["EXO_APP_ENVIRONMENT"]="5.1-M03"
-    ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+    ENV["EXO_APP_IDENTIFIERS"]="#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
 
-    # add_badge(shield: "VER-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
     add_badge(shield: "#{ENV["EXO_APP_ENVIRONMENT"]}-blue", dark: true)
     internal_build()
     appaloosa(
@@ -227,4 +244,6 @@ platform :ios do
     frame_screenshots(white: true)
     # upload_to_app_store
   end
+
+
 end
