@@ -192,7 +192,7 @@ platform :ios do
     ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
 
     # add_badge(shield: "VER-#{ENV["EXO_APP_ENVIRONMENT"]}-blue", no_badge: true)
-    add_badge(shield: "5.1-M02-blue", dark: true)
+    add_badge(shield: "5.1-M03-blue", dark: true)
     internal_build()
     appaloosa(
       binary: "./fastlane/output/exo.ipa",
