@@ -62,6 +62,7 @@
 		9CD8445D1C1E866700A824D2 /* TestAddServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD8445C1C1E866700A824D2 /* TestAddServer.swift */; };
 		9CF2861A1BE1DE7D00DC4C26 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF286191BE1DE7D00DC4C26 /* AccountManager.m */; };
 		AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB18539B206A2CF100D9726C /* GoogleService-Info.plist */; };
+		AB542EAB215CD8FC00A9ED5A /* ToolTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB542EAA215CD8FC00A9ED5A /* ToolTest.swift */; };
 		B05A19D2AA577577D7DA932A /* Pods_eXoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A052336FD41FD7E16D9AB51C /* Pods_eXoTests.framework */; };
 		B56257E7202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56257E6202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift */; };
 		B56257E9202ADA0D00A6CE41 /* TestCookiesFromAuthorizationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56257E8202ADA0D00A6CE41 /* TestCookiesFromAuthorizationFetcher.swift */; };
@@ -205,6 +206,7 @@
 		9CF286191BE1DE7D00DC4C26 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		A052336FD41FD7E16D9AB51C /* Pods_eXoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18539B206A2CF100D9726C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AB542EAA215CD8FC00A9ED5A /* ToolTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTest.swift; sourceTree = "<group>"; };
 		B058A906AB28AC95A0483B47 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
 		B56257E6202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesFromAuthorizationFetcher.swift; sourceTree = "<group>"; };
 		B56257E8202ADA0D00A6CE41 /* TestCookiesFromAuthorizationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCookiesFromAuthorizationFetcher.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				57D568341BEB41B700C13C7E /* TestServerManager.swift */,
 				57D568361BEB48BC00C13C7E /* FakeUserDefaults.swift */,
 				B56257E8202ADA0D00A6CE41 /* TestCookiesFromAuthorizationFetcher.swift */,
+				AB542EAA215CD8FC00A9ED5A /* ToolTest.swift */,
 			);
 			path = eXoTests;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 				57D568331BEB15C000C13C7E /* TestServer.swift in Sources */,
 				9C3AD25F1BCF56900094CFF9 /* eXoBaseTestCase.swift in Sources */,
 				57D568371BEB48BC00C13C7E /* FakeUserDefaults.swift in Sources */,
+				AB542EAB215CD8FC00A9ED5A /* ToolTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

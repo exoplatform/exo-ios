@@ -194,7 +194,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
 	func handleNotification(userInfo: [AnyHashable: Any]) {
 		if let url = userInfo["url"] as? String {
 			print("url : \(url)")
-			let server:Server = Server(serverURL: url)
+			let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
 			ServerManager.sharedInstance.addEditServer(server)
 			self.quickActionOpenHomePageForURL(server.serverURL)
 		}
