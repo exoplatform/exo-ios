@@ -397,7 +397,7 @@ NSMutableData * data;
 	loggingStatus = eXoStatusLoadingSpaceId;
 	
 	NSString * path = [NSString stringWithFormat:@"%@/rest/private/api/social/v1-alpha3/portal/identity/space/%@.json",[AccountManager sharedManager].selectedAccount.serverURL, space.name];
-	path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:path] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 		if (!error) {
 			NSError * error = nil;
