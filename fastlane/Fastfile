@@ -206,7 +206,7 @@ platform :ios do
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
-    ENV["EXO_APP_ENVIRONMENT"]="5.1-RC13"
+    ENV["EXO_APP_ENVIRONMENT"]="5.1-RC14"
     ENV["EXO_APP_IDENTIFIERS"]="#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
 
     add_badge(shield: "#{ENV["EXO_APP_ENVIRONMENT"]}-blue", dark: true)
