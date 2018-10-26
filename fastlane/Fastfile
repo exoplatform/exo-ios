@@ -197,6 +197,30 @@ platform :ios do
     )
   end
 
+  desc "Build the AppStore version and upload it to TestFlight"
+  lane :build_testflight do
+    ENV["EXO_APP_EXPORT_METHOD"] = "app-store"
+    ENV["EXO_APP_EXPORT_TYPE"] = "appstore"
+    ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AppStore"
+    ENV["EXO_APP_CONFIGURATION"] = "Release"
+
+    ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
+    ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
+    ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
+
+    internal_build()
+
+    upload_to_testflight(
+      team_id: "476100", # eXo
+      app_identifier: "#{ENV["EXO_APP_ID"]}",
+      # copyright: "2018 eXo Platform SAS",
+      # skip_metadata: true,
+      # skip_screenshots: true,
+      # submit_for_review: false,
+      skip_submission: true # to only upload the build
+    )
+  end
+
   desc "Build a beta version and upload to Appaloosa"
   lane :build_beta_ppr do
     ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
@@ -244,6 +268,5 @@ platform :ios do
     frame_screenshots(white: true)
     # upload_to_app_store
   end
-
 
 end

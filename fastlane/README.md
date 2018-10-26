@@ -36,6 +36,11 @@ Dynamic build using multi parameters : app id / base url / env name / app name
 fastlane ios build_appstore
 ```
 Build the AppStore version and upload it
+### ios build_testflight
+```
+fastlane ios build_testflight
+```
+Build the AppStore version and upload it to TestFlight
 ### ios build_beta_ppr
 ```
 fastlane ios build_beta_ppr
