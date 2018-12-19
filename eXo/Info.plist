@@ -64,5 +64,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(APP_NAME) requires to access camera for taking profile picture or uploading images.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(APP_NAME) requires to access Photo Library to let you download or send images with the application.</string>
 </dict>
 </plist>
