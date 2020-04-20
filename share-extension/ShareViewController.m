@@ -849,60 +849,59 @@ NSMutableData * data;
 }
 
 -(void) postCommentForItemAtIndex:(int) index {
-        if (index < postActivity.successfulUploads.count && postActivity.activityId != nil) {
-            PostItem * postItem = postActivity.successfulUploads[index];
-            NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity/%@/comment.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName, postActivity.activityId];
-            
-            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postURL]];
-            request.HTTPMethod = @"POST";
-            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            [request setValue:@"UTF-8" forHTTPHeaderField:@"Charset"];
-            [request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
-            
-            
-            NSString * message =@"";
-            // we post comment for eXo platform server with version < 5.3
-            if ([postItem.type isEqualToString:@"DOC_ACTIVITY"]) {
-                if (postItem.fileUploadedName!=nil && postItem.fileUploadedURL!=nil){
-                    message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.fileUploadedURL, postItem.fileUploadedName];
-                    NSString * thumbnailURL = [postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"];
-                    if (postItem.isImageItem){
-                        message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",thumbnailURL]];
-                    }
+    if (index < postActivity.successfulUploads.count && postActivity.activityId != nil) {
+        PostItem * postItem = postActivity.successfulUploads[index];
+        
+        NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity/%@/comment.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName, postActivity.activityId];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postURL]];
+        request.HTTPMethod = @"POST";
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"UTF-8" forHTTPHeaderField:@"Charset"];
+        [request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
+        
+        
+        NSString * message =@"";
+        if ([postItem.type isEqualToString:@"DOC_ACTIVITY"]) {
+            if (postItem.fileUploadedName!=nil && postItem.fileUploadedURL!=nil){
+                message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.fileUploadedURL, postItem.fileUploadedName];
+                NSString * thumbnailURL = [postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"];
+                if (postItem.isImageItem){
+                    message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",thumbnailURL]];
                 }
-            } else if ([postItem.type isEqualToString:@"LINK_ACTIVITY"]) {
-                NSString * title = postItem.pageWebTitle;
-                if (!title || title.length ==0){
-                    title = postItem.url.absoluteString;
-                }
-                message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.url, title];
-                
             }
-            
-            NSDictionary * dictionary = @{
-                                                                        @"text":message
-                                                                        };
-            
-            NSError *error = nil;
-            NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                                                                         options:kNilOptions error:&error];
-            [request setHTTPBody:data];
-            
-            if (!error) {
-                NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                    [self postCommentForItemAtIndex:index+1];
-                }];
-                [postTask resume];
-            } else {
-                [uploadVC dismissViewControllerAnimated:YES completion:nil];
-                [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
-                
+        } else if ([postItem.type isEqualToString:@"LINK_ACTIVITY"]) {
+            NSString * title = postItem.pageWebTitle;
+            if (!title || title.length ==0){
+                title = postItem.url.absoluteString;
             }
-                
+            message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.url, title];
+            
+        }
+        
+        NSDictionary * dictionary = @{
+                                                                    @"text":message
+                                                                    };
+        
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                                                                     options:kNilOptions error:&error];
+        [request setHTTPBody:data];
+        
+        if (!error) {
+            NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                [self postCommentForItemAtIndex:index+1];
+            }];
+            [postTask resume];
         } else {
-                [uploadVC dismissViewControllerAnimated:YES completion:nil];
-                [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
-                
+            [uploadVC dismissViewControllerAnimated:YES completion:nil];
+            [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+            
+        }
+        
+    } else {
+        [uploadVC dismissViewControllerAnimated:YES completion:nil];
+        [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
     }
 }
 /*
@@ -1036,9 +1035,7 @@ NSMutableData * data;
 	if (!error) {
 		NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 			postActivity.activityId = [self getPostActivityFromData:data];
-            if (![type isEqualToString:@"files:spaces"]){
-			    [self postCommentForItemAtIndex:1];
-            }
+			[self postCommentForItemAtIndex:1];
 		}];
 		[postTask resume];
 	} else {
