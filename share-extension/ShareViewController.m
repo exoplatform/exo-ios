@@ -205,12 +205,11 @@ enum {
 			}];
 		}
 		if (postItem.type == nil || postItem.type.length ==0){
-            /*if([self isBefore53]) {
+            if([self isBefore53]) {
 			    postItem.type = @"DOC_ACTIVITY";
             } else {
                 postItem.type = @"files:spaces";
-            }*/
-            postItem.type = @"files:spaces";
+            }
 		}
 		[postActivity.items addObject:postItem];
 		
@@ -413,7 +412,7 @@ NSMutableData * data;
 }
 
 /*
-  Specify the type of activity based on eXo platform version
+ Specify the type of activity based on eXo platform version
  if prior to 5.3 then it is DOC_ACTIVITY
  if 5.3 or later then file activity type is files:spaces
  */
@@ -575,8 +574,8 @@ NSMutableData * data;
 	if (loggingStatus == eXoStatusLoggedIn) {
 		if (postActivity.items.count > 0) {
 			PostItem * item = postActivity.items[0];
-			//if (item.type != nil && ([item.type isEqualToString:@"DOC_ACTIVITY"] || [item.type isEqualToString:@"files:spaces"])) {
-            if (item.type != nil &&  [item.type isEqualToString:@"files:spaces"]) {
+			if (item.type != nil && ([item.type isEqualToString:@"DOC_ACTIVITY"] || [item.type isEqualToString:@"files:spaces"])) {
+            //if (item.type != nil &&  [item.type isEqualToString:@"files:spaces"]) {
 				// Sharing one or more documents
 				[self uploadPostItemAtIndex:0];
 			} else if (item.type != nil && [item.type isEqualToString:@"LINK_ACTIVITY"]) {
@@ -796,7 +795,7 @@ NSMutableData * data;
 	if (postActivity.items.count > 0) {
 		if (postActivity.successfulUploads.count == postActivity.items.count) {
                 PostItem * firstItem = postActivity.successfulUploads[0];
-                if ([firstItem.type isEqualToString:@"files:spaces"]) {
+                if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]) {
                     // Should always be DOC_ACTIVITY
                     //[self postMessage:postActivity.message fileURL:firstItem.fileUploadedURL fileName:firstItem.fileUploadedName];
                     [self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
@@ -823,8 +822,8 @@ NSMutableData * data;
 			UIAlertAction* postAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Post",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
 				if (postActivity.successfulUploads.count > 0) {
 					PostItem * firstItem = postActivity.successfulUploads[0];
-					//if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]){
-                    if ([firstItem.type isEqualToString:@"files:spaces"]){
+					if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]){
+                    //if ([firstItem.type isEqualToString:@"files:spaces"]){
 						[self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
 					}
 					//                    TODO remove this code
@@ -918,6 +917,7 @@ NSMutableData * data;
 	NSString * title = message;
 	NSString * type;
 	NSDictionary * templateParams;
+
 	
 	NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName];
 	if (selectedSpace && selectedSpace.spaceId.length > 0){
@@ -963,7 +963,14 @@ NSMutableData * data;
                 docPath = [NSString stringWithFormat:@"%@/Public/mobile/%@",userHomeJcrPath,fileName];
             }
             rangeOfDocLink = [fileItem.fileUploadedURL rangeOfString:@"jcr"];
-            docLink = [NSString stringWithFormat:@"/rest/%@", [fileItem.fileUploadedURL substringFromIndex:rangeOfDocLink.location]];
+            docLink = [NSString stringWithFormat:@"/portal/rest/%@", [fileItem.fileUploadedURL substringFromIndex:rangeOfDocLink.location]];
+
+            // Post link for first element if message is empty
+            if(i == 0 && [message length]==0){
+                title = [NSString stringWithFormat:@"Shared a document <a href=\"%@\">%@</a>", docLink, fileName];
+            }
+            
+
             docLinks = [NSString stringWithFormat:@"%@%@", docLinks, docLink];
             docPaths = [NSString stringWithFormat:@"%@%@", docPaths, docPath];
             isSymlinks = [NSString stringWithFormat:@"%@%@", isSymlinks, @"false"];
