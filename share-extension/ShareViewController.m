@@ -204,7 +204,7 @@ enum {
 				}
 			}];
 		}
-		if (postItem.type == nil || postItem.type.length ==0){
+		if (postItem.type == nil || postItem.type.length == 0){
             if([self isBefore53]) {
 			    postItem.type = @"DOC_ACTIVITY";
             } else {
@@ -337,7 +337,7 @@ NSMutableData * data;
 		NSURLCredential *credential = [NSURLCredential credentialWithUser:[AccountManager sharedManager].selectedAccount.userName password:[AccountManager sharedManager].selectedAccount.password persistence:NSURLCredentialPersistenceNone];
 		[[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 	} else {
-		loggingStatus =eXoStatusLoggInAuthentificationFail;
+		loggingStatus = eXoStatusLoggInAuthentificationFail;
 		[AccountManager sharedManager].selectedAccount.password = @"";
 		[self reloadConfigurationItems];
 	}
@@ -357,20 +357,19 @@ NSMutableData * data;
 			userHomeJcrPath = [jsonObjects objectForKey:@"userHomeNodePath"];
 			currentRepository = [jsonObjects objectForKey:@"currentRepoName"];
 			defaultWorkspace = [jsonObjects objectForKey:@"defaultWorkSpaceName"];
-            //plfVersion = [jsonObjects objectForKey:@"platformVersion"];
+            plfVersion = [jsonObjects objectForKey:@"platformVersion"];
 		}
         // Set default values for each variable if they are not retrieved from /rest/platform/info
         // default workspace is collaboration
         if (defaultWorkspace == (id)[NSNull null] || defaultWorkspace.length == 0 ) defaultWorkspace = @"collaboration";
-          // default repository is repository
-          if (currentRepository == (id)[NSNull null] || currentRepository.length == 0 ) currentRepository = @"repository";
-          // calculate user home folder based on username
-          if (userHomeJcrPath == (id)[NSNull null] || userHomeJcrPath.length == 0 ) {
-              userHomeJcrPath = [self getUserDocumentFolder:[AccountManager sharedManager].selectedAccount.userName];
-         }
-          // if we can not retrieve platform version, then we set it to 5.3
-         // if (plfVersion == (id)[NSNull null] || plfVersion.length == 0 ) plfVersion = @"5.3";
-        
+        // default repository is repository
+        if (currentRepository == (id)[NSNull null] || currentRepository.length == 0 ) currentRepository = @"repository";
+        // calculate user home folder based on username
+        if (userHomeJcrPath == (id)[NSNull null] || userHomeJcrPath.length == 0 ) {
+            userHomeJcrPath = [self getUserDocumentFolder:[AccountManager sharedManager].selectedAccount.userName];
+        }
+        // if we can not retrieve platform version, then we set it to 5.3
+        if (plfVersion == (id)[NSNull null] || plfVersion.length == 0 ) plfVersion = @"5.3";
 	}
 	
 	[[AccountManager sharedManager] saveAccounts];
@@ -419,7 +418,7 @@ NSMutableData * data;
 - (BOOL) isBefore53 {
     NSArray *versionNumbers = [plfVersion componentsSeparatedByString:@"."];
     NSString* plfVersionDigits = [NSString stringWithFormat:@"%@%@",versionNumbers[0], versionNumbers[1]];
-    return false;//todo fixme
+    return plfVersionDigits.intValue != 0 && plfVersionDigits.intValue < 53;
 }
 
 
@@ -511,9 +510,9 @@ NSMutableData * data;
 
 -(NSString *) mobileFolderPath {
 	if (selectedSpace){
-		return [NSString stringWithFormat:@"%@/rest/private/jcr/%@/%@/Groups%@/Documents/mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace, selectedSpace.groupId];
+		return [NSString stringWithFormat:@"%@/portal/rest/jcr/%@/%@/Groups%@/Documents/mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace, selectedSpace.groupId];
 	}
-	return [NSString stringWithFormat:@"%@/rest/private/jcr/%@/%@%@/Public/mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace,userHomeJcrPath];
+	return [NSString stringWithFormat:@"%@/portal/rest/jcr/%@/%@%@/Public/mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace,userHomeJcrPath];
 }
 
 
@@ -796,8 +795,6 @@ NSMutableData * data;
 		if (postActivity.successfulUploads.count == postActivity.items.count) {
                 PostItem * firstItem = postActivity.successfulUploads[0];
                 if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]) {
-                    // Should always be DOC_ACTIVITY
-                    //[self postMessage:postActivity.message fileURL:firstItem.fileUploadedURL fileName:firstItem.fileUploadedName];
                     [self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
                 }
 		} else {
@@ -826,10 +823,6 @@ NSMutableData * data;
                     //if ([firstItem.type isEqualToString:@"files:spaces"]){
 						[self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
 					}
-					//                    TODO remove this code
-					//                    else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
-					//                        [self postLinkActivity:firstItem];
-					//                    }
 				} else {
 					[self postMessage:postActivity.message fileItems:nil];
 				}
@@ -1041,8 +1034,13 @@ NSMutableData * data;
 	
 	if (!error) {
 		NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-			postActivity.activityId = [self getPostActivityFromData:data];
-			[self postCommentForItemAtIndex:1];
+            if([self isBefore53]){
+                postActivity.activityId = [self getPostActivityFromData:data];
+                [self postCommentForItemAtIndex:1];
+            } else {
+                [uploadVC dismissViewControllerAnimated:YES completion:nil];
+                [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+            }
 		}];
 		[postTask resume];
 	} else {
