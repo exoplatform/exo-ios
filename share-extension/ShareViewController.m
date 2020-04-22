@@ -206,7 +206,7 @@ enum {
 		}
 		if (postItem.type == nil || postItem.type.length == 0){
             if([self isBefore53]) {
-			    postItem.type = @"DOC_ACTIVITY";
+                postItem.type = @"DOC_ACTIVITY";
             } else {
                 postItem.type = @"files:spaces";
             }
@@ -421,8 +421,6 @@ NSMutableData * data;
     return plfVersionDigits.intValue != 0 && plfVersionDigits.intValue < 53;
 }
 
-
-
 //
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	loggingStatus = eXoStatusLoggedFailed;
@@ -542,7 +540,7 @@ NSMutableData * data;
 				NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
                 [request setURL:[NSURL URLWithString:createFolderURL]];
                 [request setHTTPMethod:@"GET"];
-
+                
 				[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
 				
 				NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -574,7 +572,6 @@ NSMutableData * data;
 		if (postActivity.items.count > 0) {
 			PostItem * item = postActivity.items[0];
 			if (item.type != nil && ([item.type isEqualToString:@"DOC_ACTIVITY"] || [item.type isEqualToString:@"files:spaces"])) {
-            //if (item.type != nil &&  [item.type isEqualToString:@"files:spaces"]) {
 				// Sharing one or more documents
 				[self uploadPostItemAtIndex:0];
 			} else if (item.type != nil && [item.type isEqualToString:@"LINK_ACTIVITY"]) {
@@ -793,10 +790,10 @@ NSMutableData * data;
 -(void) postActivityAction {
 	if (postActivity.items.count > 0) {
 		if (postActivity.successfulUploads.count == postActivity.items.count) {
-                PostItem * firstItem = postActivity.successfulUploads[0];
-                if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]) {
-                    [self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
-                }
+            PostItem * firstItem = postActivity.successfulUploads[0];
+            if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]) {
+                [self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
+            }
 		} else {
 			NSString * title;
 			
@@ -948,6 +945,19 @@ NSMutableData * data;
         NSString* mimeTypes = @"";
         
         for (int i = 0; i < [fileItems count]; i++) {
+            
+            if( i > 0 && i < [fileItems count]){
+                docPaths = [NSString stringWithFormat:@"%@%@", docPaths, @"|@|"];
+                docLinks = [NSString stringWithFormat:@"%@%@", docLinks, @"|@|"];
+                authors = [NSString stringWithFormat:@"%@%@", authors, @"|@|"];
+                fileNames = [NSString stringWithFormat:@"%@%@", fileNames, @"|@|"];
+                workspaceNames = [NSString stringWithFormat:@"%@%@", workspaceNames, @"|@|"];
+                isSymlinks = [NSString stringWithFormat:@"%@%@", isSymlinks, @"|@|"];
+                repositoryNames = [NSString stringWithFormat:@"%@%@", repositoryNames, @"|@|"];
+                creationDates = [NSString stringWithFormat:@"%@%@", creationDates, @"|@|"];
+                modificationDates = [NSString stringWithFormat:@"%@%@", modificationDates, @"|@|"];
+                mimeTypes = [NSString stringWithFormat:@"%@%@", mimeTypes, @"|@|"];
+            }
             PostItem * fileItem = fileItems[i];
             NSString* fileName = fileItem.fileUploadedName;
             if (selectedSpace){
@@ -974,18 +984,6 @@ NSMutableData * data;
             modificationDates = [NSString stringWithFormat:@"%@%@", modificationDates, [self formatDate]];
             mimeTypes = [NSString stringWithFormat:@"%@%@", mimeTypes, [self MIMETypeForFile:fileName]];
             authors = [NSString stringWithFormat:@"%@%@", authors, [AccountManager sharedManager].selectedAccount.userName];
-            if(i < [fileItems count]){
-                docPaths = [NSString stringWithFormat:@"%@%@", docPaths, @"|@|"];
-                docLinks = [NSString stringWithFormat:@"%@%@", docLinks, @"|@|"];
-                authors = [NSString stringWithFormat:@"%@%@", authors, @"|@|"];
-                fileNames = [NSString stringWithFormat:@"%@%@", fileNames, @"|@|"];
-                workspaceNames = [NSString stringWithFormat:@"%@%@", workspaceNames, @"|@|"];
-                isSymlinks = [NSString stringWithFormat:@"%@%@", isSymlinks, @"|@|"];
-                repositoryNames = [NSString stringWithFormat:@"%@%@", repositoryNames, @"|@|"];
-                creationDates = [NSString stringWithFormat:@"%@%@", creationDates, @"|@|"];
-                modificationDates = [NSString stringWithFormat:@"%@%@", modificationDates, @"|@|"];
-                mimeTypes = [NSString stringWithFormat:@"%@%@", mimeTypes, @"|@|"];
-            }
         }
 		
         if([type isEqualToString:@"DOC_ACTIVITY"]) {
