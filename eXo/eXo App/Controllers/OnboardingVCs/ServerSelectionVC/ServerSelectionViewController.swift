@@ -2,40 +2,26 @@
 //  ServerSelectionViewController.swift
 //  eXo
 //
-//  Created by Nguyen Manh Toan on 10/15/15.
-// Copyright (C) 2003-2015 eXo Platform SAS.
+//  Created by eXo Development on 21/04/2021.
+//  Copyright © 2021 eXo. All rights reserved.
 //
-// This is free software; you can redistribute it and/or modify it
-// under the terms of the GNU Lesser General Public License as
-// published by the Free Software Foundation; either version 3 of
-// the License, or (at your option) any later version.
-//
-// This software is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// Lesser General Public License for more details.
-//
-// You should have received a copy of the GNU Lesser General Public
-// License along with this software; if not, write to the Free
-// Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
-// 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
 import UIKit
 
 class ServerSelectionViewController: UIViewController {
 
     // MARK: Properties
+    
     @IBOutlet weak var mostRecentServerLabel: UILabel!
     var defaultServer:Server?
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var defaultServerButton: UIButton!
     @IBOutlet weak var addServerButton: UIButton!
-    
     @IBOutlet weak var discovereXoTribeButton: UIButton!
-    
     @IBOutlet weak var eXoPlatformDescriptionLabel: UILabel!
     
+    @IBOutlet weak var settingsButton: UIButton!
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -70,6 +56,42 @@ class ServerSelectionViewController: UIViewController {
         // and the default button has an attributed label,
         // the label may not be displayed.
         self.setButtonsTitleWithoutAnimation()
+    }
+    
+    @IBAction func settingsTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+         navigationController?.pushViewController(vc,
+         animated: true)
+    }
+    
+    @IBAction func defaultServeurTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = storyboard.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+        self.navigationController?.topViewController?.title = ""
+            defaultServer?.lastConnection = Date().timeIntervalSince1970
+            ServerManager.sharedInstance.addEditServer(defaultServer!)
+            //setup Destination VC
+            homepageVC.serverURL = defaultServer?.serverURL
+         navigationController?.pushViewController(homepageVC,
+         animated: true)
+    }
+    
+    @IBAction func addNewServeurTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "InputServerViewController") as! InputServerViewController
+         navigationController?.pushViewController(vc,
+         animated: true)
+    }
+    
+    @IBAction func discoverExoTripTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = storyboard.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+        let community = Server(serverURL: Config.communityURL)
+        ServerManager.sharedInstance.addEditServer(community)
+        homepageVC.serverURL = community.serverURL
+         navigationController?.pushViewController(homepageVC,
+         animated: true)
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -241,21 +263,21 @@ class ServerSelectionViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         self.navigationController?.topViewController?.title = ""
         if (segue.identifier == "openDefaultServer") {
-            defaultServer?.lastConnection = Date().timeIntervalSince1970
-            ServerManager.sharedInstance.addEditServer(defaultServer!)
-            //setup Destination VC
-            let homepageVC = segue.destination as! HomePageViewController
-            homepageVC.serverURL = defaultServer?.serverURL
+//            defaultServer?.lastConnection = Date().timeIntervalSince1970
+//            ServerManager.sharedInstance.addEditServer(defaultServer!)
+//            //setup Destination VC
+//            let homepageVC = segue.destination as! HomePageViewController
+//            homepageVC.serverURL = defaultServer?.serverURL
         } else if (segue.identifier == "openRegisterPage") {
 
             //setup Destination VC
             let homepageVC = segue.destination as! HomePageViewController
             homepageVC.serverURL = Config.communityURL + "/portal/intranet/register"
         } else if (segue.identifier == "discovereXoCommunity") {
-            let community = Server(serverURL: Config.communityURL)
-            ServerManager.sharedInstance.addEditServer(community)
-            let homepageVC = segue.destination as! HomePageViewController
-            homepageVC.serverURL = community.serverURL
+//            let community = Server(serverURL: Config.communityURL)
+//            ServerManager.sharedInstance.addEditServer(community)
+//            let homepageVC = segue.destination as! HomePageViewController
+//            homepageVC.serverURL = community.serverURL
             
         }
     }

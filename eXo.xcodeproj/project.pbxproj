@@ -36,7 +36,7 @@
 		9C3AD25F1BCF56900094CFF9 /* eXoBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD25E1BCF56900094CFF9 /* eXoBaseTestCase.swift */; };
 		9C3AD26A1BCF56900094CFF9 /* eXoUIBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2691BCF56900094CFF9 /* eXoUIBaseTestCase.swift */; };
 		9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */; };
-		9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */; };
+		9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift */; };
 		9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2851BCF9E570094CFF9 /* defines.swift */; };
 		9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2871BCFA3400094CFF9 /* Server.swift */; };
 		9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */; };
@@ -70,6 +70,16 @@
 		B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335B201F1D0800A2EA71 /* PushTokenRestClient.swift */; };
 		B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335E201F266800A2EA71 /* StringExtension.swift */; };
 		B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */; };
+		D72BA49726306BA4000E3711 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BA49626306BA4000E3711 /* APIManager.swift */; };
+		D72BA49E26306BB9000E3711 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BA49D26306BB9000E3711 /* APIServices.swift */; };
+		D72BA4A526306CB3000E3711 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BA4A426306CB3000E3711 /* Constants.swift */; };
+		D72BA4AC26306DA3000E3711 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BA4AB26306DA3000E3711 /* String-Extensions.swift */; };
+		D72BA4B326306DD8000E3711 /* UIViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BA4B226306DD8000E3711 /* UIViewController-Extensions.swift */; };
+		D72BA4C226306F15000E3711 /* ServerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BA4C026306F15000E3711 /* ServerSelectionViewController.swift */; };
+		D72BA4C326306F15000E3711 /* ServerSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D72BA4C126306F15000E3711 /* ServerSelectionViewController.xib */; };
+		D75B324A263175EB00C31BA7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B3249263175EA00C31BA7 /* Protocols.swift */; };
+		D75B325C263176A200C31BA7 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B325B263176A200C31BA7 /* Connectivity.swift */; };
+		D75B3263263176D000C31BA7 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B3262263176D000C31BA7 /* DataHelper.swift */; };
 		F270FB83B60AC70D8B45093A /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F604E8A56F9C9304EA5286 /* Pods_share_extension.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,7 +174,7 @@
 		9C3AD2691BCF56900094CFF9 /* eXoUIBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoUIBaseTestCase.swift; sourceTree = "<group>"; };
 		9C3AD26B1BCF56900094CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController.swift; sourceTree = "<group>"; };
+		9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController1.swift; sourceTree = "<group>"; };
 		9C3AD2851BCF9E570094CFF9 /* defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defines.swift; sourceTree = "<group>"; };
 		9C3AD2871BCFA3400094CFF9 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputServerViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +226,16 @@
 		B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesInterceptor.swift; sourceTree = "<group>"; };
 		D206C018F830186C99982959 /* Pods-eXo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.release.xcconfig"; sourceTree = "<group>"; };
 		D39BBBFBA9CFC4A211C1FFC7 /* Pods-eXoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXoUITests/Pods-eXoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D72BA49626306BA4000E3711 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D72BA49D26306BB9000E3711 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		D72BA4A426306CB3000E3711 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D72BA4AB26306DA3000E3711 /* String-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
+		D72BA4B226306DD8000E3711 /* UIViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extensions.swift"; sourceTree = "<group>"; };
+		D72BA4C026306F15000E3711 /* ServerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController.swift; sourceTree = "<group>"; };
+		D72BA4C126306F15000E3711 /* ServerSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServerSelectionViewController.xib; sourceTree = "<group>"; };
+		D75B3249263175EA00C31BA7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D75B325B263176A200C31BA7 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		D75B3262263176D000C31BA7 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		F8133069F7CAB26385260E0B /* Pods-eXoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXoTests/Pods-eXoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -340,14 +360,6 @@
 			name = "Support-Files";
 			sourceTree = "<group>";
 		};
-		9C032E361BEA1495006F0577 /* Basic */ = {
-			isa = PBXGroup;
-			children = (
-				9C032E371BEA1495006F0577 /* eXoWebBaseViewController.swift */,
-			);
-			path = Basic;
-			sourceTree = "<group>";
-		};
 		9C032E451BF30623006F0577 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,9 +399,9 @@
 		9C3AD2481BCF56900094CFF9 /* eXo */ = {
 			isa = PBXGroup;
 			children = (
+				D72BA480263065B0000E3711 /* eXo App */,
 				AB18539B206A2CF100D9726C /* GoogleService-Info.plist */,
 				9C3D7D1D1BDF6BA3002873CB /* eXo.entitlements */,
-				9C3AD2491BCF56900094CFF9 /* eXoAppDelegate.swift */,
 				9C3AD2771BCF5D6E0094CFF9 /* Resources */,
 				9C3AD2781BCF5D6E0094CFF9 /* Sources */,
 				9C3AD24D1BCF56900094CFF9 /* Main.storyboard */,
@@ -452,7 +464,6 @@
 		9C3AD2791BCF5D6E0094CFF9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9C032E361BEA1495006F0577 /* Basic */,
 				9C3AD27C1BCF5D960094CFF9 /* On-Boarding */,
 				9C935F891BD8A01C009C065B /* HomePage */,
 				9C032E451BF30623006F0577 /* Setting */,
@@ -486,7 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */,
-				9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController.swift */,
+				9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift */,
 				9C032E301BE897CE006F0577 /* LoginViewController.swift */,
 				9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */,
 			);
@@ -582,6 +593,153 @@
 				B56257E6202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift */,
 			);
 			path = Cookies;
+			sourceTree = "<group>";
+		};
+		D72BA480263065B0000E3711 /* eXo App */ = {
+			isa = PBXGroup;
+			children = (
+				D72BA488263066BA000E3711 /* AppLauncher */,
+				D75B32782631ABA900C31BA7 /* RootHandler */,
+				D72BA489263066DA000E3711 /* BaseViewController */,
+				D72BA4852630665B000E3711 /* Helper & Manager */,
+				D72BA48326306621000E3711 /* Networking */,
+				D72BA48226306605000E3711 /* Models */,
+				D72BA481263065F7000E3711 /* Controllers */,
+				D72BA48626306672000E3711 /* Protocols */,
+				D72BA4842630663F000E3711 /* Extensions */,
+				D72BA48B2630683F000E3711 /* Ressources */,
+				D72BA4872630668A000E3711 /* Utils */,
+				D72BA48A2630677F000E3711 /* Others */,
+			);
+			path = "eXo App";
+			sourceTree = "<group>";
+		};
+		D72BA481263065F7000E3711 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D72BA4BE26306EA5000E3711 /* OnboardingVCs */,
+				D75B325A2631764A00C31BA7 /* HomePageVC */,
+				D75B32272631623E00C31BA7 /* SettingsVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D72BA48226306605000E3711 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D72BA48326306621000E3711 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D75B325B263176A200C31BA7 /* Connectivity.swift */,
+				D72BA49626306BA4000E3711 /* APIManager.swift */,
+				D72BA49D26306BB9000E3711 /* APIServices.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D72BA4842630663F000E3711 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D72BA4AB26306DA3000E3711 /* String-Extensions.swift */,
+				D72BA4B226306DD8000E3711 /* UIViewController-Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D72BA4852630665B000E3711 /* Helper & Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D75B3262263176D000C31BA7 /* DataHelper.swift */,
+			);
+			path = "Helper & Manager";
+			sourceTree = "<group>";
+		};
+		D72BA48626306672000E3711 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D75B3249263175EA00C31BA7 /* Protocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D72BA4872630668A000E3711 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D72BA4A426306CB3000E3711 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D72BA488263066BA000E3711 /* AppLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				9C3AD2491BCF56900094CFF9 /* eXoAppDelegate.swift */,
+			);
+			path = AppLauncher;
+			sourceTree = "<group>";
+		};
+		D72BA489263066DA000E3711 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C032E371BEA1495006F0577 /* eXoWebBaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		D72BA48A2630677F000E3711 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		D72BA48B2630683F000E3711 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		D72BA4BE26306EA5000E3711 /* OnboardingVCs */ = {
+			isa = PBXGroup;
+			children = (
+				D72BA4BF26306ED4000E3711 /* ServerSelectionVC */,
+			);
+			path = OnboardingVCs;
+			sourceTree = "<group>";
+		};
+		D72BA4BF26306ED4000E3711 /* ServerSelectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				D72BA4C026306F15000E3711 /* ServerSelectionViewController.swift */,
+				D72BA4C126306F15000E3711 /* ServerSelectionViewController.xib */,
+			);
+			path = ServerSelectionVC;
+			sourceTree = "<group>";
+		};
+		D75B32272631623E00C31BA7 /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		D75B325A2631764A00C31BA7 /* HomePageVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomePageVC;
+			sourceTree = "<group>";
+		};
+		D75B32782631ABA900C31BA7 /* RootHandler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RootHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -751,6 +909,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				fr,
@@ -781,6 +940,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72BA4C326306F15000E3711 /* ServerSelectionViewController.xib in Resources */,
 				9C18EBC01C3124ED00A75DD8 /* TableHeaderView.xib in Resources */,
 				9C3AD2541BCF56900094CFF9 /* LaunchScreen.storyboard in Resources */,
 				AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */,
@@ -1054,11 +1214,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72BA4A526306CB3000E3711 /* Constants.swift in Sources */,
 				9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */,
+				D75B325C263176A200C31BA7 /* Connectivity.swift in Sources */,
 				9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */,
+				D72BA49E26306BB9000E3711 /* APIServices.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
-				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
+				D72BA4AC26306DA3000E3711 /* String-Extensions.swift in Sources */,
+				D75B3263263176D000C31BA7 /* DataHelper.swift in Sources */,
+				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift in Sources */,
 				B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */,
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
@@ -1071,9 +1236,13 @@
 				9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */,
 				9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */,
 				9C032E3A1BEA17DE006F0577 /* PreviewController.swift in Sources */,
+				D72BA4B326306DD8000E3711 /* UIViewController-Extensions.swift in Sources */,
 				B56257E7202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift in Sources */,
+				D72BA4C226306F15000E3711 /* ServerSelectionViewController.swift in Sources */,
 				9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */,
+				D75B324A263175EB00C31BA7 /* Protocols.swift in Sources */,
 				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
+				D72BA49726306BA4000E3711 /* APIManager.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
 				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
 			);
@@ -1365,6 +1534,7 @@
 				CODE_SIGN_STYLE = Manual;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = eXo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
@@ -1382,6 +1552,7 @@
 				CODE_SIGN_STYLE = Manual;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = eXo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";

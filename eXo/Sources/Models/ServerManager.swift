@@ -26,13 +26,13 @@ class ServerManager  {
     
     //Singleton class
     static let sharedInstance = ServerManager ()
-        
+    
     var serverList:NSMutableArray!
     
     init () {
         /*
-        Get the list of server from NSUserDefault
-        */
+         Get the list of server from NSUserDefault
+         */
         serverList = serverListFromNSUserDefault()
     }
     
@@ -120,7 +120,7 @@ class ServerManager  {
             let groupUserDefaults = UserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
             groupUserDefaults?.set(list, forKey: ShareExtension.AllUserNameKey)
             groupUserDefaults?.synchronize()
-
+            
             if #available(iOS 9.0, *) {
                 self.updateQuickAction()
             }
@@ -128,11 +128,11 @@ class ServerManager  {
     }
     
     /*
-    Re-initialize the list of dynamic shortcuts
-    2 Kind of shortcuts available:
-    - Add New Server: availabel when the list of server is empty.
-    - Open a Server: Link direct to the most recent Server (4 Maximum)
-    */
+     Re-initialize the list of dynamic shortcuts
+     2 Kind of shortcuts available:
+     - Add New Server: availabel when the list of server is empty.
+     - Open a Server: Link direct to the most recent Server (4 Maximum)
+     */
     @available(iOS 9.0, *)
     func updateQuickAction () {
         let items:NSMutableArray = NSMutableArray()
@@ -141,10 +141,10 @@ class ServerManager  {
                 if (items.count < Config.maximumShortcutAllow) {
                     if (Config.communityURL.contains((server as! Server).serverURL.stringURLWithoutProtocol())) {
                         // A different Logo and title for eXo Tribe website
-												items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))
                     } else {
                         // A common Logo for the other servers
-											items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))
                     }
                 }
             }
