@@ -37,7 +37,7 @@ class TestSetting: eXoUIBaseTestCase {
                 let alert = app.alerts.element(boundBy: 0)
                 let existePredicate = NSPredicate (format: "exists == 1", argumentArray: nil)
                 self.expectation(for: existePredicate, evaluatedWith: alert, handler: nil)
-                self.waitForExpectations(timeout: 100.0) { (error) -> Void in
+                self.waitForExpectations(timeout: 10.0) { (error) -> Void in
                     if error == nil {
                         XCTAssertEqual(alert.label, "Intranet URL error")
                         let okButton = alert.buttons["OK"]

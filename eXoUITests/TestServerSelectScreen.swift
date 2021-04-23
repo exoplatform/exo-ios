@@ -32,7 +32,7 @@ class TestServerSelectScreen: eXoUIBaseTestCase {
             for: NSPredicate(format: "count == 1"),
             evaluatedWith: app.webViews,
             handler: nil)
-        self.waitForExpectations(timeout: 100.0) { (error) -> Void in
+        self.waitForExpectations(timeout: 10.0) { (error) -> Void in
             if error != nil {
                 XCTFail("Expect webview to be shown")
             }
