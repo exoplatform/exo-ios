@@ -595,9 +595,10 @@
 		D72BA481263065F7000E3711 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D72BA4BE26306EA5000E3711 /* OnboardingVCs */,
+				D72BA4BF26306ED4000E3711 /* ServerSelectionVC */,
 				D75B325A2631764A00C31BA7 /* HomePageVC */,
 				D75B32272631623E00C31BA7 /* SettingsVC */,
+				D769F4372632BC29008BC2EC /* EditServerVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -687,14 +688,6 @@
 			path = Ressources;
 			sourceTree = "<group>";
 		};
-		D72BA4BE26306EA5000E3711 /* OnboardingVCs */ = {
-			isa = PBXGroup;
-			children = (
-				D72BA4BF26306ED4000E3711 /* ServerSelectionVC */,
-			);
-			path = OnboardingVCs;
-			sourceTree = "<group>";
-		};
 		D72BA4BF26306ED4000E3711 /* ServerSelectionVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +717,13 @@
 				D75B327E2631AFDA00C31BA7 /* RootHandler.swift */,
 			);
 			path = RootHandler;
+			sourceTree = "<group>";
+		};
+		D769F4372632BC29008BC2EC /* EditServerVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditServerVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

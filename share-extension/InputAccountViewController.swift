@@ -92,3 +92,13 @@ class InputAccountViewController: UIViewController, AccountSelectorDelegate {
 	*/
 
 }
+
+extension String {
+
+    func stringURLWithoutProtocol () -> String {
+        var stringURLWithoutProtocol = self.replacingOccurrences(of: "http://", with: "")
+        stringURLWithoutProtocol = stringURLWithoutProtocol.replacingOccurrences(of: "https://", with: "")
+        return stringURLWithoutProtocol
+    }
+    
+}
