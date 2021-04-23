@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
-   
-    //Remove the protocol (http:// or https://) of a URL in string
+
     func stringURLWithoutProtocol () -> String {
         var stringURLWithoutProtocol = self.replacingOccurrences(of: "http://", with: "")
         stringURLWithoutProtocol = stringURLWithoutProtocol.replacingOccurrences(of: "https://", with: "")
         return stringURLWithoutProtocol
     }
+    
 }
