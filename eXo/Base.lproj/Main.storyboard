@@ -336,7 +336,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-625" y="595"/>
+            <point key="canvasLocation" x="-478" y="192"/>
         </scene>
         <!--Input Server View Controller-->
         <scene sceneID="LRn-gg-LYn">
@@ -467,7 +467,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="162" y="595"/>
+            <point key="canvasLocation" x="309" y="157"/>
         </scene>
         <!--Server Editer-->
         <scene sceneID="qia-va-7Te">
@@ -575,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zH8-2w-JqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-626" y="1308"/>
+            <point key="canvasLocation" x="-478" y="895"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Pap-jF-rP8">

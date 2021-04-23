@@ -14,8 +14,6 @@
 		57DFE9E51C5B81D800A91DA5 /* eXoSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFE9E21C5B81D800A91DA5 /* eXoSnapshots.swift */; };
 		57DFE9E71C5B81D800A91DA5 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFE9E41C5B81D800A91DA5 /* SnapshotHelper.swift */; };
 		77D5AF6810BDAFBFE9CA9515 /* Pods_eXo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3023D4F21F90095641641944 /* Pods_eXo.framework */; };
-		9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032DC91BE31EE5006F0577 /* String+URL.swift */; };
-		9C032DCB1BE34BDA006F0577 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032DC91BE31EE5006F0577 /* String+URL.swift */; };
 		9C032DCD1BE3566B006F0577 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C032DCC1BE3566B006F0577 /* AccountCell.swift */; };
 		9C032E0D1BE38DEF006F0577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD2501BCF56900094CFF9 /* Assets.xcassets */; };
 		9C032E1C1BE754F5006F0577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3AD24D1BCF56900094CFF9 /* Main.storyboard */; };
@@ -80,6 +78,7 @@
 		D75B324A263175EB00C31BA7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B3249263175EA00C31BA7 /* Protocols.swift */; };
 		D75B325C263176A200C31BA7 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B325B263176A200C31BA7 /* Connectivity.swift */; };
 		D75B3263263176D000C31BA7 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B3262263176D000C31BA7 /* DataHelper.swift */; };
+		D75B327F2631AFDA00C31BA7 /* RootHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B327E2631AFDA00C31BA7 /* RootHandler.swift */; };
 		F270FB83B60AC70D8B45093A /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F604E8A56F9C9304EA5286 /* Pods_share_extension.framework */; };
 /* End PBXBuildFile section */
 
@@ -146,7 +145,6 @@
 		57DFE9E41C5B81D800A91DA5 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		842AC85A09814CD6FC2E9EB6 /* Pods-eXoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXoUITests/Pods-eXoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8C7A69E3C4C9412C81673451 /* Pods-share-extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-share-extension/Pods-share-extension.debug.xcconfig"; sourceTree = "<group>"; };
-		9C032DC91BE31EE5006F0577 /* String+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		9C032DCC1BE3566B006F0577 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		9C032E241BE75669006F0577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C032E251BE7566B006F0577 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -198,7 +196,7 @@
 		9C3D7D0F1BDF68E0002873CB /* SpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceViewController.m; sourceTree = "<group>"; };
 		9C3D7D101BDF68E0002873CB /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		9C3D7D111BDF68E0002873CB /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
-		9C3D7D1D1BDF6BA3002873CB /* eXo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = eXo.entitlements; sourceTree = "<group>"; };
+		9C3D7D1D1BDF6BA3002873CB /* eXo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = eXo.entitlements; sourceTree = "<group>"; };
 		9C3D7D2B1BE0BE97002873CB /* share-extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "share-extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C3D7D2C1BE0BE97002873CB /* InputAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccountViewController.swift; sourceTree = "<group>"; };
 		9C935F7D1BD60286009C065B /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
@@ -215,7 +213,7 @@
 		9CF286181BE1DE7D00DC4C26 /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
 		9CF286191BE1DE7D00DC4C26 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		A052336FD41FD7E16D9AB51C /* Pods_eXoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB18539B206A2CF100D9726C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AB18539B206A2CF100D9726C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "eXo/eXoApp/Others/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AB542EAA215CD8FC00A9ED5A /* ToolTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTest.swift; sourceTree = "<group>"; };
 		B058A906AB28AC95A0483B47 /* Pods-eXo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.debug.xcconfig"; sourceTree = "<group>"; };
 		B56257E6202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesFromAuthorizationFetcher.swift; sourceTree = "<group>"; };
@@ -236,6 +234,7 @@
 		D75B3249263175EA00C31BA7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D75B325B263176A200C31BA7 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		D75B3262263176D000C31BA7 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		D75B327E2631AFDA00C31BA7 /* RootHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHandler.swift; sourceTree = "<group>"; };
 		F8133069F7CAB26385260E0B /* Pods-eXoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXoTests/Pods-eXoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -320,14 +319,6 @@
 			path = eXoSnapshots;
 			sourceTree = "<group>";
 		};
-		9C032DC81BE31EBB006F0577 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				9C032DC91BE31EE5006F0577 /* String+URL.swift */,
-			);
-			name = Lib;
-			sourceTree = "<group>";
-		};
 		9C032DCE1BE37E06006F0577 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,14 +391,9 @@
 			isa = PBXGroup;
 			children = (
 				D72BA480263065B0000E3711 /* eXo App */,
-				AB18539B206A2CF100D9726C /* GoogleService-Info.plist */,
-				9C3D7D1D1BDF6BA3002873CB /* eXo.entitlements */,
-				9C3AD2771BCF5D6E0094CFF9 /* Resources */,
 				9C3AD2781BCF5D6E0094CFF9 /* Sources */,
 				9C3AD24D1BCF56900094CFF9 /* Main.storyboard */,
-				9C3AD2501BCF56900094CFF9 /* Assets.xcassets */,
 				9C3AD2521BCF56900094CFF9 /* LaunchScreen.storyboard */,
-				9C3AD2551BCF56900094CFF9 /* Info.plist */,
 				9C978B7C1BDA21E900FC689D /* InfoPlist.strings */,
 			);
 			path = eXo;
@@ -437,15 +423,6 @@
 				9C18EC131C34DC8B00A75DD8 /* TestServerSelectScreen.swift */,
 			);
 			path = eXoUITests;
-			sourceTree = "<group>";
-		};
-		9C3AD2771BCF5D6E0094CFF9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9C032DC81BE31EBB006F0577 /* Lib */,
-				9C935F871BD64DAD009C065B /* Localizable.strings */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		9C3AD2781BCF5D6E0094CFF9 /* Sources */ = {
@@ -611,7 +588,8 @@
 				D72BA4872630668A000E3711 /* Utils */,
 				D72BA48A2630677F000E3711 /* Others */,
 			);
-			path = "eXo App";
+			name = "eXo App";
+			path = eXoApp;
 			sourceTree = "<group>";
 		};
 		D72BA481263065F7000E3711 /* Controllers */ = {
@@ -693,6 +671,9 @@
 		D72BA48A2630677F000E3711 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				9C3AD2551BCF56900094CFF9 /* Info.plist */,
+				AB18539B206A2CF100D9726C /* GoogleService-Info.plist */,
+				9C3D7D1D1BDF6BA3002873CB /* eXo.entitlements */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -700,6 +681,8 @@
 		D72BA48B2630683F000E3711 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				9C3AD2501BCF56900094CFF9 /* Assets.xcassets */,
+				9C935F871BD64DAD009C065B /* Localizable.strings */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -738,6 +721,7 @@
 		D75B32782631ABA900C31BA7 /* RootHandler */ = {
 			isa = PBXGroup;
 			children = (
+				D75B327E2631AFDA00C31BA7 /* RootHandler.swift */,
 			);
 			path = RootHandler;
 			sourceTree = "<group>";
@@ -1016,7 +1000,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8421f485868032ad402cef01a4bd7c70263d97e 6b8bd5297ac216c6a0a79351084947edba67104633f611c471f5c1fe96cca005";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b8421f485868032ad402cef01a4bd7c70263d97e 6b8bd5297ac216c6a0a79351084947edba67104633f611c471f5c1fe96cca005\n";
 		};
 		7075612EFEA3011F00362831 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1119,7 +1103,7 @@
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
-				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,
+				D75B327F2631AFDA00C31BA7 /* RootHandler.swift in Sources */,
 				9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */,
 				9C18EBBE1C3124DC00A75DD8 /* TableHeaderView.swift in Sources */,
 				9C935F7E1BD60286009C065B /* Tool.swift in Sources */,
@@ -1169,7 +1153,6 @@
 			files = (
 				9C3D7D161BDF68E0002873CB /* PostActivity.m in Sources */,
 				9C3D7CF41BDF64E0002873CB /* ShareViewController.m in Sources */,
-				9C032DCB1BE34BDA006F0577 /* String+URL.swift in Sources */,
 				9C3D7D131BDF68E0002873CB /* AccountViewController.m in Sources */,
 				9C3D7D2D1BE0BE97002873CB /* InputAccountViewController.swift in Sources */,
 				9C3D7D181BDF68E0002873CB /* SocialSpace.m in Sources */,
@@ -1432,7 +1415,7 @@
 			baseConfigurationReference = B058A906AB28AC95A0483B47 /* Pods-eXo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = eXo/eXoApp/Others/eXo.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				EXCLUDED_ARCHS = "arm64 i386";
@@ -1454,7 +1437,7 @@
 			baseConfigurationReference = D206C018F830186C99982959 /* Pods-eXo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = eXo/eXoApp/Others/eXo.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				EXCLUDED_ARCHS = "";
