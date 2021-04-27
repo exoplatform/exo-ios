@@ -48,7 +48,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         /*
         Set the status bar to white color & the navigation bar is always hidden on this screen
         */
-        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized()
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
         self.navigationController?.navigationBar.barTintColor = nil

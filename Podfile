@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '12.3'
 inhibit_all_warnings!
 
 workspace 'eXo'

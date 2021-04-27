@@ -79,6 +79,8 @@
 		D75B325C263176A200C31BA7 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B325B263176A200C31BA7 /* Connectivity.swift */; };
 		D75B3263263176D000C31BA7 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B3262263176D000C31BA7 /* DataHelper.swift */; };
 		D75B327F2631AFDA00C31BA7 /* RootHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B327E2631AFDA00C31BA7 /* RootHandler.swift */; };
+		D769F4CA2632FB96008BC2EC /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769F4C92632FB96008BC2EC /* DataBaseHelper.swift */; };
+		D7C4A7C5263807AA003BD67B /* NotificationName-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C4A7C4263807AA003BD67B /* NotificationName-Extensions.swift */; };
 		F270FB83B60AC70D8B45093A /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F604E8A56F9C9304EA5286 /* Pods_share_extension.framework */; };
 /* End PBXBuildFile section */
 
@@ -235,6 +237,8 @@
 		D75B325B263176A200C31BA7 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		D75B3262263176D000C31BA7 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		D75B327E2631AFDA00C31BA7 /* RootHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHandler.swift; sourceTree = "<group>"; };
+		D769F4C92632FB96008BC2EC /* DataBaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHelper.swift; sourceTree = "<group>"; };
+		D7C4A7C4263807AA003BD67B /* NotificationName-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName-Extensions.swift"; sourceTree = "<group>"; };
 		F8133069F7CAB26385260E0B /* Pods-eXoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXoTests/Pods-eXoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -625,6 +629,7 @@
 			children = (
 				D72BA4AB26306DA3000E3711 /* String-Extensions.swift */,
 				D72BA4B226306DD8000E3711 /* UIViewController-Extensions.swift */,
+				D7C4A7C4263807AA003BD67B /* NotificationName-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				D75B3262263176D000C31BA7 /* DataHelper.swift */,
+				D769F4C92632FB96008BC2EC /* DataBaseHelper.swift */,
 			);
 			path = "Helper & Manager";
 			sourceTree = "<group>";
@@ -1202,6 +1208,7 @@
 				9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */,
 				D75B325C263176A200C31BA7 /* Connectivity.swift in Sources */,
 				9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */,
+				D769F4CA2632FB96008BC2EC /* DataBaseHelper.swift in Sources */,
 				D72BA49E26306BB9000E3711 /* APIServices.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
@@ -1228,6 +1235,7 @@
 				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
 				D72BA49726306BA4000E3711 /* APIManager.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
+				D7C4A7C5263807AA003BD67B /* NotificationName-Extensions.swift in Sources */,
 				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1444,7 +1452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1496,7 +1504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
@@ -1614,6 +1622,7 @@
 				DEVELOPMENT_TEAM = FEM998T42U;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = "share-extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1639,6 +1648,7 @@
 				DEVELOPMENT_TEAM = FEM998T42U;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = "share-extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
