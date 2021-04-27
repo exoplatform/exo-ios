@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 platform :ios, '12.0'
+=======
+platform :ios, '12.3'
+>>>>>>> clean code expression
 inhibit_all_warnings!
 
 workspace 'eXo'

@@ -17,4 +17,7 @@ extension String {
         return stringURLWithoutProtocol
     }
     
+    func localized() -> String{
+        return NSLocalizedString(self, comment:"")
+    }
 }

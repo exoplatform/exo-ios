@@ -40,7 +40,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.clear
-        textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
+        textView.placeholder = "OnBoarding.Message.EnterURL".localized()
         self.tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
 
     }
@@ -48,7 +48,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // the navigation controller is alway shown in this screen
-        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized()
         self.navigationController?.isNavigationBarHidden = false
     }
     

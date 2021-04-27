@@ -33,7 +33,7 @@ class LoginViewController: UITableViewController {
         self.tableView.reloadData()
         // the navigation controller is alway shown in this screen
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized()
     }
     
     /*
@@ -54,7 +54,7 @@ class LoginViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (section == 0) {
-            return NSLocalizedString("OnBoarding.Title.MostRecentServer", comment:"")
+            return "OnBoarding.Title.MostRecentServer".localized()
         } else {
             return ""
         }
@@ -71,7 +71,7 @@ class LoginViewController: UITableViewController {
             cell!.textLabel?.text = (defaultServer?.serverURL)!.stringURLWithoutProtocol()
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "OthersServerCell", for: indexPath)
-            cell!.textLabel?.text = NSLocalizedString("OnBoarding.Title.Others", comment: "")
+            cell!.textLabel?.text = "OnBoarding.Title.Others".localized()
         }
         return cell!
     }

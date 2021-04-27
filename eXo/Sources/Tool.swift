@@ -36,7 +36,7 @@ class Tool {
         
         let url = URL.init(string: platformInfoURL)
         if (url != nil) {
-            SVProgressHUD.show(withStatus: NSLocalizedString("OnBoarding.Title.SavingServer", comment:""), maskType: .black)
+            SVProgressHUD.show(withStatus: "OnBoarding.Title.SavingServer".localized(), maskType: .black)
             let operationQueue = OperationQueue.init()
             operationQueue.name = "URLVerification"
             let request = URLRequest.init(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: Config.timeout)
@@ -118,15 +118,15 @@ class Tool {
         OperationQueue.main.addOperation({ () -> Void in
             switch (errorCode){
             case ConnectionError.URLError :
-                let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.URL", comment:""), message: NSLocalizedString("OnBoarding.Error.UnableConnectServer",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
+                let alertView = UIAlertView.init(title: "OnBoarding.Error.URL".localized(), message: "OnBoarding.Error.UnableConnectServer".localized(), delegate: nil, cancelButtonTitle: "Word.OK".localized())
                 alertView.show()
                 break
             case ConnectionError.ServerVersionNotFound:
-                let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.PlatformNotFound", comment:""), message: NSLocalizedString("OnBoarding.Error.PlatformNotSupportedDetailMessage",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
+                let alertView = UIAlertView.init(title: "OnBoarding.Error.PlatformNotFound".localized(), message: "OnBoarding.Error.PlatformNotSupportedDetailMessage".localized(), delegate: nil, cancelButtonTitle: "Word.OK".localized())
                 alertView.show()
                 break
             case ConnectionError.ServerVersionNotSupport:
-                let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.PlatformNotSupported", comment:""), message: NSLocalizedString("OnBoarding.Error.PlatformNotSupportedDetailMessage",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
+                let alertView = UIAlertView.init(title: "OnBoarding.Error.PlatformNotSupported".localized(), message: "OnBoarding.Error.PlatformNotSupportedDetailMessage".localized(), delegate: nil, cancelButtonTitle: "Word.OK".localized())
                 alertView.show()
                 break
             default:

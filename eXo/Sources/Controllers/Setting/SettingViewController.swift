@@ -98,14 +98,14 @@ class SettingViewController: UITableViewController {
             } else {
                 // A cell that displays a label "Connect your intranet" and directs to the input server screen
                 let ctacell = tableView.dequeueReusableCell(withIdentifier: "NoServerCell", for: indexPath)
-                ctacell.textLabel?.text = NSLocalizedString("Setting.Title.AddServer", comment: "")
+                ctacell.textLabel?.text = "Setting.Title.AddServer".localized()
                 ctacell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
                 return ctacell
             }
         }
         // About Section 
         let abtcell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
-        abtcell.textLabel?.text = NSLocalizedString("Setting.Title.ApplicationVersion",comment:"")
+        abtcell.textLabel?.text = "Setting.Title.ApplicationVersion".localized()
         let version: AnyObject? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject
         abtcell.detailTextLabel?.text = version as? String
         return abtcell
@@ -117,13 +117,13 @@ class SettingViewController: UITableViewController {
         if (section == 0) {
             if (ServerManager.sharedInstance.serverList.count > 0) {
                 // Title: My intranets
-                headerView.title.text =  NSLocalizedString("Setting.Title.Server",comment:"")
+                headerView.title.text =  "Setting.Title.Server".localized()
             } else {
                 // Title: No intranet
-                headerView.title.text = NSLocalizedString("Setting.Title.NoServer", comment: "")
+                headerView.title.text = "Setting.Title.NoServer".localized()
             }
         } else {
-            headerView.title.text =  NSLocalizedString("Setting.Title.About",comment:"")
+            headerView.title.text =  "Setting.Title.About".localized()
         }
         return headerView
     }
@@ -140,12 +140,12 @@ class SettingViewController: UITableViewController {
     }
     
     func deleteServer(_ indexPath: IndexPath) {
-        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.cancel) {
+        let alertController = UIAlertController(title: "Setting.Title.DeleteServer".localized(), message: "Setting.Message.DeleteServer".localized(), preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Word.Cancel".localized(), style: UIAlertActionStyle.cancel) {
             (cancelAction) -> Void in
         }
         alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.destructive) { (confirmAction) -> Void in
+        let confirmAction = UIAlertAction(title: "Word.OK".localized(), style: UIAlertActionStyle.destructive) { (confirmAction) -> Void in
             let server:Server = (ServerManager.sharedInstance.serverList?[indexPath.row])! as! Server
             ServerManager.sharedInstance.removeServer(server)
             self.tableView.reloadData()

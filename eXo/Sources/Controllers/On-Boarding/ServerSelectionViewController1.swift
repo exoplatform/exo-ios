@@ -42,7 +42,7 @@ class ServerSelectionViewController1: UIViewController {
         super.viewDidLoad()
         Tool.applyBlueBorderForView(defaultServerButton)
         Tool.applyBlueBorderForView(addServerButton)
-        eXoPlatformDescriptionLabel.text = NSLocalizedString("OnBoarding.Title.eXoPlatformDescription", comment: "")
+        eXoPlatformDescriptionLabel.text = "OnBoarding.Title.eXoPlatformDescription".localized()
         
         // set random background photo
         let bgNumber = Int(arc4random_uniform(4) + 1)
@@ -112,15 +112,15 @@ class ServerSelectionViewController1: UIViewController {
         
         if ServerManager.sharedInstance.serverList.count == 0 {
             
-            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), for: UIControlState())
+            addServerButton.setTitle("OnBoarding.Title.AddServer".localized(), for: UIControlState())
             
         } else if ServerManager.sharedInstance.serverList.count == 1 {
             
-            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddServer",comment:""), for: UIControlState())
+            addServerButton.setTitle("OnBoarding.Title.AddServer".localized(), for: UIControlState())
             
         } else {
             
-            addServerButton.setTitle(NSLocalizedString("OnBoarding.Title.Others",comment:""), for: UIControlState())
+            addServerButton.setTitle("OnBoarding.Title.Others".localized(), for: UIControlState())
         }
     }
     
@@ -134,7 +134,7 @@ class ServerSelectionViewController1: UIViewController {
         // link is hidden if 0 server exists, or if the community website is one of the servers
         discovereXoTribeButton.isHidden = ServerManager.sharedInstance.serverList.count == 0 || ServerManager.sharedInstance.isExist(Server(serverURL: Config.communityURL))
         
-        discovereXoTribeButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo", comment: ""), for: UIControlState())
+        discovereXoTribeButton.setTitle("OnBoarding.Title.DiscovereXo".localized(), for: UIControlState())
     }
     
     /**
@@ -149,11 +149,11 @@ class ServerSelectionViewController1: UIViewController {
 
         if (ServerManager.sharedInstance.serverList.count == 0) {
             // no server -> show button Discover eXo Tribe
-            defaultServerButton.setTitle(NSLocalizedString("OnBoarding.Title.DiscovereXo",comment:""), for: UIControlState())
+            defaultServerButton.setTitle("OnBoarding.Title.DiscovereXo".localized(), for: UIControlState())
             
         } else if (Config.communityURL.contains((defaultServer?.serverURL.stringURLWithoutProtocol())!)) {
             // server is community website
-            defaultServerButton.setTitle(NSLocalizedString("Shortcut.Title.ConnnecteXoTribe",comment:""), for: UIControlState())
+            defaultServerButton.setTitle("Shortcut.Title.ConnnecteXoTribe".localized(), for: UIControlState())
             
         } else {
             // word wrapping allows to display multiple lines in the button label
@@ -161,7 +161,7 @@ class ServerSelectionViewController1: UIViewController {
             
             // creating the button title string with the URL on the 2nd line
             let buttonTitle:NSString = NSString(format: "%@\n%@",
-                NSLocalizedString("Shortcut.Title.ConnectTo", comment: ""),
+                "Shortcut.Title.ConnectTo".localized(),
                 (defaultServer?.serverURL.stringURLWithoutProtocol())!)
         
             // getting the range to separate the button text and the button URL
