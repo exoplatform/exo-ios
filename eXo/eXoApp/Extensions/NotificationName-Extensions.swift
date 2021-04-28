@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 extension Notification.Name {
     
-    public static let keyboardWillShow = NSNotification.Name.UIKeyboardWillShow
-    public static let keyboardDidHide = NSNotification.Name.UIKeyboardDidHide
+    public static let keyboardWillShow = UIResponder.keyboardWillShowNotification
+    public static let keyboardDidHide = UIResponder.keyboardDidHideNotification
 }

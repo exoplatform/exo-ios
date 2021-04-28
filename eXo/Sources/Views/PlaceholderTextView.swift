@@ -63,7 +63,7 @@ class PlaceholderTextView: UITextView {
     }
 
     fileprivate func setup() {
-        self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
         self.font = UIFont.systemFont(ofSize: 16.0)
         
         self.placeholderLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -78,11 +78,10 @@ class PlaceholderTextView: UITextView {
         self.placeholderSizeToFit()
         self.addSubview(placeholderLabel)
 
-        self.sendSubview(toBack: placeholderLabel)
+        self.sendSubviewToBack(placeholderLabel)
 
         let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(PlaceholderTextView.textChanged(_:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
-        
+        center.addObserver(self, selector: #selector(PlaceholderTextView.textChanged(_:)), name: UITextView.textDidChangeNotification, object: nil)
         self.textChanged(nil)
     }
     

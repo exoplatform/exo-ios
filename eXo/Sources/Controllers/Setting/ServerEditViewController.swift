@@ -87,11 +87,11 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 
 	func delete() {
 		//Ask for confirmation first
-		let alertController = UIAlertController(title: "Setting.Title.DeleteServer".localized(), message: "Setting.Message.DeleteServer".localized(), preferredStyle: UIAlertControllerStyle.alert)
-		let cancelAction = UIAlertAction(title: "Word.Cancel".localized(), style: UIAlertActionStyle.cancel) { (cancelAction) -> Void in
+        let alertController = UIAlertController(title: "Setting.Title.DeleteServer".localized(), message: "Setting.Message.DeleteServer".localized(), preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "Word.Cancel".localized(), style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
 		}
 		alertController.addAction(cancelAction)
-		let confirmAction = UIAlertAction(title: "Word.OK".localized(), style: UIAlertActionStyle.destructive) { (confirmAction) -> Void in
+        let confirmAction = UIAlertAction(title: "Word.OK".localized(), style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
 			ServerManager.sharedInstance.removeServer(self.server);
 			self.navigationController?.popViewController(animated: true)
 
@@ -105,11 +105,11 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 	// Set up the position of the delete button to a visiable position (on portrait only)
 
 	@objc func keyboardWillShow(_ notification: Notification) {
-		if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) == true {
-			if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if UIDevice.current.orientation.isPortrait == true {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
 				self.view.layoutIfNeeded()
 				// Animate the movement of the deleteButton
-				UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.layoutSubviews, animations: { () -> Void in
+                UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: UIView.KeyframeAnimationOptions.layoutSubviews, animations: { () -> Void in
 					self.deleteButtonConstraintToBottom.constant = keyboardSize.height + self.kDeleteButtonBottomMargin
 					self.view.layoutIfNeeded()
 				}, completion: nil)
@@ -122,7 +122,7 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 	// Re-initialize the position of the Delete Button when the keyboard is off.
 	@objc func keyboardWillHide(_ notification: Notification) {
 		self.view.layoutIfNeeded()
-		UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: UIViewKeyframeAnimationOptions.layoutSubviews, animations: { () -> Void in
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: UIView.KeyframeAnimationOptions.layoutSubviews, animations: { () -> Void in
 			self.deleteButtonConstraintToBottom.constant = self.kDeleteButtonBottomMargin
 			self.view.layoutIfNeeded()
 		}, completion: nil)

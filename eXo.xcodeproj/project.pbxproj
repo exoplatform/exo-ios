@@ -34,7 +34,6 @@
 		9C3AD25F1BCF56900094CFF9 /* eXoBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD25E1BCF56900094CFF9 /* eXoBaseTestCase.swift */; };
 		9C3AD26A1BCF56900094CFF9 /* eXoUIBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2691BCF56900094CFF9 /* eXoUIBaseTestCase.swift */; };
 		9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */; };
-		9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift */; };
 		9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2851BCF9E570094CFF9 /* defines.swift */; };
 		9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2871BCFA3400094CFF9 /* Server.swift */; };
 		9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */; };
@@ -174,7 +173,6 @@
 		9C3AD2691BCF56900094CFF9 /* eXoUIBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eXoUIBaseTestCase.swift; sourceTree = "<group>"; };
 		9C3AD26B1BCF56900094CFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController1.swift; sourceTree = "<group>"; };
 		9C3AD2851BCF9E570094CFF9 /* defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defines.swift; sourceTree = "<group>"; };
 		9C3AD2871BCFA3400094CFF9 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputServerViewController.swift; sourceTree = "<group>"; };
@@ -478,7 +476,6 @@
 			isa = PBXGroup;
 			children = (
 				9C3AD2811BCF5E110094CFF9 /* WelcomeViewController.swift */,
-				9C3AD2831BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift */,
 				9C032E301BE897CE006F0577 /* LoginViewController.swift */,
 				9C3AD28B1BD0B6640094CFF9 /* InputServerViewController.swift */,
 			);
@@ -1105,7 +1102,6 @@
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
 				D72BA4AC26306DA3000E3711 /* String-Extensions.swift in Sources */,
 				D75B3263263176D000C31BA7 /* DataHelper.swift in Sources */,
-				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController1.swift in Sources */,
 				B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */,
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
@@ -1436,7 +1432,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1458,7 +1454,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

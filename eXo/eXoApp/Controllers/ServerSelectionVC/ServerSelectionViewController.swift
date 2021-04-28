@@ -13,15 +13,15 @@ class ServerSelectionViewController: UIViewController {
     // MARK: Properties
     
     @IBOutlet weak var mostRecentServerLabel: UILabel!
-    var defaultServer:Server?
-    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var defaultServerButton: UIButton!
     @IBOutlet weak var addServerButton: UIButton!
     @IBOutlet weak var discovereXoTribeButton: UIButton!
     @IBOutlet weak var eXoPlatformDescriptionLabel: UILabel!
-    
     @IBOutlet weak var settingsButton: UIButton!
+    
+    var defaultServer:Server?
+
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -136,15 +136,15 @@ class ServerSelectionViewController: UIViewController {
         
         if ServerManager.sharedInstance.serverList.count == 0 {
             
-            addServerButton.setTitle("OnBoarding.Title.AddServer".localized(), for: UIControlState())
+            addServerButton.setTitle("OnBoarding.Title.AddServer".localized(), for: UIControl.State())
             
         } else if ServerManager.sharedInstance.serverList.count == 1 {
             
-            addServerButton.setTitle("OnBoarding.Title.AddServer".localized(), for: UIControlState())
+            addServerButton.setTitle("OnBoarding.Title.AddServer".localized(), for: UIControl.State())
             
         } else {
             
-            addServerButton.setTitle("OnBoarding.Title.Others".localized(), for: UIControlState())
+            addServerButton.setTitle("OnBoarding.Title.Others".localized(), for: UIControl.State())
         }
     }
     
@@ -158,7 +158,7 @@ class ServerSelectionViewController: UIViewController {
         // link is hidden if 0 server exists, or if the community website is one of the servers
         discovereXoTribeButton.isHidden = ServerManager.sharedInstance.serverList.count == 0 || ServerManager.sharedInstance.isExist(Server(serverURL: Config.communityURL))
         
-        discovereXoTribeButton.setTitle("OnBoarding.Title.DiscovereXo".localized(), for: UIControlState())
+        discovereXoTribeButton.setTitle("OnBoarding.Title.DiscovereXo".localized(), for: UIControl.State())
     }
     
     /**
@@ -168,16 +168,16 @@ class ServerSelectionViewController: UIViewController {
     */
     func setDefaultServerButtonTitle() {
         // clear existing title
-        defaultServerButton?.setTitle("", for: UIControlState())
-        defaultServerButton?.setAttributedTitle(NSMutableAttributedString(string: "", attributes: nil), for: UIControlState())
+        defaultServerButton?.setTitle("", for: UIControl.State())
+        defaultServerButton?.setAttributedTitle(NSMutableAttributedString(string: "", attributes: nil), for: UIControl.State())
 
         if (ServerManager.sharedInstance.serverList.count == 0) {
             // no server -> show button Discover eXo Tribe
-            defaultServerButton.setTitle("OnBoarding.Title.DiscovereXo".localized(), for: UIControlState())
+            defaultServerButton.setTitle("OnBoarding.Title.DiscovereXo".localized(), for: UIControl.State())
             
         } else if (Config.communityURL.contains((defaultServer?.serverURL.stringURLWithoutProtocol())!)) {
             // server is community website
-            defaultServerButton.setTitle("Shortcut.Title.ConnnecteXoTribe".localized(), for: UIControlState())
+            defaultServerButton.setTitle("Shortcut.Title.ConnnecteXoTribe".localized(), for: UIControl.State())
             
         } else {
             // word wrapping allows to display multiple lines in the button label
@@ -204,18 +204,18 @@ class ServerSelectionViewController: UIViewController {
             paragraphStyle.alignment = NSTextAlignment.center
             paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
             
-            let buttonTextAttributes = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17.0),
-                NSAttributedStringKey.paragraphStyle : paragraphStyle,
-                NSAttributedStringKey.foregroundColor: UIColor.black]
+            let buttonTextAttributes = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17.0),
+                                        NSAttributedString.Key.paragraphStyle : paragraphStyle,
+                                        NSAttributedString.Key.foregroundColor: UIColor.black]
             let attrStrTitle = NSMutableAttributedString(
                 string: buttonText as String,
                 attributes: buttonTextAttributes)
             
             // font size calculated from screen width and URL length, cf method description below
             let fontSizeURL = calculateURLFontSize(Int(UIScreen.main.bounds.width), urlLength: buttonURL.length)
-            let buttonURLAttributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: fontSizeURL),
-                NSAttributedStringKey.paragraphStyle : paragraphStyle,
-                NSAttributedStringKey.foregroundColor: UIColor.black]
+            let buttonURLAttributes = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSizeURL),
+                                       NSAttributedString.Key.paragraphStyle : paragraphStyle,
+                                       NSAttributedString.Key.foregroundColor: UIColor.black]
             let attrStrURL = NSMutableAttributedString(
                 string: buttonURL as String,
                 attributes: buttonURLAttributes)
@@ -224,7 +224,7 @@ class ServerSelectionViewController: UIViewController {
             attrStrTitle.append(attrStrURL)
             
             // assigning the result attributed strings to the button
-            self.defaultServerButton?.setAttributedTitle(attrStrTitle, for: UIControlState())
+            self.defaultServerButton?.setAttributedTitle(attrStrTitle, for: UIControl.State())
         }
     }
     
