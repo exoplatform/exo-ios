@@ -91,7 +91,7 @@ class WelcomeViewController: UIViewController, UIPageViewControllerDataSource, U
             let pageViewController = segue.destination as? UIPageViewController
             pageViewController?.delegate = self
             pageViewController?.dataSource = self
-            pageViewController?.setViewControllers([ self.welcomePageAtIndex(0)!], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            pageViewController?.setViewControllers([ self.welcomePageAtIndex(0)!], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
 
             // customize the spine's dots & background
             let pageControl = UIPageControl.appearance()
