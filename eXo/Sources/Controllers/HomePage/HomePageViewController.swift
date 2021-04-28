@@ -124,6 +124,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
         */
         if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
+            print(response.url?.absoluteString)
             if (response.statusCode >= 200  && response.statusCode < 300) {
                 self.showOnBoardingIfNeed()
             }
@@ -139,6 +140,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
                 if let url = response.url {
                     self.cookiesInterceptor.intercept(cookies, url: url)
+                    print(cookies)
                 }
             })
         } else if let headers = response.allHeaderFields as? [String: String], let url = response.url {
