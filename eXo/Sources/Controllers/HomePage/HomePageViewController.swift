@@ -48,7 +48,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         /*
         Set the status bar to white color & the navigation bar is always hidden on this screen
         */
-        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized()
+        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
         self.navigationController?.navigationBar.barTintColor = nil
@@ -87,6 +87,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         */
         let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);"
         webView.evaluateJavaScript(javascript, completionHandler: nil)
+
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -98,7 +99,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         //Check if need to display the welcome view
         if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
-            loadStateStatusPage ()
+            loadStateStatusPage()
         }
         
     }
@@ -114,9 +115,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         let response:HTTPURLResponse = navigationResponse.response as! HTTPURLResponse
+        print(response.debugDescription)
         doneButton.isHidden = true
         let serverDomain = URL(string: self.serverURL!)?.host
         
@@ -124,7 +125,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
         */
         if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
-            print(response.url?.absoluteString)
             if (response.statusCode >= 200  && response.statusCode < 300) {
                 self.showOnBoardingIfNeed()
             }
@@ -140,7 +140,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
                 if let url = response.url {
                     self.cookiesInterceptor.intercept(cookies, url: url)
-                    print(cookies)
+                    print("\(url)\n\(cookies)")
                 }
             })
         } else if let headers = response.allHeaderFields as? [String: String], let url = response.url {
@@ -156,19 +156,27 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
         // Detect the logout action in to quit this screen.
+        
+        if let urlToSee = request.url?.absoluteString {
+            print("=================› url Navigation =================\n\(urlToSee)")
+        }
+        
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
             self.navigationController?.popViewController(animated: true)
         }
+        
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or register page && disable the bar when login (register) is finished
         // Home Page Address: portal/intranet/register (hide the navigation bar)
         if request.url?.absoluteString.range(of: serverDomain!+"/portal/intranet") != nil  {
            self.navigationController?.setNavigationBarHidden(true, animated:true)
         }
+        
         // Page Login Address: [Domain]/portal/login
         // Page Register: [Domain]/portal/intranet/register
         //(show navigation bar when the webview display this pages, because the pages don't contain a embedded navigation bar.
+        
         if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil) || (request.url?.absoluteString.range(of: serverDomain! + "/portal/intranet/register") != nil) {
             self.navigationController?.setNavigationBarHidden(false, animated:true)
         }        
@@ -180,6 +188,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
         - WKNavigationType of a automatic request is always = .Others
         */
+        
         if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.other) {
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
@@ -208,7 +217,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     - The view has never been shown
     - After use has logged in
     */
-    func showOnBoardingIfNeed () {
+    
+    func showOnBoardingIfNeed() {
         if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
             let welcomeVC:WelcomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
             welcomeVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
@@ -222,13 +232,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     Ask to load the page <serverURL>/rest/state/status 
     - If the user has connected the response status code of this request = 200
     */
+    
     func loadStateStatusPage () {
         guard let serverUrl = self.serverURL, let serverDomain = URL(string: serverUrl)?.host else { return }
         if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/intranet") != nil  {
             let statusURL = serverUrl.serverDomainWithProtocolAndPort! + "/rest/state/status"
+            print(statusURL)
             let url = URL(string: statusURL)
             let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Config.timeout)
             self.webView?.load(request)
         }
     }
+
 }
