@@ -76,8 +76,8 @@ class eXoWebBaseController: UIViewController {
     
     func alertPlatformVersionNotSupported() {
         let alert:UIAlertController = UIAlertController.init(
-            title: "ServerManager.Title.Warning".localized(),
-            message: "ServerManager.Message.WarningVersionNotSupported".localized(),
+            title: "ServerManager.Title.Warning".localized,
+            message: "ServerManager.Message.WarningVersionNotSupported".localized,
             preferredStyle: UIAlertController.Style.alert)
         let action:UIAlertAction = UIAlertAction.init(
             title: NSLocalizedString("Word.Back",comment:""),

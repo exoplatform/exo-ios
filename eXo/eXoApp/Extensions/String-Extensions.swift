@@ -11,13 +11,15 @@ import UIKit
 
 extension String {
 
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
     func stringURLWithoutProtocol () -> String {
         var stringURLWithoutProtocol = self.replacingOccurrences(of: "http://", with: "")
         stringURLWithoutProtocol = stringURLWithoutProtocol.replacingOccurrences(of: "https://", with: "")
         return stringURLWithoutProtocol
     }
-    
-    func localized() -> String{
-        return NSLocalizedString(self, comment:"")
-    }
 }
+
+

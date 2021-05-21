@@ -141,16 +141,16 @@ class ServerManager  {
                 if (items.count < Config.maximumShortcutAllow) {
                     if (Config.communityURL.contains((server as! Server).serverURL.stringURLWithoutProtocol())) {
                         // A different Logo and title for eXo Tribe website
-                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: "Shortcut.Title.ConnnecteXoTribe".localized(), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary()) as? [String : NSSecureCoding]))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: "Shortcut.Title.ConnnecteXoTribe".localized, localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary()) as? [String : NSSecureCoding]))
                     } else {
                         // A common Logo for the other servers
-                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: "Shortcut.Title.ConnectTo".localized(), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: ((server as! Server).toDictionary()) as? [String : NSSecureCoding]))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: "Shortcut.Title.ConnectTo".localized, localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: ((server as! Server).toDictionary()) as? [String : NSSecureCoding]))
                     }
                 }
             }
         } else {
             // when the list is empty
-            let item = UIApplicationShortcutItem.init(type: ShortcutType.addNewServer, localizedTitle: "Shortcut.Title.AddServer".localized(), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
+            let item = UIApplicationShortcutItem.init(type: ShortcutType.addNewServer, localizedTitle: "Shortcut.Title.AddServer".localized, localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
             items.add(item)
         }
         UIApplication.shared.shortcutItems = items as NSArray as? [UIApplicationShortcutItem]

@@ -13,6 +13,8 @@ class Constants {
     // Mark: - Messages
     
     struct Messages {
-        
+        static let Latest_News = "LATEST NEWS"
+        static let See_All = "SEE ALL"
+ 
     }
 }

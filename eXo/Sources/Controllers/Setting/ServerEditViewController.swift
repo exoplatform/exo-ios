@@ -31,7 +31,7 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.textView.text = server.serverURL
-		textView.placeholder = "OnBoarding.Message.EnterURL".localized()
+		textView.placeholder = "OnBoarding.Message.EnterURL".localized
 		Tool.applyBorderForView(self.deleteButton)
 		textView.delegate = self
 
@@ -87,11 +87,11 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 
 	func delete() {
 		//Ask for confirmation first
-        let alertController = UIAlertController(title: "Setting.Title.DeleteServer".localized(), message: "Setting.Message.DeleteServer".localized(), preferredStyle: UIAlertController.Style.alert)
-        let cancelAction = UIAlertAction(title: "Word.Cancel".localized(), style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
+        let alertController = UIAlertController(title: "Setting.Title.DeleteServer".localized, message: "Setting.Message.DeleteServer".localized, preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "Word.Cancel".localized, style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
 		}
 		alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title: "Word.OK".localized(), style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
+        let confirmAction = UIAlertAction(title: "Word.OK".localized, style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
 			ServerManager.sharedInstance.removeServer(self.server);
 			self.navigationController?.popViewController(animated: true)
 

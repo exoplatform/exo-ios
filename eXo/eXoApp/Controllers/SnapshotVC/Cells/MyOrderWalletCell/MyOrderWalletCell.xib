@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="107" id="KGk-i7-Jjw" customClass="MyOrderWalletCell" customModule="eXo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-cP-lrS">
+                        <rect key="frame" x="4" y="5" width="312" height="100"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-x3-9OK">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXM-K3-TBk">
+                                        <rect key="frame" x="3" y="3" width="75" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="C9o-3p-LCb"/>
+                                            <constraint firstAttribute="height" constant="21" id="zdg-PE-BJ7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0B-zM-9oJ">
+                                        <rect key="frame" x="44" y="53" width="64" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="z0B-zM-9oJ" secondAttribute="bottom" constant="18" id="8LG-79-jcx"/>
+                                    <constraint firstItem="nXM-K3-TBk" firstAttribute="top" secondItem="v2N-x3-9OK" secondAttribute="top" constant="3" id="Aaw-3c-6ou"/>
+                                    <constraint firstItem="nXM-K3-TBk" firstAttribute="leading" secondItem="v2N-x3-9OK" secondAttribute="leading" constant="3" id="QSH-xH-4Ea"/>
+                                    <constraint firstItem="z0B-zM-9oJ" firstAttribute="top" secondItem="nXM-K3-TBk" secondAttribute="bottom" constant="29" id="fr6-00-4jE"/>
+                                    <constraint firstItem="z0B-zM-9oJ" firstAttribute="centerX" secondItem="v2N-x3-9OK" secondAttribute="centerX" id="unb-r8-Ta5"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNF-MI-Cgq">
+                                <rect key="frame" x="160" y="0.0" width="152" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBX-to-rbO">
+                                        <rect key="frame" x="3" y="3" width="128" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="128" id="icp-0m-hN5"/>
+                                            <constraint firstAttribute="height" constant="21" id="lKt-H4-DU9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TN-2g-zOY">
+                                        <rect key="frame" x="62.5" y="53" width="27.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FBX-to-rbO" firstAttribute="top" secondItem="HNF-MI-Cgq" secondAttribute="top" constant="3" id="CJs-tb-kx7"/>
+                                    <constraint firstItem="FBX-to-rbO" firstAttribute="leading" secondItem="HNF-MI-Cgq" secondAttribute="leading" constant="3" id="NAh-w2-rzJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="0TN-2g-zOY" secondAttribute="bottom" constant="18" id="Zgk-oW-ixJ"/>
+                                    <constraint firstItem="0TN-2g-zOY" firstAttribute="centerX" secondItem="HNF-MI-Cgq" secondAttribute="centerX" id="gna-cZ-OeJ"/>
+                                    <constraint firstItem="0TN-2g-zOY" firstAttribute="top" secondItem="FBX-to-rbO" secondAttribute="bottom" constant="29" id="kQ9-ZY-m54"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="HNF-MI-Cgq" firstAttribute="leading" secondItem="Ra0-cP-lrS" secondAttribute="leading" constant="160" id="5bq-Ok-NK8"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Ra0-cP-lrS" secondAttribute="trailing" constant="4" id="6eT-YR-qom"/>
+                    <constraint firstItem="Ra0-cP-lrS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="S0z-Jd-Bq0"/>
+                    <constraint firstItem="Ra0-cP-lrS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="bqG-y1-dhs"/>
+                    <constraint firstAttribute="bottom" secondItem="Ra0-cP-lrS" secondAttribute="bottom" constant="5" id="qUb-R3-PZp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ordersLabel" destination="z0B-zM-9oJ" id="m5S-l3-bFp"/>
+                <outlet property="walletLabel" destination="0TN-2g-zOY" id="YMj-fo-5Pf"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="150.66964285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

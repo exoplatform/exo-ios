@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="OnboardingCollectionCell" customModule="eXo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="187"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="187"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-Ib-aJ7">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="187"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dbv-uG-2GD">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="187"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxT-gX-qJq">
+                                <rect key="frame" x="0.0" y="134" width="300" height="53"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXO PLATFORM 6.1 A TRANSFORMED We are excited to announcethe general availability of our latest version of eXo Platform." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-YK-bkK">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IxS-YK-bkK" secondAttribute="trailing" id="0Fo-5g-3QP"/>
+                                    <constraint firstAttribute="height" constant="53" id="KfJ-fK-K9Q"/>
+                                    <constraint firstItem="IxS-YK-bkK" firstAttribute="leading" secondItem="cxT-gX-qJq" secondAttribute="leading" id="hbR-ao-1D1"/>
+                                    <constraint firstAttribute="bottom" secondItem="IxS-YK-bkK" secondAttribute="bottom" id="nmD-B8-k0Q"/>
+                                    <constraint firstItem="IxS-YK-bkK" firstAttribute="top" secondItem="cxT-gX-qJq" secondAttribute="top" id="wfb-Ds-bR5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cxT-gX-qJq" secondAttribute="bottom" id="3o5-oR-4Yu"/>
+                            <constraint firstAttribute="trailing" secondItem="dbv-uG-2GD" secondAttribute="trailing" id="7y6-Ql-bCs"/>
+                            <constraint firstAttribute="bottom" secondItem="dbv-uG-2GD" secondAttribute="bottom" id="B4d-pj-F0e"/>
+                            <constraint firstItem="dbv-uG-2GD" firstAttribute="leading" secondItem="KYd-Ib-aJ7" secondAttribute="leading" id="BzF-w5-Ghi"/>
+                            <constraint firstAttribute="trailing" secondItem="cxT-gX-qJq" secondAttribute="trailing" id="HAF-Jh-mDg"/>
+                            <constraint firstItem="cxT-gX-qJq" firstAttribute="leading" secondItem="KYd-Ib-aJ7" secondAttribute="leading" id="QuD-du-8oB"/>
+                            <constraint firstItem="dbv-uG-2GD" firstAttribute="top" secondItem="KYd-Ib-aJ7" secondAttribute="top" id="hms-zN-C7K"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="KYd-Ib-aJ7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1fL-uy-IfK"/>
+                <constraint firstAttribute="bottom" secondItem="KYd-Ib-aJ7" secondAttribute="bottom" id="B8W-Sc-s1A"/>
+                <constraint firstItem="KYd-Ib-aJ7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bBS-fa-bLA"/>
+                <constraint firstAttribute="trailing" secondItem="KYd-Ib-aJ7" secondAttribute="trailing" id="tT9-Lt-Ydv"/>
+            </constraints>
+            <connections>
+                <outlet property="descriptionLabel" destination="IxS-YK-bkK" id="hkD-9f-1FG"/>
+                <outlet property="onboardingImg" destination="dbv-uG-2GD" id="XG2-DA-1Xq"/>
+            </connections>
+            <point key="canvasLocation" x="-149.27536231884059" y="120.87053571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
