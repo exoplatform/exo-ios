@@ -67,6 +67,22 @@
 		B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335B201F1D0800A2EA71 /* PushTokenRestClient.swift */; };
 		B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335E201F266800A2EA71 /* StringExtension.swift */; };
 		B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */; };
+		D71856FB2657BCA1000D8F85 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71856EE2657BCA1000D8F85 /* ActivityCell.xib */; };
+		D71856FC2657BCA1000D8F85 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71856EF2657BCA1000D8F85 /* ActivityCell.swift */; };
+		D71856FD2657BCA1000D8F85 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71856F12657BCA1000D8F85 /* CommentCell.xib */; };
+		D71856FE2657BCA1000D8F85 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71856F22657BCA1000D8F85 /* CommentCell.swift */; };
+		D71856FF2657BCA1000D8F85 /* ContainerActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71856F42657BCA1000D8F85 /* ContainerActivityCell.xib */; };
+		D71857002657BCA1000D8F85 /* ContainerActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71856F52657BCA1000D8F85 /* ContainerActivityCell.swift */; };
+		D71857012657BCA1000D8F85 /* ReplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71856F72657BCA1000D8F85 /* ReplayCell.swift */; };
+		D71857022657BCA1000D8F85 /* ReplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71856F82657BCA1000D8F85 /* ReplayCell.xib */; };
+		D71857032657BCA1000D8F85 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71856F92657BCA1000D8F85 /* StreamViewController.swift */; };
+		D71857042657BCA1000D8F85 /* StreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71856FA2657BCA1000D8F85 /* StreamViewController.xib */; };
+		D71857122657BCF0000D8F85 /* ActivityStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718570C2657BCF0000D8F85 /* ActivityStream.swift */; };
+		D71857132657BCF0000D8F85 /* BaseActivityStreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718570D2657BCF0000D8F85 /* BaseActivityStreamResponse.swift */; };
+		D71857142657BCF0000D8F85 /* Mentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718570E2657BCF0000D8F85 /* Mentions.swift */; };
+		D71857152657BCF0000D8F85 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718570F2657BCF0000D8F85 /* Activities.swift */; };
+		D71857162657BCF0000D8F85 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71857102657BCF0000D8F85 /* Owner.swift */; };
+		D71857172657BCF0000D8F85 /* TemplateParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71857112657BCF0000D8F85 /* TemplateParams.swift */; };
 		D71B306126526706003050FB /* FilterDocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B305F26526706003050FB /* FilterDocumentsCell.swift */; };
 		D71B306226526706003050FB /* FilterDocumentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71B306026526706003050FB /* FilterDocumentsCell.xib */; };
 		D71E306D264929AB00DA2BE2 /* NSAttributedString-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E306C264929AB00DA2BE2 /* NSAttributedString-Extensions.swift */; };
@@ -247,6 +263,22 @@
 		B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesInterceptor.swift; sourceTree = "<group>"; };
 		D206C018F830186C99982959 /* Pods-eXo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.release.xcconfig"; path = "Pods/Target Support Files/Pods-eXo/Pods-eXo.release.xcconfig"; sourceTree = "<group>"; };
 		D39BBBFBA9CFC4A211C1FFC7 /* Pods-eXoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eXoUITests/Pods-eXoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D71856EE2657BCA1000D8F85 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		D71856EF2657BCA1000D8F85 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		D71856F12657BCA1000D8F85 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		D71856F22657BCA1000D8F85 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		D71856F42657BCA1000D8F85 /* ContainerActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerActivityCell.xib; sourceTree = "<group>"; };
+		D71856F52657BCA1000D8F85 /* ContainerActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerActivityCell.swift; sourceTree = "<group>"; };
+		D71856F72657BCA1000D8F85 /* ReplayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayCell.swift; sourceTree = "<group>"; };
+		D71856F82657BCA1000D8F85 /* ReplayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplayCell.xib; sourceTree = "<group>"; };
+		D71856F92657BCA1000D8F85 /* StreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
+		D71856FA2657BCA1000D8F85 /* StreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamViewController.xib; sourceTree = "<group>"; };
+		D718570C2657BCF0000D8F85 /* ActivityStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityStream.swift; sourceTree = "<group>"; };
+		D718570D2657BCF0000D8F85 /* BaseActivityStreamResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseActivityStreamResponse.swift; sourceTree = "<group>"; };
+		D718570E2657BCF0000D8F85 /* Mentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mentions.swift; sourceTree = "<group>"; };
+		D718570F2657BCF0000D8F85 /* Activities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
+		D71857102657BCF0000D8F85 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		D71857112657BCF0000D8F85 /* TemplateParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateParams.swift; sourceTree = "<group>"; };
 		D71B305F26526706003050FB /* FilterDocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDocumentsCell.swift; sourceTree = "<group>"; };
 		D71B306026526706003050FB /* FilterDocumentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterDocumentsCell.xib; sourceTree = "<group>"; };
 		D71E306C264929AB00DA2BE2 /* NSAttributedString-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString-Extensions.swift"; sourceTree = "<group>"; };
@@ -619,6 +651,76 @@
 			path = Cookies;
 			sourceTree = "<group>";
 		};
+		D71856EB2657BCA1000D8F85 /* StreamVC */ = {
+			isa = PBXGroup;
+			children = (
+				D71856F92657BCA1000D8F85 /* StreamViewController.swift */,
+				D71856FA2657BCA1000D8F85 /* StreamViewController.xib */,
+				D71856EC2657BCA1000D8F85 /* Cells */,
+			);
+			path = StreamVC;
+			sourceTree = "<group>";
+		};
+		D71856EC2657BCA1000D8F85 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D71856ED2657BCA1000D8F85 /* ActivityCell */,
+				D71856F02657BCA1000D8F85 /* CommentCell */,
+				D71856F32657BCA1000D8F85 /* ContainerActivityCell */,
+				D71856F62657BCA1000D8F85 /* ReplayCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D71856ED2657BCA1000D8F85 /* ActivityCell */ = {
+			isa = PBXGroup;
+			children = (
+				D71856EE2657BCA1000D8F85 /* ActivityCell.xib */,
+				D71856EF2657BCA1000D8F85 /* ActivityCell.swift */,
+			);
+			path = ActivityCell;
+			sourceTree = "<group>";
+		};
+		D71856F02657BCA1000D8F85 /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				D71856F12657BCA1000D8F85 /* CommentCell.xib */,
+				D71856F22657BCA1000D8F85 /* CommentCell.swift */,
+			);
+			path = CommentCell;
+			sourceTree = "<group>";
+		};
+		D71856F32657BCA1000D8F85 /* ContainerActivityCell */ = {
+			isa = PBXGroup;
+			children = (
+				D71856F42657BCA1000D8F85 /* ContainerActivityCell.xib */,
+				D71856F52657BCA1000D8F85 /* ContainerActivityCell.swift */,
+			);
+			path = ContainerActivityCell;
+			sourceTree = "<group>";
+		};
+		D71856F62657BCA1000D8F85 /* ReplayCell */ = {
+			isa = PBXGroup;
+			children = (
+				D71856F72657BCA1000D8F85 /* ReplayCell.swift */,
+				D71856F82657BCA1000D8F85 /* ReplayCell.xib */,
+			);
+			path = ReplayCell;
+			sourceTree = "<group>";
+		};
+		D718570B2657BCF0000D8F85 /* AcitivitiesStream */ = {
+			isa = PBXGroup;
+			children = (
+				D718570C2657BCF0000D8F85 /* ActivityStream.swift */,
+				D718570D2657BCF0000D8F85 /* BaseActivityStreamResponse.swift */,
+				D718570E2657BCF0000D8F85 /* Mentions.swift */,
+				D718570F2657BCF0000D8F85 /* Activities.swift */,
+				D71857102657BCF0000D8F85 /* Owner.swift */,
+				D71857112657BCF0000D8F85 /* TemplateParams.swift */,
+			);
+			path = AcitivitiesStream;
+			sourceTree = "<group>";
+		};
 		D71B305E265265AA003050FB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +753,7 @@
 		D72BA481263065F7000E3711 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D71856EB2657BCA1000D8F85 /* StreamVC */,
 				D72F5C0226400FD60091D9A0 /* SnapshotVC */,
 				D72BA4BF26306ED4000E3711 /* ServerSelectionVC */,
 				D75B325A2631764A00C31BA7 /* HomePageVC */,
@@ -663,6 +766,7 @@
 		D72BA48226306605000E3711 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D718570B2657BCF0000D8F85 /* AcitivitiesStream */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1078,15 +1182,20 @@
 				9C935F851BD64DAD009C065B /* Localizable.strings in Resources */,
 				D71B306226526706003050FB /* FilterDocumentsCell.xib in Resources */,
 				9C3D7D1E1BDF6BA3002873CB /* eXo.entitlements in Resources */,
+				D71856FF2657BCA1000D8F85 /* ContainerActivityCell.xib in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
+				D71857042657BCA1000D8F85 /* StreamViewController.xib in Resources */,
 				D743D6DF26418D3500B96A07 /* TasksCell.xib in Resources */,
 				D743D6D126418D1D00B96A07 /* DocumentsCell.xib in Resources */,
+				D71856FB2657BCA1000D8F85 /* ActivityCell.xib in Resources */,
 				D743D70326418D9A00B96A07 /* NewsCell.xib in Resources */,
 				D743BD852642AF6400376013 /* OnboardingCollectionCell.xib in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
+				D71856FD2657BCA1000D8F85 /* CommentCell.xib in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
 				D743D6FA26418D7A00B96A07 /* WelcomeBackCell.xib in Resources */,
 				D743D6E826418D4B00B96A07 /* AgendaCell.xib in Resources */,
+				D71857022657BCA1000D8F85 /* ReplayCell.xib in Resources */,
 				D743D6F126418D6400B96A07 /* MyOrderWalletCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1258,6 +1367,8 @@
 				D769F4CA2632FB96008BC2EC /* DataBaseHelper.swift in Sources */,
 				D72BA49E26306BB9000E3711 /* APIServices.swift in Sources */,
 				D743D6D026418D1D00B96A07 /* DocumentsCell.swift in Sources */,
+				D71857122657BCF0000D8F85 /* ActivityStream.swift in Sources */,
+				D71857162657BCF0000D8F85 /* Owner.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
 				D743D73E264198F200B96A07 /* UITableView-Extensions.swift in Sources */,
@@ -1271,6 +1382,8 @@
 				D743D7452641992000B96A07 /* UICollectionView-Extensions.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
+				D71857132657BCF0000D8F85 /* BaseActivityStreamResponse.swift in Sources */,
+				D71857172657BCF0000D8F85 /* TemplateParams.swift in Sources */,
 				D75B327F2631AFDA00C31BA7 /* RootHandler.swift in Sources */,
 				9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */,
 				D743D6F026418D6400B96A07 /* MyOrderWalletCell.swift in Sources */,
@@ -1282,10 +1395,15 @@
 				D743D6DE26418D3500B96A07 /* TasksCell.swift in Sources */,
 				D71B306126526706003050FB /* FilterDocumentsCell.swift in Sources */,
 				D743D6E726418D4B00B96A07 /* AgendaCell.swift in Sources */,
+				D71857032657BCA1000D8F85 /* StreamViewController.swift in Sources */,
 				9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */,
 				9C032E3A1BEA17DE006F0577 /* PreviewController.swift in Sources */,
+				D71857012657BCA1000D8F85 /* ReplayCell.swift in Sources */,
+				D71857002657BCA1000D8F85 /* ContainerActivityCell.swift in Sources */,
 				D72BA4B326306DD8000E3711 /* UIViewController-Extensions.swift in Sources */,
 				B56257E7202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift in Sources */,
+				D71856FC2657BCA1000D8F85 /* ActivityCell.swift in Sources */,
+				D71857142657BCF0000D8F85 /* Mentions.swift in Sources */,
 				D72BA4C226306F15000E3711 /* ServerSelectionViewController.swift in Sources */,
 				9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */,
 				D75B324A263175EB00C31BA7 /* Protocols.swift in Sources */,
@@ -1296,6 +1414,8 @@
 				D7C4A7C5263807AA003BD67B /* NotificationName-Extensions.swift in Sources */,
 				D743D70226418D9A00B96A07 /* NewsCell.swift in Sources */,
 				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
+				D71857152657BCF0000D8F85 /* Activities.swift in Sources */,
+				D71856FE2657BCA1000D8F85 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

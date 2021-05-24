@@ -8,6 +8,9 @@
 
 import Foundation
 
-class APIServices:NSObject{
+class APIServices:NSObject {
+    
     static let sharedInstance = APIServices()
+    
+    
 }
