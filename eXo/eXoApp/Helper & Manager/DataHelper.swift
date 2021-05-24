@@ -10,4 +10,6 @@ import Foundation
 
 class DataHelpr: NSObject {
     static let sharedInstance = DataHelpr()
+    
+    var activitiesList:[Activities] = []
 }
