@@ -37,6 +37,8 @@ class eXoWebBaseController: UIViewController {
     */
     func setupWebView (_ webViewContainer : UIView) {
         let wkWebViewConfiguration = WKWebViewConfiguration()
+        // Add configuration to wkwebview relevant to user agent
+        wkWebViewConfiguration.applicationNameForUserAgent = "Version/8.0.2 Safari/600.2.5"
         webView = WKWebView (frame:CGRect(x: 0,y: 0,width: webViewContainer.bounds.size.width, height: webViewContainer.bounds.size.height), configuration: wkWebViewConfiguration)        
         //Load the page web
         let url = URL(string: serverURL!)
