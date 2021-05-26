@@ -12,7 +12,7 @@
 #import "HTMLText.h"
 #import "HTMLDOMTokenList.h"
 #import "HTMLOrderedDictionary.h"
-#import "NSString+HTMLKit.h"
+#import "NSString+Private.h"
 #import "HTMLNode+Private.h"
 
 @interface HTMLElement ()
@@ -144,46 +144,9 @@
 {
 	HTMLElement *copy = [super copyWithZone:zone];
 	copy->_tagName = [_tagName copy];
-	copy->_attributes = [_attributes copy];
+	copy->_attributes = [_attributes mutableCopy];
 	copy->_htmlNamespace = _htmlNamespace;
 	return copy;
-}
-
-#pragma mark - Serialization
-
-- (NSString *)outerHTML
-{
-	NSMutableString *result = [NSMutableString string];
-
-	[result appendFormat:@"<%@", self.tagName];
-	[self.attributes enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-		NSRange range = NSMakeRange(0, value.length);
-		NSMutableString *escaped = [value mutableCopy];
-		[escaped replaceOccurrencesOfString:@"&" withString:@"&amp;" options:0 range:range];
-		[escaped replaceOccurrencesOfString:@"\00A0" withString:@"&nbsp;" options:0 range:range];
-		[escaped replaceOccurrencesOfString:@"\"" withString:@"&quot;" options:0 range:range];
-
-		[result appendFormat:@" %@=\"%@\"", key, escaped];
-	}];
-
-	[result appendString:@">"];
-
-	if ([self.tagName isEqualToAny:@"area", @"base", @"basefont", @"bgsound", @"br", @"col", @"embed",
-		 @"frame", @"hr", @"img", @"input", @"keygen", @"link", @"menuitem", @"meta", @"param", @"source",
-		 @"track", @"wbr", nil]) {
-		return result;
-	}
-
-	if ([self.tagName isEqualToAny:@"pre", @"textarea", @"listing", nil] && self.firstChild.nodeType == HTMLNodeText) {
-		HTMLText *textNode = (HTMLText *)self.firstChild;
-		if ([textNode.data hasPrefix:@"\n"]) {
-			[result appendString:@"\n"];
-		}
-	}
-	[result appendString:self.innerHTML];
-	[result appendFormat:@"</%@>", self.tagName];
-
-	return result;
 }
 
 #pragma mark - Description

@@ -7,7 +7,7 @@
 //
 
 #import "HTMLDocumentType.h"
-#import "NSString+HTMLKit.h"
+#import "NSString+Private.h"
 #import "HTMLNode+Private.h"
 
 NS_INLINE BOOL nilOrEqual(id first, id second) {
@@ -142,13 +142,6 @@ NS_INLINE BOOL nilOrEqual(id first, id second) {
 	copy->_publicIdentifier = [_publicIdentifier copy];
 	copy->_systemIdentifier = [_systemIdentifier copy];
 	return copy;
-}
-
-#pragma mark - Serialization
-
-- (NSString *)outerHTML
-{
-	return [NSString stringWithFormat:@"<!DOCTYPE %@>", self.name];
 }
 
 #pragma mark - Description

@@ -38,15 +38,19 @@
 #import "HTMLNode.h"
 #import "HTMLNodeFilter.h"
 #import "HTMLNodeIterator.h"
+#import "HTMLNodeVisitor.h"
 #import "HTMLOrderedDictionary.h"
 #import "HTMLParser.h"
 #import "HTMLQuirksMode.h"
 #import "HTMLRange.h"
+#import "HTMLSerializer.h"
 #import "HTMLTemplate.h"
 #import "HTMLText.h"
+#import "HTMLTreeVisitor.h"
 #import "HTMLTreeWalker.h"
 #import "NSCharacterSet+HTMLKit.h"
 #import "NSString+HTMLKit.h"
+#import "NSString+Private.h"
 
 FOUNDATION_EXPORT double HTMLKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char HTMLKitVersionString[];
