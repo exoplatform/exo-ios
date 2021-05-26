@@ -12,4 +12,4 @@ before_install:
   - gem install cocoapods -v '1.10.0'
   - bundle install
 
-script: pod install --repo-update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO
+script: pod install --repo-update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO -quiet
