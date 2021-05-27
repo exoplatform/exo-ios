@@ -182,13 +182,15 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         application.registerForRemoteNotifications()
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         PushTokenSynchronizer.shared.token = fcmToken
-        print("Push token reveived: \(fcmToken)")
+        if let _fcmToken = fcmToken {
+            print("Push token reveived: \(_fcmToken)")
+        }
     }
     
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print(remoteMessage.debugDescription)
+    func messaging(_ messaging: Messaging) {
+       // print(remoteMessage.debugDescription)
     }
 
 	func handleNotification(userInfo: [AnyHashable: Any]) {

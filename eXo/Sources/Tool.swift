@@ -51,18 +51,23 @@ class Tool {
                     let statusCode = (response as! HTTPURLResponse).statusCode
                     if (statusCode >= 200  && statusCode < 300) {
                         // Check platform version
-                        let json = JSON(data: data!)
-                        if let platformVersion = json["platformVersion"].string {
-                            let version = (platformVersion as NSString).floatValue
-                            if (version >= Config.minimumPlatformVersionSupported){
-                                handleSuccess(serverURL)
+                        do {
+                            let json = try JSON(data: data!)
+                            if let platformVersion = json["platformVersion"].string {
+                                let version = (platformVersion as NSString).floatValue
+                                if (version >= Config.minimumPlatformVersionSupported){
+                                    handleSuccess(serverURL)
+                                } else {
+                                    // this application supports only platform version 4.3 or later
+                                    Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
+                                }
                             } else {
-                                // this application supports only platform version 4.3 or later
-                                Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
+                                Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotFound)
                             }
-                        } else {
-                            Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotFound)
+                        } catch let error {
+                            print(error.localizedDescription)
                         }
+
                         
                     } else {
                         Tool.showErrorMessageForCode(ConnectionError.URLError)
@@ -78,36 +83,38 @@ class Tool {
     }
     
     static func getPlatformVersion(_ url:URL, success:@escaping (_ version:Float) -> Void, failure:@escaping (_ errorCode:Int) -> Void) {
-        
         let serverURL = domainOfStringURL(url.absoluteString)
-        
         let platformInfoURL = serverURL + "/rest/platform/info"
-        
         let plfInfoUrl = URL.init(string: platformInfoURL)
-        
         let request = URLRequest.init(url: plfInfoUrl!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: Config.timeout)
         let operationQueue = OperationQueue.init()
         operationQueue.name = "PLFVersion"
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue) { (response, data, error) -> Void in
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             if (error == nil) {
-                let statusCode = (response as! HTTPURLResponse).statusCode
-                if (statusCode >= 200  && statusCode < 300) {
-                    // Check platform version
-                    let json = JSON(data: data!)
-                    if let platformVersion = json["platformVersion"].string {
-                        let version = (platformVersion as NSString).floatValue
-                        success(version)
+                do {
+                    let statusCode = (response as! HTTPURLResponse).statusCode
+                    if (statusCode >= 200  && statusCode < 300) {
+                        // Check platform version
+                        let json = try JSON(data: data!)
+                        if let platformVersion = json["platformVersion"].string {
+                            let version = (platformVersion as NSString).floatValue
+                            print(version)
+                            success(version)
+                        } else {
+                            failure(ConnectionError.ServerVersionNotFound)
+                        }
                     } else {
-                        failure(ConnectionError.ServerVersionNotFound)
+                        failure(ConnectionError.URLError)
                     }
-                } else {
-                    failure(ConnectionError.URLError)
+                } catch {
+                    print(error.localizedDescription)
                 }
             } else {
                 failure(ConnectionError.URLError)
             }
-        }
+        })
+        task.resume()
     }
     
    

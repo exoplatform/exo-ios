@@ -7,12 +7,12 @@ project 'eXo.xcodeproj'
 use_frameworks!
 
 target "eXo" do
-    pod 'SVProgressHUD', '~> 2.2'
-    pod 'SwiftyJSON', '~> 4.0'
-    pod 'UICKeyChainStore', '~> 2.1'
-    pod 'HTMLKit', '~> 3.1'
+    pod 'SVProgressHUD'
+    pod 'SwiftyJSON'
+    pod 'UICKeyChainStore'
+    pod 'HTMLKit'
     pod 'Fabric'
-    pod 'Crashlytics'
+    pod 'Crashlytics', '~> 3.14.0'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
 
@@ -26,8 +26,8 @@ target "eXo" do
 end
 
 target "share-extension" do
-    pod 'UICKeyChainStore', '~> 2.1'
-    pod 'HTMLKit', '~> 3.1'
+    pod 'UICKeyChainStore'
+    pod 'HTMLKit', '~> 3.1.0'
 end
 
 
@@ -40,6 +40,11 @@ post_install do |installer|
       config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
     else
       config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
-    end    
+    end
+  end
+  installer.pods_project.targets.each do |target|
+   target.build_configurations.each do |config|
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+   end
   end
 end

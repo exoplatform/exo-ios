@@ -106,14 +106,15 @@ PODS:
   - UICKeyChainStore (2.2.1)
 
 DEPENDENCIES:
-  - Crashlytics
+  - Crashlytics (~> 3.14.0)
   - Fabric
   - Firebase/Core
   - Firebase/Messaging
-  - HTMLKit (~> 3.1)
-  - SVProgressHUD (~> 2.2)
-  - SwiftyJSON (~> 4.0)
-  - UICKeyChainStore (~> 2.1)
+  - HTMLKit
+  - HTMLKit (~> 3.1.0)
+  - SVProgressHUD
+  - SwiftyJSON
+  - UICKeyChainStore
 
 SPEC REPOS:
   trunk:
@@ -154,6 +155,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   UICKeyChainStore: ba3bff2c762b12db1e516f395c837dd25298b05e
 
-PODFILE CHECKSUM: f7a9b8e6e0c3b170ed34bca67a981c101baafe93
+PODFILE CHECKSUM: 0e8e88179190d5e8ac2366fafdca99917a8afee5
 
 COCOAPODS: 1.10.1
