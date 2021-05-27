@@ -26,9 +26,13 @@ class eXoWebBaseController: UIViewController {
     
     var serverURL:String? // The WebView begin with this link (sent by Server Selection/ Input Server, Basically is the link to platform)
     var isFirstLoad:Bool = false
+    var iSSAMLRequest:Bool = false
+    
     override func viewDidLoad() {        
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(getInputSteam(notification:)), name: Notification.Name("Request"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getBool(notification:)), name: Notification.Name("iSSAMLRequest"), object: nil)
+
     }
     
     @objc
@@ -36,7 +40,11 @@ class eXoWebBaseController: UIViewController {
         guard let _inputStream = notification.userInfo?["Request"] as? URLRequest else { return }
         requestToUse = _inputStream
     }
-    
+    @objc
+    func getBool(notification:Notification){
+        guard let _inputStream = notification.userInfo?["iSSAMLRequest"] as? Bool else { return }
+        UserDefaults.standard.setValue(_inputStream, forKey: "iSSAMLRequest")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -64,16 +72,12 @@ class eXoWebBaseController: UIViewController {
         }
         // load URL in webview
         let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        if (UserDefaults.standard.value(forKey: "isFirstLoad") != nil){
-            webView?.load(request)
-            UserDefaults.standard.setValue(true, forKey: "isFirstLoad")
-        }else{
+        if UserDefaults.standard.bool(forKey: "iSSAMLRequest") {
             if let _requestToUse = self.requestToUse {
-                print(_requestToUse.url?.absoluteString)
-                if ((_requestToUse.url?.absoluteString.range(of: "/o/saml2/")) != nil) {
                     webView?.load(_requestToUse)
-                }
             }
+        }else{
+            webView?.load(request)
         }
 
         webViewContainer.addSubview(webView!)
