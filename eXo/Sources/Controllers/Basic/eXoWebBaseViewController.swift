@@ -22,10 +22,19 @@ class eXoWebBaseController: UIViewController {
     let kRequestTimeout = 10.0 //in seconds
     
     var webView:WKWebView?
+    var requestToUse:URLRequest?
+    
     var serverURL:String? // The WebView begin with this link (sent by Server Selection/ Input Server, Basically is the link to platform)
- 
+    var isFirstLoad:Bool = false
     override func viewDidLoad() {        
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(getInputSteam(notification:)), name: Notification.Name("Request"), object: nil)
+    }
+    
+    @objc
+    func getInputSteam(notification:Notification){
+        guard let _inputStream = notification.userInfo?["Request"] as? URLRequest else { return }
+        requestToUse = _inputStream
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,12 +64,23 @@ class eXoWebBaseController: UIViewController {
         }
         // load URL in webview
         let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        webView?.load(request)
+        if (UserDefaults.standard.value(forKey: "isFirstLoad") != nil){
+            webView?.load(request)
+            UserDefaults.standard.setValue(true, forKey: "isFirstLoad")
+        }else{
+            if let _requestToUse = self.requestToUse {
+                print(_requestToUse.url?.absoluteString)
+                if ((_requestToUse.url?.absoluteString.range(of: "/o/saml2/")) != nil) {
+                    webView?.load(_requestToUse)
+                }
+            }
+        }
+
         webViewContainer.addSubview(webView!)
         
         // disable the autosizing to use manual constraints
         webView?.translatesAutoresizingMaskIntoConstraints = false;
-        
+        isFirstLoad = true
     }
 
     override func updateViewConstraints() {

@@ -153,6 +153,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
+        if let urlToSee = request.url?.absoluteString {
+            print("=============== Navigation Url : \(urlToSee)")
+        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
@@ -181,6 +184,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.other) {
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
+            NotificationCenter.default.post(name: Notification.Name("Request"), object: nil, userInfo: ["Request" : request])
             previewController.serverURL = request.url?.absoluteString
             self.present(previewNavigationController, animated: true, completion: nil)
             decisionHandler(.cancel)
