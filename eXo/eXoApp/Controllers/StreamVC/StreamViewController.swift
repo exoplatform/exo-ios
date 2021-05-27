@@ -18,7 +18,7 @@ class StreamViewController: UIViewController {
         initView()
         let username = "wajih_benabdessalem"
         let password = "wajwaj1989"
-        APIManager.sharedInstance.getActivitiesApi(username: username, password: password)
+        APIManager.sharedInstance.getActivities(username: username, password: password)
     }
     
     func initView() {

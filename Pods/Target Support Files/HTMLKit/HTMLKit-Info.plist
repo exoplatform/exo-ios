@@ -15,7 +15,11 @@
   <key>CFBundlePackageType</key>
   <string>FMWK</string>
   <key>CFBundleShortVersionString</key>
+<<<<<<< HEAD
   <string>3.1.0</string>
+=======
+  <string>8.0.0</string>
+>>>>>>> 44756 : Maintenance / Upgrade Pods
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>
