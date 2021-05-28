@@ -18,6 +18,7 @@
 #import "CSSSelector.h"
 #import "HTMLDocument+Private.h"
 #import "HTMLDOMUtils.h"
+#import "HTMLSerializer.h"
 
 NSString * const ValidationNodePreInsertion = @"-ensurePreInsertionValidityOfNode:beforeChildNode:";
 NSString * const ValidationNodeReplacement = @"-ensureReplacementValidityOfChildNode:withNode:";
@@ -127,7 +128,7 @@ NSString * const RemoveChildNode = @"-removeChildNode:";
 
 - (HTMLElement *)nextSiblingElement
 {
-	HTMLNode *node = self.previousSibling;
+	HTMLNode *node = self.nextSibling;
 	while (node && node.nodeType != HTMLNodeElement) {
 		node = node.nextSibling;
 	}
@@ -154,6 +155,20 @@ NSString * const RemoveChildNode = @"-removeChildNode:";
 - (HTMLElement *)asElement
 {
 	return (HTMLElement *)self;
+}
+
+- (HTMLText *)asText
+{
+	return (HTMLText *)self;
+}
+
+- (HTMLComment *)asComment
+{
+	return (HTMLComment *)self;
+}
+- (HTMLDocumentType *)asDocumentType
+{
+	return (HTMLDocumentType *)self;
 }
 
 #pragma mark - Child Nodes
@@ -589,7 +604,7 @@ NS_INLINE void CheckInvalidCombination(HTMLNode *parent, HTMLNode *node, NSStrin
 
 	CheckInvalidCombination(self, node, ValidationNodePreInsertion);
 
-	void (^ hierarchyError)() = ^{
+	void (^ hierarchyError)(void) = ^{
 		[NSException raise:HTMLKitHierarchyRequestError
 					format:@"%@: Hierarchy Request Error, inserting (%@) into (%@). The operation would yield an incorrect node tree.",
 		 ValidationNodePreInsertion, self, node];
@@ -639,7 +654,7 @@ NS_INLINE void CheckInvalidCombination(HTMLNode *parent, HTMLNode *node, NSStrin
 
 	CheckInvalidCombination(self, node, ValidationNodeReplacement);
 
-	void (^ hierarchyError)() = ^{
+	void (^ hierarchyError)(void) = ^{
 		[NSException raise:HTMLKitHierarchyRequestError
 					format:@"%@: Hierarchy Request Error. The operation would yield an incorrect node tree.",
 		 ValidationNodeReplacement];
@@ -718,13 +733,12 @@ NS_INLINE void CheckInvalidCombination(HTMLNode *parent, HTMLNode *node, NSStrin
 
 - (NSString *)outerHTML
 {
-	[self doesNotRecognizeSelector:_cmd];
-	return nil;
+	return [HTMLSerializer serializeNode:self scope:HTMLSerializationScopeIncludeRoot];
 }
 
 - (NSString *)innerHTML
 {
-	return [[self.childNodes.array valueForKey:@"outerHTML"] componentsJoinedByString:@""];
+	return [HTMLSerializer serializeNode:self scope:HTMLSerializationScopeChildrenOnly];
 }
 
 - (void)setInnerHTML:(NSString *)outerHTML

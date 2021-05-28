@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HTMLNodeIterator.h"
+#import "HTMLTreeVisitor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -232,7 +233,7 @@ typedef NS_OPTIONS(unsigned short, HTMLDocumentPosition)
 /**
  Returns the index of the given child element in the set of child nodes.
 
- @param node The element.
+ @param element The element.
  @return The index of the given element in the children set.
  */
 - (NSUInteger)indexOfChildElement:(HTMLElement *)element;
@@ -248,7 +249,7 @@ typedef NS_OPTIONS(unsigned short, HTMLDocumentPosition)
 /**
  Prepends the given array of nodes to the set of child nodes.
 
- @param node The nodes to prepend.
+ @param nodes The nodes to prepend.
  */
 - (void)prependNodes:(NSArray<HTMLNode *> *)nodes;
 

@@ -8,7 +8,7 @@
 
 #import "HTMLText.h"
 #import "HTMLElement.h"
-#import "NSString+HTMLKit.h"
+#import "NSString+Private.h"
 #import "HTMLCharacterData+Private.h"
 #import "HTMLKitDOMExceptions.h"
 #import "HTMLDocument+Private.h"
@@ -64,24 +64,6 @@ NS_INLINE void CheckValidOffset(HTMLNode *node, NSUInteger offset, NSString *cmd
 	}
 
 	return newNode;
-}
-
-#pragma mark - Serialization
-
-- (NSString *)outerHTML
-{
-	if ([self.parentElement.tagName isEqualToAny:@"style", @"script", @"xmp", @"iframe", @"noembed", @"noframes",
-		 @"plaintext", @"noscript", nil]) {
-		return self.data;
-	} else {
-		NSRange range = NSMakeRange(0, self.data.length);
-		NSMutableString *escaped = [self.data mutableCopy];
-		[escaped replaceOccurrencesOfString:@"&" withString:@"&amp;" options:0 range:range];
-		[escaped replaceOccurrencesOfString:@"\00A0" withString:@"&nbsp;" options:0 range:range];
-		[escaped replaceOccurrencesOfString:@"<" withString:@"&lt;" options:0 range:range];
-		[escaped replaceOccurrencesOfString:@">" withString:@"&gt;" options:0 range:range];
-		return escaped;
-	}
 }
 
 #pragma mark - Description

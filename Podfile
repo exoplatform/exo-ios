@@ -7,10 +7,10 @@ project 'eXo.xcodeproj'
 use_frameworks!
 
 target "eXo" do
-    pod 'SVProgressHUD', '~> 1.1'
-    pod 'SwiftyJSON', '~> 3.0.0'
+    pod 'SVProgressHUD', '~> 2.2'
+    pod 'SwiftyJSON', '~> 4.0'
     pod 'UICKeyChainStore', '~> 2.1'
-    pod 'HTMLKit', '~> 2.0.0'
+    pod 'HTMLKit', '~> 3.1'
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'Firebase/Core'
@@ -27,7 +27,7 @@ end
 
 target "share-extension" do
     pod 'UICKeyChainStore', '~> 2.1'
-    pod 'HTMLKit', '~> 2.0.0'
+    pod 'HTMLKit', '~> 3.1'
 end
 
 
