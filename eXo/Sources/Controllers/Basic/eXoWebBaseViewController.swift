@@ -21,30 +21,14 @@ import WebKit
 class eXoWebBaseController: UIViewController {
     let kRequestTimeout = 10.0 //in seconds
     
-    var webView:WKWebView?
-    var requestToUse:URLRequest?
-    
+    var webView:WKWebView?    
     var serverURL:String? // The WebView begin with this link (sent by Server Selection/ Input Server, Basically is the link to platform)
-    var isFirstLoad:Bool = false
-    var iSSAMLRequest:Bool = false
-    
-    override func viewDidLoad() {        
+    var samlRequest:URLRequest?
+    var isSAMLResquest:Bool = false
+    override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(getInputSteam(notification:)), name: Notification.Name("Request"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(getBool(notification:)), name: Notification.Name("iSSAMLRequest"), object: nil)
+    }
 
-    }
-    
-    @objc
-    func getInputSteam(notification:Notification){
-        guard let _inputStream = notification.userInfo?["Request"] as? URLRequest else { return }
-        requestToUse = _inputStream
-    }
-    @objc
-    func getBool(notification:Notification){
-        guard let _inputStream = notification.userInfo?["iSSAMLRequest"] as? Bool else { return }
-        UserDefaults.standard.setValue(_inputStream, forKey: "iSSAMLRequest")
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -72,19 +56,14 @@ class eXoWebBaseController: UIViewController {
         }
         // load URL in webview
         let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        if UserDefaults.standard.bool(forKey: "iSSAMLRequest") {
-            if let _requestToUse = self.requestToUse {
-                    webView?.load(_requestToUse)
-            }
+        if isSAMLResquest {
+            webView?.load(samlRequest ?? request)
         }else{
             webView?.load(request)
         }
-
         webViewContainer.addSubview(webView!)
-        
         // disable the autosizing to use manual constraints
         webView?.translatesAutoresizingMaskIntoConstraints = false;
-        isFirstLoad = true
     }
 
     override func updateViewConstraints() {

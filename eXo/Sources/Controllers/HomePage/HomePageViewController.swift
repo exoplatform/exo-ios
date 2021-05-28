@@ -184,14 +184,18 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.other) {
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
-            if request.url?.absoluteString.range(of:"https://accounts.google.com/o/saml2/") != nil  {
-                NotificationCenter.default.post(name: Notification.Name("Request"), object: nil, userInfo: ["Request" : request])
-                UserDefaults.standard.setValue(true, forKey: "iSSAMLRequest")
-            }else{
-                UserDefaults.standard.setValue(false, forKey: "iSSAMLRequest")
-            }
             previewController.serverURL = request.url?.absoluteString
-            self.present(previewNavigationController, animated: true, completion: nil)
+            if request.url?.absoluteString.range(of:"https://accounts.google.com/o/saml2/") != nil  {
+//                let nib = WebViewController(nibName: "WebViewController", bundle: nil)
+//                nib.requestToUse = request
+//                nib.modalPresentationStyle = .overFullScreen
+//                self.present(nib, animated: false, completion: nil)
+                previewController.isSAMLResquest = true
+                previewController.samlRequest = request
+                self.present(previewNavigationController, animated: true, completion: nil)
+            }else{
+                self.present(previewNavigationController, animated: true, completion: nil)
+            }
             decisionHandler(.cancel)
             return
         }

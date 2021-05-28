@@ -23,7 +23,11 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegat
     // Navigation buttons of the webView
     @IBOutlet weak var goForwardButton: UIBarButtonItem!
     @IBOutlet weak var goBackButton: UIBarButtonItem!
-    
+    var isStatusBarHidden = true{
+         didSet{
+             self.setNeedsStatusBarAppearanceUpdate()
+         }
+     }
     // MARK: View Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +40,14 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.isStatusBarHidden = true
+        isStatusBarHidden = true
     }
-    
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.shared.isStatusBarHidden = false
+        isStatusBarHidden = false
     }
     
     // MARK: Navigation Action: Close, GoBack, GoForward
