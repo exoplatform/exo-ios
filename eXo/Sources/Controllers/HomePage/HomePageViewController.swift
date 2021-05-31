@@ -49,9 +49,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         Set the status bar to white color & the navigation bar is always hidden on this screen
         */
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
-        self.navigationController?.navigationBar.barTintColor = nil
+        self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
         self.navigationController?.navigationBar.tintColor = UIColor.white
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
@@ -66,7 +66,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: Actions
@@ -153,10 +153,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
+        // Just Debug .
+        if let urlToSee = request.url?.absoluteString {
+            print("=============== Navigation Url : \(urlToSee)")
+        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
             self.navigationController?.popViewController(animated: true)
+            UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
+            UserDefaults.standard.setValue("", forKey: "serverURL")
         }
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or register page && disable the bar when login (register) is finished
@@ -164,6 +170,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if request.url?.absoluteString.range(of: serverDomain!+"/portal/intranet") != nil  {
            self.navigationController?.setNavigationBarHidden(true, animated:true)
         }
+
         // Page Login Address: [Domain]/portal/login
         // Page Register: [Domain]/portal/intranet/register
         //(show navigation bar when the webview display this pages, because the pages don't contain a embedded navigation bar.
@@ -172,6 +179,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }        
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
+        }
+        
+        if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil){
+            UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
+            UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
         }
 
         /*

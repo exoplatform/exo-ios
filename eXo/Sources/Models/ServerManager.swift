@@ -139,6 +139,7 @@ class ServerManager  {
         if (serverList.count > 0) {
             for server in serverList {
                 if (items.count < Config.maximumShortcutAllow) {
+                    print("A different Logo and title for eXo Tribe website:\t\((server as! Server).serverURL.stringURLWithoutProtocol())")
                     if (Config.communityURL.contains((server as! Server).serverURL.stringURLWithoutProtocol())) {
                         // A different Logo and title for eXo Tribe website
 												items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))

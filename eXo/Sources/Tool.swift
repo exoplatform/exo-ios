@@ -51,7 +51,7 @@ class Tool {
                     let statusCode = (response as! HTTPURLResponse).statusCode
                     if (statusCode >= 200  && statusCode < 300) {
                         // Check platform version
-                        do {
+                         do {
                             let json = try JSON(data: data!)
                             if let platformVersion = json["platformVersion"].string {
                                 let version = (platformVersion as NSString).floatValue

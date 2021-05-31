@@ -63,12 +63,19 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
                 launchedFromShortCut = true
                 let didHandleShortcut = handleShortcut(shortcutItem)
-								print("Shortcut handle \(didHandleShortcut)")
+                print("Shortcut handle \(didHandleShortcut)")
             }
-            //Return false incase application was lanched from shorcut to prevent
-            //application(_:performActionForShortcutItem:completionHandler:) from being called
-            return !launchedFromShortCut
-
+            
+            if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
+                // Memorise the last connection
+                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+                return true
+            }else{
+                //Return false incase application was lanched from shorcut to prevent
+                //application(_:performActionForShortcutItem:completionHandler:) from being called
+                return !launchedFromShortCut
+            }
+            
         }
         return true
     }
@@ -159,6 +166,12 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             }
         }
         
+    }
+    
+    func setRootToHome(_ stringURL:String){
+        let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController")
+        (homepage as! HomePageViewController).serverURL  =  stringURL
+        navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
     }
     
     /*
