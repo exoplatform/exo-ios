@@ -4,7 +4,8 @@
 
 An Objective-C framework for your everyday HTML needs.
 
-[![Build Status](https://img.shields.io/travis/iabudiab/HTMLKit/master.svg?style=flat)](https://travis-ci.org/iabudiab/HTMLKit)
+[![Build Status](https://img.shields.io/travis/iabudiab/HTMLKit/develop.svg?style=flat)](https://travis-ci.org/iabudiab/HTMLKit)
+[![codecov](https://codecov.io/gh/iabudiab/HTMLKit/branch/develop/graph/badge.svg)](https://codecov.io/gh/iabudiab/HTMLKit)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/HTMLKit.svg?style=flat)](https://cocoapods.org/pods/HTMLKit)
 [![CocoaDocs](https://img.shields.io/cocoapods/metrics/doc-percent/HTMLKit.svg?style=flat)](http://cocoadocs.org/docsets/HTMLKit)
@@ -75,10 +76,8 @@ $ gem install cocoapods
 To add `HTMLKit` as a dependency into your project using CocoaPods just add the following in your `Podfile`:
 
 ```ruby
-use_frameworks!
-
 target 'MyTarget' do
-  pod 'HTMLKit', '~> 2.0'
+  pod 'HTMLKit', '~> 3.1'
 end
 ```
 
@@ -95,7 +94,7 @@ $ pod install
 Add `HTMLKit` to your `Package.swift` dependecies:
 
 ```swift
-.Package(url: "https://github.com/iabudiab/HTMLKit", majorVersion: 2)
+.Package(url: "https://github.com/iabudiab/HTMLKit", majorVersion: 3)
 ```
 
 Then run:

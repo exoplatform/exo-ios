@@ -73,6 +73,10 @@
 
 		_tokenizer = [[HTMLTokenizer alloc] initWithString:string ?: @""];
 		_tokenizer.parser = self;
+		__weak HTMLParser *weakSelf = self;
+		_tokenizer.parseErrorCallback = ^(HTMLParseErrorToken *token) {
+			[weakSelf emitParseError:@"Tokenization error: %@", token.asParseError];
+		};
 
 		_pendingTableCharacterTokens = [[HTMLCharacterToken alloc] initWithString:@""];
 
@@ -130,6 +134,10 @@
 	[self initializeDocument];
 	_tokenizer = [[HTMLTokenizer alloc] initWithString:_tokenizer.string];
 	_tokenizer.parser = self;
+	__weak HTMLParser *weakSelf = self;
+	_tokenizer.parseErrorCallback = ^(HTMLParseErrorToken *token) {
+		[weakSelf emitParseError:@"Tokenization error: %@", token.asParseError];
+	};
 
 	_contextElement = contextElement;
 	_fragmentParsingAlgorithm = YES;
@@ -225,11 +233,6 @@
 
 		return NO;
 	};
-
-	if (token.isParseError) {
-		[self emitParseError:@"Tokenizer Parser Error: %@", token.asParseError];
-		return;
-	}
 
 	if (_ignoreNextLineFeedCharacterToken) {
 		_ignoreNextLineFeedCharacterToken = NO;
@@ -1139,7 +1142,7 @@
 			if (charactes.length > 0) {
 				[self reconstructActiveFormattingElements];
 				[self insertCharacters:charactes];
-				if (!charactes.isHTMLWhitespaceString) {
+				if (!charactes.htmlkit_isHTMLWhitespaceString) {
 					_framesetOkFlag = NO;
 				}
 			}
@@ -1440,7 +1443,6 @@
 	} else if ([tagName isEqualToString:@"math"]) {
 		[self reconstructActiveFormattingElements];
 		AdjustMathMLAttributes(token);
-		AdjustForeignAttributes(token);
 		[self insertForeignElementForToken:token inNamespace:HTMLNamespaceMathML];
 		if (token.isSelfClosing) {
 			[_stackOfOpenElements popCurrentNode];
@@ -1448,7 +1450,6 @@
 	} else if ([tagName isEqualToString:@"svg"]) {
 		[self reconstructActiveFormattingElements];
 		AdjustSVGAttributes(token);
-		AdjustForeignAttributes(token);
 		[self insertForeignElementForToken:token inNamespace:HTMLNamespaceSVG];
 		if (token.isSelfClosing) {
 			[_stackOfOpenElements popCurrentNode];
@@ -2312,7 +2313,7 @@
 			[characters enumerateSubstringsInRange:NSMakeRange(0, characters.length)
 										   options:NSStringEnumerationByComposedCharacterSequences
 										usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-											if (substring.isHTMLWhitespaceString) {
+											if (substring.htmlkit_isHTMLWhitespaceString) {
 												[self insertCharacters:substring];
 											} else {
 												[self emitParseError:@"Unexpected Character (%@) in <frameset>", substring];
@@ -2380,7 +2381,7 @@
 			[characters enumerateSubstringsInRange:NSMakeRange(0, characters.length)
 										   options:NSStringEnumerationByComposedCharacterSequences
 										usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-											if (substring.isHTMLWhitespaceString) {
+											if (substring.htmlkit_isHTMLWhitespaceString) {
 												[self insertCharacters:substring];
 											} else {
 												[self emitParseError:@"Unexpected Character (%@) after <frameset>", substring];
@@ -2514,7 +2515,7 @@
 										usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
 											if ([substring isEqualToString:@"\uFFFD"]) {
 												[self emitParseError:@"Unexpected Character (0x0000) in foreign content"];
-											} else if (!substring.isHTMLWhitespaceString) {
+											} else if (!substring.htmlkit_isHTMLWhitespaceString) {
 												_framesetOkFlag = NO;
 											}
 											[self insertCharacters:substring];
@@ -2530,7 +2531,7 @@
 			return;
 		case HTMLTokenTypeStartTag:
 		{
-			void (^ anythingElse)() = ^ {
+			void (^ anythingElse)(void) = ^ {
 				if (self.adjustedCurrentNode.htmlNamespace == HTMLNamespaceMathML) {
 					AdjustMathMLAttributes(token.asTagToken);
 				}
@@ -2538,14 +2539,13 @@
 					AdjustSVGNameCase(token.asTagToken);
 					AdjustSVGAttributes(token.asTagToken);
 				}
-				AdjustForeignAttributes(token.asTagToken);
 				[self insertForeignElementForToken:token.asTagToken inNamespace:self.adjustedCurrentNode.htmlNamespace];
 				if (token.asTagToken.selfClosing) {
 					[_stackOfOpenElements popCurrentNode];
 				}
 			};
 
-			void (^ matchedCase)() = ^ {
+			void (^ matchedCase)(void) = ^ {
 				[self emitParseError:@"Unexpected start tag <%@> in foreign content", token.asTagToken.tagName];
 				if (_fragmentParsingAlgorithm) {
 					anythingElse();
