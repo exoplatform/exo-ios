@@ -1,4 +1,4 @@
-osx_image: xcode9.2
+osx_image: xcode12
 
 language: objective-c
 
@@ -9,6 +9,7 @@ xcode_scheme: eXo
 
 before_install: 
   - brew update
-  - gem install cocoapods -v '1.4.0'
+  - gem install cocoapods -v '1.10.0'
+  - bundle install
 
-script: pod install --repo-update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO
+script: pod install --repo-update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO -quiet

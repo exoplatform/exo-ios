@@ -19,11 +19,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>12</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -45,6 +45,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>$(APP_NAME) requires to access camera for taking profile picture or uploading images.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(APP_NAME) requires to access Photo Library to let you download or send images with the application.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -64,9 +68,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>$(APP_NAME) requires to access camera for taking profile picture or uploading images.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(APP_NAME) requires to access Photo Library to let you download or send images with the application.</string>
 </dict>
 </plist>

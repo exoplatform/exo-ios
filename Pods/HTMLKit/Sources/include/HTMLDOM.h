@@ -18,9 +18,12 @@
 #import "HTMLRange.h"
 #import "HTMLDOMTokenList.h"
 #import "HTMLNodeIterator.h"
+#import "HTMLTreeVisitor.h"
 #import "HTMLTreeWalker.h"
 #import "HTMLNodeFilter.h"
 
 #import "HTMLKitDOMExceptions.h"
 #import "HTMLNamespaces.h"
 #import "HTMLQuirksMode.h"
+
+#import "HTMLOrderedDictionary.h"
