@@ -12,7 +12,7 @@ target "eXo" do
     pod 'UICKeyChainStore'
     pod 'HTMLKit'
     pod 'Fabric'
-    pod 'Crashlytics', '~> 3.14.0'
+    pod 'Crashlytics'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
 
@@ -27,7 +27,7 @@ end
 
 target "share-extension" do
     pod 'UICKeyChainStore'
-    pod 'HTMLKit', '~> 3.1.0'
+    pod 'HTMLKit'
 end
 
 
