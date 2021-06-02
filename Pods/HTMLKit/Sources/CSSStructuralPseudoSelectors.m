@@ -9,7 +9,7 @@
 #import "CSSStructuralPseudoSelectors.h"
 #import "CSSSelectors.h"
 #import "HTMLElement.h"
-#import "NSString+HTMLKit.h"
+#import "NSString+Private.h"
 
 #pragma mark - Elements
 
@@ -276,7 +276,7 @@ CSSSelector * ltSelector(NSInteger index)
 	return namedBlockSelector(name, ^BOOL(HTMLElement * _Nonnull element) {
 		NSUInteger elementIndex = [element.parentElement indexOfChildNode:element];
 
-		if (index > 0) {
+		if (index >= 0) {
 			return elementIndex < index;
 		} else {
 			return elementIndex < element.parentElement.childNodesCount - index - 1;
@@ -290,7 +290,7 @@ CSSSelector * gtSelector(NSInteger index)
 	return namedBlockSelector(name, ^BOOL(HTMLElement * _Nonnull element) {
 		NSUInteger elementIndex = [element.parentElement indexOfChildNode:element];
 
-		if (index > 0) {
+		if (index >= 0) {
 			return elementIndex > index;
 		} else {
 			return elementIndex > element.parentElement.childNodesCount - index - 1;
@@ -304,7 +304,7 @@ CSSSelector * eqSelector(NSInteger index)
 	return namedBlockSelector(name, ^BOOL(HTMLElement * _Nonnull element) {
 		NSUInteger elementIndex = [element.parentElement indexOfChildNode:element];
 
-		if (index > 0) {
+		if (index >= 0) {
 			return elementIndex == index;
 		} else {
 			return elementIndex == element.parentElement.childNodesCount - index - 1;
