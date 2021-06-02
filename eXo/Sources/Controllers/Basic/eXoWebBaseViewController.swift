@@ -23,7 +23,9 @@ class eXoWebBaseController: UIViewController {
     
     var webView:WKWebView?
     var serverURL:String? // The WebView begin with this link (sent by Server Selection/ Input Server, Basically is the link to platform)
- 
+    var samlRequest:URLRequest?
+    var isSAMLResquest:Bool = false
+    
     override func viewDidLoad() {        
         super.viewDidLoad()
     }
@@ -55,9 +57,12 @@ class eXoWebBaseController: UIViewController {
         }
         // load URL in webview
         let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        webView?.load(request)
+        if isSAMLResquest {
+            webView?.load(samlRequest ?? request)
+        }else{
+            webView?.load(request)
+        }
         webViewContainer.addSubview(webView!)
-        
         // disable the autosizing to use manual constraints
         webView?.translatesAutoresizingMaskIntoConstraints = false;
         

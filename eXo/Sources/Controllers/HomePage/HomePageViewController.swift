@@ -187,7 +187,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
             previewController.serverURL = request.url?.absoluteString
-            self.present(previewNavigationController, animated: true, completion: nil)
+            /// I am using this check , because we have problem with SAMLRequest when navigate and using the wkwebview in the previewController.
+            if request.url?.absoluteString.range(of:"https://accounts.google.com/o/saml2/") != nil  {
+                previewController.isSAMLResquest = true
+                previewController.samlRequest = request
+                self.present(previewNavigationController, animated: true, completion: nil)
+            }else{
+                self.present(previewNavigationController, animated: true, completion: nil)
+            }
             decisionHandler(.cancel)
             return
         }
