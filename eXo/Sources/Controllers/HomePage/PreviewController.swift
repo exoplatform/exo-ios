@@ -18,7 +18,7 @@
 import UIKit
 import WebKit
 
-class PreviewController: eXoWebBaseController, WKNavigationDelegate {
+class PreviewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate {
     
     // Navigation buttons of the webView
     @IBOutlet weak var goForwardButton: UIBarButtonItem!
@@ -29,6 +29,7 @@ class PreviewController: eXoWebBaseController, WKNavigationDelegate {
         super.viewDidLoad()
         self.setupWebView(self.view)
         webView?.navigationDelegate = self
+        webView?.uiDelegate = self
         goBackButton.isEnabled = false
         goForwardButton.isEnabled = false
     }
