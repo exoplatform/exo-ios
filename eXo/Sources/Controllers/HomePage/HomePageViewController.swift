@@ -157,6 +157,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
             self.navigationController?.popViewController(animated: true)
+            UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
+            UserDefaults.standard.setValue("", forKey: "serverURL")
         }
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or register page && disable the bar when login (register) is finished
@@ -173,7 +175,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
-
+        if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil){
+            UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
+            UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
+        }
         /*
         Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
         - WKNavigationType of a automatic request is always = .Others
