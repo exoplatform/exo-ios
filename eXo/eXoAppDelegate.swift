@@ -57,20 +57,31 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         // Quick actions
         if #available(iOS 9.0, *) {
             ServerManager.sharedInstance.updateQuickAction()
-            
             var launchedFromShortCut = false
             //Check for ShortCutItem
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
                 launchedFromShortCut = true
                 let didHandleShortcut = handleShortcut(shortcutItem)
-								print("Shortcut handle \(didHandleShortcut)")
+				print("Shortcut handle \(didHandleShortcut)")
             }
-            //Return false incase application was lanched from shorcut to prevent
-            //application(_:performActionForShortcutItem:completionHandler:) from being called
-            return !launchedFromShortCut
+            if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
+                // Memorise the last connection
+                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+                return true
+            }else{
+                //Return false incase application was lanched from shorcut to prevent
+                //application(_:performActionForShortcutItem:completionHandler:) from being called
+                return !launchedFromShortCut
+            }
 
         }
         return true
+    }
+    
+    func setRootToHome(_ stringURL:String){
+        let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController")
+        (homepage as! HomePageViewController).serverURL  =  stringURL
+        navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -187,10 +198,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         if let _fcmToken = fcmToken {
             print("Push token reveived: \(_fcmToken)")
         }
-    }
-    
-    func messaging(_ messaging: Messaging) {
-       // print(remoteMessage.debugDescription)
     }
 
 	func handleNotification(userInfo: [AnyHashable: Any]) {

@@ -29,24 +29,21 @@ class Tool {
     - Return the valid ServerURL via a bloc (handleSuccess)
     */
     static func verificationServerURL(_ string:String, handleSuccess: @escaping (_ serverURL:String) ->Void) {
-        
         let serverURL = domainOfStringURL(string)
-        
         let platformInfoURL = serverURL + "/rest/platform/info"
-        
         let url = URL.init(string: platformInfoURL)
         if (url != nil) {
-            SVProgressHUD.show(withStatus: NSLocalizedString("OnBoarding.Title.SavingServer", comment:""), maskType: .black)
+            SVProgressHUD.show(withStatus: NSLocalizedString("OnBoarding.Title.SavingServer", comment:""))
+            SVProgressHUD.setDefaultMaskType(.black)
             let operationQueue = OperationQueue.init()
             operationQueue.name = "URLVerification"
             let request = URLRequest.init(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: Config.timeout)
-            
-            NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue, completionHandler: { (response, data, error) -> Void in
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
                 // dismiss the HUD
                 OperationQueue.main.addOperation({ () -> Void in
                     SVProgressHUD.popActivity()
                 })
-                
                 if (error == nil) {
                     let statusCode = (response as! HTTPURLResponse).statusCode
                     if (statusCode >= 200  && statusCode < 300) {
@@ -67,8 +64,6 @@ class Tool {
                         } catch let error {
                             print(error.localizedDescription)
                         }
-
-                        
                     } else {
                         Tool.showErrorMessageForCode(ConnectionError.URLError)
                     }
@@ -76,10 +71,10 @@ class Tool {
                     Tool.showErrorMessageForCode(ConnectionError.URLError)
                 }
             })
+            task.resume()
         } else {
             Tool.showErrorMessageForCode(ConnectionError.URLError)
         }
-
     }
     
     static func getPlatformVersion(_ url:URL, success:@escaping (_ version:Float) -> Void, failure:@escaping (_ errorCode:Int) -> Void) {
