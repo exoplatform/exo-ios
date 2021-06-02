@@ -81,6 +81,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     func setRootToHome(_ stringURL:String){
         let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController")
         (homepage as! HomePageViewController).serverURL  =  stringURL
+        navigationVC?.navigationBar.isHidden = false
         navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
     }
 
@@ -166,10 +167,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                 navigationVC?.popToRootViewController(animated: false)
                 let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController")
                 (homepage as! HomePageViewController).serverURL  =  stringURL
+                navigationVC?.navigationBar.isHidden = false
                 navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
             }
         }
-        
     }
     
     /*
