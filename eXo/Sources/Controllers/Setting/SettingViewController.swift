@@ -133,19 +133,19 @@ class SettingViewController: UITableViewController {
         return (indexPath.section == 0 && ServerManager.sharedInstance.serverList.count > 0 )
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             self.deleteServer(indexPath)
         }
     }
     
     func deleteServer(_ indexPath: IndexPath) {
-        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertActionStyle.cancel) {
+        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertAction.Style.cancel) {
             (cancelAction) -> Void in
         }
         alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertActionStyle.destructive) { (confirmAction) -> Void in
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
             let server:Server = (ServerManager.sharedInstance.serverList?[indexPath.row])! as! Server
             ServerManager.sharedInstance.removeServer(server)
             self.tableView.reloadData()

@@ -141,10 +141,10 @@ class ServerManager  {
                 if (items.count < Config.maximumShortcutAllow) {
                     if (Config.communityURL.contains((server as! Server).serverURL.stringURLWithoutProtocol())) {
                         // A different Logo and title for eXo Tribe website
-												items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnnecteXoTribe", comment:""), localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName: "eXoTribeLogo"), userInfo: ((server as! Server).toDictionary()) as? [String : NSSecureCoding]))
                     } else {
                         // A common Logo for the other servers
-											items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: ((server as! Server).toDictionary() as! [AnyHashable: Any])))
+                        items.add(UIApplicationShortcutItem.init(type: ShortcutType.connectRecentServer, localizedTitle: NSLocalizedString("Shortcut.Title.ConnectTo", comment:""), localizedSubtitle: (server as! Server).natureName(), icon: UIApplicationShortcutIcon(templateImageName: "server"), userInfo: ((server as! Server).toDictionary()) as? [String : NSSecureCoding]))
                     }
                 }
             }
