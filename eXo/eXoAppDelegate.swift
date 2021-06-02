@@ -45,7 +45,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     var navigationVC:UINavigationController?
     static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Start Crashlytics
         Fabric.with([Crashlytics.self])
         // Get the root view (the enter point of storyboard)
@@ -59,7 +59,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             ServerManager.sharedInstance.updateQuickAction()
             var launchedFromShortCut = false
             //Check for ShortCutItem
-            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
                 launchedFromShortCut = true
                 let didHandleShortcut = handleShortcut(shortcutItem)
 				print("Shortcut handle \(didHandleShortcut)")

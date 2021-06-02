@@ -73,10 +73,10 @@ class eXoWebBaseController: UIViewController {
         if (webView?.superview != nil) {
             let webViewContainer = webView?.superview!
             // Setup Constraints for WebView. All margin to superview = 0
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .top, multiplier: 1.0, constant: 0.0))
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .leading, multiplier: 1.0, constant: 0.0))
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .bottom, multiplier: 1.0, constant: 0.0))
-            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: webView!, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: webView!, attribute: .top, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: webView!, attribute: .leading, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: webView!, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+            webViewContainer?.addConstraint(NSLayoutConstraint(item: webViewContainer!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: webView!, attribute: .trailing, multiplier: 1.0, constant: 0.0))
             
         }
     }
@@ -85,10 +85,10 @@ class eXoWebBaseController: UIViewController {
         let alert:UIAlertController = UIAlertController.init(
             title: NSLocalizedString("ServerManager.Title.Warning", comment:""),
             message: NSLocalizedString("ServerManager.Message.WarningVersionNotSupported",comment:""),
-            preferredStyle: UIAlertControllerStyle.alert)
+            preferredStyle: UIAlertController.Style.alert)
         let action:UIAlertAction = UIAlertAction.init(
             title: NSLocalizedString("Word.Back",comment:""),
-            style: UIAlertActionStyle.default,
+            style: UIAlertAction.Style.default,
             handler: { (action) -> Void in
                 let navigationVC:UINavigationController = self.navigationController!
 //                if (navigationVC.viewControllers.count > 1) {
