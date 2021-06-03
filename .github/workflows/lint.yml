@@ -1,0 +1,18 @@
+name: PR Lint
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+jobs:
+  pr-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: morrisoncole/pr-lint-action@v1.5.0
+        with:
+          title-regex: "#[0-9]+: [A-Za-z0-9-_]"
+          on-failed-regex-fail-action: false
+          on-failed-regex-request-changes: false
+          on-failed-regex-create-review: true
+          on-failed-regex-comment:
+            "This is just an example. Failed regex: `%regex%`!"
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
