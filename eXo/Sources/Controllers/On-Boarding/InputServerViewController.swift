@@ -133,6 +133,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         // Open the selected server in the WebView
         let homepageVC = segue.destination as! HomePageViewController
         homepageVC.serverURL = self.selectedServer?.serverURL
+        UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
         self.tableView.reloadData()
     }
 }

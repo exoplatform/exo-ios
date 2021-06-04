@@ -50,20 +50,20 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         */
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
-        self.navigationController?.navigationBar.barTintColor = nil
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        setNavigationBarAppearance()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        setNavigationBarAppearance()
+    }
+    
+    func setNavigationBarAppearance(){
         self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default        
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -153,27 +153,35 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
+        if let urlToSee = request.url?.absoluteString {
+            print("=============== Navigation Url : \(urlToSee)")
+        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
             self.navigationController?.popViewController(animated: true)
+            UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
+            UserDefaults.standard.setValue("", forKey: "serverURL")
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-        // Display the navigation bar at login or register page && disable the bar when login (register) is finished
-        // Home Page Address: portal/intranet/register (hide the navigation bar)
-        if request.url?.absoluteString.range(of: serverDomain!+"/portal/intranet") != nil  {
-           self.navigationController?.setNavigationBarHidden(true, animated:true)
-        }
         // Page Login Address: [Domain]/portal/login
         // Page Register: [Domain]/portal/intranet/register
         //(show navigation bar when the webview display this pages, because the pages don't contain a embedded navigation bar.
-        if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil) || (request.url?.absoluteString.range(of: serverDomain! + "/portal/intranet/register") != nil) {
+        if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil) || (request.url?.absoluteString.range(of: serverDomain! + "/portal/intranet/register") != nil) || (request.url?.absoluteString.range(of: serverDomain! + "/rest/state/status") != nil) {
             self.navigationController?.setNavigationBarHidden(false, animated:true)
-        }        
+        }else{
+            // Display the navigation bar at login or register page && disable the bar when login (register) is finished
+            // Home Page Address: portal/intranet/register (hide the navigation bar)
+            self.navigationController?.setNavigationBarHidden(true, animated:true)
+        }
+        
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
-
+        if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil){
+            UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
+            UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
+        }
         /*
         Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
         - WKNavigationType of a automatic request is always = .Others
@@ -182,7 +190,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
             previewController.serverURL = request.url?.absoluteString
-            self.present(previewNavigationController, animated: true, completion: nil)
+            /// I am using this check , because we have problem with SAMLRequest when navigate and using the wkwebview in the previewController.
+            if request.url?.absoluteString.range(of:"https://accounts.google.com/o/saml2/") != nil  {
+                previewController.isSAMLResquest = true
+                previewController.samlRequest = request
+                self.present(previewNavigationController, animated: true, completion: nil)
+            }else{
+                self.present(previewNavigationController, animated: true, completion: nil)
+            }
             decisionHandler(.cancel)
             return
         }
