@@ -170,8 +170,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-        // Display the navigation bar at login or register page && disable the bar when login (register) is finished
-        // Home Page Address: portal/intranet/register (hide the navigation bar)
+        // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
+        // Home Page Address: portal/dw 
         if ((request.url?.absoluteString.range(of: "/portal/dw/")) != nil) && !(request.url?.absoluteString.range(of: "portal:action=Logout") != nil) {
             UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
             navigationController?.setNavigationBarHidden(true, animated: true)
