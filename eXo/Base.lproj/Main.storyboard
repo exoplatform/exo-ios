@@ -403,7 +403,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cN0-NP-pMn" id="oxA-Bf-hLL">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="Xqu-rV-W4l" kind="push" identifier="EditServerSegue" id="vP4-9J-CCr"/>
                                 </connections>
@@ -431,6 +433,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NoServerCell" id="eQ1-DF-4v3">
                                 <rect key="frame" x="0.0" y="193.5" width="414" height="69"/>
@@ -439,6 +442,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="Vkg-Xd-8eS" kind="push" identifier="AddServerSegue" id="hS9-Pp-Xgd"/>
                                 </connections>
@@ -502,13 +506,15 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-Ry-GkA">
                                 <rect key="frame" x="0.0" y="-34" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="sn4-6g-VsS">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jat-Ex-lt0" customClass="PlaceholderTextView" customModule="eXo" customModuleProvider="target">
                                             <rect key="frame" x="15" y="65" width="384" height="130"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
                                             <connections>
@@ -543,7 +549,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Jat-Ex-lt0" firstAttribute="top" secondItem="q86-T1-c7U" secondAttribute="bottom" constant="15" id="4FL-xu-4eM"/>
                                         <constraint firstItem="q86-T1-c7U" firstAttribute="top" secondItem="sn4-6g-VsS" secondAttribute="top" id="68z-xA-tXm"/>
@@ -571,6 +577,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <segue destination="AuK-gD-EV5" kind="push" identifier="selectServerSegue" id="6jh-pv-CuH"/>
                                         </connections>
@@ -610,7 +617,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="XzK-eh-cIw" firstAttribute="centerX" secondItem="zs1-Df-9ue" secondAttribute="centerX" id="oKK-OD-tyV"/>
                         <constraint firstItem="XzK-eh-cIw" firstAttribute="centerY" secondItem="zs1-Df-9ue" secondAttribute="centerY" id="xPp-Hq-4ao"/>
@@ -865,7 +872,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="PQ5-c7-Tfq"/>
-        <segue reference="w4C-Oj-R0R"/>
+        <segue reference="6jh-pv-CuH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background1" width="414" height="736"/>
