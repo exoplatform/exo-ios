@@ -67,8 +67,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
         self.navigationController?.navigationBar.tintColor = UIColor.black
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false

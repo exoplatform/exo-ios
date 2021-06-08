@@ -41,6 +41,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.clear
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
+        textView.backgroundColor = .white
         self.tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
 
     }
@@ -50,6 +51,8 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         // the navigation controller is alway shown in this screen
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.isNavigationBarHidden = false
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     override func viewDidAppear(_ animated: Bool) {
