@@ -43,6 +43,7 @@ class InputServerViewController: UIViewController, UITableViewDelegate, UITableV
         textView.placeholder = NSLocalizedString("OnBoarding.Message.EnterURL", comment: "")
         textView.backgroundColor = .white
         self.tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: kTableHeaderViewIdentifier)
+        recentServerHeader.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
 
     }
     

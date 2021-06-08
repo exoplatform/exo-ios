@@ -103,6 +103,7 @@ class SettingViewController: UITableViewController {
                 let ctacell = tableView.dequeueReusableCell(withIdentifier: "NoServerCell", for: indexPath)
                 ctacell.textLabel?.text = NSLocalizedString("Setting.Title.AddServer", comment: "")
                 ctacell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+                ctacell.textLabel?.textColor = .darkGray
                 return ctacell
             }
         }
