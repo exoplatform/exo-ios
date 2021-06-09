@@ -44,7 +44,8 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     var quitTimestamp:Double? // Store the timestamps when user quit the app & Enter on Background
     var navigationVC:UINavigationController?
     static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
-    
+    let notificationCenter = UNUserNotificationCenter.current()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Start Crashlytics
         Fabric.with([Crashlytics.self])
@@ -110,11 +111,12 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        application.applicationIconBadgeNumber = 0
+        application.registerForRemoteNotifications()
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -175,18 +177,15 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     /*
      MARK: Firebase messaging
      */
+    
     private func tryToRegisterForRemoteNotifications(application: UIApplication) {
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
+        notificationCenter.delegate = self
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        notificationCenter.requestAuthorization(options: options) {
+            (didAllow, error) in
+            if !didAllow {
+                print("User has declined notifications")
+            }
         }
         application.registerForRemoteNotifications()
     }
@@ -224,13 +223,12 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (isSucc, error) in
             if isSucc {
                 if let _userInfo = userInfo as? NSDictionary {
+                    print(_userInfo)
                     if let aps = _userInfo["aps"] as? NSDictionary {
-                        if let alert = aps["alert"] as? NSDictionary {
-                            if let badge = alert["badge"] as? Int {
-                                DispatchQueue.main.async {
-                                    application.applicationIconBadgeNumber = badge
-                                    application.registerForRemoteNotifications()
-                                }
+                        if let badge = aps["badge"] as? Int {
+                            DispatchQueue.main.async {
+                                application.applicationIconBadgeNumber = badge
+                                application.registerForRemoteNotifications()
                             }
                         }
                     }
