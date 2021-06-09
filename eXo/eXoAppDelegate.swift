@@ -73,7 +73,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                 //application(_:performActionForShortcutItem:completionHandler:) from being called
                 return !launchedFromShortCut
             }
-
         }
         return true
     }
@@ -111,7 +110,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        application.registerForRemoteNotifications()
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -119,7 +118,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-         print("Reveived token! \(deviceToken.debugDescription)")
     }
 
      /*
@@ -158,7 +156,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                 self.quickActionOpenHomePageForURL(server.serverURL)
             }
         }
-        
         return succeeded
     }
     
@@ -190,20 +187,15 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        
         application.registerForRemoteNotifications()
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         PushTokenSynchronizer.shared.token = fcmToken
-        if let _fcmToken = fcmToken {
-            print("Push token reveived: \(_fcmToken)")
-        }
     }
 
 	func handleNotification(userInfo: [AnyHashable: Any]) {
 		if let url = userInfo["url"] as? String {
-			print("url : \(url)")
 			let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
 			ServerManager.sharedInstance.addEditServer(server)
 			self.quickActionOpenHomePageForURL(server.serverURL)
@@ -211,13 +203,11 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
 	}
     
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        print(userInfo)
 		handleNotification(userInfo: userInfo);
 	}
 
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
 									 fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print(userInfo)
 		handleNotification(userInfo: userInfo);
 		completionHandler(UIBackgroundFetchResult.newData)
 	}
@@ -234,7 +224,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (isSucc, error) in
             if isSucc {
                 if let _userInfo = userInfo as? NSDictionary {
-                    print("================ Notification JsonData:\n\(_userInfo)")
                     if let aps = _userInfo["aps"] as? NSDictionary {
                         if let alert = aps["alert"] as? NSDictionary {
                             if let badge = alert["badge"] as? Int {
@@ -259,7 +248,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
       // With swizzling disabled you must let Messaging know about the message, for Analytics
       // Messaging.messaging().appDidReceiveMessage(userInfo)
       // Print full message.
-      print(userInfo)
         UIApplication.shared.applicationIconBadgeNumber = 0
         UIApplication.shared.registerForRemoteNotifications()
         completionHandler()

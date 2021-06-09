@@ -112,7 +112,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print(error.localizedDescription)
         loadingIndicator.stopAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
     }
@@ -161,9 +160,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
-        if let urlToSee = request.url?.absoluteString {
-            print("=============== Navigation Url : \(urlToSee)")
-        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
