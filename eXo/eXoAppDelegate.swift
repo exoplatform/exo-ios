@@ -63,7 +63,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
                 launchedFromShortCut = true
                 let didHandleShortcut = handleShortcut(shortcutItem)
-				print("Shortcut handle \(didHandleShortcut)")
+                print("Shortcut handle \(didHandleShortcut)")
             }
             if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
                 // Memorise the last connection
@@ -85,6 +85,12 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
     }
 
+    func setRootToConnect(){
+        let signInToeXo = ConnectToExoViewController()
+        navigationVC?.navigationBar.isHidden = false
+        navigationVC?.pushViewController(signInToeXo, animated: false)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
