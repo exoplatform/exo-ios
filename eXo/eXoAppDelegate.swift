@@ -86,7 +86,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     }
 
     func setRootToConnect(){
-        let signInToeXo = ConnectToExoViewController()
+        let signInToeXo = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
         navigationVC?.navigationBar.isHidden = false
         navigationVC?.pushViewController(signInToeXo, animated: false)
     }
