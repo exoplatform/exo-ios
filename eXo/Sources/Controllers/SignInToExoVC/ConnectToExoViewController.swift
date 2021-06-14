@@ -31,14 +31,19 @@ class ConnectToExoViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.black
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
-        var yourBackImage = UIImage(named: "goBack")
-        if #available(iOS 13.0, *) {
-             yourBackImage = UIImage(named: "goBack")?.withTintColor(UIColor(hex: 0xF0F0F0))
-        }
-        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.backItem?.title = ""
+        //MARK:- menuButton
+        let menuButton = UIButton(type: .system)
+        menuButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        menuButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        menuButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        let rightBarButtonItem3 = UIBarButtonItem()
+        rightBarButtonItem3.customView = menuButton
+        navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
+    }
+    
+    @objc func goBack(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     func initView() {
