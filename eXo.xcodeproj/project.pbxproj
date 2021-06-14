@@ -1293,7 +1293,7 @@
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.exoplatform.mob.eXoPlatformiPHone";
+                PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1315,7 +1315,7 @@
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.exoplatform.mob.eXoPlatformiPHone";
+                PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
