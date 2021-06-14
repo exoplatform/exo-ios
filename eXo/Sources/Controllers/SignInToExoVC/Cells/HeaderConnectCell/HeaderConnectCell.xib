@@ -46,6 +46,7 @@
                         </state>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="tid-11-aGZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1zg-gg-fSP"/>
                     <constraint firstAttribute="bottom" secondItem="jMW-ry-O4Y" secondAttribute="bottom" id="3Ia-TG-HgT"/>
@@ -58,6 +59,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="headerButton" destination="jMW-ry-O4Y" id="2zN-vn-WwB"/>
                 <outlet property="headerTitle" destination="CSm-fh-zoC" id="9sG-o9-1as"/>

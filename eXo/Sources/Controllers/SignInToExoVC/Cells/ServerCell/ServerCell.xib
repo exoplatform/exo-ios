@@ -89,6 +89,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="badgeView" destination="LZ6-uM-w9i" id="UYK-KD-ULJ"/>
                 <outlet property="containerView" destination="hpE-rD-uSL" id="8xF-3H-Ha9"/>
