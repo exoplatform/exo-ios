@@ -71,14 +71,26 @@
 		B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335E201F266800A2EA71 /* StringExtension.swift */; };
 		B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */; };
 		D0804D08DA920EF9EF853063 /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 122EC416DFB8B793DAFDAFEE /* Pods_share_extension.framework */; };
-		D79611032677756300F2FDE8 /* HeaderConnectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79610FC2677756300F2FDE8 /* HeaderConnectCell.swift */; };
-		D79611042677756300F2FDE8 /* HeaderConnectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79610FD2677756300F2FDE8 /* HeaderConnectCell.xib */; };
-		D79611052677756300F2FDE8 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79610FF2677756300F2FDE8 /* ServerCell.swift */; };
-		D79611062677756300F2FDE8 /* ServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79611002677756300F2FDE8 /* ServerCell.xib */; };
-		D79611072677756300F2FDE8 /* ConnectToExoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79611012677756300F2FDE8 /* ConnectToExoViewController.xib */; };
-		D79611082677756300F2FDE8 /* ConnectToExoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611022677756300F2FDE8 /* ConnectToExoViewController.swift */; };
 		D796110F2677761900F2FDE8 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796110E2677761900F2FDE8 /* UIView-Extension.swift */; };
 		D79611162677763D00F2FDE8 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611152677763D00F2FDE8 /* UIColor-Extension.swift */; };
+		D796114A267787EE00F2FDE8 /* ConnectToExoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7961148267787EE00F2FDE8 /* ConnectToExoViewController.swift */; };
+		D796114B267787EE00F2FDE8 /* ConnectToExoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7961148267787EE00F2FDE8 /* ConnectToExoViewController.swift */; };
+		D796114C267787EE00F2FDE8 /* ConnectToExoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7961148267787EE00F2FDE8 /* ConnectToExoViewController.swift */; };
+		D796114D267787EE00F2FDE8 /* ConnectToExoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7961149267787EE00F2FDE8 /* ConnectToExoViewController.xib */; };
+		D796114E267787EE00F2FDE8 /* ConnectToExoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7961149267787EE00F2FDE8 /* ConnectToExoViewController.xib */; };
+		D796114F267787EE00F2FDE8 /* ConnectToExoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7961149267787EE00F2FDE8 /* ConnectToExoViewController.xib */; };
+		D796115C2677880100F2FDE8 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796115A2677880100F2FDE8 /* ServerCell.swift */; };
+		D796115D2677880100F2FDE8 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796115A2677880100F2FDE8 /* ServerCell.swift */; };
+		D796115E2677880100F2FDE8 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796115A2677880100F2FDE8 /* ServerCell.swift */; };
+		D796115F2677880100F2FDE8 /* ServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D796115B2677880100F2FDE8 /* ServerCell.xib */; };
+		D79611602677880100F2FDE8 /* ServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D796115B2677880100F2FDE8 /* ServerCell.xib */; };
+		D79611612677880100F2FDE8 /* ServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D796115B2677880100F2FDE8 /* ServerCell.xib */; };
+		D796116E2677881500F2FDE8 /* HeaderConnectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796116C2677881500F2FDE8 /* HeaderConnectCell.swift */; };
+		D796116F2677881500F2FDE8 /* HeaderConnectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796116C2677881500F2FDE8 /* HeaderConnectCell.swift */; };
+		D79611702677881500F2FDE8 /* HeaderConnectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796116C2677881500F2FDE8 /* HeaderConnectCell.swift */; };
+		D79611712677881500F2FDE8 /* HeaderConnectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D796116D2677881500F2FDE8 /* HeaderConnectCell.xib */; };
+		D79611722677881500F2FDE8 /* HeaderConnectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D796116D2677881500F2FDE8 /* HeaderConnectCell.xib */; };
+		D79611732677881500F2FDE8 /* HeaderConnectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D796116D2677881500F2FDE8 /* HeaderConnectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,14 +236,14 @@
 		B5C7335E201F266800A2EA71 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesInterceptor.swift; sourceTree = "<group>"; };
 		D2AB3B7D6776CD68C5B8F4BA /* Pods-eXo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.release.xcconfig"; path = "Target Support Files/Pods-eXo/Pods-eXo.release.xcconfig"; sourceTree = "<group>"; };
-		D79610FC2677756300F2FDE8 /* HeaderConnectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConnectCell.swift; sourceTree = "<group>"; };
-		D79610FD2677756300F2FDE8 /* HeaderConnectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderConnectCell.xib; sourceTree = "<group>"; };
-		D79610FF2677756300F2FDE8 /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
-		D79611002677756300F2FDE8 /* ServerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerCell.xib; sourceTree = "<group>"; };
-		D79611012677756300F2FDE8 /* ConnectToExoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectToExoViewController.xib; sourceTree = "<group>"; };
-		D79611022677756300F2FDE8 /* ConnectToExoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectToExoViewController.swift; sourceTree = "<group>"; };
 		D796110E2677761900F2FDE8 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		D79611152677763D00F2FDE8 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		D7961148267787EE00F2FDE8 /* ConnectToExoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectToExoViewController.swift; sourceTree = "<group>"; };
+		D7961149267787EE00F2FDE8 /* ConnectToExoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectToExoViewController.xib; sourceTree = "<group>"; };
+		D796115A2677880100F2FDE8 /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
+		D796115B2677880100F2FDE8 /* ServerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerCell.xib; sourceTree = "<group>"; };
+		D796116C2677881500F2FDE8 /* HeaderConnectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConnectCell.swift; sourceTree = "<group>"; };
+		D796116D2677881500F2FDE8 /* HeaderConnectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderConnectCell.xib; sourceTree = "<group>"; };
 		E04FDBBFA30993241BAF1EC3 /* Pods_eXoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -468,7 +480,7 @@
 		9C3AD2791BCF5D6E0094CFF9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D79610F92677756300F2FDE8 /* SignInToExoVC */,
+				D7961144267787D000F2FDE8 /* SignInToExoVC */,
 				9C032E361BEA1495006F0577 /* Basic */,
 				9C3AD27C1BCF5D960094CFF9 /* On-Boarding */,
 				9C935F891BD8A01C009C065B /* HomePage */,
@@ -603,40 +615,40 @@
 			path = Cookies;
 			sourceTree = "<group>";
 		};
-		D79610F92677756300F2FDE8 /* SignInToExoVC */ = {
+		D7961144267787D000F2FDE8 /* SignInToExoVC */ = {
 			isa = PBXGroup;
 			children = (
-				D79611022677756300F2FDE8 /* ConnectToExoViewController.swift */,
-				D79611012677756300F2FDE8 /* ConnectToExoViewController.xib */,
-				D79610FA2677756300F2FDE8 /* Cells */,
+				D7961148267787EE00F2FDE8 /* ConnectToExoViewController.swift */,
+				D7961149267787EE00F2FDE8 /* ConnectToExoViewController.xib */,
+				D7961145267787D000F2FDE8 /* Cells */,
 			);
 			name = SignInToExoVC;
 			path = ../../../../../SignInToExoVC;
 			sourceTree = "<group>";
 		};
-		D79610FA2677756300F2FDE8 /* Cells */ = {
+		D7961145267787D000F2FDE8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D79610FB2677756300F2FDE8 /* HeaderConnectCell */,
-				D79610FE2677756300F2FDE8 /* ServerCell */,
+				D7961146267787D000F2FDE8 /* HeaderConnectCell */,
+				D7961147267787D000F2FDE8 /* ServerCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		D79610FB2677756300F2FDE8 /* HeaderConnectCell */ = {
+		D7961146267787D000F2FDE8 /* HeaderConnectCell */ = {
 			isa = PBXGroup;
 			children = (
-				D79610FC2677756300F2FDE8 /* HeaderConnectCell.swift */,
-				D79610FD2677756300F2FDE8 /* HeaderConnectCell.xib */,
+				D796116C2677881500F2FDE8 /* HeaderConnectCell.swift */,
+				D796116D2677881500F2FDE8 /* HeaderConnectCell.xib */,
 			);
 			path = HeaderConnectCell;
 			sourceTree = "<group>";
 		};
-		D79610FE2677756300F2FDE8 /* ServerCell */ = {
+		D7961147267787D000F2FDE8 /* ServerCell */ = {
 			isa = PBXGroup;
 			children = (
-				D79610FF2677756300F2FDE8 /* ServerCell.swift */,
-				D79611002677756300F2FDE8 /* ServerCell.xib */,
+				D796115A2677880100F2FDE8 /* ServerCell.swift */,
+				D796115B2677880100F2FDE8 /* ServerCell.xib */,
 			);
 			path = ServerCell;
 			sourceTree = "<group>";
@@ -826,6 +838,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79611612677880100F2FDE8 /* ServerCell.xib in Resources */,
+				D79611732677881500F2FDE8 /* HeaderConnectCell.xib in Resources */,
+				D796114F267787EE00F2FDE8 /* ConnectToExoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,16 +849,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C18EBC01C3124ED00A75DD8 /* TableHeaderView.xib in Resources */,
-				D79611072677756300F2FDE8 /* ConnectToExoViewController.xib in Resources */,
-				D79611042677756300F2FDE8 /* HeaderConnectCell.xib in Resources */,
-				D79611062677756300F2FDE8 /* ServerCell.xib in Resources */,
 				9C3AD2541BCF56900094CFF9 /* LaunchScreen.storyboard in Resources */,
+				D796115F2677880100F2FDE8 /* ServerCell.xib in Resources */,
 				AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */,
 				9C935F851BD64DAD009C065B /* Localizable.strings in Resources */,
+				D796114D267787EE00F2FDE8 /* ConnectToExoViewController.xib in Resources */,
 				9C3D7D1E1BDF6BA3002873CB /* eXo.entitlements in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
+				D79611712677881500F2FDE8 /* HeaderConnectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,7 +880,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79611602677880100F2FDE8 /* ServerCell.xib in Resources */,
 				9C032E1C1BE754F5006F0577 /* Main.storyboard in Resources */,
+				D796114E267787EE00F2FDE8 /* ConnectToExoViewController.xib in Resources */,
+				D79611722677881500F2FDE8 /* HeaderConnectCell.xib in Resources */,
 				9C032E211BE75667006F0577 /* Localizable.strings in Resources */,
 				9C032E0D1BE38DEF006F0577 /* Assets.xcassets in Resources */,
 				9C3D7CF71BDF64E0002873CB /* MainInterface.storyboard in Resources */,
@@ -1015,6 +1033,9 @@
 			files = (
 				57DFE9E51C5B81D800A91DA5 /* eXoSnapshots.swift in Sources */,
 				57DFE9E71C5B81D800A91DA5 /* SnapshotHelper.swift in Sources */,
+				D796115E2677880100F2FDE8 /* ServerCell.swift in Sources */,
+				D796114C267787EE00F2FDE8 /* ConnectToExoViewController.swift in Sources */,
+				D79611702677881500F2FDE8 /* HeaderConnectCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,17 +1048,17 @@
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
 				D79611162677763D00F2FDE8 /* UIColor-Extension.swift in Sources */,
+				D796114A267787EE00F2FDE8 /* ConnectToExoViewController.swift in Sources */,
 				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
-				D79611082677756300F2FDE8 /* ConnectToExoViewController.swift in Sources */,
 				B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */,
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
-				D79611032677756300F2FDE8 /* HeaderConnectCell.swift in Sources */,
-				D79611052677756300F2FDE8 /* ServerCell.swift in Sources */,
+				D796116E2677881500F2FDE8 /* HeaderConnectCell.swift in Sources */,
 				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,
 				9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */,
 				D796110F2677761900F2FDE8 /* UIView-Extension.swift in Sources */,
+				D796115C2677880100F2FDE8 /* ServerCell.swift in Sources */,
 				9C18EBBE1C3124DC00A75DD8 /* TableHeaderView.swift in Sources */,
 				9C935F7E1BD60286009C065B /* Tool.swift in Sources */,
 				9C3AD24A1BCF56900094CFF9 /* eXoAppDelegate.swift in Sources */,
@@ -1090,8 +1111,11 @@
 				9C3D7D1A1BDF68E0002873CB /* UploadViewController.m in Sources */,
 				9C3D7D121BDF68E0002873CB /* Account.m in Sources */,
 				9C032DCD1BE3566B006F0577 /* AccountCell.swift in Sources */,
+				D796114B267787EE00F2FDE8 /* ConnectToExoViewController.swift in Sources */,
 				9C3D7D171BDF68E0002873CB /* PostItem.m in Sources */,
+				D796115D2677880100F2FDE8 /* ServerCell.swift in Sources */,
 				9CF2861A1BE1DE7D00DC4C26 /* AccountManager.m in Sources */,
+				D796116F2677881500F2FDE8 /* HeaderConnectCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
