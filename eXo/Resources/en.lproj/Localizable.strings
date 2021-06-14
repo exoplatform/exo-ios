@@ -21,6 +21,9 @@
  */
 
 // On-Boarding
+"OnBoarding.Title.ConnectToeXo" = "Connect to eXo";
+
+"OnBoarding.Title.AddNewExo" = "Add a new eXo";
 
 "OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
 
