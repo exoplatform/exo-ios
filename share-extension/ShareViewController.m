@@ -52,6 +52,9 @@
 	NSString* defaultWorkspace;
 	NSString* userHomeJcrPath;
 	BOOL hasMobileFolder;
+    NSString* fileActivityType;
+    NSString* plfVersion;
+    NSString* defaultSite;
 	// post activity
 	PostActivity * postActivity;
 	
@@ -201,8 +204,12 @@ enum {
 				}
 			}];
 		}
-		if (postItem.type == nil || postItem.type.length ==0){
-			postItem.type = @"DOC_ACTIVITY";
+		if (postItem.type == nil || postItem.type.length == 0){
+            if([self isBefore53]) {
+                postItem.type = @"DOC_ACTIVITY";
+            } else {
+                postItem.type = @"files:spaces";
+            }
 		}
 		[postActivity.items addObject:postItem];
 		
@@ -330,7 +337,7 @@ NSMutableData * data;
 		NSURLCredential *credential = [NSURLCredential credentialWithUser:[AccountManager sharedManager].selectedAccount.userName password:[AccountManager sharedManager].selectedAccount.password persistence:NSURLCredentialPersistenceNone];
 		[[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 	} else {
-		loggingStatus =eXoStatusLoggInAuthentificationFail;
+		loggingStatus = eXoStatusLoggInAuthentificationFail;
 		[AccountManager sharedManager].selectedAccount.password = @"";
 		[self reloadConfigurationItems];
 	}
@@ -350,7 +357,19 @@ NSMutableData * data;
 			userHomeJcrPath = [jsonObjects objectForKey:@"userHomeNodePath"];
 			currentRepository = [jsonObjects objectForKey:@"currentRepoName"];
 			defaultWorkspace = [jsonObjects objectForKey:@"defaultWorkSpaceName"];
+            plfVersion = [jsonObjects objectForKey:@"platformVersion"];
 		}
+        // Set default values for each variable if they are not retrieved from /rest/platform/info
+        // default workspace is collaboration
+        if (defaultWorkspace == (id)[NSNull null] || defaultWorkspace.length == 0 ) defaultWorkspace = @"collaboration";
+        // default repository is repository
+        if (currentRepository == (id)[NSNull null] || currentRepository.length == 0 ) currentRepository = @"repository";
+        // calculate user home folder based on username
+        if (userHomeJcrPath == (id)[NSNull null] || userHomeJcrPath.length == 0 ) {
+            userHomeJcrPath = [self getUserDocumentFolder:[AccountManager sharedManager].selectedAccount.userName];
+        }
+        // if we can not retrieve platform version, then we set it to 5.3
+        if (plfVersion == (id)[NSNull null] || plfVersion.length == 0 ) plfVersion = @"5.3";
 	}
 	
 	[[AccountManager sharedManager] saveAccounts];
@@ -365,6 +384,44 @@ NSMutableData * data;
 	
 }
 
+// Get user home folder in Documents
+- (NSString*)getUserDocumentFolder:(NSString *) userName {
+    if (userName.length <= 3){
+        return [NSString stringWithFormat:@"/Users/%@___/%@___/%@", [userName substringWithRange:NSMakeRange(0,1)], [userName substringWithRange:NSMakeRange(0,2)], userName];
+    } else {
+        return [NSString stringWithFormat:@"/Users/%@___/%@___/%@___/%@", [userName substringWithRange:NSMakeRange(0,1)], [userName substringWithRange:NSMakeRange(0,2)], [userName substringWithRange:NSMakeRange(0,3)], userName];
+    }
+}
+// Return the create URL for the mobile folder
+-(NSString *) mobileFolderCreateURL {
+    if (selectedSpace){
+        return [NSString stringWithFormat: @"%@/portal/rest/managedocument/createFolder?workspaceName=%@&driveName=%@&currentFolder=%@&folderName=mobile", [AccountManager sharedManager].selectedAccount.serverURL,defaultWorkspace, [self getDriveName], @"Documents"];
+    } else {
+    return [NSString stringWithFormat: @"%@/portal/rest/managedocument/createFolder?workspaceName=%@&driveName=%@&currentFolder=%@&folderName=mobile", [AccountManager sharedManager].selectedAccount.serverURL, defaultWorkspace, @"Personal%20Documents", @"Public"];
+    }
+ }
+
+//
+- (NSString *) getDriveName{
+    if(selectedSpace){
+        return [selectedSpace.groupId stringByReplacingOccurrencesOfString:@"/" withString:@"."];
+    } else {
+        return @"Personal Documents";
+    }
+}
+
+/*
+ Specify the type of activity based on eXo platform version
+ if prior to 5.3 then it is DOC_ACTIVITY
+ if 5.3 or later then file activity type is files:spaces
+ */
+- (BOOL) isBefore53 {
+    NSArray *versionNumbers = [plfVersion componentsSeparatedByString:@"."];
+    NSString* plfVersionDigits = [NSString stringWithFormat:@"%@%@",versionNumbers[0], versionNumbers[1]];
+    return plfVersionDigits.intValue != 0 && plfVersionDigits.intValue < 53;
+}
+
+//
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	loggingStatus = eXoStatusLoggedFailed;
 	[AccountManager sharedManager].selectedAccount.password = @"";
@@ -451,9 +508,9 @@ NSMutableData * data;
 
 -(NSString *) mobileFolderPath {
 	if (selectedSpace){
-		return [NSString stringWithFormat:@"%@/rest/private/jcr/%@/%@/Groups%@/Documents/Mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace, selectedSpace.groupId];
+		return [NSString stringWithFormat:@"%@/portal/rest/jcr/%@/%@/Groups%@/Documents/mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace, selectedSpace.groupId];
 	}
-	return [NSString stringWithFormat:@"%@/rest/private/jcr/%@/%@%@/Public/Mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace,userHomeJcrPath];
+	return [NSString stringWithFormat:@"%@/portal/rest/jcr/%@/%@%@/Public/mobile",[AccountManager sharedManager].selectedAccount.serverURL,currentRepository, defaultWorkspace,userHomeJcrPath];
 }
 
 
@@ -468,7 +525,7 @@ NSMutableData * data;
 	NSString * mobileFolderPath = [self mobileFolderPath];
 	NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
 	[request setURL:[NSURL URLWithString:mobileFolderPath]];
-	[request setHTTPMethod:@"HEAD"];
+	[request setHTTPMethod:@"PROPFIND"];
 	[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
 	
 	NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -479,9 +536,11 @@ NSMutableData * data;
 				/*
 				 If the Mobile folder doesn't exist, Send a request (method:MKCOL) to ask the server side to create the mobile folder.
 				 */
+                NSString* createFolderURL = [self mobileFolderCreateURL];
 				NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
-				[request setURL:[NSURL URLWithString:[self mobileFolderPath]]];
-				[request setHTTPMethod:@"MKCOL"];
+                [request setURL:[NSURL URLWithString:createFolderURL]];
+                [request setHTTPMethod:@"GET"];
+                
 				[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
 				
 				NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -512,7 +571,7 @@ NSMutableData * data;
 	if (loggingStatus == eXoStatusLoggedIn) {
 		if (postActivity.items.count > 0) {
 			PostItem * item = postActivity.items[0];
-			if (item.type != nil && [item.type isEqualToString:@"DOC_ACTIVITY"]) {
+			if (item.type != nil && ([item.type isEqualToString:@"DOC_ACTIVITY"] || [item.type isEqualToString:@"files:spaces"])) {
 				// Sharing one or more documents
 				[self uploadPostItemAtIndex:0];
 			} else if (item.type != nil && [item.type isEqualToString:@"LINK_ACTIVITY"]) {
@@ -521,7 +580,7 @@ NSMutableData * data;
 				[self postLinkActivity:item];
 			}
 		} else {
-			[self postMessage:postActivity.message fileURL:nil fileName:nil];
+			[self postMessage:postActivity.message fileItems:nil];
 		}
 		
 	} else {
@@ -643,10 +702,10 @@ NSMutableData * data;
 						NSString * saveRESTURL;
 						if (selectedSpace){
 							NSString * driverName = [selectedSpace.groupId stringByReplacingOccurrencesOfString:@"/" withString:@"."];
-							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,uploadId,defaultWorkspace,driverName,@"Mobile",fileAttachName];
+							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,uploadId,defaultWorkspace,driverName,@"mobile",fileAttachName];
 							
 						} else {
-							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,uploadId,defaultWorkspace,@"Personal Documents",@"Public/Mobile",fileAttachName];
+							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,uploadId,defaultWorkspace,@"Personal Documents",@"Public/mobile",fileAttachName];
 							
 						}
 						
@@ -731,15 +790,10 @@ NSMutableData * data;
 -(void) postActivityAction {
 	if (postActivity.items.count > 0) {
 		if (postActivity.successfulUploads.count == postActivity.items.count) {
-			PostItem * firstItem = postActivity.successfulUploads[0];
-			if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"]) {
-				// Should always be DOC_ACTIVITY
-				[self postMessage:postActivity.message fileURL:firstItem.fileUploadedURL fileName:firstItem.fileUploadedName];
-			}
-			//            TODO remove this code
-			//            else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
-			//                [self postLinkActivity:firstItem];
-			//            }
+            PostItem * firstItem = postActivity.successfulUploads[0];
+            if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]) {
+                [self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
+            }
 		} else {
 			NSString * title;
 			
@@ -762,15 +816,12 @@ NSMutableData * data;
 			UIAlertAction* postAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Post",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
 				if (postActivity.successfulUploads.count > 0) {
 					PostItem * firstItem = postActivity.successfulUploads[0];
-					if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"]){
-						[self postMessage:postActivity.message fileURL:firstItem.fileUploadedURL fileName:firstItem.fileUploadedName];
+					if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]){
+                    //if ([firstItem.type isEqualToString:@"files:spaces"]){
+						[self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
 					}
-					//                    TODO remove this code
-					//                    else if ([firstItem.type isEqualToString:@"LINK_ACTIVITY"]){
-					//                        [self postLinkActivity:firstItem];
-					//                    }
 				} else {
-					[self postMessage:postActivity.message fileURL:nil fileName:nil];
+					[self postMessage:postActivity.message fileItems:nil];
 				}
 			}];
 			[alert addAction:postAction];
@@ -781,67 +832,66 @@ NSMutableData * data;
 			}
 		}
 	} else {
-		[self postMessage:postActivity.message fileURL:nil fileName:nil];
+		[self postMessage:postActivity.message fileItems:nil];
 	}
 	
 }
 
 -(void) postCommentForItemAtIndex:(int) index {
-	if (index < postActivity.successfulUploads.count && postActivity.activityId != nil) {
-		PostItem * postItem = postActivity.successfulUploads[index];
-		
-		NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity/%@/comment.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName, postActivity.activityId];
-		
-		NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postURL]];
-		request.HTTPMethod = @"POST";
-		[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-		[request setValue:@"UTF-8" forHTTPHeaderField:@"Charset"];
-		[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
-		
-		
-		NSString * message =@"";
-		if ([postItem.type isEqualToString:@"DOC_ACTIVITY"]) {
-			if (postItem.fileUploadedName!=nil && postItem.fileUploadedURL!=nil){
-				message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.fileUploadedURL, postItem.fileUploadedName];
-				NSString * thumbnailURL = [postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"];
-				if (postItem.isImageItem){
-					message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",thumbnailURL]];
-				}
-			}
-		} else if ([postItem.type isEqualToString:@"LINK_ACTIVITY"]) {
-			NSString * title = postItem.pageWebTitle;
-			if (!title || title.length ==0){
-				title = postItem.url.absoluteString;
-			}
-			message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.url, title];
-			
-		}
-		
-		NSDictionary * dictionary = @{
-																	@"text":message
-																	};
-		
-		NSError *error = nil;
-		NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
-																									 options:kNilOptions error:&error];
-		[request setHTTPBody:data];
-		
-		if (!error) {
-			NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-				[self postCommentForItemAtIndex:index+1];
-			}];
-			[postTask resume];
-		} else {
-			[uploadVC dismissViewControllerAnimated:YES completion:nil];
-			[self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
-			
-		}
-		
-	} else {
-		[uploadVC dismissViewControllerAnimated:YES completion:nil];
-		[self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
-		
-	}
+    if (index < postActivity.successfulUploads.count && postActivity.activityId != nil) {
+        PostItem * postItem = postActivity.successfulUploads[index];
+        
+        NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity/%@/comment.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName, postActivity.activityId];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:postURL]];
+        request.HTTPMethod = @"POST";
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"UTF-8" forHTTPHeaderField:@"Charset"];
+        [request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
+        
+        
+        NSString * message =@"";
+        if ([postItem.type isEqualToString:@"DOC_ACTIVITY"]) {
+            if (postItem.fileUploadedName!=nil && postItem.fileUploadedURL!=nil){
+                message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.fileUploadedURL, postItem.fileUploadedName];
+                NSString * thumbnailURL = [postItem.fileUploadedURL stringByReplacingOccurrencesOfString:@"/jcr/" withString:@"/thumbnailImage/large/"];
+                if (postItem.isImageItem){
+                    message = [message stringByAppendingString:[NSString stringWithFormat:@"\n<img src=\"%@\" />",thumbnailURL]];
+                }
+            }
+        } else if ([postItem.type isEqualToString:@"LINK_ACTIVITY"]) {
+            NSString * title = postItem.pageWebTitle;
+            if (!title || title.length ==0){
+                title = postItem.url.absoluteString;
+            }
+            message = [NSString stringWithFormat:@"<a href=\"%@\">%@</a><br/>", postItem.url, title];
+            
+        }
+        
+        NSDictionary * dictionary = @{
+                                                                    @"text":message
+                                                                    };
+        
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                                                                     options:kNilOptions error:&error];
+        [request setHTTPBody:data];
+        
+        if (!error) {
+            NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                [self postCommentForItemAtIndex:index+1];
+            }];
+            [postTask resume];
+        } else {
+            [uploadVC dismissViewControllerAnimated:YES completion:nil];
+            [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+            
+        }
+        
+    } else {
+        [uploadVC dismissViewControllerAnimated:YES completion:nil];
+        [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+    }
 }
 /*
  Post un Doc activity:
@@ -852,11 +902,12 @@ NSMutableData * data;
  @discussion 
  The file & fileName are optional
  */
--(void) postMessage:(NSString *) message fileURL:(NSString *) fileURL fileName:(NSString*) fileName {
+-(void) postMessage:(NSString *) message fileItems:(NSMutableArray * ) fileItems {
 	
 	NSString * title = message;
 	NSString * type;
 	NSDictionary * templateParams;
+
 	
 	NSString * postURL = [NSString stringWithFormat:@"%@/rest/private/api/social/%@/%@/activity.json",[AccountManager sharedManager].selectedAccount.serverURL, kRestVersion, kPortalContainerName];
 	if (selectedSpace && selectedSpace.spaceId.length > 0){
@@ -873,42 +924,97 @@ NSMutableData * data;
 	[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
 	
 	
-	if (fileURL) {
-		type = @"DOC_ACTIVITY";
+	if (fileItems) {
+        if([self isBefore53]) {
+		    type = @"DOC_ACTIVITY";
+        } else {
+            type = @"files:spaces";
+        }
+        NSString* docPaths = @"";
+        NSRange rangeOfDocLink;
+        NSString* docLinks = @"";
+        NSString* fileNames = @"";
+        NSString* docPath = @"";
+        NSString* docLink = @"";
+        NSString* authors = @"";
+        NSString* isSymlinks = @"";
+        NSString* workspaceNames = @"";
+        NSString* repositoryNames = @"";
+        NSString* creationDates = @"";
+        NSString* modificationDates = @"";
+        NSString* mimeTypes = @"";
+        
+        for (int i = 0; i < [fileItems count]; i++) {
+            
+            if( i > 0 && i < [fileItems count]){
+                docPaths = [NSString stringWithFormat:@"%@%@", docPaths, @"|@|"];
+                docLinks = [NSString stringWithFormat:@"%@%@", docLinks, @"|@|"];
+                authors = [NSString stringWithFormat:@"%@%@", authors, @"|@|"];
+                fileNames = [NSString stringWithFormat:@"%@%@", fileNames, @"|@|"];
+                workspaceNames = [NSString stringWithFormat:@"%@%@", workspaceNames, @"|@|"];
+                isSymlinks = [NSString stringWithFormat:@"%@%@", isSymlinks, @"|@|"];
+                repositoryNames = [NSString stringWithFormat:@"%@%@", repositoryNames, @"|@|"];
+                creationDates = [NSString stringWithFormat:@"%@%@", creationDates, @"|@|"];
+                modificationDates = [NSString stringWithFormat:@"%@%@", modificationDates, @"|@|"];
+                mimeTypes = [NSString stringWithFormat:@"%@%@", mimeTypes, @"|@|"];
+            }
+            PostItem * fileItem = fileItems[i];
+            NSString* fileName = fileItem.fileUploadedName;
+            if (selectedSpace){
+                docPath = [NSString stringWithFormat:@"/Groups%@/Documents/mobile/%@",selectedSpace.groupId,fileName];
+            } else {
+                docPath = [NSString stringWithFormat:@"%@/Public/mobile/%@",userHomeJcrPath,fileName];
+            }
+            rangeOfDocLink = [fileItem.fileUploadedURL rangeOfString:@"jcr"];
+            docLink = [NSString stringWithFormat:@"/portal/rest/%@", [fileItem.fileUploadedURL substringFromIndex:rangeOfDocLink.location]];
+
+            // Post link for first element if message is empty
+            if(i == 0 && [message length]==0){
+                title = [NSString stringWithFormat:@"Shared a document <a href=\"%@\">%@</a>", docLink, fileName];
+            }
+            
+
+            docLinks = [NSString stringWithFormat:@"%@%@", docLinks, docLink];
+            docPaths = [NSString stringWithFormat:@"%@%@", docPaths, docPath];
+            isSymlinks = [NSString stringWithFormat:@"%@%@", isSymlinks, @"false"];
+            fileNames = [NSString stringWithFormat:@"%@%@", fileNames, fileName];
+            workspaceNames = [NSString stringWithFormat:@"%@%@", workspaceNames, defaultWorkspace];
+            repositoryNames = [NSString stringWithFormat:@"%@%@", repositoryNames, currentRepository];
+            creationDates= [NSString stringWithFormat:@"%@%@", creationDates, [self formatDate]];
+            modificationDates = [NSString stringWithFormat:@"%@%@", modificationDates, [self formatDate]];
+            mimeTypes = [NSString stringWithFormat:@"%@%@", mimeTypes, [self MIMETypeForFile:fileName]];
+            authors = [NSString stringWithFormat:@"%@%@", authors, [AccountManager sharedManager].selectedAccount.userName];
+        }
 		
-		NSString* docPath;
-		if (selectedSpace){
-			docPath = [NSString stringWithFormat:@"/Groups%@/Documents/Mobile/%@",selectedSpace.groupId,fileName];
-		} else {
-			docPath = [NSString stringWithFormat:@"%@/Public/Mobile/%@",userHomeJcrPath,fileName];
-		}
-		
-		NSRange rangeOfDocLink = [fileURL rangeOfString:@"jcr"];
-		NSString* docLink = [NSString stringWithFormat:@"/rest/%@", [fileURL substringFromIndex:rangeOfDocLink.location]];
-		title = [NSString stringWithFormat:@"Shared a document <a href=\"%@\">%@</a>\"", docLink, fileName];
-		NSString * mimeType = [self MIMETypeForFile:fileName];
-		if (mimeType && mimeType.length > 0) {
-			templateParams = @{
-												 @"DOCPATH":docPath,
-												 @"MESSAGE":message,
-												 @"DOCLINK":docLink,
-												 @"WORKSPACE":defaultWorkspace,
-												 @"REPOSITORY":currentRepository,
-												 @"DOCNAME":fileName,
-												 @"MIMEType":[self MIMETypeForFile:fileName]
-												 };
-		} else {
-			templateParams = @{
-												 @"DOCPATH":docPath,
-												 @"MESSAGE":message,
-												 @"DOCLINK":docLink,
-												 @"WORKSPACE":defaultWorkspace,
-												 @"REPOSITORY":currentRepository,
-												 @"DOCNAME":fileName,
-												 };
-			
-		}
+        if([type isEqualToString:@"DOC_ACTIVITY"]) {
+            templateParams = @{
+            @"DOCPATH":docPaths,
+            @"MESSAGE":message,
+            @"DOCLINK":docLinks,
+            @"WORKSPACE":defaultWorkspace,
+            @"REPOSITORY":currentRepository,
+            @"DOCNAME":fileNames,
+            @"mimeType":mimeTypes
+            };
+        } else {
+            templateParams = @{
+            @"author":authors,
+            @"docTitle":fileNames,
+            @"DOCLINK":docLinks,
+            @"DOCNAME":fileNames,
+            @"DOCPATH":docPaths,
+            @"WORKSPACE":workspaceNames,
+            @"REPOSITORY":repositoryNames,
+            @"imagePath":@"",
+            @"dateCreated":creationDates,
+            @"lastModified":modificationDates,
+            @"mimeType":mimeTypes,
+            @"contentName":fileNames,// @"contentLink":contentLink,
+            @"isSymlink":isSymlinks
+            };
+        }
 	}
+    
 	
 	NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 	[dictionary setValue:title forKey:@"title"];
@@ -926,8 +1032,13 @@ NSMutableData * data;
 	
 	if (!error) {
 		NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-			postActivity.activityId = [self getPostActivityFromData:data];
-			[self postCommentForItemAtIndex:1];
+            if([self isBefore53]){
+                postActivity.activityId = [self getPostActivityFromData:data];
+                [self postCommentForItemAtIndex:1];
+            } else {
+                [uploadVC dismissViewControllerAnimated:YES completion:nil];
+                [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+            }
 		}];
 		[postTask resume];
 	} else {
@@ -936,6 +1047,18 @@ NSMutableData * data;
 		
 	}
 }
+/*
+  Format Date in activity
+ */
+- (NSString*) formatDate{
+    NSDate *date= [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
+}
+
+
 /*
  Post a link. The Tempate Params need: the URL, the title, the description & the Image (pick one in the page).
  @params
@@ -1171,7 +1294,7 @@ NSMutableData * data;
 		return mimeType;
 	}
 	
-	return nil;
+	return @"";
 }
 
 @end
