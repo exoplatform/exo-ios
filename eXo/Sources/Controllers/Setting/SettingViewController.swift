@@ -30,6 +30,8 @@ class SettingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,12 +96,14 @@ class SettingViewController: UITableViewController {
                 // A cell that displays the server at the specified position
                 let srvcell = tableView.dequeueReusableCell(withIdentifier: "ServerCell", for: indexPath)
                 srvcell.textLabel?.text = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
+                srvcell.textLabel?.textColor = .darkGray
                 return srvcell
             } else {
                 // A cell that displays a label "Connect your intranet" and directs to the input server screen
                 let ctacell = tableView.dequeueReusableCell(withIdentifier: "NoServerCell", for: indexPath)
                 ctacell.textLabel?.text = NSLocalizedString("Setting.Title.AddServer", comment: "")
                 ctacell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+                ctacell.textLabel?.textColor = .darkGray
                 return ctacell
             }
         }

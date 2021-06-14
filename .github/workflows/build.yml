@@ -1,8 +1,6 @@
 name: iOS Build
 
 on:
-  push:
-    branches: [ develop ]
   pull_request:
     branches: [ develop ]
 jobs:
