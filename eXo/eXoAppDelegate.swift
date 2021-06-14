@@ -67,7 +67,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             }
             if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
                 // Memorise the last connection
-                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+                //setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
                 return true
             }else{
                 //Return false incase application was lanched from shorcut to prevent
