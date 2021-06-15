@@ -39,7 +39,7 @@ class ServerCell: UITableViewCell {
         return UINib(nibName: cellId, bundle: nil)
     }
     
-    func setupDataWith(){
-        
+    func setupDataWith(serveur:String){
+        serverLabel.text = serveur
     }
 }

@@ -298,7 +298,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vkg-Xd-8eS" kind="push" id="PQ5-c7-Tfq"/>
+                                    <action selector="addServerTapped:" destination="f88-9w-Msy" eventType="touchUpInside" id="qTz-d3-vxu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hp-xH-tuC">
@@ -871,7 +871,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PQ5-c7-Tfq"/>
         <segue reference="w4C-Oj-R0R"/>
     </inferredMetricsTieBreakers>
     <resources>

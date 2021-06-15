@@ -606,8 +606,8 @@
 		D79611B226778ACC00F2FDE8 /* SignInToExoVC */ = {
 			isa = PBXGroup;
 			children = (
-				D79611BA26778ACC00F2FDE8 /* ConnectToExoViewController.xib */,
 				D79611BB26778ACC00F2FDE8 /* ConnectToExoViewController.swift */,
+				D79611BA26778ACC00F2FDE8 /* ConnectToExoViewController.xib */,
 				D79611B326778ACC00F2FDE8 /* Cells */,
 			);
 			path = SignInToExoVC;
