@@ -31,8 +31,7 @@ class ServerCell: UITableViewCell {
     func initView(){
         badgeView.makeCircular()
         containerView.makeShadowWith(offset: CGSize(width: 5, height: 5), radius: 6, opacity: 0.1, color: .darkGray)
-        containerView.addCornerRadiusWith(radius: 6)
-        containerView.addBorderWith(width:1,color: UIColor.lightGray.withAlphaComponent(0.5))
+        containerView.addBorderWith(width:1,color: UIColor.lightGray.withAlphaComponent(0.5), cornerRadius: 6)
     }
     
     static func nib() -> UINib {

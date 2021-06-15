@@ -20,12 +20,12 @@ class ConnectToExoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
-        self.navigationController?.isNavigationBarHidden = false
         setNavigationBarAppearance()
     }
     
     func setNavigationBarAppearance(){
+        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: 0xF0F0F0)
         self.navigationController?.navigationBar.tintColor = UIColor.black
@@ -42,8 +42,15 @@ class ConnectToExoViewController: UIViewController {
         navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
     }
     
-    @objc func goBack(){
+    @objc
+    func goBack(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    func addButtonTapped(){
+        let addDomainVC = AddDomainViewController()
+        self.present(addDomainVC, animated: true)
     }
     
     func initView() {
@@ -52,6 +59,8 @@ class ConnectToExoViewController: UIViewController {
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
         connectTableView.register(ServerCell.nib(), forCellReuseIdentifier: ServerCell.cellId)
     }
+    
+    
 }
 
 extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
@@ -60,6 +69,7 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderConnectCell.cellId) as! HeaderConnectCell
+        headerCell.headerButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return headerCell
     }
     
