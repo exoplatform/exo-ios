@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="addButton" destination="Kgb-W2-dqM" id="4Ie-gR-csG"/>
                 <outlet property="domainTextField" destination="del-EV-49P" id="UF3-nr-7OB"/>
+                <outlet property="textViewContainer" destination="b8M-7H-eoI" id="B5f-Op-0F7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,26 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="del-EV-49P">
-                    <rect key="frame" x="35" y="384" width="281" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="vgy-zj-X6Z"/>
-                        <constraint firstAttribute="width" constant="281" id="whC-D6-SfU"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgb-W2-dqM">
-                    <rect key="frame" x="333" y="384" width="50" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="1Fr-uF-mTt"/>
-                        <constraint firstAttribute="width" constant="50" id="7Zl-9x-ACq"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="sendButton"/>
-                    <connections>
-                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="edj-TB-R6Q"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWa-GM-3cu">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                     <subviews>
@@ -89,21 +70,71 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tf9-8q-p67">
+                    <rect key="frame" x="33" y="393" width="348" height="46"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8M-7H-eoI">
+                            <rect key="frame" x="0.0" y="0.0" width="290" height="46"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="del-EV-49P">
+                                    <rect key="frame" x="8" y="0.0" width="282" height="46"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="Y4Q-0K-UUa"/>
+                                        <constraint firstAttribute="height" constant="46" id="vgy-zj-X6Z"/>
+                                        <constraint firstAttribute="width" constant="282" id="whC-D6-SfU"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="del-EV-49P" firstAttribute="top" secondItem="b8M-7H-eoI" secondAttribute="top" id="O95-SU-f8v"/>
+                                <constraint firstItem="del-EV-49P" firstAttribute="leading" secondItem="b8M-7H-eoI" secondAttribute="leading" constant="8" id="cIN-4l-hbr"/>
+                                <constraint firstAttribute="bottom" secondItem="del-EV-49P" secondAttribute="bottom" id="yk7-Wl-z2i"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgb-W2-dqM">
+                            <rect key="frame" x="298" y="0.0" width="50" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="1Fr-uF-mTt"/>
+                                <constraint firstAttribute="width" constant="50" id="7Zl-9x-ACq"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="deY-hN-6sD"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="w8t-5r-NhU"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="sendButton"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="edj-TB-R6Q"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Kgb-W2-dqM" firstAttribute="leading" secondItem="b8M-7H-eoI" secondAttribute="trailing" constant="8" id="9T5-qP-Mid"/>
+                        <constraint firstItem="b8M-7H-eoI" firstAttribute="leading" secondItem="tf9-8q-p67" secondAttribute="leading" id="Hr2-RF-XHT"/>
+                        <constraint firstAttribute="height" constant="46" id="NBy-uX-AsN"/>
+                        <constraint firstItem="Kgb-W2-dqM" firstAttribute="top" secondItem="tf9-8q-p67" secondAttribute="top" id="dau-qY-PkO"/>
+                        <constraint firstItem="b8M-7H-eoI" firstAttribute="top" secondItem="Kgb-W2-dqM" secondAttribute="top" id="igF-nT-ZnB"/>
+                        <constraint firstAttribute="width" constant="348" id="jbB-ZP-ORA"/>
+                        <constraint firstAttribute="bottom" secondItem="Kgb-W2-dqM" secondAttribute="bottom" id="res-yX-RC1"/>
+                        <constraint firstAttribute="trailing" secondItem="Kgb-W2-dqM" secondAttribute="trailing" id="vX4-5R-vqG"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="IWa-GM-3cu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Mn-5H-ngT"/>
-                <constraint firstItem="del-EV-49P" firstAttribute="top" secondItem="IWa-GM-3cu" secondAttribute="bottom" constant="296" id="4WO-Gg-6kH"/>
-                <constraint firstItem="del-EV-49P" firstAttribute="top" secondItem="Mq6-V4-4Ry" secondAttribute="bottom" constant="8" symbolic="YES" id="5Ce-gf-03F"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kgb-W2-dqM" secondAttribute="trailing" constant="31" id="Ezj-Fd-kTS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mq6-V4-4Ry" secondAttribute="trailing" constant="98" id="F5E-Sa-9Jx"/>
-                <constraint firstItem="Kgb-W2-dqM" firstAttribute="leading" secondItem="del-EV-49P" secondAttribute="trailing" constant="17" id="FOF-Mn-mUq"/>
-                <constraint firstItem="del-EV-49P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="HY6-6A-KkD"/>
                 <constraint firstItem="Mq6-V4-4Ry" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="MOd-Ty-l64"/>
                 <constraint firstItem="IWa-GM-3cu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MQg-gX-NLh"/>
+                <constraint firstItem="tf9-8q-p67" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="33" id="OcL-AW-llj"/>
+                <constraint firstItem="tf9-8q-p67" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Xf0-2n-BIx"/>
+                <constraint firstItem="tf9-8q-p67" firstAttribute="top" secondItem="Mq6-V4-4Ry" secondAttribute="bottom" constant="17" id="eKV-h3-Fny"/>
+                <constraint firstItem="IWa-GM-3cu" firstAttribute="leading" secondItem="Mq6-V4-4Ry" secondAttribute="trailing" constant="-316" id="gBy-Qo-JiV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IWa-GM-3cu" secondAttribute="trailing" id="lKr-d0-fd5"/>
-                <constraint firstItem="Kgb-W2-dqM" firstAttribute="centerY" secondItem="del-EV-49P" secondAttribute="centerY" id="yej-ee-uxG"/>
+                <constraint firstItem="Mq6-V4-4Ry" firstAttribute="top" secondItem="IWa-GM-3cu" secondAttribute="bottom" constant="248" id="ljn-Zg-8Mz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tf9-8q-p67" secondAttribute="trailing" constant="33" id="rC4-So-Vaa"/>
             </constraints>
             <point key="canvasLocation" x="-175.36231884057972" y="120.53571428571428"/>
         </view>

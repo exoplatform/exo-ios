@@ -14,6 +14,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var domainTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var textViewContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,12 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     func setupView(){
         domainTextField.delegate = self
-        domainTextField.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
+        textViewContainer.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
         let attributedStringFormule = NSMutableAttributedString()
         attributedStringFormule.append(text: "company.", color: .lightGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
         attributedStringFormule.append(text: "exoplatform.com", color: .darkGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
         domainTextField.attributedText = attributedStringFormule
+        domainTextField.clearButtonMode = .always
     }
     
     @IBAction func cleseButtonTappee(_ sender: Any) {
