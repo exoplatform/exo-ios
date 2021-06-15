@@ -230,7 +230,7 @@ platform :ios do
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
-    ENV["EXO_APP_ENVIRONMENT"]="5.1-RC14"
+    ENV["EXO_APP_ENVIRONMENT"]="6.0-RC01"
     ENV["EXO_APP_IDENTIFIERS"]="#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
 
     add_badge(shield: "#{ENV["EXO_APP_ENVIRONMENT"]}-blue", dark: true)
@@ -267,6 +267,39 @@ platform :ios do
     )
     frame_screenshots(white: true)
     # upload_to_app_store
+  end
+
+  # Only for Github actions
+  desc "Sync CI Certificates"
+  lane :ci_sync_certificates do
+    create_keychain(
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+    )
+    bundleID = ENV["BUNDLE_ID"]
+    UI.header("Certicates will be generated following parameters")
+    UI.message("bundleID: #{bundleID}")
+    UI.success "Starting build"
+    ENV["EXO_APP_IDENTIFIERS"] = "#{bundleID},#{bundleID}.share-extension"
+    appIdentifiers = ENV["EXO_APP_IDENTIFIERS"].split(",")
+    match(
+      app_identifier: appIdentifiers,
+      type: "development",
+      readonly: true,
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    )
+    match(
+      app_identifier: appIdentifiers,
+      type: "adhoc",
+      readonly: true,
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    )
   end
 
 end

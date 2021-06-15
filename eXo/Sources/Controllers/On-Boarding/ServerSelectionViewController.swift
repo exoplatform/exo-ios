@@ -227,7 +227,12 @@ class ServerSelectionViewController: UIViewController {
             return 9.0
         }
     }
-
+    
+    @IBAction func addServerTapped(_ sender: Any) {
+        let signInToExoVC = ConnectToExoViewController()
+        navigationController?.pushViewController(signInToExoVC, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
     

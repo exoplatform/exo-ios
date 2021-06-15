@@ -14,6 +14,10 @@ class ConnectToExoViewController: UIViewController {
     
     @IBOutlet weak var connectTableView: UITableView!
     
+    // MARK: - Outlets.
+
+    var selectedServer : Server?
+
     override func viewDidLoad() {
         super.viewDidLoad()
        initView()
@@ -52,20 +56,21 @@ class ConnectToExoViewController: UIViewController {
         let addDomainVC = AddDomainViewController()
         self.present(addDomainVC, animated: true)
     }
-    
+  
     func initView() {
         connectTableView.delegate = self
         connectTableView.dataSource = self
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
         connectTableView.register(ServerCell.nib(), forCellReuseIdentifier: ServerCell.cellId)
     }
-    
-    
 }
 
 extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if ( ServerManager.sharedInstance.serverList != nil) {
+            return ServerManager.sharedInstance.serverList!.count
+        }
+        return 0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderConnectCell.cellId) as! HeaderConnectCell
@@ -75,8 +80,24 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ServerCell.cellId, for: indexPath) as! ServerCell
-        cell.setupDataWith()
+        let serveur = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
+            cell.setupDataWith(serveur:serveur)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       self.selectedServer = ServerManager.sharedInstance.serverList?[indexPath.row] as? Server
+       self.selectedServer?.lastConnection = Date().timeIntervalSince1970
+        ServerManager.sharedInstance.addEditServer(self.selectedServer!)
+        // Open the selected server in the WebView
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
+        if let homepageVC = homepageVC {
+            homepageVC.serverURL = self.selectedServer?.serverURL
+            UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
+            self.connectTableView.reloadData()
+            navigationController?.pushViewController(homepageVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

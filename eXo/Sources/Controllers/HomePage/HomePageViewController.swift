@@ -48,8 +48,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         /*
         Set the status bar to white color & the navigation bar is always hidden on this screen
         */
-        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
-        self.navigationController?.isNavigationBarHidden = true
         setNavigationBarAppearance()
         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
             self.navigationController?.setNavigationBarHidden(true, animated:false)
@@ -64,12 +62,25 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func setNavigationBarAppearance(){
+        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
         self.navigationController?.navigationBar.barStyle = UIBarStyle.default
-        self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
+        self.navigationController?.navigationBar.barTintColor = UIColor(hex: 0xF0F0F0)
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+        //MARK:- menuButton
+        let menuButton = UIButton(type: .system)
+        menuButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        menuButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        menuButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        let rightBarButtonItem3 = UIBarButtonItem()
+        rightBarButtonItem3.customView = menuButton
+        navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
+    }
+    
+    @objc func goBack(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
