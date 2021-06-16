@@ -71,6 +71,7 @@
 		B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7335E201F266800A2EA71 /* StringExtension.swift */; };
 		B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */; };
 		D0804D08DA920EF9EF853063 /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 122EC416DFB8B793DAFDAFEE /* Pods_share_extension.framework */; };
+		D76285E7267A1C4F000BBB59 /* NSMutableAttributedString-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76285E6267A1C4F000BBB59 /* NSMutableAttributedString-Extension.swift */; };
 		D79611BC26778ACC00F2FDE8 /* HeaderConnectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611B526778ACC00F2FDE8 /* HeaderConnectCell.swift */; };
 		D79611BD26778ACC00F2FDE8 /* HeaderConnectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79611B626778ACC00F2FDE8 /* HeaderConnectCell.xib */; };
 		D79611BE26778ACC00F2FDE8 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611B826778ACC00F2FDE8 /* ServerCell.swift */; };
@@ -228,6 +229,7 @@
 		B5C7335E201F266800A2EA71 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B5C73361201F32B700A2EA71 /* CookiesInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesInterceptor.swift; sourceTree = "<group>"; };
 		D2AB3B7D6776CD68C5B8F4BA /* Pods-eXo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXo.release.xcconfig"; path = "Target Support Files/Pods-eXo/Pods-eXo.release.xcconfig"; sourceTree = "<group>"; };
+		D76285E6267A1C4F000BBB59 /* NSMutableAttributedString-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString-Extension.swift"; sourceTree = "<group>"; };
 		D79611B526778ACC00F2FDE8 /* HeaderConnectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConnectCell.swift; sourceTree = "<group>"; };
 		D79611B626778ACC00F2FDE8 /* HeaderConnectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderConnectCell.xib; sourceTree = "<group>"; };
 		D79611B826778ACC00F2FDE8 /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
@@ -596,9 +598,7 @@
 		B5C7335D201F264F00A2EA71 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B5C7335E201F266800A2EA71 /* StringExtension.swift */,
-				D79611C726778AFD00F2FDE8 /* UIView-Extension.swift */,
-				D79611CE26778B1E00F2FDE8 /* UIColor-Extension.swift */,
+				D76285ED267A1C96000BBB59 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -610,6 +610,17 @@
 				B56257E6202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift */,
 			);
 			path = Cookies;
+			sourceTree = "<group>";
+		};
+		D76285ED267A1C96000BBB59 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5C7335E201F266800A2EA71 /* StringExtension.swift */,
+				D79611C726778AFD00F2FDE8 /* UIView-Extension.swift */,
+				D79611CE26778B1E00F2FDE8 /* UIColor-Extension.swift */,
+				D76285E6267A1C4F000BBB59 /* NSMutableAttributedString-Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D79611B226778ACC00F2FDE8 /* SignInToExoVC */ = {
@@ -1064,6 +1075,7 @@
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
 				D79611BC26778ACC00F2FDE8 /* HeaderConnectCell.swift in Sources */,
+				D76285E7267A1C4F000BBB59 /* NSMutableAttributedString-Extension.swift in Sources */,
 				D79611BE26778ACC00F2FDE8 /* ServerCell.swift in Sources */,
 				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,
 				9C3AD28C1BD0B6640094CFF9 /* InputServerViewController.swift in Sources */,

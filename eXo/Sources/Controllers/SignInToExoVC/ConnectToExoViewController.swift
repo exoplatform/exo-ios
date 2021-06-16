@@ -14,9 +14,10 @@ class ConnectToExoViewController: UIViewController {
     
     @IBOutlet weak var connectTableView: UITableView!
     
-    // MARK: - Outlets.
+    // MARK: - Variables.
 
     var selectedServer : Server?
+    var server:Server!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class ConnectToExoViewController: UIViewController {
     }
     
     func setNavigationBarAppearance(){
-        self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: 0xF0F0F0)
@@ -54,14 +55,38 @@ class ConnectToExoViewController: UIViewController {
     @objc
     func addButtonTapped(){
         let addDomainVC = AddDomainViewController()
+        addDomainVC.modalPresentationStyle = .overFullScreen
         self.present(addDomainVC, animated: true)
     }
   
+    @objc
+    func deleteButtonTapped(_ sender:UIButton){
+        let _server = ServerManager.sharedInstance.serverList[sender.tag] as! Server
+        self.deleteServer(server: _server)
+    }
+    
     func initView() {
         connectTableView.delegate = self
         connectTableView.dataSource = self
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
         connectTableView.register(ServerCell.nib(), forCellReuseIdentifier: ServerCell.cellId)
+    }
+    
+    func deleteServer(server:Server) {
+        //Ask for confirmation first
+        let alertController = UIAlertController(title:"Setting.Title.DeleteServer".localized, message: "Setting.Message.DeleteServer".localized, preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
+        }
+        alertController.addAction(cancelAction)
+        let confirmAction = UIAlertAction(title:"Word.OK".localized, style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
+            ServerManager.sharedInstance.removeServer(server);
+            if ServerManager.sharedInstance.serverList.count == 0 {
+                self.navigationController?.popViewController(animated: true)
+            }
+            self.connectTableView.reloadData()
+        }
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: false, completion: nil)
     }
 }
 
@@ -82,6 +107,8 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: ServerCell.cellId, for: indexPath) as! ServerCell
         let serveur = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
             cell.setupDataWith(serveur:serveur)
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_ :)), for: .touchUpInside)
         return cell
     }
     
