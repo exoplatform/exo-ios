@@ -79,6 +79,10 @@
 		D79611C126778ACC00F2FDE8 /* ConnectToExoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611BB26778ACC00F2FDE8 /* ConnectToExoViewController.swift */; };
 		D79611C826778AFD00F2FDE8 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611C726778AFD00F2FDE8 /* UIView-Extension.swift */; };
 		D79611CF26778B1E00F2FDE8 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611CE26778B1E00F2FDE8 /* UIColor-Extension.swift */; };
+		D79611F22677A87000F2FDE8 /* AddDomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79611F02677A87000F2FDE8 /* AddDomainViewController.swift */; };
+		D79611F32677A87000F2FDE8 /* AddDomainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79611F12677A87000F2FDE8 /* AddDomainViewController.xib */; };
+		D7F12D2F26789E08007C8294 /* CustomPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F12D2D26789E07007C8294 /* CustomPopupViewController.xib */; };
+		D7F12D3026789E08007C8294 /* CustomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +236,10 @@
 		D79611BB26778ACC00F2FDE8 /* ConnectToExoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectToExoViewController.swift; sourceTree = "<group>"; };
 		D79611C726778AFD00F2FDE8 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		D79611CE26778B1E00F2FDE8 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		D79611F02677A87000F2FDE8 /* AddDomainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDomainViewController.swift; sourceTree = "<group>"; };
+		D79611F12677A87000F2FDE8 /* AddDomainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDomainViewController.xib; sourceTree = "<group>"; };
+		D7F12D2D26789E07007C8294 /* CustomPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPopupViewController.xib; sourceTree = "<group>"; };
+		D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPopupViewController.swift; sourceTree = "<group>"; };
 		E04FDBBFA30993241BAF1EC3 /* Pods_eXoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -468,6 +476,7 @@
 		9C3AD2791BCF5D6E0094CFF9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D79611EF2677A81A00F2FDE8 /* AddDomainVC */,
 				D79611B226778ACC00F2FDE8 /* SignInToExoVC */,
 				9C032E361BEA1495006F0577 /* Basic */,
 				9C3AD27C1BCF5D960094CFF9 /* On-Boarding */,
@@ -638,6 +647,25 @@
 				D79611B926778ACC00F2FDE8 /* ServerCell.xib */,
 			);
 			path = ServerCell;
+			sourceTree = "<group>";
+		};
+		D79611EF2677A81A00F2FDE8 /* AddDomainVC */ = {
+			isa = PBXGroup;
+			children = (
+				D79611F02677A87000F2FDE8 /* AddDomainViewController.swift */,
+				D79611F12677A87000F2FDE8 /* AddDomainViewController.xib */,
+				D7F12D2C26789E07007C8294 /* CustomPopupVC */,
+			);
+			path = AddDomainVC;
+			sourceTree = "<group>";
+		};
+		D7F12D2C26789E07007C8294 /* CustomPopupVC */ = {
+			isa = PBXGroup;
+			children = (
+				D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */,
+				D7F12D2D26789E07007C8294 /* CustomPopupViewController.xib */,
+			);
+			path = CustomPopupVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -840,9 +868,11 @@
 				AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */,
 				9C935F851BD64DAD009C065B /* Localizable.strings in Resources */,
 				9C3D7D1E1BDF6BA3002873CB /* eXo.entitlements in Resources */,
+				D79611F32677A87000F2FDE8 /* AddDomainViewController.xib in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
+				D7F12D2F26789E08007C8294 /* CustomPopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,6 +1060,7 @@
 				D79611C126778ACC00F2FDE8 /* ConnectToExoViewController.swift in Sources */,
 				B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */,
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
+				D7F12D3026789E08007C8294 /* CustomPopupViewController.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
 				D79611BC26778ACC00F2FDE8 /* HeaderConnectCell.swift in Sources */,
@@ -1041,6 +1072,7 @@
 				9C935F7E1BD60286009C065B /* Tool.swift in Sources */,
 				9C3AD24A1BCF56900094CFF9 /* eXoAppDelegate.swift in Sources */,
 				9C3AD2861BCF9E570094CFF9 /* defines.swift in Sources */,
+				D79611F22677A87000F2FDE8 /* AddDomainViewController.swift in Sources */,
 				9C3AD2821BCF5E110094CFF9 /* WelcomeViewController.swift in Sources */,
 				9C032E3A1BEA17DE006F0577 /* PreviewController.swift in Sources */,
 				B56257E7202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift in Sources */,

@@ -10,6 +10,9 @@ import Foundation
 
 extension String {
     
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
     /*
      Return the serverURL with protocol & port (if need)
      example: serverURL = http://localhost:8080/portal/intranet
@@ -23,5 +26,5 @@ extension String {
         }
         return fullDomain
     }
-    
+
 }

@@ -28,8 +28,8 @@ class ConnectToExoViewController: UIViewController {
     }
     
     func setNavigationBarAppearance(){
-        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.barStyle = UIBarStyle.default
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: 0xF0F0F0)
         self.navigationController?.navigationBar.tintColor = UIColor.black
@@ -46,10 +46,17 @@ class ConnectToExoViewController: UIViewController {
         navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
     }
     
-    @objc func goBack(){
+    @objc
+    func goBack(){
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc
+    func addButtonTapped(){
+        let addDomainVC = AddDomainViewController()
+        self.present(addDomainVC, animated: true)
+    }
+  
     func initView() {
         connectTableView.delegate = self
         connectTableView.dataSource = self
@@ -65,9 +72,9 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         }
         return 0
     }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderConnectCell.cellId) as! HeaderConnectCell
+        headerCell.headerButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return headerCell
     }
     
