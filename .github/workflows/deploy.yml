@@ -10,11 +10,12 @@
 # - API_TOKEN_APPALOOSA: Appaloosa Store api token
 # - STORE_ID_APPALOOSA: Appaloosa Store id
 
-name: eXo iOS Beta Appaloosa CI/CD
+name: eXo iOS Snapshot Appaloosa CI/CD
 
 on:
   push:
     branches: [develop, acceptance]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: macos-11
@@ -49,13 +50,13 @@ jobs:
         with:
           lane: "ci_sync_certificates"
         env:
-          BUNDLE_ID: org.exoplatform.exo-beta
+          BUNDLE_ID: org.exoplatform.exo-snapshot
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
           MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       - name: Generate new version
         env:
-          TAG_PREFIX: "6.2-beta"
+          TAG_PREFIX: "6.2-DEV"
         run: |
           git config --global user.email "exo-swf@exoplatform.com"
           git config --global user.name "eXo Software Factory"
@@ -76,10 +77,10 @@ jobs:
           echo "EXO_APP_ENVIRONMENT=${NEW_TAG}" >> $GITHUB_ENV
           xcrun agvtool new-version -all ${INDEX}
       # Deploy eXo iOS bundle to appalossa store
-      - name: "Deploy eXo Beta to appaloosa"
+      - name: "Deploy eXo Snapshot to appaloosa"
         uses: maierj/fastlane-action@v2.0.1
         with:
-          lane: "build_beta_ppr"
+          lane: "build_snapshot"
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
