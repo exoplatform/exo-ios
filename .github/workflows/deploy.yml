@@ -9,11 +9,11 @@
 # - API_TOKEN_APPALOOSA: Appaloosa Store api token
 # - STORE_ID_APPALOOSA: Appaloosa Store id
 
-name: eXo iOS Appaloosa CI/CD
+name: eXo iOS Beta Appaloosa CI/CD
 
 on:
   push:
-    branches: [develop]
+    branches: [develop, acceptance]
 jobs:
   deploy: 
     runs-on: macos-10.15
@@ -46,7 +46,7 @@ jobs:
         with:
           lane: "ci_sync_certificates"
         env:
-          BUNDLE_ID: com.exoplatform.mob.eXoPlatformiPHone
+          BUNDLE_ID: org.exoplatform.exo-beta
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}  
           MATCH_KEYCHAIN_PASSWORD : ${{ secrets.KEYCHAIN_PASSWORD }}
           MATCH_KEYCHAIN_NAME : ${{ secrets.KEYCHAIN_NAME }}
