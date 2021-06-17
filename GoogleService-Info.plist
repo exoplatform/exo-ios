@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>672580172611-ra7f3u6sbtqpaj2p5v4l68ve82ikg9lq.apps.googleusercontent.com</string>
+	<string>672580172611-unqn0rcj5rhish6kc9pf93svpqui1vc8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.672580172611-ra7f3u6sbtqpaj2p5v4l68ve82ikg9lq</string>
+	<string>com.googleusercontent.apps.672580172611-unqn0rcj5rhish6kc9pf93svpqui1vc8</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCTbBy8m0IhG6Eb6RfGDP_yL04uZiZsDdE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.exoplatform.exo-beta</string>
+	<string>org.exoplatform.exo-snapshot</string>
 	<key>PROJECT_ID</key>
 	<string>exo-mobile</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:672580172611:ios:e0c02017cd9ede347c8df6</string>
+	<string>1:672580172611:ios:426ffc6c8900ed437c8df6</string>
 	<key>DATABASE_URL</key>
 	<string>https://exo-mobile.firebaseio.com</string>
 </dict>
