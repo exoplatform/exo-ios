@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ develop, acceptance ]
 env: 
-  BUNDLE_ID: 'org.exoplatform.exo-beta'
+  BUNDLE_ID: 'org.exoplatform.exo-snapshot'
 jobs:
   build:
     name: CI Build eXo iOS Project
