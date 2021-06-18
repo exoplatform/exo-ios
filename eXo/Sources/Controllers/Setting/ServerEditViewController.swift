@@ -88,18 +88,16 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 
 	func delete() {
 		//Ask for confirmation first
-        let alertController = UIAlertController(title: NSLocalizedString("Setting.Title.DeleteServer", comment: ""), message: NSLocalizedString("Setting.Message.DeleteServer", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title:"Setting.Title.DeleteServer".localized, message: "Setting.Message.DeleteServer".localized, preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
 		}
 		alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Word.OK", comment: ""), style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
+        let confirmAction = UIAlertAction(title:"Word.OK".localized, style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
 			ServerManager.sharedInstance.removeServer(self.server);
 			self.navigationController?.popViewController(animated: true)
-
 		}
 		alertController.addAction(confirmAction)
 		self.present(alertController, animated: false, completion: nil)
-
 	}
 
 	//MARK : KeyBoard handle
