@@ -15,6 +15,8 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var domainTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var textViewContainer: UIView!
+    @IBOutlet weak var actionContainerView: UIView!
+    @IBOutlet weak var addImgView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +24,36 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     func setupView(){
+        self.addImgView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
         domainTextField.delegate = self
         textViewContainer.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
         let attributedStringFormule = NSMutableAttributedString()
-        attributedStringFormule.append(text: "company.", color: .lightGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
-        attributedStringFormule.append(text: "exoplatform.com", color: .darkGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
+        attributedStringFormule.append(text: "company", color: .lightGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
+        attributedStringFormule.append(text: ".exoplatform.com", color: .darkGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
         domainTextField.attributedText = attributedStringFormule
         domainTextField.clearButtonMode = .always
+        addButton.setBackgroundImage(UIImage(), for: .highlighted)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        domainTextField.resignFirstResponder()
+    }
+    
+    // MARK: - UITextField Delegate.
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let text = domainTextField.text {
+            if !text.isBlankOrEmpty() && text ==  "company.exoplatform.com"{
+                domainTextField.text = ".exoplatform.com"
+            }
+            
+            if !text.isEmpty && text.contains(" ") {
+                domainTextField.text = ""
+            }
+        }
     }
     
     @IBAction func cleseButtonTappee(_ sender: Any) {
@@ -48,9 +73,3 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
 }
 
-extension NSMutableAttributedString {
-    func append(text:String,color:UIColor,font:UIFont){
-        let attributeText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor:color,NSAttributedString.Key.font:font])
-        self.append(attributeText)
-    }
-}
