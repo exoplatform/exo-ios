@@ -221,8 +221,8 @@ platform :ios do
     )
   end
 
-  desc "Build a beta version and upload to Appaloosa"
-  lane :build_beta_ppr do
+  desc "Build a RC version and upload to Appaloosa"
+  lane :build_rc_ppr do
     ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
     ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
     ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AdHoc"
@@ -230,7 +230,7 @@ platform :ios do
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
-    ENV["EXO_APP_ENVIRONMENT"]="6.0-RC01"
+    ENV["EXO_APP_ENVIRONMENT"]="6.2-RC01"
     ENV["EXO_APP_IDENTIFIERS"]="#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
 
     add_badge(shield: "#{ENV["EXO_APP_ENVIRONMENT"]}-blue", dark: true)
@@ -299,6 +299,32 @@ platform :ios do
       readonly: true,
       keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
       keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    )
+  end
+
+  desc "Build a beta version and upload to Appaloosa"
+  lane :build_beta_ppr do
+    ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
+    ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
+    ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AdHoc"
+    ENV["EXO_APP_CONFIGURATION"] = "Release"
+
+    ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
+    ENV["EXO_APP_ID"] = "org.exoplatform.exo-beta"
+    ENV["EXO_APP_ENVIRONMENT"]="6.2-beta01"
+    ENV["EXO_APP_IDENTIFIERS"]="#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
+
+    add_badge(shield: "#{ENV["EXO_APP_ENVIRONMENT"]}-green", dark: true)
+    internal_build()
+    appaloosa(
+      binary: "./fastlane/output/exo.ipa",
+      store_id: ENV['APPALOOSA_EXO_STORE_ID'],
+      api_token: ENV['APPALOOSA_EXO_API_TOKEN'],
+      # User group_ids visibility (ex: '123, 456, 789') 
+      # if it's not specified we'll publish the app for all users in your store'
+      group_ids: '8782', # eXo
+      # group_ids: '16486', # fdr
+      screenshots: ''
     )
   end
 
