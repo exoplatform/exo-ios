@@ -13,7 +13,7 @@ name: eXo iOS Snapshot Appaloosa CI/CD
 
 on:
   push:
-    branches: [acceptance]
+    branches: [develop, acceptance]
 jobs:
   deploy: 
     runs-on: macos-10.15
