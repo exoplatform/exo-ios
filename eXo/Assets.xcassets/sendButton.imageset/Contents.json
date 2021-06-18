@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "addDomain.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sendButton.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
