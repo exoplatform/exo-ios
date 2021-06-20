@@ -8,7 +8,7 @@
 	<string>$(TEAM_ID)</string>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.$(APP_BUNDLE_ID)</string>
+		<string>group.org.exoplatform.exo-snapshot</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<string>$(TEAM_ID).$(APP_BUNDLE_ID)</string>
