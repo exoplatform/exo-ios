@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,6 @@
             <connections>
                 <outlet property="containerView" destination="ecP-J8-C19" id="VjK-Ep-XEb"/>
                 <outlet property="discriptionLabel" destination="QJr-Zy-jtt" id="jjD-Ae-ifk"/>
-                <outlet property="domainTextField" destination="uqa-0u-r1Q" id="wlN-N0-jb5"/>
                 <outlet property="imgView" destination="6nU-m0-pzF" id="lhr-ws-rlZ"/>
                 <outlet property="noButton" destination="nXi-E9-Jbx" id="EC9-B2-b5p"/>
                 <outlet property="okButton" destination="Ke0-XY-cde" id="g0w-rm-Hcg"/>
@@ -60,7 +59,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QJr-Zy-jtt">
-                            <rect key="frame" x="8" y="31" width="278" height="39"/>
+                            <rect key="frame" x="8" y="67" width="278" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="39" id="0Uw-rw-YN6"/>
                                 <constraint firstAttribute="width" constant="278" id="Zn1-RD-L7h"/>
@@ -69,24 +68,13 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-0u-r1Q">
-                            <rect key="frame" x="51.5" y="78" width="191" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="34" id="E8w-dh-y1K"/>
-                                <constraint firstAttribute="width" constant="191" id="sax-y7-Odw"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="uqa-0u-r1Q" firstAttribute="top" secondItem="QJr-Zy-jtt" secondAttribute="bottom" constant="8" symbolic="YES" id="72q-dz-lqE"/>
-                        <constraint firstItem="QJr-Zy-jtt" firstAttribute="centerY" secondItem="ecP-J8-C19" secondAttribute="centerY" constant="-36.5" id="77P-DK-ybV"/>
+                        <constraint firstItem="QJr-Zy-jtt" firstAttribute="centerY" secondItem="ecP-J8-C19" secondAttribute="centerY" constant="-0.5" id="77P-DK-ybV"/>
                         <constraint firstItem="QJr-Zy-jtt" firstAttribute="centerX" secondItem="ecP-J8-C19" secondAttribute="centerX" id="A4P-QU-9DF"/>
                         <constraint firstItem="QJr-Zy-jtt" firstAttribute="leading" secondItem="ecP-J8-C19" secondAttribute="leading" constant="8" id="IMO-jF-gNF"/>
                         <constraint firstAttribute="width" constant="294" id="coN-tX-pWv"/>
-                        <constraint firstItem="uqa-0u-r1Q" firstAttribute="centerX" secondItem="QJr-Zy-jtt" secondAttribute="centerX" id="izZ-4l-hl2"/>
                         <constraint firstAttribute="height" constant="174" id="sfk-4E-Fgc"/>
                         <constraint firstAttribute="trailing" secondItem="QJr-Zy-jtt" secondAttribute="trailing" constant="8" id="y8F-Js-Yyg"/>
                     </constraints>
@@ -96,21 +84,35 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6nU-m0-pzF">
-                    <rect key="frame" x="178.5" y="342" width="57" height="49"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKS-eG-Zyk" customClass="DesignableView" customModule="eXo" customModuleProvider="target">
+                    <rect key="frame" x="182" y="341" width="50" height="50"/>
+                    <subviews>
+                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eXoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6nU-m0-pzF">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="49" id="Sdv-J0-m0S"/>
-                        <constraint firstAttribute="width" constant="57" id="T0s-1U-mrR"/>
+                        <constraint firstItem="6nU-m0-pzF" firstAttribute="leading" secondItem="MKS-eG-Zyk" secondAttribute="leading" id="1hN-3h-jbg"/>
+                        <constraint firstAttribute="height" constant="50" id="9WT-wC-mR1"/>
+                        <constraint firstItem="6nU-m0-pzF" firstAttribute="top" secondItem="MKS-eG-Zyk" secondAttribute="top" id="K0u-L4-Jo9"/>
+                        <constraint firstAttribute="width" constant="50" id="dPx-ac-aLk"/>
+                        <constraint firstAttribute="bottom" secondItem="6nU-m0-pzF" secondAttribute="bottom" id="hHI-bL-QW5"/>
+                        <constraint firstAttribute="trailing" secondItem="6nU-m0-pzF" secondAttribute="trailing" id="pFy-ql-Rib"/>
                     </constraints>
-                </imageView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.3029216609589041" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="6nU-m0-pzF" firstAttribute="centerX" secondItem="ecP-J8-C19" secondAttribute="centerX" id="HqA-PH-qlP"/>
-                <constraint firstItem="ecP-J8-C19" firstAttribute="top" secondItem="6nU-m0-pzF" secondAttribute="bottom" constant="-25" id="NlG-Zy-qTJ"/>
+                <constraint firstItem="MKS-eG-Zyk" firstAttribute="centerX" secondItem="ecP-J8-C19" secondAttribute="centerX" id="4pt-sI-lmD"/>
                 <constraint firstItem="ecP-J8-C19" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Uge-81-Uej"/>
+                <constraint firstItem="ecP-J8-C19" firstAttribute="top" secondItem="MKS-eG-Zyk" secondAttribute="bottom" constant="-25" id="atR-wd-K9W"/>
                 <constraint firstItem="ecP-J8-C19" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="iTo-yC-ksL"/>
             </constraints>
             <point key="canvasLocation" x="-25" y="115"/>
