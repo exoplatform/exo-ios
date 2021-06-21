@@ -10,6 +10,8 @@ import UIKit
 
 class ServerCell: UITableViewCell {
 
+    // MARK: - Cell ID.
+    
     static let cellId = String(describing: ServerCell.self)
     
     // MARK: - Outlets.
