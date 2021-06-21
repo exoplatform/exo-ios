@@ -37,7 +37,7 @@ class ConnectToExoViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.black
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        //MARK:- menuButton
+        //MARK:- Back Button
         let menuButton = UIButton(type: .system)
         menuButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
         menuButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
