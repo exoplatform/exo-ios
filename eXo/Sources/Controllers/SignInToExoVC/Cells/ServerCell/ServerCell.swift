@@ -10,7 +10,7 @@ import UIKit
 
 class ServerCell: UITableViewCell {
 
-    // MARK: - Cell ID.
+    // MARK: - Cell ID .
     
     static let cellId = String(describing: ServerCell.self)
     
