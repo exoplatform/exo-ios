@@ -10,6 +10,8 @@ import UIKit
 
 class ServerCell: UITableViewCell {
 
+    // MARK: - Cell ID .
+    
     static let cellId = String(describing: ServerCell.self)
     
     // MARK: - Outlets.
@@ -30,7 +32,6 @@ class ServerCell: UITableViewCell {
     
     func initView(){
         badgeView.makeCircular()
-        containerView.makeShadowWith(offset: CGSize(width: 5, height: 5), radius: 6, opacity: 0.1, color: .darkGray)
         containerView.addBorderWith(width:1,color: UIColor.lightGray.withAlphaComponent(0.5), cornerRadius: 6)
     }
     
