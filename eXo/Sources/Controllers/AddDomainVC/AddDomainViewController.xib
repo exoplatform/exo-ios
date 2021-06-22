@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,7 +44,7 @@
                             </constraints>
                             <state key="normal" image="closeButton"/>
                             <connections>
-                                <action selector="cleseButtonTappee:" destination="-1" eventType="touchUpInside" id="Xz7-WO-Udt"/>
+                                <action selector="closeButtonTappee:" destination="-1" eventType="touchUpInside" id="qaK-DW-dPd"/>
                             </connections>
                         </button>
                     </subviews>
@@ -75,6 +75,7 @@
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="del-EV-49P">
                                             <rect key="frame" x="8" y="0.0" width="282" height="46"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="Y4Q-0K-UUa"/>
                                                 <constraint firstAttribute="width" constant="282" id="whC-D6-SfU"/>
@@ -85,6 +86,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="del-EV-49P" secondAttribute="trailing" id="BwO-Ql-Gm6"/>
                                         <constraint firstItem="del-EV-49P" firstAttribute="top" secondItem="b8M-7H-eoI" secondAttribute="top" id="O95-SU-f8v"/>
                                         <constraint firstItem="del-EV-49P" firstAttribute="leading" secondItem="b8M-7H-eoI" secondAttribute="leading" constant="8" id="cIN-4l-hbr"/>
                                         <constraint firstAttribute="bottom" secondItem="del-EV-49P" secondAttribute="bottom" id="yk7-Wl-z2i"/>
