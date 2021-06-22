@@ -222,7 +222,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
-
         // Print full message.
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
