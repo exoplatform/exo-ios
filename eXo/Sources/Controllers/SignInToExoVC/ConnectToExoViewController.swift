@@ -25,7 +25,8 @@ class ConnectToExoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setNavigationBarAppearance()
+        navigationController?.navigationBar.isHidden = true
+      //  setNavigationBarAppearance()
     }
     
     func setNavigationBarAppearance(){
@@ -111,7 +112,14 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         }
         return 0
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let viewHeader = UIView()
+        viewHeader.backgroundColor = .white
+        return viewHeader
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderConnectCell.cellId) as! HeaderConnectCell
         headerCell.headerButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return headerCell
@@ -143,6 +151,10 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 86
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
