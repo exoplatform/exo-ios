@@ -102,6 +102,23 @@ class ConnectToExoViewController: UIViewController {
         alertController.addAction(confirmAction)
         self.present(alertController, animated: false, completion: nil)
     }
+    
+    func deleteServer(server:Server) {
+        //Ask for confirmation first
+        let alertController = UIAlertController(title:"Setting.Title.DeleteServer".localized, message: "Setting.Message.DeleteServer".localized, preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
+        }
+        alertController.addAction(cancelAction)
+        let confirmAction = UIAlertAction(title:"Word.OK".localized, style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
+            ServerManager.sharedInstance.removeServer(server);
+            if ServerManager.sharedInstance.serverList.count == 0 {
+                self.navigationController?.popViewController(animated: true)
+            }
+            self.connectTableView.reloadData()
+        }
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: false, completion: nil)
+    }
 }
 
 extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
