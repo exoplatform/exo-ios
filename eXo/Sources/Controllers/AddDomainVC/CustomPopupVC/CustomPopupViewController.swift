@@ -21,7 +21,6 @@ class CustomPopupViewController: UIViewController {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var discriptionLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var domainTextField: UITextField!
     
     var descriptionMessage:String = ""
     var actionHandler:ActionHandler!
@@ -31,7 +30,7 @@ class CustomPopupViewController: UIViewController {
     }
     
     func initView(){
-        domainTextField.addBorderWith(width: 1, color: UIColor(hex: 0xE96614), cornerRadius: 5.0)
+        imgView.addCornerRadiusWith(radius: 25)
         okButton.addCornerRadiusWith(radius: 5.0)
         noButton.addBorderWith(width: 1, color: UIColor(hex: 0xE96614), cornerRadius: 5.0)
         discriptionLabel.text = descriptionMessage
@@ -51,6 +50,13 @@ class CustomPopupViewController: UIViewController {
             noButton.isHidden = true
             noButton.isEnabled = false
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissPopup(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    func dismissPopup(_ sender: UITapGestureRecognizer) {
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func okButtonTapped(_ sender: Any) {
