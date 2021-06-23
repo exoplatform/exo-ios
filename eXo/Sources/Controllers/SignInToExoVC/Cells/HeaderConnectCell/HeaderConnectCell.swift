@@ -15,11 +15,10 @@ class HeaderConnectCell: UITableViewCell {
     // MARK: - Outlets.
     
     @IBOutlet weak var headerButton: UIButton!
-    @IBOutlet weak var headerTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        headerTitle.text = NSLocalizedString("OnBoarding.Title.AddNewExo", comment: "")
+        headerButton.setTitle(NSLocalizedString("OnBoarding.Title.AddNewExo", comment: ""), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
