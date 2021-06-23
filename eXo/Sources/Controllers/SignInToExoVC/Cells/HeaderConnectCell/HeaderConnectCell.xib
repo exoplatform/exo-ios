@@ -17,42 +17,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tid-11-aGZ">
-                        <rect key="frame" x="109" y="7" width="17" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="17" id="lLj-Lf-LWT"/>
-                            <constraint firstAttribute="height" constant="30" id="oJ6-ad-sVS"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                        <color key="textColor" red="0.26274509800000001" green="0.50980392159999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajouter un nouveau eXo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSm-fh-zoC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                        <color key="textColor" red="0.26274509800000001" green="0.50980392159999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMW-ry-O4Y">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMW-ry-O4Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                         <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal">
+                        <state key="normal" title="Ajouter un nouveau eXo" image="plusIcon">
                             <color key="titleColor" red="0.26274509800000001" green="0.50980392159999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="tid-11-aGZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="109" id="1zg-gg-fSP"/>
                     <constraint firstAttribute="bottom" secondItem="jMW-ry-O4Y" secondAttribute="bottom" id="3Ia-TG-HgT"/>
-                    <constraint firstAttribute="trailing" secondItem="CSm-fh-zoC" secondAttribute="trailing" id="5ve-dR-yCe"/>
                     <constraint firstAttribute="trailing" secondItem="jMW-ry-O4Y" secondAttribute="trailing" id="SUr-q8-Tlz"/>
-                    <constraint firstItem="CSm-fh-zoC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vaq-D9-qA7"/>
-                    <constraint firstItem="tid-11-aGZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Vbs-Sw-JaG"/>
                     <constraint firstItem="jMW-ry-O4Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eIt-yk-wFf"/>
-                    <constraint firstAttribute="bottom" secondItem="CSm-fh-zoC" secondAttribute="bottom" id="jYG-Ef-OW5"/>
-                    <constraint firstItem="CSm-fh-zoC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lsF-I7-yQ1"/>
                     <constraint firstItem="jMW-ry-O4Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="npg-yH-Cbi"/>
                 </constraints>
             </tableViewCellContentView>
@@ -60,9 +38,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="headerButton" destination="jMW-ry-O4Y" id="2zN-vn-WwB"/>
-                <outlet property="headerTitle" destination="CSm-fh-zoC" id="9sG-o9-1as"/>
             </connections>
             <point key="canvasLocation" x="-159.42028985507247" y="116.51785714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="plusIcon" width="16" height="16"/>
+    </resources>
 </document>
