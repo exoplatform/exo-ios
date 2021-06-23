@@ -45,7 +45,8 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     var navigationVC:UINavigationController?
     static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
     let notificationCenter = UNUserNotificationCenter.current()
-
+    let defaults = UserDefaults.standard
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Start Crashlytics
         Fabric.with([Crashlytics.self])
@@ -235,6 +236,18 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                             DispatchQueue.main.async {
                                 application.applicationIconBadgeNumber = badge
                                 application.registerForRemoteNotifications()
+                            }
+                            if let url = userInfo["url"] as? String {
+                                let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
+                                var dic:Dictionary = [String:Int]()
+                                for ser in ServerManager.sharedInstance.serverList {
+                                    if let serverURL = (ser as? Server)?.serverURL {
+                                        if serverURL.stringURLWithoutProtocol() == server.serverURL.stringURLWithoutProtocol() {
+                                            dic[server.serverURL.stringURLWithoutProtocol()] = badge
+                                        }
+                                    }
+                                }
+                                self.defaults.setValue(dic, forKey: "badgeNumber")
                             }
                         }
                     }

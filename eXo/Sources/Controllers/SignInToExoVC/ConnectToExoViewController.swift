@@ -14,6 +14,8 @@ class ConnectToExoViewController: UIViewController {
     
     @IBOutlet weak var connectTableView: UITableView!
     
+    let defaults = UserDefaults.standard
+    
     // MARK: - Variables.
     
     var selectedServer : Server?
@@ -37,14 +39,14 @@ class ConnectToExoViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.black
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        //MARK:- menuButton
-        let menuButton = UIButton(type: .system)
-        menuButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        menuButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
-        menuButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        //MARK:- Back Button
+        let backButton = UIButton(type: .system)
+        backButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         let rightBarButtonItem3 = UIBarButtonItem()
-        rightBarButtonItem3.customView = menuButton
+        rightBarButtonItem3.customView = backButton
         navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
     }
     
@@ -128,9 +130,20 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ServerCell.cellId, for: indexPath) as! ServerCell
         let serveur = (ServerManager.sharedInstance.serverList?[indexPath.row] as! Server).serverURL.stringURLWithoutProtocol()
-            cell.setupDataWith(serveur:serveur)
-            cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_ :)), for: .touchUpInside)
+        cell.setupDataWith(serveur:serveur)
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_ :)), for: .touchUpInside)
+        if let dic = defaults.dictionary(forKey: "badgeNumber") {
+            if let badgeNumber = dic[serveur] as? Int {
+                print(badgeNumber)
+                if badgeNumber != 0 {
+                    cell.badgeView.isHidden = false
+                    cell.badgeLabel.text = "\(badgeNumber)"
+                }else{
+                    cell.badgeView.isHidden = true
+                }
+            }
+        }
         return cell
     }
     
