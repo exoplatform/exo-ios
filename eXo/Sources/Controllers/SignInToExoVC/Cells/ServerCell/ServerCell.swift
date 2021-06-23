@@ -8,6 +8,8 @@
 
 import UIKit
 
+import UIKit
+
 class ServerCell: UITableViewCell {
 
     // MARK: - Cell ID .
@@ -18,6 +20,7 @@ class ServerCell: UITableViewCell {
     
     @IBOutlet weak var serverLabel: UILabel!
     @IBOutlet weak var badgeView: UIView!
+    @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
