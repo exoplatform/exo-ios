@@ -17,6 +17,7 @@
 
 import UIKit
 import WebKit
+import Kingfisher
 
 class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate {
 
@@ -27,6 +28,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     private let cookiesInterceptor: CookiesInterceptor = CookiesInterceptorFactory().create()
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
 
+    var countRefresh:Int = 0
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -117,9 +119,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         //Check if need to display the welcome view
         if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
-            loadStateStatusPage ()
+            loadStateStatusPage()
         }
         
+        if let refreshCount = UserDefaults.standard.value(forKey: "countRefresh") as? Int {
+            if refreshCount == 1 {
+                webView.reload()
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -158,6 +165,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
                 if let url = response.url {
                     self.cookiesInterceptor.intercept(cookies, url: url)
+                    self.saveLogoDomain(url:url, cookies: cookies)
                 }
             })
         } else if let headers = response.allHeaderFields as? [String: String], let url = response.url {
@@ -187,10 +195,18 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
+        // Refresh the web page if is needed.
+        if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
+            if last == "dw/" || last == "dw"{
+                countRefresh += 1
+                UserDefaults.standard.setValue(countRefresh, forKey: "countRefresh")
+            }
+        }
         
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
+        
         if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil){
             UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
             UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
@@ -255,6 +271,28 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             let url = URL(string: statusURL)
             let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Config.timeout)
             self.webView?.load(request)
+        }
+    }
+    
+    /*
+     Get the remote avatar image, this need credentials in call .
+     */
+    
+    func saveLogoDomain(url:URL,cookies:[HTTPCookie]){
+        if url.absoluteString.contains("/portal/dw") {
+            let logoEndPoint = "/portal/rest/v1/platform/branding/logo"
+            if let domain = url.host {
+                let  urlStringLogo = "https://" + "\(domain)" + logoEndPoint
+                let _url = URL(string: urlStringLogo)
+                let modifier = AnyModifier { request in
+                    var r = request
+                    r.allHTTPHeaderFields = HTTPCookie.requestHeaderFields(with: cookies)
+                    return r
+                }
+                let imgView = UIImageView()
+                imgView.kf.setImage(with: _url, options: [.requestModifier(modifier)])
+                UserDefaults.standard.setValue(imgView.image?.pngData(), forKey: "\(domain)")
+            }
         }
     }
 }
