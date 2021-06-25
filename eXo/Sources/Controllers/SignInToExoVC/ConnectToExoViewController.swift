@@ -45,7 +45,7 @@ class ConnectToExoViewController: UIViewController {
         //MARK:- Back Button
         let backButton = UIButton(type: .system)
         backButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(popVC), for: .touchUpInside)
         backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         let rightBarButtonItem3 = UIBarButtonItem()
@@ -54,8 +54,8 @@ class ConnectToExoViewController: UIViewController {
     }
     
     @objc
-    func goBack(){
-        self.navigationController?.popViewController(animated: true)
+    func popVC(){
+        goBack()
     }
     
     @objc
@@ -63,6 +63,7 @@ class ConnectToExoViewController: UIViewController {
         let addDomainVC = AddDomainViewController()
         addDomainVC.modalPresentationStyle = .overFullScreen
         self.present(addDomainVC, animated: true)
+       // goBack()
     }
   
     @objc

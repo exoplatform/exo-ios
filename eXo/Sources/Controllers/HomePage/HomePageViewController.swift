@@ -73,7 +73,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         //MARK:- menuButton
         let menuButton = UIButton(type: .system)
         menuButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        menuButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(popVC), for: .touchUpInside)
         menuButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
         let rightBarButtonItem3 = UIBarButtonItem()
@@ -81,8 +81,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
     }
     
-    @objc func goBack(){
-        self.navigationController?.popViewController(animated: true)
+    @objc func popVC(){
+        goBack()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -180,6 +180,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
+        if let urlToSee = request.url?.absoluteString {
+            print("=============== Navigation Url : \(urlToSee)")
+        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
@@ -219,8 +222,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
             previewController.serverURL = request.url?.absoluteString
+            if let urlPreviewToSee = request.url?.absoluteString {
+                print("=============== Navigation urlPreviewToSee Url : \(urlPreviewToSee)")
+            }
             /// I am using this check , because we have problem with SAMLRequest when navigate and using the wkwebview in the previewController.
-            if request.url?.absoluteString.range(of:"https://accounts.google.com/o/saml2/") != nil  {
+            if request.url?.absoluteString.range(of:"/saml") != nil {
                 previewController.isSAMLResquest = true
                 previewController.samlRequest = request
                 self.present(previewNavigationController, animated: true, completion: nil)
