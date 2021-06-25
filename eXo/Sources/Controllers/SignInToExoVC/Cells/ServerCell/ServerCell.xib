@@ -59,25 +59,33 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YtA-15-H66">
+                                <rect key="frame" x="237" y="15" width="51" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4KK-4w-faH"/>
+                                    <constraint firstAttribute="width" constant="51" id="iI7-hB-SYy"/>
+                                </constraints>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="I1f-Yl-8RQ">
                                 <rect key="frame" x="263" y="27.5" width="17" height="17"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="4KK-4w-faH"/>
-                                    <constraint firstAttribute="width" constant="17" id="iI7-hB-SYy"/>
+                                    <constraint firstAttribute="height" constant="17" id="Goe-yk-TbA"/>
+                                    <constraint firstAttribute="width" constant="17" id="KU2-ud-Xtn"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="delete"/>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cqs-wS-hEw" firstAttribute="leading" secondItem="hpE-rD-uSL" secondAttribute="leading" constant="9" id="7N3-QM-xf9"/>
-                            <constraint firstItem="YtA-15-H66" firstAttribute="centerY" secondItem="cqs-wS-hEw" secondAttribute="centerY" constant="-1.5" id="Lwi-B7-szA"/>
+                            <constraint firstItem="YtA-15-H66" firstAttribute="centerY" secondItem="cqs-wS-hEw" secondAttribute="centerY" constant="-0.5" id="Lwi-B7-szA"/>
                             <constraint firstItem="LZ6-uM-w9i" firstAttribute="leading" secondItem="KCK-Ot-3Ab" secondAttribute="trailing" constant="-1" id="N9M-VN-hbz"/>
                             <constraint firstItem="LZ6-uM-w9i" firstAttribute="centerY" secondItem="cqs-wS-hEw" secondAttribute="centerY" constant="-1.5" id="OLn-fd-40R"/>
-                            <constraint firstAttribute="trailing" secondItem="YtA-15-H66" secondAttribute="trailing" constant="16" id="TYA-pL-CgL"/>
+                            <constraint firstAttribute="trailing" secondItem="YtA-15-H66" secondAttribute="trailing" constant="8" id="TYA-pL-CgL"/>
                             <constraint firstItem="cqs-wS-hEw" firstAttribute="centerY" secondItem="hpE-rD-uSL" secondAttribute="centerY" id="aZd-HF-s2O"/>
+                            <constraint firstItem="I1f-Yl-8RQ" firstAttribute="centerY" secondItem="Sdk-ap-MpD" secondAttribute="centerY" id="ffQ-Wp-Yya"/>
                             <constraint firstItem="KCK-Ot-3Ab" firstAttribute="leading" secondItem="cqs-wS-hEw" secondAttribute="trailing" constant="8" symbolic="YES" id="hFT-7y-rax"/>
                             <constraint firstItem="KCK-Ot-3Ab" firstAttribute="centerY" secondItem="cqs-wS-hEw" secondAttribute="centerY" id="j7U-er-MUt"/>
-                            <constraint firstItem="YtA-15-H66" firstAttribute="leading" secondItem="LZ6-uM-w9i" secondAttribute="trailing" constant="9" id="vdo-eJ-hME"/>
+                            <constraint firstItem="I1f-Yl-8RQ" firstAttribute="leading" secondItem="YtA-15-H66" secondAttribute="trailing" constant="-25" id="uEQ-TY-1gt"/>
+                            <constraint firstItem="YtA-15-H66" firstAttribute="leading" secondItem="LZ6-uM-w9i" secondAttribute="trailing" constant="-17" id="vdo-eJ-hME"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -91,13 +99,14 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="avatarImgView" destination="cqs-wS-hEw" id="qa8-AM-pwq"/>
                 <outlet property="badgeLabel" destination="Sdk-ap-MpD" id="1wc-AJ-7k8"/>
                 <outlet property="badgeView" destination="LZ6-uM-w9i" id="UYK-KD-ULJ"/>
                 <outlet property="containerView" destination="hpE-rD-uSL" id="8xF-3H-Ha9"/>
                 <outlet property="deleteButton" destination="YtA-15-H66" id="Sxw-Yj-ifz"/>
                 <outlet property="serverLabel" destination="KCK-Ot-3Ab" id="09G-Lo-VQ1"/>
             </connections>
-            <point key="canvasLocation" x="156.52173913043478" y="14.732142857142856"/>
+            <point key="canvasLocation" x="155.07246376811597" y="14.732142857142856"/>
         </tableViewCell>
     </objects>
     <resources>
