@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 import UIKit
 
@@ -23,12 +24,13 @@ class ServerCell: UITableViewCell {
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var avatarImgView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -44,5 +46,9 @@ class ServerCell: UITableViewCell {
     
     func setupDataWith(serveur:String){
         serverLabel.text = serveur
+        if let data = UserDefaults.standard.data(forKey: serveur) {
+            self.avatarImgView.image = UIImage(data: data)
+        }
     }
 }
+
