@@ -281,9 +281,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     func saveLogoDomain(url:URL,cookies:[HTTPCookie]){
         if url.absoluteString.contains("/portal/dw") {
             let logoEndPoint = "/portal/rest/v1/platform/branding/logo"
-            if let domain = url.host {
-                let  urlStringLogo = "https://" + "\(domain)" + logoEndPoint
-                let _url = URL(string: urlStringLogo)
+            if let scheme = url.scheme,let domain = url.host {
+                let  imageUrlLogo = "\(scheme)://\(domain)\(logoEndPoint)"
+                let _url = URL(string: imageUrlLogo)
                 let modifier = AnyModifier { request in
                     var r = request
                     r.allHTTPHeaderFields = HTTPCookie.requestHeaderFields(with: cookies)
