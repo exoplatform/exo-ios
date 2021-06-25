@@ -21,4 +21,8 @@ extension UIViewController {
     func addObserverWith(selector:Selector, name:Notification.Name){
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
     }
+    
+    func goBack(){
+        navigationController?.popViewController(animated: true)
+    }
 }
