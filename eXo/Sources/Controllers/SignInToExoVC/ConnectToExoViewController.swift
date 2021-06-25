@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ConnectToExoViewController: UIViewController {
 
@@ -24,10 +25,12 @@ class ConnectToExoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        initView()
+       connectTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        connectTableView.reloadData()
       //  setNavigationBarAppearance()
     }
     
