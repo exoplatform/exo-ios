@@ -194,7 +194,15 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                 print("User has declined notifications")
             }
         }
+        UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
         application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication,
+                     performFetchWithCompletionHandler completionHandler:
+                     @escaping (UIBackgroundFetchResult) -> Void) {
+       // Check for new data.
+        completionHandler(UIBackgroundFetchResult.newData)
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
@@ -205,7 +213,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
 		if let url = userInfo["url"] as? String {
 			let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
 			ServerManager.sharedInstance.addEditServer(server)
-			self.quickActionOpenHomePageForURL(server.serverURL)
+			self.quickActionOpenHomePageForURL(url)//server.serverURL
 		}
 	}
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
@@ -265,6 +273,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print full message.
+        handleNotification(userInfo: userInfo)
         UIApplication.shared.applicationIconBadgeNumber = 0
         UIApplication.shared.registerForRemoteNotifications()
         completionHandler()
