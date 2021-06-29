@@ -2,14 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
-	<string>ca-app-pub-3940256099942544/2934735716</string>
-	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
-	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>672580172611-6mcv4oprdbik6uduejv31khjfdv2skhj.apps.googleusercontent.com</string>
+	<string>672580172611-ra7f3u6sbtqpaj2p5v4l68ve82ikg9lq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.672580172611-6mcv4oprdbik6uduejv31khjfdv2skhj</string>
+	<string>com.googleusercontent.apps.672580172611-ra7f3u6sbtqpaj2p5v4l68ve82ikg9lq</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCTbBy8m0IhG6Eb6RfGDP_yL04uZiZsDdE</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +13,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.exoplatform.mob.eXoPlatformiPHone</string>
+	<string>org.exoplatform.exo-beta</string>
 	<key>PROJECT_ID</key>
 	<string>exo-mobile</string>
 	<key>STORAGE_BUCKET</key>
 	<string>exo-mobile.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:672580172611:ios:50c2f52c507ac443</string>
+	<string>1:672580172611:ios:e0c02017cd9ede347c8df6</string>
 	<key>DATABASE_URL</key>
 	<string>https://exo-mobile.firebaseio.com</string>
 </dict>
