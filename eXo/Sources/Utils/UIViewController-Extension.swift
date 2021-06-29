@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    
     func postNotificationWith(key:Notification.Name,info:[AnyHashable:Any]){
         NotificationCenter.default.post(name: key, object: nil, userInfo: info)
     }
@@ -24,5 +25,13 @@ extension UIViewController {
     
     func goBack(){
         navigationController?.popViewController(animated: true)
+    }
+    
+    func showAlertMessage(msg:String, action:ActionHandler){
+        let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
+        popupVC.descriptionMessage = msg
+        popupVC.actionHandler = action
+        popupVC.modalPresentationStyle = .overFullScreen
+        present(popupVC, animated: false, completion: nil)
     }
 }
