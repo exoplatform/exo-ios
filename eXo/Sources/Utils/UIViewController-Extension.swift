@@ -25,4 +25,12 @@ extension UIViewController {
     func goBack(){
         navigationController?.popViewController(animated: true)
     }
+    
+    func showAlertMessage(msg:String, action:ActionHandler){
+        let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
+        popupVC.descriptionMessage = msg
+        popupVC.actionHandler = action
+        popupVC.modalPresentationStyle = .overFullScreen
+        present(popupVC, animated: false, completion: nil)
+    }
 }
