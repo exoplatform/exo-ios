@@ -58,7 +58,7 @@ jobs:
           git config --global user.email "exo-swf@exoplatform.com"
           git config --global user.name "eXo Software Factory"
           git fetch --tags
-          CURRENT_TAG=$(git tag -l | grep -P ${TAG_PREFIX} | tail -n 1)
+          CURRENT_TAG=$(git tag -l | grep ${TAG_PREFIX} | tail -n 1)
           if [ -z "${CURRENT_TAG}" ]; then
             echo "NEW_TAG=${TAG_PREFIX}01" >> $GITHUB_ENV
             INDEX="01"
