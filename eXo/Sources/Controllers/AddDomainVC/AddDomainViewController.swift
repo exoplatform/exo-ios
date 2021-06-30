@@ -9,54 +9,60 @@
 import UIKit
 
 class AddDomainViewController: UIViewController,UITextFieldDelegate {
-
+    
     // MARK: - Outlets.
     
-    @IBOutlet weak var domainTextField: UITextField!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var textViewContainer: UIView!
-    @IBOutlet weak var actionContainerView: UIView!
-    @IBOutlet weak var addImgView: UIImageView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var companyTextField: UITextField!
+    @IBOutlet weak var suffixUrlTextField: UITextField!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var companyWidthConstraint: NSLayoutConstraint!
     
     // MARK: - Variable.
-
+    
     var selectedServer : Server?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
     func setupView(){
-        self.addImgView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        domainTextField.delegate = self
-        domainTextField.clearButtonMode = .always
-        textViewContainer.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
-        let attributedStringFormule = NSMutableAttributedString()
-        attributedStringFormule.append(text: "company", color: .lightGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
-        attributedStringFormule.append(text: ".exoplatform.com", color: .darkGray, font: UIFont.init(name: "HelveticaNeue-Medium", size: 17)!)
-        domainTextField.attributedText = attributedStringFormule
-        addButton.setBackgroundImage(UIImage(), for: .highlighted)
+        containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
+        companyTextField.delegate = self
+        companyWidthConstraint.constant = companyTextField.intrinsicContentSize.width
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
     
     @objc
     func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        domainTextField.resignFirstResponder()
+        self.view.endEditing(true)
     }
     
-    // MARK: - UITextField Delegate.
-    
+    // MARK: - UITextField Delegate .
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if let text = domainTextField.text {
-            if !text.isBlankOrEmpty() && text ==  "company.exoplatform.com"{
-                domainTextField.text = ".exoplatform.com"
-            }
-            if !text.isEmpty && text.contains(" ") {
-                domainTextField.text = ""
-            }
+        companyTextField.becomeFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == companyTextField {
+            companyWidthConstraint.constant = textField.intrinsicContentSize.width
+            return true
         }
+        return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == companyTextField {
+            companyWidthConstraint.constant = textField.intrinsicContentSize.width
+        }
+    }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        companyTextField.isHidden = true
+        suffixUrlTextField.text = ""
+        suffixUrlTextField.becomeFirstResponder()
     }
     
     @IBAction func closeButtonTappee(_ sender: Any) {
@@ -65,10 +71,11 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         // dismiss the keyboard
-        domainTextField.resignFirstResponder()
+        view.endEditing(true)
         // verification of URL, http is the default protocol
-        if let serverText = domainTextField.text {
-            Tool.verificationServerURL(serverText, handleSuccess: { (serverURL) -> Void in
+        if let company = companyTextField.text, let sufixUrl = suffixUrlTextField.text {
+            print(company,sufixUrl)
+            Tool.verificationServerURL(company+sufixUrl, handleSuccess: { (serverURL) -> Void in
                 self.selectedServer = Server (serverURL: serverURL)
                 OperationQueue.main.addOperation({ () -> Void in
                     ServerManager.sharedInstance.addEditServer(self.selectedServer!)
@@ -82,14 +89,6 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
                 })
             })
         }
-    }
-    
-    func showAlertMessage(msg:String, action:ActionHandler){
-        let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
-        popupVC.descriptionMessage = msg
-        popupVC.actionHandler = action
-        popupVC.modalPresentationStyle = .overFullScreen
-        present(popupVC, animated: false, completion: nil)
     }
 }
 
