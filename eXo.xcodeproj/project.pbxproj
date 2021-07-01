@@ -1250,9 +1250,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				EXCLUDED_ARCHS = "";
@@ -1426,9 +1424,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 6.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.exoplatform.exo-snapshot";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "org.exoplatform.exo-snapshot";
+				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1450,9 +1448,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 6.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.exoplatform.exo-snapshot";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "org.exoplatform.exo-snapshot";
+				PROVISIONING_PROFILE_SPECIFIER = $(APP_PROV_PROFIL)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1548,9 +1546,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.exoplatform.exo-snapshot.share-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "org.exoplatform.exo-snapshot.share-extension";
+				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROV_PROFIL)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "share-extension/share-extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1577,9 +1575,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.exoplatform.exo-snapshot.share-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "org.exoplatform.exo-snapshot.share-extension";
+				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROV_PROFIL)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "share-extension/share-extension-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
