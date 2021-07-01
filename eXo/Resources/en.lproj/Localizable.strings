@@ -56,7 +56,7 @@
 
 "OnBoarding.Error.URL" = "Intranet URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Unable to connect to the intranet";
+"OnBoarding.Error.UnableConnectServer" = "Please enter a correct eXo";
 
 "OnBoarding.Title.RecentsServer" = "My intranets";
 

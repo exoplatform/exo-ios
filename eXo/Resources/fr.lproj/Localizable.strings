@@ -57,7 +57,7 @@
 
 "OnBoarding.Error.URL" = "URL incorrecte";
 
-"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter à l'intranet";
+"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter à eXo";
 
 "OnBoarding.Title.RecentsServer" = "Mes intranets";
 
