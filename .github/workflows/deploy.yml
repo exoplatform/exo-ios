@@ -55,7 +55,7 @@ jobs:
           MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       - name: Generate new version
         env:
-          TAG_PREFIX: "6.2-M"
+          TAG_PREFIX: "6.2-DEV"
         run: |
           git config --global user.email "exo-swf@exoplatform.com"
           git config --global user.name "eXo Software Factory"
