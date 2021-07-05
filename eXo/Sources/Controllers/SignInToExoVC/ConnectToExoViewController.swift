@@ -61,7 +61,7 @@ class ConnectToExoViewController: UIViewController {
         let title = "Setting.Title.DeleteServer".localized
         let msg = "Setting.Message.DeleteServer".localized
         serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server
-        showAlertMessage(title: title, msg: msg, action: .delete)
+        showAlertMessage(msg: msg, action: .delete)
     }
     
     func initView() {

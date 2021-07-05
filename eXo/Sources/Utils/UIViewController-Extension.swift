@@ -26,9 +26,8 @@ extension UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-     func showAlertMessage(title:String,msg:String,action:ActionHandler){
+     func showAlertMessage(msg:String, action:ActionHandler){
         let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
-        popupVC.titleDescription = title
         popupVC.descriptionMessage = msg
         popupVC.actionHandler = action
         popupVC.modalPresentationStyle = .overFullScreen
