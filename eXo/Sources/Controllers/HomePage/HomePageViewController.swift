@@ -20,15 +20,16 @@ import WebKit
 import Kingfisher
 
 class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate {
-
+    
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
     
     private let cookiesInterceptor: CookiesInterceptor = CookiesInterceptorFactory().create()
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
-
+    
     var countRefresh:Int = 0
+
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -36,7 +37,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         self.setupWebView(self.webViewContainer)
         webView?.navigationDelegate = self
         webView?.uiDelegate = self
-        loadingIndicator.startAnimating()
         self.configureDoneButton()
     }
     
@@ -48,8 +48,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         /*
-        Set the status bar to white color & the navigation bar is always hidden on this screen
-        */
+         Set the status bar to white color & the navigation bar is always hidden on this screen
+         */
         setNavigationBarAppearance()
         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
             self.navigationController?.setNavigationBarHidden(true, animated:false)
@@ -101,19 +101,23 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     // MARK: WKWebViewDelegate
     
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        loadingIndicator.startAnimating()
+    }
+    
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         /*
-        Disable the Zoom on the Webview & more responsible tapping 
-        https://webkit.org/blog/5610/more-responsive-tapping-on-ios/
-        */
+         Disable the Zoom on the Webview & more responsible tapping
+         https://webkit.org/blog/5610/more-responsive-tapping-on-ios/
+         */
         let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);"
         webView.evaluateJavaScript(javascript, completionHandler: nil)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         /*
-        Stop loading indicator after finished loading
-        */
+         Stop loading indicator after finished loading
+         */
         loadingIndicator.stopAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         
@@ -147,8 +151,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         let serverDomain = URL(string: self.serverURL!)?.host
         
         /*
-        Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
-        */
+         Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
+         */
         if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
                 self.showOnBoardingIfNeed()
@@ -180,16 +184,13 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
-        if let urlToSee = request.url?.absoluteString {
-            print("=============== Navigation Url : \(urlToSee)")
-        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
-            self.navigationController?.popViewController(animated: true)
             UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
             UserDefaults.standard.setValue("", forKey: "serverURL")
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+            self.navigationController?.popViewController(animated: true)
         }
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
@@ -214,25 +215,18 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
             UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
         }
+        
         /*
-        Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
-        - WKNavigationType of a automatic request is always = .Others
-        */
-        if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.other) {
+         Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
+         - WKNavigationType of a automatic request is always = .Others
+         - Check just for external link tapped to open the preview Controller else stay displaying the request in the some wkwebview to prevent the SAML Error.
+         */
+        
+        if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType == WKNavigationType.linkActivated){
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
             previewController.serverURL = request.url?.absoluteString
-            if let urlPreviewToSee = request.url?.absoluteString {
-                print("=============== Navigation urlPreviewToSee Url : \(urlPreviewToSee)")
-            }
-            /// I am using this check , because we have problem with SAMLRequest when navigate and using the wkwebview in the previewController.
-            if request.url?.absoluteString.range(of:"/saml") != nil {
-                previewController.isSAMLResquest = true
-                previewController.samlRequest = request
-                self.present(previewNavigationController, animated: true, completion: nil)
-            }else{
-                self.present(previewNavigationController, animated: true, completion: nil)
-            }
+            self.present(previewNavigationController, animated: true, completion: nil)
             decisionHandler(.cancel)
             return
         }
@@ -252,10 +246,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     /*
-    Display the Onboarding View Controller if:
-    - The view has never been shown
-    - After use has logged in
-    */
+     Display the Onboarding View Controller if:
+     - The view has never been shown
+     - After use has logged in
+     */
     func showOnBoardingIfNeed () {
         if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
             let welcomeVC:WelcomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
@@ -267,9 +261,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     /*
-    Ask to load the page <serverURL>/rest/state/status 
-    - If the user has connected the response status code of this request = 200
-    */
+     Ask to load the page <serverURL>/rest/state/status
+     - If the user has connected the response status code of this request = 200
+     */
     func loadStateStatusPage () {
         guard let serverUrl = self.serverURL, let serverDomain = URL(string: serverUrl)?.host else { return }
         if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/intranet") != nil  {
@@ -302,3 +296,4 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }
     }
 }
+
