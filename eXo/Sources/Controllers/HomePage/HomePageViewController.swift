@@ -29,11 +29,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
     var countRefresh:Int = 0
-    var progressCount:Int = 0
-    var previousUrl:String = ""
-    var prePreviousUrl:String = ""
-    var currentUrl:String = ""
-    var progressCallDictionary:NSMutableDictionary = NSMutableDictionary()
+
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
