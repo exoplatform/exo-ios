@@ -83,9 +83,9 @@
 
 "Setting.Title.AddServer" = "Connect your intranet";
 
-"Setting.Title.DeleteServer" = "Delete intranet";
+"Setting.Title.DeleteServer" = "Delete eXo";
 
-"Setting.Message.DeleteServer" = "Do you really want to delete this intranet?";
+"Setting.Message.DeleteServer" = "Do you really want to delete this eXo?";
 
 "Setting.Title.ApplicationVersion" = "Application Version";
 
