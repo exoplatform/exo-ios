@@ -193,6 +193,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
             UserDefaults.standard.setValue("", forKey: "serverURL")
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+            removeAllCookies()
             self.navigationController?.popViewController(animated: true)
         }
         let serverDomain = URL(string: self.serverURL!)?.host
@@ -282,6 +283,21 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 UserDefaults.standard.setValue(imgView.image?.pngData(), forKey: "\(domain)")
             }
         }
+    }
+    
+    func removeAllCookies(){
+        /// old API cookies
+           for cookie in HTTPCookieStorage.shared.cookies ?? [] {
+               HTTPCookieStorage.shared.deleteCookie(cookie)
+           }
+           /// URL cache
+           URLCache.shared.removeAllCachedResponses()
+           /// WebKit cache
+           let date = Date(timeIntervalSince1970: 0)
+           WKWebsiteDataStore.default().removeData(
+               ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(),
+               modifiedSince: date,
+               completionHandler:{})
     }
 }
 
