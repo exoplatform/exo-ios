@@ -83,7 +83,7 @@
 
 "Setting.Title.DeleteServer" = "Supprimer";
 
-"Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer cet intranet?";
+"Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer cet eXo?";
 
 "Setting.Title.ApplicationVersion" = "Version de l'application";
 
