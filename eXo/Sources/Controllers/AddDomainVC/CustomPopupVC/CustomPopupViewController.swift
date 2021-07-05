@@ -9,21 +9,26 @@ import UIKit
 
 enum ActionHandler {
     case defaultAction
-    case sessionExpired
-    case update
-    case logout
+    case delete
 }
 
 class CustomPopupViewController: UIViewController {
+    
+    // MARK: - Outlets .
 
     @IBOutlet weak var containerView: DesignableView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var discriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
+    // MARK: - Variables .
+
     var descriptionMessage:String = ""
+    var titleDescription:String = ""
     var actionHandler:ActionHandler!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -32,16 +37,12 @@ class CustomPopupViewController: UIViewController {
     func initView(){
         imgView.addCornerRadiusWith(radius: 25)
         okButton.addCornerRadiusWith(radius: 5.0)
-        noButton.addBorderWith(width: 1, color: UIColor(hex: 0xE96614), cornerRadius: 5.0)
+        noButton.addBorderWith(width: 1, color: UIColor(hex: 0x4382BF).withAlphaComponent(0.5), cornerRadius: 5.0)
         discriptionLabel.text = descriptionMessage
+        titleLabel.text = titleDescription
         switch actionHandler {
-        case .logout:
-            okButton.setTitle("Yes".localized, for: .normal)
-            noButton.setTitle("No".localized, for: .normal)
-            noButton.isHidden = false
-            noButton.isEnabled = true
-        case .update:
-            okButton.setTitle("Update".localized, for: .normal)
+        case .delete:
+            okButton.setTitle("Delete".localized, for: .normal)
             noButton.setTitle("Cancel".localized, for: .normal)
             noButton.isHidden = false
             noButton.isEnabled = true
@@ -60,13 +61,17 @@ class CustomPopupViewController: UIViewController {
     }
     
     @IBAction func okButtonTapped(_ sender: Any) {
-        self.dismiss(animated: false) {
-            
-        }
+            switch actionHandler {
+            case .delete:
+                dismiss(animated: false) {
+                    self.postNotificationWith(key: .deleteInstance)
+                }
+            default:
+                self.dismiss(animated:false,completion:nil)
+            }
     }
     
     @IBAction func noButtonTapped(_ sender: Any) {
         self.dismiss(animated:false,completion:nil)
     }
-
 }
