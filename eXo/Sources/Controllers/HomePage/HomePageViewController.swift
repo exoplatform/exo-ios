@@ -218,30 +218,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
             UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
         }
-        /*
-        Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
-        - WKNavigationType of a automatic request is always = .Others
-        */
-        /*
-        if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.other) {
-            let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
-            let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
-            previewController.serverURL = request.url?.absoluteString
-            if let urlPreviewToSee = request.url?.absoluteString {
-                print("=============== Navigation urlPreviewToSee Url : \(urlPreviewToSee)")
-            }
-            /// I am using this check , because we have problem with SAMLRequest when navigate and using the wkwebview in the previewController.
-            if request.url?.absoluteString.range(of:"/saml") != nil {
-                previewController.isSAMLResquest = true
-                previewController.samlRequest = request
-                self.present(previewNavigationController, animated: true, completion: nil)
-            }else{
-                self.present(previewNavigationController, animated: true, completion: nil)
-            }
-            decisionHandler(.cancel)
-            return
-        }
-         */
         decisionHandler(WKNavigationActionPolicy.allow)
     }
     
