@@ -21,36 +21,27 @@ class ConnectToExoViewController: UIViewController {
     
     var selectedServer : Server?
     var server:Server!
+    var serverToDelete:Server!
 
     override func viewDidLoad() {
         super.viewDidLoad()
        initView()
+       addObserverWith(selector: #selector(deleteTapped(notification:)), name: .deleteInstance)
        connectTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         connectTableView.reloadData()
-      //  setNavigationBarAppearance()
     }
     
-    func setNavigationBarAppearance(){
-        self.navigationItem.title = "OnBoarding.Title.SignInToeXo".localized
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
-        self.navigationController?.navigationBar.barTintColor = UIColor(hex: 0xF0F0F0)
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkGray]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        //MARK:- Back Button
-        let backButton = UIButton(type: .system)
-        backButton.setBackgroundImage(UIImage(named: "goBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        backButton.addTarget(self, action: #selector(popVC), for: .touchUpInside)
-        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        let rightBarButtonItem3 = UIBarButtonItem()
-        rightBarButtonItem3.customView = backButton
-        navigationItem.setLeftBarButtonItems([rightBarButtonItem3], animated: true)
+    @objc
+    func deleteTapped(notification:Notification){
+        ServerManager.sharedInstance.removeServer(serverToDelete);
+        if ServerManager.sharedInstance.serverList.count == 0 {
+            self.navigationController?.popViewController(animated: true)
+        }
+        self.connectTableView.reloadData()
     }
     
     @objc
@@ -63,13 +54,14 @@ class ConnectToExoViewController: UIViewController {
         let addDomainVC = AddDomainViewController()
         addDomainVC.modalPresentationStyle = .overFullScreen
         self.present(addDomainVC, animated: true)
-       // goBack()
     }
   
     @objc
     func deleteButtonTapped(_ sender:UIButton){
-        let _server = ServerManager.sharedInstance.serverList[sender.tag] as! Server
-        self.deleteServer(server: _server)
+        let title = "Setting.Title.DeleteServer".localized
+        let msg = "Setting.Message.DeleteServer".localized
+        serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server
+        showAlertMessage(title: title, msg: msg, action: .delete)
     }
     
     func initView() {
