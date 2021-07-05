@@ -33,10 +33,10 @@ class eXoWebBaseController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     /*
-    Initilalize the WKWebView & setup
-    */
+     Initilalize the WKWebView & setup
+     */
     func setupWebView (_ webViewContainer : UIView) {
         let wkWebViewConfiguration = WKWebViewConfiguration()
         // Add configuration to wkwebview relevant to user agent
@@ -56,14 +56,13 @@ class eXoWebBaseController: UIViewController {
             // failure during the execution of the request, let go...
         }
         // load URL in webview
-        let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
+        let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)
         webView?.load(request)
         webViewContainer.addSubview(webView!)
         // disable the autosizing to use manual constraints
-        webView?.translatesAutoresizingMaskIntoConstraints = false;
-        
+        webView?.translatesAutoresizingMaskIntoConstraints = false
     }
-
+    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         if (webView?.superview != nil) {
@@ -87,15 +86,15 @@ class eXoWebBaseController: UIViewController {
             style: UIAlertAction.Style.default,
             handler: { (action) -> Void in
                 let navigationVC:UINavigationController = self.navigationController!
-//                if (navigationVC.viewControllers.count > 1) {
-                    // come back to the previous screen
-                    navigationVC.popViewController(animated: true)
-//                } else {
-                    // probably started from the quick action
-                    // open the home screen
-//                    navigationVC.popToRootViewControllerAnimated(true)
-//                }
-        })
+                //                if (navigationVC.viewControllers.count > 1) {
+                // come back to the previous screen
+                navigationVC.popViewController(animated: true)
+                //                } else {
+                // probably started from the quick action
+                // open the home screen
+                //                    navigationVC.popToRootViewControllerAnimated(true)
+                //                }
+            })
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }

@@ -63,7 +63,6 @@ class ConnectToExoViewController: UIViewController {
         let addDomainVC = AddDomainViewController()
         addDomainVC.modalPresentationStyle = .overFullScreen
         self.present(addDomainVC, animated: true)
-       // goBack()
     }
   
     @objc
