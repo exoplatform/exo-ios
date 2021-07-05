@@ -36,7 +36,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         self.setupWebView(self.webViewContainer)
         webView?.navigationDelegate = self
         webView?.uiDelegate = self
-        loadingIndicator.startAnimating()
+     //   loadingIndicator.startAnimating()
         self.configureDoneButton()
     }
     
@@ -100,6 +100,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     // MARK: WKWebViewDelegate
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        loadingIndicator.startAnimating()
+    }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         /*
@@ -186,10 +190,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
-            self.navigationController?.popViewController(animated: true)
             UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
             UserDefaults.standard.setValue("", forKey: "serverURL")
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+            self.navigationController?.popViewController(animated: true)
         }
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
@@ -218,6 +222,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
         - WKNavigationType of a automatic request is always = .Others
         */
+        /*
         if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType != WKNavigationType.other) {
             let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
             let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
@@ -236,6 +241,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             decisionHandler(.cancel)
             return
         }
+         */
         decisionHandler(WKNavigationActionPolicy.allow)
     }
     
@@ -302,3 +308,4 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }
     }
 }
+

@@ -57,11 +57,11 @@ class eXoWebBaseController: UIViewController {
         }
         // load URL in webview
         let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: kRequestTimeout)//NSURLRequest(URL: url!)
-        if isSAMLResquest {
-            webView?.load(samlRequest ?? request)
-        }else{
+//        if isSAMLResquest {
+//            webView?.load(samlRequest ?? request)
+//        }else{
             webView?.load(request)
-        }
+ //       }
         webViewContainer.addSubview(webView!)
         // disable the autosizing to use manual constraints
         webView?.translatesAutoresizingMaskIntoConstraints = false;
