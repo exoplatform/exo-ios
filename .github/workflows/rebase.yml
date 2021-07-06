@@ -1,0 +1,19 @@
+name: Rebase acceptance branch
+
+on:
+  push:
+    branches: [develop]
+jobs:
+  rebase:
+    name: Rebase acceptance branch with develop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Rebase branch
+        run: |
+          git config --global user.email "exo-swf@exoplatform.com"
+          git config --global user.name "eXo Software Factory"
+          git pull 
+          git checkout acceptance
+          git rebase develop && git push origin acceptance:acceptance --force-with-lease
