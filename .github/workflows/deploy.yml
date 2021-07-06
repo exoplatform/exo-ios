@@ -18,6 +18,8 @@ on:
 jobs:
   deploy:
     runs-on: macos-10.15
+    # Skip deployment triggered by a rebase action or technical commits
+    if: github.event.pusher.name != "exo-swf"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
