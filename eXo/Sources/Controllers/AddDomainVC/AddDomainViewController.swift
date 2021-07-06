@@ -75,7 +75,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
         // verification of URL, http is the default protocol
         if let company = companyTextField.text, let sufixUrl = suffixUrlTextField.text {
             print(company,sufixUrl)
-            Tool.verificationServerURL(company+sufixUrl, handleSuccess: { (serverURL) -> Void in
+            Tool.verificationServerURL(company+sufixUrl, delegate: self, handleSuccess: { (serverURL) -> Void in
                 self.selectedServer = Server (serverURL: serverURL)
                 OperationQueue.main.addOperation({ () -> Void in
                     ServerManager.sharedInstance.addEditServer(self.selectedServer!)

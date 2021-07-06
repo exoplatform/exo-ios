@@ -42,8 +42,8 @@ class CustomPopupViewController: UIViewController {
         titleLabel.text = titleDescription
         switch actionHandler {
         case .delete:
-            okButton.setTitle("Delete".localized, for: .normal)
-            noButton.setTitle("Cancel".localized, for: .normal)
+            okButton.setTitle("OnBoarding.Title.DeleteServer".localized, for: .normal)
+            noButton.setTitle("OnBoarding.Title.CancelDelete".localized, for: .normal)
             noButton.isHidden = false
             noButton.isEnabled = true
         default:

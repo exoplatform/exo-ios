@@ -71,7 +71,7 @@ class ServerEditViewController: UIViewController, UITextViewDelegate {
 
 	func save () {
 		//verification of URL, http is the default protocol
-		Tool.verificationServerURL(textView.text, handleSuccess: { (serverURL) -> Void in
+        Tool.verificationServerURL(textView.text, delegate: self, handleSuccess: { (serverURL) -> Void in
 			let tempServer:Server = Server(serverURL: serverURL)
 			let existingServer:Server! = ServerManager.sharedInstance.getServerIfExists(tempServer)
 			if (existingServer != nil && !existingServer.isEqual(self.server)) {

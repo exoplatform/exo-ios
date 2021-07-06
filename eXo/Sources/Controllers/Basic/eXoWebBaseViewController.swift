@@ -45,7 +45,7 @@ class eXoWebBaseController: UIViewController {
         //Load the page web
         let url = URL(string: serverURL!)
         // check PLF version and go back if it's less than 4.3
-        Tool.getPlatformVersion(url!, success: { (version) -> Void in
+        Tool.getPlatformVersion(url!, delegate: self, success: { (version) -> Void in
             if (version < Config.minimumPlatformVersionSupported) {
                 // show warning message from main thread
                 OperationQueue.main.addOperation({ () -> Void in

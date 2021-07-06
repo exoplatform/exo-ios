@@ -21,6 +21,19 @@
  */
 
 // On-Boarding
+"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
+
+"OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";
+
+"OnBoarding.Title.ShowQRCode" = "Display the QR code in your eXo settings.";
+
+"OnBoarding.Title.ScanCode" = "Scan code";
+
+"OnBoarding.Title.EnterUrleXo" = "Enter server URL";
+
+"OnBoarding.Title.DeleteServer" = "Delete";
+
+"OnBoarding.Title.CancelDelete" = "Cancel";
 
 "OnBoarding.Title.AddYourExo" = "Add your eXo";
 
