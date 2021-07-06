@@ -51,32 +51,34 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         // Start Crashlytics
         Fabric.with([Crashlytics.self])
         // Get the root view (the enter point of storyboard)
-        navigationVC = self.window!.rootViewController as? UINavigationController
+       // navigationVC = self.window!.rootViewController as? UINavigationController
         // Push notifications
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         tryToRegisterForRemoteNotifications(application: application)
         // Quick actions
-        if #available(iOS 9.0, *) {
-            ServerManager.sharedInstance.updateQuickAction()
-            var launchedFromShortCut = false
-            //Check for ShortCutItem
-            if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-                launchedFromShortCut = true
-                let didHandleShortcut = handleShortcut(shortcutItem)
-				print("Shortcut handle \(didHandleShortcut)")
-            }
-            if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
-                // Memorise the last connection
-                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
-                return true
-            }else{
-                //Return false incase application was lanched from shorcut to prevent
-                //application(_:performActionForShortcutItem:completionHandler:) from being called
-                return !launchedFromShortCut
-            }
+        ServerManager.sharedInstance.updateQuickAction()
+        var launchedFromShortCut = false
+        //Check for ShortCutItem
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            launchedFromShortCut = true
+            let didHandleShortcut = handleShortcut(shortcutItem)
+            print("Shortcut handle \(didHandleShortcut)")
         }
-        return true
+        if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
+            // Memorise the last connection
+            setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+            return true
+        }else{
+            //Return false incase application was lanched from shorcut to prevent
+            //application(_:performActionForShortcutItem:completionHandler:) from being called
+            let rootVC = OnboardingViewController()
+            navigationVC = UINavigationController(rootViewController: rootVC)
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = navigationVC
+            window?.makeKeyAndVisible()
+            return !launchedFromShortCut
+        }
     }
     
     func setRootToHome(_ stringURL:String){

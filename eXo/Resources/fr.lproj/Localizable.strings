@@ -20,6 +20,15 @@
 // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
 // On-Boarding
+"OnBoarding.Title.EnterPassword" = "Saisissez votre mot de passe pour vous connecter rapidement.";
+
+"OnBoarding.Title.ScanQRsettings" = "Scanner le QR Code qui s'affiche dans vos paramétres eXo.";
+
+"OnBoarding.Title.ShowQRCode" = "Afficher le QR code dans vos paramètre eXo.";
+
+"OnBoarding.Title.ScanCode" = "Scanner le code";
+
+"OnBoarding.Title.EnterUrleXo" = "Saisir l'adresse de serveur";
 
 "OnBoarding.Title.AddYourExo" = "Ajouter votre eXo";
 
