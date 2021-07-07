@@ -50,8 +50,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Start Crashlytics
         Fabric.with([Crashlytics.self])
-        // Get the root view (the enter point of storyboard)
-        navigationVC = self.window!.rootViewController as? UINavigationController
         // Push notifications
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
@@ -73,6 +71,11 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
             }else{
                 //Return false incase application was lanched from shorcut to prevent
                 //application(_:performActionForShortcutItem:completionHandler:) from being called
+                let rootVC = OnboardingViewController()
+                navigationVC = UINavigationController(rootViewController: rootVC)
+                window = UIWindow(frame: UIScreen.main.bounds)
+                window?.rootViewController = navigationVC
+                window?.makeKeyAndVisible()
                 return !launchedFromShortCut
             }
         }

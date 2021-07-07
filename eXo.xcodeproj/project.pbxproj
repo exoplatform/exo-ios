@@ -84,6 +84,10 @@
 		D7F12D3026789E08007C8294 /* CustomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */; };
 		DB373219267F78830065C7A5 /* UIViewController-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB373218267F78830065C7A5 /* UIViewController-Extension.swift */; };
 		DB37321B267F79690065C7A5 /* NotificationName-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */; };
+		DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */; };
+		DB6A4E6726949CFB00809B53 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */; };
+		DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */; };
+		DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */; };
 		DE5FC7A8C0E650370DB2C507 /* Pods_eXoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E928F5B69F29C447F05BC9 /* Pods_eXoUITests.framework */; };
 		E8A0A73359BB335225818D59 /* Pods_eXo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CB8F70A4EAF75B348EC98A /* Pods_eXo.framework */; };
 /* End PBXBuildFile section */
@@ -247,6 +251,10 @@
 		D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPopupViewController.swift; sourceTree = "<group>"; };
 		DB373218267F78830065C7A5 /* UIViewController-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extension.swift"; sourceTree = "<group>"; };
 		DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName-Extension.swift"; sourceTree = "<group>"; };
+		DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
+		DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,8 +490,9 @@
 		9C3AD2791BCF5D6E0094CFF9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB6A4E6026949CFB00809B53 /* OnboardingVC */,
 				D79611EF2677A81A00F2FDE8 /* AddDomainVC */,
-				D79611B226778ACC00F2FDE8 /* SignInToExoVC */,
+				D79611B226778ACC00F2FDE8 /* ConnectToExoVC */,
 				9C032E361BEA1495006F0577 /* Basic */,
 				9C3AD27C1BCF5D960094CFF9 /* On-Boarding */,
 				9C935F891BD8A01C009C065B /* HomePage */,
@@ -621,14 +630,14 @@
 			path = Cookies;
 			sourceTree = "<group>";
 		};
-		D79611B226778ACC00F2FDE8 /* SignInToExoVC */ = {
+		D79611B226778ACC00F2FDE8 /* ConnectToExoVC */ = {
 			isa = PBXGroup;
 			children = (
 				D79611BB26778ACC00F2FDE8 /* ConnectToExoViewController.swift */,
 				D79611BA26778ACC00F2FDE8 /* ConnectToExoViewController.xib */,
 				D79611B326778ACC00F2FDE8 /* Cells */,
 			);
-			path = SignInToExoVC;
+			path = ConnectToExoVC;
 			sourceTree = "<group>";
 		};
 		D79611B326778ACC00F2FDE8 /* Cells */ = {
@@ -675,6 +684,25 @@
 				D7F12D2D26789E07007C8294 /* CustomPopupViewController.xib */,
 			);
 			path = CustomPopupVC;
+			sourceTree = "<group>";
+		};
+		DB6A4E6026949CFB00809B53 /* OnboardingVC */ = {
+			isa = PBXGroup;
+			children = (
+				DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */,
+				DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */,
+				DB6A4E6226949CFB00809B53 /* Cell */,
+			);
+			path = OnboardingVC;
+			sourceTree = "<group>";
+		};
+		DB6A4E6226949CFB00809B53 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */,
+				DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -870,6 +898,8 @@
 				9C18EBC01C3124ED00A75DD8 /* TableHeaderView.xib in Resources */,
 				D79611C026778ACC00F2FDE8 /* ConnectToExoViewController.xib in Resources */,
 				D79611BD26778ACC00F2FDE8 /* HeaderConnectCell.xib in Resources */,
+				DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */,
+				DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */,
 				D79611BF26778ACC00F2FDE8 /* ServerCell.xib in Resources */,
 				9C3AD2541BCF56900094CFF9 /* LaunchScreen.storyboard in Resources */,
 				AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */,
@@ -1061,6 +1091,7 @@
 				9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */,
 				9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */,
 				D7C0FADA267BA37D00C579EB /* NSMutableAttributedString-Extension.swift in Sources */,
+				DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
 				D79611CF26778B1E00F2FDE8 /* UIColor-Extension.swift in Sources */,
@@ -1090,6 +1121,7 @@
 				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
 				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
+				DB6A4E6726949CFB00809B53 /* OnboardingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
