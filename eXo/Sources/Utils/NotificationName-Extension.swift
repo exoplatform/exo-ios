@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     public static let addDomainKey = Notification.Name(rawValue: "AddDomainKey")
     public static let deleteInstance = Notification.Name(rawValue: "deleteInstance")
+    public static let rootFromScanURL = Notification.Name(rawValue: "rootFromScanURL")
 }

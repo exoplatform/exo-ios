@@ -50,6 +50,14 @@ class ServerSelectionViewController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = Config.eXoYellowColor
         self.navigationController?.navigationBar.tintColor = UIColor.black
+        addObserverWith(selector: #selector(rootToHome(notification:)), name: .rootFromScanURL)
+    }
+    
+    @objc
+    func rootToHome(notification:Notification){
+        guard let rootURL = notification.userInfo?["rootURL"] as? String else { return }
+        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+        appDelegate.setRootToHome(rootURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -231,6 +239,12 @@ class ServerSelectionViewController: UIViewController {
     @IBAction func addServerTapped(_ sender: Any) {
         let signInToExoVC = ConnectToExoViewController()
         navigationController?.pushViewController(signInToExoVC, animated: true)
+    }
+    
+    func setRootToScan(){
+        let signInToeXo = QRCodeScannerViewController(nibName: "QRCodeScannerViewController", bundle: nil)
+        signInToeXo.modalPresentationStyle = .overFullScreen
+        present(signInToeXo, animated: false, completion: nil)
     }
     
     /*

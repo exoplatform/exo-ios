@@ -21,6 +21,7 @@
  */
 
 // On-Boarding
+"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
 
 "OnBoarding.Title.AddYourExo" = "Add your eXo";
 

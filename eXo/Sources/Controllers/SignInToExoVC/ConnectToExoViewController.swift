@@ -30,6 +30,10 @@ class ConnectToExoViewController: UIViewController {
        connectTableView.reloadData()
     }
     
+    override var shouldAutorotate: Bool {
+        false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         connectTableView.reloadData()
@@ -55,7 +59,7 @@ class ConnectToExoViewController: UIViewController {
         addDomainVC.modalPresentationStyle = .overFullScreen
         self.present(addDomainVC, animated: true)
     }
-  
+    
     @objc
     func deleteButtonTapped(_ sender:UIButton){
         let title = "Setting.Title.DeleteServer".localized

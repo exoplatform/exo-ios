@@ -27,6 +27,10 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
         setupView()
     }
     
+    override var shouldAutorotate: Bool {
+        false
+    }
+    
     func setupView(){
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
         companyTextField.delegate = self

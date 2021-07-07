@@ -20,6 +20,7 @@
 // 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
 // On-Boarding
+"OnBoarding.Title.ScanQRCode" = "Scanner votre QR code pour vous connecter";
 
 "OnBoarding.Title.AddYourExo" = "Ajouter votre eXo";
 
