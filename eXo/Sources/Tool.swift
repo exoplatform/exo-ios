@@ -28,7 +28,7 @@ class Tool {
     - Display a alert in case of an error occur
     - Return the valid ServerURL via a bloc (handleSuccess)
     */
-    static func verificationServerURL(_ string:String, handleSuccess: @escaping (_ serverURL:String) ->Void) {
+    static func verificationServerURL(_ string:String,delegate:UIViewController,handleSuccess: @escaping (_ serverURL:String) ->Void) {
         let serverURL = domainOfStringURL(string)
         let platformInfoURL = serverURL + "/rest/platform/info"
         let url = URL.init(string: platformInfoURL)
@@ -56,28 +56,28 @@ class Tool {
                                     handleSuccess(serverURL)
                                 } else {
                                     // this application supports only platform version 4.3 or later
-                                    Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotSupport)
+                                    Tool.showErrorMessageForCode(delegate: delegate, ConnectionError.ServerVersionNotSupport)
                                 }
                             } else {
-                                Tool.showErrorMessageForCode(ConnectionError.ServerVersionNotFound)
+                                Tool.showErrorMessageForCode(delegate: delegate, ConnectionError.ServerVersionNotFound)
                             }
                         } catch let error {
                             print(error.localizedDescription)
                         }
                     } else {
-                        Tool.showErrorMessageForCode(ConnectionError.URLError)
+                        Tool.showErrorMessageForCode(delegate: delegate, ConnectionError.URLError)
                     }
                 } else {
-                    Tool.showErrorMessageForCode(ConnectionError.URLError)
+                    Tool.showErrorMessageForCode(delegate: delegate, ConnectionError.URLError)
                 }
             })
             task.resume()
         } else {
-            Tool.showErrorMessageForCode(ConnectionError.URLError)
+            Tool.showErrorMessageForCode(delegate: delegate, ConnectionError.URLError)
         }
     }
     
-    static func getPlatformVersion(_ url:URL, success:@escaping (_ version:Float) -> Void, failure:@escaping (_ errorCode:Int) -> Void) {
+    static func getPlatformVersion(_ url:URL,delegate:UIViewController,success:@escaping (_ version:Float) -> Void, failure:@escaping (_ errorCode:Int) -> Void) {
         let serverURL = domainOfStringURL(url.absoluteString)
         let platformInfoURL = serverURL + "/rest/platform/info"
         let plfInfoUrl = URL.init(string: platformInfoURL)
@@ -116,20 +116,17 @@ class Tool {
     /*
     Display an error alert corresponse to the error code
     */
-    static func showErrorMessageForCode (_ errorCode : Int) {
+    static func showErrorMessageForCode (delegate:UIViewController,_ errorCode : Int) {
         OperationQueue.main.addOperation({ () -> Void in
             switch (errorCode){
             case ConnectionError.URLError :
-                let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.URL", comment:""), message: NSLocalizedString("OnBoarding.Error.UnableConnectServer",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
-                alertView.show()
+                showAlertMessage(title: "OnBoarding.Error.URL".localized, msg: "OnBoarding.Error.UnableConnectServer".localized, delegate: delegate, action: .defaultAction)
                 break
             case ConnectionError.ServerVersionNotFound:
-                let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.PlatformNotFound", comment:""), message: NSLocalizedString("OnBoarding.Error.PlatformNotSupportedDetailMessage",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
-                alertView.show()
+                showAlertMessage(title: "OnBoarding.Error.PlatformNotFound".localized, msg: "OnBoarding.Error.PlatformNotSupportedDetailMessage".localized, delegate: delegate, action: .defaultAction)
                 break
             case ConnectionError.ServerVersionNotSupport:
-                let alertView = UIAlertView.init(title: NSLocalizedString("OnBoarding.Error.PlatformNotSupported", comment:""), message: NSLocalizedString("OnBoarding.Error.PlatformNotSupportedDetailMessage",comment:""), delegate: nil, cancelButtonTitle: NSLocalizedString("Word.OK",comment:""))
-                alertView.show()
+                showAlertMessage(title: "OnBoarding.Error.PlatformNotSupported".localized, msg: "OnBoarding.Error.PlatformNotSupportedDetailMessage".localized, delegate: delegate, action: .defaultAction)
                 break
             default:
                 break
@@ -218,5 +215,14 @@ class Tool {
         view.layer.cornerRadius = cornerRadius
         view.layer.borderWidth = borderWidth
         view.layer.borderColor = borderColor.cgColor
+    }
+    
+   static func showAlertMessage(title:String,msg:String,delegate:UIViewController,action:ActionHandler){
+        let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
+        popupVC.titleDescription = title
+        popupVC.descriptionMessage = msg
+        popupVC.actionHandler = action
+        popupVC.modalPresentationStyle = .overFullScreen
+        delegate.present(popupVC, animated: false, completion: nil)
     }
 }
