@@ -21,6 +21,8 @@
  */
 
 // On-Boarding
+"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
+
 "OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
 
 "OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";

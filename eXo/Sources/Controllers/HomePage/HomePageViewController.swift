@@ -50,6 +50,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         /*
          Set the status bar to white color & the navigation bar is always hidden on this screen
          */
+        navigationController?.navigationBar.isHidden = false
         setNavigationBarAppearance()
         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
             self.navigationController?.setNavigationBarHidden(true, animated:false)
@@ -82,7 +83,15 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     @objc func popVC(){
-        goBack()
+        let count = self.navigationController?.viewControllers.count
+        if count == 1 {
+            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+            appDelegate.setRootOnboarding()
+        }else{
+            goBack()
+        }
+
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

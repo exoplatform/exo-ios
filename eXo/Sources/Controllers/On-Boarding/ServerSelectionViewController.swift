@@ -261,7 +261,6 @@ class ServerSelectionViewController: UIViewController {
             ServerManager.sharedInstance.addEditServer(community)
             let homepageVC = segue.destination as! HomePageViewController
             homepageVC.serverURL = community.serverURL
-            
         }
     }
 
