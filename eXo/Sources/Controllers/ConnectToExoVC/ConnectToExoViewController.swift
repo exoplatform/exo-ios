@@ -19,20 +19,27 @@ class ConnectToExoViewController: UIViewController {
     
     // MARK: - Variables.
     
-    var selectedServer : Server?
+    var selectedServer:Server?
     var server:Server!
     var serverToDelete:Server!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       initView()
-       addObserverWith(selector: #selector(deleteTapped(notification:)), name: .deleteInstance)
-       connectTableView.reloadData()
+        initView()
+        addObserverWith(selector: #selector(deleteTapped(notification:)), name: .deleteInstance)
+        connectTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        AppUtility.lockOrientation(.portrait)
         connectTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.leftBarButtonItem = UIBarButtonItem()
+        AppUtility.lockOrientation(.all)
     }
     
     @objc
@@ -83,23 +90,6 @@ class ConnectToExoViewController: UIViewController {
             homepageVC.serverURL = serverURL
             self.navigationController?.pushViewController(homepageVC, animated: true)
         }
-    }
-    
-    func deleteServer(server:Server) {
-        //Ask for confirmation first
-        let alertController = UIAlertController(title:"Setting.Title.DeleteServer".localized, message: "Setting.Message.DeleteServer".localized, preferredStyle: UIAlertController.Style.alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Word.Cancel", comment: ""), style: UIAlertAction.Style.cancel) { (cancelAction) -> Void in
-        }
-        alertController.addAction(cancelAction)
-        let confirmAction = UIAlertAction(title:"Word.OK".localized, style: UIAlertAction.Style.destructive) { (confirmAction) -> Void in
-            ServerManager.sharedInstance.removeServer(server);
-            if ServerManager.sharedInstance.serverList.count == 0 {
-                self.navigationController?.popViewController(animated: true)
-            }
-            self.connectTableView.reloadData()
-        }
-        alertController.addAction(confirmAction)
-        self.present(alertController, animated: false, completion: nil)
     }
 }
 
@@ -154,6 +144,7 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
             homepageVC.serverURL = self.selectedServer?.serverURL
             UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
             self.connectTableView.reloadData()
+            navigationController?.navigationBar.isHidden = false
             navigationController?.pushViewController(homepageVC, animated: true)
         }
     }
