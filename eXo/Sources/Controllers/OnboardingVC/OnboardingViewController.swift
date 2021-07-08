@@ -33,6 +33,12 @@ class OnboardingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        AppUtility.lockOrientation(.portrait)
+    }
+   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AppUtility.lockOrientation(.all)
     }
     
     func initView() {
@@ -50,12 +56,31 @@ class OnboardingViewController: UIViewController {
         flotView.frame.origin.x = -(flotView.frame.size.width/2)/2
         setupPageControl(page:currentPage + 1)
         slideTitleLabel.text = onboardingList[0].title
-
+        addObserverWith(selector: #selector(rootToHome(notification:)), name: .rootFromScanURL)
+    }
+    
+    @objc
+    func rootToHome(notification:Notification){
+        guard let rootURL = notification.userInfo?["rootURL"] as? String else { return }
+        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+        appDelegate.setRootToHome(rootURL)
     }
     
     @IBAction func addServerTapped(_ sender: Any) {
-        let signInToeXo = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
-        navigationController?.pushViewController(signInToeXo, animated: false)
+        let connectToeXoVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
+        navigationController?.pushViewController(connectToeXoVC, animated: true)
+    }
+    
+    @IBAction func scanQRTapped(_ sender: Any) {
+        setRootToScan()
+    }
+    
+    
+    
+    func setRootToScan(){
+        let signInToeXo = QRCodeScannerViewController(nibName: "QRCodeScannerViewController", bundle: nil)
+        signInToeXo.modalPresentationStyle = .overFullScreen
+        present(signInToeXo, animated: false, completion: nil)
     }
     
     func setupPageControl(page:Int){

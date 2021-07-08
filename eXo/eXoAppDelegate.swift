@@ -43,6 +43,8 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     var window: UIWindow?
     var quitTimestamp:Double? // Store the timestamps when user quit the app & Enter on Background
     var navigationVC:UINavigationController?
+    var orientationLock = UIInterfaceOrientationMask.all
+
     static let sessionTimeout:Double = 30*60 //To be verify this number, we are setting at 30mins.
     let notificationCenter = UNUserNotificationCenter.current()
     let defaults = UserDefaults.standard
@@ -54,45 +56,39 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         tryToRegisterForRemoteNotifications(application: application)
-        // Quick actions
-        if #available(iOS 9.0, *) {
-            ServerManager.sharedInstance.updateQuickAction()
-            var launchedFromShortCut = false
-            //Check for ShortCutItem
-            if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-                launchedFromShortCut = true
-                let didHandleShortcut = handleShortcut(shortcutItem)
-				print("Shortcut handle \(didHandleShortcut)")
-            }
-            if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
-                // Memorise the last connection
-                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
-                return true
-            }else{
-                //Return false incase application was lanched from shorcut to prevent
-                //application(_:performActionForShortcutItem:completionHandler:) from being called
-                let rootVC = OnboardingViewController()
-                navigationVC = UINavigationController(rootViewController: rootVC)
-                window = UIWindow(frame: UIScreen.main.bounds)
-                window?.rootViewController = navigationVC
-                window?.makeKeyAndVisible()
-                return !launchedFromShortCut
-            }
+        // Quick launch
+        if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
+            // Memorise the last connection
+            setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+            return true
+        }else{
+            setRootOnboarding()
+            return true
         }
-        return true
     }
     
-    func setRootToHome(_ stringURL:String){
-        let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController")
-        (homepage as! HomePageViewController).serverURL  =  stringURL
-        navigationVC?.navigationBar.isHidden = false
-        navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
+    func setRootToHome(_ serverURL:String){
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+            homepageVC.serverURL = serverURL
+        navigationVC = UINavigationController(rootViewController: homepageVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
     }
 
     func setRootToConnect(){
         let signInToeXo = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
-        navigationVC?.navigationBar.isHidden = false
+        navigationVC?.navigationBar.isHidden = true
         navigationVC?.pushViewController(signInToeXo, animated: false)
+    }
+    
+    func setRootOnboarding(){
+        let rootVC = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
+        navigationVC = UINavigationController(rootViewController: rootVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -111,11 +107,11 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         Verification of session timeout on server.
         When the session is timeout, go back to On-Boarding (Loggin) screen
         */
-        if (Date().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
-            if (navigationVC != nil) {
-                navigationVC?.popToRootViewController(animated: false)
+            if (Date().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
+                if (navigationVC != nil) {
+                    navigationVC?.popToRootViewController(animated: false)
+                }
             }
-        }
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
@@ -282,5 +278,24 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         completionHandler()
     }
 
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            return self.orientationLock
+    }
 }
 
+struct AppUtility {
+
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        if let delegate = UIApplication.shared.delegate as? eXoAppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        self.lockOrientation(orientation)
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        UINavigationController.attemptRotationToDeviceOrientation()
+    }
+
+}
