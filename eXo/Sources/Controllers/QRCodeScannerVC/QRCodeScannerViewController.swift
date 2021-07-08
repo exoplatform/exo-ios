@@ -14,16 +14,16 @@ class QRCodeScannerViewController: UIViewController {
     // MARK: - Outlets .
 
     @IBOutlet var messageLabel: UILabel!
-    @IBOutlet var topBar: UIView!
     @IBOutlet weak var squareImageView: UIImageView!
     @IBOutlet weak var infoView: DesignableView!
+    @IBOutlet weak var closeButton: UIButton!
     
     // MARK: - Variables .
     
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIImageView?
-    
+    var bounds:CGRect?
     // MARK: - Constants .
 
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.qr]
@@ -38,12 +38,12 @@ class QRCodeScannerViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
     }
     
     func initViewScan() {
         messageLabel.text = "OnBoarding.Title.ScanQRCode".localized
+        closeButton.addCornerRadiusWith(radius: 15)
         // Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Failed to get the camera device")
@@ -76,18 +76,18 @@ class QRCodeScannerViewController: UIViewController {
             
             // Move the message label and top bar to the front
             view.bringSubviewToFront(messageLabel)
-            view.bringSubviewToFront(topBar)
+            view.bringSubviewToFront(closeButton)
             view.bringSubviewToFront(squareImageView)
             view.bringSubviewToFront(infoView)
+
             // Initialize QR Code Frame to highlight the QR Code
             qrCodeFrameView = UIImageView()
-            qrCodeFrameView?.image = UIImage(named: "yellowSquare")
             if let qrcodeFrameView = qrCodeFrameView {
-                qrCodeFrameView?.image = UIImage(named: "yellowSquare")
+                qrcodeFrameView.image = UIImage(named: "yellowSquare")
                 view.addSubview(qrcodeFrameView)
                 view.bringSubviewToFront(qrcodeFrameView)
             }
-            squareImageView.isHidden = true
+            
         } catch {
             // If any error occurs, simply print it out and don't continue anymore
             print(error)
@@ -106,8 +106,8 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
             messageLabel.text = "OnBoarding.Title.ScanQRCode".localized
-            messageLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            infoView.backgroundColor = #colorLiteral(red: 0.3411764706, green: 0.5529411765, blue: 0.7882352941, alpha: 1)
+            squareImageView.image = #imageLiteral(resourceName: "yellowSquare")
+            squareImageView.isHidden = false
             return
         }
         
@@ -118,14 +118,14 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             if metadataObj.stringValue != nil {
-                self.captureSession.stopRunning()
-                messageLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                infoView.backgroundColor = #colorLiteral(red: 0.3411764706, green: 0.5529411765, blue: 0.7882352941, alpha: 1)
-               // messageLabel.text = metadataObj.stringValue
+                captureSession.stopRunning()
+                squareImageView.isHidden = true
+                messageLabel.text = metadataObj.stringValue
                 qrCodeFrameView?.image = #imageLiteral(resourceName: "qr_code_scanner")
-                UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut], animations: { () -> Void in
-                    self.qrCodeFrameView?.frame = self.squareImageView.frame
-                    }) { (animationCompleted: Bool) -> Void in
+                UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut]) {
+                    self.qrCodeFrameView?.frame.size = CGSize(width: 200, height: 200)
+                    self.qrCodeFrameView?.center = self.view.center
+                } completion: { completed in
                     self.dismiss(animated: false) {
                         if let rootURL = metadataObj.stringValue {
                             self.postNotificationWith(key: .rootFromScanURL, info: ["rootURL" : rootURL])

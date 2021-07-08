@@ -716,8 +716,7 @@
 				DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */,
 				DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */,
 			);
-			name = QRCodeScannerVC;
-			path = OnboardingVC/QRCodeScannerVC;
+			path = QRCodeScannerVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
