@@ -14,9 +14,9 @@ class QRCodeScannerViewController: UIViewController {
     // MARK: - Outlets .
 
     @IBOutlet var messageLabel: UILabel!
-    @IBOutlet var topBar: UIView!
     @IBOutlet weak var squareImageView: UIImageView!
     @IBOutlet weak var infoView: DesignableView!
+    @IBOutlet weak var closeButton: UIButton!
     
     // MARK: - Variables .
     
@@ -43,7 +43,7 @@ class QRCodeScannerViewController: UIViewController {
     
     func initViewScan() {
         messageLabel.text = "OnBoarding.Title.ScanQRCode".localized
-        bounds = squareImageView.bounds
+        closeButton.addCornerRadiusWith(radius: 15)
         // Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Failed to get the camera device")
@@ -76,7 +76,7 @@ class QRCodeScannerViewController: UIViewController {
             
             // Move the message label and top bar to the front
             view.bringSubviewToFront(messageLabel)
-            view.bringSubviewToFront(topBar)
+            view.bringSubviewToFront(closeButton)
             view.bringSubviewToFront(squareImageView)
             view.bringSubviewToFront(infoView)
 

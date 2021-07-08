@@ -199,7 +199,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
             UserDefaults.standard.setValue("", forKey: "serverURL")
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
-            self.navigationController?.popViewController(animated: true)
+            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+            appDelegate.setRootOnboarding()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
