@@ -16,16 +16,14 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var slideNumberLabel: UILabel!
     @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var addServerButton: UIButton!
-    @IBOutlet weak var pageControl: UIStackView!
-    @IBOutlet weak var flotView: DesignableView!
-    @IBOutlet weak var pageControlView: UIView!
     @IBOutlet weak var slideTitleLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     // MARK: - Variables .
 
     var onboardingList:[OnboardingItem] = []
     var currentPage:Int = 0
-    
+    var nextScroll:CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -53,10 +51,10 @@ class OnboardingViewController: UIViewController {
         onboardngCollectionView.delegate = self
         onboardngCollectionView.dataSource = self
         onboardngCollectionView.register(OnboardingCell.nib(), forCellWithReuseIdentifier: OnboardingCell.cellId)
-        flotView.frame.origin.x = -(flotView.frame.size.width/2)/2
-        setupPageControl(page:currentPage + 1)
+        pageControl.numberOfPages = onboardingList.count
         slideTitleLabel.text = onboardingList[0].title
         addObserverWith(selector: #selector(rootToHome(notification:)), name: .rootFromScanURL)
+        startTimer()
     }
     
     @objc
@@ -83,20 +81,55 @@ class OnboardingViewController: UIViewController {
         present(signInToeXo, animated: false, completion: nil)
     }
     
-    func setupPageControl(page:Int){
-        let centerX = self.flotView.frame.size.width/2
-        UIView.animate(withDuration: 0.5) {
-            switch page {
-            case 1:
-                self.flotView.frame.origin.x = -centerX/2
-            case 2:
-                self.flotView.frame.origin.x = self.pageControlView.frame.size.width/2 - centerX
-            case 3:
-                self.flotView.frame.origin.x = self.pageControlView.frame.size.width - 1.5*centerX
-            default:
-                self.flotView.frame.origin.x = -centerX
-            }
+    /**
+        Scroll to Next Cell
+        */
+    
+    @objc
+    func scrollToNextCell(){
+        //get Collection View Instance
+        //get cell size
+        let cellSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        //get current content Offset of the Collection view
+        let contentOffset = onboardngCollectionView.contentOffset
+        //scroll to next cell
+        nextScroll = contentOffset.x + cellSize.width
+        let count = nextScroll/cellSize.width
+        print(count)
+        print(nextScroll)
+        if nextScroll == cellSize.width*3 {
+            nextScroll = 0
+            setSlideStatus(count:0)
         }
+        onboardngCollectionView.scrollRectToVisible(CGRect(x: nextScroll, y: contentOffset.y, width: cellSize.width, height: cellSize.height), animated: true)
+        setSlideStatus(count:Int(count))
+    }
+
+       /**
+        Invokes Timer to start Automatic Animation with repeat enabled
+        */
+    func startTimer() {
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
+    }
+    
+    func setSlideStatus(count:Int) {
+        switch count {
+        case 0:
+            slideTitleLabel.text = onboardingList[count].title
+            slideNumberLabel.text = "\(count + 1)"
+            pageControl.currentPage = count
+        case 1:
+            slideTitleLabel.text = onboardingList[count].title
+            slideNumberLabel.text = "\(count + 1)"
+            pageControl.currentPage = count
+        case 2:
+            slideTitleLabel.text = onboardingList[count].title
+            slideNumberLabel.text = "\(count + 1)"
+            pageControl.currentPage = count
+        default:
+            print(count)
+        }
+    
     }
 }
 
@@ -119,9 +152,9 @@ extension OnboardingViewController:UICollectionViewDelegate, UICollectionViewDat
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
-        currentPage = Int(scrollView.contentOffset.x / width) + 1
-        slideNumberLabel.text = "\(currentPage)"
-        setupPageControl(page:currentPage)
-        slideTitleLabel.text = onboardingList[currentPage - 1].title
+        currentPage = Int(scrollView.contentOffset.x / width)
+        slideNumberLabel.text = "\(currentPage + 1)"
+        pageControl.currentPage = currentPage
+        slideTitleLabel.text = onboardingList[currentPage].title
     }
 }
