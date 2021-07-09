@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellowSquare" translatesAutoresizingMaskIntoConstraints="NO" id="ZyC-zJ-qAB">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteSquare" translatesAutoresizingMaskIntoConstraints="NO" id="ZyC-zJ-qAB">
                     <rect key="frame" x="107" y="348" width="200" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="835-wR-wzI"/>
@@ -87,7 +87,7 @@
     </objects>
     <resources>
         <image name="closeButton" width="24" height="24"/>
-        <image name="yellowSquare" width="262" height="238"/>
+        <image name="whiteSquare" width="262" height="238"/>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -83,7 +83,7 @@ class QRCodeScannerViewController: UIViewController {
             // Initialize QR Code Frame to highlight the QR Code
             qrCodeFrameView = UIImageView()
             if let qrcodeFrameView = qrCodeFrameView {
-                qrcodeFrameView.image = UIImage(named: "yellowSquare")
+                qrcodeFrameView.image = UIImage(named: "whiteSquare")
                 view.addSubview(qrcodeFrameView)
                 view.bringSubviewToFront(qrcodeFrameView)
             }
