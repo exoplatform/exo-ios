@@ -79,21 +79,8 @@ class ConnectToExoViewController: UIViewController {
         connectTableView.dataSource = self
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
         connectTableView.register(ServerCell.nib(), forCellReuseIdentifier: ServerCell.cellId)
-        addObserverWith(selector: #selector(openServer(notification:)), name: .addDomainKey)
     }
-    
-    @objc
-    func openServer(notification:Notification){
-        connectTableView.reloadData()
-        guard let serverURL = notification.userInfo?["serverURL"] as? String else { return }
-        // Open the selected server in the WebView
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
-        if let homepageVC = homepageVC {
-            homepageVC.serverURL = serverURL
-            self.navigationController?.pushViewController(homepageVC, animated: true)
-        }
-    }
+  
 }
 
 extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
