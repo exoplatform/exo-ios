@@ -58,9 +58,12 @@ class ConnectToExoViewController: UIViewController {
     
     @objc
     func addButtonTapped(){
-        let addDomainVC = AddDomainViewController()
-        addDomainVC.modalPresentationStyle = .overFullScreen
-        self.present(addDomainVC, animated: true)
+        rootToOboarding()
+    }
+    
+    func rootToOboarding(){
+        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+        appDelegate.setRootOnboarding()
     }
   
     @objc
