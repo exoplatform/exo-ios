@@ -96,7 +96,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: Actions
@@ -200,7 +200,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue("", forKey: "serverURL")
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-            appDelegate.setRootOnboarding()
+            appDelegate.setRootToConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
         // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in

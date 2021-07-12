@@ -24,6 +24,8 @@ class OnboardingViewController: UIViewController {
     var onboardingList:[OnboardingItem] = []
     var currentPage:Int = 0
     var nextScroll:CGFloat = 0
+    var timer:Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -37,6 +39,8 @@ class OnboardingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
+        timer.invalidate()
+        timer = nil
     }
     
     func initView() {
@@ -54,7 +58,20 @@ class OnboardingViewController: UIViewController {
         pageControl.numberOfPages = onboardingList.count
         slideTitleLabel.text = onboardingList[0].title
         addObserverWith(selector: #selector(rootToHome(notification:)), name: .rootFromScanURL)
+        addObserverWith(selector: #selector(openServer(notification:)), name: .addDomainKey)
         startTimer()
+    }
+
+    @objc
+    func openServer(notification:Notification){
+        guard let serverURL = notification.userInfo?["serverURL"] as? String else { return }
+        // Open the selected server in the WebView
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
+        if let homepageVC = homepageVC {
+            homepageVC.serverURL = serverURL
+            self.navigationController?.pushViewController(homepageVC, animated: true)
+        }
     }
     
     @objc
@@ -65,15 +82,14 @@ class OnboardingViewController: UIViewController {
     }
     
     @IBAction func addServerTapped(_ sender: Any) {
-        let connectToeXoVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
-        navigationController?.pushViewController(connectToeXoVC, animated: true)
+        let addDomainVC = AddDomainViewController()
+        addDomainVC.modalPresentationStyle = .overFullScreen
+        self.present(addDomainVC, animated: true)
     }
     
     @IBAction func scanQRTapped(_ sender: Any) {
         setRootToScan()
     }
-    
-    
     
     func setRootToScan(){
         let signInToeXo = QRCodeScannerViewController(nibName: "QRCodeScannerViewController", bundle: nil)
@@ -109,7 +125,7 @@ class OnboardingViewController: UIViewController {
         Invokes Timer to start Automatic Animation with repeat enabled
         */
     func startTimer() {
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
+      timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
     }
     
     func setSlideStatus(count:Int) {
