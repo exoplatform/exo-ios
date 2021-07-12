@@ -58,6 +58,10 @@ class ConnectToExoViewController: UIViewController {
     
     @objc
     func addButtonTapped(){
+        rootToOboarding()
+    }
+    
+    func rootToOboarding(){
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.setRootOnboarding()
     }
