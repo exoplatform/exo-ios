@@ -20,8 +20,9 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     
     // MARK: - Variables .
-
     var onboardingList:[OnboardingItem] = []
+    var onboardingEnList:[OnboardingItem] = []
+    var onboardingFrList:[OnboardingItem] = []
     var currentPage:Int = 0
     var nextScroll:CGFloat = 0
     var timer:Timer!
@@ -44,11 +45,19 @@ class OnboardingViewController: UIViewController {
     }
     
     func initView() {
-        onboardingList = [
-            OnboardingItem(title: "OnBoarding.Title.ShowQRCode".localized, image: "qr_code_scanner"),
-            OnboardingItem(title: "OnBoarding.Title.ScanQRsettings".localized, image: "qr_code_scanner"),
-            OnboardingItem(title: "OnBoarding.Title.EnterPassword".localized, image: "qr_code_scanner")
+        onboardingFrList = [
+            OnboardingItem(title: "OnBoarding.Title.ShowQRCode".localized, image: "slide1_gif-FR"),
+            OnboardingItem(title: "OnBoarding.Title.ScanQRsettings".localized, image: "slide2_gif-FR"),
+            OnboardingItem(title: "OnBoarding.Title.EnterPassword".localized, image: "slide3_gif-FR")
         ]
+        onboardingEnList = [
+            OnboardingItem(title: "OnBoarding.Title.ShowQRCode".localized, image: "slide1_gif-FR"),
+            OnboardingItem(title: "OnBoarding.Title.ScanQRsettings".localized, image: "slide2_gif-EN"),
+            OnboardingItem(title: "OnBoarding.Title.EnterPassword".localized, image: "slide3_gif-EN")
+        ]
+        if let lang = Locale.current.languageCode {
+            onboardingList = lang == "en" ? onboardingEnList : onboardingFrList
+        }
         scanButton.setTitle("OnBoarding.Title.ScanCode".localized, for: .normal)
         addServerButton.setTitle("OnBoarding.Title.EnterUrleXo".localized, for: .normal)
         scanButton.addCornerRadiusWith(radius: 5)
