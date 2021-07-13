@@ -26,7 +26,7 @@ class OnboardingCell: UICollectionViewCell {
     }
     
     func setDataWith(slide:OnboardingItem) {
-        onboardingImage.image = UIImage(named: slide.image)
+        onboardingImage.loadGif(name: slide.image)
     }
 }
 
