@@ -47,6 +47,7 @@ class ConnectToExoViewController: UIViewController {
         ServerManager.sharedInstance.removeServer(serverToDelete);
         if ServerManager.sharedInstance.serverList.count == 0 {
             self.navigationController?.popViewController(animated: true)
+            //rootToOboarding()
         }
         self.connectTableView.reloadData()
     }

@@ -40,8 +40,10 @@ class OnboardingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
-        timer.invalidate()
-        timer = nil
+        if timer != nil {
+            timer.invalidate()
+            timer = nil
+        }
     }
     
     func initView() {
@@ -134,7 +136,7 @@ class OnboardingViewController: UIViewController {
         Invokes Timer to start Automatic Animation with repeat enabled
         */
     func startTimer() {
-      timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
+      timer = Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
     }
     
     func setSlideStatus(count:Int) {
