@@ -32,9 +32,9 @@
 
 "OnBoarding.Title.EnterUrleXo" = "Saisir l'adresse de serveur";
 
-"Setting.Title.DeleteServer" = "Supprimer";
+"Delete" = "Supprimer";
 
-"Setting.Title.CancelDelete" = "Annuler";
+"Cancel" = "Annuler";
 
 "OnBoarding.Title.AddYourExo" = "Ajouter votre eXo";
 
