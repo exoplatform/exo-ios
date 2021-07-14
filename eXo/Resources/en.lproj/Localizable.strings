@@ -33,9 +33,9 @@
 
 "OnBoarding.Title.EnterUrleXo" = "Enter server URL";
 
-"OnBoarding.Title.DeleteServer" = "Delete";
+"Delete" = "Delete";
 
-"OnBoarding.Title.CancelDelete" = "Cancel";
+"Cancel" = "Cancel";
 
 "OnBoarding.Title.AddYourExo" = "Add your eXo";
 

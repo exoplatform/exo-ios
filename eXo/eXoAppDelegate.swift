@@ -59,10 +59,18 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         // Quick launch
         if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
             // Memorise the last connection
-            setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+            if UserDefaults.standard.bool(forKey: "isGoogleAuth") {
+                setRootToConnect()
+            }else{
+                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+            }
             return true
         }else{
-            setRootOnboarding()
+            if ServerManager.sharedInstance.serverList.count != 0 {
+                setRootToConnect()
+            }else{
+                setRootOnboarding()
+            }
             return true
         }
     }
@@ -78,9 +86,11 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
     }
 
     func setRootToConnect(){
-        let signInToeXo = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
-        navigationVC?.navigationBar.isHidden = true
-        navigationVC?.pushViewController(signInToeXo, animated: false)
+        let connectVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
+        navigationVC = UINavigationController(rootViewController: connectVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
     }
     
     func setRootOnboarding(){
