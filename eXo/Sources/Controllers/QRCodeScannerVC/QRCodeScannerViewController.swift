@@ -106,7 +106,7 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
             messageLabel.text = "OnBoarding.Title.ScanQRCode".localized
-            squareImageView.image = #imageLiteral(resourceName: "yellowSquare")
+            squareImageView.image = UIImage(named: "whiteSquare")
             squareImageView.isHidden = false
             return
         }
@@ -118,18 +118,22 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             if metadataObj.stringValue != nil {
-                captureSession.stopRunning()
-                squareImageView.isHidden = true
-                messageLabel.text = metadataObj.stringValue
-                qrCodeFrameView?.image = #imageLiteral(resourceName: "qr_code_scanner")
-                UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut]) {
-                    self.qrCodeFrameView?.frame.size = CGSize(width: 200, height: 200)
-                    self.qrCodeFrameView?.center = self.view.center
-                } completion: { completed in
-                    self.dismiss(animated: false) {
-                        if let rootURL = metadataObj.stringValue {
-                            self.postNotificationWith(key: .rootFromScanURL, info: ["rootURL" : rootURL])
+                if let rootURL = metadataObj.stringValue {
+                    if isValidURL(urlString: rootURL) {
+                        captureSession.stopRunning()
+                        squareImageView.isHidden = true
+                        messageLabel.text = metadataObj.stringValue
+                        qrCodeFrameView?.image = #imageLiteral(resourceName: "qr_code_scanner")
+                        UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut]) {
+                            self.qrCodeFrameView?.frame.size = CGSize(width: 200, height: 200)
+                            self.qrCodeFrameView?.center = self.view.center
+                        } completion: { completed in
+                            self.dismiss(animated: false) {
+                                self.postNotificationWith(key: .rootFromScanURL, info: ["rootURL" : rootURL])
+                            }
                         }
+                    }else{
+                        messageLabel.text = "URL not valid".localized
                     }
                 }
             }
