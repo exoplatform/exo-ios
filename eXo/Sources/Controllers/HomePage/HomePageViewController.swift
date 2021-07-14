@@ -53,7 +53,13 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         navigationController?.navigationBar.isHidden = false
         setNavigationBarAppearance()
         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
-            self.navigationController?.setNavigationBarHidden(true, animated:false)
+            let serverURL = UserDefaults.standard.value(forKey: "serverURL") as! String
+            print(serverURL)
+            if (serverURL.range(of: "/portal/login") != nil) {
+                self.navigationController?.setNavigationBarHidden(false, animated:false)
+            }else{
+                self.navigationController?.setNavigationBarHidden(true, animated:false)
+            }
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated:false)
         }
@@ -83,15 +89,23 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     @objc func popVC(){
-        let count = self.navigationController?.viewControllers.count
-        if count == 1 {
+        let countVC = self.navigationController?.viewControllers.count
+        if countVC == 1 {
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-            appDelegate.setRootOnboarding()
+            appDelegate.setRootToConnect()
         }else{
-            goBack()
+            let vcs: [UIViewController] = self.navigationController!.viewControllers
+            if vcs.contains(ConnectToExoViewController()){
+                for vc in vcs {
+                    if vc is ConnectToExoViewController {
+                        self.navigationController!.popToViewController(vc, animated: true)
+                    }
+                }
+            }else{
+                goBack()
+            }
+            
         }
-
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -193,12 +207,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let request:URLRequest = navigationAction.request
+        if let urlToSee = request.url?.absoluteString {
+            print("=============== Navigation Url : \(urlToSee)")
+        }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.tryDestroyToken()
             UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
             UserDefaults.standard.setValue("", forKey: "serverURL")
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+            UserDefaults.standard.setValue(false, forKey: "isGoogleAuth")
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
             appDelegate.setRootToConnect()
         }
@@ -226,6 +244,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
         }
         
+        if request.url?.absoluteString.range(of: "/portal/googleAuth") != nil  {
+            UserDefaults.standard.setValue(true, forKey: "isGoogleAuth")
+        }
         /*
          Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
          - WKNavigationType of a automatic request is always = .Others
