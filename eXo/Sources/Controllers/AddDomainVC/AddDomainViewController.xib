@@ -11,11 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDomainViewController" customModule="eXo" customModuleProvider="target">
             <connections>
+                <outlet property="addurlLabel" destination="Mq6-V4-4Ry" id="sdR-x7-trM"/>
                 <outlet property="companyTextField" destination="wp1-x8-vbb" id="1nR-mG-BK9"/>
                 <outlet property="companyWidthConstraint" destination="mw9-Ss-CxA" id="6pR-Rg-NdQ"/>
                 <outlet property="containerView" destination="Rbq-U1-sWC" id="eU6-xS-xIN"/>
                 <outlet property="stackView" destination="yY8-VX-hqx" id="pC5-4H-FCz"/>
                 <outlet property="suffixUrlTextField" destination="jOn-J0-dyg" id="cGG-BM-zCH"/>
+                <outlet property="titleLabel" destination="CeL-mX-mQE" id="Lzi-o1-RvI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
