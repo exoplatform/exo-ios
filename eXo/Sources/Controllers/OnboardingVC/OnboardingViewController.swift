@@ -54,7 +54,7 @@ class OnboardingViewController: UIViewController {
             OnboardingItem(title: "OnBoarding.Title.EnterPassword".localized, image: "slide3_gif-FR")
         ]
         onboardingEnList = [
-            OnboardingItem(title: "OnBoarding.Title.ShowQRCode".localized, image: "slide1_gif-FR"),
+            OnboardingItem(title: "OnBoarding.Title.ShowQRCode".localized, image: "slide1_gif-EN"),
             OnboardingItem(title: "OnBoarding.Title.ScanQRsettings".localized, image: "slide2_gif-EN"),
             OnboardingItem(title: "OnBoarding.Title.EnterPassword".localized, image: "slide3_gif-EN")
         ]
