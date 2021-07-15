@@ -91,8 +91,13 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     @objc func popVC(){
         let countVC = self.navigationController?.viewControllers.count
         if countVC == 1 {
-            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-            appDelegate.setRootToConnect()
+            if ServerManager.sharedInstance.serverList.count == 0 {
+                let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+                appDelegate.setRootOnboarding()
+            }else{
+                let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+                appDelegate.setRootToConnect()
+            }
         }else{
             let vcs: [UIViewController] = self.navigationController!.viewControllers
             if vcs.contains(ConnectToExoViewController()){
@@ -102,9 +107,13 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                     }
                 }
             }else{
-                goBack()
+                if ServerManager.sharedInstance.serverList.count == 0 {
+                    goBack()
+                }else{
+                    let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+                    appDelegate.setRootToConnect()
+                }
             }
-            
         }
     }
     
