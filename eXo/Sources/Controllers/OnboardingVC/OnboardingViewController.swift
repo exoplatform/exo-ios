@@ -23,6 +23,7 @@ class OnboardingViewController: UIViewController {
     var onboardingList:[OnboardingItem] = []
     var onboardingEnList:[OnboardingItem] = []
     var onboardingFrList:[OnboardingItem] = []
+    var qrCodeServer : Server?
     var currentPage:Int = 0
     var nextScroll:CGFloat = 0
     var timer:Timer!
@@ -88,8 +89,20 @@ class OnboardingViewController: UIViewController {
     @objc
     func rootToHome(notification:Notification){
         guard let rootURL = notification.userInfo?["rootURL"] as? String else { return }
-        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-        appDelegate.setRootToHome(rootURL)
+        Tool.verificationServerURL(rootURL, delegate: self, handleSuccess: { (serverURL) -> Void in
+            self.qrCodeServer = Server(serverURL: serverURL)
+            OperationQueue.main.addOperation({ () -> Void in
+                ServerManager.sharedInstance.addEditServer(self.qrCodeServer!)
+                self.qrCodeServer?.lastConnection = Date().timeIntervalSince1970
+                UserDefaults.standard.setValue(self.qrCodeServer?.serverURL, forKey: "serverURL")
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
+                if let homepageVC = homepageVC {
+                    homepageVC.serverURL = serverURL
+                    self.navigationController?.pushViewController(homepageVC, animated: true)
+                }
+            })
+        })
     }
     
     @IBAction func addServerTapped(_ sender: Any) {
@@ -122,8 +135,6 @@ class OnboardingViewController: UIViewController {
         //scroll to next cell
         nextScroll = contentOffset.x + cellSize.width
         let count = nextScroll/cellSize.width
-        print(count)
-        print(nextScroll)
         if nextScroll == cellSize.width*3 {
             nextScroll = 0
             setSlideStatus(count:0)
