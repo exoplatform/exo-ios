@@ -109,3 +109,9 @@
 "ServerManager.Title.Warning" = "Version de Platform non supportée";
 
 "ServerManager.Message.WarningVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.3, ou installer l'application version 2.";
+
+// Add Server
+
+"Add your eXo" = "Entrer votre eXo";
+
+"Enter your eXo URL" = "Entrer l'URL de votre eXo";

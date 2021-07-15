@@ -17,6 +17,8 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var suffixUrlTextField: UITextField!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var companyWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addurlLabel: UILabel!
     
     // MARK: - Variable.
     
@@ -37,6 +39,8 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     func setupView(){
+        titleLabel.text = "Add your eXo".localized
+        addurlLabel.text = "Enter your eXo URL".localized
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
         companyTextField.delegate = self
         companyWidthConstraint.constant = companyTextField.intrinsicContentSize.width
