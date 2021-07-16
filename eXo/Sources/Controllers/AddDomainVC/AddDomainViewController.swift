@@ -57,13 +57,14 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         companyTextField.becomeFirstResponder()
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let width = getWidth(text: textField.text!)
         if textField == companyTextField {
-            companyWidthConstraint.constant = textField.intrinsicContentSize.width
-            return true
+            companyWidthConstraint.constant = width
+            self.view.layoutIfNeeded()
         }
-        return false
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
