@@ -215,6 +215,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        checkConnectivity()
         let request:URLRequest = navigationAction.request
         if let urlToSee = request.url?.absoluteString {
             print("=============== Navigation Url : \(urlToSee)")

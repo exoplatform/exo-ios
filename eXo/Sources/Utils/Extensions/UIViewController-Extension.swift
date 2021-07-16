@@ -50,4 +50,45 @@ extension UIViewController {
         txtField.sizeToFit()
         return txtField.frame.size.width
     }
+    
+    func checkConnectivity(){
+        if !Connectivity.shared.isInternetConnected() {
+            self.showAlertGeneralErrorNoNetwork()
+        }
+    }
+    
+    func showAlertGeneralErrorNoNetwork(){
+        let titleAlert = "Internet connection lost".localized + "\n\n\n\n\n"
+        let messageAlert = "\n\n" + "Please make sure you have internet connection".localized + "\n"
+        
+        let attributedStringTitle = NSAttributedString(string: titleAlert, attributes: [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15),
+            NSAttributedString.Key.foregroundColor : UIColor(rgb: 0x5A8EC7)
+        ])
+        let attributedStringMessage = NSAttributedString(string: messageAlert, attributes: [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15),
+            NSAttributedString.Key.foregroundColor : UIColor(rgb: 0x5A8EC7)
+        ])
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        alertController.setValue(attributedStringTitle, forKey: "attributedTitle")
+        alertController.setValue(attributedStringMessage, forKey: "attributedMessage")
+        alertController.view.tintColor = UIColor(rgb: 0x5A8EC7)
+        let imgViewTitle = UIImageView(frame: CGRect(x: 110, y: 80, width: 57, height: 50))
+        imgViewTitle.contentMode = .scaleAspectFill
+        if #available(iOS 13.0, *) {
+            imgViewTitle.image = UIImage(named: "wifi")?.withTintColor(UIColor(rgb: 0xa8b3c5))
+        } else {
+            imgViewTitle.image = UIImage(named: "wifi")
+        }
+        alertController.view.addSubview(imgViewTitle)
+        let okAction = UIAlertAction(title:"OK".localized, style: UIAlertAction.Style.default) { UIAlertAction in
+            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+            appDelegate.setRootOnboarding()
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
+

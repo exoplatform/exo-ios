@@ -79,6 +79,9 @@
 
 "OnBoarding.Title.MostRecentServer" = "Most recent intranet";
 
+"Internet connection lost" = "Internet connection lost";
+
+"Please make sure you have internet connection" = "Please make sure you have internet connection";
 
 // Shortcut (3D Touch)
 
