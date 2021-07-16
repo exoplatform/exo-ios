@@ -43,4 +43,11 @@ extension UIViewController {
         }
         return false
     }
+    
+    func getWidth(text: String) -> CGFloat {
+        let txtField = UITextField(frame: .zero)
+        txtField.text = text
+        txtField.sizeToFit()
+        return txtField.frame.size.width
+    }
 }
