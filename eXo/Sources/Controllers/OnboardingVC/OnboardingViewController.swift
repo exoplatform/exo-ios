@@ -98,7 +98,7 @@ class OnboardingViewController: UIViewController {
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
                 if let homepageVC = homepageVC {
-                    homepageVC.serverURL = serverURL
+                    homepageVC.serverURL = rootURL + "&source=qrcode"
                     self.navigationController?.pushViewController(homepageVC, animated: true)
                 }
             })
