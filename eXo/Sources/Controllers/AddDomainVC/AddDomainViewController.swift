@@ -86,6 +86,8 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     @IBAction func addButtonTapped(_ sender: Any) {
         // dismiss the keyboard
         view.endEditing(true)
+        // check Internet connection
+        checkConnectivity()
         // verification of URL, http is the default protocol
         if let company = companyTextField.text, let sufixUrl = suffixUrlTextField.text {
             print(company,sufixUrl)
