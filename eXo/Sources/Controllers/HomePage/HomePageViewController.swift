@@ -108,7 +108,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 }
             }else{
                 if ServerManager.sharedInstance.serverList.count == 0 {
-                    goBack()
+                    let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+                    appDelegate.setRootOnboarding()
                 }else{
                     let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
                     appDelegate.setRootToConnect()

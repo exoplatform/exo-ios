@@ -75,32 +75,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         }
     }
     
-    func setRootToHome(_ serverURL:String){
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
-            homepageVC.serverURL = serverURL
-        navigationVC = UINavigationController(rootViewController: homepageVC)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationVC
-        window?.makeKeyAndVisible()
-    }
-
-    func setRootToConnect(){
-        let connectVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
-        navigationVC = UINavigationController(rootViewController: connectVC)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationVC
-        window?.makeKeyAndVisible()
-    }
-    
-    func setRootOnboarding(){
-        let rootVC = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        navigationVC = UINavigationController(rootViewController: rootVC)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationVC
-        window?.makeKeyAndVisible()
-    }
-    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -308,4 +282,34 @@ struct AppUtility {
         UINavigationController.attemptRotationToDeviceOrientation()
     }
 
+}
+
+extension eXoAppDelegate {
+    
+    func setRootToHome(_ serverURL:String){
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+            homepageVC.serverURL = serverURL
+        navigationVC = UINavigationController(rootViewController: homepageVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+    }
+
+    func setRootToConnect(){
+        let connectVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
+        navigationVC = UINavigationController(rootViewController: connectVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func setRootOnboarding(){
+        let rootVC = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
+        navigationVC = UINavigationController(rootViewController: rootVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+    }
+    
 }
