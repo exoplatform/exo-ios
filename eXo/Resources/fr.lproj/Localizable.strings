@@ -78,6 +78,10 @@
 
 "OnBoarding.Error.ConnectionError" = "Erreur de connexion";
 
+"Internet connection lost" = "Connexion Internet perdue";
+
+"Please make sure you have internet connection" = "Veuillez vous assurer d'avoir une connexion Internet";
+
 // Shortcut (3D Touch)
 
 "Shortcut.Title.RegisterCommunity" = "Découvrez eXo Tribe";
