@@ -89,6 +89,8 @@ class OnboardingViewController: UIViewController {
     @objc
     func rootToHome(notification:Notification){
         guard let rootURL = notification.userInfo?["rootURL"] as? String else { return }
+        // check Internet connection
+        checkConnectivity()
         Tool.verificationServerURL(rootURL, delegate: self, handleSuccess: { (serverURL) -> Void in
             self.qrCodeServer = Server(serverURL: serverURL)
             OperationQueue.main.addOperation({ () -> Void in
