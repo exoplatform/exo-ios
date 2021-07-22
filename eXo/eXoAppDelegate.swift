@@ -58,9 +58,13 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         tryToRegisterForRemoteNotifications(application: application)
         // Quick launch
         if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
+            let url = UserDefaults.standard.value(forKey: "serverURL") as! String
+
             // Memorise the last connection
             if UserDefaults.standard.bool(forKey: "isGoogleAuth") {
-                setRootToConnect()
+                let urlarry = url.components(separatedBy:"/portal/login")
+                let updatedUrl = urlarry[0] + "/portal/login"
+                setRootToHome(updatedUrl)
             }else{
                 setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
             }
