@@ -39,6 +39,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     func setupView(){
+        companyTextField.becomeFirstResponder()
         titleLabel.text = "Add your eXo".localized
         addurlLabel.text = "Enter your eXo URL".localized
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
