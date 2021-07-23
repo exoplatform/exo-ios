@@ -59,7 +59,21 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let width = getWidth(text: textField.text!)
+        let text = textField.text! + string.lowercased()
+        var width:CGFloat = 0
+        if text.count >= 6 {
+            if string == "" {
+                width = getWidth(text: text) - 15
+            }else{
+                width = getWidth(text: text) - 10
+            }
+        }else{
+            if string == "" {
+                width = getWidth(text: text) - 10
+            }else{
+                width = getWidth(text: text)
+            }
+        }
         if textField == companyTextField {
             companyWidthConstraint.constant = width
             self.view.layoutIfNeeded()
