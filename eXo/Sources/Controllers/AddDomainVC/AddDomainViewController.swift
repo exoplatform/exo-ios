@@ -39,6 +39,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     func setupView(){
+        companyTextField.becomeFirstResponder()
         titleLabel.text = "Add your eXo".localized
         addurlLabel.text = "Enter your eXo URL".localized
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
@@ -59,7 +60,8 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let width = getWidth(text: textField.text!)
+        let text = textField.text! + string
+        let width = getWidth(text: text)
         if textField == companyTextField {
             companyWidthConstraint.constant = width
             self.view.layoutIfNeeded()
