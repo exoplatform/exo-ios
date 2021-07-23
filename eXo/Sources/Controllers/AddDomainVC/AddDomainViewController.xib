@@ -117,7 +117,6 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="company" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="wp1-x8-vbb" customClass="AutoResizingUITextField" customModule="eXo" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="107.5" height="40"/>
-                                                    <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="107.5" id="mw9-Ss-CxA"/>
                                                     </constraints>
