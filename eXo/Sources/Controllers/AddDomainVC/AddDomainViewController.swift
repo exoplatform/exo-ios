@@ -23,7 +23,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     // MARK: - Variable.
     
     var selectedServer : Server?
-    
+    var textFieldToUse:UITextField?
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -44,6 +44,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
         addurlLabel.text = "Enter your eXo URL".localized
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
         companyTextField.delegate = self
+        suffixUrlTextField.delegate = self
         companyWidthConstraint.constant = companyTextField.intrinsicContentSize.width
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
@@ -56,28 +57,38 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     // MARK: - UITextField Delegate .
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        companyTextField.becomeFirstResponder()
+        if textField == companyTextField {
+            companyTextField.becomeFirstResponder()
+            companyTextField.textAlignment = .left
+        }else{
+            suffixUrlTextField.becomeFirstResponder()
+        }
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = textField.text! + string.lowercased()
-        var width:CGFloat = 0
-        if text.count >= 6 {
-            if string == "" {
-                width = getWidth(text: text) - 15
-            }else{
-                width = getWidth(text: text) - 10
-            }
-        }else{
-            if string == "" {
-                width = getWidth(text: text) - 10
-            }else{
-                width = getWidth(text: text)
-            }
-        }
         if textField == companyTextField {
+            companyTextField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.lowercased())
+            let text = companyTextField.text! + string.lowercased()
+            var width:CGFloat = 0
+            if text.count >= 6 {
+                if string == "" {
+                    width = getWidth(text: text) - 15
+                }else{
+                    width = getWidth(text: text) - 10
+                }
+            }else{
+                if string == "" {
+                    width = getWidth(text: text) - 10
+                }else{
+                    width = getWidth(text: text)
+                }
+            }
             companyWidthConstraint.constant = width
             self.view.layoutIfNeeded()
+            return false
+        }else if textField == suffixUrlTextField {
+            suffixUrlTextField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.lowercased())
+            return false
         }
         return true
     }
