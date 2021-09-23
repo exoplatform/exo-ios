@@ -96,7 +96,7 @@ class OnboardingViewController: UIViewController {
             OperationQueue.main.addOperation({ () -> Void in
                 ServerManager.sharedInstance.addEditServer(self.qrCodeServer!)
                 self.qrCodeServer?.lastConnection = Date().timeIntervalSince1970
-                UserDefaults.standard.setValue(self.qrCodeServer?.serverURL, forKey: "serverURL")
+               // UserDefaults.standard.setValue(self.qrCodeServer?.serverURL, forKey: "serverURL")
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
                 if let homepageVC = homepageVC {

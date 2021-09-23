@@ -53,13 +53,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         navigationController?.navigationBar.isHidden = false
         setNavigationBarAppearance()
         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
-            let serverURL = UserDefaults.standard.value(forKey: "serverURL") as! String
-            print(serverURL)
-            if (serverURL.range(of: "/portal/login") != nil) {
-                self.navigationController?.setNavigationBarHidden(false, animated:false)
-            }else{
-                self.navigationController?.setNavigationBarHidden(true, animated:false)
-            }
+            self.navigationController?.setNavigationBarHidden(true, animated:false)
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated:false)
         }
@@ -232,12 +226,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             appDelegate.setRootToConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-        // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
-        // Home Page Address: portal/dw 
-        if ((request.url?.absoluteString.range(of: "/portal/dw/")) != nil) && !(request.url?.absoluteString.range(of: "portal:action=Logout") != nil) {
-            UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        }
+
         // Refresh the web page if is needed.
         if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
             if last == "dw/" || last == "dw"{
@@ -249,10 +238,26 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
+        // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
+        // Home Page Address: portal/dw
+        if let urlRequest = request.url {
+            if let urlComponent = URLComponents(string: urlRequest.absoluteString) {
+                if (urlComponent.path == "/portal/dw/"){
+                    UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
+                    UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
+                    UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
+                    navigationController?.setNavigationBarHidden(true, animated: true)
+                }
+            }
+        }
         
-        if (request.url?.absoluteString.range(of: serverDomain! + "/portal/login") != nil){
-            UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
-            UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
+        if let urlRequest = request.url {
+            if let urlComponent = URLComponents(string: urlRequest.absoluteString) {
+                if (urlComponent.path == "/portal/login"){
+                    UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+                    navigationController?.setNavigationBarHidden(false, animated: true)
+                }
+            }
         }
         
         if request.url?.absoluteString.range(of: "/portal/googleAuth") != nil  {
