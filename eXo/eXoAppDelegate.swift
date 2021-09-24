@@ -87,10 +87,23 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         /*
+<<<<<<< HEAD
          Verification of session timeout on server.
          When the session is timeout, go back to On-Boarding (Loggin) screen
          */
         setRootSessionTimeout()
+=======
+        Verification of session timeout on server.
+        When the session is timeout, go back to On-Boarding (Loggin) screen
+        */
+            if (Date().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
+                if ServerManager.sharedInstance.serverList.count != 0 {
+                    setRootToConnect()
+                }else{
+                    setRootOnboarding()
+                }
+            }
+>>>>>>> 727b91b (49271 : Redirection to the card Screen update (#109))
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     

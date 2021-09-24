@@ -240,7 +240,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             appDelegate.handleRootConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-        
         // Refresh the web page if is needed.
         if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
             if last == "dw/" || last == "dw"{
