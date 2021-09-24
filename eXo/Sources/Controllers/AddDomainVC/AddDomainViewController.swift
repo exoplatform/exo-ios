@@ -100,6 +100,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
+        companyTextField.text = ""
         companyTextField.isHidden = true
         suffixUrlTextField.text = ""
         suffixUrlTextField.becomeFirstResponder()
@@ -122,7 +123,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
                 OperationQueue.main.addOperation({ () -> Void in
                     ServerManager.sharedInstance.addEditServer(self.selectedServer!)
                     self.selectedServer?.lastConnection = Date().timeIntervalSince1970
-                    UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
+                   // UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
                     self.dismiss(animated: true) {
                         if let serverURL = self.selectedServer?.serverURL {
                             self.postNotificationWith(key: .addDomainKey, info: ["serverURL" : serverURL])

@@ -132,7 +132,7 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
         if let homepageVC = homepageVC {
             homepageVC.serverURL = self.selectedServer?.serverURL
-            UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
+          //  UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
             self.connectTableView.reloadData()
             navigationController?.navigationBar.isHidden = false
             navigationController?.pushViewController(homepageVC, animated: true)
