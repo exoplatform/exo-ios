@@ -66,7 +66,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
                 let updatedUrl = urlarry[0] + "/portal/login"
                 setRootToHome(updatedUrl)
             }else{
-                setRootToHome(UserDefaults.standard.value(forKey: "serverURL") as! String)
+                setRootToHome(url)
             }
             return true
         }else{
@@ -96,8 +96,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         When the session is timeout, go back to On-Boarding (Loggin) screen
         */
             if (Date().timeIntervalSince1970 - quitTimestamp!) > eXoAppDelegate.sessionTimeout  {
-                if (navigationVC != nil) {
-                    navigationVC?.popToRootViewController(animated: false)
+                if ServerManager.sharedInstance.serverList.count != 0 {
+                    setRootToConnect()
+                }else{
+                    setRootOnboarding()
                 }
             }
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
@@ -196,22 +198,22 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNU
         PushTokenSynchronizer.shared.token = fcmToken
     }
 
-	func handleNotification(userInfo: [AnyHashable: Any]) {
-		if let url = userInfo["url"] as? String {
-			let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
-			ServerManager.sharedInstance.addEditServer(server)
-			self.quickActionOpenHomePageForURL(url)//server.serverURL
-		}
-	}
-	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-		handleNotification(userInfo: userInfo);
-	}
+    func handleNotification(userInfo: [AnyHashable: Any]) {
+        if let url = userInfo["url"] as? String {
+            let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
+            ServerManager.sharedInstance.addEditServer(server)
+            self.quickActionOpenHomePageForURL(url)//server.serverURL
+        }
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        handleNotification(userInfo: userInfo);
+    }
 
-	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-									 fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-		handleNotification(userInfo: userInfo);
-		completionHandler(UIBackgroundFetchResult.newData)
-	}
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        handleNotification(userInfo: userInfo);
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
 
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
