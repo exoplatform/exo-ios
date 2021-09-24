@@ -142,6 +142,10 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
         if let homepageVC = homepageVC {
             homepageVC.serverURL = self.selectedServer?.serverURL
+<<<<<<< HEAD
+=======
+          //  UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
+>>>>>>> 727b91b (49271 : Redirection to the card Screen update (#109))
             self.connectTableView.reloadData()
             navigationController?.navigationBar.isHidden = false
             if isInternetConnected(inWeb: false) {
