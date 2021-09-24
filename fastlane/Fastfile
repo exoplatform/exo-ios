@@ -1,5 +1,5 @@
 # Fastlane configuration file
-# 
+#
 # More information about multiple platforms in fastlane: https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
 # All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
 
@@ -242,7 +242,7 @@ platform :ios do
       binary: "./fastlane/output/exo.ipa",
       store_id: ENV['APPALOOSA_EXO_STORE_ID'],
       api_token: ENV['APPALOOSA_EXO_API_TOKEN'],
-      # User group_ids visibility (ex: '123, 456, 789') 
+      # User group_ids visibility (ex: '123, 456, 789')
       # if it's not specified we'll publish the app for all users in your store'
       group_ids: '8782', # eXo
       # group_ids: '16486', # fdr
@@ -263,9 +263,9 @@ platform :ios do
   desc "Create screenshots of the application"
   lane :screenshots do
     capture_screenshots(
-      stop_after_first_error: true, 
-      reinstall_app: true, 
-      configuration: "Release", 
+      stop_after_first_error: true,
+      reinstall_app: true,
+      configuration: "Release",
       sdk: "iphonesimulator"
     )
     frame_screenshots(white: true)
@@ -325,7 +325,7 @@ platform :ios do
       binary: "./fastlane/output/exo.ipa",
       store_id: ENV['APPALOOSA_EXO_STORE_ID'],
       api_token: ENV['APPALOOSA_EXO_API_TOKEN'],
-      # User group_ids visibility (ex: '123, 456, 789') 
+      # User group_ids visibility (ex: '123, 456, 789')
       # if it's not specified we'll publish the app for all users in your store'
       group_ids: '8782', # eXo
       # group_ids: '16486', # fdr
