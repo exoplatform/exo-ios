@@ -238,12 +238,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
+        
         // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
         // Home Page Address: portal/dw
+        
         if let urlRequest = request.url {
-            if let urlComponent = URLComponents(string: urlRequest.absoluteString) {
-                if (urlComponent.path == "/portal/dw/"){
-                    UserDefaults.standard.setValue(request.url?.absoluteString, forKey: "serverURL")
+            if urlRequest.path.contains("/portal/dw"){
+                let path = urlRequest.path
+                let firstIndexPath = path.components(separatedBy: "/dw")[0]
+                if firstIndexPath == "/portal"{
+                    UserDefaults.standard.setValue(urlRequest.absoluteString, forKey: "serverURL")
                     UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
                     UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
                     navigationController?.setNavigationBarHidden(true, animated: true)

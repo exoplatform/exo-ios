@@ -100,6 +100,7 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
+        companyTextField.text = ""
         companyTextField.isHidden = true
         suffixUrlTextField.text = ""
         suffixUrlTextField.becomeFirstResponder()
