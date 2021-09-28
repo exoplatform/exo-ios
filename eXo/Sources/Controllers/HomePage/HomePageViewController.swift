@@ -248,7 +248,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if let urlRequest = request.url {
             if urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g") {
                 let path = urlRequest.path
-                let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g")[0]
+                let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
                 if firstIndexPath == "/portal"{
                     UserDefaults.standard.setValue(urlRequest.absoluteString, forKey: "serverURL")
                     UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
