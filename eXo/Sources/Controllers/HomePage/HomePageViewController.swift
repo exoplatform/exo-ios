@@ -246,7 +246,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         // Home Page Address: portal/dw
         
         if let urlRequest = request.url {
-            if urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g") {
+            if urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/") {
                 let path = urlRequest.path
                 let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
                 if firstIndexPath == "/portal"{
