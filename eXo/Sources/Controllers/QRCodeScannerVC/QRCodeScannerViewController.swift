@@ -30,7 +30,7 @@ class QRCodeScannerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initViewScan()
+        checkCameraStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +41,36 @@ class QRCodeScannerViewController: UIViewController {
         AppUtility.lockOrientation(.all)
     }
     
-    func initViewScan() {
+    func checkCameraStatus(){
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+            self.setupCamera()
+        } else {
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted: Bool) -> Void in
+                DispatchQueue.main.async {
+                    if granted == true {
+                        self.setupCamera()
+                    } else {
+                        self.alertPromptToAllowCameraAccessViaSetting()
+                    }
+                }
+            })
+        }
+    }
+    
+    func alertPromptToAllowCameraAccessViaSetting() {
+        let alert = UIAlertController(title: "Camera access required", message: "You already denied permission to the camera, Please enable access from settings", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default) { (alert) -> Void in
+            self.dismiss(animated: false, completion: nil)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Settings", style: .cancel) { (alert) -> Void in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+        })
+        present(alert, animated: true)
+    }
+    
+    
+    func setupCamera() {
         messageLabel.text = "OnBoarding.Title.ScanQRCode".localized
         closeButton.addCornerRadiusWith(radius: 15)
         // Get the back-facing camera for capturing videos
