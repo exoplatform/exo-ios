@@ -158,6 +158,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 webView.reload()
             }
         }
+        if let urlToSee = webView.url?.absoluteString {
+            print("=============== didFinish Url : \(urlToSee)")
+        }
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -243,9 +246,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         // Home Page Address: portal/dw
         
         if let urlRequest = request.url {
-            if urlRequest.path.contains("/portal/dw"){
+            if urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/") {
                 let path = urlRequest.path
-                let firstIndexPath = path.components(separatedBy: "/dw")[0]
+                let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
                 if firstIndexPath == "/portal"{
                     UserDefaults.standard.setValue(urlRequest.absoluteString, forKey: "serverURL")
                     UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")

@@ -44,7 +44,6 @@ class ConnectToExoViewController: UIViewController {
     
     @objc
     func deleteTapped(notification:Notification){
-        ServerManager.sharedInstance.removeServer(serverToDelete);
         if ServerManager.sharedInstance.serverList.count == 0 {
             rootToOboarding()
         }
@@ -70,8 +69,9 @@ class ConnectToExoViewController: UIViewController {
     func deleteButtonTapped(_ sender:UIButton){
         let title = "Setting.Title.DeleteServer".localized
         let msg = "Setting.Message.DeleteServer".localized
-        serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server
-        showAlertMessage(title:title,msg: msg, action: .delete)
+        if let serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server {
+            showAlertMessageDelete(title:title,msg: msg, action: .delete, server: serverToDelete)
+        }
     }
     
     func initView() {
