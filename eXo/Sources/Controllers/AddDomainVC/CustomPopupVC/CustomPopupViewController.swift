@@ -28,6 +28,7 @@ class CustomPopupViewController: UIViewController {
     var descriptionMessage:String = ""
     var titleDescription:String = ""
     var actionHandler:ActionHandler!
+    var serverToDelete:Server!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,7 @@ class CustomPopupViewController: UIViewController {
             switch actionHandler {
             case .delete:
                 dismiss(animated: false) {
+                    ServerManager.sharedInstance.removeServer(self.serverToDelete)
                     self.postNotificationWith(key: .deleteInstance)
                 }
             default:

@@ -34,6 +34,15 @@ extension UIViewController {
         popupVC.modalPresentationStyle = .overFullScreen
         present(popupVC, animated: false, completion: nil)
     }
+    func showAlertMessageDelete(title:String,msg:String,action:ActionHandler,server:Server){
+        let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
+        popupVC.titleDescription = title
+        popupVC.descriptionMessage = msg
+        popupVC.actionHandler = action
+        popupVC.serverToDelete = server
+        popupVC.modalPresentationStyle = .overFullScreen
+        present(popupVC, animated: false, completion: nil)
+    }
     
     func isValidURL(urlString: String?) -> Bool {
         if let urlString = urlString {
