@@ -28,7 +28,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     private let cookiesInterceptor: CookiesInterceptor = CookiesInterceptorFactory().create()
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
+    let defaults = UserDefaults.standard
+
     var countRefresh:Int = 0
+    var dic:Dictionary = [String:Bool]()
 
     // MARK: View Controller lifecycle
     
@@ -52,7 +55,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
          */
         navigationController?.navigationBar.isHidden = false
         setNavigationBarAppearance()
-        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+        if self.defaults.bool(forKey: "isLoggedIn") {
             self.navigationController?.setNavigationBarHidden(true, animated:false)
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated:false)
@@ -90,7 +93,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 appDelegate.setRootOnboarding()
             }else{
                 let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-                appDelegate.setRootToConnect()
+                appDelegate.handleRootConnect()
             }
         }else{
             let vcs: [UIViewController] = self.navigationController!.viewControllers
@@ -106,7 +109,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                     appDelegate.setRootOnboarding()
                 }else{
                     let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-                    appDelegate.setRootToConnect()
+                    appDelegate.handleRootConnect()
                 }
             }
         }
@@ -149,11 +152,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         
         //Check if need to display the welcome view
-        if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
+        if (self.defaults.object(forKey: Config.onboardingDidShow) == nil){
             loadStateStatusPage()
         }
         
-        if let refreshCount = UserDefaults.standard.value(forKey: "countRefresh") as? Int {
+        if let refreshCount = self.defaults.value(forKey: "countRefresh") as? Int {
             if refreshCount == 1 {
                 webView.reload()
             }
@@ -220,13 +223,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+            self.defaults.setValue(false, forKey: "wasConnectedBefore")
+            self.defaults.setValue("", forKey: "serverURL")
+            self.defaults.setValue(false, forKey: "isLoggedIn")
+            self.defaults.setValue(false, forKey: "isGoogleAuth")
+            UIApplication.shared.unregisterForRemoteNotifications()
             PushTokenSynchronizer.shared.tryDestroyToken()
-            UserDefaults.standard.setValue(false, forKey: "wasConnectedBefore")
-            UserDefaults.standard.setValue("", forKey: "serverURL")
-            UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
-            UserDefaults.standard.setValue(false, forKey: "isGoogleAuth")
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-            appDelegate.setRootToConnect()
+            appDelegate.handleRootConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
 
@@ -234,7 +238,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
             if last == "dw/" || last == "dw"{
                 countRefresh += 1
-                UserDefaults.standard.setValue(countRefresh, forKey: "countRefresh")
+                self.defaults.setValue(countRefresh, forKey: "countRefresh")
             }
         }
         
@@ -246,14 +250,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         // Home Page Address: portal/dw
         
         if let urlRequest = request.url {
-            if urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/") {
+            if (urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/")) && !(request.url?.absoluteString.range(of: "portal:action=Logout") != nil){
                 let path = urlRequest.path
                 let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
                 if firstIndexPath == "/portal"{
-                    UserDefaults.standard.setValue(urlRequest.absoluteString, forKey: "serverURL")
-                    UserDefaults.standard.setValue(true, forKey: "wasConnectedBefore")
-                    UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
+                    self.defaults.setValue(urlRequest.absoluteString, forKey: "serverURL")
+                    self.defaults.setValue(true, forKey: "wasConnectedBefore")
+                    self.defaults.setValue(true, forKey: "isLoggedIn")
+                    UIApplication.shared.registerForRemoteNotifications()
                     navigationController?.setNavigationBarHidden(true, animated: true)
+                    UIApplication.shared.registerForRemoteNotifications()
                 }
             }
         }
@@ -261,14 +267,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if let urlRequest = request.url {
             if let urlComponent = URLComponents(string: urlRequest.absoluteString) {
                 if (urlComponent.path == "/portal/login"){
-                    UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+                    self.defaults.setValue(false, forKey: "isLoggedIn")
                     navigationController?.setNavigationBarHidden(false, animated: true)
                 }
             }
         }
         
         if request.url?.absoluteString.range(of: "/portal/googleAuth") != nil  {
-            UserDefaults.standard.setValue(true, forKey: "isGoogleAuth")
+            self.defaults.setValue(true, forKey: "isGoogleAuth")
         }
         /*
          Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
@@ -305,12 +311,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
      - After use has logged in
      */
     func showOnBoardingIfNeed () {
-        if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
+        if (self.defaults.object(forKey: Config.onboardingDidShow) == nil){
             let welcomeVC:WelcomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
             welcomeVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
             welcomeVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
             self.present(welcomeVC, animated: true, completion: {})
-            UserDefaults.standard.set(NSNumber(value: true as Bool), forKey: Config.onboardingDidShow)
+            self.defaults.set(NSNumber(value: true as Bool), forKey: Config.onboardingDidShow)
         }
     }
     
@@ -345,7 +351,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 }
                 let imgView = UIImageView()
                 imgView.kf.setImage(with: _url, options: [.requestModifier(modifier)])
-                UserDefaults.standard.setValue(imgView.image?.pngData(), forKey: "\(domain)")
+                self.defaults.setValue(imgView.image?.pngData(), forKey: "\(domain)")
             }
         }
     }

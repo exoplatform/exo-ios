@@ -66,7 +66,8 @@ class PushTokenRestClient {
                     print("---REST:\tPush token request completed succesfully")
                     completion(true)
                     return
-                default: print("---REST:\tPush token request has failed. Server response: \(response.debugDescription) ---> Answered on request: \(request.debugDescription) : \((request.allHTTPHeaderFields ?? [:]).debugDescription)")
+                default:
+                    print("---REST:\tPush token request has failed. Server response: \(response.debugDescription) ---> Answered on request: \(request.debugDescription) : \((request.allHTTPHeaderFields ?? [:]).debugDescription)")
                 }
             }
             completion(false)
