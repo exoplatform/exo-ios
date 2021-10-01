@@ -184,13 +184,14 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Check for new data.
         completionHandler(UIBackgroundFetchResult.newData)
     }
-    
+ 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         //PushTokenSynchronizer.shared.token = fcmToken
         if let _fcmToken = fcmToken {
             print("Reveived fcmToken: \(_fcmToken)")
         }
     }
+  
     
     func handleNotification(userInfo: [AnyHashable: Any]) {
         if let url = userInfo["url"] as? String {
@@ -207,6 +208,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         handleNotification(userInfo: userInfo);
+        print("UIBackgroundFetchResult =====> \(userInfo)")
         completionHandler(UIBackgroundFetchResult.newData)
     }
     
@@ -293,30 +295,27 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
         // Print full message.
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
-        let application = UIApplication.shared
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (isSucc, error) in
             if isSucc {
-                if let _userInfo = userInfo as? NSDictionary {
-                    print(_userInfo)
-                    if let aps = _userInfo["aps"] as? NSDictionary {
-                        if let badge = aps["badge"] as? Int {
-                            DispatchQueue.main.async {
-                                let badgeNumber = badge + 1
-                                UIApplication.shared.applicationIconBadgeNumber = badgeNumber
-                            }
-                            if let url = userInfo["url"] as? String {
-                                let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
-                                var dic:Dictionary = [String:Int]()
-                                for ser in ServerManager.sharedInstance.serverList {
-                                    if let serverURL = (ser as? Server)?.serverURL {
-                                        if serverURL.stringURLWithoutProtocol() == server.serverURL.stringURLWithoutProtocol() {
-                                            dic[server.serverURL.stringURLWithoutProtocol()] = badge + 1
-                                        }
+                print(userInfo.description)
+                if let aps = userInfo["aps"] as? NSDictionary {
+                    if let badge = aps["badge"] as? Int {
+                        DispatchQueue.main.async {
+                            let badgeNumber = badge + 1
+                            UIApplication.shared.applicationIconBadgeNumber = badgeNumber
+                        }
+                        if let url = userInfo["url"] as? String {
+                            let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
+                            var dic:Dictionary = [String:Int]()
+                            for ser in ServerManager.sharedInstance.serverList {
+                                if let serverURL = (ser as? Server)?.serverURL {
+                                    if serverURL.stringURLWithoutProtocol() == server.serverURL.stringURLWithoutProtocol() {
+                                        dic[server.serverURL.stringURLWithoutProtocol()] = badge + 1
                                     }
                                 }
-                                self.defaults.setValue(dic, forKey: "badgeNumber")
-                                self.postNotificationWith(key: .reloadTableView)
                             }
+                            self.defaults.setValue(dic, forKey: "badgeNumber")
+                            self.postNotificationWith(key: .reloadTableView)
                         }
                     }
                 }
