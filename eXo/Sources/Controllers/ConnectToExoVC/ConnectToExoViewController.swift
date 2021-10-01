@@ -45,7 +45,6 @@ class ConnectToExoViewController: UIViewController {
     
     @objc
     func deleteTapped(notification:Notification){
-        print("serverList.count === >  \(ServerManager.sharedInstance.serverList.count)")
         if ServerManager.sharedInstance.serverList.count == 0 {
             rootToOboarding()
         }

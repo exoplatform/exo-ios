@@ -68,7 +68,6 @@ class CustomPopupViewController: UIViewController {
             case .delete:
                 dismiss(animated: false) {
                     ServerManager.sharedInstance.removeServer(self.serverToDelete)
-                    print("serverList.count === >  \(ServerManager.sharedInstance.serverList.count)")
                     self.postNotificationWith(key: .deleteInstance)
                 }
             default:

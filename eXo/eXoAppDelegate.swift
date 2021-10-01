@@ -109,6 +109,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         print("Reveived token: \(token)")
+        PushTokenSynchronizer.shared.token = token
     }
     
     /*
@@ -185,7 +186,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        PushTokenSynchronizer.shared.token = fcmToken
+        //PushTokenSynchronizer.shared.token = fcmToken
+        if let _fcmToken = fcmToken {
+            print("Reveived fcmToken: \(_fcmToken)")
+        }
     }
     
     func handleNotification(userInfo: [AnyHashable: Any]) {

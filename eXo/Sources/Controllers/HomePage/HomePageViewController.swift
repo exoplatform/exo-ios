@@ -227,7 +227,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             self.defaults.setValue("", forKey: "serverURL")
             self.defaults.setValue(false, forKey: "isLoggedIn")
             self.defaults.setValue(false, forKey: "isGoogleAuth")
-            UIApplication.shared.unregisterForRemoteNotifications()
+           // UIApplication.shared.unregisterForRemoteNotifications()
             PushTokenSynchronizer.shared.tryDestroyToken()
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
             appDelegate.handleRootConnect()
@@ -259,7 +259,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                     self.defaults.setValue(true, forKey: "isLoggedIn")
                     UIApplication.shared.registerForRemoteNotifications()
                     navigationController?.setNavigationBarHidden(true, animated: true)
-                    UIApplication.shared.registerForRemoteNotifications()
+                   // UIApplication.shared.registerForRemoteNotifications()
                 }
             }
         }
