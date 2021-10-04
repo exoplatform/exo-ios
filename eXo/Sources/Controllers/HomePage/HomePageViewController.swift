@@ -29,10 +29,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
     let defaults = UserDefaults.standard
-
+    
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
-
+    
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -227,13 +227,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             self.defaults.setValue("", forKey: "serverURL")
             self.defaults.setValue(false, forKey: "isLoggedIn")
             self.defaults.setValue(false, forKey: "isGoogleAuth")
-           // UIApplication.shared.unregisterForRemoteNotifications()
             PushTokenSynchronizer.shared.tryDestroyToken()
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
             appDelegate.handleRootConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-
+        
         // Refresh the web page if is needed.
         if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
             if last == "dw/" || last == "dw"{
@@ -259,7 +258,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                     self.defaults.setValue(true, forKey: "isLoggedIn")
                     UIApplication.shared.registerForRemoteNotifications()
                     navigationController?.setNavigationBarHidden(true, animated: true)
-                   // UIApplication.shared.registerForRemoteNotifications()
                 }
             }
         }
