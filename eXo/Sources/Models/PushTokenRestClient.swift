@@ -72,6 +72,7 @@ class PushTokenRestClient {
                     return
                 default:
                     self.semaphore.signal()
+
                     print("---REST:\tPush token request has failed. Server response: \(response.debugDescription) ---> Answered on request: \(request.debugDescription) : \((request.allHTTPHeaderFields ?? [:]).debugDescription)")
                 }
             }
