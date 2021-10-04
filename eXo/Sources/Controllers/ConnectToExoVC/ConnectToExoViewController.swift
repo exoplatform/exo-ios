@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class ConnectToExoViewController: UIViewController {
-
+    
     // MARK: - Outlets.
     
     @IBOutlet weak var connectTableView: UITableView!
@@ -21,12 +21,13 @@ class ConnectToExoViewController: UIViewController {
     
     var selectedServer:Server?
     var server:Server!
-    var serverToDelete:Server!
-
+    var countLoggedOut:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
         addObserverWith(selector: #selector(deleteTapped(notification:)), name: .deleteInstance)
+        addObserverWith(selector: #selector(reloadNotifData(notification:)), name: .reloadTableView)
         connectTableView.reloadData()
     }
     
@@ -51,6 +52,13 @@ class ConnectToExoViewController: UIViewController {
     }
     
     @objc
+    func reloadNotifData(notification:Notification){
+        DispatchQueue.main.async {
+            self.connectTableView.reloadData()
+        }
+    }
+    
+    @objc
     func popVC(){
         goBack()
     }
@@ -64,12 +72,13 @@ class ConnectToExoViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.setRootOnboarding()
     }
-  
+    
     @objc
     func deleteButtonTapped(_ sender:UIButton){
         let title = "Setting.Title.DeleteServer".localized
         let msg = "Setting.Message.DeleteServer".localized
         if let serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server {
+            print("serverToDelete === >  \(serverToDelete)")
             showAlertMessageDelete(title:title,msg: msg, action: .delete, server: serverToDelete)
         }
     }
@@ -80,13 +89,13 @@ class ConnectToExoViewController: UIViewController {
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
         connectTableView.register(ServerCell.nib(), forCellReuseIdentifier: ServerCell.cellId)
     }
-  
+    
 }
 
 extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ( ServerManager.sharedInstance.serverList != nil) {
-            return ServerManager.sharedInstance.serverList!.count
+        if (ServerManager.sharedInstance.serverList != nil) {
+            return ServerManager.sharedInstance.serverList.count
         }
         return 0
     }
@@ -110,11 +119,12 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_ :)), for: .touchUpInside)
         if let dic = defaults.dictionary(forKey: "badgeNumber") {
+            let badgeIcon = UIApplication.shared.applicationIconBadgeNumber
             if let badgeNumber = dic[serveur] as? Int {
                 print(badgeNumber)
                 if badgeNumber != 0 {
                     cell.badgeView.isHidden = false
-                    cell.badgeLabel.text = "\(badgeNumber)"
+                    cell.badgeLabel.text = "\(badgeNumber == badgeIcon ? badgeNumber : badgeIcon)"
                 }else{
                     cell.badgeView.isHidden = true
                 }
@@ -124,15 +134,14 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       self.selectedServer = ServerManager.sharedInstance.serverList?[indexPath.row] as? Server
-       self.selectedServer?.lastConnection = Date().timeIntervalSince1970
+        self.selectedServer = ServerManager.sharedInstance.serverList?[indexPath.row] as? Server
+        self.selectedServer?.lastConnection = Date().timeIntervalSince1970
         ServerManager.sharedInstance.addEditServer(self.selectedServer!)
         // Open the selected server in the WebView
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
         if let homepageVC = homepageVC {
             homepageVC.serverURL = self.selectedServer?.serverURL
-          //  UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
             self.connectTableView.reloadData()
             navigationController?.navigationBar.isHidden = false
             navigationController?.pushViewController(homepageVC, animated: true)
