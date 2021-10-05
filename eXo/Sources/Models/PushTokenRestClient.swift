@@ -11,7 +11,7 @@ import Foundation
 class PushTokenRestClient {
     
     public static let shared = PushTokenRestClient()
-    
+    var semaphore = DispatchSemaphore (value: 0)
     var sessionCookieValue: String?
     var sessionSsoCookieValue: String?
     var rememberMeCookieValue: String?
@@ -67,13 +67,18 @@ class PushTokenRestClient {
                 switch response.statusCode {
                 case 200..<300:
                     print("---REST:\tPush token request completed succesfully")
+                    self.semaphore.signal()
                     completion(true)
                     return
                 default:
+                    self.semaphore.signal()
+
                     print("---REST:\tPush token request has failed. Server response: \(response.debugDescription) ---> Answered on request: \(request.debugDescription) : \((request.allHTTPHeaderFields ?? [:]).debugDescription)")
                 }
             }
+            self.semaphore.signal()
             completion(false)
         }.resume()
+        semaphore.wait()
     }
 }
