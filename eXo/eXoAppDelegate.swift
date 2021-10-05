@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import Firebase
+import FirebaseMessaging
 import UserNotifications
 
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
@@ -109,7 +110,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         print("Reveived token: \(token)")
-        PushTokenSynchronizer.shared.token = token
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     /*
@@ -167,46 +168,25 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
      MARK: Firebase messaging
      */
     
-    func tryToRegisterForRemoteNotifications(application: UIApplication) {
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        center.requestAuthorization(options: [.badge, .sound, .alert]) { granted, _ in
-            guard granted else { return }
-            DispatchQueue.main.async {
-                application.registerForRemoteNotifications()
-            }
-        }
-    }
-    
-    func application(_ application: UIApplication,
-                     performFetchWithCompletionHandler completionHandler:
-                     @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication,performFetchWithCompletionHandler completionHandler:@escaping (UIBackgroundFetchResult) -> Void) {
         // Check for new data.
         completionHandler(UIBackgroundFetchResult.newData)
     }
  
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        //PushTokenSynchronizer.shared.token = fcmToken
         if let _fcmToken = fcmToken {
             print("Reveived fcmToken: \(_fcmToken)")
         }
-    }
-  
-    
-    func handleNotification(userInfo: [AnyHashable: Any]) {
-        if let url = userInfo["url"] as? String {
-            let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
-            ServerManager.sharedInstance.addEditServer(server)
-            self.quickActionOpenHomePageForURL(url)
-        }
+        PushTokenSynchronizer.shared.token = fcmToken
+        let tokenDict = ["token": fcmToken ?? ""]
+        postNotificationWith(key: Notification.Name("FCMToken"), info: tokenDict)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         handleNotification(userInfo: userInfo);
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         handleNotification(userInfo: userInfo);
         print("UIBackgroundFetchResult =====> \(userInfo)")
         completionHandler(UIBackgroundFetchResult.newData)
@@ -219,70 +199,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return self.orientationLock
     }
-}
-
-struct AppUtility {
-    
-    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
-        if let delegate = UIApplication.shared.delegate as? eXoAppDelegate {
-            delegate.orientationLock = orientation
-        }
-    }
-    
-    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
-    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
-        self.lockOrientation(orientation)
-        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
-        UINavigationController.attemptRotationToDeviceOrientation()
-    }
-    
-}
-
-extension eXoAppDelegate {
-    
-    func setRootToHome(_ serverURL:String){
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
-        homepageVC.serverURL = serverURL
-        navigationVC = UINavigationController(rootViewController: homepageVC)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationVC
-        window?.makeKeyAndVisible()
-    }
-    
-    func setRootToConnect(){
-        let connectVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
-        navigationVC = UINavigationController(rootViewController: connectVC)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationVC
-        window?.makeKeyAndVisible()
-    }
-    
-    func setRootOnboarding(){
-        let rootVC = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
-        navigationVC = UINavigationController(rootViewController: rootVC)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationVC
-        window?.makeKeyAndVisible()
-    }
-    
-    func handleRootConnect(){
-        if ServerManager.sharedInstance.serverList.count != 0 {
-            setRootToConnect()
-        }else{
-            UIApplication.shared.applicationIconBadgeNumber = 0
-            setRootOnboarding()
-        }
-    }
-    
-    func postNotificationWith(key:Notification.Name,info:[AnyHashable:Any]){
-        NotificationCenter.default.post(name: key, object: nil, userInfo: info)
-    }
-    
-    func postNotificationWith(key:Notification.Name){
-        NotificationCenter.default.post(name: key, object: nil)
-    }
-    
 }
 
 extension eXoAppDelegate: UNUserNotificationCenterDelegate {
@@ -334,6 +250,90 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
         // Print full message.
         handleNotification(userInfo: userInfo)
         completionHandler()
+    }
+    
+}
+
+extension eXoAppDelegate {
+    
+    func setRootToHome(_ serverURL:String){
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+        homepageVC.serverURL = serverURL
+        navigationVC = UINavigationController(rootViewController: homepageVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func setRootToConnect(){
+        let connectVC = ConnectToExoViewController(nibName: "ConnectToExoViewController", bundle: nil)
+        navigationVC = UINavigationController(rootViewController: connectVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func setRootOnboarding(){
+        let rootVC = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
+        navigationVC = UINavigationController(rootViewController: rootVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func handleRootConnect(){
+        if ServerManager.sharedInstance.serverList.count != 0 {
+            setRootToConnect()
+        }else{
+            UIApplication.shared.applicationIconBadgeNumber = 0
+            setRootOnboarding()
+        }
+    }
+    
+    func handleNotification(userInfo: [AnyHashable: Any]) {
+        if let url = userInfo["url"] as? String {
+            let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
+            ServerManager.sharedInstance.addEditServer(server)
+            self.quickActionOpenHomePageForURL(url)
+        }
+    }
+    
+    func tryToRegisterForRemoteNotifications(application: UIApplication) {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.badge, .sound, .alert]) { granted, _ in
+            guard granted else { return }
+            DispatchQueue.main.async {
+                application.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+
+    func postNotificationWith(key:Notification.Name,info:[AnyHashable:Any]){
+        NotificationCenter.default.post(name: key, object: nil, userInfo: info)
+    }
+    
+    func postNotificationWith(key:Notification.Name){
+        NotificationCenter.default.post(name: key, object: nil)
+    }
+    
+}
+
+struct AppUtility {
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        if let delegate = UIApplication.shared.delegate as? eXoAppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+    
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        self.lockOrientation(orientation)
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+        UINavigationController.attemptRotationToDeviceOrientation()
     }
     
 }
