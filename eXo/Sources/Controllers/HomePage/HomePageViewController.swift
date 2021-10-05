@@ -29,10 +29,10 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
     let defaults = UserDefaults.standard
-
+    
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
-
+    
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -173,7 +173,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        loadingIndicator.stopAnimating()
+        if isInternetConnected(inWeb:true) {
+            loadingIndicator.stopAnimating()
+        }else{
+            loadingIndicator.stopAnimating()
+        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -216,81 +220,80 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        checkConnectivity()
-        let request:URLRequest = navigationAction.request
-        if let urlToSee = request.url?.absoluteString {
-            print("=============== Navigation Url : \(urlToSee)")
-        }
-        // Detect the logout action in to quit this screen.
-        if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
-            self.defaults.setValue(false, forKey: "wasConnectedBefore")
-            self.defaults.setValue("", forKey: "serverURL")
-            self.defaults.setValue(false, forKey: "isLoggedIn")
-            self.defaults.setValue(false, forKey: "isGoogleAuth")
-
-            PushTokenSynchronizer.shared.tryDestroyToken()
-            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-            appDelegate.handleRootConnect()
-        }
-        let serverDomain = URL(string: self.serverURL!)?.host
-        
-        // Refresh the web page if is needed.
-        if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
-            if last == "dw/" || last == "dw"{
-                countRefresh += 1
-                self.defaults.setValue(countRefresh, forKey: "countRefresh")
+            let request:URLRequest = navigationAction.request
+            if let urlToSee = request.url?.absoluteString {
+                print("=============== Navigation Url : \(urlToSee)")
             }
-        }
-        
-        if !UIApplication.shared.isNetworkActivityIndicatorVisible {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true;
-        }
-        
-        // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
-        // Home Page Address: portal/dw
-        
-        if let urlRequest = request.url {
-            if (urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/")) && !(request.url?.absoluteString.range(of: "portal:action=Logout") != nil){
-                let path = urlRequest.path
-                let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
-                if firstIndexPath == "/portal"{
-                    self.defaults.setValue(urlRequest.absoluteString, forKey: "serverURL")
-                    self.defaults.setValue(true, forKey: "wasConnectedBefore")
-                    self.defaults.setValue(true, forKey: "isLoggedIn")
-                    UIApplication.shared.registerForRemoteNotifications()
-                    navigationController?.setNavigationBarHidden(true, animated: true)
-                   // UIApplication.shared.registerForRemoteNotifications()
+            // Detect the logout action in to quit this screen.
+            if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+                self.defaults.setValue(false, forKey: "wasConnectedBefore")
+                self.defaults.setValue("", forKey: "serverURL")
+                self.defaults.setValue(false, forKey: "isLoggedIn")
+                self.defaults.setValue(false, forKey: "isGoogleAuth")
+                
+                PushTokenSynchronizer.shared.tryDestroyToken()
+                let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+                appDelegate.handleRootConnect()
+            }
+            let serverDomain = URL(string: self.serverURL!)?.host
+            
+            // Refresh the web page if is needed.
+            if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
+                if last == "dw/" || last == "dw"{
+                    countRefresh += 1
+                    self.defaults.setValue(countRefresh, forKey: "countRefresh")
                 }
             }
-        }
-        
-        if let urlRequest = request.url {
-            if let urlComponent = URLComponents(string: urlRequest.absoluteString) {
-                if (urlComponent.path == "/portal/login"){
-                    self.defaults.setValue(false, forKey: "isLoggedIn")
-                    navigationController?.setNavigationBarHidden(false, animated: true)
+            
+            if !UIApplication.shared.isNetworkActivityIndicatorVisible {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true;
+            }
+            
+            // Display the navigation bar at login or other pages accessible for anonymous users && display the bar when luser is logged in
+            // Home Page Address: portal/dw
+            
+            if let urlRequest = request.url {
+                if (urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/")) && !(request.url?.absoluteString.range(of: "portal:action=Logout") != nil){
+                    let path = urlRequest.path
+                    let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
+                    if firstIndexPath == "/portal"{
+                        self.defaults.setValue(urlRequest.absoluteString, forKey: "serverURL")
+                        self.defaults.setValue(true, forKey: "wasConnectedBefore")
+                        self.defaults.setValue(true, forKey: "isLoggedIn")
+                        UIApplication.shared.registerForRemoteNotifications()
+                        navigationController?.setNavigationBarHidden(true, animated: true)
+                        // UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
-        }
-        
-        if request.url?.absoluteString.range(of: "/portal/googleAuth") != nil  {
-            self.defaults.setValue(true, forKey: "isGoogleAuth")
-        }
-        /*
-         Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
-         - WKNavigationType of a automatic request is always = .Others
-         - Check just for external link tapped to open the preview Controller else stay displaying the request in the some wkwebview to prevent the SAML Error.
-         */
-        
-        if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType == WKNavigationType.linkActivated){
-            let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
-            let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
-            previewController.serverURL = request.url?.absoluteString
-            self.present(previewNavigationController, animated: true, completion: nil)
-            decisionHandler(.cancel)
-            return
-        }
-        decisionHandler(WKNavigationActionPolicy.allow)
+            
+            if let urlRequest = request.url {
+                if let urlComponent = URLComponents(string: urlRequest.absoluteString) {
+                    if (urlComponent.path == "/portal/login"){
+                        self.defaults.setValue(false, forKey: "isLoggedIn")
+                        navigationController?.setNavigationBarHidden(false, animated: true)
+                    }
+                }
+            }
+            
+            if request.url?.absoluteString.range(of: "/portal/googleAuth") != nil  {
+                self.defaults.setValue(true, forKey: "isGoogleAuth")
+            }
+            /*
+             Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
+             - WKNavigationType of a automatic request is always = .Others
+             - Check just for external link tapped to open the preview Controller else stay displaying the request in the some wkwebview to prevent the SAML Error.
+             */
+            
+            if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType == WKNavigationType.linkActivated){
+                let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
+                let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
+                previewController.serverURL = request.url?.absoluteString
+                self.present(previewNavigationController, animated: true, completion: nil)
+                decisionHandler(.cancel)
+                return
+            }
+            decisionHandler(WKNavigationActionPolicy.allow)
     }
     
     // MARK: WKUIDelegate

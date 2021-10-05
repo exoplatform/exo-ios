@@ -90,21 +90,21 @@ class OnboardingViewController: UIViewController {
     func rootToHome(notification:Notification){
         guard let rootURL = notification.userInfo?["rootURL"] as? String else { return }
         // check Internet connection
-        checkConnectivity()
-        Tool.verificationServerURL(rootURL, delegate: self, handleSuccess: { (serverURL) -> Void in
-            self.qrCodeServer = Server(serverURL: serverURL)
-            OperationQueue.main.addOperation({ () -> Void in
-                ServerManager.sharedInstance.addEditServer(self.qrCodeServer!)
-                self.qrCodeServer?.lastConnection = Date().timeIntervalSince1970
-               // UserDefaults.standard.setValue(self.qrCodeServer?.serverURL, forKey: "serverURL")
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
-                if let homepageVC = homepageVC {
-                    homepageVC.serverURL = rootURL + "&source=qrcode"
-                    self.navigationController?.pushViewController(homepageVC, animated: true)
-                }
+        if isInternetConnected(inWeb:false) {
+            Tool.verificationServerURL(rootURL, delegate: self, handleSuccess: { (serverURL) -> Void in
+                self.qrCodeServer = Server(serverURL: serverURL)
+                OperationQueue.main.addOperation({ () -> Void in
+                    ServerManager.sharedInstance.addEditServer(self.qrCodeServer!)
+                    self.qrCodeServer?.lastConnection = Date().timeIntervalSince1970
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
+                    if let homepageVC = homepageVC {
+                        homepageVC.serverURL = rootURL + "&source=qrcode"
+                        self.navigationController?.pushViewController(homepageVC, animated: true)
+                    }
+                })
             })
-        })
+        }
     }
     
     @IBAction func addServerTapped(_ sender: Any) {
