@@ -14,7 +14,7 @@ name: eXo iOS Beta Appaloosa CI/CD
 
 on:
   push:
-    branches: [develop, acceptance]
+    branches: [develop, acceptance, testbuild]
 jobs:
   deploy:
     runs-on: macos-11
@@ -24,15 +24,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Setup Xcode 13
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '13.2'
+      - name: init commit
+        run: |
+          git config --global user.email "exo-swf@exoplatform.com"
+          git config --global user.name "eXo Software Factory"
       # Use SSH Key to gather certificate from a private Github repository. Use a dedicated on is recommended.
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.EXO_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       # Setup Ruby 2.6 (2.7 not yet compatible with bundler)
       - name: Setup ruby 2.6
@@ -43,8 +49,8 @@ jobs:
       - name: Install bundler and dependencies
         run: gem install bundler && bundle install
       # Needed to install these packages for fastlane to generate badges
-      - name: Install Homebrew badge packages
-        run: brew install librsvg imagemagick graphicsmagick
+      #- name: Install Homebrew badge packages
+      #  run: brew install librsvg imagemagick graphicsmagick
       # Ensure installing latest version of fastlane
       - name: Upgrade fastlane
         run: bundle update fastlane
@@ -54,41 +60,10 @@ jobs:
         with:
           lane: "ci_sync_certificates"
         env:
-          BUNDLE_ID: org.exoplatform.exo-beta
+          BUNDLE_ID: com.exoplatform.mob.eXoPlatformiPHone
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
           MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
-      - name: Generate new version
-        env:
-          TAG_PREFIX: "6.2-beta"
-        run: |
-          git config --global user.email "exo-swf@exoplatform.com"
-          git config --global user.name "eXo Software Factory"
-          git fetch --tags
-          CURRENT_TAG=$(git tag -l | grep ${TAG_PREFIX} | tail -n 1)
-          if [ -z "${CURRENT_TAG}" ]; then
-            echo "NEW_TAG=${TAG_PREFIX}01" >> $GITHUB_ENV
-            INDEX="01"
-          else 
-            INDEX=$((10#$(echo $CURRENT_TAG | sed "s|.*${TAG_PREFIX}||")))
-            ((INDEX++))
-            [ "${INDEX}" -lt "10" ] && INDEX="0${INDEX}"
-            echo "NEW_TAG=${TAG_PREFIX}${INDEX}" >> $GITHUB_ENV
-          fi
-          echo "INDEX=${INDEX}" >> $GITHUB_ENV
-      - name: Set iOS Application version
-        run: |
-          echo "EXO_APP_ENVIRONMENT=${NEW_TAG}" >> $GITHUB_ENV
-          xcrun agvtool new-version -all ${INDEX}
-      # Deploy eXo iOS bundle to appalossa store
-      - name: "Deploy eXo Beta to appaloosa"
-        uses: maierj/fastlane-action@v2.0.1
-        with:
-          lane: "build_beta_ppr"
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-          APPALOOSA_EXO_API_TOKEN: ${{ secrets.API_TOKEN_APPALOOSA }}
-          APPALOOSA_EXO_STORE_ID: ${{ secrets.STORE_ID_APPALOOSA }}
-      - name: Create tag and Push it to repository
-        run: git tag ${NEW_TAG} -m '' && git push origin ${NEW_TAG}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          SPACESHIP_SKIP_2FA_UPGRADE: 1
