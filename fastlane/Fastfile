@@ -59,12 +59,12 @@ platform :ios do
       match(
         app_identifier: appIdentifiers,
         type: "development",
-        readonly: true
+        readonly: false
       )
       match(
         app_identifier: appIdentifiers,
         type: "adhoc",
-        readonly: true
+        readonly: false
       )
     else
       UI.error "Certificates will no be executed"
@@ -141,7 +141,7 @@ platform :ios do
     match(
       app_identifier: appIdentifiers,
       type: exportType,
-      readonly: true
+      readonly: false
     )
     # use 'xcodebuild -showsdks' to list all installed SDK
     build_ios_app(
@@ -289,14 +289,21 @@ platform :ios do
     match(
       app_identifier: appIdentifiers,
       type: "development",
-      readonly: true,
+      readonly: false,
       keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
       keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
     )
     match(
       app_identifier: appIdentifiers,
       type: "adhoc",
-      readonly: true,
+      readonly: false,
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    )
+    match(
+      app_identifier: appIdentifiers,
+      type: "appstore",
+      readonly: false,
       keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
       keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
     )
