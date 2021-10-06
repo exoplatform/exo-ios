@@ -1484,6 +1484,7 @@
 				DEVELOPMENT_TEAM = FEM998T42U;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = arm64;
 				EXT_PROV_PROFIL = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1514,7 +1515,7 @@
 				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
-				EXCLUDED_ARCHS = "arm64 i386";
+				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1538,7 +1539,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
-				EXCLUDED_ARCHS = "";
+				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1636,7 +1637,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FEM998T42U;
-				EXCLUDED_ARCHS = "arm64 i386";
+				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = "share-extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1665,7 +1666,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FEM998T42U;
-				EXCLUDED_ARCHS = "";
+				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = "share-extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
