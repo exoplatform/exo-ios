@@ -173,11 +173,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        if isInternetConnected(inWeb:true) {
-            loadingIndicator.stopAnimating()
-        }else{
-            loadingIndicator.stopAnimating()
-        }
+        checkConnectivity()
+        loadingIndicator.stopAnimating()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {

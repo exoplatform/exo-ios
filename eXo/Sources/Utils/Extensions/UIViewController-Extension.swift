@@ -69,6 +69,12 @@ extension UIViewController {
         }
     }
     
+    func checkConnectivity(){
+        if !Connectivity.shared.isInternetConnected() {
+            self.showAlertGeneralErrorNoNetwork(inWeb:true)
+        }
+    }
+    
     func showAlertGeneralErrorNoNetwork(inWeb:Bool){
         let titleAlert = "Internet connection lost".localized + "\n\n\n\n\n"
         let messageAlert = "\n\n" + "Please make sure you have internet connection".localized + "\n"
