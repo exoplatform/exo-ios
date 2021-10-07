@@ -1380,6 +1380,13 @@
 				APP_DISPLAY_NAME = eXo;
 				APP_ENV_NAME = PROD;
 				APP_PROV_PROFIL = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone";
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"arm64,",
+					"arm64e,",
+					"armv7,",
+					armv7s,
+				);
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1451,6 +1458,13 @@
 				APP_DISPLAY_NAME = eXo;
 				APP_ENV_NAME = PROD;
 				APP_PROV_PROFIL = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone";
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"arm64,",
+					"arm64e,",
+					"armv7,",
+					armv7s,
+				);
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1484,7 +1498,7 @@
 				DEVELOPMENT_TEAM = FEM998T42U;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				EXT_PROV_PROFIL = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1515,7 +1529,7 @@
 				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "arm64 i386";
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1539,7 +1553,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1637,7 +1651,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FEM998T42U;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "arm64 i386";
 				INFOPLIST_FILE = "share-extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1666,7 +1680,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FEM998T42U;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "share-extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
