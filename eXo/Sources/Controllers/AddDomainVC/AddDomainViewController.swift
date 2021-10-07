@@ -114,23 +114,24 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
         // dismiss the keyboard
         view.endEditing(true)
         // check Internet connection
-        checkConnectivity()
         // verification of URL, http is the default protocol
         if let company = companyTextField.text, let sufixUrl = suffixUrlTextField.text {
             print(company,sufixUrl)
-            Tool.verificationServerURL(company+sufixUrl, delegate: self, handleSuccess: { (serverURL) -> Void in
-                self.selectedServer = Server (serverURL: serverURL)
-                OperationQueue.main.addOperation({ () -> Void in
-                    ServerManager.sharedInstance.addEditServer(self.selectedServer!)
-                    self.selectedServer?.lastConnection = Date().timeIntervalSince1970
-                   // UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
-                    self.dismiss(animated: true) {
-                        if let serverURL = self.selectedServer?.serverURL {
-                            self.postNotificationWith(key: .addDomainKey, info: ["serverURL" : serverURL])
+            if isInternetConnected(inWeb: false) {
+                Tool.verificationServerURL(company+sufixUrl, delegate: self, handleSuccess: { (serverURL) -> Void in
+                    self.selectedServer = Server (serverURL: serverURL)
+                    OperationQueue.main.addOperation({ () -> Void in
+                        ServerManager.sharedInstance.addEditServer(self.selectedServer!)
+                        self.selectedServer?.lastConnection = Date().timeIntervalSince1970
+                       // UserDefaults.standard.setValue(self.selectedServer?.serverURL, forKey: "serverURL")
+                        self.dismiss(animated: true) {
+                            if let serverURL = self.selectedServer?.serverURL {
+                                self.postNotificationWith(key: .addDomainKey, info: ["serverURL" : serverURL])
+                            }
                         }
-                    }
+                    })
                 })
-            })
+            }
         }
     }
 }
