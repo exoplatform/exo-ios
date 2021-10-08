@@ -144,7 +144,9 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
             homepageVC.serverURL = self.selectedServer?.serverURL
             self.connectTableView.reloadData()
             navigationController?.navigationBar.isHidden = false
-            navigationController?.pushViewController(homepageVC, animated: true)
+            if isInternetConnected(inWeb: false){
+                navigationController?.pushViewController(homepageVC, animated: true)
+            }
         }
     }
     
