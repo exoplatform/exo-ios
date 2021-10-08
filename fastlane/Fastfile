@@ -160,7 +160,7 @@ platform :ios do
       export_xcargs: "-allowProvisioningUpdates",
       output_directory: "./fastlane/output",
       output_name: "exo.ipa",
-      sdk: "iphoneos14.4",
+      sdk: "iphoneos14.5",
       export_method: exportMethod,
       skip_profile_detection: true
     )
