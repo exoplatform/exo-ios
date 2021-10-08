@@ -17,7 +17,7 @@ on:
     branches: [develop, acceptance]
 jobs:
   deploy:
-    runs-on: macos-10.15
+    runs-on: macos-11
     # Skip deployment triggered by a rebase action or technical commits
     if: "!contains(github.event.pusher.name, 'exo-swf')"
     steps:
