@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PushTokenSynchronizer {
     
@@ -30,6 +31,7 @@ class PushTokenSynchronizer {
         guard isSynchronized, let urlString = self.url, let url = URL(string: urlString), let token = self.token else { return }
         PushTokenRestClient.shared.unregisterToken(token: token, baseUrl: url) { result in
             if result {
+                UIApplication.shared.applicationIconBadgeNumber = 0
                 self.isSynchronized = false
                 self.username = nil
                 self.url = nil
