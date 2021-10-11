@@ -223,12 +223,11 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             }
             // Detect the logout action in to quit this screen.
             if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+                PushTokenSynchronizer.shared.tryDestroyToken()
                 self.defaults.setValue(false, forKey: "wasConnectedBefore")
                 self.defaults.setValue("", forKey: "serverURL")
                 self.defaults.setValue(false, forKey: "isLoggedIn")
                 self.defaults.setValue(false, forKey: "isGoogleAuth")
-                
-                PushTokenSynchronizer.shared.tryDestroyToken()
                 let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
                 appDelegate.handleRootConnect()
             }
@@ -257,9 +256,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                         self.defaults.setValue(urlRequest.absoluteString, forKey: "serverURL")
                         self.defaults.setValue(true, forKey: "wasConnectedBefore")
                         self.defaults.setValue(true, forKey: "isLoggedIn")
-                        UIApplication.shared.registerForRemoteNotifications()
                         navigationController?.setNavigationBarHidden(true, animated: true)
-                        // UIApplication.shared.registerForRemoteNotifications()
                     }
                 }
             }
