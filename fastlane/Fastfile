@@ -185,6 +185,9 @@ platform :ios do
     ENV["EXO_APP_CONFIGURATION"] = "Release"
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
+    if ! ENV["EXO_APP_ENVIRONMENT"]
+      ENV["EXO_APP_ENVIRONMENT"]="6.2.0"
+    end
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
     ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
 
@@ -193,7 +196,7 @@ platform :ios do
     upload_to_app_store(
       team_id: "11998951888", # eXo
       app_identifier: "#{ENV["EXO_APP_ID"]}",
-      copyright: "2018 eXo Platform SAS",
+      copyright: "2021 eXo Platform SAS",
       skip_metadata: true,
       skip_screenshots: true,
       submit_for_review: false

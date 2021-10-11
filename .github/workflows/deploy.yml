@@ -10,7 +10,7 @@
 # - API_TOKEN_APPALOOSA: Appaloosa Store api token
 # - STORE_ID_APPALOOSA: Appaloosa Store id
 
-name: eXo iOS GA Appaloosa CI/CD
+name: eXo iOS GA Store
 
 on:
   push:
@@ -65,7 +65,7 @@ jobs:
       - name: "Deploy eXo Beta to appaloosa"
         uses: maierj/fastlane-action@v2.0.1
         with:
-          lane: "build_beta_ppr"
+          lane: "build_appstore"
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
