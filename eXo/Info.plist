@@ -51,8 +51,6 @@
 	<string>$(APP_NAME) requires to access Photo Library to let you download or send images with the application.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
-		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
