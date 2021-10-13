@@ -90,14 +90,14 @@
 		DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */; };
 		DB3CE0AA269C8B6100622057 /* slide3_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB3CE0A7269C8B6100622057 /* slide3_gif-FR.gif */; };
 		DB3CE0AC269C8F7F00622057 /* UIImage-Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */; };
-		DB4804BA26A05B3A001B51AF /* slide1_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB4804B826A05B3A001B51AF /* slide1_gif-EN.gif */; };
-		DB4804BB26A05B3A001B51AF /* slide1_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB4804B926A05B3A001B51AF /* slide1_gif-FR.gif */; };
 		DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */; };
 		DB6A4E6726949CFB00809B53 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */; };
 		DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */; };
 		DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */; };
 		DB6E0332269C9FBC009AEA94 /* slide2_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */; };
 		DB6E0333269C9FBC009AEA94 /* slide3_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6E0331269C9FBC009AEA94 /* slide3_gif-EN.gif */; };
+		DB824AD82716EED70087C79B /* slide1_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB824AD62716EED70087C79B /* slide1_gif-FR.gif */; };
+		DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB824AD72716EED70087C79B /* slide1_gif-EN.gif */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
 		F2F47DE166BD4F8D2636242A /* Pods_eXo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD5F1FA20548090FDBCB04E /* Pods_eXo.framework */; };
@@ -265,14 +265,14 @@
 		DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide2_gif-FR.gif"; sourceTree = "<group>"; };
 		DB3CE0A7269C8B6100622057 /* slide3_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide3_gif-FR.gif"; sourceTree = "<group>"; };
 		DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Gif.swift"; sourceTree = "<group>"; };
-		DB4804B826A05B3A001B51AF /* slide1_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-EN.gif"; sourceTree = "<group>"; };
-		DB4804B926A05B3A001B51AF /* slide1_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-FR.gif"; sourceTree = "<group>"; };
 		DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide2_gif-EN.gif"; sourceTree = "<group>"; };
 		DB6E0331269C9FBC009AEA94 /* slide3_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide3_gif-EN.gif"; sourceTree = "<group>"; };
+		DB824AD62716EED70087C79B /* slide1_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-FR.gif"; sourceTree = "<group>"; };
+		DB824AD72716EED70087C79B /* slide1_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-EN.gif"; sourceTree = "<group>"; };
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		E6D543E1FB02CED30A84C074 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -710,8 +710,8 @@
 		DB3CE0A4269C8AC200622057 /* GifImages */ = {
 			isa = PBXGroup;
 			children = (
-				DB4804B826A05B3A001B51AF /* slide1_gif-EN.gif */,
-				DB4804B926A05B3A001B51AF /* slide1_gif-FR.gif */,
+				DB824AD72716EED70087C79B /* slide1_gif-EN.gif */,
+				DB824AD62716EED70087C79B /* slide1_gif-FR.gif */,
 				DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */,
 				DB6E0331269C9FBC009AEA94 /* slide3_gif-EN.gif */,
 				DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */,
@@ -960,17 +960,17 @@
 				DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */,
 				DB6E0333269C9FBC009AEA94 /* slide3_gif-EN.gif in Resources */,
 				DB3CE0AA269C8B6100622057 /* slide3_gif-FR.gif in Resources */,
+				DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */,
 				D79611BF26778ACC00F2FDE8 /* ServerCell.xib in Resources */,
 				DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */,
 				9C3AD2541BCF56900094CFF9 /* LaunchScreen.storyboard in Resources */,
 				DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */,
 				AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */,
 				9C935F851BD64DAD009C065B /* Localizable.strings in Resources */,
-				DB4804BB26A05B3A001B51AF /* slide1_gif-FR.gif in Resources */,
 				9C3D7D1E1BDF6BA3002873CB /* eXo.entitlements in Resources */,
 				D79611F32677A87000F2FDE8 /* AddDomainViewController.xib in Resources */,
-				DB4804BA26A05B3A001B51AF /* slide1_gif-EN.gif in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
+				DB824AD82716EED70087C79B /* slide1_gif-FR.gif in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
 				D7F12D2F26789E08007C8294 /* CustomPopupViewController.xib in Resources */,
