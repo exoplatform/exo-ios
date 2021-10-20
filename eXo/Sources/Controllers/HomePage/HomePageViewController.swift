@@ -37,10 +37,15 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupWebView(self.webViewContainer)
-        webView?.navigationDelegate = self
-        webView?.uiDelegate = self
-        self.configureDoneButton()
+        if PushTokenSynchronizer.shared.isSessionExpired(delegate:self, inWeb: true) {
+            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+            appDelegate.handleRootConnect()
+        }else{
+            self.setupWebView(self.webViewContainer)
+            webView?.navigationDelegate = self
+            webView?.uiDelegate = self
+            self.configureDoneButton()
+        }
     }
     
     func configureDoneButton () {

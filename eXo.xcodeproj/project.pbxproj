@@ -88,14 +88,14 @@
 		DB373219267F78830065C7A5 /* UIViewController-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB373218267F78830065C7A5 /* UIViewController-Extension.swift */; };
 		DB37321B267F79690065C7A5 /* NotificationName-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */; };
 		DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */; };
-		DB3CE0AA269C8B6100622057 /* slide3_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB3CE0A7269C8B6100622057 /* slide3_gif-FR.gif */; };
 		DB3CE0AC269C8F7F00622057 /* UIImage-Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */; };
 		DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */; };
 		DB6A4E6726949CFB00809B53 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */; };
 		DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */; };
 		DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */; };
+		DB6B9814272019C800D20677 /* slide3_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6B9812272019C800D20677 /* slide3_gif-FR.gif */; };
+		DB6B9815272019C800D20677 /* slide3_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6B9813272019C800D20677 /* slide3_gif-EN.gif */; };
 		DB6E0332269C9FBC009AEA94 /* slide2_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */; };
-		DB6E0333269C9FBC009AEA94 /* slide3_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6E0331269C9FBC009AEA94 /* slide3_gif-EN.gif */; };
 		DB824AD82716EED70087C79B /* slide1_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB824AD62716EED70087C79B /* slide1_gif-FR.gif */; };
 		DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB824AD72716EED70087C79B /* slide1_gif-EN.gif */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
@@ -263,14 +263,14 @@
 		DB373218267F78830065C7A5 /* UIViewController-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extension.swift"; sourceTree = "<group>"; };
 		DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName-Extension.swift"; sourceTree = "<group>"; };
 		DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide2_gif-FR.gif"; sourceTree = "<group>"; };
-		DB3CE0A7269C8B6100622057 /* slide3_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide3_gif-FR.gif"; sourceTree = "<group>"; };
 		DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Gif.swift"; sourceTree = "<group>"; };
 		DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		DB6A4E6526949CFB00809B53 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DB6B9812272019C800D20677 /* slide3_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "slide3_gif-FR.gif"; path = "../../../../../../../Downloads/slide3_gif-FR.gif"; sourceTree = "<group>"; };
+		DB6B9813272019C800D20677 /* slide3_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "slide3_gif-EN.gif"; path = "../../../../../../../Downloads/slide3_gif-EN.gif"; sourceTree = "<group>"; };
 		DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide2_gif-EN.gif"; sourceTree = "<group>"; };
-		DB6E0331269C9FBC009AEA94 /* slide3_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide3_gif-EN.gif"; sourceTree = "<group>"; };
 		DB824AD62716EED70087C79B /* slide1_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-FR.gif"; sourceTree = "<group>"; };
 		DB824AD72716EED70087C79B /* slide1_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-EN.gif"; sourceTree = "<group>"; };
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
@@ -713,9 +713,9 @@
 				DB824AD72716EED70087C79B /* slide1_gif-EN.gif */,
 				DB824AD62716EED70087C79B /* slide1_gif-FR.gif */,
 				DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */,
-				DB6E0331269C9FBC009AEA94 /* slide3_gif-EN.gif */,
 				DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */,
-				DB3CE0A7269C8B6100622057 /* slide3_gif-FR.gif */,
+				DB6B9813272019C800D20677 /* slide3_gif-EN.gif */,
+				DB6B9812272019C800D20677 /* slide3_gif-FR.gif */,
 			);
 			path = GifImages;
 			sourceTree = "<group>";
@@ -955,11 +955,10 @@
 				9C18EBC01C3124ED00A75DD8 /* TableHeaderView.xib in Resources */,
 				DB6E0332269C9FBC009AEA94 /* slide2_gif-EN.gif in Resources */,
 				D79611C026778ACC00F2FDE8 /* ConnectToExoViewController.xib in Resources */,
+				DB6B9814272019C800D20677 /* slide3_gif-FR.gif in Resources */,
 				D79611BD26778ACC00F2FDE8 /* HeaderConnectCell.xib in Resources */,
 				DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */,
 				DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */,
-				DB6E0333269C9FBC009AEA94 /* slide3_gif-EN.gif in Resources */,
-				DB3CE0AA269C8B6100622057 /* slide3_gif-FR.gif in Resources */,
 				DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */,
 				D79611BF26778ACC00F2FDE8 /* ServerCell.xib in Resources */,
 				DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */,
@@ -971,6 +970,7 @@
 				D79611F32677A87000F2FDE8 /* AddDomainViewController.xib in Resources */,
 				9C3AD2511BCF56900094CFF9 /* Assets.xcassets in Resources */,
 				DB824AD82716EED70087C79B /* slide1_gif-FR.gif in Resources */,
+				DB6B9815272019C800D20677 /* slide3_gif-EN.gif in Resources */,
 				9C3AD24F1BCF56900094CFF9 /* Main.storyboard in Resources */,
 				9C978B7A1BDA21E900FC689D /* InfoPlist.strings in Resources */,
 				D7F12D2F26789E08007C8294 /* CustomPopupViewController.xib in Resources */,

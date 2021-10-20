@@ -13,4 +13,5 @@ extension Notification.Name {
     public static let deleteInstance = Notification.Name(rawValue: "deleteInstance")
     public static let rootFromScanURL = Notification.Name(rawValue: "rootFromScanURL")
     public static let reloadTableView = Notification.Name(rawValue: "reloadTableView")
+    public static let showAlertMessingConnection = Notification.Name(rawValue: "showAlertMessingConnection")
 }

@@ -16,6 +16,7 @@ class PushTokenSynchronizer {
     var username: String?
     var url: String?
     var token: String?
+    
     private var isSynchronized = false
     
     private init() {}
@@ -31,11 +32,32 @@ class PushTokenSynchronizer {
         guard isSynchronized, let urlString = self.url, let url = URL(string: urlString), let token = self.token else { return }
         PushTokenRestClient.shared.unregisterToken(token: token, baseUrl: url) { result in
             if result {
-                UIApplication.shared.applicationIconBadgeNumber = 0
+                DispatchQueue.main.async {
+                    UIApplication.shared.applicationIconBadgeNumber = 0
+                }
                 self.isSynchronized = false
                 self.username = nil
                 self.url = nil
             }
         }
     }
+    
+    func isSessionExpired(delegate:UIViewController,inWeb:Bool) -> Bool {
+        var isActive:Bool = false
+        if Connectivity.shared.isInternetConnected() {
+            if let username = self.username, let urlString = self.url, let url = URL(string: urlString) {
+                PushTokenRestClient.shared.checkUserSession(username: username, baseUrl: url) { _isSessionExpired in
+                    if _isSessionExpired {
+                        isActive = true
+                    }else{
+                        isActive = false
+                    }
+                }
+            }
+        }else{
+            delegate.showAlertGeneralErrorNoNetwork(inWeb: inWeb)
+        }
+        return isActive
+    }
 }
+

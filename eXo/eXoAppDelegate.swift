@@ -58,7 +58,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Quick launch
         if UserDefaults.standard.bool(forKey: "wasConnectedBefore") {
             let url = UserDefaults.standard.value(forKey: "serverURL") as! String
-            
             // Memorise the last connection
             if UserDefaults.standard.bool(forKey: "isGoogleAuth") {
                 let urlarry = url.components(separatedBy:"/portal/login")
@@ -91,11 +90,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
          Verification of session timeout on server.
          When the session is timeout, go back to On-Boarding (Loggin) screen
          */
-        if let _quitTimestamp = quitTimestamp {
-            if (Date().timeIntervalSince1970 - _quitTimestamp) > eXoAppDelegate.sessionTimeout  {
-                handleRootConnect()
-            }
-        }
+        setRootSessionTimeout()
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     
@@ -308,6 +303,12 @@ extension eXoAppDelegate {
             DispatchQueue.main.async {
                 application.registerForRemoteNotifications()
             }
+        }
+    }
+    
+    func setRootSessionTimeout() {
+        if PushTokenSynchronizer.shared.isSessionExpired(delegate: (self.window?.rootViewController)!, inWeb: false) {
+           handleRootConnect()
         }
     }
     
