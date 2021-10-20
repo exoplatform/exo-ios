@@ -22,6 +22,7 @@ class ConnectToExoViewController: UIViewController {
     var selectedServer:Server?
     var server:Server!
     var countLoggedOut:Int = 0
+    var isSessionExpired:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,11 @@ class ConnectToExoViewController: UIViewController {
         connectTableView.dataSource = self
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
         connectTableView.register(ServerCell.nib(), forCellReuseIdentifier: ServerCell.cellId)
+        if PushTokenSynchronizer.shared.isSessionExpired(delegate:self, inWeb: true) {
+            isSessionExpired = true
+        }else{
+            isSessionExpired = false
+        }
     }
     
 }
@@ -118,7 +124,22 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         cell.setupDataWith(serveur:serveur)
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_ :)), for: .touchUpInside)
-        cell.badgeView.isHidden = true
+        // Handle Badge Notififcation appearance in case of session timeout
+        if isSessionExpired {
+            if let dic = defaults.dictionary(forKey: "badgeNumber") {
+                if let badgeNumber = dic[serveur] as? Int {
+                    print(badgeNumber)
+                    if badgeNumber != 0 {
+                        cell.badgeView.isHidden = false
+                        cell.badgeLabel.text = "\(badgeNumber)"
+                    }else{
+                        cell.badgeView.isHidden = true
+                    }
+                }
+            }
+        }else{
+            cell.badgeView.isHidden = true
+        }
         return cell
     }
     
