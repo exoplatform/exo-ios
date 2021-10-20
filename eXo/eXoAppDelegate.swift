@@ -90,11 +90,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
          Verification of session timeout on server.
          When the session is timeout, go back to On-Boarding (Loggin) screen
          */
-        if let _quitTimestamp = quitTimestamp {
-            if (Date().timeIntervalSince1970 - _quitTimestamp) > eXoAppDelegate.sessionTimeout  {
-                handleRootConnect()
-            }
-        }
+        setRootSessionTimeout()
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     
@@ -172,7 +168,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Check for new data.
         completionHandler(UIBackgroundFetchResult.newData)
     }
- 
+    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         if let _fcmToken = fcmToken {
             print("Reveived fcmToken: \(_fcmToken)")
@@ -310,7 +306,12 @@ extension eXoAppDelegate {
         }
     }
     
-
+    func setRootSessionTimeout() {
+        if PushTokenSynchronizer.shared.isSessionExpired(delegate: (self.window?.rootViewController)!, inWeb: false) {
+            handleRootConnect()
+        }
+    }
+    
     func postNotificationWith(key:Notification.Name,info:[AnyHashable:Any]){
         NotificationCenter.default.post(name: key, object: nil, userInfo: info)
     }
