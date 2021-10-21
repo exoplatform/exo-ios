@@ -32,7 +32,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
-    
+    private var popupWebView: WKWebView?
+
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -44,6 +45,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             self.setupWebView(self.webViewContainer)
             webView?.navigationDelegate = self
             webView?.uiDelegate = self
+            webView?.configuration.preferences.javaScriptEnabled = true
+            webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             self.configureDoneButton()
         }
     }
@@ -278,6 +281,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if request.url?.absoluteString.range(of: "/portal/googleAuth") != nil  {
             self.defaults.setValue(true, forKey: "isGoogleAuth")
         }
+        
         /*
          Open request for external link (asked by user not automatic request for external link) in a new windows (Preview Controller)
          - WKNavigationType of a automatic request is always = .Others
@@ -300,11 +304,31 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     // Called when a link opens a new window (target=_blank)
     // We simply reload the request in the existing webview
     // Cf http://stackoverflow.com/a/25853806
+    /*
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        /*
         if (navigationAction.targetFrame == nil) {
             webView.load(navigationAction.request)
         }
         return nil
+         */
+    }
+   */
+
+func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+        popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popupWebView?.navigationDelegate = self
+        popupWebView?.uiDelegate = self
+        if let newWebview = popupWebView {
+            view.addSubview(newWebview)
+        }
+        return popupWebView ?? nil
+    }
+    
+    func webViewDidClose(_ webView: WKWebView) {
+        webView.removeFromSuperview()
+        popupWebView = nil
     }
     
     /*
