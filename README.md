@@ -4,7 +4,7 @@
 
 Pre-requisites :
 
-- Xcode 9.2
+- Xcode 13 (Mac OS 11)
 - CocoaPod
 - Fastlane (for people on charge of release)
 
