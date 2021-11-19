@@ -1,0 +1,29 @@
+name: Sync Crowdin with eXo Mobile Project
+on:
+  schedule:
+    - cron:  '0 22 * * *' # Everyday at 10 PM UTC
+  workflow_dispatch:
+env:
+  CROWDIN_SYNC_BRANCH: 'integration/6.2.x'
+  BASE_BRANCH: 'acceptance'
+
+jobs:
+  synchronize-with-crowdin:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ env.BASE_BRANCH }}
+        fetch-depth: 0
+    - name: Synchronize crowdin with the project
+      uses: crowdin/github-action@1.4.1
+      with:
+        upload_translations: true
+        download_translations: true
+        localization_branch_name: ${{ env.CROWDIN_SYNC_BRANCH }}
+        create_pull_request: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+        CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
