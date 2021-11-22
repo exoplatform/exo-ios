@@ -14,7 +14,7 @@ name: eXo iOS Beta Appaloosa CI/CD
 
 on:
   push:
-    branches: [develop, acceptance]
+    branches: [develop, acceptance, backport-fixes]
 jobs:
   deploy:
     runs-on: macos-11
