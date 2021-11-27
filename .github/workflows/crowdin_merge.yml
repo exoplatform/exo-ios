@@ -17,12 +17,7 @@ jobs:
       with:
         ref: ${{ env.BASE_BRANCH }}
         fetch-depth: 0
-    - name: Reset Crowdin Sync Branch
-      run: |
-        git fetch
-        git checkout ${CROWDIN_SYNC_BRANCH} || git checkout -b ${CROWDIN_SYNC_BRANCH}
-        git reset --hard origin/${BASE_BRANCH}
-    - name: crowdin action
+    - name: Synchronize crowdin with the project
       uses: crowdin/github-action@1.4.1
       with:
         upload_translations: true
@@ -44,7 +39,7 @@ jobs:
         ref: ${{ env.BASE_BRANCH }}
         token: ${{ secrets.ADMIN_TOKEN }}
         fetch-depth: 0
-    - name: Merge Crowdin Sync Branch
+    - name: Merge Crowdin Translation to the base branch
       run: |
         git fetch
         git merge --squash origin/${CROWDIN_SYNC_BRANCH}
