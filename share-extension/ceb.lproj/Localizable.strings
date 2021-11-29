@@ -34,7 +34,7 @@
 
 "Word.Cancel" = "Cancel";
 
-"Word.Post" = "Post";
+"Word.Post" = "I-post";
 
 "Title.SelectAccount" = "Select an account";
 
@@ -54,7 +54,7 @@
 
 "Login.Status.AskToSignIn" = "Please sign in to post";
 
-"Login.Status.Offline" = "Offline";
+"Login.Status.Offline" = "Wala naka-online";
 
 "Login.Status.LoginFail" = "Login fail";
 

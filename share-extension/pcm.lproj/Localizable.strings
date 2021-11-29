@@ -18,19 +18,19 @@
 //
 
 
-"Upload.Warning.AllUploadFailed" = "All uploads failed";
+"Upload.Warning.AllUploadFailed" = "All dem de uploads don fail";
 
 "Upload.Warning.UploadsFailed" = "%lu uploads failed";
 
 "Upload.Warning.UploadFailed" = "1 upload failed";
 
-"Upload.Warning.ItemsCannotBeUpload" = "%d item(s) cannot be uploaded";
+"Upload.Warning.ItemsCannotBeUpload" = "%d no fit upload item(s)";
 
-"Upload.Warning.FileTooLarge" = "File too large";
+"Upload.Warning.FileTooLarge" = "File dey too big";
 
 "Upload.Warning.NetworkError" = "Network error";
 
-"Upload.Message.ConfirmationPost" = "Do you want to post the message anyway?";
+"Upload.Message.ConfirmationPost" = "You go won post de message like dat?";
 
 "Word.Cancel" = "Cancel";
 

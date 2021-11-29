@@ -18,35 +18,35 @@
 //
 
 
-"Upload.Warning.AllUploadFailed" = "All uploads failed";
+"Upload.Warning.AllUploadFailed" = "Alle upload mislukt";
 
 "Upload.Warning.UploadsFailed" = "%lu uploads failed";
 
 "Upload.Warning.UploadFailed" = "1 upload failed";
 
-"Upload.Warning.ItemsCannotBeUpload" = "%d item(s) cannot be uploaded";
+"Upload.Warning.ItemsCannotBeUpload" = "%d objecten kunnen niet worden geüpload";
 
-"Upload.Warning.FileTooLarge" = "File too large";
+"Upload.Warning.FileTooLarge" = "Bestand te groot";
 
-"Upload.Warning.NetworkError" = "Network error";
+"Upload.Warning.NetworkError" = "Netwerkfout";
 
-"Upload.Message.ConfirmationPost" = "Do you want to post the message anyway?";
+"Upload.Message.ConfirmationPost" = "Wilt u het bericht in elk geval posten?";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "Annuleren";
 
-"Word.Post" = "Post";
+"Word.Post" = "Delen";
 
 "Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "Username";
+"Word.Username" = "Gebruikersnaam";
 
 "Title.UnknownPassword" = "Password: Unknown";
 
 "Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Edit" = "Edit";
+"Word.Edit" = "Bewerken";
 
-"Word.Account" = "Account";
+"Word.Account" = "Rekening";
 
 "Login.Status.Loging" = "Signing in";
 
@@ -60,7 +60,7 @@
 
 "LogIn.Warning.NoAccount" = "No account";
 
-"Word.Space" = "Space";
+"Word.Space" = "Ruimte";
 
 "Login.Status.ServerProblem" = "Server Problem";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "Public";
+"Word.Public" = "Openbaar";
 
 "Post.Title.ErrorMessage" = "Cannot post";
 
@@ -83,4 +83,4 @@
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
-"Word.Back" = "Back";
+"Word.Back" = "Terug";

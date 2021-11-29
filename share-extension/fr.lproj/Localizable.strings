@@ -18,17 +18,13 @@
 //
 
 
-"Upload.Warning.AllUploadFailed" = "Tous les téléchargements ont echoué";
+"Upload.Warning.AllUploadFailed" = "Tous les uploads ont echoués";
 
-"Upload.Warning.UploadsFailed" = "%lu téléchargements ont echoués";
+"Upload.Warning.UploadsFailed" = "%lu téléchargements ont echoué";
 
 "Upload.Warning.UploadFailed" = "Un téléchargement a echoué";
 
-"Word.Cancel" = "Annuler";
-
-"Word.Post" = "Publier";
-
-"Upload.Warning.ItemsCannotBeUpload" = "%d téléchargements ont echoués";
+"Upload.Warning.ItemsCannotBeUpload" = "%d téléchargements ont échoué";
 
 "Upload.Warning.FileTooLarge" = "Fichier trop large";
 
@@ -36,27 +32,31 @@
 
 "Upload.Message.ConfirmationPost" = "Voulez-vous quand même publier le message?";
 
+"Word.Cancel" = "Annuler";
+
+"Word.Post" = "Publier";
+
 "Title.SelectAccount" = "Selectionner un compte";
 
-"Word.Username" = "Nom d'utilisateur";
+"Word.Username" = "Identifiant";
 
 "Title.UnknownPassword" = "Mode de passe: Inconnu";
 
-"Title.NeededUsernamePassoword" = "Identifiant et mot de passe manquants";
+"Title.NeededUsernamePassoword" = "Identifiant et mot de passe requis";
 
-"Word.Edit" = "Editer";
+"Word.Edit" = "Modifier";
 
 "Word.Account" = "Compte";
 
-"Login.Status.Loging" = "Se connecter";
+"Login.Status.Loging" = "Connexion en cours";
 
 "Login.Status.WrongPassword" = "Mot de passe incorrect";
 
 "Login.Status.AskToSignIn" = "Veuillez vous connecter";
 
-"Login.Status.Offline" ="Déconnecté";
+"Login.Status.Offline" = "Déconnecté";
 
-"Login.Status.LoginFail" = "Connexion echouée";
+"Login.Status.LoginFail" = "Echec de connexion";
 
 "LogIn.Warning.NoAccount" = "Pas de compte";
 
@@ -68,16 +68,19 @@
 
 "LogIn.Error.UnableToPost" = "Impossible de publier";
 
-"Title.LoadingSpaceId" = "Chargement de l'espace";
+"Title.LoadingSpaceId" = "Loading space id";
 
 "Word.Public" = "Public";
 
-"Post.Title.ErrorMessage" = "Erreur";
+"Post.Title.ErrorMessage" = "Impossible de publier";
 
-"Title.SpaceSelection" = "Selectionner un espace";
+"Title.SpaceSelection" = "Space selection";
+
+
+"Setting.Title.Server" = "Serveur";
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "Version de Platform non supportée";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.4, ou installer l'application version 2.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
 "Word.Back" = "Retour";

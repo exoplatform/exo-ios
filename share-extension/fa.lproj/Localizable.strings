@@ -18,35 +18,35 @@
 //
 
 
-"Upload.Warning.AllUploadFailed" = "All uploads failed";
+"Upload.Warning.AllUploadFailed" = "عدم موفقیت در آپلود فایل ها";
 
 "Upload.Warning.UploadsFailed" = "%lu uploads failed";
 
 "Upload.Warning.UploadFailed" = "1 upload failed";
 
-"Upload.Warning.ItemsCannotBeUpload" = "%d item(s) cannot be uploaded";
+"Upload.Warning.ItemsCannotBeUpload" = "%d فایل آپلود نشد";
 
-"Upload.Warning.FileTooLarge" = "File too large";
+"Upload.Warning.FileTooLarge" = "حجم فایل خیلی بزرگ است";
 
-"Upload.Warning.NetworkError" = "Network error";
+"Upload.Warning.NetworkError" = "خطای شبکه";
 
-"Upload.Message.ConfirmationPost" = "Do you want to post the message anyway?";
+"Upload.Message.ConfirmationPost" = "آیا مایلید که این پیام را بفرستید؟";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "انصراف";
 
-"Word.Post" = "Post";
+"Word.Post" = "اشتراک";
 
 "Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "Username";
+"Word.Username" = "نام کاربری";
 
 "Title.UnknownPassword" = "Password: Unknown";
 
 "Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Edit" = "Edit";
+"Word.Edit" = "ويرايش";
 
-"Word.Account" = "Account";
+"Word.Account" = "حساب کاربری";
 
 "Login.Status.Loging" = "Signing in";
 
@@ -54,13 +54,13 @@
 
 "Login.Status.AskToSignIn" = "Please sign in to post";
 
-"Login.Status.Offline" = "Offline";
+"Login.Status.Offline" = "آفلاین";
 
 "Login.Status.LoginFail" = "Login fail";
 
 "LogIn.Warning.NoAccount" = "No account";
 
-"Word.Space" = "Space";
+"Word.Space" = "فضا";
 
 "Login.Status.ServerProblem" = "Server Problem";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "Public";
+"Word.Public" = "عمومی";
 
 "Post.Title.ErrorMessage" = "Cannot post";
 
@@ -83,4 +83,4 @@
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
-"Word.Back" = "Back";
+"Word.Back" = "بازگشت";

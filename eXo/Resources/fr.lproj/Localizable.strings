@@ -1,108 +1,110 @@
 /* 
   Localizable.strings
   eXo
-*/
-// Copyright (C) 2003-2015 eXo Platform SAS.
-//
-// This is free software; you can redistribute it and/or modify it
-// under the terms of the GNU Lesser General Public License as
-// published by the Free Software Foundation; either version 3 of
-// the License, or (at your option) any later version.
-//
-// This software is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-// Lesser General Public License for more details.
-//
-// You should have received a copy of the GNU Lesser General Public
-// License along with this software; if not, write to the Free
-// Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
-// 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 
+ Copyright (C) 2003-2015 eXo Platform SAS.
+
+ This is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as
+ published by the Free Software Foundation; either version 3 of
+ the License, or (at your option) any later version.
+
+ This software is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this software; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
 // On-Boarding
-"OnBoarding.Title.ScanQRCode" = "Scanner votre QR code pour vous connecter";
+
+"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
 
 "OnBoarding.Title.EnterPassword" = "Saisissez votre mot de passe pour vous connecter rapidement.";
 
-"OnBoarding.Title.ScanQRsettings" = "Scanner le QR Code qui s'affiche dans vos paramétres eXo.";
+"OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";
 
-"OnBoarding.Title.ShowQRCode" = "Afficher le QR code dans vos paramètre eXo.";
+"OnBoarding.Title.ShowQRCode" = "Afficher le QR code dans vos paramètres eXo.";
 
-"OnBoarding.Title.ScanCode" = "Scanner le code";
+"OnBoarding.Title.ScanCode" = "Scan code";
 
-"OnBoarding.Title.EnterUrleXo" = "Saisir l'adresse de serveur";
+"OnBoarding.Title.EnterUrleXo" = "Entrez l'URL de l'instance eXo";
 
 "Delete" = "Supprimer";
 
 "Cancel" = "Annuler";
 
-"OnBoarding.Title.AddYourExo" = "Ajouter votre eXo";
+"OnBoarding.Title.AddYourExo" = "Ajouter une instance eXo";
 
-"OnBoarding.Title.ConnectToeXo" = "Connect-vous à eXo";
+"OnBoarding.Title.ConnectToeXo" = "Connectez-vous à eXo";
 
-"OnBoarding.Title.AddNewExo" = "Ajouter un nouveau eXo";
+"OnBoarding.Title.AddNewExo" = "Add a new eXo";
 
 "OnBoarding.Title.SignInToeXo" = "Se connecter à eXo";
 
 "OnBoarding.Title.DiscovereXo" = "Découvrez eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Connectez votre intranet";
+"OnBoarding.Title.AddServer" = "Connectez votre eXo";
 
 "OnBoarding.Title.Others" = "Autres";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Connectez-vous, partagez et travaillez ensemble";
 
-"OnBoarding.Title.SavingServer" = "Enregistrement de l'intranet ...";
+"OnBoarding.Title.SavingServer" = "Saving intranet ...";
 
-"OnBoarding.Message.EnterURL" = "Entrez l'URL de votre intranet";
+"OnBoarding.Message.EnterURL" = "Entrez l'URL de votre instance eXo";
 
-"OnBoarding.Error.PlatformNotSupported" = "Version de Platform non supportée";
+"OnBoarding.Error.PlatformNotSupported" = "Version de eXo Platform non supportée";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application supporte seulement Platform depuis la version 4.3";
+"OnBoarding.Error.PlatformNotFound" = "Version de eXo Platform introuvable";
 
-"OnBoarding.Error.PlatformNotFound" = "Version de Platform introuvable";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application ne prend en charge que la version 6.2 ou ultérieure de la plateforme";
 
-"OnBoarding.Title.MostRecentServer" = "Se connecter à";
-
-"Word.OK" = "OK";
+"Word.OK" = "Valider";
 
 "Word.Cancel" = "Annuler";
 
 "Word.Back" = "Retour";
 
-"OnBoarding.Error.URL" = "URL incorrecte";
+"OnBoarding.Error.URL" = "Intranet URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter à eXo";
+"OnBoarding.Error.UnableConnectServer" = "Veuillez entrer une instance eXo valide";
 
-"OnBoarding.Title.RecentsServer" = "Mes intranets";
+"OnBoarding.Title.RecentsServer" = "Mes instances eXo";
 
 "OnBoarding.Error.ConnectionError" = "Erreur de connexion";
 
+"OnBoarding.Title.MostRecentServer" = "Most recent intranet";
+
 "Internet connection lost" = "Connexion Internet perdue";
 
-"Please make sure you have internet connection" = "Veuillez vous assurer d'avoir une connexion Internet";
+"Please make sure you have internet connection" = "Please make sure you have internet connection";
+
 
 // Shortcut (3D Touch)
 
-"Shortcut.Title.RegisterCommunity" = "Découvrez eXo Tribe";
+"Shortcut.Title.RegisterCommunity" = "Register on eXo Tribe";
 
 "Shortcut.Title.ConnectTo" = "Connectez-vous à";
 
-"Shortcut.Title.AddServer" = "Connectez votre intranet";
+"Shortcut.Title.AddServer" = "Connectez votre eXo";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connectez-vous à eXo Tribe";
 
 // Setting
 
-"Setting.Title.Server" = "Intranets";
+"Setting.Title.Server" = "Instances eXo";
 
-"Setting.Title.NoServer" = "Aucun intranet";
+"Setting.Title.NoServer" = "Aucune instance eXo";
 
-"Setting.Title.AddServer" = "Connectez votre intranet";
+"Setting.Title.AddServer" = "Connectez votre eXo";
 
-"Setting.Title.DeleteServer" = "Supprimer";
+"Setting.Title.DeleteServer" = "Delete eXo";
 
-"Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer cet eXo?";
+"Setting.Message.DeleteServer" = "Do you really want to delete this eXo?";
 
 "Setting.Title.ApplicationVersion" = "Version de l'application";
 
@@ -110,12 +112,12 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Version de Platform non supportée";
+"ServerManager.Title.Warning" = "Version de eXo Platform non supportée";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Votre intranet utilise une version de Platform non supportée par cette application. Veuillez mettre à jour votre intranet vers Platform 4.3, ou installer l'application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Votre instance eXo utilise une version de Platform non prise en charge par cette application. Nous vous recommandons de mettre à jour vers la plate-forme 6.2 ou d'utiliser l'application version 2.";
 
 // Add Server
 
-"Add your eXo" = "Entrer votre eXo";
+"Add your eXo" = "Ajouter une instance eXo";
 
-"Enter your eXo URL" = "Entrer l'URL de votre eXo";
+"Enter your eXo URL" = "Entrez votre URL instance eXo";

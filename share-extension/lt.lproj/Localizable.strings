@@ -32,19 +32,19 @@
 
 "Upload.Message.ConfirmationPost" = "Do you want to post the message anyway?";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "Atšaukti";
 
 "Word.Post" = "Post";
 
 "Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "Username";
+"Word.Username" = "Vartotojo vardas";
 
 "Title.UnknownPassword" = "Password: Unknown";
 
 "Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Edit" = "Edit";
+"Word.Edit" = "Redaguoti";
 
 "Word.Account" = "Account";
 
@@ -60,7 +60,7 @@
 
 "LogIn.Warning.NoAccount" = "No account";
 
-"Word.Space" = "Space";
+"Word.Space" = "Erdvė";
 
 "Login.Status.ServerProblem" = "Server Problem";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "Public";
+"Word.Public" = "Viešas";
 
 "Post.Title.ErrorMessage" = "Cannot post";
 
@@ -83,4 +83,4 @@
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
-"Word.Back" = "Back";
+"Word.Back" = "Atgal";
