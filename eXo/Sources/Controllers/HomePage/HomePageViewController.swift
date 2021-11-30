@@ -305,24 +305,21 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     // Called when a link opens a new window (target=_blank)
     // We simply reload the request in the existing webview
     // Cf http://stackoverflow.com/a/25853806
-    /*
-    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        /*
-        if (navigationAction.targetFrame == nil) {
-            webView.load(navigationAction.request)
-        }
-        return nil
-         */
-    }
-   */
 
-func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popupWebView = WKWebView(frame: .zero, configuration: configuration)
         popupWebView?.navigationDelegate = self
         popupWebView?.uiDelegate = self
         if let newWebview = popupWebView {
-            view.addSubview(newWebview)
+            self.webViewContainer.addSubview(newWebview)
+            newWebview.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                newWebview.leadingAnchor.constraint(equalTo: self.webViewContainer.leadingAnchor),
+                newWebview.trailingAnchor.constraint(equalTo: self.webViewContainer.trailingAnchor),
+                newWebview.topAnchor.constraint(equalTo: self.webViewContainer.topAnchor),
+                newWebview.bottomAnchor.constraint(equalTo: self.webViewContainer.bottomAnchor)
+            ])
         }
         return popupWebView ?? nil
     }
