@@ -167,10 +167,13 @@ platform :ios do
   end
 
   desc "Build version for the Development"
-  private_lane :build_dev do
-    ENV["EXO_APP_EXPORT_METHOD"] = "development"
-    ENV["EXO_APP_EXPORT_TYPE"] = "development"
-    ENV["EXO_APP_CONFIGURATION"] = "Debug"
+  lane :build_dev do
+    ENV["EXO_APP_EXPORT_METHOD"] = "ad-hoc"
+    ENV["EXO_APP_EXPORT_TYPE"] = "adhoc"
+    ENV["EXO_APP_EXPORT_TYPE_PROVISIONING"] = "AdHoc"
+    ENV["EXO_APP_CONFIGURATION"] = "Release"
+    ENV["EXO_APP_IDENTIFIERS"]="#{ENV["EXO_APP_ID"]},#{ENV["EXO_APP_ID"]}.share-extension"
+    ENV["EXO_APP_ENVIRONMENT"]="6.2-dev"
     internal_build()
   end
 
