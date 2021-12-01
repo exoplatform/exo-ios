@@ -1,12 +1,12 @@
 PODS:
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
-  - Fabric (1.10.2)
   - Firebase/Core (8.1.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 8.1.0)
   - Firebase/CoreOnly (8.1.1):
     - FirebaseCore (= 8.1.0)
+  - Firebase/Crashlytics (8.1.1):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 8.1.0)
   - Firebase/Messaging (8.1.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 8.1.0)
@@ -46,6 +46,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (8.1.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (8.1.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
@@ -107,9 +113,8 @@ PODS:
   - UICKeyChainStore (2.2.1)
 
 DEPENDENCIES:
-  - Crashlytics
-  - Fabric
   - Firebase/Core
+  - Firebase/Crashlytics
   - Firebase/Messaging
   - HTMLKit
   - Kingfisher
@@ -119,12 +124,11 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Crashlytics
-    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseMessaging
     - GoogleAppMeasurement
@@ -139,12 +143,11 @@ SPEC REPOS:
     - UICKeyChainStore
 
 SPEC CHECKSUMS:
-  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
-  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   Firebase: 4bb49ae87756034cef870fa3c4006235eb46f475
   FirebaseAnalytics: d6dd061b26a04744cb988c66e29697181152b2a3
   FirebaseCore: 389c4ce9a7cce4a7e25eb22326b4bee0050557b2
   FirebaseCoreDiagnostics: 3e249cee3de5c5f9cfd6cc2a19997231286fec11
+  FirebaseCrashlytics: 1b55b3a718f9e20d59d96db46a4652d95a8ba1d2
   FirebaseInstallations: 7f31798a8198c354eadcb87176d2090b62edc187
   FirebaseMessaging: c8871b0907dcf4e76de81241eb6a62be6d657d2f
   GoogleAppMeasurement: 31c7d7655818784b7dd34bdf6884f75b465d5f6c
@@ -158,6 +161,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   UICKeyChainStore: ba3bff2c762b12db1e516f395c837dd25298b05e
 
-PODFILE CHECKSUM: 76cfe6e7c1c62153a605c0860170d795b6951419
+PODFILE CHECKSUM: 3db49ffb6a161982a7a3bc836389204efe7691a4
 
 COCOAPODS: 1.11.2
