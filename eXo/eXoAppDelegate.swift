@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 import Firebase
+import FirebaseCrashlytics
 import FirebaseMessaging
 import UserNotifications
 
@@ -50,9 +49,6 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     let defaults = UserDefaults.standard
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Start Crashlytics
-        Fabric.with([Crashlytics.self])
-        // Push notifications
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         // Quick launch
