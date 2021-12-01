@@ -21,7 +21,6 @@ class CustomPopupViewController: UIViewController {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var discriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imgView: UIImageView!
     
     // MARK: - Variables .
 
@@ -36,7 +35,6 @@ class CustomPopupViewController: UIViewController {
     }
     
     func initView(){
-        imgView.addCornerRadiusWith(radius: 25)
         okButton.addCornerRadiusWith(radius: 5.0)
         noButton.addBorderWith(width: 1, color: UIColor(hex: 0x4382BF).withAlphaComponent(0.5), cornerRadius: 5.0)
         discriptionLabel.text = descriptionMessage
