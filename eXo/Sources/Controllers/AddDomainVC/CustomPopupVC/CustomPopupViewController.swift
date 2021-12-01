@@ -15,7 +15,7 @@ enum ActionHandler {
 class CustomPopupViewController: UIViewController {
     
     // MARK: - Outlets .
-
+    
     @IBOutlet weak var containerView: DesignableView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
@@ -23,7 +23,7 @@ class CustomPopupViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Variables .
-
+    
     var descriptionMessage:String = ""
     var titleDescription:String = ""
     var actionHandler:ActionHandler!
@@ -62,15 +62,15 @@ class CustomPopupViewController: UIViewController {
     }
     
     @IBAction func okButtonTapped(_ sender: Any) {
-            switch actionHandler {
-            case .delete:
-                dismiss(animated: false) {
-                    ServerManager.sharedInstance.removeServer(self.serverToDelete)
-                    self.postNotificationWith(key: .deleteInstance)
-                }
-            default:
-                self.dismiss(animated:false,completion:nil)
+        switch actionHandler {
+        case .delete:
+            dismiss(animated: false) {
+                ServerManager.sharedInstance.removeServer(self.serverToDelete)
+                self.postNotificationWith(key: .deleteInstance)
             }
+        default:
+            self.dismiss(animated:false,completion:nil)
+        }
     }
     
     @IBAction func noButtonTapped(_ sender: Any) {
