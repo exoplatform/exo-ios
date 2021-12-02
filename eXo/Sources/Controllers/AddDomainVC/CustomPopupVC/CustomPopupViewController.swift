@@ -15,16 +15,15 @@ enum ActionHandler {
 class CustomPopupViewController: UIViewController {
     
     // MARK: - Outlets .
-
+    
     @IBOutlet weak var containerView: DesignableView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var discriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imgView: UIImageView!
     
     // MARK: - Variables .
-
+    
     var descriptionMessage:String = ""
     var titleDescription:String = ""
     var actionHandler:ActionHandler!
@@ -36,7 +35,6 @@ class CustomPopupViewController: UIViewController {
     }
     
     func initView(){
-        imgView.addCornerRadiusWith(radius: 25)
         okButton.addCornerRadiusWith(radius: 5.0)
         noButton.addBorderWith(width: 1, color: UIColor(hex: 0x4382BF).withAlphaComponent(0.5), cornerRadius: 5.0)
         discriptionLabel.text = descriptionMessage
@@ -64,15 +62,15 @@ class CustomPopupViewController: UIViewController {
     }
     
     @IBAction func okButtonTapped(_ sender: Any) {
-            switch actionHandler {
-            case .delete:
-                dismiss(animated: false) {
-                    ServerManager.sharedInstance.removeServer(self.serverToDelete)
-                    self.postNotificationWith(key: .deleteInstance)
-                }
-            default:
-                self.dismiss(animated:false,completion:nil)
+        switch actionHandler {
+        case .delete:
+            dismiss(animated: false) {
+                ServerManager.sharedInstance.removeServer(self.serverToDelete)
+                self.postNotificationWith(key: .deleteInstance)
             }
+        default:
+            self.dismiss(animated:false,completion:nil)
+        }
     }
     
     @IBAction func noButtonTapped(_ sender: Any) {
