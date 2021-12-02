@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="containerView" destination="Dqt-Rr-8cm" id="efj-eo-Xyb"/>
                 <outlet property="discriptionLabel" destination="DaW-4w-fuS" id="FDU-qD-Bw5"/>
-                <outlet property="imgView" destination="JlW-sV-niF" id="Fl3-sb-bO5"/>
                 <outlet property="noButton" destination="dVc-DU-ee9" id="vN7-Z8-7q7"/>
                 <outlet property="okButton" destination="57E-gj-j3u" id="dGV-Gl-mgV"/>
                 <outlet property="titleLabel" destination="15f-o8-1Cn" id="s0n-bV-IOs"/>
@@ -28,30 +27,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqt-Rr-8cm" customClass="DesignableView" customModule="eXo" customModuleProvider="target">
                     <rect key="frame" x="60" y="278" width="294" height="174"/>
                     <subviews>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhH-DD-Ggi" customClass="DesignableView" customModule="eXo" customModuleProvider="target">
-                            <rect key="frame" x="117" y="-30" width="60" height="60"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome-exo" translatesAutoresizingMaskIntoConstraints="NO" id="JlW-sV-niF">
-                                    <rect key="frame" x="10" y="10" width="40" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="no0-22-SYp"/>
-                                        <constraint firstAttribute="width" constant="40" id="pEn-ct-xMn"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="JlW-sV-niF" firstAttribute="centerY" secondItem="mhH-DD-Ggi" secondAttribute="centerY" id="2oI-hC-GHC"/>
-                                <constraint firstAttribute="height" constant="60" id="Auy-EC-ipZ"/>
-                                <constraint firstAttribute="width" constant="60" id="ZiF-E1-twa"/>
-                                <constraint firstItem="JlW-sV-niF" firstAttribute="centerX" secondItem="mhH-DD-Ggi" secondAttribute="centerX" id="lVm-gQ-FKz"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="30"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57E-gj-j3u">
                             <rect key="frame" x="159" y="122" width="100" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -76,7 +51,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15f-o8-1Cn">
-                            <rect key="frame" x="32" y="34" width="230" height="21"/>
+                            <rect key="frame" x="32" y="24" width="230" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Ara-L8-s64"/>
                                 <constraint firstAttribute="width" constant="230" id="t3E-mn-3nQ"/>
@@ -86,7 +61,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Title Title Title Title Title Title Title Title Title Title Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaW-4w-fuS">
-                            <rect key="frame" x="32" y="64.5" width="230" height="45"/>
+                            <rect key="frame" x="32" y="58.5" width="230" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="E7G-4i-rSO"/>
                                 <constraint firstAttribute="width" constant="230" id="bD7-xi-KJx"/>
@@ -98,12 +73,10 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="mhH-DD-Ggi" firstAttribute="top" secondItem="Dqt-Rr-8cm" secondAttribute="top" constant="-30" id="Apr-S9-6Ce"/>
                         <constraint firstItem="15f-o8-1Cn" firstAttribute="centerX" secondItem="Dqt-Rr-8cm" secondAttribute="centerX" id="QdU-8H-17o"/>
-                        <constraint firstItem="15f-o8-1Cn" firstAttribute="top" secondItem="Dqt-Rr-8cm" secondAttribute="top" constant="34" id="Rp9-8B-lBb"/>
-                        <constraint firstItem="mhH-DD-Ggi" firstAttribute="centerX" secondItem="Dqt-Rr-8cm" secondAttribute="centerX" id="VOd-GQ-cL8"/>
+                        <constraint firstItem="15f-o8-1Cn" firstAttribute="top" secondItem="Dqt-Rr-8cm" secondAttribute="top" constant="24" id="Rp9-8B-lBb"/>
                         <constraint firstItem="DaW-4w-fuS" firstAttribute="centerX" secondItem="Dqt-Rr-8cm" secondAttribute="centerX" id="WfK-0M-oU1"/>
-                        <constraint firstItem="DaW-4w-fuS" firstAttribute="centerY" secondItem="Dqt-Rr-8cm" secondAttribute="centerY" id="YIc-aG-HqM"/>
+                        <constraint firstItem="DaW-4w-fuS" firstAttribute="centerY" secondItem="Dqt-Rr-8cm" secondAttribute="centerY" constant="-6" id="YIc-aG-HqM"/>
                         <constraint firstAttribute="width" constant="294" id="aUQ-oW-MBG"/>
                         <constraint firstAttribute="height" constant="174" id="zw3-uW-Bx5"/>
                     </constraints>
@@ -124,7 +97,6 @@
         </view>
     </objects>
     <resources>
-        <image name="welcome-exo" width="80.5" height="70.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
