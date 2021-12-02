@@ -102,7 +102,7 @@
 
 "Setting.Title.AddServer" = "Connect your intranet";
 
-"Setting.Title.DeleteServer" = "Delete eXo";
+"Setting.Title.DeleteServer" = "Delete Intranet";
 
 "Setting.Message.DeleteServer" = "Do you really want to delete this eXo?";
 
