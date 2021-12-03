@@ -3,13 +3,64 @@ name: iOS Build
 on:
   pull_request:
     branches: [ develop, acceptance ]
+env: 
+  BUNDLE_ID: 'org.exoplatform.exo-beta'
 jobs:
   build:
-    name: Build eXo iOS Project
+    name: CI Build eXo iOS Project
     runs-on: macos-11
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build
-        run: |
-          pod install --repo-update && xcodebuild clean && xcodebuild build -sdk iphonesimulator -workspace eXo.xcworkspace -scheme eXo CODE_SIGNING_REQUIRED=NO
+      # Use SSH Key to gather certificate from a private Github repository. Use a dedicated on is recommended.
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      # Setup Ruby 2.6 (2.7 not yet compatible with bundler)
+      - name: Setup ruby 2.6
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      # Cache Ruby gems
+      - name: Cache Ruby gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      # Cache CocoaPods
+      - name: Cache CocoaPods
+        uses: actions/cache@v2
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+      # Install Bundler and dependencies gems
+      - name: Install bundler and dependencies
+        run: gem install bundler && bundle install
+      # Ensure installing latest version of fastlane
+      - name: Upgrade fastlane
+        run: bundle update fastlane
+      # Gather certificates from Github repository
+      - name: Synchonize Certificates
+        uses: maierj/fastlane-action@v2.0.1
+        with:
+          lane: "ci_sync_certificates"
+        env:
+          BUNDLE_ID: ${{ env.BUNDLE_ID }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
+      # Build iOS Project
+      - name: Build iOS Project
+        uses: maierj/fastlane-action@v2.0.1
+        with:
+          lane: "build_dev"
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          EXO_APP_ID: ${{ env.BUNDLE_ID }}
