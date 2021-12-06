@@ -17,6 +17,10 @@ jobs:
       with:
         ref: ${{ env.BASE_BRANCH }}
         fetch-depth: 0
+    - name: Cleanup Crowdin Sync Branch
+      run: |
+        git push origin :${CROWDIN_SYNC_BRANCH} ||:
+        git branch -D ${CROWDIN_SYNC_BRANCH} ||:
     - name: Synchronize crowdin with the project
       uses: crowdin/github-action@1.4.1
       with:
