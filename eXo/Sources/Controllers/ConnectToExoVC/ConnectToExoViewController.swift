@@ -126,16 +126,16 @@ extension ConnectToExoViewController:UITableViewDelegate,UITableViewDataSource{
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_ :)), for: .touchUpInside)
         // Handle Badge Notififcation appearance in case of session timeout
         if isSessionExpired {
-            if let dic = defaults.dictionary(forKey: "badgeNumber") {
-                if let badgeNumber = dic[serveur] as? Int {
-                    print(badgeNumber)
-                    if badgeNumber != 0 {
-                        cell.badgeView.isHidden = false
-                        cell.badgeLabel.text = "\(badgeNumber)"
-                    }else{
-                        cell.badgeView.isHidden = true
-                    }
+            if let dic = defaults.dictionary(forKey: "badgeNumber"),let badgeNumber = (dic[serveur] as? Int) {
+                print(badgeNumber)
+                if badgeNumber > 0 {
+                    cell.badgeView.isHidden = false
+                    cell.badgeLabel.text = "\(badgeNumber)"
+                }else{
+                    cell.badgeView.isHidden = true
                 }
+            }else{
+                cell.badgeView.isHidden = true
             }
         }else{
             cell.badgeView.isHidden = true
