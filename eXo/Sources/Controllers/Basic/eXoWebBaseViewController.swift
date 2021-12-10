@@ -38,10 +38,19 @@ class eXoWebBaseController: UIViewController {
      Initilalize the WKWebView & setup
      */
     func setupWebView (_ webViewContainer : UIView) {
-        let wkWebViewConfiguration = WKWebViewConfiguration()
+        let configuration = WKWebViewConfiguration()
+        configuration.preferences.javaScriptEnabled = true
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        let preference = WKPreferences()
+        preference.javaScriptEnabled = true
+        configuration.preferences = preference
+        configuration.allowsInlineMediaPlayback = true
+        configuration.allowsAirPlayForMediaPlayback = true
+        configuration.allowsPictureInPictureMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
         // Add configuration to wkwebview relevant to user agent
-        wkWebViewConfiguration.applicationNameForUserAgent = "Version/8.0.2 Safari/600.2.5"
-        webView = WKWebView (frame:CGRect(x: 0,y: 0,width: webViewContainer.bounds.size.width, height: webViewContainer.bounds.size.height), configuration: wkWebViewConfiguration)        
+        configuration.applicationNameForUserAgent = "Version/8.0.2 Safari/600.2.5"
+        webView = WKWebView (frame:CGRect(x: 0,y: 0,width: webViewContainer.bounds.size.width, height: webViewContainer.bounds.size.height), configuration: configuration)
         //Load the page web
         let url = URL(string: serverURL!)
         // check PLF version and go back if it's less than 4.3
