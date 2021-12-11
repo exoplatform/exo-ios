@@ -23,14 +23,11 @@ jobs:
     - name: Synchronize crowdin with the project
       uses: crowdin/github-action@1.4.1
       with:
-        upload_sources: true
         upload_translations: true
         download_translations: true
-        upload_language: 'en'
-        auto_approve_imported: false
         localization_branch_name: ${{ env.CROWDIN_SYNC_BRANCH }}
         create_pull_request: false
-        config: crowdin.yml
+        pull_request_base_branch_name: ${{ env.BASE_BRANCH }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
