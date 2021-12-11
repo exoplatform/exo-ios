@@ -19,7 +19,7 @@ jobs:
     - name: Cleanup Crowdin Sync Branch
       run: |
         git push origin :${CROWDIN_SYNC_BRANCH} ||:
-        git branch -D CROWDIN_SYNC_BRANCH ||:
+        git branch -D ${CROWDIN_SYNC_BRANCH} ||:
     - name: Synchronize crowdin with the project
       uses: crowdin/github-action@1.4.2
       with:
@@ -27,7 +27,6 @@ jobs:
         download_translations: true
         localization_branch_name: ${{ env.CROWDIN_SYNC_BRANCH }}
         create_pull_request: false
-        pull_request_base_branch_name: ${{ env.BASE_BRANCH }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
