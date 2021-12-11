@@ -1,0 +1,123 @@
+/* 
+  Localizable.strings
+  eXo
+
+ Copyright (C) 2003-2015 eXo Platform SAS.
+
+ This is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as
+ published by the Free Software Foundation; either version 3 of
+ the License, or (at your option) any later version.
+
+ This software is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this software; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+// On-Boarding
+
+"OnBoarding.Title.ScanQRCode" = "crwdns7015451:0crwdne7015451:0";
+
+"OnBoarding.Title.EnterPassword" = "crwdns7015019:0crwdne7015019:0";
+
+"OnBoarding.Title.ScanQRsettings" = "crwdns7015453:0crwdne7015453:0";
+
+"OnBoarding.Title.ShowQRCode" = "crwdns7015023:0crwdne7015023:0";
+
+"OnBoarding.Title.ScanCode" = "crwdns7015455:0crwdne7015455:0";
+
+"OnBoarding.Title.EnterUrleXo" = "crwdns7015549:0crwdne7015549:0";
+
+"Delete" = "crwdns6795921:0crwdne6795921:0";
+
+"Cancel" = "crwdns6795919:0crwdne6795919:0";
+
+"OnBoarding.Title.AddYourExo" = "crwdns7015551:0crwdne7015551:0";
+
+"OnBoarding.Title.ConnectToeXo" = "crwdns7015031:0crwdne7015031:0";
+
+"OnBoarding.Title.AddNewExo" = "crwdns7015461:0crwdne7015461:0";
+
+"OnBoarding.Title.SignInToeXo" = "crwdns7015035:0crwdne7015035:0";
+
+"OnBoarding.Title.DiscovereXo" = "crwdns7015037:0crwdne7015037:0";
+
+"OnBoarding.Title.AddServer" = "crwdns7015553:0crwdne7015553:0";
+
+"OnBoarding.Title.Others" = "crwdns7015041:0crwdne7015041:0";
+
+"OnBoarding.Title.eXoPlatformDescription" = "crwdns7015043:0crwdne7015043:0";
+
+"OnBoarding.Title.SavingServer" = "crwdns7015465:0crwdne7015465:0";
+
+"OnBoarding.Message.EnterURL" = "crwdns7015555:0crwdne7015555:0";
+
+"OnBoarding.Error.PlatformNotSupported" = "crwdns7015049:0crwdne7015049:0";
+
+"OnBoarding.Error.PlatformNotFound" = "crwdns7015051:0crwdne7015051:0";
+
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "crwdns7015557:0crwdne7015557:0";
+
+"Word.OK" = "crwdns7015055:0crwdne7015055:0";
+
+"Word.Cancel" = "crwdns7015057:0crwdne7015057:0";
+
+"Word.Back" = "crwdns7015059:0crwdne7015059:0";
+
+"OnBoarding.Error.URL" = "crwdns7015471:0crwdne7015471:0";
+
+"OnBoarding.Error.UnableConnectServer" = "crwdns7015559:0crwdne7015559:0";
+
+"OnBoarding.Title.RecentsServer" = "crwdns7015561:0crwdne7015561:0";
+
+"OnBoarding.Error.ConnectionError" = "crwdns7015067:0crwdne7015067:0";
+
+"OnBoarding.Title.MostRecentServer" = "crwdns7015477:0crwdne7015477:0";
+
+"Internet connection lost" = "crwdns7015479:0crwdne7015479:0";
+
+"Please make sure you have internet connection" = "crwdns7015481:0crwdne7015481:0";
+
+
+// Shortcut (3D Touch)
+
+"Shortcut.Title.RegisterCommunity" = "crwdns7015483:0crwdne7015483:0";
+
+"Shortcut.Title.ConnectTo" = "crwdns7015077:0crwdne7015077:0";
+
+"Shortcut.Title.AddServer" = "crwdns7015563:0crwdne7015563:0";
+
+"Shortcut.Title.ConnnecteXoTribe" = "crwdns7015081:0crwdne7015081:0";
+
+// Setting
+
+"Setting.Title.Server" = "crwdns7015565:0crwdne7015565:0";
+
+"Setting.Title.NoServer" = "crwdns7015567:0crwdne7015567:0";
+
+"Setting.Title.AddServer" = "crwdns7015569:0crwdne7015569:0";
+
+"Setting.Title.DeleteServer" = "crwdns7015585:0crwdne7015585:0";
+
+"Setting.Message.DeleteServer" = "crwdns7015495:0crwdne7015495:0";
+
+"Setting.Title.ApplicationVersion" = "crwdns7015093:0crwdne7015093:0";
+
+"Setting.Title.About" = "crwdns7015095:0crwdne7015095:0";
+
+// Server Manager
+
+"ServerManager.Title.Warning" = "crwdns7015097:0crwdne7015097:0";
+
+"ServerManager.Message.WarningVersionNotSupported" = "crwdns7015571:0crwdne7015571:0";
+
+// Add Server
+
+"Add your eXo" = "crwdns7015573:0crwdne7015573:0";
+
+"Enter your eXo URL" = "crwdns7015575:0crwdne7015575:0";

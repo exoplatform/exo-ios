@@ -31,13 +31,13 @@
 
 "OnBoarding.Title.ScanCode" = "Scan code";
 
-"OnBoarding.Title.EnterUrleXo" = "Enter eXo connection URL";
+"OnBoarding.Title.EnterUrleXo" = "Enter server URL";
 
-"Delete" = "Delete";
+"Delete" = "Видалити";
 
-"Cancel" = "Cancel";
+"Cancel" = "Скасувати";
 
-"OnBoarding.Title.AddYourExo" = "New eXo Connection";
+"OnBoarding.Title.AddYourExo" = "Add your eXo";
 
 "OnBoarding.Title.ConnectToeXo" = "Connect to eXo";
 
@@ -47,41 +47,41 @@
 
 "OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Connect your eXo";
+"OnBoarding.Title.AddServer" = "Connect your intranet";
 
-"OnBoarding.Title.Others" = "Others";
+"OnBoarding.Title.Others" = "Інше";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
 
-"OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
+"OnBoarding.Title.SavingServer" = "Saving intranet ...";
 
-"OnBoarding.Message.EnterURL" = "Enter your eXo address";
+"OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
 "OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
 
 "OnBoarding.Error.PlatformNotFound" = "Platform version not found";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 6.2 or later";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 4.3 or later";
 
-"Word.OK" = "OK";
+"Word.OK" = "Гаразд";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "Скасувати";
 
-"Word.Back" = "Back";
+"Word.Back" = "Назад";
 
-"OnBoarding.Error.URL" = "eXo URL error";
+"OnBoarding.Error.URL" = "Intranet URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Please enter a correct URL";
+"OnBoarding.Error.UnableConnectServer" = "Please enter a correct eXo";
 
-"OnBoarding.Title.RecentsServer" = "My eXos";
+"OnBoarding.Title.RecentsServer" = "My intranets";
 
 "OnBoarding.Error.ConnectionError" = "Connection Error";
 
-"OnBoarding.Title.MostRecentServer" = "Most recent connection";
+"OnBoarding.Title.MostRecentServer" = "Most recent intranet";
 
 "Internet connection lost" = "Internet connection lost";
 
-"Please make sure you have internet connection" = "Please make sure you are connected to internet";
+"Please make sure you have internet connection" = "Please make sure you have internet connection";
 
 
 // Shortcut (3D Touch)
@@ -90,23 +90,23 @@
 
 "Shortcut.Title.ConnectTo" = "Connect to";
 
-"Shortcut.Title.AddServer" = "Connect your eXo";
+"Shortcut.Title.AddServer" = "Connect your intranet";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 
 // Setting
 
-"Setting.Title.Server" = "eXos";
+"Setting.Title.Server" = "Intranets";
 
-"Setting.Title.NoServer" = "No eXo";
+"Setting.Title.NoServer" = "No intranet";
 
-"Setting.Title.AddServer" = "Connect your eXo";
+"Setting.Title.AddServer" = "Connect your intranet";
 
-"Setting.Title.DeleteServer" = "Delete Connection";
+"Setting.Title.DeleteServer" = "Delete Intranet";
 
-"Setting.Message.DeleteServer" = "Do you really want to delete this connection?";
+"Setting.Message.DeleteServer" = "Do you really want to delete this eXo?";
 
-"Setting.Title.ApplicationVersion" = "Application Version";
+"Setting.Title.ApplicationVersion" = "Версія додатку";
 
 "Setting.Title.About" = "About";
 
@@ -114,10 +114,10 @@
 
 "ServerManager.Title.Warning" = "Platform version not supported";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.3 or use the application version 2.";
 
 // Add Server
 
-"Add your eXo" = "New eXo Connection";
+"Add your eXo" = "Add your eXo";
 
-"Enter your eXo URL" = "Enter your eXo connection address";
+"Enter your eXo URL" = "Enter your eXo URL";
