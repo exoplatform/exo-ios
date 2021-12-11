@@ -19,7 +19,7 @@ jobs:
   deploy:
     runs-on: macos-11
     # Skip deployment triggered by a rebase action or technical commits
-    if: "!contains(github.event.pusher.name, 'exo-swf')"
+    if: "!contains(github.event.pusher.name, 'exo-swf') || contains(github.event.head_commit.message, 'Merge Translations')"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
