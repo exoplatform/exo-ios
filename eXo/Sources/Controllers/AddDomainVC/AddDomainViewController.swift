@@ -12,11 +12,8 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     // MARK: - Outlets.
     
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var companyTextField: UITextField!
-    @IBOutlet weak var suffixUrlTextField: UITextField!
+    @IBOutlet weak var inputUrlTextField: UITextField!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var companyWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addurlLabel: UILabel!
     
@@ -39,15 +36,13 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     }
     
     func setupView(){
-        companyTextField.becomeFirstResponder()
+        inputUrlTextField.becomeFirstResponder()
         titleLabel.text = "Add your eXo".localized
         addurlLabel.text = "Enter your eXo URL".localized
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
-        companyTextField.delegate = self
-        suffixUrlTextField.delegate = self
-        companyTextField.returnKeyType = UIReturnKeyType.go
-        suffixUrlTextField.returnKeyType = UIReturnKeyType.go
-        companyWidthConstraint.constant = companyTextField.intrinsicContentSize.width
+        inputUrlTextField.delegate = self
+        inputUrlTextField.returnKeyType = UIReturnKeyType.go
+//        companyWidthConstraint.constant = companyTextField.intrinsicContentSize.width
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -59,62 +54,19 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     // MARK: - UITextField Delegate .
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == companyTextField {
-            companyTextField.becomeFirstResponder()
-            companyTextField.textAlignment = .left
-        }else{
-            suffixUrlTextField.becomeFirstResponder()
-        }
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == companyTextField {
-            companyTextField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.lowercased())
-            let text = companyTextField.text! + string.lowercased()
-            var width:CGFloat = 0
-            if text.count >= 6 {
-                if string == "" {
-                    width = getWidth(text: text) - 15
-                }else{
-                    width = getWidth(text: text) - 10
-                }
-            }else{
-                if string == "" {
-                    width = getWidth(text: text) - 10
-                }else{
-                    width = getWidth(text: text)
-                }
-            }
-            companyWidthConstraint.constant = width
-            self.view.layoutIfNeeded()
-            return false
-        }else if textField == suffixUrlTextField {
-            suffixUrlTextField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.lowercased())
-            return false
-        }
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == companyTextField {
-            companyWidthConstraint.constant = textField.intrinsicContentSize.width
-        }
+        inputUrlTextField.becomeFirstResponder()
+        inputUrlTextField.textAlignment = .left
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == companyTextField || textField == suffixUrlTextField {
-            textField.resignFirstResponder()
-            addServer()
-         return true
-        }
-        return false
+        inputUrlTextField.resignFirstResponder()
+        addServer()
+        return true
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
-        companyTextField.text = ""
-        companyTextField.isHidden = true
-        suffixUrlTextField.text = ""
-        suffixUrlTextField.becomeFirstResponder()
+        inputUrlTextField.text = ""
+        inputUrlTextField.becomeFirstResponder()
     }
     
     @IBAction func closeButtonTappee(_ sender: Any) {
@@ -130,10 +82,10 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
         view.endEditing(true)
         // check Internet connection
         // verification of URL, http is the default protocol
-        if let company = companyTextField.text, let sufixUrl = suffixUrlTextField.text {
-            print(company,sufixUrl)
+        if let company = inputUrlTextField.text {
+            print(company)
             if isInternetConnected(inWeb: false) {
-                Tool.verificationServerURL(company+sufixUrl, delegate: self, handleSuccess: { (serverURL) -> Void in
+                Tool.verificationServerURL(company, delegate: self, handleSuccess: { (serverURL) -> Void in
                     self.selectedServer = Server (serverURL: serverURL)
                     OperationQueue.main.addOperation({ () -> Void in
                         ServerManager.sharedInstance.addEditServer(self.selectedServer!)
