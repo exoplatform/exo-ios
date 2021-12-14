@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,11 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDomainViewController" customModule="eXo" customModuleProvider="target">
             <connections>
                 <outlet property="addurlLabel" destination="Mq6-V4-4Ry" id="sdR-x7-trM"/>
-                <outlet property="companyTextField" destination="wp1-x8-vbb" id="1nR-mG-BK9"/>
-                <outlet property="companyWidthConstraint" destination="mw9-Ss-CxA" id="6pR-Rg-NdQ"/>
                 <outlet property="containerView" destination="Rbq-U1-sWC" id="eU6-xS-xIN"/>
-                <outlet property="stackView" destination="yY8-VX-hqx" id="pC5-4H-FCz"/>
-                <outlet property="suffixUrlTextField" destination="jOn-J0-dyg" id="cGG-BM-zCH"/>
+                <outlet property="inputUrlTextField" destination="wp1-x8-vbb" id="Dmh-2P-Q82"/>
                 <outlet property="titleLabel" destination="CeL-mX-mQE" id="Lzi-o1-RvI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -112,29 +109,6 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-U1-sWC">
                                     <rect key="frame" x="-0.5" y="5" width="290.5" height="40"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yY8-VX-hqx">
-                                            <rect key="frame" x="10" y="0.0" width="280.5" height="40"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="company" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="wp1-x8-vbb" customClass="AutoResizingUITextField" customModule="eXo" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="107.5" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="107.5" id="mw9-Ss-CxA"/>
-                                                    </constraints>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                                </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text=".exoplatform.org" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-J0-dyg">
-                                                    <rect key="frame" x="107.5" y="0.0" width="173" height="40"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="RTZ-3r-ZgD"/>
-                                            </constraints>
-                                        </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyp-tD-S92">
                                             <rect key="frame" x="260.5" y="5.5" width="30" height="29"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,14 +124,23 @@
                                                 <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="eQU-ip-dM2"/>
                                             </connections>
                                         </button>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Please enter your url." minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="wp1-x8-vbb" customClass="AutoResizingUITextField" customModule="eXo" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="0.0" width="245" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="245" id="mw9-Ss-CxA"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="yY8-VX-hqx" firstAttribute="leading" secondItem="Rbq-U1-sWC" secondAttribute="leading" constant="10" id="2ay-xm-4uk"/>
-                                        <constraint firstAttribute="bottom" secondItem="yY8-VX-hqx" secondAttribute="bottom" id="6mE-HE-LQJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="wp1-x8-vbb" secondAttribute="bottom" id="0I9-Ns-7nZ"/>
+                                        <constraint firstItem="wp1-x8-vbb" firstAttribute="top" secondItem="Rbq-U1-sWC" secondAttribute="top" id="HhS-3D-sqe"/>
                                         <constraint firstAttribute="trailing" secondItem="Nyp-tD-S92" secondAttribute="trailing" id="NUv-iQ-EMq"/>
-                                        <constraint firstItem="yY8-VX-hqx" firstAttribute="top" secondItem="Rbq-U1-sWC" secondAttribute="top" id="cXz-ld-jB8"/>
-                                        <constraint firstAttribute="trailing" secondItem="yY8-VX-hqx" secondAttribute="trailing" id="s4W-7v-b7h"/>
+                                        <constraint firstItem="wp1-x8-vbb" firstAttribute="leading" secondItem="Rbq-U1-sWC" secondAttribute="leading" constant="8" id="SmR-3V-Fld"/>
+                                        <constraint firstItem="Nyp-tD-S92" firstAttribute="leading" secondItem="wp1-x8-vbb" secondAttribute="trailing" constant="7.5" id="tbJ-Pg-YnU"/>
                                         <constraint firstItem="Nyp-tD-S92" firstAttribute="centerY" secondItem="Rbq-U1-sWC" secondAttribute="centerY" id="ujG-PJ-0Vf"/>
                                     </constraints>
                                 </view>
