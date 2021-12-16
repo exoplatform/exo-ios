@@ -61,7 +61,7 @@
 
 "OnBoarding.Error.PlatformNotFound" = "Version de eXo Platform introuvable";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application supporte la plateforme à partir de la version 4.3";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application nécessite le serveur eXo Platform en version 6.2 au minimum. Votre administrateur doit mettre à jour le serveur.";
 
 "Word.OK" = "Valider";
 
@@ -71,7 +71,7 @@
 
 "OnBoarding.Error.URL" = "URL incorrecte";
 
-"OnBoarding.Error.UnableConnectServer" = "Impossible de se connecter à eXo";
+"OnBoarding.Error.UnableConnectServer" = "Veuillez entrer une URL valide.";
 
 "OnBoarding.Title.RecentsServer" = "Mes eXo";
 
@@ -96,13 +96,13 @@
 
 // Setting
 
-"Setting.Title.Server" = "Instances eXo";
+"Setting.Title.Server" = "Connections eXo";
 
-"Setting.Title.NoServer" = "Aucun eXo";
+"Setting.Title.NoServer" = "Aucune connexion eXo configurée";
 
 "Setting.Title.AddServer" = "Connectez votre eXo";
 
-"Setting.Title.DeleteServer" = "Supprimer";
+"Setting.Title.DeleteServer" = "Supprimer la connexion";
 
 "Setting.Message.DeleteServer" = "Voulez-vous vraiment supprimer cette connexion ?";
 
@@ -118,6 +118,6 @@
 
 // Add Server
 
-"Add your eXo" = "Entrer votre eXo";
+"Add your eXo" = "Nouvelle connexion";
 
-"Enter your eXo URL" = "Entrer l'URL de votre eXo";
+"Enter your eXo URL" = "Entrer l'adresse de votre eXo";
