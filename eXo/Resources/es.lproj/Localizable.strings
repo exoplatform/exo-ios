@@ -34,13 +34,13 @@
 
 "OnBoarding.Title.ScanCode" = "Escanear código";
 
-"OnBoarding.Title.EnterUrleXo" = "Introducir URL del servidor";
+"OnBoarding.Title.EnterUrleXo" = "Introducir URL de conexión eXo";
 
 "Delete" = "Borrar";
 
 "Cancel" = "Cancelar";
 
-"OnBoarding.Title.AddYourExo" = "Añade tu eXo";
+"OnBoarding.Title.AddYourExo" = "Nueva conexión eXo";
 
 "OnBoarding.Title.ConnectToeXo" = "Conectar a eXo";
 
@@ -50,37 +50,37 @@
 
 "OnBoarding.Title.DiscovereXo" = "Descubrir eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Conecta tu intranet";
+"OnBoarding.Title.AddServer" = "Conectar tu eXo";
 
 "OnBoarding.Title.Others" = "Otros";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Conectar, compartir y trabajar juntos";
 
-"OnBoarding.Title.SavingServer" = "Guardando intranet...";
+"OnBoarding.Title.SavingServer" = "Guardando conexión eXo...";
 
-"OnBoarding.Message.EnterURL" = "Pon tu URL de intranet";
+"OnBoarding.Message.EnterURL" = "Pon tu URL eXo";
 
-"OnBoarding.Error.PlatformNotSupported" = "Versión de plataforma no compatible";
+"OnBoarding.Error.PlatformNotSupported" = "Versión de Platform no compatible";
 
 "OnBoarding.Error.PlatformNotFound" = "Versión de Platform no encontrada";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "La aplicación solo es compatible con la versión 4.3 o posterior";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "La aplicación solo es compatible con la versión 6.2 o posterior";
 
-"Word.OK" = "Confirmar";
+"Word.OK" = "Aceptar";
 
 "Word.Cancel" = "Cancelar";
 
 "Word.Back" = "Atrás";
 
-"OnBoarding.Error.URL" = "Error de URL de intranet";
+"OnBoarding.Error.URL" = "Error de URL eXo";
 
-"OnBoarding.Error.UnableConnectServer" = "Por favor, introduce un eXo correcto";
+"OnBoarding.Error.UnableConnectServer" = "Introduce una URL correcta";
 
-"OnBoarding.Title.RecentsServer" = "Mis intranets";
+"OnBoarding.Title.RecentsServer" = "Mis eXo";
 
 "OnBoarding.Error.ConnectionError" = "Error de conexión";
 
-"OnBoarding.Title.MostRecentServer" = "Intranet más reciente";
+"OnBoarding.Title.MostRecentServer" = "Conexión más reciente";
 
 "Internet connection lost" = "Sin conexión a Internet";
 
@@ -93,34 +93,34 @@
 
 "Shortcut.Title.ConnectTo" = "Conectar a";
 
-"Shortcut.Title.AddServer" = "Conecta tu intranet";
+"Shortcut.Title.AddServer" = "Conecta tu eXo";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Conectar a eXo Tribe";
 
 // Setting
 
-"Setting.Title.Server" = "Intranets";
+"Setting.Title.Server" = "Tus eXo";
 
-"Setting.Title.NoServer" = "Sin intranet";
+"Setting.Title.NoServer" = "Sin eXo";
 
-"Setting.Title.AddServer" = "Conecta tu intranet";
+"Setting.Title.AddServer" = "Conecta tu eXo";
 
-"Setting.Title.DeleteServer" = "Eliminar Intranet";
+"Setting.Title.DeleteServer" = "Eliminar conexión";
 
-"Setting.Message.DeleteServer" = "¿Seguro que quieres eliminar este eXo?";
+"Setting.Message.DeleteServer" = "¿Quieres eliminar esta conexión?";
 
-"Setting.Title.ApplicationVersion" = "Versión Aplicación";
+"Setting.Title.ApplicationVersion" = "Versión de aplicación";
 
 "Setting.Title.About" = "Acerca de";
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Versión de plataforma no compatible";
+"ServerManager.Title.Warning" = "Versión de Platform no compatible";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Tu intranet utiliza una versión de Platform no compatible con esta aplicación. Te recomendamos que actualices a Platform 4.3 o uses la versión 2 de la aplicación.";
+"ServerManager.Message.WarningVersionNotSupported" = "Tu conexión eXo utiliza una versión de Platform no compatible con esta aplicación. Te recomendamos que actualices a Platform 6.2 o uses la versión 2 de la aplicación.";
 
 // Add Server
 
-"Add your eXo" = "Añade tu eXo";
+"Add your eXo" = "Nueva conexión eXo";
 
 "Enter your eXo URL" = "Introduce tu URL de eXo";
