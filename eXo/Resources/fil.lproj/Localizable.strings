@@ -34,13 +34,13 @@
 
 "OnBoarding.Title.ScanCode" = "Scan code";
 
-"OnBoarding.Title.EnterUrleXo" = "Enter server URL";
+"OnBoarding.Title.EnterUrleXo" = "Enter eXo connection URL";
 
 "Delete" = "Alisin";
 
 "Cancel" = "Ikansela";
 
-"OnBoarding.Title.AddYourExo" = "Add your eXo";
+"OnBoarding.Title.AddYourExo" = "New eXo Connection";
 
 "OnBoarding.Title.ConnectToeXo" = "Connect to eXo";
 
@@ -50,21 +50,21 @@
 
 "OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Connect your intranet";
+"OnBoarding.Title.AddServer" = "Connect your eXo";
 
 "OnBoarding.Title.Others" = "Ang mga iba pa";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
 
-"OnBoarding.Title.SavingServer" = "Saving intranet ...";
+"OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
 
-"OnBoarding.Message.EnterURL" = "Enter your intranet URL";
+"OnBoarding.Message.EnterURL" = "Enter your eXo address";
 
 "OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
 
 "OnBoarding.Error.PlatformNotFound" = "Platform version not found";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 4.3 or later";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 6.2 or later";
 
 "Word.OK" = "OK";
 
@@ -72,19 +72,19 @@
 
 "Word.Back" = "Likuran";
 
-"OnBoarding.Error.URL" = "Intranet URL error";
+"OnBoarding.Error.URL" = "eXo URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Please enter a correct eXo";
+"OnBoarding.Error.UnableConnectServer" = "Please enter a correct URL";
 
-"OnBoarding.Title.RecentsServer" = "My intranets";
+"OnBoarding.Title.RecentsServer" = "My eXos";
 
 "OnBoarding.Error.ConnectionError" = "Connection Error";
 
-"OnBoarding.Title.MostRecentServer" = "Most recent intranet";
+"OnBoarding.Title.MostRecentServer" = "Most recent connection";
 
 "Internet connection lost" = "Internet connection lost";
 
-"Please make sure you have internet connection" = "Please make sure you have internet connection";
+"Please make sure you have internet connection" = "Please make sure you are connected to internet";
 
 
 // Shortcut (3D Touch)
@@ -93,21 +93,21 @@
 
 "Shortcut.Title.ConnectTo" = "Connect to";
 
-"Shortcut.Title.AddServer" = "Connect your intranet";
+"Shortcut.Title.AddServer" = "Connect your eXo";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 
 // Setting
 
-"Setting.Title.Server" = "Intranets";
+"Setting.Title.Server" = "eXos";
 
-"Setting.Title.NoServer" = "No intranet";
+"Setting.Title.NoServer" = "No eXo";
 
-"Setting.Title.AddServer" = "Connect your intranet";
+"Setting.Title.AddServer" = "Connect your eXo";
 
-"Setting.Title.DeleteServer" = "Delete Intranet";
+"Setting.Title.DeleteServer" = "Delete Connection";
 
-"Setting.Message.DeleteServer" = "Do you really want to delete this eXo?";
+"Setting.Message.DeleteServer" = "Do you really want to delete this connection?";
 
 "Setting.Title.ApplicationVersion" = "Ang Bersyon ng Aplikasyon";
 
@@ -117,10 +117,10 @@
 
 "ServerManager.Title.Warning" = "Platform version not supported";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.3 or use the application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
 
 // Add Server
 
-"Add your eXo" = "Add your eXo";
+"Add your eXo" = "New eXo Connection";
 
-"Enter your eXo URL" = "Enter your eXo URL";
+"Enter your eXo URL" = "Enter your eXo connection address";
