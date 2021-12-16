@@ -31,13 +31,13 @@
 
 "OnBoarding.Title.ScanCode" = "crwdns7015455:0crwdne7015455:0";
 
-"OnBoarding.Title.EnterUrleXo" = "crwdns7015549:0crwdne7015549:0";
+"OnBoarding.Title.EnterUrleXo" = "crwdns7015599:0crwdne7015599:0";
 
 "Delete" = "crwdns6795921:0crwdne6795921:0";
 
 "Cancel" = "crwdns6795919:0crwdne6795919:0";
 
-"OnBoarding.Title.AddYourExo" = "crwdns7015551:0crwdne7015551:0";
+"OnBoarding.Title.AddYourExo" = "crwdns7015601:0crwdne7015601:0";
 
 "OnBoarding.Title.ConnectToeXo" = "crwdns7015031:0crwdne7015031:0";
 
@@ -47,21 +47,21 @@
 
 "OnBoarding.Title.DiscovereXo" = "crwdns7015037:0crwdne7015037:0";
 
-"OnBoarding.Title.AddServer" = "crwdns7015553:0crwdne7015553:0";
+"OnBoarding.Title.AddServer" = "crwdns7015603:0crwdne7015603:0";
 
 "OnBoarding.Title.Others" = "crwdns7015041:0crwdne7015041:0";
 
 "OnBoarding.Title.eXoPlatformDescription" = "crwdns7015043:0crwdne7015043:0";
 
-"OnBoarding.Title.SavingServer" = "crwdns7015465:0crwdne7015465:0";
+"OnBoarding.Title.SavingServer" = "crwdns7015605:0crwdne7015605:0";
 
-"OnBoarding.Message.EnterURL" = "crwdns7015555:0crwdne7015555:0";
+"OnBoarding.Message.EnterURL" = "crwdns7015607:0crwdne7015607:0";
 
 "OnBoarding.Error.PlatformNotSupported" = "crwdns7015049:0crwdne7015049:0";
 
 "OnBoarding.Error.PlatformNotFound" = "crwdns7015051:0crwdne7015051:0";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "crwdns7015557:0crwdne7015557:0";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "crwdns7015609:0crwdne7015609:0";
 
 "Word.OK" = "crwdns7015055:0crwdne7015055:0";
 
@@ -69,19 +69,19 @@
 
 "Word.Back" = "crwdns7015059:0crwdne7015059:0";
 
-"OnBoarding.Error.URL" = "crwdns7015471:0crwdne7015471:0";
+"OnBoarding.Error.URL" = "crwdns7015611:0crwdne7015611:0";
 
-"OnBoarding.Error.UnableConnectServer" = "crwdns7015559:0crwdne7015559:0";
+"OnBoarding.Error.UnableConnectServer" = "crwdns7015613:0crwdne7015613:0";
 
-"OnBoarding.Title.RecentsServer" = "crwdns7015561:0crwdne7015561:0";
+"OnBoarding.Title.RecentsServer" = "crwdns7015615:0crwdne7015615:0";
 
 "OnBoarding.Error.ConnectionError" = "crwdns7015067:0crwdne7015067:0";
 
-"OnBoarding.Title.MostRecentServer" = "crwdns7015477:0crwdne7015477:0";
+"OnBoarding.Title.MostRecentServer" = "crwdns7015617:0crwdne7015617:0";
 
 "Internet connection lost" = "crwdns7015479:0crwdne7015479:0";
 
-"Please make sure you have internet connection" = "crwdns7015481:0crwdne7015481:0";
+"Please make sure you have internet connection" = "crwdns7015619:0crwdne7015619:0";
 
 
 // Shortcut (3D Touch)
@@ -90,21 +90,21 @@
 
 "Shortcut.Title.ConnectTo" = "crwdns7015077:0crwdne7015077:0";
 
-"Shortcut.Title.AddServer" = "crwdns7015563:0crwdne7015563:0";
+"Shortcut.Title.AddServer" = "crwdns7015621:0crwdne7015621:0";
 
 "Shortcut.Title.ConnnecteXoTribe" = "crwdns7015081:0crwdne7015081:0";
 
 // Setting
 
-"Setting.Title.Server" = "crwdns7015565:0crwdne7015565:0";
+"Setting.Title.Server" = "crwdns7015623:0crwdne7015623:0";
 
-"Setting.Title.NoServer" = "crwdns7015567:0crwdne7015567:0";
+"Setting.Title.NoServer" = "crwdns7015625:0crwdne7015625:0";
 
-"Setting.Title.AddServer" = "crwdns7015569:0crwdne7015569:0";
+"Setting.Title.AddServer" = "crwdns7015627:0crwdne7015627:0";
 
-"Setting.Title.DeleteServer" = "crwdns7015585:0crwdne7015585:0";
+"Setting.Title.DeleteServer" = "crwdns7015629:0crwdne7015629:0";
 
-"Setting.Message.DeleteServer" = "crwdns7015495:0crwdne7015495:0";
+"Setting.Message.DeleteServer" = "crwdns7015631:0crwdne7015631:0";
 
 "Setting.Title.ApplicationVersion" = "crwdns7015093:0crwdne7015093:0";
 
@@ -114,10 +114,10 @@
 
 "ServerManager.Title.Warning" = "crwdns7015097:0crwdne7015097:0";
 
-"ServerManager.Message.WarningVersionNotSupported" = "crwdns7015571:0crwdne7015571:0";
+"ServerManager.Message.WarningVersionNotSupported" = "crwdns7015633:0crwdne7015633:0";
 
 // Add Server
 
-"Add your eXo" = "crwdns7015573:0crwdne7015573:0";
+"Add your eXo" = "crwdns7015635:0crwdne7015635:0";
 
-"Enter your eXo URL" = "crwdns7015575:0crwdne7015575:0";
+"Enter your eXo URL" = "crwdns7015637:0crwdne7015637:0";
