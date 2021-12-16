@@ -18,13 +18,13 @@
 //
 
 
-"Upload.Warning.AllUploadFailed" = "Tous les uploads ont echoués";
+"Upload.Warning.AllUploadFailed" = "Tous les chargements ont échoué";
 
-"Upload.Warning.UploadsFailed" = "%lu téléchargements ont echoué";
+"Upload.Warning.UploadsFailed" = "%lu chargements ont échoué";
 
-"Upload.Warning.UploadFailed" = "Un téléchargement a echoué";
+"Upload.Warning.UploadFailed" = "Un chargement a échoué";
 
-"Upload.Warning.ItemsCannotBeUpload" = "%d téléchargements ont échoué";
+"Upload.Warning.ItemsCannotBeUpload" = "%d chargements ont échoué";
 
 "Upload.Warning.FileTooLarge" = "Fichier trop large";
 

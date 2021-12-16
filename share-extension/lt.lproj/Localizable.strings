@@ -68,7 +68,7 @@
 
 "LogIn.Error.UnableToPost" = "Unable to post";
 
-"Title.LoadingSpaceId" = "Loading space id";
+"Title.LoadingSpaceId" = "Loading space ";
 
 "Word.Public" = "Viešas";
 
@@ -81,6 +81,6 @@
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
 
 "Word.Back" = "Atgal";
