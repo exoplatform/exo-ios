@@ -68,7 +68,7 @@
 
 "LogIn.Error.UnableToPost" = "crwdns7015153:0crwdne7015153:0";
 
-"Title.LoadingSpaceId" = "crwdns7015503:0crwdne7015503:0";
+"Title.LoadingSpaceId" = "crwdns7015639:0crwdne7015639:0";
 
 "Word.Public" = "crwdns7015157:0crwdne7015157:0";
 
@@ -81,6 +81,6 @@
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "crwdns7015165:0crwdne7015165:0";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "crwdns7015507:0crwdne7015507:0";
+"Login.Warning.Message.PlatformVersionNotSupported" = "crwdns7015641:0crwdne7015641:0";
 
 "Word.Back" = "crwdns7015169:0crwdne7015169:0";
