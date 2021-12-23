@@ -74,7 +74,7 @@
 
 "OnBoarding.Error.URL" = "eXo URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Please enter a correct URL";
+"OnBoarding.Error.UnableConnectServer" = "Lütfen geçerli bir URL biçimi girin";
 
 "OnBoarding.Title.RecentsServer" = "My eXos";
 
@@ -101,7 +101,7 @@
 
 "Setting.Title.Server" = "eXos";
 
-"Setting.Title.NoServer" = "No eXo";
+"Setting.Title.NoServer" = "No eXo connection defined yet";
 
 "Setting.Title.AddServer" = "Connect your eXo";
 
