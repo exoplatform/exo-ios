@@ -57,7 +57,7 @@
 
 "OnBoarding.Message.EnterURL" = "Enter your eXo address";
 
-"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
+"OnBoarding.Error.PlatformNotSupported" = "إصدار المنصة غير مدعوم";
 
 "OnBoarding.Error.PlatformNotFound" = "Platform version not found";
 
@@ -112,7 +112,7 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Platform version not supported";
+"ServerManager.Title.Warning" = "إصدار المنصة غير مدعوم";
 
 "ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
 
