@@ -79,7 +79,7 @@
 
 "Setting.Title.Server" = "Server";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
+"Login.Warning.Title.PlatformVersionNotSupported" = "إصدار المنصة غير مدعوم";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
 
