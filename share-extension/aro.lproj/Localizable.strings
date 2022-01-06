@@ -20,9 +20,9 @@
 
 "Upload.Warning.AllUploadFailed" = "فشل كافة عمليات التحميل";
 
-"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+"Upload.Warning.UploadsFailed" = "فشل تحميل %lu";
 
-"Upload.Warning.UploadFailed" = "1 upload failed";
+"Upload.Warning.UploadFailed" = "فشل تحميل 1";
 
 "Upload.Warning.ItemsCannotBeUpload" = "%d ملفا لم يتمّ تحميله بنجاح";
 
@@ -36,51 +36,51 @@
 
 "Word.Post" = "شارك";
 
-"Title.SelectAccount" = "Select an account";
+"Title.SelectAccount" = "اختر حسابا";
 
 "Word.Username" = "اسم المستخدم";
 
-"Title.UnknownPassword" = "Password: Unknown";
+"Title.UnknownPassword" = "كلمة المرور: غير معروف";
 
-"Title.NeededUsernamePassoword" = "Username & password needed ";
+"Title.NeededUsernamePassoword" = "اسم المستخدم وكلمة المرور المطلوبة ";
 
 "Word.Edit" = "تغيير";
 
 "Word.Account" = "الحساب";
 
-"Login.Status.Loging" = "Signing in";
+"Login.Status.Loging" = "تسجيل الدخول";
 
 "Login.Status.WrongPassword" = "كلمة المرورغير صحيحة.";
 
-"Login.Status.AskToSignIn" = "Please sign in to post";
+"Login.Status.AskToSignIn" = "الرجاء تسجيل الدخول للنشر";
 
 "Login.Status.Offline" = "غير متصل";
 
-"Login.Status.LoginFail" = "Login fail";
+"Login.Status.LoginFail" = "فشل تسجيل الدخول";
 
-"LogIn.Warning.NoAccount" = "No account";
+"LogIn.Warning.NoAccount" = "لا يوجد حساب";
 
 "Word.Space" = "مساحة";
 
-"Login.Status.ServerProblem" = "Server Problem";
+"Login.Status.ServerProblem" = "مشكلة في الخادم";
 
-"LogIn.Status.NoSpaceId" = "Cannot load space";
+"LogIn.Status.NoSpaceId" = "لا يمكن تحميل المساحة";
 
-"LogIn.Error.UnableToPost" = "Unable to post";
+"LogIn.Error.UnableToPost" = "غير قادر على النشر";
 
-"Title.LoadingSpaceId" = "Loading space ";
+"Title.LoadingSpaceId" = "Loading space id";
 
 "Word.Public" = "عام";
 
-"Post.Title.ErrorMessage" = "Cannot post";
+"Post.Title.ErrorMessage" = "لا يمكن النشر";
 
-"Title.SpaceSelection" = "Space selection";
+"Title.SpaceSelection" = "اختيار المساحة";
 
 
-"Setting.Title.Server" = "Server";
+"Setting.Title.Server" = "الخادم";
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "إصدار المنصة غير مدعوم";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
 "Word.Back" = "رجوع";
