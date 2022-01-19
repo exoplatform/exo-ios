@@ -308,6 +308,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
 
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popupWebView?.navigationDelegate = self
+        popupWebView?.uiDelegate = self
         configuration.preferences.javaScriptEnabled = true
         configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         let preference = WKPreferences()
@@ -317,10 +319,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         configuration.allowsAirPlayForMediaPlayback = true
         configuration.allowsPictureInPictureMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
-        configuration.applicationNameForUserAgent = "Version/15.0 Mobile/15E148 Safari/604.1"
+        configuration.applicationNameForUserAgent = "Version/\(UIDevice.current.systemVersion)"
         popupWebView = WKWebView(frame: .zero, configuration: configuration)
-        popupWebView?.navigationDelegate = self
-        popupWebView?.uiDelegate = self
+
         if let newWebview = popupWebView {
             self.webViewContainer.addSubview(newWebview)
             newWebview.translatesAutoresizingMaskIntoConstraints = false
