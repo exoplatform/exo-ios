@@ -317,6 +317,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         configuration.allowsAirPlayForMediaPlayback = true
         configuration.allowsPictureInPictureMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
+        configuration.applicationNameForUserAgent = "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion)"
         popupWebView = WKWebView(frame: .zero, configuration: configuration)
         popupWebView?.navigationDelegate = self
         popupWebView?.uiDelegate = self

@@ -90,6 +90,7 @@
 		DB37321B267F79690065C7A5 /* NotificationName-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */; };
 		DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */; };
 		DB3CE0AC269C8F7F00622057 /* UIImage-Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */; };
+		DB54A563279971270080B25A /* Bundle-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB54A562279971270080B25A /* Bundle-Extension.swift */; };
 		DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */; };
 		DB6A4E6726949CFB00809B53 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */; };
 		DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */; };
@@ -264,6 +265,7 @@
 		DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName-Extension.swift"; sourceTree = "<group>"; };
 		DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide2_gif-FR.gif"; sourceTree = "<group>"; };
 		DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Gif.swift"; sourceTree = "<group>"; };
+		DB54A562279971270080B25A /* Bundle-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Extension.swift"; sourceTree = "<group>"; };
 		DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 				DB373218267F78830065C7A5 /* UIViewController-Extension.swift */,
 				DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */,
 				DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */,
+				DB54A562279971270080B25A /* Bundle-Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1168,6 +1171,7 @@
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
 				9C032E471BF3064C006F0577 /* SettingViewController.swift in Sources */,
 				D79611BC26778ACC00F2FDE8 /* HeaderConnectCell.swift in Sources */,
+				DB54A563279971270080B25A /* Bundle-Extension.swift in Sources */,
 				D79611BE26778ACC00F2FDE8 /* ServerCell.swift in Sources */,
 				9C032DCA1BE31EE5006F0577 /* String+URL.swift in Sources */,
 				DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */,
