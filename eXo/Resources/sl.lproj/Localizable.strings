@@ -101,7 +101,7 @@
 
 "Setting.Title.Server" = "eXos";
 
-"Setting.Title.NoServer" = "No eXo connection defined yet";
+"Setting.Title.NoServer" = "eXo povezava še ni definirana";
 
 "Setting.Title.AddServer" = "Connect your eXo";
 
@@ -111,7 +111,7 @@
 
 "Setting.Title.ApplicationVersion" = "Različica aplikacije";
 
-"Setting.Title.About" = "About";
+"Setting.Title.About" = "O";
 
 // Server Manager
 
