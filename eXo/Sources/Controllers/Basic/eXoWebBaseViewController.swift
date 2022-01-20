@@ -49,7 +49,7 @@ class eXoWebBaseController: UIViewController {
         configuration.allowsPictureInPictureMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
         // Add configuration to wkwebview relevant to user agent
-        configuration.applicationNameForUserAgent = "Version/8.0.2 Safari/600.2.5"
+        configuration.applicationNameForUserAgent = "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion)"
         webView = WKWebView (frame:CGRect(x: 0,y: 0,width: webViewContainer.bounds.size.width, height: webViewContainer.bounds.size.height), configuration: configuration)
         //Load the page web
         let url = URL(string: serverURL!)
