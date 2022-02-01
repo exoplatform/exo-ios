@@ -164,11 +164,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             loadStateStatusPage()
         }
         
-        if let refreshCount = self.defaults.value(forKey: "countRefresh") as? Int {
-            if refreshCount == 1 {
-                webView.reload()
-            }
-        }
         if let urlToSee = webView.url?.absoluteString {
             print("=============== didFinish Url : \(urlToSee)")
         }
@@ -231,24 +226,17 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+            PushTokenSynchronizer.shared.url = request.url?.absoluteString.serverDomainWithProtocolAndPort
             PushTokenSynchronizer.shared.tryDestroyToken()
             self.defaults.setValue(false, forKey: "wasConnectedBefore")
             self.defaults.setValue("", forKey: "serverURL")
             self.defaults.setValue(false, forKey: "isLoggedIn")
             self.defaults.setValue(false, forKey: "isGoogleAuth")
+            webView.clean()
             let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
             appDelegate.handleRootConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-        
-
-        // Refresh the web page if is needed.
-        if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
-            if last == "dw/" || last == "dw"{
-                countRefresh += 1
-                self.defaults.setValue(countRefresh, forKey: "countRefresh")
-            }
-        }
         
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
@@ -388,6 +376,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 self.defaults.setValue(imgView.image?.pngData(), forKey: "\(domain)")
             }
         }
+    }
+}
+
+extension WKWebView {
+     func clean() {
+         let websiteDataTypes = NSSet(array: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache])
+         let date = NSDate(timeIntervalSince1970: 0)
+           WKWebsiteDataStore.default().removeData(ofTypes: websiteDataTypes as! Set<String>, modifiedSince: date as Date, completionHandler:{
+               print("WKWebsiteDataStore cache deleted:")
+           })
     }
 }
 
