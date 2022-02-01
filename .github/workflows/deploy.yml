@@ -23,6 +23,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Setup Xcode 13
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '13.0'
       # Use SSH Key to gather certificate from a private Github repository. Use a dedicated on is recommended.
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
