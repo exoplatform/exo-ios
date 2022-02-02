@@ -164,11 +164,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             loadStateStatusPage()
         }
         
-        if let refreshCount = self.defaults.value(forKey: "countRefresh") as? Int {
-            if refreshCount == 1 {
-                webView.reload()
-            }
-        }
         if let urlToSee = webView.url?.absoluteString {
             print("=============== didFinish Url : \(urlToSee)")
         }
@@ -231,6 +226,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }
         // Detect the logout action in to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+            PushTokenSynchronizer.shared.url = request.url?.absoluteString.serverDomainWithProtocolAndPort
             PushTokenSynchronizer.shared.tryDestroyToken()
             self.defaults.setValue(false, forKey: "wasConnectedBefore")
             self.defaults.setValue("", forKey: "serverURL")
@@ -240,15 +236,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             appDelegate.handleRootConnect()
         }
         let serverDomain = URL(string: self.serverURL!)?.host
-        
-
-        // Refresh the web page if is needed.
-        if let urlArry = request.url?.absoluteString.components(separatedBy: "/portal/"), let last = urlArry.last {
-            if last == "dw/" || last == "dw"{
-                countRefresh += 1
-                self.defaults.setValue(countRefresh, forKey: "countRefresh")
-            }
-        }
         
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;

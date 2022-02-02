@@ -22,7 +22,7 @@ class PushTokenRestClient {
     
     func registerToken(username: String, token: String, baseUrl: URL, completion: @escaping (Bool) -> Void) {
         let params = ["username": username, "token": token, "type": "ios"]
-        let registerTokenUrl = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/rest/private/v1/messaging/device")!
+        let registerTokenUrl = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/portal/rest/v1/messaging/device")!
         print("==== registerTokenUrl ========> \(registerTokenUrl)")
         print("==== Params ==================> \(params)")
         let request = createRequest(url: registerTokenUrl, method: "POST", data: try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted))
@@ -30,7 +30,7 @@ class PushTokenRestClient {
     }
     
     func unregisterToken(token: String, baseUrl: URL, completion: @escaping (Bool) -> Void) {
-        let unregisterTokenUrl = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/rest/private/v1/messaging/device/\(token)")!
+        let unregisterTokenUrl = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/portal/rest/v1/messaging/device/\(token)")!
         print("unregisterTokenUrl ========> \(unregisterTokenUrl)")
         let request = createRequest(url: unregisterTokenUrl, method: "DELETE", data: nil)
         doRequest(request) { result in
