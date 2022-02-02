@@ -48,6 +48,13 @@ class OnboardingViewController: UIViewController {
     }
     
     func initView() {
+        DispatchQueue.global().async {
+            CheckStoreUpdate.shared.checkAppStore(callback: { (isNew, appStoreVersion) in
+                if isNew {
+                    self.showAlertUpdateVersion(title:"OnBoarding.Title.UpdateVersion".localized,msg: "OnBoarding.Message.UpdateVersion".localized)
+                }
+            })
+        }
         onboardingFrList = [
             OnboardingItem(title: "OnBoarding.Title.ShowQRCode".localized, image: "slide1_gif-FR"),
             OnboardingItem(title: "OnBoarding.Title.ScanQRsettings".localized, image: "slide2_gif-FR"),

@@ -100,6 +100,9 @@
 		DB6E0332269C9FBC009AEA94 /* slide2_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */; };
 		DB824AD82716EED70087C79B /* slide1_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB824AD62716EED70087C79B /* slide1_gif-FR.gif */; };
 		DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB824AD72716EED70087C79B /* slide1_gif-EN.gif */; };
+		DBC0162B27AAEDFD004D1684 /* CheckUpdatePopupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC0162927AAEDFD004D1684 /* CheckUpdatePopupVC.xib */; };
+		DBC0162C27AAEDFD004D1684 /* CheckUpdatePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162A27AAEDFD004D1684 /* CheckUpdatePopupVC.swift */; };
+		DBC0162E27AAEE0C004D1684 /* CheckStoreUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -275,6 +278,9 @@
 		DB6E0330269C9FBC009AEA94 /* slide2_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide2_gif-EN.gif"; sourceTree = "<group>"; };
 		DB824AD62716EED70087C79B /* slide1_gif-FR.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-FR.gif"; sourceTree = "<group>"; };
 		DB824AD72716EED70087C79B /* slide1_gif-EN.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "slide1_gif-EN.gif"; sourceTree = "<group>"; };
+		DBC0162927AAEDFD004D1684 /* CheckUpdatePopupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckUpdatePopupVC.xib; sourceTree = "<group>"; };
+		DBC0162A27AAEDFD004D1684 /* CheckUpdatePopupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUpdatePopupVC.swift; sourceTree = "<group>"; };
+		DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckStoreUpdate.swift; sourceTree = "<group>"; };
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		DD7E70396AD876E86037F111 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -509,6 +515,7 @@
 				9C935F7D1BD60286009C065B /* Tool.swift */,
 				DB31D88626A1EF5D00D25F96 /* Connectivity.swift */,
 				DB31D88726A1EF5D00D25F96 /* Reachability.swift */,
+				DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -516,6 +523,7 @@
 		9C3AD2791BCF5D6E0094CFF9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBC0162827AAEDFD004D1684 /* CheckUpdatePopupVC */,
 				DB6A4E6026949CFB00809B53 /* OnboardingVC */,
 				DBC878BF269683070036EB0F /* QRCodeScannerVC */,
 				D79611EF2677A81A00F2FDE8 /* AddDomainVC */,
@@ -756,6 +764,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DBC0162827AAEDFD004D1684 /* CheckUpdatePopupVC */ = {
+			isa = PBXGroup;
+			children = (
+				DBC0162927AAEDFD004D1684 /* CheckUpdatePopupVC.xib */,
+				DBC0162A27AAEDFD004D1684 /* CheckUpdatePopupVC.swift */,
+			);
+			path = CheckUpdatePopupVC;
+			sourceTree = "<group>";
+		};
 		DBC878BF269683070036EB0F /* QRCodeScannerVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +983,7 @@
 				DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */,
 				D79611BF26778ACC00F2FDE8 /* ServerCell.xib in Resources */,
 				DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */,
+				DBC0162B27AAEDFD004D1684 /* CheckUpdatePopupVC.xib in Resources */,
 				9C3AD2541BCF56900094CFF9 /* LaunchScreen.storyboard in Resources */,
 				DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */,
 				AB18539C206A2CF100D9726C /* GoogleService-Info.plist in Resources */,
@@ -1156,6 +1174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C032E311BE897CE006F0577 /* LoginViewController.swift in Sources */,
+				DBC0162C27AAEDFD004D1684 /* CheckUpdatePopupVC.swift in Sources */,
 				9C032E501BF34BF1006F0577 /* ServerEditViewController.swift in Sources */,
 				DB31D88926A1EF5D00D25F96 /* Reachability.swift in Sources */,
 				D7C0FADA267BA37D00C579EB /* NSMutableAttributedString-Extension.swift in Sources */,
@@ -1165,6 +1184,7 @@
 				D79611CF26778B1E00F2FDE8 /* UIColor-Extension.swift in Sources */,
 				9C3AD2841BCF9D2D0094CFF9 /* ServerSelectionViewController.swift in Sources */,
 				D79611C126778ACC00F2FDE8 /* ConnectToExoViewController.swift in Sources */,
+				DBC0162E27AAEE0C004D1684 /* CheckStoreUpdate.swift in Sources */,
 				B5C7335A201F1B0700A2EA71 /* PushTokenSynchronizer.swift in Sources */,
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				D7F12D3026789E08007C8294 /* CustomPopupViewController.swift in Sources */,

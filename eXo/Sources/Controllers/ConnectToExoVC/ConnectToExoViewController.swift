@@ -85,6 +85,13 @@ class ConnectToExoViewController: UIViewController {
     }
     
     func initView() {
+        DispatchQueue.global().async {
+            CheckStoreUpdate.shared.checkAppStore(callback: { (isNew, appStoreVersion) in
+                if isNew {
+                    self.showAlertUpdateVersion(title:"OnBoarding.Title.UpdateVersion".localized,msg: "OnBoarding.Message.UpdateVersion".localized)
+                }
+            })
+        }
         connectTableView.delegate = self
         connectTableView.dataSource = self
         connectTableView.register(HeaderConnectCell.nib(), forCellReuseIdentifier: HeaderConnectCell.cellId)
