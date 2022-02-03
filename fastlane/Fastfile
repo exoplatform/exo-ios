@@ -186,7 +186,7 @@ platform :ios do
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
     if ! ENV["EXO_APP_ENVIRONMENT"]
-      ENV["EXO_APP_ENVIRONMENT"]="6.2.0"
+      ENV["EXO_APP_ENVIRONMENT"]="6.2.1"
     end
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
     ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
