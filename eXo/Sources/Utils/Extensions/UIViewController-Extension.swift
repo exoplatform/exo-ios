@@ -26,6 +26,14 @@ extension UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func showAlertUpdateVersion(title:String,msg:String){
+        let popupVC = CheckUpdatePopupVC(nibName: "CheckUpdatePopupVC", bundle: nil)
+        popupVC.titleDescription = title
+        popupVC.descriptionMessage = msg
+        popupVC.modalPresentationStyle = .overFullScreen
+        present(popupVC, animated: false, completion: nil)
+    }
+    
     func showAlertMessage(title:String,msg:String,action:ActionHandler){
         let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
         popupVC.titleDescription = title
@@ -34,6 +42,7 @@ extension UIViewController {
         popupVC.modalPresentationStyle = .overFullScreen
         present(popupVC, animated: false, completion: nil)
     }
+    
     func showAlertMessageDelete(title:String,msg:String,action:ActionHandler,server:Server){
         let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
         popupVC.titleDescription = title

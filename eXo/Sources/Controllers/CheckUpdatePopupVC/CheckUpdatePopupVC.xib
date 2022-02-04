@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckUpdatePopupVC" customModule="eXo" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="dVc-DU-ee9" id="1x8-c6-60r"/>
+                <outlet property="pupupTitle" destination="15f-o8-1Cn" id="yL0-Sv-HhV"/>
+                <outlet property="updateButton" destination="57E-gj-j3u" id="4eJ-e4-kM4"/>
+                <outlet property="updateMessage" destination="DaW-4w-fuS" id="uJB-B7-GfW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqt-Rr-8cm" customClass="DesignableView" customModule="eXo" customModuleProvider="target">
+                    <rect key="frame" x="60" y="278" width="294" height="174"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57E-gj-j3u">
+                            <rect key="frame" x="159" y="122" width="100" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.26274509800000001" green="0.50980392159999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Update">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="updateButtonTapped:" destination="-1" eventType="touchUpInside" id="jz7-o0-5I3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVc-DU-ee9">
+                            <rect key="frame" x="35" y="122" width="100" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="0.26274509800000001" green="0.50980392159999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="Q1f-0B-rEd"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15f-o8-1Cn">
+                            <rect key="frame" x="32" y="24" width="230" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Ara-L8-s64"/>
+                                <constraint firstAttribute="width" constant="230" id="t3E-mn-3nQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Title Title Title Title Title Title Title Title Title Title Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaW-4w-fuS">
+                            <rect key="frame" x="32" y="58.5" width="230" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="E7G-4i-rSO"/>
+                                <constraint firstAttribute="width" constant="230" id="bD7-xi-KJx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="15f-o8-1Cn" firstAttribute="centerX" secondItem="Dqt-Rr-8cm" secondAttribute="centerX" id="QdU-8H-17o"/>
+                        <constraint firstItem="15f-o8-1Cn" firstAttribute="top" secondItem="Dqt-Rr-8cm" secondAttribute="top" constant="24" id="Rp9-8B-lBb"/>
+                        <constraint firstItem="DaW-4w-fuS" firstAttribute="centerX" secondItem="Dqt-Rr-8cm" secondAttribute="centerX" id="WfK-0M-oU1"/>
+                        <constraint firstItem="DaW-4w-fuS" firstAttribute="centerY" secondItem="Dqt-Rr-8cm" secondAttribute="centerY" constant="-6" id="YIc-aG-HqM"/>
+                        <constraint firstAttribute="width" constant="294" id="aUQ-oW-MBG"/>
+                        <constraint firstAttribute="height" constant="174" id="zw3-uW-Bx5"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.25471621143574619" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Dqt-Rr-8cm" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="odT-4g-VXp"/>
+                <constraint firstItem="Dqt-Rr-8cm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="234" id="pXM-X7-1W9"/>
+            </constraints>
+            <point key="canvasLocation" x="28.985507246376812" y="0.6696428571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
