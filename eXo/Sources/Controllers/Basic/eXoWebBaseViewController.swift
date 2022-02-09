@@ -49,8 +49,13 @@ class eXoWebBaseController: UIViewController {
         configuration.allowsPictureInPictureMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
         // Add configuration to wkwebview relevant to user agent
-        configuration.applicationNameForUserAgent =  "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion) Safari/604.1"
         webView = WKWebView (frame:CGRect(x: 0,y: 0,width: webViewContainer.bounds.size.width, height: webViewContainer.bounds.size.height), configuration: configuration)
+        // Add a custom values to the default user agent
+        webView?.evaluateJavaScript("navigator.userAgent") { (result, error) in
+            if let userAgent = result as? String {
+                self.webView?.customUserAgent = userAgent + "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion) Safari/604.1"
+            }
+        }
         //Load the page web
         let url = URL(string: serverURL!)
         // check PLF version and go back if it's less than 4.3

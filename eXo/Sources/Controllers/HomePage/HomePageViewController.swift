@@ -304,11 +304,17 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         configuration.allowsAirPlayForMediaPlayback = true
         configuration.allowsPictureInPictureMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
-        configuration.applicationNameForUserAgent =  "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion) Safari/604.1"
+       // configuration.applicationNameForUserAgent = "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion)"
         popupWebView = WKWebView(frame: .zero, configuration: configuration)
         popupWebView?.navigationDelegate = self
         popupWebView?.uiDelegate = self
         if let newWebview = popupWebView {
+            // Add a custom values to the default user agent
+            webView.evaluateJavaScript("navigator.userAgent") { (result, error) in
+                if let userAgent = result as? String {
+                    newWebview.customUserAgent = userAgent + "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion) Safari/604.1"
+                }
+            }
             self.webViewContainer.addSubview(newWebview)
             newWebview.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
