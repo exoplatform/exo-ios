@@ -42,7 +42,6 @@ class AddDomainViewController: UIViewController,UITextFieldDelegate {
         containerView.addBorderWith(width: 1, color: .lightGray, cornerRadius: 6)
         inputUrlTextField.delegate = self
         inputUrlTextField.returnKeyType = UIReturnKeyType.go
-//        companyWidthConstraint.constant = companyTextField.intrinsicContentSize.width
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }

@@ -18,9 +18,10 @@
 import UIKit
 import WebKit
 import Kingfisher
+import AVFoundation
 
-class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate {
-    
+class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
+
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var doneButton: UIButton!
@@ -32,6 +33,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
+    var player: AVAudioPlayer?
+
     private var popupWebView: WKWebView?
 
     // MARK: View Controller lifecycle
@@ -47,6 +50,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             webView?.uiDelegate = self
             webView?.configuration.preferences.javaScriptEnabled = true
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+            // inject JS to capture console.log output and send to iOS
+            let source = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
+            let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            webView?.configuration.userContentController.addUserScript(script)
+            // register the bridge script that listens for the output
+            webView?.configuration.userContentController.add(self, name: "logHandler")
             self.configureDoneButton()
         }
     }
@@ -326,6 +335,29 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         popupWebView = nil
     }
     
+    // MARK: WKScriptMessageHandler
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "logHandler" {
+            print("logHandler =====> : \(message.body)")
+            /// Ringtone of Incoming call not working when have ios version lower than 15.
+            if #available(iOS 15.0, *) {} else {
+                if "\(message.body)".contains("call") {
+                    parseCallState(message:message.body as! String)
+                }
+            }
+        }
+    }
+    
+    func parseCallState(message:String){
+        if message.contains("Incoming call") || message.contains("Call start ringing"){
+            playSound(true)
+        }
+        if message.contains("Call declined") || message.contains("User call leaved") || message.contains("Call accepted") || message.contains("User already in the started call"){
+            playSound(false)
+        }
+    }
+    
     /*
      Display the Onboarding View Controller if:
      - The view has never been shown
@@ -376,5 +408,23 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             }
         }
     }
+    
+    func playSound(_ playSound:Bool) {
+        guard let path = Bundle.main.path(forResource: "Ringtone", ofType:"mp3") else {
+            return }
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            if playSound {
+                player?.play()
+            }else{
+                player?.stop()
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
 }
 
