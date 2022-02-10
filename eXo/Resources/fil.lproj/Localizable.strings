@@ -20,6 +20,9 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
+"OnBoarding.Title.UpdateVersion" = "eXo Update";
+
+"OnBoarding.Message.UpdateVersion" = "To use the app, please download the latest version";
 
 "OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
 
@@ -67,7 +70,7 @@
 
 "Word.Cancel" = "Kanselahin";
 
-"Word.Back" = "Bumalik";
+"Word.Back" = "Likuran";
 
 "OnBoarding.Error.URL" = "Intranet URL error";
 
