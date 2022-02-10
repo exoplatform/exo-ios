@@ -20,6 +20,9 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
+"OnBoarding.Title.UpdateVersion" = "crwdns7016236:0crwdne7016236:0";
+
+"OnBoarding.Message.UpdateVersion" = "crwdns7016238:0crwdne7016238:0";
 
 "OnBoarding.Title.ScanQRCode" = "crwdns7015451:0crwdne7015451:0";
 

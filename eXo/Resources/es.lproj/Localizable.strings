@@ -20,6 +20,9 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
+"OnBoarding.Title.UpdateVersion" = "Actualización eXo";
+
+"OnBoarding.Message.UpdateVersion" = "Para usar la aplicación, descarga la última versión";
 
 "OnBoarding.Title.ScanQRCode" = "Escanea tu código QR para conectar";
 
