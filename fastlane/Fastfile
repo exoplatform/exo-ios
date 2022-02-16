@@ -194,7 +194,7 @@ platform :ios do
     internal_build()
 
     upload_to_app_store(
-      team_id: "11998951888", # eXo
+      team_id: "476100", # eXo
       app_identifier: "#{ENV["EXO_APP_ID"]}",
       copyright: "2021 eXo Platform SAS",
       skip_metadata: true,
