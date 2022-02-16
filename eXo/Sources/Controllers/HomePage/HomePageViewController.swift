@@ -143,6 +143,13 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if (webView?.canGoBack == true ) {
             webView?.goBack()
             doneButton.isHidden = true
+        }else{
+            /*
+             if the the request is loaded from different wkWebview we have close it instead of go back.
+             */
+            if let _popupWebView = popupWebView {
+                self.webViewDidClose(_popupWebView)
+            }
         }
     }
     
@@ -233,7 +240,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if let urlToSee = request.url?.absoluteString {
             print("=============== Navigation Url : \(urlToSee)")
         }
-        // Detect the logout action in to quit this screen.
+        // Detect the logout action to quit this screen.
         if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
             PushTokenSynchronizer.shared.url = request.url?.absoluteString.serverDomainWithProtocolAndPort
             PushTokenSynchronizer.shared.tryDestroyToken()
@@ -313,7 +320,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         configuration.allowsAirPlayForMediaPlayback = true
         configuration.allowsPictureInPictureMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
-       // configuration.applicationNameForUserAgent = "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion)"
         popupWebView = WKWebView(frame: .zero, configuration: configuration)
         popupWebView?.navigationDelegate = self
         popupWebView?.uiDelegate = self
@@ -342,12 +348,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     }
     
     // MARK: WKScriptMessageHandler
-
+    
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if message.name == "logHandler" {
-            print("logHandler =====> : \(message.body)")
-            /// Ringtone of Incoming call not working when have ios version lower than 15.
-            if #available(iOS 15.0, *) {} else {
+        if #available(iOS 15.0, *) {} else {
+            if message.name == "logHandler" {
+                print("logHandler =====> : \(message.body)")
+                /// Ringtone of Incoming call not working when have ios version lower than 15.
                 if "\(message.body)".contains("call") {
                     parseCallState(message:message.body as! String)
                 }
