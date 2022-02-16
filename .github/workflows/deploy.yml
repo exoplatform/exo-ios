@@ -63,5 +63,5 @@ jobs:
           xcrun agvtool new-version -all 01
       # Deploy eXo iOS bundle to appalossa store
       - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+        uses: mxschmitt/action-tmate@v3.11
 
