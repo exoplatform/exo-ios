@@ -149,6 +149,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
              */
             if let _popupWebView = popupWebView {
                 self.webViewDidClose(_popupWebView)
+                doneButton.isHidden = true
             }
         }
     }
