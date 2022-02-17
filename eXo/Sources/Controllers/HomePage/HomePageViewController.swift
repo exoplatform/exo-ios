@@ -240,19 +240,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         if let urlToSee = request.url?.absoluteString {
             print("=============== Navigation Url : \(urlToSee)")
         }
-        // Detect the logout action in to quit this screen.
-        if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
-            PushTokenSynchronizer.shared.url = request.url?.absoluteString.serverDomainWithProtocolAndPort
-            PushTokenSynchronizer.shared.tryDestroyToken()
-            self.defaults.setValue(false, forKey: "wasConnectedBefore")
-            self.defaults.setValue("", forKey: "serverURL")
-            self.defaults.setValue(false, forKey: "isLoggedIn")
-            self.defaults.setValue(false, forKey: "isGoogleAuth")
-            let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-            appDelegate.handleRootConnect()
-        }
-        let serverDomain = URL(string: self.serverURL!)?.host
         
+        // Detect the logout action in to quit this screen.
+        
+        if request.url?.absoluteString.range(of: "portal:action=Logout") != nil  {
+            logout(request: request)
+        }
+        
+        let serverDomain = URL(string: self.serverURL!)?.host
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
@@ -436,6 +431,20 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    // Logout : Destroy token device as well as clear user data .
+    
+    func logout(request:URLRequest) {
+        PushTokenSynchronizer.shared.url = request.url?.absoluteString.serverDomainWithProtocolAndPort
+        PushTokenSynchronizer.shared.tryDestroyToken()
+        self.defaults.setValue(false, forKey: "wasConnectedBefore")
+        self.defaults.setValue("", forKey: "serverURL")
+        self.defaults.setValue(false, forKey: "isLoggedIn")
+        self.defaults.setValue(false, forKey: "isGoogleAuth")
+        WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
+        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+        appDelegate.handleRootConnect()
     }
     
 }
