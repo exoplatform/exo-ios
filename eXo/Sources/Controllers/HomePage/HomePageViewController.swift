@@ -443,6 +443,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         self.defaults.setValue("", forKey: "serverURL")
         self.defaults.setValue(false, forKey: "isLoggedIn")
         self.defaults.setValue(false, forKey: "isGoogleAuth")
+        /// old API cookies
+        for cookie in HTTPCookieStorage.shared.cookies ?? [] {
+            HTTPCookieStorage.shared.deleteCookie(cookie)
+        }
+        /// URL cache
+        URLCache.shared.removeAllCachedResponses()
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.handleRootConnect()
