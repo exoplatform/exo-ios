@@ -11,6 +11,7 @@ import Firebase
 import FirebaseCrashlytics
 import FirebaseMessaging
 import UserNotifications
+import WebKit
 
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
@@ -304,6 +305,13 @@ extension eXoAppDelegate {
     
     func setRootSessionTimeout() {
         if PushTokenSynchronizer.shared.isSessionExpired(delegate: (self.window?.rootViewController)!, inWeb: false) {
+            /// old API cookies
+            for cookie in HTTPCookieStorage.shared.cookies ?? [] {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+            /// URL cache
+            URLCache.shared.removeAllCachedResponses()
+            WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
             handleRootConnect()
         }
     }
