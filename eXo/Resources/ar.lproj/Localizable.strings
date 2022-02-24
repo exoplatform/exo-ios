@@ -20,9 +20,9 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
-"OnBoarding.Title.UpdateVersion" = "eXo Update";
+"OnBoarding.Title.UpdateVersion" = "تحديث eXo";
 
-"OnBoarding.Message.UpdateVersion" = "To use the app, please download the latest version";
+"OnBoarding.Message.UpdateVersion" = "لاستخدام التطبيق، الرجاء تحميل أحدث إصدار";
 
 "OnBoarding.Title.ScanQRCode" = "امسح رمز QR الخاص بك للاتصال";
 
@@ -48,7 +48,7 @@
 
 "OnBoarding.Title.SignInToeXo" = "تسجيل الدخول إلى eXo";
 
-"OnBoarding.Title.DiscovereXo" = "اكتشف قبيلة أكزو";
+"OnBoarding.Title.DiscovereXo" = "اكتشف قبيلة eXo";
 
 "OnBoarding.Title.AddServer" = "ربط eXo الخاص بك";
 
@@ -82,7 +82,7 @@
 
 "OnBoarding.Title.MostRecentServer" = "أحدث اتصال";
 
-"Internet connection lost" = "فقدان الاتصال بالإنترنت";
+"Internet connection lost" = "لا يوجد اتصال بالإنترنت";
 
 "Please make sure you have internet connection" = "الرجاء التأكد من أنك متصل بالإنترنت";
 
