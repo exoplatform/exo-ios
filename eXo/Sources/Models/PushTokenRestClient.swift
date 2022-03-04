@@ -17,7 +17,7 @@ class PushTokenRestClient {
     var rememberMeCookieValue: String?
     var isDuringSync = false
     var canDoRequest: Bool {
-        return !isDuringSync && sessionCookieValue != nil && rememberMeCookieValue != nil && sessionSsoCookieValue != nil
+        return !isDuringSync && sessionCookieValue != nil && sessionSsoCookieValue != nil
     }
     
     func registerToken(username: String, token: String, baseUrl: URL, completion: @escaping (Bool) -> Void) {
@@ -46,8 +46,8 @@ class PushTokenRestClient {
     private func createRequest(url: URL, method: String, data: Data?) -> URLRequest {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: Config.timeout)
         var headers = ["Content-Type": "application/json"]
-        if let sessionCookieValue = sessionCookieValue, let rememberMeCookieValue = rememberMeCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
-            headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue); \(Cookies.rememberMe.rawValue)=\(rememberMeCookieValue); \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
+        if let sessionCookieValue = sessionCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
+            headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue);  \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
         }
         request.allHTTPHeaderFields = headers
         request.httpMethod = method
