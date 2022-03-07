@@ -59,7 +59,7 @@ jobs:
           MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       - name: Set iOS Application version
         run: |
-          echo "EXO_APP_ENVIRONMENT=6.2.2" >> $GITHUB_ENV
+          echo "EXO_APP_ENVIRONMENT=6.2.3" >> $GITHUB_ENV
           xcrun agvtool new-version -all 01
       # Deploy eXo iOS bundle to appalossa store
       - name: Setup tmate session
