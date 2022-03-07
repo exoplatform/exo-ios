@@ -140,13 +140,15 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     // MARK: Actions
     
     @IBAction func goBackAction(_ sender: AnyObject) {
-            /*
-             if the the request is loaded from different wkWebview we have close it instead of go back.
-             */
-            if let _popupWebView = popupWebView {
-                self.webViewDidClose(_popupWebView)
-                doneButton.isHidden = true
-            }
+        /*
+         if the the request is loaded from different wkWebview we have close it instead of go back.
+         */
+        if let _popupWebView = popupWebView {
+            self.webViewDidClose(_popupWebView)
+        }else if (webView?.canGoBack == true ) {
+            webView?.goBack()
+        }
+        doneButton.isHidden = true
     }
     
     // MARK: WKWebViewDelegate
