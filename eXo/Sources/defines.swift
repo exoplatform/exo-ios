@@ -30,6 +30,7 @@ struct Config {
     // eXo Apple Store link
     static let eXoAppleStoreUrl:String = "https://apps.apple.com/us/app/exo/id410476273"
     static let communityURL:String =  "https://community.exoplatform.com"
+    static let communityUrlDomain:String =  "community.exoplatform"
     static let minimumPlatformVersionSupported:Float = 4.3
     static let maximumShortcutAllow:Int = 4
     static let timeout:TimeInterval = 60.0 // in seconds

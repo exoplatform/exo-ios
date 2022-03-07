@@ -46,8 +46,17 @@ class PushTokenRestClient {
     private func createRequest(url: URL, method: String, data: Data?) -> URLRequest {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: Config.timeout)
         var headers = ["Content-Type": "application/json"]
-        if let sessionCookieValue = sessionCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
-            headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue);  \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
+        // Setup RememberMe cookie just for community users
+        if let _url = url.host {
+            if _url.contains(Config.communityUrlDomain) {
+                if let sessionCookieValue = sessionCookieValue, let rememberMeCookieValue = rememberMeCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
+                    headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue); \(Cookies.rememberMe.rawValue)=\(rememberMeCookieValue); \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
+                }
+            }else{
+                if let sessionCookieValue = sessionCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
+                    headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue);  \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
+                }
+            }
         }
         request.allHTTPHeaderFields = headers
         request.httpMethod = method
@@ -72,7 +81,7 @@ class PushTokenRestClient {
                     return
                 default:
                     self.semaphore.signal()
-
+                    
                     print("---REST:\tPush token request has failed. Server response: \(response.debugDescription) ---> Answered on request: \(request.debugDescription) : \((request.allHTTPHeaderFields ?? [:]).debugDescription)")
                 }
             }
@@ -83,53 +92,53 @@ class PushTokenRestClient {
     }
     
     func checkUserSession(username: String, baseUrl: URL, completion: @escaping (Bool) -> Void){
-           guard let checkSessionURL = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/portal/rest/state/status/\(username)") else {
-               print("Error: cannot create URL")
-               return
-           }
-           print("==== checkSessionURL ========> \(checkSessionURL)")
-           // Create the url request
-           var request = URLRequest(url: checkSessionURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: Config.timeout)
-           var headers = ["Content-Type": "application/json"]
-           if let sessionCookieValue = sessionCookieValue, let rememberMeCookieValue = rememberMeCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
-               headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue); \(Cookies.rememberMe.rawValue)=\(rememberMeCookieValue); \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
-           }
-           request.allHTTPHeaderFields = headers
-           request.httpMethod = "GET"
-           URLSession.shared.dataTask(with: request) { data, response, error in
-               guard error == nil else {
-                   print("Error: error calling GET")
-                   print(error!)
-                   return
-               }
-               guard let data = data else {
-                   print("Error: Did not receive data")
-                   return
-               }
-               guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                   print("Error: HTTP request failed")
-                   completion(true)
-                   return
-               }
-               do {
-                   guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                       print("Error: Cannot convert data to JSON object")
-                       return
-                   }
-                   guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                       print("Error: Cannot convert JSON object to Pretty JSON data")
-                       return
-                   }
-                   guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                       print("Error: Could print JSON in String")
-                       return
-                   }
-                   print(prettyPrintedJson)
-                   completion(false)
-               } catch {
-                   print("Error: Trying to convert JSON data to string")
-                   return
-               }
-           }.resume()
-       }
+        guard let checkSessionURL = URL(string: baseUrl.absoluteString.serverDomainWithProtocolAndPort! + "/portal/rest/state/status/\(username)") else {
+            print("Error: cannot create URL")
+            return
+        }
+        print("==== checkSessionURL ========> \(checkSessionURL)")
+        // Create the url request
+        var request = URLRequest(url: checkSessionURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: Config.timeout)
+        var headers = ["Content-Type": "application/json"]
+        if let sessionCookieValue = sessionCookieValue, let rememberMeCookieValue = rememberMeCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
+            headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue); \(Cookies.rememberMe.rawValue)=\(rememberMeCookieValue); \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
+        }
+        request.allHTTPHeaderFields = headers
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("Error: error calling GET")
+                print(error!)
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                completion(true)
+                return
+            }
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
+                }
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Could print JSON in String")
+                    return
+                }
+                print(prettyPrintedJson)
+                completion(false)
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
+            }
+        }.resume()
+    }
 }
