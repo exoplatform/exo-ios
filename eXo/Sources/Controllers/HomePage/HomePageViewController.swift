@@ -197,7 +197,23 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-        let response:HTTPURLResponse = navigationResponse.response as! HTTPURLResponse
+        guard let response:HTTPURLResponse = navigationResponse.response as? HTTPURLResponse else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        // Detect the file to download.
+        
+        if response.url?.absoluteString.range(of: "download?resourceId=") != nil || response.url?.absoluteString.range(of: "/download/") != nil {
+            if let url = response.url {
+                let fileName = getFileNameFromResponse(navigationResponse.response)
+                downloadData(webView: webView, fromURL: url, fileName: fileName) { success, destinationURL in
+                    if success, let destinationURL = destinationURL {
+                        self.fileDownloadedAtURL(url: destinationURL)
+                    }
+                }
+            }
+        }
         doneButton.isHidden = true
         let serverDomain = URL(string: self.serverURL!)?.host
         
@@ -453,3 +469,68 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
 }
 
+extension HomePageViewController {
+    // Download the file.
+    private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
+        webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
+            let session = URLSession.shared
+            session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
+            let task = session.downloadTask(with: url) { localURL, urlResponse, error in
+                if let localURL = localURL {
+                    let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
+                    if FileManager().fileExists(atPath: destinationURL.path){
+                        print("File already exists [\(destinationURL.path)]")
+                        completion(false, nil)
+                    }else{
+                        completion(true, destinationURL)
+                    }
+                }else {
+                    completion(false, nil)
+                }
+            }
+            task.resume()
+        }
+    }
+    // Get the file name.
+    private func getFileNameFromResponse(_ response:URLResponse) -> String {
+        if let httpResponse = response as? HTTPURLResponse {
+            let headers = httpResponse.allHeaderFields
+            print("headers file ======> \(headers)")
+            if let disposition = headers["Content-Disposition"] as? String {
+                print("Content-Disposition ======> \(disposition)")
+                let components = disposition.components(separatedBy: ";")
+                if components.count > 1 {
+                    let innerComponents = components[1].components(separatedBy: "=")
+                    if innerComponents.count > 1 {
+                        if innerComponents[0].contains("filename") {
+                            print(innerComponents[1])
+                            return innerComponents[1].replacingOccurrences(of: "\"", with: "")
+                        }
+                    }
+                }
+            }
+        }
+        return "default"
+    }
+    
+    // Move the file to specific destination.
+    private func moveDownloadedFile(url:URL, fileName:String) -> URL {
+        let tempDir = NSTemporaryDirectory()
+        let destinationPath = tempDir + fileName
+        let destinationURL = URL(fileURLWithPath: destinationPath)
+        try? FileManager.default.removeItem(at: destinationURL)
+        try? FileManager.default.moveItem(at: url, to: destinationURL)
+        return destinationURL
+    }
+    
+    // Show UIActivityViewController to interacte with the file.
+    
+    func fileDownloadedAtURL(url: URL) {
+        DispatchQueue.main.async {
+            let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+}
