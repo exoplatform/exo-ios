@@ -19,6 +19,8 @@ import UIKit
 import WebKit
 import Kingfisher
 import AVFoundation
+import HTMLKit
+import SwiftUI
 
 class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
 
@@ -198,6 +200,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         guard let response:HTTPURLResponse = navigationResponse.response as? HTTPURLResponse else {
+            // Download file from html link.
+            downloadfileFromHtmlLink(webView: webView, response: navigationResponse.response)
             decisionHandler(.cancel)
             return
         }
@@ -470,20 +474,17 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
 }
 
 extension HomePageViewController {
+    
     // Download the file.
+    
     private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
             let session = URLSession.shared
             session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
             let task = session.downloadTask(with: url) { localURL, urlResponse, error in
                 if let localURL = localURL {
-                    let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
-                    if FileManager().fileExists(atPath: destinationURL.path){
-                        print("File already exists [\(destinationURL.path)]")
-                        completion(false, nil)
-                    }else{
+                        let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
                         completion(true, destinationURL)
-                    }
                 }else {
                     completion(false, nil)
                 }
@@ -491,7 +492,9 @@ extension HomePageViewController {
             task.resume()
         }
     }
+    
     // Get the file name.
+    
     private func getFileNameFromResponse(_ response:URLResponse) -> String {
         if let httpResponse = response as? HTTPURLResponse {
             let headers = httpResponse.allHeaderFields
@@ -514,6 +517,7 @@ extension HomePageViewController {
     }
     
     // Move the file to specific destination.
+    
     private func moveDownloadedFile(url:URL, fileName:String) -> URL {
         let tempDir = NSTemporaryDirectory()
         let destinationPath = tempDir + fileName
@@ -531,6 +535,25 @@ extension HomePageViewController {
             activityVC.popoverPresentationController?.sourceView = self.view
             activityVC.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
             self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    // Download file from specific links.
+    
+    func downloadfileFromHtmlLink(webView:WKWebView,response:URLResponse){
+        /// Set the JS Code to get the downloadUrl from the HTML.
+        let jsLink = "document.getElementsByClassName('pull-right btn dowload-link').item(0).toString();"
+        webView.evaluateJavaScript(jsLink) { link, _ in
+            if let downloadUrl = link as? String {
+                print(downloadUrl)
+                if let url = URL(string: downloadUrl) {
+                    self.downloadData(webView: webView, fromURL: url, fileName: url.lastPathComponent) { success, destinationURL in
+                        if success, let destinationURL = destinationURL {
+                            self.fileDownloadedAtURL(url: destinationURL)
+                        }
+                    }
+                }
+            }
         }
     }
 }
