@@ -202,6 +202,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             if #available(iOS 15.0, *) {
                 decisionHandler(.download)
             }else{
+                showAlertMessage(title: "Download Unavailable".localized, msg: "You can't download the document, your os is less than iOS 15.".localized, action: .defaultAction)
                 decisionHandler(.cancel)
             }
             return
