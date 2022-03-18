@@ -34,7 +34,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
     var player: AVAudioPlayer?
-
+    var destinationUrl:URL?
+    
     private var popupWebView: WKWebView?
 
     // MARK: View Controller lifecycle
@@ -198,12 +199,16 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         guard let response:HTTPURLResponse = navigationResponse.response as? HTTPURLResponse else {
-            decisionHandler(.cancel)
+            if #available(iOS 15.0, *) {
+                decisionHandler(.download)
+            }else{
+                decisionHandler(.cancel)
+            }
             return
         }
         
-        // Detect the file to download.
-        
+        // Handle the download .
+                
         if response.url?.absoluteString.range(of: "download?resourceId=") != nil || response.url?.absoluteString.range(of: "/download/") != nil {
             if let url = response.url {
                 let fileName = getFileNameFromResponse(navigationResponse.response)
@@ -214,12 +219,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
                 }
             }
         }
+        
         doneButton.isHidden = true
         let serverDomain = URL(string: self.serverURL!)?.host
         
         /*
          Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
          */
+        
         if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
                 self.showOnBoardingIfNeed()
@@ -232,20 +239,13 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             doneButton.isHidden = false
         }
         
-        if #available(iOS 11.0, *) {
-            WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
-                if let url = response.url {
-                    self.cookiesInterceptor.intercept(cookies, url: url)
-                    self.saveLogoDomain(url:url, cookies: cookies)
-                }
-            })
-        } else if let headers = response.allHeaderFields as? [String: String], let url = response.url {
-            let cookiesFromAuthHeader = cookiesFromAuthFetcher.fetch(headerValue: headers["X-Authorization"], url: url)
-            let cookies = HTTPCookie.cookies(withResponseHeaderFields: headers, for: url)
-            cookiesInterceptor.intercept(cookiesFromAuthHeader, url: url)
-            cookiesInterceptor.intercept(cookies, url: url)
-            cookiesInterceptor.intercept(HTTPCookieStorage.shared.cookies ?? [], url: url)
-        }
+        WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
+            if let url = response.url {
+                self.cookiesInterceptor.intercept(cookies, url: url)
+                self.saveLogoDomain(url:url, cookies: cookies)
+            }
+        })
+        
         decisionHandler(.allow)
     }
     
@@ -470,7 +470,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
 }
 
 extension HomePageViewController {
+    
     // Download the file.
+    
     private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
             let session = URLSession.shared
@@ -478,12 +480,7 @@ extension HomePageViewController {
             let task = session.downloadTask(with: url) { localURL, urlResponse, error in
                 if let localURL = localURL {
                     let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
-                    if FileManager().fileExists(atPath: destinationURL.path){
-                        print("File already exists [\(destinationURL.path)]")
-                        completion(false, nil)
-                    }else{
                         completion(true, destinationURL)
-                    }
                 }else {
                     completion(false, nil)
                 }
@@ -491,7 +488,9 @@ extension HomePageViewController {
             task.resume()
         }
     }
+    
     // Get the file name.
+    
     private func getFileNameFromResponse(_ response:URLResponse) -> String {
         if let httpResponse = response as? HTTPURLResponse {
             let headers = httpResponse.allHeaderFields
@@ -514,6 +513,7 @@ extension HomePageViewController {
     }
     
     // Move the file to specific destination.
+    
     private func moveDownloadedFile(url:URL, fileName:String) -> URL {
         let tempDir = NSTemporaryDirectory()
         let destinationPath = tempDir + fileName
@@ -533,4 +533,39 @@ extension HomePageViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
+}
+
+// MARK: - WKDownloadDelegate.
+
+/// This delegates methods will not work in the previous version of iOS less than 15.0.
+
+@available(iOS 15.0, *)
+extension HomePageViewController:WKDownloadDelegate {
+    // Set the destination path to save our file.
+    func download(_ download: WKDownload, decideDestinationUsing
+                  response: URLResponse, suggestedFilename: String,
+                  completionHandler: @escaping (URL?) -> Void) {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        destinationUrl = documentsUrl.appendingPathComponent(suggestedFilename)
+        try? FileManager.default.removeItem(at: destinationUrl!)
+        completionHandler(destinationUrl)
+    }
+    
+    func webView(_ webView: WKWebView, navigationAction: WKNavigationAction, didBecome download: WKDownload) {
+        download.delegate = self
+    }
+    
+    func webView(_ webView: WKWebView, navigationResponse: WKNavigationResponse, didBecome download: WKDownload) {
+        download.delegate = self
+    }
+    
+    func downloadDidFinish(_ download: WKDownload) {
+        print("File Successfully Downloaded")
+        self.fileDownloadedAtURL(url: destinationUrl!)
+    }
+    
+    func download(_ download: WKDownload, didFailWithError error: Error, resumeData: Data?) {
+        print("Failed to download the file: \(error)")
+    }
+    
 }
