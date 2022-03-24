@@ -124,3 +124,9 @@
 "Add your eXo" = "Nueva conexión eXo";
 
 "Enter your eXo URL" = "Introduce tu URL de eXo";
+
+// Home Page
+
+"Download Unavailable" = "Descarga no disponible";
+
+"You can't download the document, your os is less than iOS 15." = "No puedes descargar el documento, tu S.O. es inferior a iOS 15.";
