@@ -124,3 +124,9 @@
 "Add your eXo" = "crwdns7015635:0crwdne7015635:0";
 
 "Enter your eXo URL" = "crwdns7015637:0crwdne7015637:0";
+
+// Home Page
+
+"Download Unavailable" = "crwdns7016902:0crwdne7016902:0";
+
+"You can't download the document, your os is less than iOS 15." = "crwdns7016904:0crwdne7016904:0";
