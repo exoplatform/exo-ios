@@ -173,30 +173,25 @@ class Tool {
         if (regex.numberOfMatches(in: extractedUrl, range: range) == 0) {
             extractedUrl = "http://"+extractedUrl
         }
-        
-        var url:URLComponents = URLComponents(string: extractedUrl)!
-        
-        var computedUrl:String = url.host!
-        
-        if (url.scheme == nil) {
-            switch url.port {
-            case 80: computedUrl="http://" + computedUrl
-            case 443: computedUrl="https://" + computedUrl
-            default:computedUrl="http://" + computedUrl
+        if let url:URLComponents = URLComponents(string: extractedUrl) {
+            var computedUrl:String = url.host!
+            if (url.scheme == nil) {
+                switch url.port {
+                case 80: computedUrl="http://" + computedUrl
+                case 443: computedUrl="https://" + computedUrl
+                default:computedUrl="http://" + computedUrl
+                }
+            } else {
+                computedUrl = url.scheme! + "://" + computedUrl
             }
-        } else {
-            computedUrl = url.scheme! + "://" + computedUrl
+            switch url.port {
+            case 80: computedUrl=computedUrl+""
+            case 443: computedUrl=computedUrl+""
+            case nil: computedUrl=computedUrl+""
+            default: computedUrl=computedUrl + ":" + String(url.port!)
+            }
+            extractedUrl = computedUrl
         }
-        
-        switch url.port {
-        case 80: computedUrl=computedUrl+""
-        case 443: computedUrl=computedUrl+""
-        case nil: computedUrl=computedUrl+""
-        default: computedUrl=computedUrl + ":" + String(url.port!)
-        }
-        
-        extractedUrl = computedUrl
-        
         return extractedUrl
     }
     
