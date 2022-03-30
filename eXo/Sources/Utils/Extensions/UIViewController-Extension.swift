@@ -118,4 +118,31 @@ extension UIViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    // MARK: - Send notification while tracking the download status.
+    
+    func sendNotificationForDownload(_ filename:String,_ status: DownloadStatus) {
+        let content = UNMutableNotificationContent()
+        var notifTitle = ""
+        var notifBody = ""
+        switch status {
+        case .completed:
+            notifTitle = "Download completed"
+            notifBody = "\(filename) downloaded successfully"
+            break
+        case .started:
+            notifTitle = "Download started"
+            notifBody = "The download of \(filename) has been started"
+            break
+        case .failed:
+            notifTitle = "Download failed"
+            notifBody = "Failed to download the file \(filename)"
+            break
+        }
+        content.title = notifTitle
+        content.body = notifBody
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
 }

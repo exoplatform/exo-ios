@@ -19,6 +19,13 @@ import UIKit
 import WebKit
 import Kingfisher
 import AVFoundation
+import UserNotifications
+
+enum DownloadStatus {
+    case started
+    case completed
+    case failed
+}
 
 class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
 
@@ -35,6 +42,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     var dic:Dictionary = [String:Bool]()
     var player: AVAudioPlayer?
     var destinationUrl:URL?
+    var dowloadedFileName:String = "fileName"
     
     private var popupWebView: WKWebView?
 
@@ -467,7 +475,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.handleRootConnect()
     }
-    
 }
 
 extension HomePageViewController {
@@ -475,14 +482,17 @@ extension HomePageViewController {
     // Download the file.
     
     private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
+        sendNotificationForDownload(fileName, .started)
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
             let session = URLSession.shared
             session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
             let task = session.downloadTask(with: url) { localURL, urlResponse, error in
                 if let localURL = localURL {
                     let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
-                        completion(true, destinationURL)
+                    self.sendNotificationForDownload(fileName, .completed)
+                    completion(true, destinationURL)
                 }else {
+                    self.sendNotificationForDownload(fileName, .failed)
                     completion(false, nil)
                 }
             }
@@ -549,6 +559,8 @@ extension HomePageViewController:WKDownloadDelegate {
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         destinationUrl = documentsUrl.appendingPathComponent(suggestedFilename)
         try? FileManager.default.removeItem(at: destinationUrl!)
+        dowloadedFileName = suggestedFilename
+        sendNotificationForDownload(dowloadedFileName,.started)
         completionHandler(destinationUrl)
     }
     
@@ -562,11 +574,13 @@ extension HomePageViewController:WKDownloadDelegate {
     
     func downloadDidFinish(_ download: WKDownload) {
         print("File Successfully Downloaded")
+        sendNotificationForDownload(dowloadedFileName,.completed)
         self.fileDownloadedAtURL(url: destinationUrl!)
     }
     
     func download(_ download: WKDownload, didFailWithError error: Error, resumeData: Data?) {
         print("Failed to download the file: \(error)")
+        sendNotificationForDownload(dowloadedFileName,.failed)
     }
     
 }
