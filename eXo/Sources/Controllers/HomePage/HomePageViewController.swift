@@ -475,6 +475,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.handleRootConnect()
     }
+    
 }
 
 extension HomePageViewController {
