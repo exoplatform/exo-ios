@@ -207,7 +207,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
         guard let response:HTTPURLResponse = navigationResponse.response as? HTTPURLResponse else {
-            if #available(iOS 15.0, *) {
+            if #available(iOS 14.5, *) {
                 decisionHandler(.download)
             }else{
                 showAlertMessage(title: "Download Unavailable".localized, msg: "You can't download the document, your os is less than iOS 15.".localized, action: .defaultAction)
@@ -551,7 +551,7 @@ extension HomePageViewController {
 
 /// This delegates methods will not work in the previous version of iOS less than 15.0.
 
-@available(iOS 15.0, *)
+@available(iOS 14.5, *)
 extension HomePageViewController:WKDownloadDelegate {
     // Set the destination path to save our file.
     func download(_ download: WKDownload, decideDestinationUsing
