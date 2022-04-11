@@ -549,8 +549,6 @@ extension HomePageViewController {
 
 // MARK: - WKDownloadDelegate.
 
-/// This delegates methods will not work in the previous version of iOS less than 15.0.
-
 @available(iOS 14.5, *)
 extension HomePageViewController:WKDownloadDelegate {
     // Set the destination path to save our file.
