@@ -41,6 +41,11 @@ class QRCodeScannerViewController: UIViewController {
         AppUtility.lockOrientation(.all)
     }
     
+    override func viewDidLayoutSubviews(){
+       super.viewDidLayoutSubviews()
+        videoPreviewLayer?.frame = view.layer.bounds
+    }
+    
     func checkCameraStatus(){
         if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
             self.setupCamera()
@@ -97,6 +102,7 @@ class QRCodeScannerViewController: UIViewController {
             // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
             
