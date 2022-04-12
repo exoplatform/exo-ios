@@ -46,9 +46,15 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(APP_NAME) requires to access camera for taking profile picture or uploading images.</string>
+	<string>Need camera access for uploading images</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Need location access for updating nearby friends</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app will use your location to show cool stuffs near you.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need microphone access for uploading videos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(APP_NAME) requires to access Photo Library to let you download or send images with the application.</string>
+	<string>Need photo library access for uploading images</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -57,6 +63,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
@@ -64,6 +72,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -76,15 +85,5 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-    <key>NSMicrophoneUsageDescription</key>
-       <string>Need microphone access for uploading videos</string>
-       <key>NSCameraUsageDescription</key>
-       <string>Need camera access for uploading images</string>
-       <key>NSLocationUsageDescription</key>
-       <string>Need location access for updating nearby friends</string>
-       <key>NSLocationWhenInUseUsageDescription</key>
-       <string>This app will use your location to show cool stuffs near you.</string>
-       <key>NSPhotoLibraryUsageDescription</key>
-       <string>Need photo library access for uploading images</string>
 </dict>
 </plist>
