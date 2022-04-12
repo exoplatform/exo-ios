@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: acceptance
+          token: ${{ secrets.ADMIN_TOKEN }}
       - name: Setup Xcode 13
         uses: maxim-lobanov/setup-xcode@v1
         with:
