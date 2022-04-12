@@ -152,7 +152,7 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 if let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController"){
                     (homepage as! HomePageViewController).serverURL  =  stringURL
                     navigationVC?.navigationBar.isHidden = false
-                    navigationVC?.pushViewController(homepage! as UIViewController, animated: false)
+                    navigationVC?.pushViewController(homepage as UIViewController, animated: false)
                 }
             }
         }
