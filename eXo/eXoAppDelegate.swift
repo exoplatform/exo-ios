@@ -145,14 +145,22 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         return succeeded
     }
     
+    /*
+     Open home page after push notif.
+     */
+    
     func quickActionOpenHomePageForURL (_ stringURL:String) {
         if (navigationVC != nil) {
             if (navigationVC?.viewControllers.count > 0) {
                 navigationVC?.popToRootViewController(animated: false)
                 if let homepage = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController"){
+                    print(String(describing: navigationVC?.viewControllers.last))
                     (homepage as! HomePageViewController).serverURL  =  stringURL
                     navigationVC?.navigationBar.isHidden = false
                     navigationVC?.pushViewController(homepage as UIViewController, animated: false)
+                }else{
+                    navigationVC?.viewControllers.removeAll()
+                    setRootToHome(stringURL)
                 }
             }
         }
