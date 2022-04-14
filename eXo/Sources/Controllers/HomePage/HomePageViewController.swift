@@ -345,7 +345,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             // Add a custom values to the default user agent
             webView.evaluateJavaScript("navigator.userAgent") { (result, error) in
                 if let userAgent = result as? String {
-                    newWebview.customUserAgent = userAgent + "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion) Safari/604.1 (iOS)"
+                    newWebview.customUserAgent = "eXo/" + userAgent + "\(Bundle.main.appName)/\(Bundle.main.versionNumber) Version/\(UIDevice.current.systemVersion) Safari/604.1 (iOS)"
                 }
             }
             self.webViewContainer.addSubview(newWebview)
