@@ -270,7 +270,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             logout(request: request)
         }
         
-        let serverDomain = URL(string: self.serverURL!)?.host
         if !UIApplication.shared.isNetworkActivityIndicatorVisible {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         }
@@ -309,14 +308,15 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
          - WKNavigationType of a automatic request is always = .Others
          - Check just for external link tapped to open the preview Controller else stay displaying the request in the some wkwebview to prevent the SAML Error.
          */
-        
-        if (request.url?.absoluteString.range(of: serverDomain!) == nil && navigationAction.navigationType == WKNavigationType.linkActivated){
-            let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
-            let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
-            previewController.serverURL = request.url?.absoluteString
-            self.present(previewNavigationController, animated: true, completion: nil)
-            decisionHandler(.cancel)
-            return
+        if let serverDomain = URL(string: self.serverURL!)?.host {
+            if (request.url?.absoluteString.range(of: serverDomain) == nil && navigationAction.navigationType == WKNavigationType.linkActivated){
+                let previewNavigationController:UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "PreviewNavigationController") as! UINavigationController
+                let previewController:PreviewController = previewNavigationController.topViewController as! PreviewController
+                previewController.serverURL = request.url?.absoluteString
+                self.present(previewNavigationController, animated: true, completion: nil)
+                decisionHandler(.cancel)
+                return
+            }
         }
         decisionHandler(WKNavigationActionPolicy.allow)
     }
