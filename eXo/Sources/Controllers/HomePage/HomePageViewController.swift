@@ -479,12 +479,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         self.defaults.setValue("", forKey: "serverURL")
         self.defaults.setValue(false, forKey: "isLoggedIn")
         self.defaults.setValue(false, forKey: "isGoogleAuth")
-        clearCookiesAndCashe()
+        clearCookiesAndCache()
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.handleRootConnect()
     }
     
-    func clearCookiesAndCashe(){
+    func clearCookiesAndCache(){
         /// old API cookies
         for cookie in HTTPCookieStorage.shared.cookies ?? [] {
             HTTPCookieStorage.shared.deleteCookie(cookie)
