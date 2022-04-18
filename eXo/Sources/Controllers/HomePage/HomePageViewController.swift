@@ -64,7 +64,8 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
             let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             webView?.configuration.userContentController.addUserScript(script)
             // register the bridge script that listens for the output
-            webView?.configuration.userContentController.add(self, name: "logHandler")
+            webView?.configuration.userContentController.add(
+                LeakAvoider(delegate:self), name: "logHandler")
             self.configureDoneButton()
         }
     }
@@ -91,6 +92,19 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
+    }
+    /*
+       Deallocate Memory
+     */
+    deinit {
+        print("dealloc webview")
+        clearCookiesAndCashe()
+        self.webView?.stopLoading()
+        self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+        self.popupWebView?.stopLoading()
+        self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+        self.webView = nil
+        self.popupWebView = nil
     }
     
     func setNavigationBarAppearance(){
@@ -465,6 +479,12 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         self.defaults.setValue("", forKey: "serverURL")
         self.defaults.setValue(false, forKey: "isLoggedIn")
         self.defaults.setValue(false, forKey: "isGoogleAuth")
+        clearCookiesAndCashe()
+        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+        appDelegate.handleRootConnect()
+    }
+    
+    func clearCookiesAndCashe(){
         /// old API cookies
         for cookie in HTTPCookieStorage.shared.cookies ?? [] {
             HTTPCookieStorage.shared.deleteCookie(cookie)
@@ -472,10 +492,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         /// URL cache
         URLCache.shared.removeAllCachedResponses()
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
-        let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
-        appDelegate.handleRootConnect()
     }
-    
 }
 
 extension HomePageViewController {
