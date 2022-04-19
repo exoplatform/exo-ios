@@ -97,6 +97,19 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
+    /*
+       Deallocate Memory
+     */
+    deinit {
+        print("dealloc webview")
+        clearCookiesAndCache()
+        self.webView?.stopLoading()
+        self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+        self.popupWebView?.stopLoading()
+        self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+        self.webView = nil
+        self.popupWebView = nil
+    }
     
     /*
        Deallocate Memory
@@ -495,7 +508,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         URLCache.shared.removeAllCachedResponses()
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
     }
-    
 }
 
 extension HomePageViewController {
