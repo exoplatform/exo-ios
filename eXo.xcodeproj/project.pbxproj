@@ -104,6 +104,7 @@
 		DBC0162B27AAEDFD004D1684 /* CheckUpdatePopupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC0162927AAEDFD004D1684 /* CheckUpdatePopupVC.xib */; };
 		DBC0162C27AAEDFD004D1684 /* CheckUpdatePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162A27AAEDFD004D1684 /* CheckUpdatePopupVC.swift */; };
 		DBC0162E27AAEE0C004D1684 /* CheckStoreUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */; };
+		DBC1F3AA280DD85000CEFCF2 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -283,6 +284,7 @@
 		DBC0162927AAEDFD004D1684 /* CheckUpdatePopupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckUpdatePopupVC.xib; sourceTree = "<group>"; };
 		DBC0162A27AAEDFD004D1684 /* CheckUpdatePopupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUpdatePopupVC.swift; sourceTree = "<group>"; };
 		DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckStoreUpdate.swift; sourceTree = "<group>"; };
+		DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakAvoider.swift; sourceTree = "<group>"; };
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		DD7E70396AD876E86037F111 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -518,6 +520,7 @@
 				DB31D88626A1EF5D00D25F96 /* Connectivity.swift */,
 				DB31D88726A1EF5D00D25F96 /* Reachability.swift */,
 				DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */,
+				DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1214,6 +1217,7 @@
 				B56257E7202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift in Sources */,
 				9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */,
 				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
+				DBC1F3AA280DD85000CEFCF2 /* LeakAvoider.swift in Sources */,
 				DB3CE0AC269C8F7F00622057 /* UIImage-Gif.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
 				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
