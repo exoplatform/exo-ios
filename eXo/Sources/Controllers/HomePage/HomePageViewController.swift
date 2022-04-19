@@ -98,7 +98,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
      */
     deinit {
         print("dealloc webview")
-        clearCookiesAndCashe()
+        clearCookiesAndCache()
         self.webView?.stopLoading()
         self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
         self.popupWebView?.stopLoading()
