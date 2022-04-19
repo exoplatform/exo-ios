@@ -91,7 +91,7 @@ class PushTokenRestClient {
            // Create the url request
            var request = URLRequest(url: checkSessionURL, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: Config.timeout)
            var headers = ["Content-Type": "application/json"]
-           if let sessionCookieValue = sessionCookieValue, let rememberMeCookieValue = rememberMeCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
+           if let sessionCookieValue = sessionCookieValue, let sessionSsoCookieValue = sessionSsoCookieValue {
                headers["Cookie"] = "\(Cookies.session.rawValue)=\(sessionCookieValue);  \(Cookies.sessionSso.rawValue)=\(sessionSsoCookieValue)"
            }
            request.allHTTPHeaderFields = headers
