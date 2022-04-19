@@ -19,8 +19,8 @@ class ConnectToExoViewController: UIViewController {
     
     // MARK: - Variables.
     
-    var selectedServer:Server?
-    var server:Server!
+    weak var selectedServer:Server?
+    weak var server:Server!
     var countLoggedOut:Int = 0
     var isSessionExpired:Bool = false
     
@@ -42,6 +42,15 @@ class ConnectToExoViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationItem.leftBarButtonItem = UIBarButtonItem()
         AppUtility.lockOrientation(.all)
+    }
+    
+    deinit {
+        print("dealloc")
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: .deleteInstance, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .reloadTableView, object: nil)
+        UserDefaults.standard.removeObject(forKey: "badgeNumber")
+        UserDefaults.standard.synchronize()
     }
     
     @objc

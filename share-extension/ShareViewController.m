@@ -273,7 +273,7 @@ enum {
 	
 	[spaceItem setTapHandler:^(void){
 		// User can select a space only after authentification.
-		if (loggingStatus == eXoStatusLoggedIn){
+		if (self->loggingStatus == eXoStatusLoggedIn){
 			SpaceViewController  * spaceSelectionVC = [[SpaceViewController alloc] initWithStyle:UITableViewStylePlain];
 			spaceSelectionVC.delegate = weak_self;
 			spaceSelectionVC.account  = [AccountManager sharedManager].selectedAccount;
@@ -461,11 +461,11 @@ NSMutableData * data;
 			// convert the JSON to Space object (JSON string --> Dictionary --> Object.
 			id jsonObjects = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
 			if (jsonObjects){
-				selectedSpace.spaceId = [jsonObjects objectForKey:@"id"];
+                self->selectedSpace.spaceId = [jsonObjects objectForKey:@"id"];
 			}
-			loggingStatus = eXoStatusLoggedIn;
+            self->loggingStatus = eXoStatusLoggedIn;
 		} else {
-			loggingStatus = eXoStatusLoggedFailed;
+            self->loggingStatus = eXoStatusLoggedFailed;
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self reloadConfigurationItems];
@@ -493,8 +493,8 @@ NSMutableData * data;
 				[self presentViewController:alert animated:YES completion:nil];
 			} else {
 				[AccountManager sharedManager].selectedAccount  = account;
-				loggingStatus = eXoStatusNotLogin;
-				selectedSpace = nil;
+                self->loggingStatus = eXoStatusNotLogin;
+                self->selectedSpace = nil;
 				[self logout]; // logout first to clear the session
 				[self login]; // then login with the selected account
 				[self reloadConfigurationItems];
@@ -531,8 +531,8 @@ NSMutableData * data;
 	NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 		if (!error) {
 			NSUInteger statusCode = [((NSHTTPURLResponse*) response) statusCode];
-			hasMobileFolder = statusCode >= 200 && statusCode < 300;
-			if (!hasMobileFolder) {
+            self->hasMobileFolder = statusCode >= 200 && statusCode < 300;
+			if (!self->hasMobileFolder) {
 				/*
 				 If the Mobile folder doesn't exist, Send a request (method:MKCOL) to ask the server side to create the mobile folder.
 				 */
@@ -543,10 +543,10 @@ NSMutableData * data;
                 
 				[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
 				
-				NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+				NSURLSessionDataTask *dataTask = [self->session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 					NSUInteger statusCode = [((NSHTTPURLResponse*) response) statusCode];
 					if(statusCode >= 200 && statusCode < 300) {
-						hasMobileFolder = YES;
+                        self->hasMobileFolder = YES;
 					}
 				}];
 				[dataTask resume];
@@ -700,12 +700,12 @@ NSMutableData * data;
 						// save the file to mobile folder
 						NSString * postFileURL = [NSString stringWithFormat:@"%@/%@",[self mobileFolderPath], fileAttachName];
 						NSString * saveRESTURL;
-						if (selectedSpace){
-							NSString * driverName = [selectedSpace.groupId stringByReplacingOccurrencesOfString:@"/" withString:@"."];
-							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,uploadId,defaultWorkspace,driverName,@"mobile",fileAttachName];
+						if (self->selectedSpace){
+							NSString * driverName = [self->selectedSpace.groupId stringByReplacingOccurrencesOfString:@"/" withString:@"."];
+							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,self->uploadId,self->defaultWorkspace,driverName,@"mobile",fileAttachName];
 							
 						} else {
-							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,uploadId,defaultWorkspace,@"Personal Documents",@"Public/mobile",fileAttachName];
+							saveRESTURL  = [NSString stringWithFormat:@"%@/portal/rest/managedocument/uploadFile/control?uploadId=%@&action=save&workspaceName=%@&driveName=%@&currentFolder=%@&fileName=%@", [AccountManager sharedManager].selectedAccount.serverURL,self->uploadId,self->defaultWorkspace,@"Personal Documents",@"Public/mobile",fileAttachName];
 							
 						}
 						
@@ -715,17 +715,17 @@ NSMutableData * data;
 						[request setHTTPMethod:@"GET"];
 						[request setValue:kUserAgentHeader forHTTPHeaderField:@"User-Agent"];
 						
-						NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+						NSURLSessionDataTask *dataTask = [self->session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 							NSUInteger statusCode = [((NSHTTPURLResponse*) response) statusCode];
 							if(statusCode >= 200 && statusCode < 300) {
 								item.uploadStatus = eXoItemStatusUploadSuccess;
 								item.fileUploadedName = fileAttachName;
 								item.fileUploadedURL = postFileURL;
-								[postActivity.successfulUploads addObject:item];
+								[self->postActivity.successfulUploads addObject:item];
 							} else {
 								item.uploadStatus = eXoItemStatusUploadFailed;
-								nbItemMissing ++;
-								uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), nbItemMissing];
+                                self->nbItemMissing ++;
+                                self->uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), self->nbItemMissing];
 							}
 							[self uploadPostItemAtIndex:itemIndex+1];
 						}];
@@ -733,8 +733,8 @@ NSMutableData * data;
 						
 					} else {
 						item.uploadStatus = eXoItemStatusUploadFailed;
-						nbItemMissing ++;
-						uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), nbItemMissing];
+                        self->nbItemMissing ++;
+                        self->uploadVC.errorMessage.text = [NSString stringWithFormat: NSLocalizedString(@"Upload.Warning.ItemsCannotBeUpload", nil), self->nbItemMissing];
 						[self uploadPostItemAtIndex:itemIndex+1];
 					}
 					item.fileData = nil;
@@ -765,7 +765,7 @@ NSMutableData * data;
 
 -(void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		uploadVC.progressBar.progress = (float)uploadingIndex/(float)postActivity.items.count + (float)totalBytesSent/((float)totalBytesExpectedToSend *(float)postActivity.items.count );
+        self->uploadVC.progressBar.progress = (float)self->uploadingIndex/(float)self->postActivity.items.count + (float)totalBytesSent/((float)totalBytesExpectedToSend *(float)self->postActivity.items.count );
 	});
 	
 }
@@ -814,14 +814,14 @@ NSMutableData * data;
 			}];
 			[alert addAction:cancelAction];
 			UIAlertAction* postAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Word.Post",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-				if (postActivity.successfulUploads.count > 0) {
-					PostItem * firstItem = postActivity.successfulUploads[0];
+				if (self->postActivity.successfulUploads.count > 0) {
+					PostItem * firstItem = self->postActivity.successfulUploads[0];
 					if ([firstItem.type isEqualToString:@"DOC_ACTIVITY"] || [firstItem.type isEqualToString:@"files:spaces"]){
                     //if ([firstItem.type isEqualToString:@"files:spaces"]){
-						[self postMessage:postActivity.message fileItems:postActivity.successfulUploads];
+						[self postMessage:self->postActivity.message fileItems:self->postActivity.successfulUploads];
 					}
 				} else {
-					[self postMessage:postActivity.message fileItems:nil];
+					[self postMessage:self->postActivity.message fileItems:nil];
 				}
 			}];
 			[alert addAction:postAction];
@@ -1033,10 +1033,10 @@ NSMutableData * data;
 	if (!error) {
 		NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if([self isBefore53]){
-                postActivity.activityId = [self getPostActivityFromData:data];
+                self->postActivity.activityId = [self getPostActivityFromData:data];
                 [self postCommentForItemAtIndex:1];
             } else {
-                [uploadVC dismissViewControllerAnimated:YES completion:nil];
+                [self->uploadVC dismissViewControllerAnimated:YES completion:nil];
                 [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
             }
 		}];
@@ -1100,7 +1100,7 @@ NSMutableData * data;
 	
 	if (!error) {
 		NSURLSessionDataTask *postTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-			postActivity.activityId = [self getPostActivityFromData:data];
+            self->postActivity.activityId = [self getPostActivityFromData:data];
 			[self postCommentForItemAtIndex:1];
 		}];
 		[postTask resume];

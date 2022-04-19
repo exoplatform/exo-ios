@@ -152,7 +152,7 @@ class Tool {
                 // check if URL contains a port.
                 if ((url as NSURL?)?.port != nil){
                     let port:Int! = (url as NSURL?)?.port?.intValue
-                    domain += ":\(port)"
+                    domain += ":\(String(describing: port))"
                 }
                 return domain
             }
@@ -173,7 +173,7 @@ class Tool {
         if (regex.numberOfMatches(in: extractedUrl, range: range) == 0) {
             extractedUrl = "http://"+extractedUrl
         }
-        var url:URLComponents = URLComponents(string: extractedUrl)!
+        let url:URLComponents = URLComponents(string: extractedUrl)!
         var computedUrl:String = url.host!
         if (url.scheme == nil) {
             switch url.port {
