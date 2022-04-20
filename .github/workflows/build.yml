@@ -9,6 +9,7 @@ jobs:
   build:
     name: CI Build eXo iOS Project
     runs-on: macos-11
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v2
