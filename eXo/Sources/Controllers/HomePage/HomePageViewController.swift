@@ -102,13 +102,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
      */
     deinit {
         print("dealloc webview")
-        clearCookiesAndCache()
         self.webView?.stopLoading()
         self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
         self.popupWebView?.stopLoading()
         self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
-        self.webView = nil
-        self.popupWebView = nil
     }
     
     /*
