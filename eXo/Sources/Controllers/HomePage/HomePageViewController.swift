@@ -92,6 +92,18 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
+
+    /*
+       Deallocate Memory
+    */
+    
+    deinit {
+        print("dealloc webview")
+        self.webView?.stopLoading()
+        self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+        self.popupWebView?.stopLoading()
+        self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+    }
     
     func setNavigationBarAppearance(){
         self.navigationItem.title = NSLocalizedString("OnBoarding.Title.SignInToeXo", comment:"")
