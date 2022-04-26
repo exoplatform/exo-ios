@@ -15,6 +15,7 @@ target "eXo" do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Kingfisher'
+    pod 'JitsiMeetSDK'
 
 	target "eXoTests" do
 		inherit! :search_paths
