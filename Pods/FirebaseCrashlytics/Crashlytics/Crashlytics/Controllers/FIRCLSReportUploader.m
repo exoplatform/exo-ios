@@ -23,6 +23,7 @@
 #import "Crashlytics/Crashlytics/Models/FIRCLSFileManager.h"
 #import "Crashlytics/Crashlytics/Models/FIRCLSInstallIdentifierModel.h"
 #import "Crashlytics/Crashlytics/Models/FIRCLSInternalReport.h"
+#import "Crashlytics/Crashlytics/Models/FIRCLSSettings.h"
 #import "Crashlytics/Crashlytics/Models/FIRCLSSymbolResolver.h"
 #import "Crashlytics/Crashlytics/Models/Record/FIRCLSReportAdapter.h"
 #import "Crashlytics/Crashlytics/Operations/Reports/FIRCLSProcessReportOperation.h"
@@ -67,7 +68,7 @@
 #pragma mark - Packaging and Submission
 
 /*
- * For a crash report, this is the inital code path for uploading. A report
+ * For a crash report, this is the initial code path for uploading. A report
  * will not repeat this code path after it's happened because this code path
  * will move the report from the "active" folder into "processing" and then
  * "prepared". Once in prepared, the report can be re-uploaded any number of times
