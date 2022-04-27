@@ -20,6 +20,7 @@ import WebKit
 import Kingfisher
 import AVFoundation
 import UserNotifications
+import JitsiMeetSDK
 
 enum DownloadStatus {
     case started
@@ -46,6 +47,9 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
     
     private var popupWebView: WKWebView?
 
+    fileprivate var pipViewCoordinator: PiPViewCoordinator?
+    fileprivate var jitsiMeetView: JitsiMeetView?
+    
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -93,9 +97,17 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
+    
+    override func viewWillTransition(to size: CGSize,with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        let rect = CGRect(origin: CGPoint.zero, size: size)
+        pipViewCoordinator?.resetBounds(bounds: rect)
+    }
+    
     /*
        Deallocate Memory
-     */
+    */
+    
     deinit {
         print("dealloc webview")
         self.webView?.stopLoading()
@@ -273,6 +285,14 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         let request:URLRequest = navigationAction.request
         if let urlToSee = request.url?.absoluteString {
             print("=============== Navigation Url : \(urlToSee)")
+        }
+        
+        // Open the Jitsi call.
+        
+        if request.url?.absoluteString.range(of:"?jwt=") != nil {
+            // launch the call.
+            print("launching the call...")
+            openJitsiMeet(webview:webView,url: request.url!)
         }
         
         // Detect the logout action in to quit this screen.
@@ -596,4 +616,134 @@ extension HomePageViewController:WKDownloadDelegate {
         sendNotificationForDownload(dowloadedFileName,.failed)
     }
     
+}
+
+extension HomePageViewController:JitsiMeetViewDelegate{
+    
+    // Open Jitis Meet.
+
+    func openJitsiMeet(serverUrl:String,room:String) {
+        let jitsiServerURL = serverUrl.serverDomainWithProtocolAndPort! + Config.eXoJitsiWebServer
+        cleanUp()
+        self.getJWT_token(serverUrl: serverUrl) { jwt in
+            // create and configure jitsimeet view
+            DispatchQueue.main.async {
+                let jitsiMeetView = JitsiMeetView()
+                jitsiMeetView.delegate = self
+                self.jitsiMeetView = jitsiMeetView
+                let options = JitsiMeetConferenceOptions.fromBuilder { (builder) in
+                    builder.serverURL = URL(string:jitsiServerURL)
+                    builder.token = jwt
+                    builder.room = room
+                    builder.setFeatureFlag("welcomepage.enabled", withValue: false)
+                }
+                jitsiMeetView.join(options)
+                // Enable jitsimeet view to be a view that can be displayed
+                // on top of all the things, and let the coordinator to manage
+                // the view state and interactions
+                self.pipViewCoordinator = PiPViewCoordinator(withView: jitsiMeetView)
+                self.pipViewCoordinator?.configureAsStickyView(withParentView: self.view)
+                // animate in
+                jitsiMeetView.alpha = 0
+                self.pipViewCoordinator?.show()
+            }
+        }
+    }
+    
+    func openJitsiMeet(webview:WKWebView,url:URL){
+            cleanUp()
+            webViewDidClose(webview)
+            let username = PushTokenSynchronizer.shared.username!
+            let prefixUrl = url.absoluteString.serverDomainWithProtocolAndPort!
+            let avatar = prefixUrl + Config.avatarURL.replacingOccurrences(of: "*_*", with: username)
+            let serverUrl = prefixUrl + Config.eXoJitsiWebServer
+            let jitsiMeetView = JitsiMeetView()
+            jitsiMeetView.delegate = self
+            self.jitsiMeetView = jitsiMeetView
+            let options = JitsiMeetConferenceOptions.fromBuilder { (builder) in
+                builder.serverURL = URL(string:serverUrl)
+                builder.room = url.absoluteString
+                builder.setFeatureFlag("welcomepage.enabled", withValue: false)
+                builder.userInfo = JitsiMeetUserInfo(displayName: username, andEmail: nil, andAvatar: URL(string:avatar))
+                builder.setFeatureFlag("ios.screensharing.enabled", withBoolean: true)
+            }
+            jitsiMeetView.join(options)
+            // Enable jitsimeet view to be a view that can be displayed
+            // on top of all the things, and let the coordinator to manage
+            // the view state and interactions
+            self.pipViewCoordinator = PiPViewCoordinator(withView: jitsiMeetView)
+            self.pipViewCoordinator?.configureAsStickyView(withParentView: self.view)
+            // animate in
+            jitsiMeetView.alpha = 0
+            self.pipViewCoordinator?.show()
+        }
+
+    // Get JWT token from server.
+    func getJWT_token(serverUrl:String,completionHandler: @escaping(_ jwt: String)-> ()){
+        let username = PushTokenSynchronizer.shared.username!
+        let jitsiJWTURL = serverUrl.serverDomainWithProtocolAndPort! + Config.eXoJitsiJWTPath + username
+        print(username)
+        print(jitsiJWTURL)
+        let url = URL(string: jitsiJWTURL)!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            if let jwt = String(data: data, encoding: .utf8) {
+                print("The JWT Token is : ",jwt)
+                completionHandler(jwt)
+            }
+        }
+        task.resume()
+    }
+    
+    fileprivate func cleanUp() {
+        jitsiMeetView?.removeFromSuperview()
+        jitsiMeetView = nil
+        pipViewCoordinator = nil
+    }
+    
+   // MARK: - JitsiMeetViewDelegate
+    
+    func ready(toClose data: [AnyHashable : Any]!) {
+        DispatchQueue.main.async {
+            self.pipViewCoordinator?.hide() { _ in
+                self.cleanUp()
+            }
+        }
+    }
+
+    func enterPicture(inPicture data: [AnyHashable : Any]!) {
+        DispatchQueue.main.async {
+            self.pipViewCoordinator?.enterPictureInPicture()
+        }
+    }
+    
+    func conferenceJoined(_ data: [AnyHashable : Any]!) {
+        guard let data = data else { return }
+        print("conferenceJoinedData ==> /n \(data)")
+    }
+    
+    func conferenceWillJoin(_ data: [AnyHashable : Any]!) {
+        guard let data = data else { return }
+        print("conferenceWillJoinData ==> /n \(data)")
+    }
+    
+    func conferenceTerminated(_ data: [AnyHashable : Any]!) {
+        guard let data = data else { return }
+        print("conferenceTerminatedData ==> /n \(data)")
+    }
+    
+    func participantLeft(_ data: [AnyHashable : Any]!) {
+        guard let data = data else { return }
+        print("participantLeftData ==> /n \(data)")
+    }
+    
+    func participantJoined(_ data: [AnyHashable : Any]!) {
+        guard let data = data else { return }
+        print("participantJoinedData ==> /n \(data)")
+    }
+    
+    func endpointTextMessageReceived(_ data: [AnyHashable : Any]!) {
+        guard let data = data else { return }
+        print("endpointTextMessageReceivedData ==> /n \(data)")
+    }
 }
