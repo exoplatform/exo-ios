@@ -38,26 +38,33 @@ extension KFImage {
         init() {}
 
         var downloadTask: DownloadTask?
+        private var loading = false
 
         var loadingOrSucceeded: Bool {
-            return downloadTask != nil || loadedImage != nil
+            return loading || loadedImage != nil
         }
 
-        @Published var loaded = false
-        @Published var loadedImage: KFCrossPlatformImage? = nil
-        @Published var progress: Progress = .init()
+        // Do not use @Published due to https://github.com/onevcat/Kingfisher/issues/1717. Revert to @Published once
+        // we can drop iOS 12.
+        var loaded = false                           { willSet { objectWillChange.send() } }
+        var loadedImage: KFCrossPlatformImage? = nil { willSet { objectWillChange.send() } }
+        var progress: Progress = .init()             { willSet { objectWillChange.send() } }
 
         func start<HoldingView: KFImageHoldingView>(context: Context<HoldingView>) {
-
-            guard !loadingOrSucceeded else { return }
-
             guard let source = context.source else {
                 CallbackQueue.mainCurrentOrAsync.execute {
                     context.onFailureDelegate.call(KingfisherError.imageSettingError(reason: .emptySource))
+                    if let image = context.options.onFailureImage {
+                        self.loadedImage = image
+                    }
+                    self.loading = false
+                    self.loaded = true
                 }
                 return
             }
 
+            loading = true
+            
             progress = .init()
             downloadTask = KingfisherManager.shared
                 .retrieveImage(
@@ -71,21 +78,34 @@ extension KFImage {
 
                         guard let self = self else { return }
 
-                        self.downloadTask = nil
+                        CallbackQueue.mainCurrentOrAsync.execute {
+                            self.downloadTask = nil
+                            self.loading = false
+                        }
+                        
                         switch result {
                         case .success(let value):
-
                             CallbackQueue.mainCurrentOrAsync.execute {
+                                if let fadeDuration = context.fadeTransitionDuration(cacheType: value.cacheType) {
+                                    let animation = Animation.linear(duration: fadeDuration)
+                                    withAnimation(animation) { self.loaded = true }
+                                } else {
+                                    self.loaded = true
+                                }
                                 self.loadedImage = value.image
-                                let animation = context.fadeTransitionDuration(cacheType: value.cacheType)
-                                    .map { duration in Animation.linear(duration: duration) }
-                                withAnimation(animation) { self.loaded = true }
                             }
 
                             CallbackQueue.mainAsync.execute {
                                 context.onSuccessDelegate.call(value)
                             }
                         case .failure(let error):
+                            CallbackQueue.mainCurrentOrAsync.execute {
+                                if let image = context.options.onFailureImage {
+                                    self.loadedImage = image
+                                }
+                                self.loaded = true
+                            }
+                            
                             CallbackQueue.mainAsync.execute {
                                 context.onFailureDelegate.call(error)
                             }
@@ -103,6 +123,7 @@ extension KFImage {
         func cancel() {
             downloadTask?.cancel()
             downloadTask = nil
+            loading = false
         }
     }
 }

@@ -88,7 +88,7 @@ public struct LocalFileImageDataProvider: ImageDataProvider {
         loadingQueue: ExecutionQueue = .dispatch(DispatchQueue.global(qos: .userInitiated))
     ) {
         self.fileURL = fileURL
-        self.cacheKey = cacheKey ?? fileURL.absoluteString
+        self.cacheKey = cacheKey ?? fileURL.localFileCacheKey
         self.loadingQueue = loadingQueue
     }
 
