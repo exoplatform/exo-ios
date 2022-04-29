@@ -215,20 +215,17 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (isSucc, error) in
             if isSucc {
-                print(userInfo.description)
                 if let aps = userInfo["aps"] as? NSDictionary {
+                    print(aps)
                     if let badge = aps["badge"] as? Int {
-                        DispatchQueue.main.async {
-                            let badgeNumber = badge + 1
-                            UIApplication.shared.applicationIconBadgeNumber = badgeNumber
-                        }
+                        self.setBadgeNumber(badge: badge)
                         if let url = userInfo["url"] as? String {
                             let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
                             var dic:Dictionary = [String:Int]()
                             for ser in ServerManager.sharedInstance.serverList {
                                 if let serverURL = (ser as? Server)?.serverURL {
                                     if serverURL.stringURLWithoutProtocol() == server.serverURL.stringURLWithoutProtocol() {
-                                        dic[server.serverURL.stringURLWithoutProtocol()] = badge + 1
+                                        dic[server.serverURL.stringURLWithoutProtocol()] = badge
                                     }
                                 }
                             }
@@ -288,7 +285,7 @@ extension eXoAppDelegate {
         if ServerManager.sharedInstance.serverList.count != 0 {
             setRootToConnect()
         }else{
-            UIApplication.shared.applicationIconBadgeNumber = 0
+            setBadgeNumber(badge: 0)
             setRootOnboarding()
         }
     }
@@ -298,6 +295,12 @@ extension eXoAppDelegate {
             let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
             ServerManager.sharedInstance.addEditServer(server)
             self.quickActionOpenHomePageForURL(url)
+        }
+        if let aps = userInfo["aps"] as? NSDictionary {
+            print(aps)
+            if let badge = aps["badge"] as? Int {
+                self.setBadgeNumber(badge: badge)
+            }
         }
     }
     
@@ -309,6 +312,12 @@ extension eXoAppDelegate {
             DispatchQueue.main.async {
                 application.registerForRemoteNotifications()
             }
+        }
+    }
+    // Set the badge number of the app icon.
+    func setBadgeNumber(badge:Int){
+        DispatchQueue.main.async {
+            UIApplication.shared.applicationIconBadgeNumber = badge
         }
     }
     
