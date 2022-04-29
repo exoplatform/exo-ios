@@ -49,8 +49,6 @@ class ConnectToExoViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.removeObserver(self, name: .deleteInstance, object: nil)
         NotificationCenter.default.removeObserver(self, name: .reloadTableView, object: nil)
-        UserDefaults.standard.removeObject(forKey: "badgeNumber")
-        UserDefaults.standard.synchronize()
     }
     
     @objc
