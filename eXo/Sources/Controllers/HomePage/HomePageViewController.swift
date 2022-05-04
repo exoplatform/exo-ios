@@ -289,7 +289,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         // Open the Jitsi call.
         
-        if request.url?.absoluteString.range(of:"?jwt=") != nil {
+        if  (request.url?.path.contains("/jitsiweb/"))! && (request.url?.absoluteString.range(of:"?jwt=") != nil){
             // launch the call.
             print("launching the call...")
             openJitsiMeet(webview:webView,url: request.url!)
