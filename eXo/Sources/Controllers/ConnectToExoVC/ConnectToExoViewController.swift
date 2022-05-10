@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ConnectToExoViewController: UIViewController {
+final class ConnectToExoViewController: UIViewController {
     
     // MARK: - Outlets.
     
@@ -86,7 +86,8 @@ class ConnectToExoViewController: UIViewController {
         let title = "Setting.Title.DeleteServer".localized
         let msg = "Setting.Message.DeleteServer".localized
         if let serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server {
-            print("serverToDelete === >  \(serverToDelete)")
+            print("serverToDelete === >  \(serverToDelete.serverURL.stringURLWithoutProtocol())")
+            defaults.removeObject(forKey: serverToDelete.serverURL.stringURLWithoutProtocol())
             showAlertMessageDelete(title:title,msg: msg, action: .delete, server: serverToDelete)
         }
     }
