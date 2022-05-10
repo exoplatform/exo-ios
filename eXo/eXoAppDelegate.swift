@@ -129,8 +129,8 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             if (navigationVC != nil) {
                 if (navigationVC?.viewControllers.count > 0) {
                     navigationVC?.popToRootViewController(animated: false)
-                    let inputServer = navigationVC?.viewControllers.last?.storyboard?.instantiateViewController(withIdentifier: "InputServerViewController")
-                    navigationVC?.pushViewController(inputServer! as UIViewController, animated: false)
+                    let inputServer = AddDomainViewController(nibName: "AddDomainViewController", bundle: nil)
+                    navigationVC?.pushViewController(inputServer as UIViewController, animated: false)
                 }
             }
         } else if (shortcutItem.type == ShortcutType.connectRecentServer) {

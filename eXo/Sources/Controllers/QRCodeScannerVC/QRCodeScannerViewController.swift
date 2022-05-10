@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRCodeScannerViewController: UIViewController {
+final class QRCodeScannerViewController: UIViewController {
  
     // MARK: - Outlets .
 
