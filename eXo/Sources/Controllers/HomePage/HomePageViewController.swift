@@ -28,7 +28,7 @@ enum DownloadStatus {
     case failed
 }
 
-class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
+final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
 
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -261,7 +261,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
-                self.showOnBoardingIfNeed()
+                print("In Session")
             }
             decisionHandler(.cancel)
             return
@@ -416,21 +416,6 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         }
         if message.contains("Call declined") || message.contains("User call leaved") || message.contains("Call accepted") || message.contains("User already in the started call"){
             playSound(false)
-        }
-    }
-    
-    /*
-     Display the Onboarding View Controller if:
-     - The view has never been shown
-     - After use has logged in
-     */
-    func showOnBoardingIfNeed () {
-        if (self.defaults.object(forKey: Config.onboardingDidShow) == nil){
-            let welcomeVC:WelcomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
-            welcomeVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            welcomeVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-            self.present(welcomeVC, animated: true, completion: {})
-            self.defaults.set(NSNumber(value: true as Bool), forKey: Config.onboardingDidShow)
         }
     }
     
