@@ -268,7 +268,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         
         if response.url?.absoluteString.range(of: serverDomain!+"/portal/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
-                self.showOnBoardingIfNeed()
+                print("In Session")
             }
             decisionHandler(.cancel)
             return
