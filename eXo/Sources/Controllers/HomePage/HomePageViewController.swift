@@ -27,7 +27,7 @@ enum DownloadStatus {
     case failed
 }
 
-class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
+final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
 
     @IBOutlet weak var webViewContainer: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -254,7 +254,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
         
         if response.url?.absoluteString.range(of: serverDomain!+"/portal/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
-                self.showOnBoardingIfNeed()
+                print("In Session")
             }
             decisionHandler(.cancel)
             return

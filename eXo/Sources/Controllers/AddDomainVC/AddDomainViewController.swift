@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDomainViewController: UIViewController,UITextFieldDelegate {
+final class AddDomainViewController: UIViewController,UITextFieldDelegate {
     
     // MARK: - Outlets.
     
