@@ -249,7 +249,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         
         if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
-                print("In Session")
+                self.showOnBoardingIfNeed()
             }
             decisionHandler(.cancel)
             return
@@ -367,6 +367,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 newWebview.topAnchor.constraint(equalTo: self.webViewContainer.topAnchor),
                 newWebview.bottomAnchor.constraint(equalTo: self.webViewContainer.bottomAnchor)
             ])
+            newWebview.load(navigationAction.request)
         }
         return popupWebView ?? nil
     }
@@ -400,23 +401,33 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     }
     
     /*
-     Ask to load the page <serverURL>/rest/state/status
-     - If the user has connected the response status code of this request = 200
-     */
-    func loadStateStatusPage () {
-        guard let serverUrl = self.serverURL, let serverDomain = URL(string: serverUrl)?.host else { return }
-        if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/intranet") != nil  {
-            let statusURL = serverUrl.serverDomainWithProtocolAndPort! + "/rest/state/status"
-            let url = URL(string: statusURL)
-            let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Config.timeout)
-            self.webView?.load(request)
-        }
-    }
-    
+       Display the Connect page View Controller if:
+       - The view has never been shown
+       - After use has logged in
+       */
+       func showOnBoardingIfNeed () {
+           if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
+               UserDefaults.standard.set(NSNumber(value: true as Bool), forKey: Config.onboardingDidShow)
+               let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
+               appDelegate.handleRootConnect()
+           }
+       }
+       /*
+        Ask to load the page <serverURL>/rest/state/status
+        - If the user has connected the response status code of this request = 200
+        */
+       func loadStateStatusPage() {
+           guard let serverUrl = self.serverURL, let serverDomain = URL(string: serverUrl)?.host else { return }
+           if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/intranet") != nil  {
+               let statusURL = serverUrl.serverDomainWithProtocolAndPort! + "/rest/state/status"
+               let url = URL(string: statusURL)
+               let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Config.timeout)
+               self.webView?.load(request)
+           }
+       }
     /*
      Get the remote avatar image, this need credentials in call .
      */
-    
     func saveLogoDomain(url:URL,cookies:[HTTPCookie]){
         if url.absoluteString.contains("/portal/dw") {
             let logoEndPoint = "/portal/rest/v1/platform/branding/logo"
