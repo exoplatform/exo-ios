@@ -247,7 +247,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
          Request to /rest/state/status to check if user has connected?: 300> status code >=200 --> Connected
          */
         
-        if response.url?.absoluteString.range(of: serverDomain!+"/rest/state/status") != nil  {
+        if response.url?.absoluteString.range(of: serverDomain!+"/portal/rest/state/status") != nil  {
             if (response.statusCode >= 200  && response.statusCode < 300) {
                 self.showOnBoardingIfNeed()
             }
@@ -403,7 +403,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     /*
        Display the Connect page View Controller if:
        - The view has never been shown
-       - After use has logged in
+       - After user has logged in
        */
        func showOnBoardingIfNeed () {
            if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
@@ -418,8 +418,8 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         */
        func loadStateStatusPage() {
            guard let serverUrl = self.serverURL, let serverDomain = URL(string: serverUrl)?.host else { return }
-           if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/intranet") != nil  {
-               let statusURL = serverUrl.serverDomainWithProtocolAndPort! + "/rest/state/status"
+           if self.webView?.url!.absoluteString.range(of: serverDomain + "/portal/dw") != nil  {
+               let statusURL = serverUrl.serverDomainWithProtocolAndPort! + "/portal/rest/state/status"
                let url = URL(string: statusURL)
                let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Config.timeout)
                self.webView?.load(request)
