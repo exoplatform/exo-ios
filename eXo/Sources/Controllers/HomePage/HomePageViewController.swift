@@ -201,6 +201,16 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         if let urlToSee = webView.url?.absoluteString {
             print("=============== didFinish Url : \(urlToSee)")
         }
+        WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ cookies in
+            if let url = webView.url,let prefixServer = url.absoluteString.serverDomainWithProtocolAndPort {
+                guard let appDelegate = UIApplication.shared.delegate as? eXoAppDelegate else { return }
+                guard let cookiesData = try? NSKeyedArchiver.archivedData(withRootObject: cookies, requiringSecureCoding: false) else { return }
+                self.defaults.set(cookiesData, forKey: prefixServer)
+                appDelegate.getWebBadgeNumber(url: url, cookies: cookies) { badge in
+                    appDelegate.setBadgeNumber(badge: badge)
+                }
+            }
+        })
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {

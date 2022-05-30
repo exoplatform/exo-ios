@@ -215,12 +215,16 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (isSucc, error) in
             if isSucc {
-                if let aps = userInfo["aps"] as? NSDictionary {
-                    print(aps)
-                    if let badge = aps["badge"] as? Int {
-                        self.setBadgeNumber(badge: badge)
-                        if let url = userInfo["url"] as? String {
-                            let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
+                self.setBadgeNumber(badge: 0)
+                print(userInfo)
+                if let urlString = userInfo["url"] as? String,let url = URL(string: urlString) {
+                    let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: urlString))
+                    // Get badge number from the web api.
+                    do {
+                        let decodedCookies  = self.defaults.object(forKey: server.serverURL.serverDomainWithProtocolAndPort!) as! Data
+                        let cookies = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decodedCookies) as! [HTTPCookie]
+                        self.getWebBadgeNumber(url:url, cookies: cookies) { badge in
+                            self.setBadgeNumber(badge:badge)
                             var dic:Dictionary = [String:Int]()
                             for ser in ServerManager.sharedInstance.serverList {
                                 if let serverURL = (ser as? Server)?.serverURL {
@@ -232,12 +236,33 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
                             self.defaults.setValue(dic, forKey: "badgeNumber")
                             self.postNotificationWith(key: .reloadTableView)
                         }
+                    }catch {
+                        // Get badge number from the Apns.
+                        if let aps = userInfo["aps"] as? NSDictionary {
+                            print(aps)
+                            if let badge = aps["badge"] as? Int {
+                                self.setBadgeNumber(badge: badge)
+                                if let url = userInfo["url"] as? String {
+                                    let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
+                                    var dic:Dictionary = [String:Int]()
+                                    for ser in ServerManager.sharedInstance.serverList {
+                                        if let serverURL = (ser as? Server)?.serverURL {
+                                            if serverURL.stringURLWithoutProtocol() == server.serverURL.stringURLWithoutProtocol() {
+                                                dic[server.serverURL.stringURLWithoutProtocol()] = badge
+                                            }
+                                        }
+                                    }
+                                    self.defaults.setValue(dic, forKey: "badgeNumber")
+                                    self.postNotificationWith(key: .reloadTableView)
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
         // Change this to your preferred presentation option
-        completionHandler([[ .badge, .alert, .sound]])
+        completionHandler([.alert,.badge,.sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -247,6 +272,7 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print full message.
+        
         handleNotification(userInfo: userInfo)
         completionHandler()
     }
@@ -296,12 +322,6 @@ extension eXoAppDelegate {
             ServerManager.sharedInstance.addEditServer(server)
             self.quickActionOpenHomePageForURL(url)
         }
-        if let aps = userInfo["aps"] as? NSDictionary {
-            print(aps)
-            if let badge = aps["badge"] as? Int {
-                self.setBadgeNumber(badge: badge)
-            }
-        }
     }
     
     func tryToRegisterForRemoteNotifications(application: UIApplication) {
@@ -340,6 +360,34 @@ extension eXoAppDelegate {
     
     func postNotificationWith(key:Notification.Name){
         NotificationCenter.default.post(name: key, object: nil)
+    }
+    
+    // MARK: - Get the webpage badge number.
+    
+    func getWebBadgeNumber(url:URL,cookies:[HTTPCookie], completion: @escaping (Int) -> Void) {
+        let badgeUrl = url.absoluteString.serverDomainWithProtocolAndPort! + Config.badgePath
+        var internalBadge:Int = -1
+        let session = URLSession.shared
+        session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
+        let task = session.dataTask(with: URL(string: badgeUrl)!) { (data, response, error) in
+            if let error = error {
+                print("---REST:\tBadge number request has failed \(error.localizedDescription)")
+            }
+            guard let data = data else { return }
+            guard let response = response as? HTTPURLResponse else { return }
+            switch response.statusCode {
+            case 200..<300:
+                do{
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+                        internalBadge = json.object(forKey: "badge") as! Int
+                        completion(internalBadge)
+                    }
+                }catch{ print("erroMsg") }
+            default:
+                print("---REST:\tBadge number request has failed. Server response: \(response.debugDescription)")
+            }
+        }
+        task.resume()
     }
     
 }
