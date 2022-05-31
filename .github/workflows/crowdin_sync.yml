@@ -20,8 +20,10 @@ jobs:
       run: |
         git push origin :${CROWDIN_SYNC_BRANCH} ||:
         git branch -D ${CROWDIN_SYNC_BRANCH} ||:
+    - name: Mark workspace as safe folder
+      run: git config --global --add safe.directory /github/workspace
     - name: Synchronize crowdin with the project
-      uses: crowdin/github-action@1.4.4
+      uses: crowdin/github-action@1.4.9
       with:
         upload_translations: true
         download_translations: true
