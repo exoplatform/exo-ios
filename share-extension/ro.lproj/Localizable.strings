@@ -20,10 +20,6 @@
 
 "Upload.Warning.AllUploadFailed" = "Toate încărcările au eșuat";
 
-"Upload.Warning.UploadsFailed" = "%lu uploads failed";
-
-"Upload.Warning.UploadFailed" = "1 upload failed";
-
 "Upload.Warning.ItemsCannotBeUpload" = "%d item(e) nu pot fi încărcate";
 
 "Upload.Warning.FileTooLarge" = "Fișierul este prea mare";
@@ -36,51 +32,16 @@
 
 "Word.Post" = "Distribuie";
 
-"Title.SelectAccount" = "Select an account";
-
 "Word.Username" = "Nume de utilizator";
-
-"Title.UnknownPassword" = "Password: Unknown";
-
-"Title.NeededUsernamePassoword" = "Username & password needed ";
 
 "Word.Edit" = "Modifică";
 
 "Word.Account" = "Cont";
 
-"Login.Status.Loging" = "Signing in";
-
-"Login.Status.WrongPassword" = "Wrong password";
-
-"Login.Status.AskToSignIn" = "Please sign in to post";
-
 "Login.Status.Offline" = "Deconectat";
-
-"Login.Status.LoginFail" = "Login fail";
-
-"LogIn.Warning.NoAccount" = "No account";
 
 "Word.Space" = "Spaţiu";
 
-"Login.Status.ServerProblem" = "Server Problem";
-
-"LogIn.Status.NoSpaceId" = "Cannot load space";
-
-"LogIn.Error.UnableToPost" = "Unable to post";
-
-"Title.LoadingSpaceId" = "Loading space ";
-
 "Word.Public" = "Public";
-
-"Post.Title.ErrorMessage" = "Cannot post";
-
-"Title.SpaceSelection" = "Space selection";
-
-
-"Setting.Title.Server" = "Server";
-
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
-
-"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
 
 "Word.Back" = "Înapoi";

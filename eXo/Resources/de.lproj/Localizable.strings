@@ -20,51 +20,39 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
-"OnBoarding.Title.UpdateVersion" = "eXo Update";
+"OnBoarding.Title.UpdateVersion" = "eXo-Update";
 
-"OnBoarding.Message.UpdateVersion" = "To use the app, please download the latest version";
+"OnBoarding.Message.UpdateVersion" = "Um die App zu nutzen, laden Sie bitte die neueste Version herunter";
 
-"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
+"OnBoarding.Title.ScanQRCode" = "Scannen Sie Ihren QR-Code, um eine Verbindung herzustellen";
 
-"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
+"OnBoarding.Title.EnterPassword" = "Geben Sie Ihr Passwort ein, um sich schnell anzumelden.";
 
-"OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";
+"OnBoarding.Title.ScanQRsettings" = "Scannen Sie den QR-Code, der in Ihren eXo-Einstellungen angezeigt wird.";
 
-"OnBoarding.Title.ShowQRCode" = "Display the QR code in your eXo settings.";
+"OnBoarding.Title.ShowQRCode" = "Zeigen Sie den QR-Code in Ihren eXo-Einstellungen an.";
 
-"OnBoarding.Title.ScanCode" = "Scan code";
-
-"OnBoarding.Title.EnterUrleXo" = "Enter eXo connection URL";
+"OnBoarding.Title.ScanCode" = "Code scannen";
 
 "Delete" = "Löschen";
 
 "Cancel" = "Abbrechen";
 
-"OnBoarding.Title.AddYourExo" = "New eXo Connection";
+"OnBoarding.Title.ConnectToeXo" = "Mit eXo verbinden";
 
-"OnBoarding.Title.ConnectToeXo" = "Connect to eXo";
+"OnBoarding.Title.AddNewExo" = "Neues eXo hinzufügen";
 
-"OnBoarding.Title.AddNewExo" = "Add a new eXo";
+"OnBoarding.Title.SignInToeXo" = "Bei eXo anmelden";
 
-"OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
-
-"OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
-
-"OnBoarding.Title.AddServer" = "Connect your eXo";
+"OnBoarding.Title.DiscovereXo" = "Entdecken Sie eXo Tribe";
 
 "OnBoarding.Title.Others" = "Andere";
 
-"OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
+"OnBoarding.Title.eXoPlatformDescription" = "Verbinden, teilen und zusammenarbeiten";
 
-"OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
+"OnBoarding.Error.PlatformNotSupported" = "Plattform-Version wird nicht unterstützt";
 
-"OnBoarding.Message.EnterURL" = "Enter your eXo address";
-
-"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
-
-"OnBoarding.Error.PlatformNotFound" = "Platform version not found";
-
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 6.2 or later";
+"OnBoarding.Error.PlatformNotFound" = "Plattform-Version nicht gefunden";
 
 "Word.OK" = "Ok";
 
@@ -72,61 +60,29 @@
 
 "Word.Back" = "Zurück";
 
-"OnBoarding.Error.URL" = "eXo URL error";
-
 "OnBoarding.Error.UnableConnectServer" = "Bitte geben Sie eine gültige URL ein";
 
-"OnBoarding.Title.RecentsServer" = "My eXos";
+"OnBoarding.Error.ConnectionError" = "Verbindungsfehler";
 
-"OnBoarding.Error.ConnectionError" = "Connection Error";
-
-"OnBoarding.Title.MostRecentServer" = "Most recent connection";
-
-"Internet connection lost" = "Internet connection lost";
-
-"Please make sure you have internet connection" = "Please make sure you are connected to internet";
+"Internet connection lost" = "Internetverbindung abgebrochen";
 
 
 // Shortcut (3D Touch)
 
-"Shortcut.Title.RegisterCommunity" = "Register on eXo Tribe";
+"Shortcut.Title.RegisterCommunity" = "Registrieren Sie sich bei eXo Tribe";
 
-"Shortcut.Title.ConnectTo" = "Connect to";
+"Shortcut.Title.ConnectTo" = "Verbinden mit";
 
-"Shortcut.Title.AddServer" = "Connect your eXo";
+"Shortcut.Title.ConnnecteXoTribe" = "Mit eXo Tribe verbinden";
 
-"Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
-
-// Setting
-
-"Setting.Title.Server" = "eXos";
-
-"Setting.Title.NoServer" = "No eXo connection defined yet";
-
-"Setting.Title.AddServer" = "Connect your eXo";
-
-"Setting.Title.DeleteServer" = "Delete Connection";
-
-"Setting.Message.DeleteServer" = "Do you really want to delete this connection?";
-
-"Setting.Title.ApplicationVersion" = "Anwendungsversion";
-
-"Setting.Title.About" = "About";
+"Setting.Title.About" = "Über uns";
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Platform version not supported";
-
-"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
-
-// Add Server
-
-"Add your eXo" = "New eXo Connection";
-
-"Enter your eXo URL" = "Enter your eXo connection address";
+"ServerManager.Title.Warning" = "Plattform-Version wird nicht unterstützt";
 
 // Home Page
 
-"Download Unavailable" = "Download Unavailable";
+"Download Unavailable" = "Download nicht verfügbar";
 
-"You can't download the document, your os is less than iOS 15." = "You can't download the document, your os is less than iOS 15.";
+"You can't download the document, your os is less than iOS 15." = "Sie können das Dokument nicht herunterladen. Ihr Betriebssystem ist älter als iOS 15.";
