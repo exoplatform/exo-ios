@@ -20,10 +20,6 @@
 
 "Upload.Warning.AllUploadFailed" = "Lahat ng mga upload ay nabigo";
 
-"Upload.Warning.UploadsFailed" = "%lu uploads failed";
-
-"Upload.Warning.UploadFailed" = "1 upload failed";
-
 "Upload.Warning.ItemsCannotBeUpload" = "%d ang (mga) aytem ay hindi ma-upload";
 
 "Upload.Warning.FileTooLarge" = "Ang file ay masyadong malaki";
@@ -36,51 +32,16 @@
 
 "Word.Post" = "Ang mag-Post";
 
-"Title.SelectAccount" = "Select an account";
-
 "Word.Username" = "Ang Username";
-
-"Title.UnknownPassword" = "Password: Unknown";
-
-"Title.NeededUsernamePassoword" = "Username & password needed ";
 
 "Word.Edit" = "I-edit";
 
 "Word.Account" = "Account";
 
-"Login.Status.Loging" = "Signing in";
-
-"Login.Status.WrongPassword" = "Wrong password";
-
-"Login.Status.AskToSignIn" = "Please sign in to post";
-
 "Login.Status.Offline" = "Offline";
-
-"Login.Status.LoginFail" = "Login fail";
-
-"LogIn.Warning.NoAccount" = "No account";
 
 "Word.Space" = "Ang Espasyo";
 
-"Login.Status.ServerProblem" = "Server Problem";
-
-"LogIn.Status.NoSpaceId" = "Cannot load space";
-
-"LogIn.Error.UnableToPost" = "Unable to post";
-
-"Title.LoadingSpaceId" = "Loading space ";
-
 "Word.Public" = "Ang Publiko";
-
-"Post.Title.ErrorMessage" = "Cannot post";
-
-"Title.SpaceSelection" = "Space selection";
-
-
-"Setting.Title.Server" = "Server";
-
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
-
-"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
 
 "Word.Back" = "Likuran";
