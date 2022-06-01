@@ -83,12 +83,13 @@ final class OnboardingViewController: UIViewController {
 
     @objc
     func openServer(notification:Notification){
-        guard let serverURL = notification.userInfo?["serverURL"] as? String else { return }
+        guard let addedServer = notification.userInfo?["addedServer"] as? Server else { return }
         // Open the selected server in the WebView
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController
         if let homepageVC = homepageVC {
-            homepageVC.serverURL = serverURL
+            homepageVC.serverURL = addedServer.serverURL
+            ServerManager.sharedInstance.addEditServer(addedServer)
             self.navigationController?.pushViewController(homepageVC, animated: true)
         }
     }
