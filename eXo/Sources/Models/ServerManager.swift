@@ -120,10 +120,7 @@ class ServerManager  {
             let groupUserDefaults = UserDefaults(suiteName: ShareExtension.NSUserDefaultSuite)
             groupUserDefaults?.set(list, forKey: ShareExtension.AllUserNameKey)
             groupUserDefaults?.synchronize()
-
-            if #available(iOS 9.0, *) {
-                self.updateQuickAction()
-            }
+            self.updateQuickAction()
         }
     }
     
@@ -133,7 +130,7 @@ class ServerManager  {
     - Add New Server: availabel when the list of server is empty.
     - Open a Server: Link direct to the most recent Server (4 Maximum)
     */
-    @available(iOS 9.0, *)
+
     func updateQuickAction () {
         let items:NSMutableArray = NSMutableArray()
         if (serverList.count > 0) {

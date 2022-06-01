@@ -261,6 +261,8 @@ extension eXoAppDelegate {
     func setRootToHome(_ serverURL:String){
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+        let server = Server(serverURL: serverURL.serverDomainWithProtocolAndPort!)
+        ServerManager.sharedInstance.addEditServer(server)
         homepageVC.serverURL = serverURL
         navigationVC = UINavigationController(rootViewController: homepageVC)
         window = UIWindow(frame: UIScreen.main.bounds)
