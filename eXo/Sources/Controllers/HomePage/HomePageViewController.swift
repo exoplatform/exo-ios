@@ -406,7 +406,7 @@ class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, WKUIDe
        - The view has never been shown
        - After user has logged in
        */
-       func showOnBoardingIfNeed () {
+       func showOnBoardingIfNeed() {
            if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
                UserDefaults.standard.set(NSNumber(value: true as Bool), forKey: Config.onboardingDidShow)
                let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
