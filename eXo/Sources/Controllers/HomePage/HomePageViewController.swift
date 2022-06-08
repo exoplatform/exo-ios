@@ -61,11 +61,16 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             // inject JS to capture console.log output and send to iOS
             let source = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
+            let source1 = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('click clack!'); })"
             let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            let script1 = WKUserScript(source: source1, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             webView?.configuration.userContentController.addUserScript(script)
+            webView?.configuration.userContentController.addUserScript(script1)
             // register the bridge script that listens for the output
             webView?.configuration.userContentController.add(
                 LeakAvoider(delegate:self), name: "logHandler")
+            webView?.configuration.userContentController.add(
+                LeakAvoider(delegate:self), name: "iosListener")
             self.configureDoneButton()
         }
     }
@@ -93,6 +98,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
+    
     /*
        Deallocate Memory
      */
@@ -388,6 +394,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                     parseCallState(message:message.body as! String)
                 }
             }
+        }
+        if message.name == "iosListener" {
+            print("iosListener =====> : \(message.body)")
+            self.view.endEditing(true)
         }
     }
     
