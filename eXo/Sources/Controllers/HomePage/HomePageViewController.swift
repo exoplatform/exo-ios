@@ -98,6 +98,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
+    
     /*
        Deallocate Memory
     */
