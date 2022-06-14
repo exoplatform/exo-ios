@@ -106,6 +106,7 @@
 		DBC0162E27AAEE0C004D1684 /* CheckStoreUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
+		DBCA1F56285888820058FCD6 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCA1F55285888820058FCD6 /* LeakAvoider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +286,7 @@
 		DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckStoreUpdate.swift; sourceTree = "<group>"; };
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		DBCA1F55285888820058FCD6 /* LeakAvoider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakAvoider.swift; sourceTree = "<group>"; };
 		DD7E70396AD876E86037F111 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F984C3EE46C4BCF5906DAADF /* Pods-eXoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoUITests.release.xcconfig"; path = "Target Support Files/Pods-eXoUITests/Pods-eXoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -517,6 +519,7 @@
 				9C935F7D1BD60286009C065B /* Tool.swift */,
 				DB31D88626A1EF5D00D25F96 /* Connectivity.swift */,
 				DB31D88726A1EF5D00D25F96 /* Reachability.swift */,
+				DBCA1F55285888820058FCD6 /* LeakAvoider.swift */,
 				DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */,
 			);
 			path = Sources;
@@ -1214,6 +1217,7 @@
 				B56257E7202AD9AB00A6CE41 /* CookiesFromAuthorizationFetcher.swift in Sources */,
 				9C935F801BD61D5A009C065B /* ServerManager.swift in Sources */,
 				9C935F8B1BD8A079009C065B /* HomePageViewController.swift in Sources */,
+				DBCA1F56285888820058FCD6 /* LeakAvoider.swift in Sources */,
 				DB3CE0AC269C8F7F00622057 /* UIImage-Gif.swift in Sources */,
 				9CB9F1011BD4A08100511E48 /* PlaceholderTextView.swift in Sources */,
 				B5C73362201F32B700A2EA71 /* CookiesInterceptor.swift in Sources */,
