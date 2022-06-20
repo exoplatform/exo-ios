@@ -21,7 +21,7 @@ import SnapKit
 
 import MarqueeLabel
 
-public protocol NotificationBannerDelegate: class {
+public protocol NotificationBannerDelegate: AnyObject {
     func notificationBannerWillAppear(_ banner: BaseNotificationBanner)
     func notificationBannerDidAppear(_ banner: BaseNotificationBanner)
     func notificationBannerWillDisappear(_ banner: BaseNotificationBanner)
@@ -118,8 +118,11 @@ open class BaseNotificationBanner: UIView {
     /// Banner show and dimiss animation duration
     public var animationDuration: TimeInterval = 0.5
 
-    /// Wether or not the notification banner is currently being displayed
+    /// Whether or not the notification banner is currently being displayed
     public var isDisplaying: Bool = false
+    
+    /// Whether or not to post the default accessibility notification.
+    public var shouldPostAccessibilityNotification: Bool = true
 
     /// The view that the notification layout is presented on. The constraints/frame of this should not be changed
     internal var contentView: UIView!
@@ -154,7 +157,7 @@ open class BaseNotificationBanner: UIView {
             return UIApplication.shared.connectedScenes
                 .first { $0.activationState == .foregroundActive || $0.activationState == .foregroundInactive }
                 .map { $0 as? UIWindowScene }
-                .map { $0?.windows.first } ?? UIApplication.shared.delegate?.window ?? UIApplication.shared.keyWindow
+                .flatMap { $0?.windows.first } ?? UIApplication.shared.delegate?.window ?? UIApplication.shared.keyWindow
         }
 
         return UIApplication.shared.delegate?.window ?? nil
@@ -377,6 +380,11 @@ open class BaseNotificationBanner: UIView {
                 queuePosition: queuePosition
             )
         } else {
+            guard bannerPositionFrame != nil else {
+                remove();
+                return
+            }
+
             self.frame = bannerPositionFrame.startFrame
 
             if let parentViewController = parentViewController {
@@ -400,7 +408,10 @@ open class BaseNotificationBanner: UIView {
             )
             
             delegate?.notificationBannerWillAppear(self)
-            postAccessibilityNotification()
+            
+            if self.shouldPostAccessibilityNotification {
+                postAccessibilityNotification()
+            }
 
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTapGestureRecognizer))
             self.addGestureRecognizer(tapGestureRecognizer)
