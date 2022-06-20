@@ -60,12 +60,17 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             webView?.configuration.preferences.javaScriptEnabled = true
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             // inject JS to capture console.log output and send to iOS
-            let source = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
-            let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-            webView?.configuration.userContentController.addUserScript(script)
+            let captureLogSource = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
+            let iOSListenerSource = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('iOS Listener executed!'); })"
+            let captureLogScript = WKUserScript(source: captureLogSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            let iOSListenerScript = WKUserScript(source: iOSListenerSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            webView?.configuration.userContentController.addUserScript(captureLogScript)
+            webView?.configuration.userContentController.addUserScript(iOSListenerScript)
             // register the bridge script that listens for the output
             webView?.configuration.userContentController.add(
                 LeakAvoider(delegate:self), name: "logHandler")
+            webView?.configuration.userContentController.add(
+                LeakAvoider(delegate:self), name: "iosListener")
             self.configureDoneButton()
         }
     }
@@ -93,6 +98,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
+    
     /*
        Deallocate Memory
      */
@@ -388,6 +394,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                     parseCallState(message:message.body as! String)
                 }
             }
+        }
+        if message.name == "iosListener" {
+            print("iosListener =====> : \(message.body)")
+            self.view.endEditing(true)
         }
     }
     
