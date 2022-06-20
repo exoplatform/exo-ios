@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import NotificationBannerSwift
 
 extension UIViewController {
     func postNotificationWith(key:Notification.Name,info:[AnyHashable:Any]){
@@ -121,28 +122,30 @@ extension UIViewController {
     
     // MARK: - Send notification while tracking the download status.
     
-    func sendNotificationForDownload(_ filename:String,_ status: DownloadStatus) {
-        let content = UNMutableNotificationContent()
-        var notifTitle = ""
-        var notifBody = ""
-        switch status {
-        case .completed:
-            notifTitle = "Download completed"
-            notifBody = "\(filename) downloaded successfully"
-            break
-        case .started:
-            notifTitle = "Download started"
-            notifBody = "The download of \(filename) has been started"
-            break
-        case .failed:
-            notifTitle = "Download failed"
-            notifBody = "Failed to download the file \(filename)"
-            break
+    func showDownloadBanner(filename:String,status:DownloadStatus) {
+        DispatchQueue.main.async {
+            var title = ""
+            var subtitle = ""
+            var style:BannerStyle = .info
+            switch status {
+            case .completed:
+                title = "Download completed"
+                subtitle = "\(filename) downloaded successfully"
+                style = .success
+            case .started:
+                title = "Download started"
+                subtitle = "The download of \(filename) has been started"
+                style = .info
+            case .failed:
+                title = "Download failed"
+                subtitle = "Failed to download the file \(filename)"
+                style = .warning
+            }
+            let banner = FloatingNotificationBanner(title: title, subtitle: subtitle, style: style)
+            banner.show(bannerPosition: .top,queue: .default,on:self, cornerRadius: 8,
+                        shadowColor: UIColor(red: 0.431, green: 0.459, blue: 0.494, alpha: 1),
+                        shadowBlurRadius: 16,
+                        shadowEdgeInsets: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8))
         }
-        content.title = notifTitle
-        content.body = notifBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }

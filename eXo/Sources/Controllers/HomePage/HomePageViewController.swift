@@ -503,17 +503,17 @@ extension HomePageViewController {
     // Download the file.
     
     private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
-        sendNotificationForDownload(fileName, .started)
+        showDownloadBanner(filename: fileName, status: .started)
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
             let session = URLSession.shared
             session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
             let task = session.downloadTask(with: url) { localURL, urlResponse, error in
                 if let localURL = localURL {
                     let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
-                    self.sendNotificationForDownload(fileName, .completed)
+                    self.showDownloadBanner(filename: fileName, status: .completed)
                     completion(true, destinationURL)
                 }else {
-                    self.sendNotificationForDownload(fileName, .failed)
+                    self.showDownloadBanner(filename: fileName, status: .failed)
                     completion(false, nil)
                 }
             }
@@ -579,7 +579,7 @@ extension HomePageViewController:WKDownloadDelegate {
         destinationUrl = documentsUrl.appendingPathComponent(suggestedFilename)
         try? FileManager.default.removeItem(at: destinationUrl!)
         dowloadedFileName = suggestedFilename
-        sendNotificationForDownload(dowloadedFileName,.started)
+        showDownloadBanner(filename:dowloadedFileName,status:.started)
         completionHandler(destinationUrl)
     }
     
@@ -593,13 +593,13 @@ extension HomePageViewController:WKDownloadDelegate {
     
     func downloadDidFinish(_ download: WKDownload) {
         print("File Successfully Downloaded")
-        sendNotificationForDownload(dowloadedFileName,.completed)
+        showDownloadBanner(filename:dowloadedFileName,status:.completed)
         self.fileDownloadedAtURL(url: destinationUrl!)
     }
     
     func download(_ download: WKDownload, didFailWithError error: Error, resumeData: Data?) {
         print("Failed to download the file: \(error)")
-        sendNotificationForDownload(dowloadedFileName,.failed)
+        showDownloadBanner(filename:dowloadedFileName,status:.failed)
     }
     
 }
