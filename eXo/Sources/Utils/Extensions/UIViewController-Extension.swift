@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import NotificationBannerSwift
 
 extension UIViewController {
     func postNotificationWith(key:Notification.Name,info:[AnyHashable:Any]){
@@ -144,5 +145,30 @@ extension UIViewController {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
         let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func showDownloadBanner(_ filename:String,_ status:DownloadStatus) {
+        var bannerTitle = ""
+        var bannerSubtitle = ""
+        var style:BannerStyle = .info
+        switch status {
+        case .completed:
+            bannerTitle = "Download completed"
+            bannerSubtitle = "\(filename) downloaded successfully"
+            style = .success
+        case .started:
+            bannerTitle = "Download started"
+            bannerSubtitle = "The download of \(filename) has been started"
+            style = .info
+        case .failed:
+            bannerTitle = "Download failed"
+            bannerSubtitle = "Failed to download the file \(filename)"
+            style = .warning
+        }
+        let banner = FloatingNotificationBanner(title: bannerTitle, subtitle: bannerSubtitle, style: style)
+        banner.show(bannerPosition: .top,queue: .default, on:self,cornerRadius: 8,
+                    shadowColor: UIColor(red: 0.431, green: 0.459, blue: 0.494, alpha: 1),
+                      shadowBlurRadius: 16,
+                    shadowEdgeInsets: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8))
     }
 }

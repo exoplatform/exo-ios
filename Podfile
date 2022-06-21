@@ -14,7 +14,7 @@ target "eXo" do
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
-    pod 'Kingfisher'
+    pod 'NotificationBannerSwift'
 
 	target "eXoTests" do
 		inherit! :search_paths
