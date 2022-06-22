@@ -17,9 +17,7 @@
 
 import UIKit
 import WebKit
-import Kingfisher
 import AVFoundation
-import UserNotifications
 
 enum DownloadStatus {
     case started
@@ -37,7 +35,8 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
     let defaults = UserDefaults.standard
-    
+    let imageCache = NSCache<NSString, UIImage>()
+
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
     var player: AVAudioPlayer?
@@ -438,20 +437,35 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     /*
      Get the remote avatar image, this need credentials in call .
      */
-    func saveLogoDomain(url:URL,cookies:[HTTPCookie]){
+    func saveLogoDomain(url:URL,cookies:[HTTPCookie]) {
         if url.absoluteString.contains("/portal/dw") {
             let logoEndPoint = "/portal/rest/v1/platform/branding/logo"
             if let scheme = url.scheme,let domain = url.host {
                 let  imageUrlLogo = "\(scheme)://\(domain)\(logoEndPoint)"
                 let _url = URL(string: imageUrlLogo)
-                let modifier = AnyModifier { request in
-                    var r = request
-                    r.allHTTPHeaderFields = HTTPCookie.requestHeaderFields(with: cookies)
-                    return r
+                
+                // check cached image
+                if let cachedImage = imageCache.object(forKey: domain as NSString)  {
+                    print(cachedImage.description)
+                    return
                 }
-                let imgView = UIImageView()
-                imgView.kf.setImage(with: _url, options: [.requestModifier(modifier)])
-                self.defaults.setValue(imgView.image?.pngData(), forKey: "\(domain)")
+                
+                // if not, download image from url
+                var request = URLRequest.init(url: _url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: Config.timeout)
+                request.allHTTPHeaderFields = HTTPCookie.requestHeaderFields(with: cookies)
+                URLSession.shared.dataTask(with: request, completionHandler: {data, response, error -> Void in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if let image = UIImage(data: data!) {
+                            self.imageCache.setObject(image, forKey: domain as NSString)
+                            self.defaults.setValue(image.pngData(), forKey: "\(domain)")
+                        }
+                    }
+                }).resume()
             }
         }
     }
@@ -503,17 +517,17 @@ extension HomePageViewController {
     // Download the file.
     
     private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
-        sendNotificationForDownload(fileName, .started)
+        showDownloadBanner(fileName, .started)
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
             let session = URLSession.shared
             session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
             let task = session.downloadTask(with: url) { localURL, urlResponse, error in
                 if let localURL = localURL {
                     let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
-                    self.sendNotificationForDownload(fileName, .completed)
+                    self.showDownloadBanner(fileName, .completed)
                     completion(true, destinationURL)
                 }else {
-                    self.sendNotificationForDownload(fileName, .failed)
+                    self.showDownloadBanner(fileName, .failed)
                     completion(false, nil)
                 }
             }
@@ -579,7 +593,7 @@ extension HomePageViewController:WKDownloadDelegate {
         destinationUrl = documentsUrl.appendingPathComponent(suggestedFilename)
         try? FileManager.default.removeItem(at: destinationUrl!)
         dowloadedFileName = suggestedFilename
-        sendNotificationForDownload(dowloadedFileName,.started)
+        showDownloadBanner(dowloadedFileName,.started)
         completionHandler(destinationUrl)
     }
     
@@ -593,13 +607,13 @@ extension HomePageViewController:WKDownloadDelegate {
     
     func downloadDidFinish(_ download: WKDownload) {
         print("File Successfully Downloaded")
-        sendNotificationForDownload(dowloadedFileName,.completed)
+        showDownloadBanner(dowloadedFileName,.completed)
         self.fileDownloadedAtURL(url: destinationUrl!)
     }
     
     func download(_ download: WKDownload, didFailWithError error: Error, resumeData: Data?) {
         print("Failed to download the file: \(error)")
-        sendNotificationForDownload(dowloadedFileName,.failed)
+        showDownloadBanner(dowloadedFileName,.failed)
     }
     
 }

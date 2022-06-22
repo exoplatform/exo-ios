@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
-
-import UIKit
 
 class ServerCell: UITableViewCell {
 

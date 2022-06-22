@@ -86,6 +86,7 @@
 		DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */ = {isa = PBXBuildFile; fileRef = DB3CE0A6269C8B6100622057 /* slide2_gif-FR.gif */; };
 		DB3CE0AC269C8F7F00622057 /* UIImage-Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */; };
 		DB54A563279971270080B25A /* Bundle-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB54A562279971270080B25A /* Bundle-Extension.swift */; };
+		DB5A9019286332BA006F8077 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB5A9018286332BA006F8077 /* NotificationBannerSwift */; };
 		DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6126949CFB00809B53 /* OnboardingViewController.xib */; };
 		DB6A4E6726949CFB00809B53 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6A4E6326949CFB00809B53 /* OnboardingCell.swift */; };
 		DB6A4E6826949CFB00809B53 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6A4E6426949CFB00809B53 /* OnboardingCell.xib */; };
@@ -292,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7602F509B29598C5A0B76A41 /* Pods_eXo.framework in Frameworks */,
+				DB5A9019286332BA006F8077 /* NotificationBannerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +795,9 @@
 				9C3D7CFA1BDF64E0002873CB /* PBXTargetDependency */,
 			);
 			name = eXo;
+			packageProductDependencies = (
+				DB5A9018286332BA006F8077 /* NotificationBannerSwift */,
+			);
 			productName = eXo;
 			productReference = 9C3AD2461BCF56900094CFF9 /* eXo.app */;
 			productType = "com.apple.product-type.application";
@@ -919,6 +924,9 @@
 				fr,
 			);
 			mainGroup = 9C3AD23D1BCF56900094CFF9;
+			packageReferences = (
+				DB5A9017286332BA006F8077 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
+			);
 			productRefGroup = 9C3AD2471BCF56900094CFF9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1731,6 +1739,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DB5A9017286332BA006F8077 /* XCRemoteSwiftPackageReference "NotificationBanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Daltron/NotificationBanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DB5A9018286332BA006F8077 /* NotificationBannerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB5A9017286332BA006F8077 /* XCRemoteSwiftPackageReference "NotificationBanner" */;
+			productName = NotificationBannerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9C3AD23E1BCF56900094CFF9 /* Project object */;
 }
