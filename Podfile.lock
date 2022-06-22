@@ -101,12 +101,17 @@ PODS:
   - GoogleUtilities/UserDefaults (7.4.1):
     - GoogleUtilities/Logger
   - HTMLKit (4.2.0)
+  - MarqueeLabel (4.0.5)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - NotificationBannerSwift (3.0.6):
+    - MarqueeLabel (~> 4.0.5)
+    - SnapKit (~> 5.0.1)
   - PromisesObjC (1.2.12)
+  - SnapKit (5.0.1)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.1)
   - UICKeyChainStore (2.2.1)
@@ -116,6 +121,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Messaging
   - HTMLKit
+  - NotificationBannerSwift (~> 3.0.0)
   - SVProgressHUD
   - SwiftyJSON
   - UICKeyChainStore
@@ -133,8 +139,11 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - HTMLKit
+    - MarqueeLabel
     - nanopb
+    - NotificationBannerSwift
     - PromisesObjC
+    - SnapKit
     - SVProgressHUD
     - SwiftyJSON
     - UICKeyChainStore
@@ -151,12 +160,15 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   HTMLKit: e11ec9ed1a9be779e7dd65acdea5757fb113030e
+  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   UICKeyChainStore: ba3bff2c762b12db1e516f395c837dd25298b05e
 
-PODFILE CHECKSUM: cf41300a8c945ba53cf4606f8cbaf6886606c55d
+PODFILE CHECKSUM: bc190e3051d813bfd9be6fec45b302545c377b75
 
 COCOAPODS: 1.11.3
