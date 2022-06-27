@@ -102,6 +102,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     /*
        Deallocate Memory
      */
+    
     deinit {
         print("dealloc webview")
         self.webView?.stopLoading()
