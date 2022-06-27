@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class ConnectToExoViewController: UIViewController {
     
@@ -16,7 +15,8 @@ final class ConnectToExoViewController: UIViewController {
     @IBOutlet weak var connectTableView: UITableView!
     
     let defaults = UserDefaults.standard
-    
+    let imageCache = NSCache<NSString, UIImage>()
+
     // MARK: - Variables.
     
     weak var selectedServer:Server?
@@ -86,8 +86,10 @@ final class ConnectToExoViewController: UIViewController {
         let title = "Setting.Title.DeleteServer".localized
         let msg = "Setting.Message.DeleteServer".localized
         if let serverToDelete = ServerManager.sharedInstance.serverList[sender.tag] as? Server {
-            print("serverToDelete === >  \(serverToDelete.serverURL.stringURLWithoutProtocol())")
-            defaults.removeObject(forKey: serverToDelete.serverURL.stringURLWithoutProtocol())
+            let domain = serverToDelete.serverURL.stringURLWithoutProtocol()
+            print("serverToDelete === >  \(domain)")
+            defaults.removeObject(forKey: domain)
+            imageCache.removeObject(forKey: domain as NSString)
             showAlertMessageDelete(title:title,msg: msg, action: .delete, server: serverToDelete)
         }
     }
