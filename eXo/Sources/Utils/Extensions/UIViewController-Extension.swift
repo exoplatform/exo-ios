@@ -121,28 +121,51 @@ extension UIViewController {
     
     // MARK: - Send notification while tracking the download status.
     
-    func sendNotificationForDownload(_ filename:String,_ status: DownloadStatus) {
-        let content = UNMutableNotificationContent()
-        var notifTitle = ""
-        var notifBody = ""
+    func showDownloadBanner(_ filename:String,_ status:DownloadStatus) {
+        var bannerTitle = ""
+        var bannerSubtitle = ""
+        var bannerColor = UIColor(hex: 0x52C7FF)
         switch status {
         case .completed:
-            notifTitle = "Download completed"
-            notifBody = "\(filename) downloaded successfully"
-            break
+            bannerTitle = "Download completed"
+            bannerSubtitle = "\(filename) downloaded successfully"
+            bannerColor = UIColor(hex: 0x08cc2c)
         case .started:
-            notifTitle = "Download started"
-            notifBody = "The download of \(filename) has been started"
-            break
+            bannerTitle = "Download started"
+            bannerSubtitle = "The download of \(filename) has been started"
+            bannerColor = UIColor(hex: 0x52C7FF)
         case .failed:
-            notifTitle = "Download failed"
-            notifBody = "Failed to download the file \(filename)"
-            break
+            bannerTitle = "Download failed"
+            bannerSubtitle = "Failed to download the file \(filename)"
+            bannerColor = UIColor(hex: 0xc76e26)
         }
-        content.title = notifTitle
-        content.body = notifBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        DispatchQueue.main.async {
+            let bannerView = BannerView.nib().instantiate(withOwner: self, options: nil).first as! BannerView
+            bannerView.contentView.addCornerRadiusWith(radius: 10)
+            bannerView.makeShadowWith(offset: CGSize(width: -10,height: 10), radius: 5, opacity: 0.3, color: .black)
+            bannerView.bannerTitleLbl.text = bannerTitle
+            bannerView.bannerSubtitleLbl.text = bannerSubtitle
+            bannerView.contentView.backgroundColor = bannerColor
+            self.view.addSubview(bannerView)
+            let widthScreen = UIScreen.main.bounds.width
+            let widthBV = bannerView.frame.size.width
+            let heightBV = bannerView.frame.size.height
+            let originBannerX = widthScreen/2 - widthBV/2
+            let originBannerY = UIApplication.shared.statusBarFrame.height + 10
+            bannerView.frame.origin.x = originBannerX
+            bannerView.frame.origin.y = -originBannerY - heightBV
+            bannerView.alpha = 0.5
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn, animations: {
+                bannerView.alpha = 1
+                bannerView.frame.origin.y = originBannerY
+            }) { _ in
+                UIView.animate(withDuration: 1,delay: 4) {
+                    bannerView.alpha = 0.5
+                    bannerView.frame.origin.y = -originBannerY - heightBV
+                } completion: { _ in
+                    bannerView.removeFromSuperview()
+                }
+            }
+        }
     }
 }

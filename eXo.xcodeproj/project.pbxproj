@@ -101,6 +101,8 @@
 		DBC1F3AA280DD85000CEFCF2 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
+		DBFD7354286A447A000308A5 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD7352286A447A000308A5 /* BannerView.swift */; };
+		DBFD7355286A447A000308A5 /* BannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFD7353286A447A000308A5 /* BannerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +277,8 @@
 		DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakAvoider.swift; sourceTree = "<group>"; };
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		DBFD7352286A447A000308A5 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		DBFD7353286A447A000308A5 /* BannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerView.xib; sourceTree = "<group>"; };
 		DD7E70396AD876E86037F111 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F984C3EE46C4BCF5906DAADF /* Pods-eXoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eXoUITests.release.xcconfig"; path = "Target Support Files/Pods-eXoUITests/Pods-eXoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -610,6 +614,7 @@
 			children = (
 				9C935F8A1BD8A079009C065B /* HomePageViewController.swift */,
 				9C032E391BEA17DE006F0577 /* PreviewController.swift */,
+				DBFD7351286A4385000308A5 /* BannerView */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -752,6 +757,15 @@
 				DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */,
 			);
 			path = QRCodeScannerVC;
+			sourceTree = "<group>";
+		};
+		DBFD7351286A4385000308A5 /* BannerView */ = {
+			isa = PBXGroup;
+			children = (
+				DBFD7352286A447A000308A5 /* BannerView.swift */,
+				DBFD7353286A447A000308A5 /* BannerView.xib */,
+			);
+			path = BannerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -954,6 +968,7 @@
 				DB6A4E6626949CFB00809B53 /* OnboardingViewController.xib in Resources */,
 				DB6B9818272032D200D20677 /* slide3_gif-EN.gif in Resources */,
 				DB824AD92716EED70087C79B /* slide1_gif-EN.gif in Resources */,
+				DBFD7355286A447A000308A5 /* BannerView.xib in Resources */,
 				D79611BF26778ACC00F2FDE8 /* ServerCell.xib in Resources */,
 				DB3CE0A9269C8B6100622057 /* slide2_gif-FR.gif in Resources */,
 				DBC0162B27AAEDFD004D1684 /* CheckUpdatePopupVC.xib in Resources */,
@@ -1148,6 +1163,7 @@
 			files = (
 				DBC0162C27AAEDFD004D1684 /* CheckUpdatePopupVC.swift in Sources */,
 				DB31D88926A1EF5D00D25F96 /* Reachability.swift in Sources */,
+				DBFD7354286A447A000308A5 /* BannerView.swift in Sources */,
 				D7C0FADA267BA37D00C579EB /* NSMutableAttributedString-Extension.swift in Sources */,
 				DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
