@@ -127,16 +127,16 @@ extension UIViewController {
         var bannerColor = UIColor(hex: 0x52C7FF)
         switch status {
         case .completed:
-            bannerTitle = "Download completed"
-            bannerSubtitle = "\(filename) downloaded successfully"
+            bannerTitle = "Download completed".localized
+            bannerSubtitle = "\(filename) downloaded successfully".localized
             bannerColor = UIColor(hex: 0x08cc2c)
         case .started:
             bannerTitle = "Download started"
-            bannerSubtitle = "The download of \(filename) has been started"
+            bannerSubtitle = "The download of \(filename) has been started".localized
             bannerColor = UIColor(hex: 0x52C7FF)
         case .failed:
             bannerTitle = "Download failed"
-            bannerSubtitle = "Failed to download the file \(filename)"
+            bannerSubtitle = "Failed to download the file \(filename)".localized
             bannerColor = UIColor(hex: 0xc76e26)
         }
         DispatchQueue.main.async {
