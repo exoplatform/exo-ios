@@ -122,28 +122,28 @@ extension UIViewController {
     // MARK: - Send notification while tracking the download status.
     
     func showDownloadBanner(_ filename:String,_ status:DownloadStatus) {
-        let bannerView = BannerView.nib().instantiate(withOwner: self, options: nil).first as! BannerView
         var bannerTitle = ""
         var bannerSubtitle = ""
         var bannerColor = UIColor(hex: 0x52C7FF)
-        switch status {
-        case .completed:
-            bannerTitle = "Download completed".localized
-            bannerSubtitle = "\(filename) downloaded successfully".localized
-            bannerColor = UIColor(hex: 0x08cc2c)
-            bannerView.tag = 200
-        case .started:
-            bannerTitle = "Download started"
-            bannerSubtitle = "The download of \(filename) has been started".localized
-            bannerColor = UIColor(hex: 0x52C7FF)
-            bannerView.tag = 100
-        case .failed:
-            bannerTitle = "Download failed"
-            bannerSubtitle = "Failed to download the file \(filename)".localized
-            bannerColor = UIColor(hex: 0xc76e26)
-            bannerView.tag = 150
-        }
         DispatchQueue.main.async {
+            let bannerView = BannerView.nib().instantiate(withOwner: self, options: nil).first as! BannerView
+            switch status {
+            case .completed:
+                bannerTitle = "Download completed".localized
+                bannerSubtitle = "\(filename) downloaded successfully".localized
+                bannerColor = UIColor(hex: 0x08cc2c)
+                bannerView.tag = 200
+            case .started:
+                bannerTitle = "Download started"
+                bannerSubtitle = "The download of \(filename) has been started".localized
+                bannerColor = UIColor(hex: 0x52C7FF)
+                bannerView.tag = 100
+            case .failed:
+                bannerTitle = "Download failed"
+                bannerSubtitle = "Failed to download the file \(filename)".localized
+                bannerColor = UIColor(hex: 0xc76e26)
+                bannerView.tag = 150
+            }
             bannerView.contentView.addCornerRadiusWith(radius: 10)
             bannerView.makeShadowWith(offset: CGSize(width: -10,height: 10), radius: 5, opacity: 0.3, color: .black)
             bannerView.bannerTitleLbl.text = bannerTitle
