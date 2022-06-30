@@ -37,7 +37,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
     let defaults = UserDefaults.standard
-    
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
     var player: AVAudioPlayer?
@@ -496,6 +495,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         URLCache.shared.removeAllCachedResponses()
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
     }
+    
 }
 
 extension HomePageViewController {
