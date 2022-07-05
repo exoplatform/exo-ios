@@ -125,22 +125,25 @@ extension UIViewController {
         var bannerTitle = ""
         var bannerSubtitle = ""
         var bannerColor = UIColor(hex: 0x52C7FF)
-        switch status {
-        case .completed:
-            bannerTitle = "Download completed".localized
-            bannerSubtitle = "\(filename) downloaded successfully".localized
-            bannerColor = UIColor(hex: 0x08cc2c)
-        case .started:
-            bannerTitle = "Download started"
-            bannerSubtitle = "The download of \(filename) has been started".localized
-            bannerColor = UIColor(hex: 0x52C7FF)
-        case .failed:
-            bannerTitle = "Download failed"
-            bannerSubtitle = "Failed to download the file \(filename)".localized
-            bannerColor = UIColor(hex: 0xc76e26)
-        }
         DispatchQueue.main.async {
             let bannerView = BannerView.nib().instantiate(withOwner: self, options: nil).first as! BannerView
+            switch status {
+            case .completed:
+                bannerTitle = "Download completed".localized
+                bannerSubtitle = "\(filename) downloaded successfully".localized
+                bannerColor = UIColor(hex: 0x08cc2c)
+                bannerView.tag = 200
+            case .started:
+                bannerTitle = "Download started"
+                bannerSubtitle = "The download of \(filename) has been started".localized
+                bannerColor = UIColor(hex: 0x52C7FF)
+                bannerView.tag = 100
+            case .failed:
+                bannerTitle = "Download failed"
+                bannerSubtitle = "Failed to download the file \(filename)".localized
+                bannerColor = UIColor(hex: 0xc76e26)
+                bannerView.tag = 150
+            }
             bannerView.contentView.addCornerRadiusWith(radius: 10)
             bannerView.makeShadowWith(offset: CGSize(width: -10,height: 10), radius: 5, opacity: 0.3, color: .black)
             bannerView.bannerTitleLbl.text = bannerTitle
@@ -155,15 +158,34 @@ extension UIViewController {
             bannerView.frame.origin.x = originBannerX
             bannerView.frame.origin.y = -originBannerY - heightBV
             bannerView.alpha = 0.5
-            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn, animations: {
-                bannerView.alpha = 1
-                bannerView.frame.origin.y = originBannerY
-            }) { _ in
-                UIView.animate(withDuration: 1,delay: 4) {
-                    bannerView.alpha = 0.5
-                    bannerView.frame.origin.y = -originBannerY - heightBV
+            if status == .completed {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    UIView.animate(withDuration: 1, delay: 0 ){
+                        bannerView.alpha = 1
+                        bannerView.frame.origin.y = originBannerY
+                    } completion: { _ in
+                        if let previouceBanner = self.view.viewWithTag(100) {
+                            previouceBanner.removeFromSuperview()
+                        }
+                        UIView.animate(withDuration: 1,delay: 4) {
+                            bannerView.alpha = 0.5
+                            bannerView.frame.origin.y = -originBannerY - heightBV
+                        } completion: { _ in
+                            bannerView.removeFromSuperview()
+                        }
+                    }
+                }
+            }else{
+                UIView.animate(withDuration: 1, delay: 0 ){
+                    bannerView.alpha = 1
+                    bannerView.frame.origin.y = originBannerY
                 } completion: { _ in
-                    bannerView.removeFromSuperview()
+                    UIView.animate(withDuration: 1,delay: 4) {
+                        bannerView.alpha = 0.5
+                        bannerView.frame.origin.y = -originBannerY - heightBV
+                    } completion: { _ in
+                        bannerView.removeFromSuperview()
+                    }
                 }
             }
         }
