@@ -502,6 +502,7 @@
 				9C935F7D1BD60286009C065B /* Tool.swift */,
 				DB31D88626A1EF5D00D25F96 /* Connectivity.swift */,
 				DB31D88726A1EF5D00D25F96 /* Reachability.swift */,
+				DBCA1F55285888820058FCD6 /* LeakAvoider.swift */,
 				DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */,
 				DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */,
 			);
