@@ -27,6 +27,7 @@ final class QRCodeScannerViewController: UIViewController {
     // MARK: - Constants .
 
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.qr]
+    private let desiredRange = "/portal/login?username="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,24 +156,32 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             if metadataObj.stringValue != nil {
                 if let rootURL = metadataObj.stringValue {
                     if isValidURL(urlString: rootURL) {
-                        captureSession.stopRunning()
-                        squareImageView.isHidden = true
-                        messageLabel.text = metadataObj.stringValue
-                        qrCodeFrameView?.image = #imageLiteral(resourceName: "qr_code_scanner")
-                        UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut]) {
-                            self.qrCodeFrameView?.frame.size = CGSize(width: 200, height: 200)
-                            self.qrCodeFrameView?.center = self.view.center
-                        } completion: { completed in
-                            self.dismiss(animated: false) {
-                                self.postNotificationWith(key: .rootFromScanURL, info: ["rootURL" : rootURL])
+                        if rootURL.contains(desiredRange) {
+                            captureSession.stopRunning()
+                            squareImageView.isHidden = true
+                            messageLabel.text = rootURL.serverDomainWithProtocolAndPort
+                            qrCodeFrameView?.image = #imageLiteral(resourceName: "qr_code_scanner")
+                            UIView.animate(withDuration: 0.5, delay: 0.5, options: [.curveEaseInOut]) {
+                                self.qrCodeFrameView?.frame.size = CGSize(width: 200, height: 200)
+                                self.qrCodeFrameView?.center = self.view.center
+                            } completion: { completed in
+                                self.dismiss(animated: false) {
+                                    self.postNotificationWith(key: .rootFromScanURL, info: ["rootURL" : rootURL])
+                                }
                             }
+                        }else{
+                            errorParsingUrl()
                         }
                     }else{
-                        messageLabel.text = "URL not valid".localized
+                        errorParsingUrl()
                     }
                 }
             }
         }
+    }
+    
+    func errorParsingUrl() {
+        messageLabel.text = "URL not valid".localized
     }
 }
 
