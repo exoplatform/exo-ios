@@ -184,6 +184,10 @@ class eXoAppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         postNotificationWith(key: Notification.Name("FCMToken"), info: tokenDict)
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        handleNotification(userInfo: userInfo);
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         handleNotification(userInfo: userInfo);
         print("UIBackgroundFetchResult =====> \(userInfo)")
@@ -214,17 +218,14 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
                 print(userInfo.description)
                 if let aps = userInfo["aps"] as? NSDictionary {
                     if let badge = aps["badge"] as? Int {
-                        let badgeNumber = badge + 1
-                        DispatchQueue.main.async {
-                            UIApplication.shared.applicationIconBadgeNumber = badgeNumber
-                        }
+                        self.setBadgeNumber(badge: badge)
                         if let url = userInfo["url"] as? String {
                             let server:Server = Server(serverURL: Tool.extractServerUrl(sourceUrl: url))
                             var dic:Dictionary = [String:Int]()
                             for ser in ServerManager.sharedInstance.serverList {
                                 if let serverURL = (ser as? Server)?.serverURL {
                                     if serverURL.stringURLWithoutProtocol() == server.serverURL.stringURLWithoutProtocol() {
-                                        dic[server.serverURL.stringURLWithoutProtocol()] = badgeNumber
+                                        dic[server.serverURL.stringURLWithoutProtocol()] = badge
                                     }
                                 }
                             }
