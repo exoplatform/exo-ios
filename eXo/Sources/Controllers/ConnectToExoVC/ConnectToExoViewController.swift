@@ -54,7 +54,7 @@ final class ConnectToExoViewController: UIViewController {
     @objc
     func deleteTapped(notification:Notification){
         if ServerManager.sharedInstance.serverList.count == 0 {
-            rootToOboarding()
+            rootToOnboarding()
         }
         self.connectTableView.reloadData()
     }
@@ -73,10 +73,10 @@ final class ConnectToExoViewController: UIViewController {
     
     @objc
     func addButtonTapped(){
-        rootToOboarding()
+        rootToOnboarding()
     }
     
-    func rootToOboarding(){
+    func rootToOnboarding(){
         let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
         appDelegate.setRootOnboarding()
     }

@@ -38,7 +38,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     private let cookiesFromAuthFetcher = CookiesFromAuthorizationFetcher()
     
     let defaults = UserDefaults.standard
-    
     var countRefresh:Int = 0
     var dic:Dictionary = [String:Bool]()
     var player: AVAudioPlayer?
@@ -64,12 +63,17 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             webView?.configuration.preferences.javaScriptEnabled = true
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             // inject JS to capture console.log output and send to iOS
-            let source = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
-            let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-            webView?.configuration.userContentController.addUserScript(script)
+            let captureLogSource = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
+            let iOSListenerSource = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('iOS Listener executed!'); })"
+            let captureLogScript = WKUserScript(source: captureLogSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            let iOSListenerScript = WKUserScript(source: iOSListenerSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            webView?.configuration.userContentController.addUserScript(captureLogScript)
+            webView?.configuration.userContentController.addUserScript(iOSListenerScript)
             // register the bridge script that listens for the output
             webView?.configuration.userContentController.add(
                 LeakAvoider(delegate:self), name: "logHandler")
+            webView?.configuration.userContentController.add(
+                LeakAvoider(delegate:self), name: "iosListener")
             self.configureDoneButton()
         }
     }
@@ -409,6 +413,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 }
             }
         }
+        if message.name == "iosListener" {
+            print("iosListener =====> : \(message.body)")
+            self.view.endEditing(true)
+        }
     }
     
     func parseCallState(message:String){
@@ -425,7 +433,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
        - The view has never been shown
        - After user has logged in
        */
-       func showOnBoardingIfNeed () {
+       func showOnBoardingIfNeed() {
            if (UserDefaults.standard.object(forKey: Config.onboardingDidShow) == nil){
                UserDefaults.standard.set(NSNumber(value: true as Bool), forKey: Config.onboardingDidShow)
                let appDelegate = UIApplication.shared.delegate as! eXoAppDelegate
@@ -506,6 +514,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         URLCache.shared.removeAllCachedResponses()
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
     }
+    
 }
 
 extension HomePageViewController {
@@ -513,17 +522,17 @@ extension HomePageViewController {
     // Download the file.
     
     private func downloadData(webView:WKWebView,fromURL url:URL,fileName:String,completion:@escaping (Bool, URL?) -> Void) {
-        sendNotificationForDownload(fileName, .started)
+        showDownloadBanner(fileName, .started)
         webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() { cookies in
             let session = URLSession.shared
             session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
             let task = session.downloadTask(with: url) { localURL, urlResponse, error in
                 if let localURL = localURL {
                     let destinationURL = self.moveDownloadedFile(url: localURL, fileName: fileName)
-                    self.sendNotificationForDownload(fileName, .completed)
+                    self.showDownloadBanner(fileName, .completed)
                     completion(true, destinationURL)
                 }else {
-                    self.sendNotificationForDownload(fileName, .failed)
+                    self.showDownloadBanner(fileName, .failed)
                     completion(false, nil)
                 }
             }
@@ -589,7 +598,7 @@ extension HomePageViewController:WKDownloadDelegate {
         destinationUrl = documentsUrl.appendingPathComponent(suggestedFilename)
         try? FileManager.default.removeItem(at: destinationUrl!)
         dowloadedFileName = suggestedFilename
-        sendNotificationForDownload(dowloadedFileName,.started)
+        showDownloadBanner(dowloadedFileName,.started)
         completionHandler(destinationUrl)
     }
     
@@ -603,13 +612,13 @@ extension HomePageViewController:WKDownloadDelegate {
     
     func downloadDidFinish(_ download: WKDownload) {
         print("File Successfully Downloaded")
-        sendNotificationForDownload(dowloadedFileName,.completed)
+        showDownloadBanner(dowloadedFileName,.completed)
         self.fileDownloadedAtURL(url: destinationUrl!)
     }
     
     func download(_ download: WKDownload, didFailWithError error: Error, resumeData: Data?) {
         print("Failed to download the file: \(error)")
-        sendNotificationForDownload(dowloadedFileName,.failed)
+        showDownloadBanner(dowloadedFileName,.failed)
     }
     
 }

@@ -90,8 +90,8 @@ final class AddDomainViewController: UIViewController,UITextFieldDelegate {
                         ServerManager.sharedInstance.addEditServer(self.selectedServer!)
                         self.selectedServer?.lastConnection = Date().timeIntervalSince1970
                         self.dismiss(animated: true) {
-                            if let serverURL = self.selectedServer?.serverURL {
-                                self.postNotificationWith(key: .addDomainKey, info: ["serverURL" : serverURL])
+                            if let addedServer = self.selectedServer {
+                                self.postNotificationWith(key: .addDomainKey, info: ["addedServer" : addedServer])
                             }
                         }
                     })

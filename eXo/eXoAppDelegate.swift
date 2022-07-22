@@ -215,8 +215,8 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (isSucc, error) in
             if isSucc {
+                print(userInfo.description)
                 if let aps = userInfo["aps"] as? NSDictionary {
-                    print(aps)
                     if let badge = aps["badge"] as? Int {
                         self.setBadgeNumber(badge: badge)
                         if let url = userInfo["url"] as? String {
@@ -237,7 +237,7 @@ extension eXoAppDelegate: UNUserNotificationCenterDelegate {
             }
         }
         // Change this to your preferred presentation option
-        completionHandler([[ .badge, .alert, .sound]])
+        completionHandler([.badge, .alert, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -258,6 +258,8 @@ extension eXoAppDelegate {
     func setRootToHome(_ serverURL:String){
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let homepageVC = sb.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+        let server = Server(serverURL: serverURL.serverDomainWithProtocolAndPort!)
+        ServerManager.sharedInstance.addEditServer(server)
         homepageVC.serverURL = serverURL
         navigationVC = UINavigationController(rootViewController: homepageVC)
         window = UIWindow(frame: UIScreen.main.bounds)
