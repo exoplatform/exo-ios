@@ -41,6 +41,11 @@ struct Config {
     
     static let kTableCellHeight: CGFloat = 80.0
     static let kTableHeaderHeight: CGFloat = 50.0
+    
+    // eXo Jitsi Server Path
+    static let eXoJitsiWebServer = "/jitsi"
+    static let eXoJitsiJWTPath = "/jitsi/api/v1/token/"
+    static let avatarURL = "/portal/rest/v1/social/users/*_*/avatar"
 }
 
 struct ShareExtension {
