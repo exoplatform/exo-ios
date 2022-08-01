@@ -658,9 +658,7 @@ extension HomePageViewController:JitsiMeetViewDelegate{
     func openJitsiMeet(webview:WKWebView,url:URL){
             cleanUp()
             webViewDidClose(webview)
-            let username = PushTokenSynchronizer.shared.username!
             let prefixUrl = url.absoluteString.serverDomainWithProtocolAndPort!
-            let avatar = prefixUrl + Config.avatarURL.replacingOccurrences(of: "*_*", with: username)
             let serverUrl = prefixUrl + Config.eXoJitsiWebServer
             let jitsiMeetView = JitsiMeetView()
             jitsiMeetView.delegate = self
@@ -669,7 +667,6 @@ extension HomePageViewController:JitsiMeetViewDelegate{
                 builder.serverURL = URL(string:serverUrl)
                 builder.room = url.absoluteString
                 builder.setFeatureFlag("welcomepage.enabled", withValue: false)
-                builder.userInfo = JitsiMeetUserInfo(displayName: username, andEmail: nil, andAvatar: URL(string:avatar))
                 builder.setFeatureFlag("ios.screensharing.enabled", withBoolean: true)
             }
             jitsiMeetView.join(options)

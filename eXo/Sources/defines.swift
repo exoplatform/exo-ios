@@ -43,7 +43,6 @@ struct Config {
     static let kTableHeaderHeight: CGFloat = 50.0
     
     // eXo Jitsi Server Path
-    static let JitsiServer = "https://meet.jit.si"
     static let eXoJitsiWebServer = "/jitsi"
     static let eXoJitsiJWTPath = "/jitsi/api/v1/token/"
     static let avatarURL = "/portal/rest/v1/social/users/*_*/avatar"
