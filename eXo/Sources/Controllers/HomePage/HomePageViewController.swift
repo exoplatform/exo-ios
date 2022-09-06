@@ -101,17 +101,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     /*
        Deallocate Memory
      */
-    deinit {
-        print("dealloc webview")
-        self.webView?.stopLoading()
-        self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
-        self.popupWebView?.stopLoading()
-        self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
-    }
     
-    /*
-       Deallocate Memory
-    */
     deinit {
         print("dealloc webview")
         self.webView?.stopLoading()
