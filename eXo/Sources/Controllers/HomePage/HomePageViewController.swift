@@ -107,19 +107,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         let rect = CGRect(origin: CGPoint.zero, size: size)
         pipViewCoordinator?.resetBounds(bounds: rect)
     }
-    
-    /*
-       Deallocate Memory
-    */
-    
-    deinit {
-        print("dealloc webview")
-        self.webView?.stopLoading()
-        self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
-        self.popupWebView?.stopLoading()
-        self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
-    }
-    
+
     /*
        Deallocate Memory
     */
