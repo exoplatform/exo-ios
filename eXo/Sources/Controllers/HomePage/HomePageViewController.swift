@@ -20,7 +20,6 @@ import WebKit
 import Kingfisher
 import AVFoundation
 import UserNotifications
-import JitsiMeetSDK
 
 enum DownloadStatus {
     case started
