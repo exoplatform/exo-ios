@@ -44,9 +44,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     var dowloadedFileName:String = "fileName"
     
     private var popupWebView: WKWebView?
-
-    fileprivate var pipViewCoordinator: PiPViewCoordinator?
-    fileprivate var jitsiMeetView: JitsiMeetView?
     
     // MARK: View Controller lifecycle
     
@@ -99,12 +96,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
-    }
-    
-    override func viewWillTransition(to size: CGSize,with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        let rect = CGRect(origin: CGPoint.zero, size: size)
-        pipViewCoordinator?.resetBounds(bounds: rect)
     }
 
     /*
