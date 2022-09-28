@@ -51,19 +51,33 @@ class InputAccountViewController: UIViewController, AccountSelectorDelegate {
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var serverURLLabel: UILabel!
-
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var credentialView: UIView!
+    
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		serverURLLabel.text = (account?.serverURL)!.stringURLWithoutProtocol()
-		usernameTextField.text = account?.userName
-		passwordTextField.text = account?.password
-
+		setupLoginView()
 	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor(hex: 0xF0F0F0)
+    }
+    
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+    
+    func setupLoginView() {
+        //serverURLLabel.text = (account?.serverURL)!.stringURLWithoutProtocol()
+        usernameTextField.layer.cornerRadius = 5
+        passwordTextField.layer.cornerRadius = 5
+        loginBtn.layer.cornerRadius = 5
+        credentialView.layer.cornerRadius = 10
+        usernameTextField.text = account?.userName
+        passwordTextField.text = account?.password
+    }
 
 	@IBAction func loginAction(_ sender: AnyObject) {
 
@@ -91,4 +105,15 @@ class InputAccountViewController: UIViewController, AccountSelectorDelegate {
 	}
 	*/
 
+}
+
+extension UIColor {
+    convenience init(hex: Int) {
+        let components = (
+            R: CGFloat((hex >> 16) & 0xff) / 255,
+            G: CGFloat((hex >> 08) & 0xff) / 255,
+            B: CGFloat((hex >> 00) & 0xff) / 255
+        )
+        self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
+    }
 }
