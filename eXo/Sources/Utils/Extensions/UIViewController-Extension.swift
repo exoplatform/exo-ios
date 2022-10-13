@@ -36,8 +36,8 @@ extension UIViewController {
     
     func showAlertMessage(title:String,msg:String,action:ActionHandler){
         let popupVC = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
-        popupVC.titleDescription = title
-        popupVC.descriptionMessage = msg
+        popupVC.titleDescription = title.localized
+        popupVC.descriptionMessage = msg.localized
         popupVC.actionHandler = action
         popupVC.modalPresentationStyle = .overFullScreen
         present(popupVC, animated: false, completion: nil)

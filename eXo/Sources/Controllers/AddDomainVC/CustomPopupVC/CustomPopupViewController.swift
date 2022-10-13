@@ -10,6 +10,7 @@ import UIKit
 enum ActionHandler {
     case defaultAction
     case delete
+    case store
 }
 
 class CustomPopupViewController: UIViewController {
@@ -47,6 +48,13 @@ class CustomPopupViewController: UIViewController {
             noButton.setTitle(noButtonTitle, for: .normal)
             noButton.isHidden = false
             noButton.isEnabled = true
+        case .store:
+            let okButtonTitle = "Install".localized
+            let noButtonTitle = "Cancel".localized
+            okButton.setTitle(okButtonTitle, for: .normal)
+            noButton.setTitle(noButtonTitle, for: .normal)
+            noButton.isHidden = false
+            noButton.isEnabled = true
         default:
             okButton.frame.origin.x = containerView.frame.size.width/2 - okButton.frame.size.width/2
             noButton.isHidden = true
@@ -67,6 +75,12 @@ class CustomPopupViewController: UIViewController {
             dismiss(animated: false) {
                 ServerManager.sharedInstance.removeServer(self.serverToDelete)
                 self.postNotificationWith(key: .deleteInstance)
+            }
+        case .store:
+            dismiss(animated: false) {
+                if let url = URL(string: "itms-apps://itunes.apple.com/app/id1165103905") {
+                    UIApplication.shared.open(url)
+                }
             }
         default:
             self.dismiss(animated:false,completion:nil)

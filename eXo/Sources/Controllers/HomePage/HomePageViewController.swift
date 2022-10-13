@@ -289,9 +289,14 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             if let jitsiUrl = request.url, (jitsiUrl.absoluteString.range(of: "org.jitsi.meet:") != nil) {
                 if UIApplication.shared.canOpenURL(jitsiUrl){
                     UIApplication.shared.open(jitsiUrl)
+                    if let _popupWebView = popupWebView {
+                        self.webViewDidClose(_popupWebView)
+                    }else if (webView.canGoBack == true ) {
+                        webView.goBack()
+                    }
                 } else {
                     //Show alert message because the user doesn't have Jitsi App installed.
-                    showAlertMessage(title: "Jitsi Alert", msg: "Jitsi meet is not on your mobile, install it before.", action: .defaultAction)
+                    showAlertMessage(title: "Jitsi Alert", msg: "Jitsi meet is not on your mobile, install it before.", action: .store)
                 }
             }
         }
