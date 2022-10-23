@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: ${{ env.BASE_BRANCH }}
         fetch-depth: 0
@@ -21,7 +21,7 @@ jobs:
         git push origin :${CROWDIN_SYNC_BRANCH} ||:
         git branch -D ${CROWDIN_SYNC_BRANCH} ||:
     - name: Synchronize crowdin with the project
-      uses: crowdin/github-action@1.4.4
+      uses: crowdin/github-action@1.4.16
       with:
         upload_translations: true
         download_translations: true
