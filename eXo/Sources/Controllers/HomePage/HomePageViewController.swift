@@ -626,4 +626,22 @@ extension HomePageViewController:WKDownloadDelegate {
     
 }
 
-
+extension HomePageViewController {
+    func valueForKeyInURL(_ key: String?, _ url: URL?) -> String? {
+        var components: NSURLComponents? = nil
+        if let url = url {
+            components = NSURLComponents(
+                url: url,
+                resolvingAgainstBaseURL: false)
+        }
+        var theField: NSURLQueryItem? = nil
+        for item in components?.queryItems ?? [] {
+            let item = item as NSURLQueryItem
+            if item.name == key {
+                theField = item
+                break
+            }
+        }
+        return theField?.value
+    }
+}
