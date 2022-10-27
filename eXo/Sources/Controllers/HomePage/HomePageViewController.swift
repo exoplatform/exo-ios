@@ -286,12 +286,19 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             // launch the call.
             print("launching the call...")
             // launch the call using the app.
-            if let jitsiUrl = request.url, (jitsiUrl.absoluteString.range(of: "org.jitsi.meet:") != nil) {
-                if UIApplication.shared.canOpenURL(jitsiUrl){
-                    UIApplication.shared.open(jitsiUrl)
-                } else {
-                    //Show alert message because the user doesn't have Jitsi App installed.
-                    showAlertMessage(title: "Jitsi Alert", msg: "Jitsi meet is not on your mobile, install it before.", action: .defaultAction)
+            if let jitsiUrl = request.url {
+                let arrUrl = jitsiUrl.absoluteString.components(separatedBy: "?jwt=")
+                let prefixCall = arrUrl.first!
+                let callUrl = prefixCall + "?jwt=" + valueForKeyInURL("jwt", jitsiUrl)!
+                if let jitsiAppUrl = URL(string:"org.jitsi.meet://" + callUrl.stringURLWithoutProtocol()) {
+                    if UIApplication.shared.canOpenURL(jitsiAppUrl) {
+                        UIApplication.shared.open(jitsiAppUrl)
+                        if let _popupWebView = popupWebView {
+                            self.webViewDidClose(_popupWebView)
+                        }else if (webView.canGoBack == true ) {
+                            webView.goBack()
+                        }
+                    }
                 }
             }
         }
@@ -619,4 +626,22 @@ extension HomePageViewController:WKDownloadDelegate {
     
 }
 
-
+extension HomePageViewController {
+    func valueForKeyInURL(_ key: String?, _ url: URL?) -> String? {
+        var components: NSURLComponents? = nil
+        if let url = url {
+            components = NSURLComponents(
+                url: url,
+                resolvingAgainstBaseURL: false)
+        }
+        var theField: NSURLQueryItem? = nil
+        for item in components?.queryItems ?? [] {
+            let item = item as NSURLQueryItem
+            if item.name == key {
+                theField = item
+                break
+            }
+        }
+        return theField?.value
+    }
+}
