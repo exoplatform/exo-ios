@@ -190,4 +190,19 @@ extension UIViewController {
             }
         }
     }
+    
+    func getScriptType(consoleMessage:String) -> ScriptType {
+        print("consoleMessage =====> :\n\(consoleMessage)")
+        var type:ScriptType = .log
+        if consoleMessage.starts(with: "JS log:") {
+            type = .log
+        } else if consoleMessage.starts(with: "JS warning:") {
+            type = .warning
+        } else if consoleMessage.starts(with: "JS error:") {
+            type = .error
+        } else {
+            type = .debug
+        }
+        return type
+    }
 }

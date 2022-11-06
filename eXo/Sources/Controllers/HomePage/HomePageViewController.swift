@@ -42,7 +42,8 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     var player: AVAudioPlayer?
     var destinationUrl:URL?
     var dowloadedFileName:String = "fileName"
-    
+    var isJitsiCallFromLink: Bool = false
+
     private var popupWebView: WKWebView?
     
     // MARK: View Controller lifecycle
@@ -282,6 +283,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         
         // Open the Jitsi call.
         
+        if navigationAction.navigationType.rawValue == 0 {
+            isJitsiCallFromLink = true
+        }
+        
         if  (request.url?.path.contains("/jitsiweb/"))! && (request.url?.absoluteString.range(of:"?jwt=") != nil){
             // launch the call.
             print("launching the call...")
@@ -380,6 +385,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         popupWebView = WKWebView(frame: .zero, configuration: configuration)
         popupWebView?.navigationDelegate = self
         popupWebView?.uiDelegate = self
+        isJitsiCallFromLink = false
         if let newWebview = popupWebView {
             // Add a custom values to the default user agent
             webView.evaluateJavaScript("navigator.userAgent") { (result, error) in
@@ -420,6 +426,16 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         if message.name == "iosListener" {
             print("iosListener =====> : \(message.body)")
             self.view.endEditing(true)
+        }
+        
+        if message.name == "logging" {
+            let type = getScriptType(consoleMessage: message.body as! String)
+            if (type == .log && "\(message.body)".contains("do leave")) && isJitsiCallFromLink {
+                let historySize = webView?.backForwardList.backList.count
+                let firstItem = webView?.backForwardList.item(at: -historySize!)
+                webView?.go(to: firstItem!)
+                isJitsiCallFromLink = false
+            }
         }
     }
     

@@ -79,6 +79,7 @@
 		D7F12D2F26789E08007C8294 /* CustomPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F12D2D26789E07007C8294 /* CustomPopupViewController.xib */; };
 		D7F12D3026789E08007C8294 /* CustomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */; };
 		DB08660627B5539800504C7B /* Ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB08660527B5539800504C7B /* Ringtone.mp3 */; };
+		DB0F61F129185A25001D1164 /* JSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F61F029185A25001D1164 /* JSConstants.swift */; };
 		DB31D88826A1EF5D00D25F96 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB31D88626A1EF5D00D25F96 /* Connectivity.swift */; };
 		DB31D88926A1EF5D00D25F96 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB31D88726A1EF5D00D25F96 /* Reachability.swift */; };
 		DB373219267F78830065C7A5 /* UIViewController-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB373218267F78830065C7A5 /* UIViewController-Extension.swift */; };
@@ -265,6 +266,7 @@
 		D7F12D2D26789E07007C8294 /* CustomPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPopupViewController.xib; sourceTree = "<group>"; };
 		D7F12D2E26789E07007C8294 /* CustomPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPopupViewController.swift; sourceTree = "<group>"; };
 		DB08660527B5539800504C7B /* Ringtone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ringtone.mp3; sourceTree = "<group>"; };
+		DB0F61F029185A25001D1164 /* JSConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSConstants.swift; sourceTree = "<group>"; };
 		DB31D88626A1EF5D00D25F96 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		DB31D88726A1EF5D00D25F96 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DB373218267F78830065C7A5 /* UIViewController-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extension.swift"; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				DBCA1F55285888820058FCD6 /* LeakAvoider.swift */,
 				DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */,
 				DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */,
+				DB0F61F029185A25001D1164 /* JSConstants.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1188,6 +1191,7 @@
 				B5C7335C201F1D0800A2EA71 /* PushTokenRestClient.swift in Sources */,
 				D7F12D3026789E08007C8294 /* CustomPopupViewController.swift in Sources */,
 				B5C7335F201F266800A2EA71 /* StringExtension.swift in Sources */,
+				DB0F61F129185A25001D1164 /* JSConstants.swift in Sources */,
 				D79611BC26778ACC00F2FDE8 /* HeaderConnectCell.swift in Sources */,
 				DB54A563279971270080B25A /* Bundle-Extension.swift in Sources */,
 				D79611BE26778ACC00F2FDE8 /* ServerCell.swift in Sources */,
