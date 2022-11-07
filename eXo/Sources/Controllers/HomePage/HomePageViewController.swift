@@ -64,10 +64,8 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             webView?.configuration.userContentController.addUserScript(captureLogScript)
             webView?.configuration.userContentController.addUserScript(iOSListenerScript)
             // register the bridge script that listens for the output
-            webView?.configuration.userContentController.add(
-                LeakAvoider(delegate:self), name: "logHandler")
-            webView?.configuration.userContentController.add(
-                LeakAvoider(delegate:self), name: "iosListener")
+            webView?.configuration.userContentController.add(LeakAvoider(delegate:self), name: "logHandler")
+            webView?.configuration.userContentController.add(LeakAvoider(delegate:self), name: "iosListener")
             self.configureDoneButton()
         }
     }
@@ -414,12 +412,14 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 }
             }
         }
+        
         if message.name == "logHandler" {
+            print("logHandler =====> : \(message.body)")
             /// The window.close() JS method not working after the call is ended using a JITSI link .
             if "\(message.body)".contains(JSScript.closeWindowErrorSource) {
-                guard let historySize = webView?.backForwardList.backList.count else { return }
-                let firstItem = webView?.backForwardList.item(at: -historySize )
-                webView?.go(to: firstItem!)
+                guard let historySize = webView?.backForwardList.backList.count,
+                      let firstItem = webView?.backForwardList.item(at: -historySize ) else { return }
+                webView?.go(to: firstItem)
             }
         }
         
