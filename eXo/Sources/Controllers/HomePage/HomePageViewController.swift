@@ -59,10 +59,8 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             webView?.configuration.preferences.javaScriptEnabled = true
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             // inject JS to capture console.log output and send to iOS
-            let captureLogSource = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
-            let iOSListenerSource = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('iOS Listener executed!'); })"
-            let captureLogScript = WKUserScript(source: captureLogSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-            let iOSListenerScript = WKUserScript(source: iOSListenerSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            let captureLogScript = WKUserScript(source: JSScript.captureLogSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+            let iOSListenerScript = WKUserScript(source: JSScript.iOSListenerSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             webView?.configuration.userContentController.addUserScript(captureLogScript)
             webView?.configuration.userContentController.addUserScript(iOSListenerScript)
             // register the bridge script that listens for the output
@@ -187,8 +185,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
          Disable the Zoom on the Webview & more responsible tapping
          https://webkit.org/blog/5610/more-responsive-tapping-on-ios/
          */
-        let javascript = "var meta = document.createElement('meta');meta.setAttribute('name', 'viewport');meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');document.getElementsByTagName('head')[0].appendChild(meta);"
-        webView.evaluateJavaScript(javascript, completionHandler: nil)
+        webView.evaluateJavaScript(JSScript.responsibleTappingSource, completionHandler: nil)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -417,8 +414,16 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 }
             }
         }
+        if message.name == "logHandler" {
+            /// The window.close() JS method not working after the call is ended using a JITSI link .
+            if "\(message.body)".contains(JSScript.closeWindowErrorSource) {
+                guard let historySize = webView?.backForwardList.backList.count else { return }
+                let firstItem = webView?.backForwardList.item(at: -historySize )
+                webView?.go(to: firstItem!)
+            }
+        }
+        
         if message.name == "iosListener" {
-            print("iosListener =====> : \(message.body)")
             self.view.endEditing(true)
         }
     }
