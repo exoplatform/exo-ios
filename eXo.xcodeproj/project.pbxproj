@@ -101,6 +101,7 @@
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
 		DBCA1F56285888820058FCD6 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCA1F55285888820058FCD6 /* LeakAvoider.swift */; };
+		DBDB98CF291954B400DDBF67 /* JSScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDB98CE291954B400DDBF67 /* JSScript.swift */; };
 		DBFD7354286A447A000308A5 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD7352286A447A000308A5 /* BannerView.swift */; };
 		DBFD7355286A447A000308A5 /* BannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFD7353286A447A000308A5 /* BannerView.xib */; };
 /* End PBXBuildFile section */
@@ -288,6 +289,7 @@
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		DBCA1F55285888820058FCD6 /* LeakAvoider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakAvoider.swift; sourceTree = "<group>"; };
+		DBDB98CE291954B400DDBF67 /* JSScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSScript.swift; sourceTree = "<group>"; };
 		DBFD7352286A447A000308A5 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		DBFD7353286A447A000308A5 /* BannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerView.xib; sourceTree = "<group>"; };
 		DD7E70396AD876E86037F111 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,6 +518,7 @@
 				DBCA1F55285888820058FCD6 /* LeakAvoider.swift */,
 				DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */,
 				DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */,
+				DBDB98CE291954B400DDBF67 /* JSScript.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1177,6 +1180,7 @@
 				DBC0162C27AAEDFD004D1684 /* CheckUpdatePopupVC.swift in Sources */,
 				DB31D88926A1EF5D00D25F96 /* Reachability.swift in Sources */,
 				DBFD7354286A447A000308A5 /* BannerView.swift in Sources */,
+				DBDB98CF291954B400DDBF67 /* JSScript.swift in Sources */,
 				D7C0FADA267BA37D00C579EB /* NSMutableAttributedString-Extension.swift in Sources */,
 				DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
