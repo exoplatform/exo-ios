@@ -3,6 +3,7 @@ on:
   schedule:
     - cron:  '0 22 * * *' # Everyday at 10 PM UTC
   workflow_dispatch:
+  workflow_call:
 env:
   CROWDIN_SYNC_BRANCH: 'integration/6.2.x'
   BASE_BRANCH: 'acceptance'
