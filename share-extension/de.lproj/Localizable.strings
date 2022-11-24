@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "Alle Uploads sind fehlgeschlagen";
 
+"Upload.Warning.UploadsFailed" = "%lu Hochladen fehlgeschlagen";
+
+"Upload.Warning.UploadFailed" = "Hochladen gescheitert";
+
 "Upload.Warning.ItemsCannotBeUpload" = "%d Element(e) konnte(n) nicht hochgeladen werden";
 
 "Upload.Warning.FileTooLarge" = "Datei zu groß";
@@ -32,11 +36,19 @@
 
 "Word.Post" = "Teilen";
 
+"Title.SelectAccount" = "Wählen Sie ein Benutzerkonto";
+
 "Word.Username" = "Benutzername";
+
+"Title.UnknownPassword" = "Passwort: Unbekannt";
+
+"Title.NeededUsernamePassoword" = "Benutzername & Passwort erforderlich ";
 
 "Word.Edit" = "Bearbeiten";
 
 "Word.Account" = "Konto";
+
+"Login.Status.Loging" = "Anmelden";
 
 "Login.Status.WrongPassword" = "Falsches Passwort";
 
@@ -44,9 +56,28 @@
 
 "Login.Status.Offline" = "Offline";
 
+"Login.Status.LoginFail" = "Login fehlgeschlagen";
+
+"LogIn.Warning.NoAccount" = "Kein Konto";
+
 "Word.Space" = "Raum";
 
+"Login.Status.ServerProblem" = "Serverproblem";
+
+"LogIn.Status.NoSpaceId" = "Dieser Raum kann nicht geladen werden";
+
+"LogIn.Error.UnableToPost" = "Das posten ist nicht möglich";
+
+"Title.LoadingSpaceId" = "Projektraum laden";
+
 "Word.Public" = "Öffentlich";
+
+"Post.Title.ErrorMessage" = "Kann nicht veröffentlichen";
+
+"Title.SpaceSelection" = "Projektraum wählen";
+
+
+"Setting.Title.Server" = "Server";
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "Plattform-Version wird nicht unterstützt";
 
