@@ -42,6 +42,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     var player: AVAudioPlayer?
     var destinationUrl:URL?
     var dowloadedFileName:String = "fileName"
+    var isJitsiApp:Bool = false
     
     private var popupWebView: WKWebView?
     
@@ -287,12 +288,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 let callUrl = prefixCall + "?jwt=" + valueForKeyInURL("jwt", jitsiUrl)!
                 if let jitsiAppUrl = URL(string:"org.jitsi.meet://" + callUrl.stringURLWithoutProtocol()) {
                     if UIApplication.shared.canOpenURL(jitsiAppUrl) {
+                        self.isJitsiApp = true
                         UIApplication.shared.open(jitsiAppUrl)
-                        if let _popupWebView = popupWebView {
-                            self.webViewDidClose(_popupWebView)
-                        }else if (webView.canGoBack == true ) {
-                            webView.goBack()
-                        }
+                    }else{
+                        self.isJitsiApp = false
                     }
                 }
             }
@@ -420,6 +419,14 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 guard let historySize = webView?.backForwardList.backList.count,
                       let firstItem = webView?.backForwardList.item(at: -historySize ) else { return }
                 webView?.go(to: firstItem)
+            }
+         /// Close the eXo call while using the Jitsi App.
+            if "\(message.body)".contains("Call started") && isJitsiApp {
+                if let _popupWebView = popupWebView {
+                    self.webViewDidClose(_popupWebView)
+                }else if (webView?.canGoBack == true ) {
+                    webView?.goBack()
+                }
             }
         }
         
