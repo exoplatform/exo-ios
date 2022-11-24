@@ -3,6 +3,7 @@ on:
   schedule:
     - cron:  '0 22 * * *' # Everyday at 10 PM UTC
   workflow_dispatch:
+  workflow_call:
 env:
   CROWDIN_SYNC_BRANCH: 'integration/6.2.x'
   BASE_BRANCH: 'acceptance'
@@ -23,9 +24,9 @@ jobs:
     - name: Mark workspace as safe folder
       run: git config --global --add safe.directory /github/workspace
     - name: Synchronize crowdin with the project
-      uses: crowdin/github-action@1.4.16
+      uses: crowdin/github-action@1.5.1
       with:
-        upload_translations: true
+        upload_translations: false
         download_translations: true
         localization_branch_name: ${{ env.CROWDIN_SYNC_BRANCH }}
         create_pull_request: false
