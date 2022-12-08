@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Ошибка сети";
 
 "Upload.Message.ConfirmationPost" = "Вы хотите разместить сообщение в любом случае?";
-
-"Word.Cancel" = "Отмена";
-
-"Word.Post" = "Поделиться";
-
-"Word.Username" = "Имя пользователя";
-
-"Word.Edit" = "Редактировать";
-
-"Word.Account" = "Учётная запись";
-
-"Login.Status.Offline" = "Не в сети";
-
-"Word.Space" = "Область";
-
-"Word.Public" = "Публичные";
-
-"Word.Back" = "Назад";

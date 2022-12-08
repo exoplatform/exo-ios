@@ -30,22 +30,6 @@
 
 "Word.Cancel" = "Cancelar";
 
-"Word.Post" = "Compartilhar";
-
-"Word.Username" = "Nome do usuário";
-
-"Word.Edit" = "Editar";
-
-"Word.Account" = "Conta";
-
-"Login.Status.WrongPassword" = "Senha inválida";
-
-"Login.Status.Offline" = "Off-line";
-
 "Word.Space" = "Espaço";
-
-"Word.Public" = "Público";
-
-"Login.Warning.Title.PlatformVersionNotSupported" = "Versão da plataforma não suportada";
 
 "Word.Back" = "Voltar";

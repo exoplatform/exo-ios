@@ -2,13 +2,3 @@
 "Delete" = "Cancellare";
 
 "Cancel" = "Annulla";
-
-"OnBoarding.Title.Others" = "Altri";
-
-"Word.OK" = "Ok";
-
-"Word.Cancel" = "Annulla";
-
-"Word.Back" = "Indietro";
-
-"OnBoarding.Error.UnableConnectServer" = "Si prega di inserire un URL valido";

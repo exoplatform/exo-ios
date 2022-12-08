@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "ネットワークエラー";
 
 "Upload.Message.ConfirmationPost" = "メッセージを投稿しますか?";
-
-"Word.Cancel" = "キャンセル";
-
-"Word.Post" = "共有";
-
-"Word.Username" = "ユーザー名";
-
-"Word.Edit" = "編集";
-
-"Word.Account" = "アカウント";
-
-"Login.Status.Offline" = "オフライン";
-
-"Word.Space" = "スペース";
-
-"Word.Public" = "公開";
-
-"Word.Back" = "戻る";

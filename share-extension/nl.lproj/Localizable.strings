@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Netwerkfout";
 
 "Upload.Message.ConfirmationPost" = "Wilt u het bericht in elk geval posten?";
-
-"Word.Cancel" = "Annuleren";
-
-"Word.Post" = "Delen";
-
-"Word.Username" = "Gebruikersnaam";
-
-"Word.Edit" = "Bewerken";
-
-"Word.Account" = "Rekening";
-
-"Login.Status.Offline" = "Offline";
-
-"Word.Space" = "Ruimte";
-
-"Word.Public" = "Openbaar";
-
-"Word.Back" = "Terug";

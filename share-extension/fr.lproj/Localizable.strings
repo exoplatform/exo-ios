@@ -70,8 +70,6 @@
 
 "Title.LoadingSpaceId" = "Chargement de l'espace";
 
-"Word.Public" = "Public";
-
 "Post.Title.ErrorMessage" = "Impossible de publier";
 
 "Title.SpaceSelection" = "Selectionner un espace";

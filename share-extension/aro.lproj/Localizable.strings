@@ -60,7 +60,7 @@
 
 "LogIn.Warning.NoAccount" = "لا يوجد حساب";
 
-"Word.Space" = "مساحة";
+"Word.Space" = "فضاء";
 
 "Login.Status.ServerProblem" = "مشكلة في الخادم";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "عام";
+"Word.Public" = "عمومي";
 
 "Post.Title.ErrorMessage" = "لا يمكن النشر";
 

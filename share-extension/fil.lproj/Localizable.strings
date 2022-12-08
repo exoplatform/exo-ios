@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "May error sa network";
 
 "Upload.Message.ConfirmationPost" = "Gusto mo bang i-post ang mensahe?";
-
-"Word.Cancel" = "Kanselahin";
-
-"Word.Post" = "Ang mag-Post";
-
-"Word.Username" = "Ang Username";
-
-"Word.Edit" = "I-edit";
-
-"Word.Account" = "Account";
-
-"Login.Status.Offline" = "Offline";
-
-"Word.Space" = "Ang Espasyo";
-
-"Word.Public" = "Ang Publiko";
-
-"Word.Back" = "Likuran";

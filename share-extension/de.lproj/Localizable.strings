@@ -52,10 +52,6 @@
 
 "Login.Status.WrongPassword" = "Falsches Passwort";
 
-"Login.Status.AskToSignIn" = "Bitte melden Sie sich an, um zu posten";
-
-"Login.Status.Offline" = "Offline";
-
 "Login.Status.LoginFail" = "Login fehlgeschlagen";
 
 "LogIn.Warning.NoAccount" = "Kein Konto";
@@ -78,7 +74,5 @@
 
 
 "Setting.Title.Server" = "Server";
-
-"Login.Warning.Title.PlatformVersionNotSupported" = "Plattform-Version wird nicht unterstützt";
 
 "Word.Back" = "Zurück";

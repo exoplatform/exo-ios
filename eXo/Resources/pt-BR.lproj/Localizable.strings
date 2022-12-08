@@ -13,8 +13,6 @@
 
 "OnBoarding.Title.eXoPlatformDescription" = "Conecte, compartilhe e trabalhe em conjunto";
 
-"OnBoarding.Error.PlatformNotSupported" = "Versão da plataforma não suportada";
-
 "OnBoarding.Error.PlatformNotFound" = "Versão da plataforma não encontrada";
 
 "Word.OK" = "Ok";
@@ -39,10 +37,6 @@
 "Setting.Title.ApplicationVersion" = "Versão do aplicativo";
 
 "Setting.Title.About" = "Sobre";
-
-// Server Manager
-
-"ServerManager.Title.Warning" = "Versão da plataforma não suportada";
 
 // Home Page
 

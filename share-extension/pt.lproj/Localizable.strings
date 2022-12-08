@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Falha de rede";
 
 "Upload.Message.ConfirmationPost" = "Quer postar a mensagem de qualquer maneira?";
-
-"Word.Cancel" = "Cancelar";
-
-"Word.Post" = "Publicar";
-
-"Word.Username" = "Utilizador";
-
-"Word.Edit" = "Editar";
-
-"Word.Account" = "A minha conta";
-
-"Login.Status.Offline" = "Offline";
-
-"Word.Space" = "Espaço";
-
-"Word.Public" = "Público";
-
-"Word.Back" = "Voltar";

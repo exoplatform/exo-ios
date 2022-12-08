@@ -2,13 +2,3 @@
 "Delete" = "Smazat";
 
 "Cancel" = "Zrušit";
-
-"OnBoarding.Title.Others" = "Ostatní";
-
-"Word.OK" = "OK";
-
-"Word.Cancel" = "Zrušit";
-
-"Word.Back" = "Zpět";
-
-"OnBoarding.Error.UnableConnectServer" = "Zadejte platnou adresu URL";

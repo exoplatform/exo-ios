@@ -27,5 +27,3 @@
 "Upload.Warning.NetworkError" = "Network error";
 
 "Upload.Message.ConfirmationPost" = "You go won post de message like dat?";
-
-"Login.Status.Offline" = "Offline";

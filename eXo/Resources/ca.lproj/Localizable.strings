@@ -2,13 +2,3 @@
 "Delete" = "Suprimeix";
 
 "Cancel" = "Cancel·la";
-
-"OnBoarding.Title.Others" = "Altres";
-
-"Word.OK" = "Accepta";
-
-"Word.Cancel" = "Cancel·la";
-
-"Word.Back" = "Enrere";
-
-"OnBoarding.Error.UnableConnectServer" = "Si us plau, introdueixi una URL vàlida.";

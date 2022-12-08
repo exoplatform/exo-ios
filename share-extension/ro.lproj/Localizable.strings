@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Eroare de rețea";
 
 "Upload.Message.ConfirmationPost" = "Doriți să postați mesajul oricum?";
-
-"Word.Cancel" = "Renunță";
-
-"Word.Post" = "Distribuie";
-
-"Word.Username" = "Nume de utilizator";
-
-"Word.Edit" = "Modifică";
-
-"Word.Account" = "Cont";
-
-"Login.Status.Offline" = "Deconectat";
-
-"Word.Space" = "Spaţiu";
-
-"Word.Public" = "Public";
-
-"Word.Back" = "Înapoi";

@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Kesalahan jaringan";
 
 "Upload.Message.ConfirmationPost" = "Apakah Anda tetap ingin mengirim pesan?";
-
-"Word.Cancel" = "membatalkan";
-
-"Word.Post" = "Posting";
-
-"Word.Username" = "Nama Pengguna";
-
-"Word.Edit" = "merubah";
-
-"Word.Account" = "Akun";
-
-"Login.Status.Offline" = "Tidak Aktif";
-
-"Word.Space" = "Ruang";
-
-"Word.Public" = "Umum";
-
-"Word.Back" = "Kembali";
