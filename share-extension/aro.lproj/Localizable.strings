@@ -32,35 +32,17 @@
 
 "Upload.Message.ConfirmationPost" = "هل تريد نشر الرسالة في كل الحالات؟";
 
-"Word.Cancel" = "الغاء";
-
-"Word.Post" = "شارك";
-
 "Title.SelectAccount" = "اختر حسابا";
-
-"Word.Username" = "اسم المستخدم";
 
 "Title.UnknownPassword" = "كلمة المرور: غير معروف";
 
 "Title.NeededUsernamePassoword" = "اسم المستخدم وكلمة المرور المطلوبة ";
 
-"Word.Edit" = "تغيير";
-
-"Word.Account" = "الحساب";
-
 "Login.Status.Loging" = "تسجيل الدخول";
-
-"Login.Status.WrongPassword" = "كلمة المرورغير صحيحة.";
-
-"Login.Status.AskToSignIn" = "الرجاء تسجيل الدخول للنشر";
-
-"Login.Status.Offline" = "غير متصل";
 
 "Login.Status.LoginFail" = "فشل تسجيل الدخول";
 
 "LogIn.Warning.NoAccount" = "لا يوجد حساب";
-
-"Word.Space" = "فضاء";
 
 "Login.Status.ServerProblem" = "مشكلة في الخادم";
 
@@ -70,8 +52,6 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "عمومي";
-
 "Post.Title.ErrorMessage" = "لا يمكن النشر";
 
 "Title.SpaceSelection" = "اختيار المساحة";
@@ -79,8 +59,4 @@
 
 "Setting.Title.Server" = "الخادم";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "إصدار المنصة غير مدعوم";
-
 "Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
-
-"Word.Back" = "رجوع";

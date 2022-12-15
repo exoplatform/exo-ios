@@ -32,35 +32,17 @@
 
 "Upload.Message.ConfirmationPost" = "¿Desea publicar el mensaje de todos modos?";
 
-"Word.Cancel" = "Cancelar";
-
-"Word.Post" = "Publicar";
-
 "Title.SelectAccount" = "Seleccionar una cuenta";
-
-"Word.Username" = "Nombre de usuario";
 
 "Title.UnknownPassword" = "Contraseña: desconocida";
 
 "Title.NeededUsernamePassoword" = "Se necesita usuario y contraseña";
 
-"Word.Edit" = "Editar";
-
-"Word.Account" = "Cuenta";
-
 "Login.Status.Loging" = "Iniciando sesión";
-
-"Login.Status.WrongPassword" = "Contraseña incorrecta";
-
-"Login.Status.AskToSignIn" = "Inicia sesión para publicar";
-
-"Login.Status.Offline" = "Sin conexión";
 
 "Login.Status.LoginFail" = "Error al iniciar sesión";
 
 "LogIn.Warning.NoAccount" = "Sin cuenta";
-
-"Word.Space" = "Espacio";
 
 "Login.Status.ServerProblem" = "Problema del servidor";
 
@@ -70,8 +52,6 @@
 
 "Title.LoadingSpaceId" = "Cargando espacio";
 
-"Word.Public" = "Público";
-
 "Post.Title.ErrorMessage" = "No puedes publicar";
 
 "Title.SpaceSelection" = "Selección de espacio";
@@ -79,8 +59,4 @@
 
 "Setting.Title.Server" = "Servidor";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Versión de Platform no compatible";
-
 "Login.Warning.Message.PlatformVersionNotSupported" = "El servidor eXo no es compatible con la aplicación de móvil. Pregunta a tu administrador para actualizar a la última versión de eXo Platform.";
-
-"Word.Back" = "Atrás";

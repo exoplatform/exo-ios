@@ -32,31 +32,17 @@
 
 "Upload.Message.ConfirmationPost" = "Möchten Sie die Nachricht trotzdem abschicken?";
 
-"Word.Cancel" = "Abbrechen";
-
-"Word.Post" = "Teilen";
-
 "Title.SelectAccount" = "Wählen Sie ein Benutzerkonto";
-
-"Word.Username" = "Benutzername";
 
 "Title.UnknownPassword" = "Passwort: Unbekannt";
 
 "Title.NeededUsernamePassoword" = "Benutzername & Passwort erforderlich ";
 
-"Word.Edit" = "Bearbeiten";
-
-"Word.Account" = "Konto";
-
 "Login.Status.Loging" = "Anmelden";
-
-"Login.Status.WrongPassword" = "Falsches Passwort";
 
 "Login.Status.LoginFail" = "Login fehlgeschlagen";
 
 "LogIn.Warning.NoAccount" = "Kein Konto";
-
-"Word.Space" = "Raum";
 
 "Login.Status.ServerProblem" = "Serverproblem";
 
@@ -66,13 +52,9 @@
 
 "Title.LoadingSpaceId" = "Projektraum laden";
 
-"Word.Public" = "Öffentlich";
-
 "Post.Title.ErrorMessage" = "Kann nicht veröffentlichen";
 
 "Title.SpaceSelection" = "Projektraum wählen";
 
 
 "Setting.Title.Server" = "Server";
-
-"Word.Back" = "Zurück";

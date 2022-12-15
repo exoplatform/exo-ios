@@ -52,37 +52,23 @@
 
 "OnBoarding.Title.AddServer" = "Verbinden Sie sich mit eXo";
 
-"OnBoarding.Title.Others" = "Andere";
-
 "OnBoarding.Title.eXoPlatformDescription" = "Verbinden, teilen und zusammenarbeiten";
 
 "OnBoarding.Title.SavingServer" = "Speichern Sie Ihre eXo Verbindung...";
 
 "OnBoarding.Message.EnterURL" = "Geben Sie Ihre eXo Adresse ein";
 
-"OnBoarding.Error.PlatformNotSupported" = "Plattform-Version wird nicht unterstützt";
-
 "OnBoarding.Error.PlatformNotFound" = "Plattform-Version nicht gefunden";
 
 "OnBoarding.Error.PlatformNotSupportedDetailMessage" = "Die Anwendung unterstützt nur die Platform Versionen ab 6.2 ";
 
-"Word.OK" = "Ok";
-
-"Word.Cancel" = "Abbrechen";
-
-"Word.Back" = "Zurück";
-
 "OnBoarding.Error.URL" = "eXo URL-Fehler";
-
-"OnBoarding.Error.UnableConnectServer" = "Bitte geben Sie eine gültige URL ein";
 
 "OnBoarding.Title.RecentsServer" = "Meine eXos";
 
 "OnBoarding.Error.ConnectionError" = "Verbindungsfehler";
 
 "OnBoarding.Title.MostRecentServer" = "Letzte Verbindung";
-
-"Internet connection lost" = "Internetverbindung abgebrochen";
 
 "Please make sure you have internet connection" = "Bitte stellen Sie sicher, dass Sie mit dem Internet verbunden sind.";
 
@@ -93,8 +79,6 @@
 
 "Shortcut.Title.ConnectTo" = "Verbinden mit";
 
-"Shortcut.Title.AddServer" = "Verbinden Sie Ihr eXo";
-
 "Shortcut.Title.ConnnecteXoTribe" = "Mit eXo Tribe verbinden";
 
 // Setting
@@ -102,8 +86,6 @@
 "Setting.Title.Server" = "eXos";
 
 "Setting.Title.NoServer" = "Bisher wurde noch keine eXo Verbindung definiert";
-
-"Setting.Title.AddServer" = "Verbinden Sie Ihr eXo";
 
 "Setting.Title.DeleteServer" = "Verbindung löschen";
 
@@ -113,15 +95,7 @@
 
 "Setting.Title.About" = "Über uns";
 
-// Server Manager
-
-"ServerManager.Title.Warning" = "Plattform-Version wird nicht unterstützt";
-
 "ServerManager.Message.WarningVersionNotSupported" = "Ihre Exo-Instanz verwendet eine Version der Plattform, die von dieser Anwendung nicht unterstützt wird. Wir empfehlen Ihnen, auf Platform 6.2 zu aktualisieren oder die Anwendungsversion 2 zu verwenden.";
-
-// Add Server
-
-"Add your eXo" = "Neue eXo Verbindung";
 
 "Enter your eXo URL" = "Geben Sie Ihre eXo Verbindungsadresse ein";
 

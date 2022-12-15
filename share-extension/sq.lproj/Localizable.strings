@@ -32,35 +32,17 @@
 
 "Upload.Message.ConfirmationPost" = "crwdns7015117:0crwdne7015117:0";
 
-"Word.Cancel" = "crwdns7015119:0crwdne7015119:0";
-
-"Word.Post" = "crwdns7015121:0crwdne7015121:0";
-
 "Title.SelectAccount" = "crwdns7015123:0crwdne7015123:0";
-
-"Word.Username" = "crwdns7015125:0crwdne7015125:0";
 
 "Title.UnknownPassword" = "crwdns7015127:0crwdne7015127:0";
 
 "Title.NeededUsernamePassoword" = "crwdns7015129:0crwdne7015129:0";
 
-"Word.Edit" = "crwdns7015131:0crwdne7015131:0";
-
-"Word.Account" = "crwdns7015133:0crwdne7015133:0";
-
 "Login.Status.Loging" = "crwdns7015135:0crwdne7015135:0";
-
-"Login.Status.WrongPassword" = "crwdns7015137:0crwdne7015137:0";
-
-"Login.Status.AskToSignIn" = "crwdns7015139:0crwdne7015139:0";
-
-"Login.Status.Offline" = "crwdns7015141:0crwdne7015141:0";
 
 "Login.Status.LoginFail" = "crwdns7015143:0crwdne7015143:0";
 
 "LogIn.Warning.NoAccount" = "crwdns7015145:0crwdne7015145:0";
-
-"Word.Space" = "crwdns7015147:0crwdne7015147:0";
 
 "Login.Status.ServerProblem" = "crwdns7015149:0crwdne7015149:0";
 
@@ -70,8 +52,6 @@
 
 "Title.LoadingSpaceId" = "crwdns7015639:0crwdne7015639:0";
 
-"Word.Public" = "crwdns7015157:0crwdne7015157:0";
-
 "Post.Title.ErrorMessage" = "crwdns7015159:0crwdne7015159:0";
 
 "Title.SpaceSelection" = "crwdns7015505:0crwdne7015505:0";
@@ -79,8 +59,4 @@
 
 "Setting.Title.Server" = "crwdns7015163:0crwdne7015163:0";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "crwdns7015165:0crwdne7015165:0";
-
 "Login.Warning.Message.PlatformVersionNotSupported" = "crwdns7015641:0crwdne7015641:0";
-
-"Word.Back" = "crwdns7015169:0crwdne7015169:0";

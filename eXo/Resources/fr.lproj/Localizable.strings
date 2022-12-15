@@ -52,37 +52,23 @@
 
 "OnBoarding.Title.AddServer" = "Connectez votre eXo";
 
-"OnBoarding.Title.Others" = "Autres";
-
 "OnBoarding.Title.eXoPlatformDescription" = "Connectez-vous, partagez et travaillez ensemble";
 
 "OnBoarding.Title.SavingServer" = "Enregistrement de la connexion...";
 
 "OnBoarding.Message.EnterURL" = "Entrez l'adresse de votre eXo";
 
-"OnBoarding.Error.PlatformNotSupported" = "Version de eXo Platform non supportée";
-
 "OnBoarding.Error.PlatformNotFound" = "Version de eXo Platform introuvable";
 
 "OnBoarding.Error.PlatformNotSupportedDetailMessage" = "L'application nécessite le serveur eXo Platform en version 6.2 au minimum. Votre administrateur doit mettre à jour le serveur.";
 
-"Word.OK" = "Valider";
-
-"Word.Cancel" = "Annuler";
-
-"Word.Back" = "Retour";
-
 "OnBoarding.Error.URL" = "URL incorrecte";
-
-"OnBoarding.Error.UnableConnectServer" = "Veuillez entrer une URL valide.";
 
 "OnBoarding.Title.RecentsServer" = "Mes eXo";
 
 "OnBoarding.Error.ConnectionError" = "Erreur de connexion";
 
 "OnBoarding.Title.MostRecentServer" = "Se connecter à";
-
-"Internet connection lost" = "Connexion Internet perdue";
 
 "Please make sure you have internet connection" = "Veuillez vous assurer d'avoir une connexion Internet";
 
@@ -93,8 +79,6 @@
 
 "Shortcut.Title.ConnectTo" = "Connectez-vous à";
 
-"Shortcut.Title.AddServer" = "Connectez votre eXo";
-
 "Shortcut.Title.ConnnecteXoTribe" = "Connectez-vous à eXo Tribe";
 
 // Setting
@@ -102,8 +86,6 @@
 "Setting.Title.Server" = "Connections eXo";
 
 "Setting.Title.NoServer" = "Aucune connexion eXo configurée";
-
-"Setting.Title.AddServer" = "Connectez votre eXo";
 
 "Setting.Title.DeleteServer" = "Supprimer la connexion";
 
@@ -113,15 +95,7 @@
 
 "Setting.Title.About" = "Informations";
 
-// Server Manager
-
-"ServerManager.Title.Warning" = "Version de eXo Platform non supportée";
-
 "ServerManager.Message.WarningVersionNotSupported" = "Votre eXo utilise une version de eXo Platform non supportée par cette application. Veuillez mettre à jour votre eXo vers eXo Platform 4.3, ou installer l'application version 2.";
-
-// Add Server
-
-"Add your eXo" = "Nouvelle connexion";
 
 "Enter your eXo URL" = "Entrer l'adresse de votre eXo";
 

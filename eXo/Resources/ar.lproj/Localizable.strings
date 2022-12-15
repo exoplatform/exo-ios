@@ -52,37 +52,23 @@
 
 "OnBoarding.Title.AddServer" = "ربط eXo الخاص بك";
 
-"OnBoarding.Title.Others" = "الآخرين";
-
 "OnBoarding.Title.eXoPlatformDescription" = "الاتصال والمشاركة والعمل معا";
 
 "OnBoarding.Title.SavingServer" = "جارٍ حفظ اتصال eXo...";
 
 "OnBoarding.Message.EnterURL" = "أدخل عنوان eXo الخاص بك";
 
-"OnBoarding.Error.PlatformNotSupported" = "إصدار المنصة غير مدعوم";
-
 "OnBoarding.Error.PlatformNotFound" = "لم يتم العثور على نسخة المنصة";
 
 "OnBoarding.Error.PlatformNotSupportedDetailMessage" = "التطبيق يدعم فقط النسخة 6.0 من المنصة أو الأحدث";
 
-"Word.OK" = "موافق";
-
-"Word.Cancel" = "الغاء";
-
-"Word.Back" = "رجوع";
-
 "OnBoarding.Error.URL" = "خطأ في رابط eXo";
-
-"OnBoarding.Error.UnableConnectServer" = "الرجاء إدخال رابط صحيح";
 
 "OnBoarding.Title.RecentsServer" = "أكسوس الخاص بي";
 
 "OnBoarding.Error.ConnectionError" = "خطأ في الاتصال";
 
 "OnBoarding.Title.MostRecentServer" = "أحدث اتصال";
-
-"Internet connection lost" = "لا يوجد اتصال بالإنترنت";
 
 "Please make sure you have internet connection" = "الرجاء التأكد من أنك متصل بالإنترنت";
 
@@ -93,8 +79,6 @@
 
 "Shortcut.Title.ConnectTo" = "الاتصال بـ";
 
-"Shortcut.Title.AddServer" = "ربط eXo الخاص بك";
-
 "Shortcut.Title.ConnnecteXoTribe" = "الاتصال بقبيلة eXo";
 
 // Setting
@@ -102,8 +86,6 @@
 "Setting.Title.Server" = "Intranets";
 
 "Setting.Title.NoServer" = "No eXo";
-
-"Setting.Title.AddServer" = "ربط eXo الخاص بك";
 
 "Setting.Title.DeleteServer" = "حذف الاتصال";
 
@@ -113,15 +95,7 @@
 
 "Setting.Title.About" = "حول";
 
-// Server Manager
-
-"ServerManager.Title.Warning" = "إصدار المنصة غير مدعوم";
-
 "ServerManager.Message.WarningVersionNotSupported" = "مثيل الإختصاري الخاص بك يستخدم نسخة من المنصة غير مدعومة بهذا التطبيق. نوصي بالترقية إلى المنصة 6.2 أو استخدام الإصدار 2 من التطبيق.";
-
-// Add Server
-
-"Add your eXo" = "اتصال eXo جديد";
 
 "Enter your eXo URL" = "أدخل عنوان اتصال eXo الخاص بك";
 
