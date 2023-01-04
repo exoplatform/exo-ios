@@ -1537,34 +1537,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = FEM998T42U;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FEM998T42U;
-				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x84_64;
-				INFOPLIST_FILE = eXo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 6.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
-				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.exoplatform.mob.eXoPlatformiPHone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		9C3AD2701BCF56900094CFF9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54C8E4C2A99928B233E4968C /* Pods-eXo.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
@@ -1582,7 +1554,36 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.exoplatform.mob.eXoPlatformiPHone";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9C3AD2701BCF56900094CFF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54C8E4C2A99928B233E4968C /* Pods-eXo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FEM998T42U;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FEM998T42U;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x84_64;
+				INFOPLIST_FILE = eXo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 6.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "$(APP_PROV_PROFIL)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1683,7 +1684,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROV_PROFIL)";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.exoplatform.mob.eXoPlatformiPHone.share-extension";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone.share-extension";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "share-extension/share-extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1699,7 +1700,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "share-extension/share-extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FEM998T42U;
@@ -1715,7 +1716,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID).share-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "$(EXT_PROV_PROFIL)";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.exoplatform.mob.eXoPlatformiPHone.share-extension";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AdHoc com.exoplatform.mob.eXoPlatformiPHone.share-extension";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "share-extension/share-extension-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
