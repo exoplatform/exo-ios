@@ -99,7 +99,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.10.0):
     - GoogleUtilities/Logger
   - HTMLKit (4.2.0)
-  - Kingfisher (7.4.1)
+  - Kingfisher (6.3.0)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -115,7 +115,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Messaging
   - HTMLKit
-  - Kingfisher
+  - Kingfisher (= 6.3.0)
   - SVProgressHUD
   - SwiftyJSON
   - UICKeyChainStore
@@ -152,13 +152,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   HTMLKit: e11ec9ed1a9be779e7dd65acdea5757fb113030e
-  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   UICKeyChainStore: ba3bff2c762b12db1e516f395c837dd25298b05e
 
-PODFILE CHECKSUM: 3db49ffb6a161982a7a3bc836389204efe7691a4
+PODFILE CHECKSUM: 602ebe953c7fd72f49650c8c1fb6c1d236f3c1dd
 
 COCOAPODS: 1.11.3
