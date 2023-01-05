@@ -26,32 +26,37 @@
 
 #if canImport(SwiftUI) && canImport(Combine)
 import SwiftUI
-import Combine
 
 // MARK: - KFImage creating.
-@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
-extension KFImageProtocol {
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+extension KFImage {
 
     /// Creates a `KFImage` for a given `Source`.
     /// - Parameters:
     ///   - source: The `Source` object defines data information from network or a data provider.
+    ///   - isLoaded: Whether the image is loaded or not. This provides a way to inspect the internal loading
+    ///               state. `true` if the image is loaded successfully. Otherwise, `false`. Do not set the
+    ///               wrapped value from outside.
     /// - Returns: A `KFImage` for future configuration or embedding to a `SwiftUI.View`.
     public static func source(
-        _ source: Source?
-    ) -> Self
+        _ source: Source?, isLoaded: Binding<Bool> = .constant(false)
+    ) -> KFImage
     {
-        Self.init(source: source)
+        KFImage(source: source, isLoaded: isLoaded)
     }
 
     /// Creates a `KFImage` for a given `Resource`.
     /// - Parameters:
     ///   - source: The `Resource` object defines data information like key or URL.
+    ///   - isLoaded: Whether the image is loaded or not. This provides a way to inspect the internal loading
+    ///               state. `true` if the image is loaded successfully. Otherwise, `false`. Do not set the
+    ///               wrapped value from outside.
     /// - Returns: A `KFImage` for future configuration or embedding to a `SwiftUI.View`.
     public static func resource(
-        _ resource: Resource?
-    ) -> Self
+        _ resource: Resource?, isLoaded: Binding<Bool> = .constant(false)
+    ) -> KFImage
     {
-        source(resource?.convertToSource())
+        source(resource?.convertToSource(), isLoaded: isLoaded)
     }
 
     /// Creates a `KFImage` for a given `URL`.
@@ -59,67 +64,70 @@ extension KFImageProtocol {
     ///   - url: The URL where the image should be downloaded.
     ///   - cacheKey: The key used to store the downloaded image in cache.
     ///               If `nil`, the `absoluteString` of `url` is used as the cache key.
+    ///   - isLoaded: Whether the image is loaded or not. This provides a way to inspect the internal loading
+    ///               state. `true` if the image is loaded successfully. Otherwise, `false`. Do not set the
+    ///               wrapped value from outside.
     /// - Returns: A `KFImage` for future configuration or embedding to a `SwiftUI.View`.
     public static func url(
-        _ url: URL?, cacheKey: String? = nil
-    ) -> Self
+        _ url: URL?, cacheKey: String? = nil, isLoaded: Binding<Bool> = .constant(false)
+    ) -> KFImage
     {
-        source(url?.convertToSource(overrideCacheKey: cacheKey))
+        source(url?.convertToSource(overrideCacheKey: cacheKey), isLoaded: isLoaded)
     }
 
     /// Creates a `KFImage` for a given `ImageDataProvider`.
     /// - Parameters:
     ///   - provider: The `ImageDataProvider` object contains information about the data.
+    ///   - isLoaded: Whether the image is loaded or not. This provides a way to inspect the internal loading
+    ///               state. `true` if the image is loaded successfully. Otherwise, `false`. Do not set the
+    ///               wrapped value from outside.
     /// - Returns: A `KFImage` for future configuration or embedding to a `SwiftUI.View`.
     public static func dataProvider(
-        _ provider: ImageDataProvider?
-    ) -> Self
+        _ provider: ImageDataProvider?, isLoaded: Binding<Bool> = .constant(false)
+    ) -> KFImage
     {
-        source(provider?.convertToSource())
+        source(provider?.convertToSource(), isLoaded: isLoaded)
     }
 
     /// Creates a builder for some given raw data and a cache key.
     /// - Parameters:
     ///   - data: The data object from which the image should be created.
     ///   - cacheKey: The key used to store the downloaded image in cache.
+    ///   - isLoaded: Whether the image is loaded or not. This provides a way to inspect the internal loading
+    ///               state. `true` if the image is loaded successfully. Otherwise, `false`. Do not set the
+    ///               wrapped value from outside.
     /// - Returns: A `KFImage` for future configuration or embedding to a `SwiftUI.View`.
     public static func data(
-        _ data: Data?, cacheKey: String
-    ) -> Self
+        _ data: Data?, cacheKey: String, isLoaded: Binding<Bool> = .constant(false)
+    ) -> KFImage
     {
         if let data = data {
-            return dataProvider(RawImageDataProvider(data: data, cacheKey: cacheKey))
+            return dataProvider(RawImageDataProvider(data: data, cacheKey: cacheKey), isLoaded: isLoaded)
         } else {
-            return dataProvider(nil)
+            return dataProvider(nil, isLoaded: isLoaded)
         }
     }
 }
 
-@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
-extension KFImageProtocol {
-    /// Sets a placeholder `View` which shows when loading the image, with a progress parameter as input.
-    /// - Parameter content: A view that describes the placeholder.
-    /// - Returns: A `KFImage` view that contains `content` as its placeholder.
-    public func placeholder<P: View>(@ViewBuilder _ content: @escaping (Progress) -> P) -> Self {
-        context.placeholder = { progress in
-            return AnyView(content(progress))
-        }
-        return self
-    }
-    
+@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+extension KFImage {
     /// Sets a placeholder `View` which shows when loading the image.
     /// - Parameter content: A view that describes the placeholder.
     /// - Returns: A `KFImage` view that contains `content` as its placeholder.
-    public func placeholder<P: View>(@ViewBuilder _ content: @escaping () -> P) -> Self {
-        placeholder { _ in content() }
+    public func placeholder<Content: View>(@ViewBuilder _ content: () -> Content) -> KFImage {
+        let v = content()
+        var result = self
+        result.context.placeholder = AnyView(v)
+        return result
     }
 
     /// Sets cancelling the download task bound to `self` when the view disappearing.
     /// - Parameter flag: Whether cancel the task or not.
     /// - Returns: A `KFImage` view that cancels downloading task when disappears.
-    public func cancelOnDisappear(_ flag: Bool) -> Self {
-        context.cancelOnDisappear = flag
-        return self
+    public func cancelOnDisappear(_ flag: Bool) -> KFImage {
+        var result = self
+        result.context.cancelOnDisappear = flag
+        return result
     }
 
     /// Sets a fade transition for the image task.
@@ -130,8 +138,8 @@ extension KFImageProtocol {
     /// The transition will not happen when the
     /// image is retrieved from either memory or disk cache by default. If you need to do the transition even when
     /// the image being retrieved from cache, also call `forceRefresh()` on the returned `KFImage`.
-    public func fade(duration: TimeInterval) -> Self {
-        context.options.transition = .fade(duration)
+    public func fade(duration: TimeInterval) -> KFImage {
+        context.binder.options.transition = .fade(duration)
         return self
     }
 }

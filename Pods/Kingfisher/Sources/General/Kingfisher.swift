@@ -45,16 +45,13 @@ public typealias KFCrossPlatformButton = UIButton
 #if canImport(TVUIKit)
 import TVUIKit
 #endif
-#if canImport(CarPlay) && !targetEnvironment(macCatalyst)
-import CarPlay
-#endif
 #else
 import WatchKit
 #endif
 #endif
 
 /// Wrapper for Kingfisher compatible types. This type provides an extension point for
-/// convenience methods in Kingfisher.
+/// connivence methods in Kingfisher.
 public struct KingfisherWrapper<Base> {
     public let base: Base
     public init(_ base: Base) {
@@ -98,9 +95,4 @@ extension WKInterfaceImage: KingfisherCompatible { }
 #if os(tvOS) && canImport(TVUIKit)
 @available(tvOS 12.0, *)
 extension TVMonogramView: KingfisherCompatible { }
-#endif
-
-#if canImport(CarPlay) && !targetEnvironment(macCatalyst)
-@available(iOS 14.0, *)
-extension CPListItem: KingfisherCompatible { }
 #endif
