@@ -9,11 +9,7 @@
 
 "OnBoarding.Title.SignInToeXo" = "Entrar no eXo";
 
-"OnBoarding.Title.Others" = "Outros";
-
 "OnBoarding.Title.eXoPlatformDescription" = "Conecte, compartilhe e trabalhe em conjunto";
-
-"OnBoarding.Error.PlatformNotSupported" = "Versão da plataforma não suportada";
 
 "OnBoarding.Error.PlatformNotFound" = "Versão da plataforma não encontrada";
 
@@ -23,11 +19,7 @@
 
 "Word.Back" = "Voltar";
 
-"OnBoarding.Error.UnableConnectServer" = "Por favor, insira um formato de URL válida";
-
 "OnBoarding.Error.ConnectionError" = "Erro de conexão";
-
-"Internet connection lost" = "Conexão à Internet perdida";
 
 
 // Shortcut (3D Touch)
@@ -39,10 +31,6 @@
 "Setting.Title.ApplicationVersion" = "Versão do aplicativo";
 
 "Setting.Title.About" = "Sobre";
-
-// Server Manager
-
-"ServerManager.Title.Warning" = "Versão da plataforma não suportada";
 
 // Home Page
 

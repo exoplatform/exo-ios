@@ -27,9 +27,3 @@
 "Upload.Warning.NetworkError" = "Şəbəkə xətası";
 
 "Upload.Message.ConfirmationPost" = "Hər bir halda bu mesajı dərc etmək istəyirsiniz?";
-
-"Word.Cancel" = "Ləğv Et";
-
-"Word.Username" = "İstifadəçi Adı";
-
-"Login.Status.Offline" = "Xəttə deyil";

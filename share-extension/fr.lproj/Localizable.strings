@@ -34,27 +34,13 @@
 
 "Word.Cancel" = "Annuler";
 
-"Word.Post" = "Publier";
-
 "Title.SelectAccount" = "Selectionner un compte";
-
-"Word.Username" = "Identifiant";
 
 "Title.UnknownPassword" = "Mode de passe: Inconnu";
 
 "Title.NeededUsernamePassoword" = "Identifiant et mot de passe requis";
 
-"Word.Edit" = "Modifier";
-
-"Word.Account" = "Compte";
-
 "Login.Status.Loging" = "Connexion en cours";
-
-"Login.Status.WrongPassword" = "Mot de passe incorrect";
-
-"Login.Status.AskToSignIn" = "Veuillez vous connecter";
-
-"Login.Status.Offline" = "Déconnecté";
 
 "Login.Status.LoginFail" = "Echec de connexion";
 
@@ -70,16 +56,12 @@
 
 "Title.LoadingSpaceId" = "Chargement de l'espace";
 
-"Word.Public" = "Public";
-
 "Post.Title.ErrorMessage" = "Impossible de publier";
 
 "Title.SpaceSelection" = "Selectionner un espace";
 
 
 "Setting.Title.Server" = "Serveur";
-
-"Login.Warning.Title.PlatformVersionNotSupported" = "Version de Platform non supportée";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Votre serveur utilise une version de eXo Platform non supportée par cette application. Votre administrateur doit mettre à jour le serveur eXo.";
 

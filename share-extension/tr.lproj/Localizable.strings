@@ -27,23 +27,3 @@
 "Upload.Warning.NetworkError" = "Bağlantı hatası";
 
 "Upload.Message.ConfirmationPost" = "İletiyi yine de göndermek istiyor musunuz?";
-
-"Word.Cancel" = "İptal";
-
-"Word.Post" = "Paylaş";
-
-"Word.Username" = "Kullanıcı Adı";
-
-"Word.Edit" = "Düzenle";
-
-"Word.Account" = "Hesap";
-
-"Login.Status.WrongPassword" = "Yanlış parola";
-
-"Login.Status.Offline" = "Çevrimdışı";
-
-"Word.Space" = "Alan";
-
-"Word.Public" = "Genel";
-
-"Word.Back" = "Geri";

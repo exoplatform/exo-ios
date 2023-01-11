@@ -2,13 +2,3 @@
 "Delete" = "Hapus";
 
 "Cancel" = "Batal";
-
-"OnBoarding.Title.Others" = "Lainnya";
-
-"Word.OK" = "Oke";
-
-"Word.Cancel" = "membatalkan";
-
-"Word.Back" = "Kembali";
-
-"OnBoarding.Error.UnableConnectServer" = "Silahkan masukkan format URL yang benar";

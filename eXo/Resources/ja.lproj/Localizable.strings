@@ -2,13 +2,3 @@
 "Delete" = "削除する";
 
 "Cancel" = "キャンセル";
-
-"OnBoarding.Title.Others" = "その他";
-
-"Word.OK" = "OK";
-
-"Word.Cancel" = "キャンセル";
-
-"Word.Back" = "戻る";
-
-"OnBoarding.Error.UnableConnectServer" = "有効な URL を入力してください。";

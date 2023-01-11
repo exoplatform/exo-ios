@@ -27,23 +27,3 @@
 "Upload.Warning.NetworkError" = "Omrežna napaka";
 
 "Upload.Message.ConfirmationPost" = "Ali želite vseeno objaviti sporočilo?";
-
-"Word.Cancel" = "Prekliči";
-
-"Word.Post" = "Daj v skupno rabo";
-
-"Word.Username" = "Uporabniško ime";
-
-"Word.Edit" = "Uredi";
-
-"Word.Account" = "Račun";
-
-"Login.Status.WrongPassword" = "Napačno geslo";
-
-"Login.Status.Offline" = "Nedosegljiv";
-
-"Word.Space" = "Prostor";
-
-"Word.Public" = "Javno";
-
-"Word.Back" = "Nazaj";

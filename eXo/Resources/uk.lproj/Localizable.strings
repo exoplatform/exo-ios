@@ -2,13 +2,3 @@
 "Delete" = "Видалити";
 
 "Cancel" = "Скасувати";
-
-"OnBoarding.Title.Others" = "Інше";
-
-"Word.OK" = "Гаразд";
-
-"Word.Cancel" = "Скасувати";
-
-"Word.Back" = "Назад";
-
-"OnBoarding.Error.UnableConnectServer" = "Будь ласка, введіть вірну URL-адресу";
