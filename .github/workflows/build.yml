@@ -28,7 +28,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
-          bundler-cache: true
+     # Cache Ruby gems
+      - name: Cache Ruby gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
       # Cache CocoaPods
       - name: Cache CocoaPods
         uses: actions/cache@v2

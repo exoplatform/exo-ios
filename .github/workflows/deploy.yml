@@ -40,7 +40,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
-          bundler-cache: true
       # Install Bundler and dependencies gems
       - name: Install bundler and dependencies
         run: gem install bundler && bundle install
