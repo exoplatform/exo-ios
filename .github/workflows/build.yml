@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Xcode 13
         uses: maxim-lobanov/setup-xcode@v1
         with:
@@ -28,14 +28,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
-      # Cache Ruby gems
-      - name: Cache Ruby gems
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+          bundler-cache: true
       # Cache CocoaPods
       - name: Cache CocoaPods
         uses: actions/cache@v2
@@ -52,7 +45,7 @@ jobs:
         run: bundle update fastlane
       # Gather certificates from Github repository
       - name: Synchonize Certificates
-        uses: maierj/fastlane-action@v2.0.1
+        uses: maierj/fastlane-action@v3.0.0
         with:
           lane: "ci_sync_certificates"
         env:
@@ -62,7 +55,7 @@ jobs:
           MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       # Build iOS Project
       - name: Build iOS Project
-        uses: maierj/fastlane-action@v2.0.1
+        uses: maierj/fastlane-action@v3.0.0
         with:
           lane: "build_dev"
         env:

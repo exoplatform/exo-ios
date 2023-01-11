@@ -9,10 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ secrets.ADMIN_TOKEN }}
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.SWF_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SWF_GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
       - name: Rebase branch
         run: |
           git config --global user.email "exo-swf@exoplatform.com"
