@@ -52,15 +52,11 @@
 
 "OnBoarding.Title.AddServer" = "crwdns7015603:0crwdne7015603:0";
 
-"OnBoarding.Title.Others" = "crwdns7052647:0crwdne7052647:0";
-
 "OnBoarding.Title.eXoPlatformDescription" = "crwdns7015043:0crwdne7015043:0";
 
 "OnBoarding.Title.SavingServer" = "crwdns7015605:0crwdne7015605:0";
 
 "OnBoarding.Message.EnterURL" = "crwdns7015607:0crwdne7015607:0";
-
-"OnBoarding.Error.PlatformNotSupported" = "crwdns7052649:0crwdne7052649:0";
 
 "OnBoarding.Error.PlatformNotFound" = "crwdns7015051:0crwdne7015051:0";
 
@@ -74,15 +70,11 @@
 
 "OnBoarding.Error.URL" = "crwdns7015611:0crwdne7015611:0";
 
-"OnBoarding.Error.UnableConnectServer" = "crwdns7052657:0crwdne7052657:0";
-
 "OnBoarding.Title.RecentsServer" = "crwdns7015615:0crwdne7015615:0";
 
 "OnBoarding.Error.ConnectionError" = "crwdns7015067:0crwdne7015067:0";
 
 "OnBoarding.Title.MostRecentServer" = "crwdns7015617:0crwdne7015617:0";
-
-"Internet connection lost" = "crwdns7052659:0crwdne7052659:0";
 
 "Please make sure you have internet connection" = "crwdns7015619:0crwdne7015619:0";
 
@@ -93,8 +85,6 @@
 
 "Shortcut.Title.ConnectTo" = "crwdns7015077:0crwdne7015077:0";
 
-"Shortcut.Title.AddServer" = "crwdns7052661:0crwdne7052661:0";
-
 "Shortcut.Title.ConnnecteXoTribe" = "crwdns7015081:0crwdne7015081:0";
 
 // Setting
@@ -102,8 +92,6 @@
 "Setting.Title.Server" = "crwdns7015623:0crwdne7015623:0";
 
 "Setting.Title.NoServer" = "crwdns7015697:0crwdne7015697:0";
-
-"Setting.Title.AddServer" = "crwdns7052663:0crwdne7052663:0";
 
 "Setting.Title.DeleteServer" = "crwdns7015629:0crwdne7015629:0";
 
@@ -113,15 +101,7 @@
 
 "Setting.Title.About" = "crwdns7015095:0crwdne7015095:0";
 
-// Server Manager
-
-"ServerManager.Title.Warning" = "crwdns7052665:0crwdne7052665:0";
-
 "ServerManager.Message.WarningVersionNotSupported" = "crwdns7015633:0crwdne7015633:0";
-
-// Add Server
-
-"Add your eXo" = "crwdns7052667:0crwdne7052667:0";
 
 "Enter your eXo URL" = "crwdns7015637:0crwdne7015637:0";
 
