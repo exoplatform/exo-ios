@@ -43,19 +43,21 @@
 @property(nonatomic, readwrite, strong) FIRMessagingAPNSInfo *currentAPNSInfo;
 @property(nonatomic, readwrite) FIRInstallations *installations;
 
+@property(readonly) id<FIRHeartbeatLoggerProtocol> heartbeatLogger;
+
 @end
 
 @implementation FIRMessagingTokenManager
 
-- (instancetype)init {
+- (instancetype)initWithHeartbeatLogger:(id<FIRHeartbeatLoggerProtocol>)heartbeatLogger {
   self = [super init];
   if (self) {
     _tokenStore = [[FIRMessagingTokenStore alloc] init];
-    _checkinStore = [[FIRMessagingCheckinStore alloc] init];
-    _authService = [[FIRMessagingAuthService alloc] initWithCheckinStore:_checkinStore];
+    _authService = [[FIRMessagingAuthService alloc] init];
     [self resetCredentialsIfNeeded];
     [self configureTokenOperations];
     _installations = [FIRInstallations installations];
+    _heartbeatLogger = heartbeatLogger;
   }
   return self;
 }
@@ -178,6 +180,14 @@
     [tokenOptions addEntriesFromDictionary:options];
   }
 
+#if TARGET_OS_SIMULATOR && TARGET_OS_IOS
+  if (tokenOptions[kFIRMessagingTokenOptionsAPNSKey] != nil) {
+    // If APNS token is available on iOS Simulator, we must use the sandbox profile
+    // https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes
+    tokenOptions[kFIRMessagingTokenOptionsAPNSIsSandboxKey] = @(YES);
+  }
+#endif
+
   if (tokenOptions[kFIRMessagingTokenOptionsAPNSKey] != nil &&
       tokenOptions[kFIRMessagingTokenOptionsAPNSIsSandboxKey] == nil) {
     // APNS key was given, but server type is missing. Supply the server type with automatic
@@ -233,17 +243,15 @@
           } else {
             FIRMessagingTokenInfo *cachedTokenInfo =
                 [self cachedTokenInfoWithAuthorizedEntity:authorizedEntity scope:scope];
-            if (cachedTokenInfo) {
-              FIRMessagingAPNSInfo *optionsAPNSInfo =
-                  [[FIRMessagingAPNSInfo alloc] initWithTokenOptionsDictionary:tokenOptions];
-              // Check if APNS Info is changed
-              if ((!cachedTokenInfo.APNSInfo && !optionsAPNSInfo) ||
-                  [cachedTokenInfo.APNSInfo isEqualToAPNSInfo:optionsAPNSInfo]) {
-                // check if token is fresh
-                if ([cachedTokenInfo isFreshWithIID:identifier]) {
-                  newHandler(cachedTokenInfo.token, nil);
-                  return;
-                }
+            FIRMessagingAPNSInfo *optionsAPNSInfo =
+                [[FIRMessagingAPNSInfo alloc] initWithTokenOptionsDictionary:tokenOptions];
+            // Check if APNS Info is changed
+            if ((!cachedTokenInfo.APNSInfo && !optionsAPNSInfo) ||
+                [cachedTokenInfo.APNSInfo isEqualToAPNSInfo:optionsAPNSInfo]) {
+              // check if token is fresh
+              if ([cachedTokenInfo isFreshWithIID:identifier]) {
+                newHandler(cachedTokenInfo.token, nil);
+                return;
               }
             }
             [self fetchNewTokenWithAuthorizedEntity:[authorizedEntity copy]
@@ -458,41 +466,40 @@
  *  since the Keychain items are marked with `*BackupThisDeviceOnly`.
  */
 - (void)resetCredentialsIfNeeded {
-  BOOL checkinPlistExists = [_checkinStore hasCheckinPlist];
+  BOOL checkinPlistExists = [_authService hasCheckinPlist];
   // Checkin info existed in backup excluded plist. Should not be a fresh install.
   if (checkinPlistExists) {
     return;
   }
-
-  // Resets checkin in keychain if a fresh install.
   // Keychain can still exist even if app is uninstalled.
-  FIRMessagingCheckinPreferences *oldCheckinPreferences = [_checkinStore cachedCheckinPreferences];
+  FIRMessagingCheckinPreferences *oldCheckinPreferences = _authService.checkinPreferences;
 
-  if (oldCheckinPreferences) {
-    [_checkinStore removeCheckinPreferencesWithHandler:^(NSError *error) {
-      if (!error) {
-        FIRMessagingLoggerDebug(
-            kFIRMessagingMessageCodeStore002,
-            @"Removed cached checkin preferences from Keychain because this is a fresh install.");
-      } else {
-        FIRMessagingLoggerError(
-            kFIRMessagingMessageCodeStore003,
-            @"Couldn't remove cached checkin preferences for a fresh install. Error: %@", error);
-      }
-      if (oldCheckinPreferences.deviceID.length && oldCheckinPreferences.secretToken.length) {
-        FIRMessagingLoggerDebug(kFIRMessagingMessageCodeStore006,
-                                @"App reset detected. Will delete server registrations.");
-        // We don't really need to delete old FCM tokens created via IID auth tokens since
-        // those tokens are already hashed by APNS token as the has so creating a new
-        // token should automatically delete the old-token.
-        [self didDeleteFCMScopedTokensForCheckin:oldCheckinPreferences];
-      } else {
-        FIRMessagingLoggerDebug(kFIRMessagingMessageCodeStore009,
-                                @"App reset detected but no valid checkin auth preferences found."
-                                @" Will not delete server registrations.");
-      }
-    }];
+  if (!oldCheckinPreferences) {
+    FIRMessagingLoggerDebug(kFIRMessagingMessageCodeStore009,
+                            @"App reset detected but no valid checkin auth preferences found."
+                            @" Will not delete server token registrations.");
+    return;
   }
+  [_authService resetCheckinWithHandler:^(NSError *_Nonnull error) {
+    if (!error) {
+      FIRMessagingLoggerDebug(
+          kFIRMessagingMessageCodeStore002,
+          @"Removed cached checkin preferences from Keychain because this is a fresh install.");
+    } else {
+      FIRMessagingLoggerError(
+          kFIRMessagingMessageCodeStore003,
+          @"Couldn't remove cached checkin preferences for a fresh install. Error: %@", error);
+    }
+
+    if (oldCheckinPreferences.deviceID.length && oldCheckinPreferences.secretToken.length) {
+      FIRMessagingLoggerDebug(kFIRMessagingMessageCodeStore006,
+                              @"Resetting old checkin and deleting server token registrations.");
+      // We don't really need to delete old FCM tokens created via IID auth tokens since
+      // those tokens are already hashed by APNS token as the has so creating a new
+      // token should automatically delete the old-token.
+      [self didDeleteFCMScopedTokensForCheckin:oldCheckinPreferences];
+    }
+  }];
 }
 
 - (void)didDeleteFCMScopedTokensForCheckin:(FIRMessagingCheckinPreferences *)checkin {
@@ -537,7 +544,8 @@
                                                                   scope:scope
                                                                 options:options
                                                      checkinPreferences:checkinPreferences
-                                                             instanceID:instanceID];
+                                                             instanceID:instanceID
+                                                        heartbeatLogger:self.heartbeatLogger];
   return operation;
 }
 
@@ -553,7 +561,8 @@
                                                                    scope:scope
                                                       checkinPreferences:checkinPreferences
                                                               instanceID:instanceID
-                                                                  action:action];
+                                                                  action:action
+                                                         heartbeatLogger:self.heartbeatLogger];
   return operation;
 }
 
@@ -633,7 +642,6 @@
     }
     return;
   }
-  NSInteger type = [userInfo[kFIRMessagingAPNSTokenType] integerValue];
 
   // The APNS token is being added, or has changed (rare)
   if ([self.currentAPNSInfo.deviceToken isEqualToData:APNSToken]) {
@@ -642,10 +650,17 @@
     return;
   }
   // Use this token type for when we have to automatically fetch tokens in the future
+#if TARGET_OS_SIMULATOR && TARGET_OS_IOS
+  // If APNS token is available on iOS Simulator, we must use the sandbox profile
+  // https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes
+  BOOL isSandboxApp = YES;
+#else
+  NSInteger type = [userInfo[kFIRMessagingAPNSTokenType] integerValue];
   BOOL isSandboxApp = (type == FIRMessagingAPNSTokenTypeSandbox);
   if (type == FIRMessagingAPNSTokenTypeUnknown) {
     isSandboxApp = FIRMessagingIsSandboxApp();
   }
+#endif
 
   // Pro-actively invalidate the default token, if the APNs change makes it
   // invalid. Previously, we invalidated just before fetching the token.
@@ -656,43 +671,53 @@
                                                                  isSandbox:isSandboxApp];
 
   // Re-fetch any invalidated tokens automatically, this time with the current APNs token, so that
-  // they are up-to-date.
-  if (invalidatedTokens.count > 0) {
+  // they are up-to-date. Or this is a fresh install and no apns token stored yet.
+  if (invalidatedTokens.count > 0 || [_tokenStore cachedTokenInfos].count == 0) {
     FIRMessaging_WEAKIFY(self);
 
-    [self.installations
-        installationIDWithCompletion:^(NSString *_Nullable identifier, NSError *_Nullable error) {
-          FIRMessaging_STRONGIFY(self);
-          if (self == nil) {
-            FIRMessagingLoggerError(kFIRMessagingMessageCodeInstanceID017,
-                                    @"Instance ID shut down during token reset. Aborting");
-            return;
-          }
-          if (self.currentAPNSInfo == nil) {
-            FIRMessagingLoggerError(kFIRMessagingMessageCodeInstanceID018,
-                                    @"apnsTokenData was set to nil during token reset. Aborting");
-            return;
-          }
+    [self.installations installationIDWithCompletion:^(NSString *_Nullable identifier,
+                                                       NSError *_Nullable error) {
+      FIRMessaging_STRONGIFY(self);
+      if (self == nil) {
+        FIRMessagingLoggerError(kFIRMessagingMessageCodeInstanceID017,
+                                @"Instance ID shut down during token reset. Aborting");
+        return;
+      }
+      if (self.currentAPNSInfo == nil) {
+        FIRMessagingLoggerError(kFIRMessagingMessageCodeInstanceID018,
+                                @"apnsTokenData was set to nil during token reset. Aborting");
+        return;
+      }
 
-          NSMutableDictionary *tokenOptions = [@{
-            kFIRMessagingTokenOptionsAPNSKey : self.currentAPNSInfo.deviceToken,
-            kFIRMessagingTokenOptionsAPNSIsSandboxKey : @(isSandboxApp)
-          } mutableCopy];
-          if (self.firebaseAppID) {
-            tokenOptions[kFIRMessagingTokenOptionsFirebaseAppIDKey] = self.firebaseAppID;
-          }
+      NSMutableDictionary *tokenOptions = [@{
+        kFIRMessagingTokenOptionsAPNSKey : self.currentAPNSInfo.deviceToken,
+        kFIRMessagingTokenOptionsAPNSIsSandboxKey : @(isSandboxApp)
+      } mutableCopy];
+      if (self.firebaseAppID) {
+        tokenOptions[kFIRMessagingTokenOptionsFirebaseAppIDKey] = self.firebaseAppID;
+      }
 
-          for (FIRMessagingTokenInfo *tokenInfo in invalidatedTokens) {
-            [self fetchNewTokenWithAuthorizedEntity:tokenInfo.authorizedEntity
-                                              scope:tokenInfo.scope
-                                         instanceID:identifier
-                                            options:tokenOptions
-                                            handler:^(NSString *_Nullable token,
-                                                      NSError *_Nullable error){
-
-                                            }];
-          }
-        }];
+      for (FIRMessagingTokenInfo *tokenInfo in invalidatedTokens) {
+        [self fetchNewTokenWithAuthorizedEntity:tokenInfo.authorizedEntity
+                                          scope:tokenInfo.scope
+                                     instanceID:identifier
+                                        options:tokenOptions
+                                        handler:^(NSString *_Nullable token,
+                                                  NSError *_Nullable error){
+                                            // Do nothing as callback is not needed and the
+                                            // sub-funciton already handle errors.
+                                        }];
+      }
+      if ([self->_tokenStore cachedTokenInfos].count == 0) {
+        [self tokenWithAuthorizedEntity:self.fcmSenderID
+                                  scope:kFIRMessagingDefaultTokenScope
+                                options:tokenOptions
+                                handler:^(NSString *_Nullable FCMToken, NSError *_Nullable error){
+                                    // Do nothing as callback is not needed and the sub-funciton
+                                    // already handle errors.
+                                }];
+      }
+    }];
   }
 }
 
