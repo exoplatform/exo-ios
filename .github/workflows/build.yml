@@ -37,13 +37,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       # Cache CocoaPods
-      - name: Cache CocoaPods
-        uses: actions/cache@v2
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
+      # - name: Cache CocoaPods
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: Pods
+      #     key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pods-
+      - name: Install pods
+        run: pod update
       # Install Bundler and dependencies gems
       - name: Install bundler and dependencies
         run: gem install bundler && bundle install
