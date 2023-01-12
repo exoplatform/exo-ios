@@ -9,8 +9,8 @@ use_frameworks!
 target "eXo" do
     pod 'SVProgressHUD'
     pod 'SwiftyJSON'
-    pod 'UICKeyChainStore'
-    pod 'HTMLKit'
+    pod 'UICKeyChainStore', '~> 2.2.1'
+    pod 'HTMLKit', '~> 4.2.0'
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
@@ -26,8 +26,8 @@ target "eXo" do
 end
 
 target "share-extension" do
-    pod 'UICKeyChainStore'
-    pod 'HTMLKit'
+    pod 'UICKeyChainStore', '~> 2.2.1'
+    pod 'HTMLKit', '~> 4.2.0'
 end
 
 

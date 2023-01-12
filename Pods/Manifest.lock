@@ -114,11 +114,11 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Messaging
-  - HTMLKit
+  - HTMLKit (~> 4.2.0)
   - Kingfisher
   - SVProgressHUD
   - SwiftyJSON
-  - UICKeyChainStore
+  - UICKeyChainStore (~> 2.2.1)
 
 SPEC REPOS:
   trunk:
@@ -159,6 +159,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   UICKeyChainStore: ba3bff2c762b12db1e516f395c837dd25298b05e
 
-PODFILE CHECKSUM: 3db49ffb6a161982a7a3bc836389204efe7691a4
+PODFILE CHECKSUM: 2c43d3ab3c575e3687261a7270764363d355acd8
 
 COCOAPODS: 1.11.3
