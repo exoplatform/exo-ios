@@ -30,7 +30,7 @@ jobs:
           ruby-version: 2.6
      # Cache Ruby gems
       - name: Cache Ruby gems
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-gems-
       # Cache CocoaPods
       - name: Cache CocoaPods
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
