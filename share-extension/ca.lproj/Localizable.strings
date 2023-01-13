@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Error de xarxa";
 
 "Upload.Message.ConfirmationPost" = "Vol enviar el missatge igualment?";
-
-"Word.Cancel" = "Cancel·la";
-
-"Word.Post" = "Enviar";
-
-"Word.Username" = "Nom d'usuari";
-
-"Word.Edit" = "Edita";
-
-"Word.Account" = "Compte";
-
-"Login.Status.Offline" = "Desconnectat";
-
-"Word.Space" = "Espai";
-
-"Word.Public" = "Públic";
-
-"Word.Back" = "Enrere";

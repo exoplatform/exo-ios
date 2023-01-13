@@ -4,21 +4,3 @@
 "Upload.Warning.NetworkError" = "Σφάλμα δικτύου";
 
 "Upload.Message.ConfirmationPost" = "Θέλετε να δημοσιεύσετε το μήνυμα ούτως ή άλλως;";
-
-"Word.Cancel" = "Ακύρωση";
-
-"Word.Post" = "Μοιραστείτε";
-
-"Word.Username" = "Όνομα χρήστη";
-
-"Word.Edit" = "Επεξεργασία";
-
-"Word.Account" = "Λογαριασμός";
-
-"Login.Status.Offline" = "Εκτός σύνδεσης";
-
-"Word.Space" = "Χώρος";
-
-"Word.Public" = "Δημόσιο";
-
-"Word.Back" = "Επιστροφή";

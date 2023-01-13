@@ -27,23 +27,3 @@
 "Upload.Warning.NetworkError" = "Помилка мережі";
 
 "Upload.Message.ConfirmationPost" = "Ви хочете опублікувати повідомлення в будь-якому випадку?";
-
-"Word.Cancel" = "Скасувати";
-
-"Word.Post" = "Поділитися";
-
-"Word.Username" = "Ім’я користувача";
-
-"Word.Edit" = "Редагувати";
-
-"Word.Account" = "Аккаунт";
-
-"Login.Status.WrongPassword" = "Невірний пароль";
-
-"Login.Status.Offline" = "Офлайн";
-
-"Word.Space" = "Область";
-
-"Word.Public" = "Відкритий";
-
-"Word.Back" = "Назад";

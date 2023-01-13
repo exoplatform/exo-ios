@@ -2,13 +2,3 @@
 "Delete" = "Sil";
 
 "Cancel" = "İptal";
-
-"OnBoarding.Title.Others" = "Diğerleri";
-
-"Word.OK" = "Tamam";
-
-"Word.Cancel" = "İptal";
-
-"Word.Back" = "Geri";
-
-"OnBoarding.Error.UnableConnectServer" = "Lütfen geçerli bir URL biçimi girin";

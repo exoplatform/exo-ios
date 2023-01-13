@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "خطای شبکه";
 
 "Upload.Message.ConfirmationPost" = "آیا مایلید که این پیام را بفرستید؟";
-
-"Word.Cancel" = "انصراف";
-
-"Word.Post" = "اشتراک";
-
-"Word.Username" = "نام کاربری";
-
-"Word.Edit" = "ويرايش";
-
-"Word.Account" = "حساب کاربری";
-
-"Login.Status.Offline" = "آفلاین";
-
-"Word.Space" = "فضا";
-
-"Word.Public" = "عمومی";
-
-"Word.Back" = "بازگشت";

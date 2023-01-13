@@ -27,23 +27,3 @@
 "Upload.Warning.NetworkError" = "Errore di rete";
 
 "Upload.Message.ConfirmationPost" = "Desideri comunque pubblicare il messaggio?";
-
-"Word.Cancel" = "Annulla";
-
-"Word.Post" = "Condividi";
-
-"Word.Username" = "Nome utente";
-
-"Word.Edit" = "Modificare";
-
-"Word.Account" = "Account";
-
-"Login.Status.WrongPassword" = "Password errata";
-
-"Login.Status.Offline" = "Non in linea";
-
-"Word.Space" = "Spazio";
-
-"Word.Public" = "Pubblico";
-
-"Word.Back" = "Indietro";

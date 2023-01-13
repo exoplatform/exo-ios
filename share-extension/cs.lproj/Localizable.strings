@@ -27,21 +27,3 @@
 "Upload.Warning.NetworkError" = "Chyba sítě";
 
 "Upload.Message.ConfirmationPost" = "Chcete i přesto zprávu zveřejnit?";
-
-"Word.Cancel" = "Zrušit";
-
-"Word.Post" = "Sdílet";
-
-"Word.Username" = "Uživatelské jméno";
-
-"Word.Edit" = "Upravit";
-
-"Word.Account" = "Účet";
-
-"Login.Status.Offline" = "Offline";
-
-"Word.Space" = "Skupina";
-
-"Word.Public" = "Veřejné";
-
-"Word.Back" = "Zpět";

@@ -98,7 +98,6 @@
 		DBC0162B27AAEDFD004D1684 /* CheckUpdatePopupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC0162927AAEDFD004D1684 /* CheckUpdatePopupVC.xib */; };
 		DBC0162C27AAEDFD004D1684 /* CheckUpdatePopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162A27AAEDFD004D1684 /* CheckUpdatePopupVC.swift */; };
 		DBC0162E27AAEE0C004D1684 /* CheckStoreUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0162D27AAEE0C004D1684 /* CheckStoreUpdate.swift */; };
-		DBC1F3AA280DD85000CEFCF2 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1F3A9280DD85000CEFCF2 /* LeakAvoider.swift */; };
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
 		DBCA1F56285888820058FCD6 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCA1F55285888820058FCD6 /* LeakAvoider.swift */; };
@@ -147,6 +146,16 @@
 				9C3D7CFB1BDF64E0002873CB /* share-extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB86FC6B281C514900044FCA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -803,6 +812,7 @@
 				9C3D7CFF1BDF64E0002873CB /* Embed App Extensions */,
 				57F3EF461CC72C4A0023A7BE /* ShellScript */,
 				0547703B6C408CB872DC0CE7 /* [CP] Embed Pods Frameworks */,
+				DB86FC6B281C514900044FCA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1526,6 +1536,7 @@
 				CODE_SIGN_ENTITLEMENTS = exo/eXo.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
+				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "arm64 i386";
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1549,6 +1560,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FEM998T42U;
+				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = eXo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

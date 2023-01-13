@@ -3,14 +3,4 @@
 
 "Cancel" = "Prekliči";
 
-"OnBoarding.Title.Others" = "Ostalo";
-
-"Word.OK" = "V redu";
-
-"Word.Cancel" = "Prekliči";
-
-"Word.Back" = "Nazaj";
-
-"OnBoarding.Error.UnableConnectServer" = "Prosimo, vnesite veljaven spletni naslov";
-
 "Setting.Title.NoServer" = "eXo povezava še ni definirana";

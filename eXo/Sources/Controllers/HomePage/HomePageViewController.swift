@@ -44,7 +44,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     var dowloadedFileName:String = "fileName"
     
     private var popupWebView: WKWebView?
-
+    
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
@@ -97,7 +97,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         super.viewWillDisappear(animated)
         setNavigationBarAppearance()
     }
-    
+
     /*
        Deallocate Memory
     */
@@ -278,6 +278,22 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         let request:URLRequest = navigationAction.request
         if let urlToSee = request.url?.absoluteString {
             print("=============== Navigation Url : \(urlToSee)")
+        }
+        
+        // Open the Jitsi call.
+        
+        if  (request.url?.path.contains("/jitsiweb/"))! && (request.url?.absoluteString.range(of:"?jwt=") != nil){
+            // launch the call.
+            print("launching the call...")
+            // launch the call using the app.
+            if let jitsiUrl = request.url, (jitsiUrl.absoluteString.range(of: "org.jitsi.meet:") != nil) {
+                if UIApplication.shared.canOpenURL(jitsiUrl){
+                    UIApplication.shared.open(jitsiUrl)
+                } else {
+                    //Show alert message because the user doesn't have Jitsi App installed.
+                    showAlertMessage(title: "Jitsi Alert", msg: "Jitsi meet is not on your mobile, install it before.", action: .defaultAction)
+                }
+            }
         }
         
         // Detect the logout action in to quit this screen.
@@ -495,7 +511,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         URLCache.shared.removeAllCachedResponses()
         WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: Date(timeIntervalSince1970: 0), completionHandler: {})
     }
-    
 }
 
 extension HomePageViewController {
@@ -603,3 +618,5 @@ extension HomePageViewController:WKDownloadDelegate {
     }
     
 }
+
+
