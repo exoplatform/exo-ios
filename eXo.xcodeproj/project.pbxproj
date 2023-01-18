@@ -36,7 +36,7 @@
 		9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3AD2871BCFA3400094CFF9 /* Server.swift */; };
 		9C3D7CF41BDF64E0002873CB /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3D7CF31BDF64E0002873CB /* ShareViewController.m */; };
 		9C3D7CF71BDF64E0002873CB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3D7CF51BDF64E0002873CB /* MainInterface.storyboard */; };
-		9C3D7CFB1BDF64E0002873CB /* share-extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9C3D7CF01BDF64E0002873CB /* share-extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9C3D7CFB1BDF64E0002873CB /* share-extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9C3D7CF01BDF64E0002873CB /* share-extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9C3D7D121BDF68E0002873CB /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3D7D021BDF68E0002873CB /* Account.m */; };
 		9C3D7D131BDF68E0002873CB /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3D7D041BDF68E0002873CB /* AccountViewController.m */; };
 		9C3D7D161BDF68E0002873CB /* PostActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3D7D091BDF68E0002873CB /* PostActivity.m */; };
@@ -138,15 +138,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9C3D7CFF1BDF64E0002873CB /* Embed App Extensions */ = {
+		9C3D7CFF1BDF64E0002873CB /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				9C3D7CFB1BDF64E0002873CB /* share-extension.appex in Embed App Extensions */,
+				9C3D7CFB1BDF64E0002873CB /* share-extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DB86FC6B281C514900044FCA /* Embed Frameworks */ = {
@@ -812,7 +812,7 @@
 				9C3AD2421BCF56900094CFF9 /* Sources */,
 				9C3AD2431BCF56900094CFF9 /* Frameworks */,
 				9C3AD2441BCF56900094CFF9 /* Resources */,
-				9C3D7CFF1BDF64E0002873CB /* Embed App Extensions */,
+				9C3D7CFF1BDF64E0002873CB /* Embed Foundation Extensions */,
 				57F3EF461CC72C4A0023A7BE /* ShellScript */,
 				0547703B6C408CB872DC0CE7 /* [CP] Embed Pods Frameworks */,
 				DB86FC6B281C514900044FCA /* Embed Frameworks */,
@@ -891,7 +891,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = eXo;
 				TargetAttributes = {
 					57DFE9D11C59D05C00A91DA5 = {
