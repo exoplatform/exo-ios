@@ -61,13 +61,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             // inject JS to capture console.log output and send to iOS
             let captureLogSource = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
             let iOSListenerSource = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('iOS Listener executed!'); })"
-            let dropSharedWorkersScript = WKUserScript(source: "delete window.SharedWorker;",injectionTime: WKUserScriptInjectionTime.atDocumentStart,
-                                                       forMainFrameOnly: false)
             let captureLogScript = WKUserScript(source: captureLogSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             let iOSListenerScript = WKUserScript(source: iOSListenerSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             webView?.configuration.userContentController.addUserScript(captureLogScript)
             webView?.configuration.userContentController.addUserScript(iOSListenerScript)
-            webView?.configuration.userContentController.addUserScript(dropSharedWorkersScript)
             // register the bridge script that listens for the output
             webView?.configuration.userContentController.add(
                 LeakAvoider(delegate:self), name: "logHandler")
