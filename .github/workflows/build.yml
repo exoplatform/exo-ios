@@ -20,4 +20,4 @@ jobs:
         with:
           xcode-version: '14.2'
       - name: Refresh podfile
-        run: rm -v Podfile.lock && pod install && git add -A && git -c user.name='eXo Software Factory' -c user.email='exo-swf@exoplatform.com' commit -m 'Update podfile.lock' && git fetch && git push origin HEAD:refs/heads/testbuild13-2
+        run: rm -v Podfile.lock && pod install && git add Podfile.lock Podfile && git -c user.name='eXo Software Factory' -c user.email='exo-swf@exoplatform.com' commit -m 'Update podfile.lock' && git fetch && git push origin HEAD:refs/heads/testbuild13-2
