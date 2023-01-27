@@ -13,59 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with: 
+          token: ${{ secrets.ADMIN_TOKEN }}
       - name: Setup Xcode 14
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '14.2'
-      # Use SSH Key to gather certificate from a private Github repository. Use a dedicated on is recommended.
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      # Setup Ruby 2.6 (2.7 not yet compatible with bundler)
-      - name: Setup ruby 2.6
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-     # Cache Ruby gems
-      - name: Cache Ruby gems
-        uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      # Cache CocoaPods
-      - name: Cache CocoaPods
-        uses: actions/cache@v3
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
-      # Install Bundler and dependencies gems
-      - name: Install bundler and dependencies
-        run: gem install bundler && bundle install
-      # Ensure installing latest version of fastlane
-      - name: Upgrade fastlane
-        run: bundle update fastlane
-      # Gather certificates from Github repository
-      - name: Synchonize Certificates
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: "ci_sync_certificates"
-        env:
-          BUNDLE_ID: ${{ env.BUNDLE_ID }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-          MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
-      # Build iOS Project
-      - name: Build iOS Project
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: "build_dev"
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-          EXO_APP_ID: ${{ env.BUNDLE_ID }}
+      - name: Refresh podfile
+        run: rm -v Podfile.lock && pod install && git add Podfile.lock && git -c user.name='eXo Software Factory' -c user.email='exo-swf@exoplatform.com' commit -m 'Update podfile.lock' && git fetch && git push origin HEAD:refs/heads/testbuild13-2
