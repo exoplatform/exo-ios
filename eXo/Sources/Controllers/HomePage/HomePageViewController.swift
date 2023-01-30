@@ -107,7 +107,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
         self.popupWebView?.stopLoading()
         self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
-        self.popupWebView = nil
+        self.webView = nil
         self.popupWebView = nil
     }
     
