@@ -107,6 +107,8 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
         self.popupWebView?.stopLoading()
         self.popupWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "logHandler")
+        self.webView = nil
+        self.popupWebView = nil
     }
     
     func setNavigationBarAppearance(){
@@ -285,12 +287,29 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         if  (request.url?.path.contains("/jitsiweb/"))! && (request.url?.absoluteString.range(of:"?jwt=") != nil){
             // launch the call.
             print("launching the call...")
-            // launch the call using the app.
-            if let jitsiUrl = request.url, (jitsiUrl.absoluteString.range(of: "org.jitsi.meet:") != nil) {
-                if UIApplication.shared.canOpenURL(jitsiUrl){
-                    UIApplication.shared.open(jitsiUrl)
-                } else {
-                    //Show alert message because the user doesn't have Jitsi App installed.
+            // Check first if the user has the jitsi app installed.
+            if isJitsiAppInstalled() {
+                // launch the call using the app.
+                if let jitsiUrl = request.url {
+                    let components = URLComponents(url: jitsiUrl,resolvingAgainstBaseURL: false)!
+                    // URL query parameters as a dictionary
+                    var newUrlComponents = URLComponents()
+                    newUrlComponents.scheme = "org.jitsi.meet"
+                    newUrlComponents.host = components.host
+                    newUrlComponents.path = components.path
+                    newUrlComponents.queryItems = components.queryItems
+                    if let url = newUrlComponents.url {
+                        if UIApplication.shared.canOpenURL(url){
+                            UIApplication.shared.open(url)
+                            if let wv = popupWebView {
+                                webViewDidClose(wv)
+                            }
+                        }
+                    }
+                }
+            }else{
+                if let jitsiUrl = request.url, (jitsiUrl.absoluteString.range(of: "org.jitsi.meet:") != nil) {
+                    //User has tapped on use jitsi App button, so show alert message to the user.
                     showAlertMessage(title: "Jitsi Alert", msg: "Jitsi meet is not on your mobile, install it before.", action: .defaultAction)
                 }
             }
@@ -350,7 +369,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                 return
             }
         }
-        decisionHandler(WKNavigationActionPolicy.allow)
+        decisionHandler(.allow)
     }
     
     // MARK: WKUIDelegate
@@ -423,6 +442,15 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         if message.contains("Call declined") || message.contains("User call leaved") || message.contains("Call accepted") || message.contains("User already in the started call"){
             playSound(false)
         }
+    }
+    /*
+      Check if the jitsi App is installed or not on the user device.
+     */
+    
+    func isJitsiAppInstalled() -> Bool {
+        let jitsiApp = "org.jitsi.meet://test"
+        let urlToCheck = URL(string: jitsiApp)!
+        return UIApplication.shared.canOpenURL(urlToCheck)
     }
     
     /*
