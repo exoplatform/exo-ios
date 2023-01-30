@@ -450,11 +450,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
     func isJitsiAppInstalled() -> Bool {
         let jitsiApp = "org.jitsi.meet://test"
         let urlToCheck = URL(string: jitsiApp)!
-        if UIApplication.shared.canOpenURL(urlToCheck){
-            return true
-        }else{
-            return false
-        }
+        return UIApplication.shared.canOpenURL(urlToCheck)
     }
     
     /*
