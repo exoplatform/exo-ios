@@ -85,5 +85,9 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>org.jitsi.meet</string>
+    </array>
 </dict>
 </plist>
