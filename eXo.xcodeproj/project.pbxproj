@@ -101,6 +101,7 @@
 		DBC878C2269683070036EB0F /* QRCodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */; };
 		DBC878C3269683070036EB0F /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */; };
 		DBCA1F56285888820058FCD6 /* LeakAvoider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCA1F55285888820058FCD6 /* LeakAvoider.swift */; };
+		DBCF8E7A299B9AF7007D0E8F /* WKWebview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF8E79299B9AF7007D0E8F /* WKWebview+Extension.swift */; };
 		DBFD7354286A447A000308A5 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD7352286A447A000308A5 /* BannerView.swift */; };
 		DBFD7355286A447A000308A5 /* BannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFD7353286A447A000308A5 /* BannerView.xib */; };
 /* End PBXBuildFile section */
@@ -288,6 +289,7 @@
 		DBC878C0269683070036EB0F /* QRCodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScannerViewController.xib; sourceTree = "<group>"; };
 		DBC878C1269683070036EB0F /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		DBCA1F55285888820058FCD6 /* LeakAvoider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakAvoider.swift; sourceTree = "<group>"; };
+		DBCF8E79299B9AF7007D0E8F /* WKWebview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebview+Extension.swift"; sourceTree = "<group>"; };
 		DBFD7352286A447A000308A5 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		DBFD7353286A447A000308A5 /* BannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerView.xib; sourceTree = "<group>"; };
 		DD7E70396AD876E86037F111 /* Pods_eXoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eXoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -749,6 +751,7 @@
 				DB37321A267F79690065C7A5 /* NotificationName-Extension.swift */,
 				DB3CE0AB269C8F7F00622057 /* UIImage-Gif.swift */,
 				DB54A562279971270080B25A /* Bundle-Extension.swift */,
+				DBCF8E79299B9AF7007D0E8F /* WKWebview+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1179,6 +1182,7 @@
 				DBFD7354286A447A000308A5 /* BannerView.swift in Sources */,
 				D7C0FADA267BA37D00C579EB /* NSMutableAttributedString-Extension.swift in Sources */,
 				DB6A4E6926949CFB00809B53 /* OnboardingViewController.swift in Sources */,
+				DBCF8E7A299B9AF7007D0E8F /* WKWebview+Extension.swift in Sources */,
 				9C3AD2881BCFA3400094CFF9 /* Server.swift in Sources */,
 				9C032E381BEA1495006F0577 /* eXoWebBaseViewController.swift in Sources */,
 				D79611CF26778B1E00F2FDE8 /* UIColor-Extension.swift in Sources */,
