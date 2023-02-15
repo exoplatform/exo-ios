@@ -58,7 +58,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             webView?.uiDelegate = self
             webView?.configuration.preferences.javaScriptEnabled = true
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
-            webView?.keyboardDisplayRequiresUserAction = false
+            webView?.setKeyboardRequiresUserInteraction(false)
             // inject JS to capture console.log output and send to iOS
             let captureLogSource = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
             let iOSListenerSource = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('iOS Listener executed!'); })"
