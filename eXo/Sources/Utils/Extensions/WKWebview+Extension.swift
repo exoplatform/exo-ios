@@ -13,14 +13,6 @@ typealias OldClosureType =  @convention(c) (Any, Selector, UnsafeRawPointer, Boo
 typealias NewClosureType =  @convention(c) (Any, Selector, UnsafeRawPointer, Bool, Bool, Bool, Any?) -> Void
 
 extension WKWebView{
-    var keyboardDisplayRequiresUserAction: Bool? {
-        get {
-            return self.keyboardDisplayRequiresUserAction
-        }
-        set {
-            self.setKeyboardRequiresUserInteraction(newValue ?? true)
-        }
-    }
 
     func setKeyboardRequiresUserInteraction( _ value: Bool) {
         guard let WKContentView: AnyClass = NSClassFromString("WKContentView") else {
