@@ -1,4 +1,112 @@
+/* 
+  Localizable.strings
+  eXo
+
+ Copyright (C) 2003-2015 eXo Platform SAS.
+
+ This is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as
+ published by the Free Software Foundation; either version 3 of
+ the License, or (at your option) any later version.
+
+ This software is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this software; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+// On-Boarding
+"OnBoarding.Title.UpdateVersion" = "eXo Update";
+
+"OnBoarding.Message.UpdateVersion" = "To use the app, please download the latest version";
+
+"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
+
+"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
+
+"OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";
+
+"OnBoarding.Title.ShowQRCode" = "Display the QR code in your eXo settings.";
+
+"OnBoarding.Title.ScanCode" = "Scan code";
+
+"OnBoarding.Title.EnterUrleXo" = "Enter eXo connection URL";
 
 "Delete" = "Verwijderen";
 
 "Cancel" = "Annuleren";
+
+"OnBoarding.Title.AddYourExo" = "New eXo Connection";
+
+"OnBoarding.Title.ConnectToeXo" = "Connect to eXo";
+
+"OnBoarding.Title.AddNewExo" = "Add a new eXo";
+
+"OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
+
+"OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
+
+"OnBoarding.Title.AddServer" = "Connect your eXo";
+
+"OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
+
+"OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
+
+"OnBoarding.Message.EnterURL" = "Enter your eXo address";
+
+"OnBoarding.Error.PlatformNotFound" = "Platform version not found";
+
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 6.2 or later";
+
+"Word.OK" = "OK";
+
+"Word.Cancel" = "Cancel";
+
+"Word.Back" = "Back";
+
+"OnBoarding.Error.URL" = "eXo URL error";
+
+"OnBoarding.Title.RecentsServer" = "My eXos";
+
+"OnBoarding.Error.ConnectionError" = "Connection Error";
+
+"OnBoarding.Title.MostRecentServer" = "Most recent connection";
+
+"Please make sure you have internet connection" = "Please make sure you are connected to internet";
+
+
+// Shortcut (3D Touch)
+
+"Shortcut.Title.RegisterCommunity" = "Register on eXo Tribe";
+
+"Shortcut.Title.ConnectTo" = "Connect to";
+
+"Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
+
+// Setting
+
+"Setting.Title.Server" = "eXos";
+
+"Setting.Title.NoServer" = "No eXo connection defined yet";
+
+"Setting.Title.DeleteServer" = "Delete Connection";
+
+"Setting.Message.DeleteServer" = "Do you really want to delete this connection?";
+
+"Setting.Title.ApplicationVersion" = "Application Version";
+
+"Setting.Title.About" = "About";
+
+"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
+
+"Enter your eXo URL" = "Enter your eXo connection address";
+
+// Home Page
+
+"Download Unavailable" = "Download Unavailable";
+
+"You can't download the document, your os is less than iOS 15." = "You can't download the document, your os is less than iOS 15.";

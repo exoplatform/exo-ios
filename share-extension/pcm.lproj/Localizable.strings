@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "All dem de uploads don fail";
 
+"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+
+"Upload.Warning.UploadFailed" = "1 upload failed";
+
 "Upload.Warning.ItemsCannotBeUpload" = "%d no fit upload item(s)";
 
 "Upload.Warning.FileTooLarge" = "File dey too big";
@@ -27,3 +31,38 @@
 "Upload.Warning.NetworkError" = "Network error";
 
 "Upload.Message.ConfirmationPost" = "You go won post de message like dat?";
+
+"Word.Cancel" = "Cancel";
+
+"Title.SelectAccount" = "Select an account";
+
+"Title.UnknownPassword" = "Password: Unknown";
+
+"Title.NeededUsernamePassoword" = "Username & password needed ";
+
+"Login.Status.Loging" = "Signing in";
+
+"Login.Status.LoginFail" = "Login fail";
+
+"LogIn.Warning.NoAccount" = "No account";
+
+"Word.Space" = "Space";
+
+"Login.Status.ServerProblem" = "Server Problem";
+
+"LogIn.Status.NoSpaceId" = "Cannot load space";
+
+"LogIn.Error.UnableToPost" = "Unable to post";
+
+"Title.LoadingSpaceId" = "Loading space ";
+
+"Post.Title.ErrorMessage" = "Cannot post";
+
+"Title.SpaceSelection" = "Space selection";
+
+
+"Setting.Title.Server" = "Server";
+
+"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+
+"Word.Back" = "Back";
