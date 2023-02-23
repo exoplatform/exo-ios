@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "Alle upload mislukt";
 
+"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+
+"Upload.Warning.UploadFailed" = "1 upload failed";
+
 "Upload.Warning.ItemsCannotBeUpload" = "%d objecten kunnen niet worden geüpload";
 
 "Upload.Warning.FileTooLarge" = "Bestand te groot";
@@ -28,20 +32,37 @@
 
 "Upload.Message.ConfirmationPost" = "Wilt u het bericht in elk geval posten?";
 
-"Word.Cancel" = "Annuleren";
+"Word.Cancel" = "Cancel";
 
-"Word.Post" = "Delen";
+"Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "Gebruikersnaam";
+"Title.UnknownPassword" = "Password: Unknown";
 
-"Word.Edit" = "Bewerken";
+"Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Account" = "Rekening";
+"Login.Status.Loging" = "Signing in";
 
-"Login.Status.Offline" = "Offline";
+"Login.Status.LoginFail" = "Login fail";
 
-"Word.Space" = "Ruimte";
+"LogIn.Warning.NoAccount" = "No account";
 
-"Word.Public" = "Openbaar";
+"Word.Space" = "Space";
 
-"Word.Back" = "Terug";
+"Login.Status.ServerProblem" = "Server Problem";
+
+"LogIn.Status.NoSpaceId" = "Cannot load space";
+
+"LogIn.Error.UnableToPost" = "Unable to post";
+
+"Title.LoadingSpaceId" = "Loading space ";
+
+"Post.Title.ErrorMessage" = "Cannot post";
+
+"Title.SpaceSelection" = "Space selection";
+
+
+"Setting.Title.Server" = "Server";
+
+"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+
+"Word.Back" = "Back";

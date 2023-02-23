@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "すべてのアップロードに失敗しました";
 
+"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+
+"Upload.Warning.UploadFailed" = "1 upload failed";
+
 "Upload.Warning.ItemsCannotBeUpload" = "アイテム %d をアップロードできません";
 
 "Upload.Warning.FileTooLarge" = "ファイルが大きすぎます";
@@ -28,20 +32,37 @@
 
 "Upload.Message.ConfirmationPost" = "メッセージを投稿しますか?";
 
-"Word.Cancel" = "キャンセル";
+"Word.Cancel" = "Cancel";
 
-"Word.Post" = "共有";
+"Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "ユーザー名";
+"Title.UnknownPassword" = "Password: Unknown";
 
-"Word.Edit" = "編集";
+"Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Account" = "アカウント";
+"Login.Status.Loging" = "Signing in";
 
-"Login.Status.Offline" = "オフライン";
+"Login.Status.LoginFail" = "Login fail";
 
-"Word.Space" = "スペース";
+"LogIn.Warning.NoAccount" = "No account";
 
-"Word.Public" = "公開";
+"Word.Space" = "Space";
 
-"Word.Back" = "戻る";
+"Login.Status.ServerProblem" = "Server Problem";
+
+"LogIn.Status.NoSpaceId" = "Cannot load space";
+
+"LogIn.Error.UnableToPost" = "Unable to post";
+
+"Title.LoadingSpaceId" = "Loading space ";
+
+"Post.Title.ErrorMessage" = "Cannot post";
+
+"Title.SpaceSelection" = "Space selection";
+
+
+"Setting.Title.Server" = "Server";
+
+"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+
+"Word.Back" = "Back";

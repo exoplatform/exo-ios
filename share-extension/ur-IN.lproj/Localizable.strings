@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "تمام اپلوڈ ناکام ہوئے";
 
+"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+
+"Upload.Warning.UploadFailed" = "1 upload failed";
+
 "Upload.Warning.ItemsCannotBeUpload" = "%d اپ لوڈ نہیں کر سکتے ہیں";
 
 "Upload.Warning.FileTooLarge" = "فائل بہت بڑی ہے";
@@ -28,20 +32,37 @@
 
 "Upload.Message.ConfirmationPost" = "کیا آپ کسی بھی طریقے سے پیغام پوسٹ کرنا چاہتے ہیں?";
 
-"Word.Cancel" = "منسوخ";
+"Word.Cancel" = "Cancel";
 
-"Word.Post" = "شائع";
+"Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "صارف کا نام";
+"Title.UnknownPassword" = "Password: Unknown";
 
-"Word.Edit" = "ترمیم";
+"Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Account" = "اکاؤنٹ";
+"Login.Status.Loging" = "Signing in";
 
-"Login.Status.Offline" = "آف لائن";
+"Login.Status.LoginFail" = "Login fail";
 
-"Word.Space" = "خالی جگہ";
+"LogIn.Warning.NoAccount" = "No account";
 
-"Word.Public" = "عوام";
+"Word.Space" = "Space";
 
-"Word.Back" = "پىچھے";
+"Login.Status.ServerProblem" = "Server Problem";
+
+"LogIn.Status.NoSpaceId" = "Cannot load space";
+
+"LogIn.Error.UnableToPost" = "Unable to post";
+
+"Title.LoadingSpaceId" = "Loading space ";
+
+"Post.Title.ErrorMessage" = "Cannot post";
+
+"Title.SpaceSelection" = "Space selection";
+
+
+"Setting.Title.Server" = "Server";
+
+"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+
+"Word.Back" = "Back";

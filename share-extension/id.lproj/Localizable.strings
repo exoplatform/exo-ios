@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "Semua unggahan gagal";
 
+"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+
+"Upload.Warning.UploadFailed" = "1 upload failed";
+
 "Upload.Warning.ItemsCannotBeUpload" = "%d item tidak dapat diunggah";
 
 "Upload.Warning.FileTooLarge" = "File terlalu besar";
@@ -28,20 +32,37 @@
 
 "Upload.Message.ConfirmationPost" = "Apakah Anda tetap ingin mengirim pesan?";
 
-"Word.Cancel" = "membatalkan";
+"Word.Cancel" = "Cancel";
 
-"Word.Post" = "Posting";
+"Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "Nama Pengguna";
+"Title.UnknownPassword" = "Password: Unknown";
 
-"Word.Edit" = "merubah";
+"Title.NeededUsernamePassoword" = "Username & password needed ";
 
-"Word.Account" = "Akun";
+"Login.Status.Loging" = "Signing in";
 
-"Login.Status.Offline" = "Tidak Aktif";
+"Login.Status.LoginFail" = "Login fail";
 
-"Word.Space" = "Ruang";
+"LogIn.Warning.NoAccount" = "No account";
 
-"Word.Public" = "Umum";
+"Word.Space" = "Space";
 
-"Word.Back" = "Kembali";
+"Login.Status.ServerProblem" = "Server Problem";
+
+"LogIn.Status.NoSpaceId" = "Cannot load space";
+
+"LogIn.Error.UnableToPost" = "Unable to post";
+
+"Title.LoadingSpaceId" = "Loading space ";
+
+"Post.Title.ErrorMessage" = "Cannot post";
+
+"Title.SpaceSelection" = "Space selection";
+
+
+"Setting.Title.Server" = "Server";
+
+"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+
+"Word.Back" = "Back";
