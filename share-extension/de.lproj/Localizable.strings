@@ -63,6 +63,6 @@
 
 "Setting.Title.Server" = "Server";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Der eXo Server ist nicht mit der mobilen App kompatibel. Bitte fragen Sie Ihren Administrator, auf die neueste eXo Platform Version zu aktualisieren.";
 
 "Word.Back" = "Zurück";
