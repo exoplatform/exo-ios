@@ -14,7 +14,7 @@ protocol CookiesInterceptor {
 
 class CookiesInterceptorFactory {
     func create() -> CookiesInterceptor {
-        return CookiesInterceptorProxy(interceptors: [SessionCookieInterceptor(), RememberMeCookieInterceptor(), UsernameCookieInterceptor()])
+        return CookiesInterceptorProxy(interceptors: [SessionCookieInterceptor(), RememberMeCookieInterceptor() ])
     }
 }
 
@@ -47,15 +47,5 @@ fileprivate class RememberMeCookieInterceptor: CookiesInterceptor {
     func intercept(_ cookies: [HTTPCookie], url: URL) {
         guard let rememberMe = cookies.first(where: { $0.name == Cookies.rememberMe.rawValue })?.value else { return }
         PushTokenRestClient.shared.rememberMeCookieValue = rememberMe
-    }
-}
-
-fileprivate class UsernameCookieInterceptor: CookiesInterceptor {
-    func intercept(_ cookies: [HTTPCookie], url: URL) {
-        if let usernameCookie = cookies.first(where: { $0.name == Cookies.username.rawValue}) {
-            PushTokenSynchronizer.shared.username = usernameCookie.value
-            PushTokenSynchronizer.shared.url = url.absoluteString.serverDomainWithProtocolAndPort
-        }
-        PushTokenSynchronizer.shared.trySynchronizeToken()
     }
 }
