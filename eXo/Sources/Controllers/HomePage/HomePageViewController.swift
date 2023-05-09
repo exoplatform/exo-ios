@@ -208,6 +208,18 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         if let urlToSee = webView.url?.absoluteString {
             print("=============== didFinish Url : \(urlToSee)")
         }
+        
+        // Get username from JS variable
+        webView.evaluateJavaScript("eXo.env.portal.userName") { (result, error) in
+            if let userName = result as? String {
+                if !userName.isEmpty {
+                    print("eXo debug : userName is \(userName)")
+                    PushTokenSynchronizer.shared.username = userName
+                    PushTokenSynchronizer.shared.url = webView.url?.absoluteString.serverDomainWithProtocolAndPort
+                    PushTokenSynchronizer.shared.trySynchronizeToken()
+                }
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -329,7 +341,7 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
         // Home Page Address: portal/dw
         
         if let urlRequest = request.url {
-            if (urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/")) && !(request.url?.absoluteString.range(of: "portal:action=Logout") != nil){
+            if (urlRequest.path.contains("/portal/dw") || urlRequest.path.contains("/portal/g/")) && (request.url?.absoluteString.range(of: "portal:action=Logout") == nil){
                 let path = urlRequest.path
                 let firstIndexPath = urlRequest.path.contains("/portal/dw") ? path.components(separatedBy: "/dw")[0] : path.components(separatedBy: "/g/")[0]
                 if firstIndexPath == "/portal"{
