@@ -71,7 +71,7 @@ jobs:
             echo "NEW_TAG=${TAG_PREFIX}01" >> $GITHUB_ENV
             INDEX="01"
           else 
-            INDEX=$((10#$( git tag -l | grep "6.2-DEV" | sed 's/6.2-DEV//' | sort -n | tail -n 1)))
+            INDEX=$((10#$( git tag -l | grep "${TAG_PREFIX}" | sed "s/${TAG_PREFIX}//" | sort -n | tail -n 1)))
             ((INDEX++))
             [ "${INDEX}" -lt "10" ] && INDEX="0${INDEX}"
             echo "NEW_TAG=${TAG_PREFIX}${INDEX}" >> $GITHUB_ENV
