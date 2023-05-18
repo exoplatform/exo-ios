@@ -20,6 +20,10 @@
 
 "Upload.Warning.AllUploadFailed" = "Alle Uploads sind fehlgeschlagen";
 
+"Upload.Warning.UploadsFailed" = "%lu Hochladen fehlgeschlagen";
+
+"Upload.Warning.UploadFailed" = "Hochladen gescheitert";
+
 "Upload.Warning.ItemsCannotBeUpload" = "%d Element(e) konnte(n) nicht hochgeladen werden";
 
 "Upload.Warning.FileTooLarge" = "Datei zu groß";
@@ -30,25 +34,52 @@
 
 "Word.Cancel" = "Abbrechen";
 
-"Word.Post" = "Teilen";
+"Word.Post" = "Post";
 
-"Word.Username" = "Benutzername";
+"Title.SelectAccount" = "Wählen Sie ein Benutzerkonto";
 
-"Word.Edit" = "Bearbeiten";
+"Word.Username" = "Username";
 
-"Word.Account" = "Konto";
+"Title.UnknownPassword" = "Passwort: Unbekannt";
 
-"Login.Status.WrongPassword" = "Falsches Passwort";
+"Title.NeededUsernamePassoword" = "Benutzername & Passwort erforderlich ";
 
-"Login.Status.AskToSignIn" = "Bitte melden Sie sich an, um zu posten";
+"Word.Edit" = "Edit";
+
+"Word.Account" = "Account";
+
+"Login.Status.Loging" = "Anmelden";
+
+"Login.Status.WrongPassword" = "Wrong password";
+
+"Login.Status.AskToSignIn" = "Please sign in to post";
 
 "Login.Status.Offline" = "Offline";
 
-"Word.Space" = "Raum";
+"Login.Status.LoginFail" = "Login fehlgeschlagen";
 
-"Word.Public" = "Öffentlich";
+"LogIn.Warning.NoAccount" = "Kein Konto";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Plattform-Version wird nicht unterstützt";
+"Word.Space" = "Projektraum";
+
+"Login.Status.ServerProblem" = "Serverproblem";
+
+"LogIn.Status.NoSpaceId" = "Dieser Raum kann nicht geladen werden";
+
+"LogIn.Error.UnableToPost" = "Das posten ist nicht möglich";
+
+"Title.LoadingSpaceId" = "Projektraum laden";
+
+"Word.Public" = "Public";
+
+"Post.Title.ErrorMessage" = "Kann nicht veröffentlichen";
+
+"Title.SpaceSelection" = "Projektraum wählen";
+
+
+"Setting.Title.Server" = "Server";
+
+"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Der eXo Server ist nicht mit der mobilen App kompatibel. Bitte fragen Sie Ihren Administrator, auf die neueste eXo Platform Version zu aktualisieren.";
 
