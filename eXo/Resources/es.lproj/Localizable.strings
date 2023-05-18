@@ -52,7 +52,7 @@
 
 "OnBoarding.Title.AddServer" = "Conectar tu eXo";
 
-"OnBoarding.Title.Others" = "Otros";
+"OnBoarding.Title.Others" = "Others";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Conectar, compartir y trabajar juntos";
 
@@ -60,7 +60,7 @@
 
 "OnBoarding.Message.EnterURL" = "Pon tu URL eXo";
 
-"OnBoarding.Error.PlatformNotSupported" = "Versión de Platform no compatible";
+"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
 
 "OnBoarding.Error.PlatformNotFound" = "Versión de Platform no encontrada";
 
@@ -74,7 +74,7 @@
 
 "OnBoarding.Error.URL" = "Error de URL eXo";
 
-"OnBoarding.Error.UnableConnectServer" = "Introduce una URL válida";
+"OnBoarding.Error.UnableConnectServer" = "Please enter a valid URL";
 
 "OnBoarding.Title.RecentsServer" = "Mis eXo";
 
@@ -82,7 +82,7 @@
 
 "OnBoarding.Title.MostRecentServer" = "Conexión más reciente";
 
-"Internet connection lost" = "Sin conexión a Internet";
+"Internet connection lost" = "Internet connection lost";
 
 "Please make sure you have internet connection" = "Asegúrate de tener conexión a Internet.";
 
@@ -93,7 +93,7 @@
 
 "Shortcut.Title.ConnectTo" = "Conectar a";
 
-"Shortcut.Title.AddServer" = "Conecta tu eXo";
+"Shortcut.Title.AddServer" = "Connect your eXo";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Conectar a eXo Tribe";
 
@@ -103,7 +103,7 @@
 
 "Setting.Title.NoServer" = "No hay conexión eXo definida";
 
-"Setting.Title.AddServer" = "Conecta tu eXo";
+"Setting.Title.AddServer" = "Connect your eXo";
 
 "Setting.Title.DeleteServer" = "Eliminar conexión";
 
@@ -115,13 +115,13 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Versión de Platform no compatible";
+"ServerManager.Title.Warning" = "Platform version not supported";
 
 "ServerManager.Message.WarningVersionNotSupported" = "Tu conexión eXo utiliza una versión de Platform no compatible con esta aplicación. Te recomendamos que actualices a Platform 6.2 o uses la versión 2 de la aplicación.";
 
 // Add Server
 
-"Add your eXo" = "Nueva conexión eXo";
+"Add your eXo" = "New eXo Connection";
 
 "Enter your eXo URL" = "Introduce tu URL de eXo";
 
