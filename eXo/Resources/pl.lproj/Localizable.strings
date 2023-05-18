@@ -52,11 +52,15 @@
 
 "OnBoarding.Title.AddServer" = "Connect your eXo";
 
+"OnBoarding.Title.Others" = "Others";
+
 "OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
 
 "OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
 
 "OnBoarding.Message.EnterURL" = "Enter your eXo address";
+
+"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
 
 "OnBoarding.Error.PlatformNotFound" = "Platform version not found";
 
@@ -70,11 +74,15 @@
 
 "OnBoarding.Error.URL" = "eXo URL error";
 
+"OnBoarding.Error.UnableConnectServer" = "Please enter a valid URL";
+
 "OnBoarding.Title.RecentsServer" = "My eXos";
 
 "OnBoarding.Error.ConnectionError" = "Connection Error";
 
 "OnBoarding.Title.MostRecentServer" = "Most recent connection";
+
+"Internet connection lost" = "Internet connection lost";
 
 "Please make sure you have internet connection" = "Please make sure you are connected to internet";
 
@@ -85,6 +93,8 @@
 
 "Shortcut.Title.ConnectTo" = "Connect to";
 
+"Shortcut.Title.AddServer" = "Connect your eXo";
+
 "Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 
 // Setting
@@ -92,6 +102,8 @@
 "Setting.Title.Server" = "eXos";
 
 "Setting.Title.NoServer" = "No eXo connection defined yet";
+
+"Setting.Title.AddServer" = "Connect your eXo";
 
 "Setting.Title.DeleteServer" = "Delete Connection";
 
@@ -101,7 +113,15 @@
 
 "Setting.Title.About" = "About";
 
+// Server Manager
+
+"ServerManager.Title.Warning" = "Platform version not supported";
+
 "ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
+
+// Add Server
+
+"Add your eXo" = "New eXo Connection";
 
 "Enter your eXo URL" = "Enter your eXo connection address";
 

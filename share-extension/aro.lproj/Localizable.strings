@@ -34,33 +34,33 @@
 
 "Word.Cancel" = "الغاء";
 
-"Word.Post" = "شارك";
+"Word.Post" = "Post";
 
 "Title.SelectAccount" = "اختر حسابا";
 
-"Word.Username" = "اسم المستخدم";
+"Word.Username" = "Username";
 
 "Title.UnknownPassword" = "كلمة المرور: غير معروف";
 
 "Title.NeededUsernamePassoword" = "اسم المستخدم وكلمة المرور المطلوبة ";
 
-"Word.Edit" = "تغيير";
+"Word.Edit" = "Edit";
 
-"Word.Account" = "الحساب";
+"Word.Account" = "Account";
 
 "Login.Status.Loging" = "تسجيل الدخول";
 
-"Login.Status.WrongPassword" = "كلمة المرورغير صحيحة.";
+"Login.Status.WrongPassword" = "Wrong password";
 
-"Login.Status.AskToSignIn" = "الرجاء تسجيل الدخول للنشر";
+"Login.Status.AskToSignIn" = "Please sign in to post";
 
-"Login.Status.Offline" = "غير متصل";
+"Login.Status.Offline" = "Offline";
 
 "Login.Status.LoginFail" = "فشل تسجيل الدخول";
 
 "LogIn.Warning.NoAccount" = "لا يوجد حساب";
 
-"Word.Space" = "مساحة";
+"Word.Space" = "فضاء";
 
 "Login.Status.ServerProblem" = "مشكلة في الخادم";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "عام";
+"Word.Public" = "Public";
 
 "Post.Title.ErrorMessage" = "لا يمكن النشر";
 
@@ -79,7 +79,7 @@
 
 "Setting.Title.Server" = "الخادم";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "إصدار المنصة غير مدعوم";
+"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 

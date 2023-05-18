@@ -52,7 +52,7 @@
 
 "OnBoarding.Title.AddServer" = "crwdns7015603:0crwdne7015603:0";
 
-"OnBoarding.Title.Others" = "crwdns7015041:0crwdne7015041:0";
+"OnBoarding.Title.Others" = "crwdns7074601:0crwdne7074601:0";
 
 "OnBoarding.Title.eXoPlatformDescription" = "crwdns7015043:0crwdne7015043:0";
 
@@ -60,21 +60,21 @@
 
 "OnBoarding.Message.EnterURL" = "crwdns7015607:0crwdne7015607:0";
 
-"OnBoarding.Error.PlatformNotSupported" = "crwdns7015049:0crwdne7015049:0";
+"OnBoarding.Error.PlatformNotSupported" = "crwdns7074603:0crwdne7074603:0";
 
 "OnBoarding.Error.PlatformNotFound" = "crwdns7015051:0crwdne7015051:0";
 
 "OnBoarding.Error.PlatformNotSupportedDetailMessage" = "crwdns7015609:0crwdne7015609:0";
 
-"Word.OK" = "crwdns7015055:0crwdne7015055:0";
+"Word.OK" = "crwdns7052651:0crwdne7052651:0";
 
-"Word.Cancel" = "crwdns7015057:0crwdne7015057:0";
+"Word.Cancel" = "crwdns7052653:0crwdne7052653:0";
 
-"Word.Back" = "crwdns7015059:0crwdne7015059:0";
+"Word.Back" = "crwdns7052655:0crwdne7052655:0";
 
 "OnBoarding.Error.URL" = "crwdns7015611:0crwdne7015611:0";
 
-"OnBoarding.Error.UnableConnectServer" = "crwdns7015695:0crwdne7015695:0";
+"OnBoarding.Error.UnableConnectServer" = "crwdns7074605:0crwdne7074605:0";
 
 "OnBoarding.Title.RecentsServer" = "crwdns7015615:0crwdne7015615:0";
 
@@ -82,7 +82,7 @@
 
 "OnBoarding.Title.MostRecentServer" = "crwdns7015617:0crwdne7015617:0";
 
-"Internet connection lost" = "crwdns7015479:0crwdne7015479:0";
+"Internet connection lost" = "crwdns7074607:0crwdne7074607:0";
 
 "Please make sure you have internet connection" = "crwdns7015619:0crwdne7015619:0";
 
@@ -93,7 +93,7 @@
 
 "Shortcut.Title.ConnectTo" = "crwdns7015077:0crwdne7015077:0";
 
-"Shortcut.Title.AddServer" = "crwdns7015621:0crwdne7015621:0";
+"Shortcut.Title.AddServer" = "crwdns7074609:0crwdne7074609:0";
 
 "Shortcut.Title.ConnnecteXoTribe" = "crwdns7015081:0crwdne7015081:0";
 
@@ -103,7 +103,7 @@
 
 "Setting.Title.NoServer" = "crwdns7015697:0crwdne7015697:0";
 
-"Setting.Title.AddServer" = "crwdns7015627:0crwdne7015627:0";
+"Setting.Title.AddServer" = "crwdns7074611:0crwdne7074611:0";
 
 "Setting.Title.DeleteServer" = "crwdns7015629:0crwdne7015629:0";
 
@@ -115,13 +115,13 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "crwdns7015097:0crwdne7015097:0";
+"ServerManager.Title.Warning" = "crwdns7074613:0crwdne7074613:0";
 
 "ServerManager.Message.WarningVersionNotSupported" = "crwdns7015633:0crwdne7015633:0";
 
 // Add Server
 
-"Add your eXo" = "crwdns7015635:0crwdne7015635:0";
+"Add your eXo" = "crwdns7074615:0crwdne7074615:0";
 
 "Enter your eXo URL" = "crwdns7015637:0crwdne7015637:0";
 
