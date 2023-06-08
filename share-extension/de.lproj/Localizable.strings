@@ -38,19 +38,19 @@
 
 "Title.SelectAccount" = "Wählen Sie ein Benutzerkonto";
 
-"Word.Username" = "Username";
+"Word.Username" = "Benutzername";
 
 "Title.UnknownPassword" = "Passwort: Unbekannt";
 
 "Title.NeededUsernamePassoword" = "Benutzername & Passwort erforderlich ";
 
-"Word.Edit" = "Edit";
+"Word.Edit" = "Bearbeiten";
 
-"Word.Account" = "Account";
+"Word.Account" = "Benutzerkonto";
 
 "Login.Status.Loging" = "Anmelden";
 
-"Login.Status.WrongPassword" = "Wrong password";
+"Login.Status.WrongPassword" = "Falsches Passwort";
 
 "Login.Status.AskToSignIn" = "Please sign in to post";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Projektraum laden";
 
-"Word.Public" = "Public";
+"Word.Public" = "Öffentlich";
 
 "Post.Title.ErrorMessage" = "Kann nicht veröffentlichen";
 
@@ -79,7 +79,7 @@
 
 "Setting.Title.Server" = "Server";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
+"Login.Warning.Title.PlatformVersionNotSupported" = "Plattform-Version wird nicht unterstützt";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Der eXo Server ist nicht mit der mobilen App kompatibel. Bitte fragen Sie Ihren Administrator, auf die neueste eXo Platform Version zu aktualisieren.";
 
