@@ -34,7 +34,7 @@
 
 "Word.Cancel" = "Abbrechen";
 
-"Word.Post" = "Post";
+"Word.Post" = "Teilen";
 
 "Title.SelectAccount" = "Wählen Sie ein Benutzerkonto";
 
@@ -52,7 +52,7 @@
 
 "Login.Status.WrongPassword" = "Falsches Passwort";
 
-"Login.Status.AskToSignIn" = "Please sign in to post";
+"Login.Status.AskToSignIn" = "Bitte melden Sie sich an, um eine Nachricht teilen zu können";
 
 "Login.Status.Offline" = "Offline";
 
