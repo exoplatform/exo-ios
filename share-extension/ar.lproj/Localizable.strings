@@ -34,27 +34,27 @@
 
 "Word.Cancel" = "الغاء";
 
-"Word.Post" = "Post";
+"Word.Post" = "شارك";
 
 "Title.SelectAccount" = "اختر حسابا";
 
-"Word.Username" = "Username";
+"Word.Username" = "اسم المستخدم";
 
 "Title.UnknownPassword" = "كلمة المرور: غير معروف";
 
 "Title.NeededUsernamePassoword" = "اسم المستخدم وكلمة المرور المطلوبة ";
 
-"Word.Edit" = "Edit";
+"Word.Edit" = "تغيير";
 
-"Word.Account" = "Account";
+"Word.Account" = "الحساب";
 
 "Login.Status.Loging" = "تسجيل الدخول";
 
-"Login.Status.WrongPassword" = "Wrong password";
+"Login.Status.WrongPassword" = "كلمة المرورغير صحيحة.";
 
-"Login.Status.AskToSignIn" = "Please sign in to post";
+"Login.Status.AskToSignIn" = "الرجاء تسجيل الدخول للنشر";
 
-"Login.Status.Offline" = "Offline";
+"Login.Status.Offline" = "غير متصل";
 
 "Login.Status.LoginFail" = "فشل تسجيل الدخول";
 
@@ -70,7 +70,7 @@
 
 "Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "Public";
+"Word.Public" = "عمومي";
 
 "Post.Title.ErrorMessage" = "لا يمكن النشر";
 
@@ -79,7 +79,7 @@
 
 "Setting.Title.Server" = "الخادم";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
+"Login.Warning.Title.PlatformVersionNotSupported" = "إصدار المنصة غير مدعوم";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
