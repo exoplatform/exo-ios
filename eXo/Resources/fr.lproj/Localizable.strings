@@ -52,7 +52,7 @@
 
 "OnBoarding.Title.AddServer" = "Connectez votre eXo";
 
-"OnBoarding.Title.Others" = "Others";
+"OnBoarding.Title.Others" = "Autres";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Connectez-vous, partagez et travaillez ensemble";
 
@@ -60,7 +60,7 @@
 
 "OnBoarding.Message.EnterURL" = "Entrez l'adresse de votre eXo";
 
-"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
+"OnBoarding.Error.PlatformNotSupported" = "Version non supportée";
 
 "OnBoarding.Error.PlatformNotFound" = "Version de eXo Platform introuvable";
 
@@ -74,7 +74,7 @@
 
 "OnBoarding.Error.URL" = "URL incorrecte";
 
-"OnBoarding.Error.UnableConnectServer" = "Please enter a valid URL";
+"OnBoarding.Error.UnableConnectServer" = "Veuillez entrer une URL valide.";
 
 "OnBoarding.Title.RecentsServer" = "Mes eXo";
 
@@ -82,7 +82,7 @@
 
 "OnBoarding.Title.MostRecentServer" = "Se connecter à";
 
-"Internet connection lost" = "Internet connection lost";
+"Internet connection lost" = "Connexion internet perdue";
 
 "Please make sure you have internet connection" = "Veuillez vous assurer d'avoir une connexion Internet";
 
@@ -93,7 +93,7 @@
 
 "Shortcut.Title.ConnectTo" = "Connectez-vous à";
 
-"Shortcut.Title.AddServer" = "Connect your eXo";
+"Shortcut.Title.AddServer" = "Connecter votre eXo";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connectez-vous à eXo Tribe";
 

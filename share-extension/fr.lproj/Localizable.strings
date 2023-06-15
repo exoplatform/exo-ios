@@ -34,11 +34,11 @@
 
 "Word.Cancel" = "Annuler";
 
-"Word.Post" = "Post";
+"Word.Post" = "Publier";
 
 "Title.SelectAccount" = "Selectionner un compte";
 
-"Word.Username" = "Username";
+"Word.Username" = "Utilisateur";
 
 "Title.UnknownPassword" = "Mode de passe: Inconnu";
 
