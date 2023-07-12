@@ -1,4 +1,4 @@
-// Copyright (C) 2003-2015 eXo Platform SAS.
+// Copyright (C) 2003-2023 eXo Platform SAS.
 //
 // This is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as
@@ -56,21 +56,19 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             self.setupWebView(self.webViewContainer)
             webView?.navigationDelegate = self
             webView?.uiDelegate = self
-            webView?.configuration.preferences.javaScriptEnabled = true
+            webView?.configuration.defaultWebpagePreferences.allowsContentJavaScript = true
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             webView?.setKeyboardRequiresUserInteraction(false)
             // inject JS to capture console.log output and send to iOS
             let captureLogSource = "function captureLog(msg) { window.webkit.messageHandlers.logHandler.postMessage(msg); } window.console.log = captureLog;"
-            let iOSListenerSource = "document.addEventListener('mouseout', function(){ window.webkit.messageHandlers.iosListener.postMessage('iOS Listener executed!'); })"
             let captureLogScript = WKUserScript(source: captureLogSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-            let iOSListenerScript = WKUserScript(source: iOSListenerSource, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
             webView?.configuration.userContentController.addUserScript(captureLogScript)
-            webView?.configuration.userContentController.addUserScript(iOSListenerScript)
             // register the bridge script that listens for the output
             webView?.configuration.userContentController.add(
                 LeakAvoider(delegate:self), name: "logHandler")
-            webView?.configuration.userContentController.add(
-                LeakAvoider(delegate:self), name: "iosListener")
+            if #available(macOS 13.3, iOS 16.4, *) {
+                webView?.isInspectable = true
+            }
             self.configureDoneButton()
         }
     }
@@ -440,10 +438,6 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
                     parseCallState(message:message.body as! String)
                 }
             }
-        }
-        if message.name == "iosListener" {
-            print("iosListener =====> : \(message.body)")
-            self.view.endEditing(true)
         }
     }
     
