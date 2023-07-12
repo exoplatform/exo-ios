@@ -70,9 +70,10 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             // register the bridge script that listens for the output
             webView?.configuration.userContentController.add(
                 LeakAvoider(delegate:self), name: "logHandler")
-            if #available(macOS 13.3, iOS 16.4, *) {
-                webView?.isInspectable = true
-            }
+            // Uncomment to inspect code when using iOS 16.4 or higher
+            //if #available(macOS 13.3, iOS 16.4, *) {
+                //webView?.isInspectable = true
+            //}
             self.configureDoneButton()
         }
     }
