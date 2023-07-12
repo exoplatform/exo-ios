@@ -56,7 +56,11 @@ final class HomePageViewController: eXoWebBaseController, WKNavigationDelegate, 
             self.setupWebView(self.webViewContainer)
             webView?.navigationDelegate = self
             webView?.uiDelegate = self
-            webView?.configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+            if #available(iOS 14, *){
+                webView?.configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+            } else {
+                webView?.configuration.preferences.javaScriptEnabled = true
+            }
             webView?.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
             webView?.setKeyboardRequiresUserInteraction(false)
             // inject JS to capture console.log output and send to iOS
