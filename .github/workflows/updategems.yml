@@ -27,14 +27,14 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      # Setup Ruby 2.6 (2.7 not yet compatible with bundler)
+      # Setup Ruby 3.0
       - name: Setup ruby 3.0
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
       # Cache Ruby gems
       - name: Cache Ruby gems
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-gems-
       # Cache CocoaPods
       - name: Cache CocoaPods
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
