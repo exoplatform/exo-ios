@@ -46,11 +46,11 @@
 
 "Word.Edit" = "Modifier";
 
-"Word.Account" = "Account";
+"Word.Account" = "Compte";
 
 "Login.Status.Loging" = "Connexion en cours";
 
-"Login.Status.WrongPassword" = "Wrong password";
+"Login.Status.WrongPassword" = "Mot de passe incorrect";
 
 "Login.Status.AskToSignIn" = "Please sign in to post";
 
