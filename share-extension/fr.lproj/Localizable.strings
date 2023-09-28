@@ -52,9 +52,9 @@
 
 "Login.Status.WrongPassword" = "Mot de passe incorrect";
 
-"Login.Status.AskToSignIn" = "Please sign in to post";
+"Login.Status.AskToSignIn" = "Veuillez vous connecter pour poster";
 
-"Login.Status.Offline" = "Offline";
+"Login.Status.Offline" = "Déconnecté";
 
 "Login.Status.LoginFail" = "Echec de connexion";
 
