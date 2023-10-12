@@ -103,7 +103,7 @@
 
 "Setting.Title.NoServer" = "Aucune connexion eXo configurée";
 
-"Setting.Title.AddServer" = "Connect your eXo";
+"Setting.Title.AddServer" = "Connecter votre eXo";
 
 "Setting.Title.DeleteServer" = "Supprimer la connexion";
 
@@ -121,7 +121,7 @@
 
 // Add Server
 
-"Add your eXo" = "New eXo Connection";
+"Add your eXo" = "Ajouter une connexion eXo";
 
 "Enter your eXo URL" = "Entrer l'adresse de votre eXo";
 

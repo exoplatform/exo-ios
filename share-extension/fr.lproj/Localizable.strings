@@ -79,7 +79,7 @@
 
 "Setting.Title.Server" = "Serveur";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
+"Login.Warning.Title.PlatformVersionNotSupported" = "Version de la plateforme non supportée";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "Votre serveur utilise une version de eXo Platform non supportée par cette application. Votre administrateur doit mettre à jour le serveur eXo.";
 
