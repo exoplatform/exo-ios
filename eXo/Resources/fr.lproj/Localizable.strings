@@ -115,7 +115,7 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Platform version not supported";
+"ServerManager.Title.Warning" = "Version de plateforme non supportée";
 
 "ServerManager.Message.WarningVersionNotSupported" = "Votre eXo utilise une version de eXo Platform non supportée par cette application. Veuillez mettre à jour votre eXo vers eXo Platform 4.3, ou installer l'application version 2.";
 
