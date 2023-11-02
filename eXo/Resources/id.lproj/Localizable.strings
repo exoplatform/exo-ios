@@ -20,113 +20,113 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
-"OnBoarding.Title.UpdateVersion" = "eXo Update";
+"OnBoarding.Title.UpdateVersion" = "Perbarui eXo";
 
-"OnBoarding.Message.UpdateVersion" = "To use the app, please download the latest version";
+"OnBoarding.Message.UpdateVersion" = "Untuk menggunakan aplikasi ini, silakan unduh versi terbaru.";
 
-"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
+"OnBoarding.Title.ScanQRCode" = "Pindai kode QR Anda untuk menghubungkan.";
 
-"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
+"OnBoarding.Title.EnterPassword" = "Masukan password untuk login cepat";
 
-"OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";
+"OnBoarding.Title.ScanQRsettings" = "Pindai Kode QR yang muncul di pengaturan eXo Anda";
 
-"OnBoarding.Title.ShowQRCode" = "Display the QR code in your eXo settings.";
+"OnBoarding.Title.ShowQRCode" = "Tampilkan kode QR di pengaturan eXo Anda.";
 
-"OnBoarding.Title.ScanCode" = "Scan code";
+"OnBoarding.Title.ScanCode" = "Scan kode";
 
-"OnBoarding.Title.EnterUrleXo" = "Enter eXo connection URL";
+"OnBoarding.Title.EnterUrleXo" = "Enter server URL";
 
 "Delete" = "Hapus";
 
 "Cancel" = "Batal";
 
-"OnBoarding.Title.AddYourExo" = "New eXo Connection";
+"OnBoarding.Title.AddYourExo" = "Add your eXo";
 
-"OnBoarding.Title.ConnectToeXo" = "Connect to eXo";
+"OnBoarding.Title.ConnectToeXo" = "Hubungkan ke eXo.";
 
-"OnBoarding.Title.AddNewExo" = "Add a new eXo";
+"OnBoarding.Title.AddNewExo" = "Tambahkan eXo baru.";
 
-"OnBoarding.Title.SignInToeXo" = "Sign in to eXo";
+"OnBoarding.Title.SignInToeXo" = "Masuk ke eXo";
 
-"OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
+"OnBoarding.Title.DiscovereXo" = "Temukan Komunitas eXo.";
 
-"OnBoarding.Title.AddServer" = "Connect your eXo";
+"OnBoarding.Title.AddServer" = "Connect your intranet";
 
-"OnBoarding.Title.Others" = "Others";
+"OnBoarding.Title.Others" = "Lainnya";
 
-"OnBoarding.Title.eXoPlatformDescription" = "Connect, share and work together";
+"OnBoarding.Title.eXoPlatformDescription" = "Terhubung, berbagi, dan bekerja bersama.";
 
-"OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
+"OnBoarding.Title.SavingServer" = "Saving intranet ...";
 
-"OnBoarding.Message.EnterURL" = "Enter your eXo address";
+"OnBoarding.Message.EnterURL" = "Enter your intranet URL";
 
-"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
+"OnBoarding.Error.PlatformNotSupported" = "Versi platform tidak didukung.";
 
-"OnBoarding.Error.PlatformNotFound" = "Platform version not found";
+"OnBoarding.Error.PlatformNotFound" = "Versi platform tidak ditemukan";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 6.2 or later";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 4.3 or later";
 
-"Word.OK" = "OK";
+"Word.OK" = "Oke";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "membatalkan";
 
-"Word.Back" = "Back";
+"Word.Back" = "Kembali";
 
-"OnBoarding.Error.URL" = "eXo URL error";
+"OnBoarding.Error.URL" = "Intranet URL error";
 
-"OnBoarding.Error.UnableConnectServer" = "Please enter a valid URL";
+"OnBoarding.Error.UnableConnectServer" = "Silahkan masukkan format URL yang benar";
 
-"OnBoarding.Title.RecentsServer" = "My eXos";
+"OnBoarding.Title.RecentsServer" = "My intranets";
 
-"OnBoarding.Error.ConnectionError" = "Connection Error";
+"OnBoarding.Error.ConnectionError" = "Koneksi bermasalah";
 
-"OnBoarding.Title.MostRecentServer" = "Most recent connection";
+"OnBoarding.Title.MostRecentServer" = "Most recent intranet";
 
-"Internet connection lost" = "Internet connection lost";
+"Internet connection lost" = "Koneksi internet terputus";
 
-"Please make sure you have internet connection" = "Please make sure you are connected to internet";
+"Please make sure you have internet connection" = "Please make sure you have internet connection";
 
 
 // Shortcut (3D Touch)
 
-"Shortcut.Title.RegisterCommunity" = "Register on eXo Tribe";
+"Shortcut.Title.RegisterCommunity" = "Daftar di Komunitas eXo.";
 
-"Shortcut.Title.ConnectTo" = "Connect to";
+"Shortcut.Title.ConnectTo" = "Hubungkan ke";
 
-"Shortcut.Title.AddServer" = "Connect your eXo";
+"Shortcut.Title.AddServer" = "Hubungkan ke eXo Anda";
 
-"Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
+"Shortcut.Title.ConnnecteXoTribe" = "Terhubung ke Komunitas eXo.";
 
 // Setting
 
-"Setting.Title.Server" = "eXos";
+"Setting.Title.Server" = "Intranets";
 
-"Setting.Title.NoServer" = "No eXo connection defined yet";
+"Setting.Title.NoServer" = "No eXo";
 
-"Setting.Title.AddServer" = "Connect your eXo";
+"Setting.Title.AddServer" = "Hubungkan eXo Anda";
 
-"Setting.Title.DeleteServer" = "Delete Connection";
+"Setting.Title.DeleteServer" = "Delete Intranet";
 
-"Setting.Message.DeleteServer" = "Do you really want to delete this connection?";
+"Setting.Message.DeleteServer" = "Do you really want to delete this eXo?";
 
-"Setting.Title.ApplicationVersion" = "Application Version";
+"Setting.Title.ApplicationVersion" = "Versi aplikasi";
 
-"Setting.Title.About" = "About";
+"Setting.Title.About" = "Tentang";
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Platform version not supported";
+"ServerManager.Title.Warning" = "Versi platform tidak didukung.";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.3 or use the application version 2.";
 
 // Add Server
 
-"Add your eXo" = "New eXo Connection";
+"Add your eXo" = "Koneksi eXo baru.";
 
-"Enter your eXo URL" = "Enter your eXo connection address";
+"Enter your eXo URL" = "Enter your eXo URL";
 
 // Home Page
 
-"Download Unavailable" = "Download Unavailable";
+"Download Unavailable" = "Unduhan Tidak Tersedia";
 
-"You can't download the document, your os is less than iOS 15." = "You can't download the document, your os is less than iOS 15.";
+"You can't download the document, your os is less than iOS 15." = "Anda tidak dapat mengunduh dokumen, sistem operasi Anda kurang dari iOS 15.";
