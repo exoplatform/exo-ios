@@ -20,9 +20,9 @@
 
 "Upload.Warning.AllUploadFailed" = "Semua unggahan gagal";
 
-"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+"Upload.Warning.UploadsFailed" = "%lu Unggahan gagal.";
 
-"Upload.Warning.UploadFailed" = "1 upload failed";
+"Upload.Warning.UploadFailed" = "1 unggahan gagal.";
 
 "Upload.Warning.ItemsCannotBeUpload" = "%d item tidak dapat diunggah";
 
@@ -32,55 +32,55 @@
 
 "Upload.Message.ConfirmationPost" = "Apakah Anda tetap ingin mengirim pesan?";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "membatalkan";
 
-"Word.Post" = "Post";
+"Word.Post" = "Posting";
 
-"Title.SelectAccount" = "Select an account";
+"Title.SelectAccount" = "Pilih akun";
 
-"Word.Username" = "Username";
+"Word.Username" = "Nama Pengguna";
 
-"Title.UnknownPassword" = "Password: Unknown";
+"Title.UnknownPassword" = "Kata sandi: Tidak diketahui";
 
-"Title.NeededUsernamePassoword" = "Username & password needed ";
+"Title.NeededUsernamePassoword" = "Username dan kata sandi diperlukan.";
 
 "Word.Edit" = "Edit";
 
-"Word.Account" = "Account";
+"Word.Account" = "Akun";
 
-"Login.Status.Loging" = "Signing in";
+"Login.Status.Loging" = "Masuk";
 
-"Login.Status.WrongPassword" = "Wrong password";
+"Login.Status.WrongPassword" = "Sandi Salah";
 
-"Login.Status.AskToSignIn" = "Please sign in to post";
+"Login.Status.AskToSignIn" = "Silakan masuk untuk Posting";
 
 "Login.Status.Offline" = "Offline";
 
-"Login.Status.LoginFail" = "Login fail";
+"Login.Status.LoginFail" = "Gagal Masuk";
 
-"LogIn.Warning.NoAccount" = "No account";
+"LogIn.Warning.NoAccount" = "Anda belum memiliki akun";
 
-"Word.Space" = "Space";
+"Word.Space" = "Ruang";
 
-"Login.Status.ServerProblem" = "Server Problem";
+"Login.Status.ServerProblem" = "Server Bermasalah";
 
-"LogIn.Status.NoSpaceId" = "Cannot load space";
+"LogIn.Status.NoSpaceId" = "Tidak dapat memuat forum";
 
-"LogIn.Error.UnableToPost" = "Unable to post";
+"LogIn.Error.UnableToPost" = "Tidak dapat diposting.";
 
-"Title.LoadingSpaceId" = "Loading space ";
+"Title.LoadingSpaceId" = "Loading space id";
 
-"Word.Public" = "Public";
+"Word.Public" = "Umum";
 
-"Post.Title.ErrorMessage" = "Cannot post";
+"Post.Title.ErrorMessage" = "Tidak bisa posting";
 
-"Title.SpaceSelection" = "Space selection";
+"Title.SpaceSelection" = "Forum pilihan";
 
 
 "Setting.Title.Server" = "Server";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
+"Login.Warning.Title.PlatformVersionNotSupported" = "Versi platform tidak didukung.";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.4 or use the application version 2.";
 
-"Word.Back" = "Back";
+"Word.Back" = "Kembali";
