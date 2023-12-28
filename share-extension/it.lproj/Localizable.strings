@@ -22,7 +22,7 @@
 
 "Upload.Warning.UploadsFailed" = "%lu uploads failed";
 
-"Upload.Warning.UploadFailed" = "1 upload failed";
+"Upload.Warning.UploadFailed" = "1 caricamento fallito";
 
 "Upload.Warning.ItemsCannotBeUpload" = "Impossibile caricare gli elementi %d";
 
@@ -34,52 +34,52 @@
 
 "Word.Cancel" = "Cancel";
 
-"Word.Post" = "Post";
+"Word.Post" = "Inviare";
 
 "Title.SelectAccount" = "Select an account";
 
-"Word.Username" = "Username";
+"Word.Username" = "Nome utente";
 
-"Title.UnknownPassword" = "Password: Unknown";
+"Title.UnknownPassword" = "Password: Sconosciuta";
 
-"Title.NeededUsernamePassoword" = "Username & password needed ";
+"Title.NeededUsernamePassoword" = "Nome utente e password necessari ";
 
-"Word.Edit" = "Edit";
+"Word.Edit" = "Modificare";
 
 "Word.Account" = "Account";
 
-"Login.Status.Loging" = "Signing in";
+"Login.Status.Loging" = "Accedendo";
 
-"Login.Status.WrongPassword" = "Wrong password";
+"Login.Status.WrongPassword" = "Password sbagliata";
 
-"Login.Status.AskToSignIn" = "Please sign in to post";
+"Login.Status.AskToSignIn" = "Si prega di autenticarsi per pubblicare";
 
-"Login.Status.Offline" = "Offline";
+"Login.Status.Offline" = "Non in linea";
 
-"Login.Status.LoginFail" = "Login fail";
+"Login.Status.LoginFail" = "Accesso fallito";
 
 "LogIn.Warning.NoAccount" = "No account";
 
 "Word.Space" = "Space";
 
-"Login.Status.ServerProblem" = "Server Problem";
+"Login.Status.ServerProblem" = "Problema del Server";
 
-"LogIn.Status.NoSpaceId" = "Cannot load space";
+"LogIn.Status.NoSpaceId" = "Impossibile caricare lo spazio";
 
-"LogIn.Error.UnableToPost" = "Unable to post";
+"LogIn.Error.UnableToPost" = "Impossibile pubblicare";
 
 "Title.LoadingSpaceId" = "Loading space ";
 
-"Word.Public" = "Public";
+"Word.Public" = "Pubblico";
 
-"Post.Title.ErrorMessage" = "Cannot post";
+"Post.Title.ErrorMessage" = "Impossibile pubblicare";
 
-"Title.SpaceSelection" = "Space selection";
+"Title.SpaceSelection" = "Selezione dello spazio";
 
 
 "Setting.Title.Server" = "Server";
 
-"Login.Warning.Title.PlatformVersionNotSupported" = "Platform version not supported";
+"Login.Warning.Title.PlatformVersionNotSupported" = "Versione della piattaforma non supportata";
 
 "Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
 
