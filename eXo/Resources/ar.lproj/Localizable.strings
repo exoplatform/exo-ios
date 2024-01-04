@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.ScanQRCode" = "امسح رمز QR الخاص بك للاتصال";
 
-"OnBoarding.Title.EnterPassword" = "أدخل كلمة المرور الخاصة بك لتسجيل الدخول بسرعة.";
+"OnBoarding.Title.EnterPassword" = "أدخل كلمة المرور الخاصة بك لتسجيل الدخول.";
 
 "OnBoarding.Title.ScanQRsettings" = "مسح رمز QR الذي يظهر في إعدادات eXo الخاصة بك.";
 
@@ -117,7 +117,7 @@
 
 "ServerManager.Title.Warning" = "إصدار المنصة غير مدعوم";
 
-"ServerManager.Message.WarningVersionNotSupported" = "مثيل الإختصاري الخاص بك يستخدم نسخة من المنصة غير مدعومة بهذا التطبيق. نوصي بالترقية إلى المنصة 6.2 أو استخدام الإصدار 2 من التطبيق.";
+"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
 
 // Add Server
 
