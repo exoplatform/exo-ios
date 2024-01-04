@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.ScanQRCode" = "Scannen Sie Ihren QR-Code, um eine Verbindung herzustellen";
 
-"OnBoarding.Title.EnterPassword" = "Geben Sie Ihr Passwort ein, um sich schnell anzumelden.";
+"OnBoarding.Title.EnterPassword" = "Geben Sie Ihr Passwort ein, um sich schnell einzuloggen.";
 
 "OnBoarding.Title.ScanQRsettings" = "Scannen Sie den QR-Code, der in Ihren eXo-Einstellungen angezeigt wird.";
 

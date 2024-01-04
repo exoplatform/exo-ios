@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.ScanQRCode" = "crwdns7015451:0crwdne7015451:0";
 
-"OnBoarding.Title.EnterPassword" = "crwdns7015019:0crwdne7015019:0";
+"OnBoarding.Title.EnterPassword" = "crwdns7099900:0crwdne7099900:0";
 
 "OnBoarding.Title.ScanQRsettings" = "crwdns7015453:0crwdne7015453:0";
 
@@ -117,7 +117,7 @@
 
 "ServerManager.Title.Warning" = "crwdns7074613:0crwdne7074613:0";
 
-"ServerManager.Message.WarningVersionNotSupported" = "crwdns7015633:0crwdne7015633:0";
+"ServerManager.Message.WarningVersionNotSupported" = "crwdns7099912:0crwdne7099912:0";
 
 // Add Server
 
