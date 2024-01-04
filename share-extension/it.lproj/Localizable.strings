@@ -20,7 +20,7 @@
 
 "Upload.Warning.AllUploadFailed" = "Ogni tentativo di caricamento è fallito";
 
-"Upload.Warning.UploadsFailed" = "%lu uploads failed";
+"Upload.Warning.UploadsFailed" = "%lu caricamenti falliti";
 
 "Upload.Warning.UploadFailed" = "1 caricamento fallito";
 
@@ -32,11 +32,11 @@
 
 "Upload.Message.ConfirmationPost" = "Desideri comunque pubblicare il messaggio?";
 
-"Word.Cancel" = "Cancel";
+"Word.Cancel" = "Cancellare";
 
 "Word.Post" = "Inviare";
 
-"Title.SelectAccount" = "Select an account";
+"Title.SelectAccount" = "Selezioni un Account";
 
 "Word.Username" = "Nome utente";
 
@@ -58,9 +58,9 @@
 
 "Login.Status.LoginFail" = "Accesso fallito";
 
-"LogIn.Warning.NoAccount" = "No account";
+"LogIn.Warning.NoAccount" = "Nessun account";
 
-"Word.Space" = "Space";
+"Word.Space" = "Spazio";
 
 "Login.Status.ServerProblem" = "Problema del Server";
 
@@ -68,7 +68,7 @@
 
 "LogIn.Error.UnableToPost" = "Impossibile pubblicare";
 
-"Title.LoadingSpaceId" = "Loading space ";
+"Title.LoadingSpaceId" = "Caricamento spazio ";
 
 "Word.Public" = "Pubblico";
 
@@ -81,6 +81,6 @@
 
 "Login.Warning.Title.PlatformVersionNotSupported" = "Versione della piattaforma non supportata";
 
-"Login.Warning.Message.PlatformVersionNotSupported" = "The eXo server is not compatible with the mobile app. Please ask your administrator to upgrade to latest eXo Platform version.";
+"Login.Warning.Message.PlatformVersionNotSupported" = "Il Suo eXo non è compatibile con l'applicazione mobile. Si prega di chiedere all'amministratore di aggiornare all'ultima versione del eXo Platform.";
 
-"Word.Back" = "Back";
+"Word.Back" = "Indietro";
