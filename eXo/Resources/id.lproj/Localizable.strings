@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.ScanQRCode" = "Pindai kode QR Anda untuk menghubungkan.";
 
-"OnBoarding.Title.EnterPassword" = "Masukan password untuk login cepat";
+"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
 
 "OnBoarding.Title.ScanQRsettings" = "Pindai Kode QR yang muncul di pengaturan eXo Anda";
 
@@ -117,7 +117,7 @@
 
 "ServerManager.Title.Warning" = "Versi platform tidak didukung.";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Your intranet uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 4.3 or use the application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
 
 // Add Server
 
