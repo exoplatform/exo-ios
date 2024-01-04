@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.ScanQRCode" = "Scanner votre QR code pour vous connecter";
 
-"OnBoarding.Title.EnterPassword" = "Saisissez votre mot de passe pour vous connecter rapidement.";
+"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
 
 "OnBoarding.Title.ScanQRsettings" = "Scanner le QR Code qui s'affiche dans vos paramétres eXo.";
 
@@ -117,7 +117,7 @@
 
 "ServerManager.Title.Warning" = "Version de plateforme non supportée";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Votre eXo utilise une version de eXo Platform non supportée par cette application. Veuillez mettre à jour votre eXo vers eXo Platform 4.3, ou installer l'application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
 
 // Add Server
 
