@@ -46,13 +46,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Need camera access for uploading images</string>
+	<string>The camera will be used to perform video calls with other members of your digital workplace.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Need location access for updating nearby friends</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app will use your location to show cool stuffs near you.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Need microphone access for uploading videos</string>
+	<string>The microphone will be used to capture the voice during video calls.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Need photo library access for uploading images</string>
 	<key>UIBackgroundModes</key>
@@ -87,9 +87,9 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>org.jitsi.meet</string>
-    </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>org.jitsi.meet</string>
+	</array>
 </dict>
 </plist>
