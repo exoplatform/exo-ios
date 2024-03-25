@@ -50,6 +50,9 @@ jobs:
       # Ensure installing latest version of fastlane
       - name: Upgrade fastlane
         run: bundle update fastlane
+      # Update Podfile
+      - name: Update Pods
+        run: pod install
       # Gather certificates from Github repository
       - name: Synchonize Certificates
         uses: maierj/fastlane-action@v3.0.0
