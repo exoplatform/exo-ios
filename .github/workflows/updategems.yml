@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: acceptance
           token: ${{ secrets.ADMIN_TOKEN }}
@@ -34,7 +34,7 @@ jobs:
           ruby-version: 3.0
       # Cache Ruby gems
       - name: Cache Ruby gems
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-gems-
       # Cache CocoaPods
       - name: Cache CocoaPods
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
