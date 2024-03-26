@@ -18,14 +18,15 @@
 
 #import <GoogleUtilities/GULAppEnvironmentUtil.h>
 #import <GoogleUtilities/GULUserDefaults.h>
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 #import "FirebaseMessaging/Sources/FIRMessagingLogger.h"
 
-static const uint64_t kBytesToMegabytesDivisor = 1024 * 1024LL;
 NSString *const kFIRMessagingInstanceIDUserDefaultsKeyLocale =
     @"com.firebase.instanceid.user_defaults.locale";  // locale key stored in GULUserDefaults
 static NSString *const kFIRMessagingAPNSSandboxPrefix = @"s_";
 static NSString *const kFIRMessagingAPNSProdPrefix = @"p_";
+
+static NSString *const kFIRMessagingWatchKitExtensionPoint = @"com.apple.watchkit";
 
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
 static NSString *const kEntitlementsAPSEnvironmentKey = @"Entitlements.aps-environment";
@@ -37,7 +38,7 @@ static NSString *const kAPSEnvironmentDevelopmentValue = @"development";
 
 #pragma mark - URL Helpers
 
-NSString *FIRMessagingTokenRegisterServer() {
+NSString *FIRMessagingTokenRegisterServer(void) {
   return @"https://fcmtoken.googleapis.com/register";
 }
 
@@ -76,39 +77,40 @@ NSString *FIRMessagingBundleIDByRemovingLastPartFrom(NSString *bundleID) {
 NSString *FIRMessagingAppIdentifier(void) {
   NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
 #if TARGET_OS_WATCH
-  // The code is running in watchKit extension target but the actually bundleID is in the watchKit
-  // target. So we need to remove the last part of the bundle ID in watchKit extension to match
-  // the one in watchKit target.
-  return FIRMessagingBundleIDByRemovingLastPartFrom(bundleID);
+  if (FIRMessagingIsWatchKitExtension()) {
+    // The code is running in watchKit extension target but the actually bundleID is in the watchKit
+    // target. So we need to remove the last part of the bundle ID in watchKit extension to match
+    // the one in watchKit target.
+    return FIRMessagingBundleIDByRemovingLastPartFrom(bundleID);
+  } else {
+    return bundleID;
+  }
 #else
   return bundleID;
 #endif
 }
 
-NSString *FIRMessagingFirebaseAppID() {
+NSString *FIRMessagingFirebaseAppID(void) {
   return [FIROptions defaultOptions].googleAppID;
 }
 
-uint64_t FIRMessagingGetFreeDiskSpaceInMB(void) {
-  NSError *error;
-  NSArray *paths =
-      NSSearchPathForDirectoriesInDomains(FIRMessagingSupportedDirectory(), NSUserDomainMask, YES);
-
-  NSDictionary *attributesMap =
-      [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject]
-                                                              error:&error];
-  if (attributesMap) {
-    uint64_t totalSizeInBytes __unused = [attributesMap[NSFileSystemSize] longLongValue];
-    uint64_t freeSizeInBytes = [attributesMap[NSFileSystemFreeSize] longLongValue];
-    FIRMessagingLoggerDebug(
-        kFIRMessagingMessageCodeUtilities001, @"Device has capacity %llu MB with %llu MB free.",
-        totalSizeInBytes / kBytesToMegabytesDivisor, freeSizeInBytes / kBytesToMegabytesDivisor);
-    return ((double)freeSizeInBytes) / kBytesToMegabytesDivisor;
-  } else {
-    FIRMessagingLoggerError(kFIRMessagingMessageCodeUtilities002,
-                            @"Error in retreiving device's free memory %@", error);
-    return 0;
+BOOL FIRMessagingIsWatchKitExtension(void) {
+#if TARGET_OS_WATCH
+  NSDictionary<NSString *, id> *infoDict = [[NSBundle mainBundle] infoDictionary];
+  NSDictionary<NSString *, id> *extensionAttrDict = infoDict[@"NSExtension"];
+  if (!extensionAttrDict) {
+    return NO;
   }
+
+  NSString *extensionPointId = extensionAttrDict[@"NSExtensionPointIdentifier"];
+  if (extensionPointId) {
+    return [extensionPointId isEqualToString:kFIRMessagingWatchKitExtensionPoint];
+  } else {
+    return NO;
+  }
+#else
+  return NO;
+#endif
 }
 
 NSSearchPathDirectory FIRMessagingSupportedDirectory(void) {
@@ -248,7 +250,7 @@ NSArray *FIRMessagingFirebaseLocales(void) {
   return locales;
 }
 
-NSString *FIRMessagingCurrentLocale() {
+NSString *FIRMessagingCurrentLocale(void) {
   NSArray *locales = FIRMessagingFirebaseLocales();
   NSArray *preferredLocalizations =
       [NSBundle preferredLocalizationsFromArray:locales
@@ -258,7 +260,7 @@ NSString *FIRMessagingCurrentLocale() {
   return legalDocsLanguage ? legalDocsLanguage : @"en";
 }
 
-BOOL FIRMessagingHasLocaleChanged() {
+BOOL FIRMessagingHasLocaleChanged(void) {
   NSString *lastLocale = [[GULUserDefaults standardUserDefaults]
       stringForKey:kFIRMessagingInstanceIDUserDefaultsKeyLocale];
   NSString *currentLocale = FIRMessagingCurrentLocale();
@@ -309,7 +311,8 @@ BOOL FIRMessagingIsProductionApp(void) {
 #if TARGET_OS_OSX || TARGET_OS_MACCATALYST
   NSString *path = [[[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
       stringByAppendingPathComponent:@"embedded.provisionprofile"];
-#elif TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
+#elif TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH || \
+    (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
   NSString *path = [[[NSBundle mainBundle] bundlePath]
       stringByAppendingPathComponent:@"embedded.mobileprovision"];
 #endif

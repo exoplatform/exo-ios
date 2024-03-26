@@ -62,8 +62,6 @@ jobs:
         env:
           BUNDLE_ID: ${{ env.BUNDLE_ID }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-          MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       # Build iOS Project
       - name: Build iOS Project
         uses: maierj/fastlane-action@v3.0.0
