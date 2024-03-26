@@ -28,6 +28,13 @@ FOUNDATION_EXPORT NSString *const kFIRMessagingMessageIDKey;
 FOUNDATION_EXPORT NSString *const kFIRMessagingMessageAPNSContentAvailableKey;
 FOUNDATION_EXPORT NSString *const kFIRMessagingMessageSyncMessageTTLKey;
 FOUNDATION_EXPORT NSString *const kFIRMessagingMessageLinkKey;
+FOUNDATION_EXPORT NSString *const kFIRMessagingSenderID;
+FOUNDATION_EXPORT NSString *const kFIRMessagingFID;
+FOUNDATION_EXPORT NSString *const kFIRMessagingAnalyticsComposerIdentifier;
+FOUNDATION_EXPORT NSString *const kFIRMessagingAnalyticsMessageLabel;
+FOUNDATION_EXPORT NSString *const kFIRMessagingAnalyticsComposerLabel;
+FOUNDATION_EXPORT NSString *const kFIRMessagingProductID;
+
 FOUNDATION_EXPORT NSString *const kFIRMessagingRemoteNotificationsProxyEnabledInfoPlistKey;
 FOUNDATION_EXPORT NSString *const kFIRMessagingSubDirectoryName;
 
@@ -53,6 +60,8 @@ FOUNDATION_EXPORT NSString *const kFIRMessaging_CMD_RST;
 FOUNDATION_EXPORT NSString *const kFIRMessagingAllScopeIdentifier;
 /// The scope used to save the IID "*" scope token.
 FOUNDATION_EXPORT NSString *const kFIRMessagingDefaultTokenScope;
+/// Denylisted "fiam" token scope.
+FOUNDATION_EXPORT NSString *const kFIRMessagingFIAMTokenScope;
 
 /// Subdirectory in search path directory to store InstanceID preferences.
 FOUNDATION_EXPORT NSString *const kFIRMessagingInstanceIDSubDirectoryName;
