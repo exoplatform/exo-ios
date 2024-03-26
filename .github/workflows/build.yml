@@ -46,4 +46,4 @@ jobs:
             ${{ runner.os }}-pods-
       # Install Bundler and dependencies gems
       - name: Install bundler and dependencies
-        run: gem install bundler && bundle install && git add Gemfile Gemfile.lock Podfile Podfile.lock ; git -c user.name="test" -c user.email="ttt@ttt.com" commit -m 'Up pods' && git push origin HEAD
+        run: gem install bundler && bundle install && git add Gemfile Gemfile.lock Podfile Podfile.lock ; git -c user.name="test" -c user.email="ttt@ttt.com" commit -m 'Up pods' && git push origin bump
