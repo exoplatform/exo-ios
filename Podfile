@@ -1,4 +1,4 @@
-platform :ios, '12.0'
+platform :ios, '16.2'
 inhibit_all_warnings!
 
 workspace 'eXo'
@@ -44,7 +44,7 @@ post_install do |installer|
   end
   installer.pods_project.targets.each do |target|
    target.build_configurations.each do |config|
-    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'
    end
   end
 end
