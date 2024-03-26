@@ -5,8 +5,6 @@
 # - SSH_KEY: Private SSH Key to allow accessing to a private Github repository.
 # - KNOWN_HOSTS: Known hosts containing Github servers fingerprints. Can be taken from existing one or Generate a one https://github.community/t/please-provide-ssh-known-hosts-for-gh-services-in-actions/16164/3.
 # - MATCH_PASSWORD: Certificate's password
-# - KEYCHAIN_PASSWORD: Keychain Password (Generate a random secure password)
-# - MATCH_KEYCHAIN_NAME: Keychain Name (Generate a random name)
 # - API_TOKEN_APPALOOSA: Appaloosa Store api token
 # - STORE_ID_APPALOOSA: Appaloosa Store id
 
@@ -57,8 +55,6 @@ jobs:
         env:
           BUNDLE_ID: org.exoplatform.exo-beta
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-          MATCH_KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       - name: Generate new version
         env:
           TAG_PREFIX: "6.2-beta"

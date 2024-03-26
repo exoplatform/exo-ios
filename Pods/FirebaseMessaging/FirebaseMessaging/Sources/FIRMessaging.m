@@ -24,8 +24,9 @@
 #import <GoogleUtilities/GULAppEnvironmentUtil.h>
 #import <GoogleUtilities/GULReachabilityChecker.h>
 #import <GoogleUtilities/GULUserDefaults.h>
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 #import "FirebaseInstallations/Source/Library/Private/FirebaseInstallationsInternal.h"
+#import "FirebaseMessaging/Interop/FIRMessagingInterop.h"
 #import "FirebaseMessaging/Sources/FIRMessagingAnalytics.h"
 #import "FirebaseMessaging/Sources/FIRMessagingCode.h"
 #import "FirebaseMessaging/Sources/FIRMessagingConstants.h"
@@ -38,7 +39,6 @@
 #import "FirebaseMessaging/Sources/FIRMessagingSyncMessageManager.h"
 #import "FirebaseMessaging/Sources/FIRMessagingUtilities.h"
 #import "FirebaseMessaging/Sources/FIRMessaging_Private.h"
-#import "FirebaseMessaging/Sources/Interop/FIRMessagingInterop.h"
 #import "FirebaseMessaging/Sources/NSError+FIRMessaging.h"
 #import "FirebaseMessaging/Sources/Public/FirebaseMessaging/FIRMessagingExtensionHelper.h"
 #import "FirebaseMessaging/Sources/Token/FIRMessagingAuthService.h"
@@ -48,7 +48,6 @@
 
 static NSString *const kFIRMessagingMessageViaAPNSRootKey = @"aps";
 static NSString *const kFIRMessagingReachabilityHostname = @"www.google.com";
-static NSString *const kFIRMessagingFCMTokenFetchAPNSOption = @"apns_token";
 
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 const NSNotificationName FIRMessagingRegistrationTokenRefreshedNotification =
@@ -63,6 +62,8 @@ NSString *const kFIRMessagingUserDefaultsKeyAutoInitEnabled =
 
 NSString *const kFIRMessagingPlistAutoInitEnabled =
     @"FirebaseMessagingAutoInitEnabled";  // Auto Init Enabled key stored in Info.plist
+
+NSString *const FIRMessagingErrorDomain = @"com.google.fcm";
 
 const BOOL FIRMessagingIsAPNSSyncMessage(NSDictionary *message) {
   if ([message[kFIRMessagingMessageViaAPNSRootKey] isKindOfClass:[NSDictionary class]]) {
@@ -112,6 +113,7 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
 @property(nonatomic, readwrite, strong) GULUserDefaults *messagingUserDefaults;
 @property(nonatomic, readwrite, strong) FIRInstallations *installations;
 @property(nonatomic, readwrite, strong) FIRMessagingTokenManager *tokenManager;
+@property(nonatomic, readwrite, strong) FIRHeartbeatLogger *heartbeatLogger;
 
 /// Message ID's logged for analytics. This prevents us from logging the same message twice
 /// which can happen if the user inadvertently calls `appDidReceiveMessage` along with us
@@ -145,13 +147,15 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (instancetype)initWithAnalytics:(nullable id<FIRAnalyticsInterop>)analytics
-                 withUserDefaults:(GULUserDefaults *)defaults {
+                     userDefaults:(GULUserDefaults *)defaults
+                  heartbeatLogger:(FIRHeartbeatLogger *)heartbeatLogger {
 #pragma clang diagnostic pop
   self = [super init];
   if (self != nil) {
     _loggedMessageIDs = [NSMutableSet set];
     _messagingUserDefaults = defaults;
     _analytics = analytics;
+    _heartbeatLogger = heartbeatLogger;
   }
   return self;
 }
@@ -187,7 +191,8 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     FIRMessaging *messaging =
         [[FIRMessaging alloc] initWithAnalytics:analytics
-                               withUserDefaults:[GULUserDefaults standardUserDefaults]];
+                                   userDefaults:[GULUserDefaults standardUserDefaults]
+                                heartbeatLogger:container.app.heartbeatLogger];
 #pragma clang diagnostic pop
     [messaging start];
     [messaging configureMessagingWithOptions:container.app.options];
@@ -209,7 +214,7 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
   if (!GCMSenderID.length) {
     FIRMessagingLoggerError(kFIRMessagingMessageCodeFIRApp000,
                             @"Firebase not set up correctly, nil or empty senderID.");
-    [NSException raise:kFIRMessagingDomain
+    [NSException raise:FIRMessagingErrorDomain
                 format:@"Could not configure Firebase Messaging. GCMSenderID must not be nil or "
                        @"empty."];
   }
@@ -234,11 +239,13 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
                                                        scope:kFIRMessagingDefaultTokenScope]
           .token;
   // When there is a cached token, do the token refresh.
+  // Before fetching FCM token, confirm there is an APNS token to avoid validation error
+  // This error is innocuous since we refetch after APNS token is set but it can seem alarming
   if (cachedToken) {
     // Clean up expired tokens by checking the token refresh policy.
     [self.installations installationIDWithCompletion:^(NSString *_Nullable identifier,
                                                        NSError *_Nullable error) {
-      if ([self.tokenManager checkTokenRefreshPolicyWithIID:identifier]) {
+      if ([self.tokenManager checkTokenRefreshPolicyWithIID:identifier] && self.APNSToken) {
         // Default token is expired, fetch default token from server.
         [self retrieveFCMTokenForSenderID:self.tokenManager.fcmSenderID
                                completion:^(NSString *_Nullable FCMToken, NSError *_Nullable error){
@@ -250,7 +257,7 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
       // TODO(chliangGoogle) Need to investigate better solution.
       [self updateDefaultFCMToken:self.FCMToken];
     }];
-  } else if (self.isAutoInitEnabled) {
+  } else if (self.isAutoInitEnabled && self.APNSToken) {
     // When there is no cached token, must check auto init is enabled.
     // If it's disabled, don't initiate token generation/refresh.
     // If no cache token and auto init is enabled, fetch a token from server.
@@ -281,7 +288,8 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
   [self setupFileManagerSubDirectory];
   [self setupNotificationListeners];
 
-  self.tokenManager = [[FIRMessagingTokenManager alloc] init];
+  self.tokenManager =
+      [[FIRMessagingTokenManager alloc] initWithHeartbeatLogger:self.heartbeatLogger];
   self.installations = [FIRInstallations installations];
   [self setupTopics];
 
@@ -412,9 +420,11 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
   SEL openURLWithOptionsSelector = @selector(application:openURL:options:);
   SEL openURLWithSourceApplicationSelector = @selector(application:
                                                            openURL:sourceApplication:annotation:);
-#if TARGET_OS_IOS
+// TODO(Xcode 15): When Xcode 15 is the minimum supported Xcode version, it will be unnecessary to
+// check if `TARGET_OS_VISION` is defined.
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   SEL handleOpenURLSelector = @selector(application:handleOpenURL:);
-#endif
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   // Due to FIRAAppDelegateProxy swizzling, this selector will most likely get chosen, whether or
   // not the actual application has implemented
   // |application:continueUserActivity:restorationHandler:|. A warning will be displayed to the user
@@ -431,14 +441,13 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
           }];
 
   } else if ([appDelegate respondsToSelector:openURLWithOptionsSelector]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunguarded-availability"
     [appDelegate application:application openURL:url options:@{}];
-#pragma clang diagnostic pop
     // Similarly, |application:openURL:sourceApplication:annotation:| will also always be called,
     // due to the default swizzling done by FIRAAppDelegateProxy in Firebase Analytics
   } else if ([appDelegate respondsToSelector:openURLWithSourceApplicationSelector]) {
-#if TARGET_OS_IOS
+// TODO(Xcode 15): When Xcode 15 is the minimum supported Xcode version, it will be unnecessary to
+// check if `TARGET_OS_VISION` is defined.
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [appDelegate application:application
@@ -451,9 +460,9 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [appDelegate application:application handleOpenURL:url];
 #pragma clang diagnostic pop
-#endif
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   }
-#endif
+#endif  // TARGET_OS_IOS || TARGET_OS_TV
 }
 
 - (NSURL *)linkURLFromMessage:(NSDictionary *)message {
@@ -568,11 +577,11 @@ BOOL FIRMessagingIsContextManagerMessage(NSDictionary *message) {
   }
   NSDictionary *options = nil;
   if (self.APNSToken) {
-    options = @{kFIRMessagingFCMTokenFetchAPNSOption : self.APNSToken};
+    options = @{kFIRMessagingTokenOptionsAPNSKey : self.APNSToken};
   } else {
     FIRMessagingLoggerWarn(kFIRMessagingMessageCodeAPNSTokenNotAvailableDuringTokenFetch,
                            @"APNS device token not set before retrieving FCM Token for Sender ID "
-                           @"'%@'. Notifications to this FCM Token will not be delivered over APNS."
+                           @"'%@'."
                            @"Be sure to re-retrieve the FCM token once the APNS device token is "
                            @"set.",
                            senderID);
