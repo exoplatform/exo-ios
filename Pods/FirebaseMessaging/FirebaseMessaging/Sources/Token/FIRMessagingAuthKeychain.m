@@ -65,6 +65,13 @@ NSString *const kFIRMessagingKeychainWildcardIdentifier = @"*";
   if ([service length] && ![kFIRMessagingKeychainWildcardIdentifier isEqualToString:service]) {
     finalQuery[(__bridge NSString *)kSecAttrService] = service;
   }
+
+  if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.0, tvOS 13.0, watchOS 6.0, *)) {
+    // Ensures that the keychain query behaves the same across all platforms.
+    // See go/firebase-macos-keychain-popups for details.
+    finalQuery[(__bridge id)kSecUseDataProtectionKeychain] = (__bridge id)kCFBooleanTrue;
+  }
+
   return finalQuery;
 }
 
@@ -85,7 +92,7 @@ NSString *const kFIRMessagingKeychainWildcardIdentifier = @"*";
   NSMutableDictionary *keychainQuery = [self keychainQueryForService:service account:account];
   NSMutableArray<NSData *> *results;
   keychainQuery[(__bridge id)kSecReturnData] = (__bridge id)kCFBooleanTrue;
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if TARGET_OS_IOS || TARGET_OS_TV || (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
   keychainQuery[(__bridge id)kSecReturnAttributes] = (__bridge id)kCFBooleanTrue;
   keychainQuery[(__bridge id)kSecMatchLimit] = (__bridge id)kSecMatchLimitAll;
   // FIRMessagingKeychain should only take a query and return a result, will handle the query here.
