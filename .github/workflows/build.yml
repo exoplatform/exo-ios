@@ -28,22 +28,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
-     # Cache Ruby gems
-      - name: Cache Ruby gems
-        uses: actions/cache@v4
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      # Cache CocoaPods
-      - name: Cache CocoaPods
-        uses: actions/cache@v4
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
       # Install Bundler and dependencies gems
       - name: Install bundler and dependencies
         run: gem install bundler && bundle install
