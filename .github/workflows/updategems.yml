@@ -69,7 +69,6 @@ jobs:
           lane: "build_dev"
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
           EXO_APP_ID: ${{ env.BUNDLE_ID }}
       - name: Commiting new Gemfile
         run: |
