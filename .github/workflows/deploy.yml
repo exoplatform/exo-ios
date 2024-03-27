@@ -84,7 +84,6 @@ jobs:
           lane: "build_snapshot"
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
           APPALOOSA_EXO_API_TOKEN: ${{ secrets.API_TOKEN_APPALOOSA }}
           APPALOOSA_EXO_STORE_ID: ${{ secrets.STORE_ID_APPALOOSA }}
       - name: Import GPG key
