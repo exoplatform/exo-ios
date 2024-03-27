@@ -185,15 +185,18 @@ platform :ios do
     ENV["EXO_APP_CONFIGURATION"] = "Release"
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
+    if ! ENV["EXO_APP_ENVIRONMENT"]
+      ENV["EXO_APP_ENVIRONMENT"]="6.2.8"
+    end
     ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
     ENV["EXO_APP_IDENTIFIERS"]="com.exoplatform.mob.eXoPlatformiPHone,com.exoplatform.mob.eXoPlatformiPHone.share-extension"
 
     internal_build()
 
     upload_to_app_store(
-      team_id: "11998951888", # eXo
+      team_id: "476100", # eXo
       app_identifier: "#{ENV["EXO_APP_ID"]}",
-      copyright: "2018 eXo Platform SAS",
+      copyright: "2024 eXo Platform SAS",
       skip_metadata: true,
       skip_screenshots: true,
       submit_for_review: false
@@ -302,7 +305,7 @@ platform :ios do
     ENV["EXO_APP_CONFIGURATION"] = "Release"
 
     ENV["EXO_APP_BASE_URL"] = "https://community.exoplatform.com"
-    ENV["EXO_APP_ID"] = "org.exoplatform.exo-beta"
+    ENV["EXO_APP_ID"] = "com.exoplatform.mob.eXoPlatformiPHone"
     if ! ENV["EXO_APP_ENVIRONMENT"]
       ENV["EXO_APP_ENVIRONMENT"]="6.2-beta01"
     end

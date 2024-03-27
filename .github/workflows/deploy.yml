@@ -8,11 +8,11 @@
 # - API_TOKEN_APPALOOSA: Appaloosa Store api token
 # - STORE_ID_APPALOOSA: Appaloosa Store id
 
-name: eXo iOS Beta Appaloosa CI/CD
+name: eXo iOS GA Store
 
 on:
   push:
-    branches: [develop, acceptance]
+    branches: [release_ga]
   workflow_dispatch:
 jobs:
   deploy:
@@ -53,46 +53,12 @@ jobs:
         with:
           lane: "ci_sync_certificates"
         env:
-          BUNDLE_ID: org.exoplatform.exo-beta
+          BUNDLE_ID: com.exoplatform.mob.eXoPlatformiPHone
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      - name: Generate new version
-        env:
-          TAG_PREFIX: "6.2-beta"
-        run: |
-          git config --global user.email "exo-swf@exoplatform.com"
-          git config --global user.name "eXo Software Factory"
-          git fetch --tags
-          CURRENT_TAG=$(git tag -l | grep ${TAG_PREFIX} | sort -V | tail -n 1)
-          if [ -z "${CURRENT_TAG}" ]; then
-            echo "NEW_TAG=${TAG_PREFIX}01" >> $GITHUB_ENV
-            INDEX="01"
-          else 
-            INDEX=$((10#$( git tag -l | grep "${TAG_PREFIX}" | sed "s/${TAG_PREFIX}//" | sort -n | tail -n 1)))
-            ((INDEX++))
-            [ "${INDEX}" -lt "10" ] && INDEX="0${INDEX}"
-            echo "NEW_TAG=${TAG_PREFIX}${INDEX}" >> $GITHUB_ENV
-          fi
-          echo "INDEX=${INDEX}" >> $GITHUB_ENV
       - name: Set iOS Application version
         run: |
-          echo "EXO_APP_ENVIRONMENT=${NEW_TAG}" >> $GITHUB_ENV
-          xcrun agvtool new-version -all ${INDEX}
+          echo "EXO_APP_ENVIRONMENT=6.2.8" >> $GITHUB_ENV
+          xcrun agvtool new-version -all 01
       # Deploy eXo iOS bundle to appalossa store
-      - name: "Deploy eXo Beta to appaloosa"
-        uses: maierj/fastlane-action@v3.1.0
-        with:
-          lane: "build_beta_ppr"
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          APPALOOSA_EXO_API_TOKEN: ${{ secrets.API_TOKEN_APPALOOSA }}
-          APPALOOSA_EXO_STORE_ID: ${{ secrets.STORE_ID_APPALOOSA }}
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v5
-        with:
-          gpg_private_key: ${{ secrets.SWF_GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SWF_GPG_PASSPHRASE }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-          git_tag_gpgsign: true
-      - name: Create tag and Push it to repository
-        run: git tag ${NEW_TAG} -m '' && git push origin ${NEW_TAG}
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3.11
