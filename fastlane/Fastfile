@@ -136,7 +136,7 @@ platform :ios do
     UI.message("EXO_APP_EXPORT_TYPE: #{ENV["EXO_APP_EXPORT_TYPE"]}")
     UI.message("EXO_APP_CONFIGURATION: #{ENV["EXO_APP_CONFIGURATION"]}")
     UI.message("EXO_APP_BASE_URL: #{ENV["EXO_APP_BASE_URL"]}")
-
+    setup_ci
     #cocoapods
     match(
       app_identifier: appIdentifiers,
