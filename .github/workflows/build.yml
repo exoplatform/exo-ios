@@ -36,7 +36,7 @@ jobs:
         run: bundle update fastlane
       # Gather certificates from Github repository
       - name: Synchonize Certificates
-        uses: maierj/fastlane-action@v3.0.0
+        uses: maierj/fastlane-action@v3.1.0
         with:
           lane: "ci_sync_certificates"
         env:
@@ -44,7 +44,7 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       # Build iOS Project
       - name: Build iOS Project
-        uses: maierj/fastlane-action@v3.0.0
+        uses: maierj/fastlane-action@v3.1.0
         with:
           lane: "build_dev"
         env:
