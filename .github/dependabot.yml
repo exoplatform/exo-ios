@@ -1,6 +1,10 @@
+# Set update schedule for GitHub Actions
+
 version: 2
 updates:
-  - package-ecosystem: "bundler"
-    directory: "/" # Location of package manifests
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: "daily"
+      # Check for updates to GitHub Actions every week
+      interval: "weekly"
