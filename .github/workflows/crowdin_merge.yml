@@ -30,7 +30,7 @@ jobs:
         echo "changestobecommitted=true" >> $GITHUB_OUTPUT
     - name: Import GPG key
       if: steps.merge_changes.outputs.changestobecommitted == 'true'
-      uses: crazy-max/ghaction-import-gpg@v5
+      uses: crazy-max/ghaction-import-gpg@v6
       with:
         gpg_private_key: ${{ secrets.SWF_GPG_PRIVATE_KEY }}
         passphrase: ${{ secrets.SWF_GPG_PASSPHRASE }}
