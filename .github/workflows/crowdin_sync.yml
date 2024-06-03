@@ -22,7 +22,7 @@ jobs:
         git push origin :${CROWDIN_SYNC_BRANCH} ||:
         git branch -D ${CROWDIN_SYNC_BRANCH} ||:
     - name: Synchronize crowdin with the project
-      uses: crowdin/github-action@v1.20.2
+      uses: crowdin/github-action@v2.0.0
       with:
         upload_translations: false
         download_translations: true
