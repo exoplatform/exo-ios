@@ -20,27 +20,27 @@
  02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 // On-Boarding
-"OnBoarding.Title.UpdateVersion" = "eXo Update";
+"OnBoarding.Title.UpdateVersion" = "Atualização eXo";
 
-"OnBoarding.Message.UpdateVersion" = "To use the app, please download the latest version";
+"OnBoarding.Message.UpdateVersion" = "Para usar o aplicativo, faça o download da versão mais recente";
 
-"OnBoarding.Title.ScanQRCode" = "Scan your QR code to connect";
+"OnBoarding.Title.ScanQRCode" = "Escaneie o seu QR code para se conectar";
 
 "OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
 
-"OnBoarding.Title.ScanQRsettings" = "Scan the QR Code that appears in your eXo settings.";
+"OnBoarding.Title.ScanQRsettings" = "Escaneie o QR code que aparece nas suas configurações eXo.";
 
-"OnBoarding.Title.ShowQRCode" = "Display the QR code in your eXo settings.";
+"OnBoarding.Title.ShowQRCode" = "Exibir o QR code nas suas configurações de eXo.";
 
-"OnBoarding.Title.ScanCode" = "Scan code";
+"OnBoarding.Title.ScanCode" = "Escanear código";
 
-"OnBoarding.Title.EnterUrleXo" = "Enter eXo connection URL";
+"OnBoarding.Title.EnterUrleXo" = "Inserir URL de conexão eXo";
 
 "Delete" = "Excluir";
 
 "Cancel" = "Cancelar";
 
-"OnBoarding.Title.AddYourExo" = "New eXo Connection";
+"OnBoarding.Title.AddYourExo" = "Nova conexão eXo";
 
 "OnBoarding.Title.ConnectToeXo" = "Conectar ao eXo";
 
@@ -48,23 +48,23 @@
 
 "OnBoarding.Title.SignInToeXo" = "Entrar no eXo";
 
-"OnBoarding.Title.DiscovereXo" = "Discover eXo Tribe";
+"OnBoarding.Title.DiscovereXo" = "Descubra eXo Tribe";
 
-"OnBoarding.Title.AddServer" = "Connect your eXo";
+"OnBoarding.Title.AddServer" = "Conecte seu eXo";
 
 "OnBoarding.Title.Others" = "Others";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Conecte, compartilhe e trabalhe em conjunto";
 
-"OnBoarding.Title.SavingServer" = "Saving eXo Connection...";
+"OnBoarding.Title.SavingServer" = "Salvando conexão eXo...";
 
-"OnBoarding.Message.EnterURL" = "Enter your eXo address";
+"OnBoarding.Message.EnterURL" = "Insira seu endereço eXo";
 
 "OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
 
 "OnBoarding.Error.PlatformNotFound" = "Versão da plataforma não encontrada";
 
-"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "The application only supports Platform version 6.2 or later";
+"OnBoarding.Error.PlatformNotSupportedDetailMessage" = "O aplicativo suporta apenas Plataforma versão 6.2 ou posterior";
 
 "Word.OK" = "Ok";
 
@@ -72,19 +72,19 @@
 
 "Word.Back" = "Voltar";
 
-"OnBoarding.Error.URL" = "eXo URL error";
+"OnBoarding.Error.URL" = "eXo erro URL";
 
 "OnBoarding.Error.UnableConnectServer" = "Please enter a valid URL";
 
-"OnBoarding.Title.RecentsServer" = "My eXos";
+"OnBoarding.Title.RecentsServer" = "Meus eXos";
 
 "OnBoarding.Error.ConnectionError" = "Erro de conexão";
 
-"OnBoarding.Title.MostRecentServer" = "Most recent connection";
+"OnBoarding.Title.MostRecentServer" = "Conexão mais recente";
 
 "Internet connection lost" = "Internet connection lost";
 
-"Please make sure you have internet connection" = "Please make sure you are connected to internet";
+"Please make sure you have internet connection" = "Verifique se você está conectado à internet";
 
 
 // Shortcut (3D Touch)
@@ -101,13 +101,13 @@
 
 "Setting.Title.Server" = "eXos";
 
-"Setting.Title.NoServer" = "No eXo connection defined yet";
+"Setting.Title.NoServer" = "Nenhuma conexão eXo definida ainda";
 
 "Setting.Title.AddServer" = "Connect your eXo";
 
-"Setting.Title.DeleteServer" = "Delete Connection";
+"Setting.Title.DeleteServer" = "Excluir a conexão";
 
-"Setting.Message.DeleteServer" = "Do you really want to delete this connection?";
+"Setting.Message.DeleteServer" = "Você realmente deseja excluir esta conexão?";
 
 "Setting.Title.ApplicationVersion" = "Versão do aplicativo";
 
@@ -123,7 +123,7 @@
 
 "Add your eXo" = "New eXo Connection";
 
-"Enter your eXo URL" = "Enter your eXo connection address";
+"Enter your eXo URL" = "Insira o seu endereço de conexão eXo";
 
 // Home Page
 
