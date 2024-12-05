@@ -26,7 +26,7 @@
 
 "OnBoarding.Title.ScanQRCode" = "Escaneie o seu QR code para se conectar";
 
-"OnBoarding.Title.EnterPassword" = "Enter your password to log in quickly.";
+"OnBoarding.Title.EnterPassword" = "Insira sua senha para entrar rapidamente.";
 
 "OnBoarding.Title.ScanQRsettings" = "Escaneie o QR code que aparece nas suas configurações eXo.";
 
@@ -52,7 +52,7 @@
 
 "OnBoarding.Title.AddServer" = "Conecte seu eXo";
 
-"OnBoarding.Title.Others" = "Others";
+"OnBoarding.Title.Others" = "Outros";
 
 "OnBoarding.Title.eXoPlatformDescription" = "Conecte, compartilhe e trabalhe em conjunto";
 
@@ -60,7 +60,7 @@
 
 "OnBoarding.Message.EnterURL" = "Insira seu endereço eXo";
 
-"OnBoarding.Error.PlatformNotSupported" = "Platform version not supported";
+"OnBoarding.Error.PlatformNotSupported" = "Versão da plataforma não suportada";
 
 "OnBoarding.Error.PlatformNotFound" = "Versão da plataforma não encontrada";
 
@@ -74,7 +74,7 @@
 
 "OnBoarding.Error.URL" = "eXo erro URL";
 
-"OnBoarding.Error.UnableConnectServer" = "Please enter a valid URL";
+"OnBoarding.Error.UnableConnectServer" = "Por favor, insira uma URL válida";
 
 "OnBoarding.Title.RecentsServer" = "Meus eXos";
 
@@ -82,7 +82,7 @@
 
 "OnBoarding.Title.MostRecentServer" = "Conexão mais recente";
 
-"Internet connection lost" = "Internet connection lost";
+"Internet connection lost" = "Conexão à Internet perdida";
 
 "Please make sure you have internet connection" = "Verifique se você está conectado à internet";
 
@@ -93,7 +93,7 @@
 
 "Shortcut.Title.ConnectTo" = "Conectar-se a";
 
-"Shortcut.Title.AddServer" = "Connect your eXo";
+"Shortcut.Title.AddServer" = "Conecte seu eXo";
 
 "Shortcut.Title.ConnnecteXoTribe" = "Connect to eXo Tribe";
 
@@ -103,7 +103,7 @@
 
 "Setting.Title.NoServer" = "Nenhuma conexão eXo definida ainda";
 
-"Setting.Title.AddServer" = "Connect your eXo";
+"Setting.Title.AddServer" = "Conecte seu eXo";
 
 "Setting.Title.DeleteServer" = "Excluir a conexão";
 
@@ -115,13 +115,13 @@
 
 // Server Manager
 
-"ServerManager.Title.Warning" = "Platform version not supported";
+"ServerManager.Title.Warning" = "Versão da plataforma não suportada";
 
-"ServerManager.Message.WarningVersionNotSupported" = "Your exo instance uses a version of Platform not supported by this application. We recommend that you upgrade to Platform 6.2 or use the application version 2.";
+"ServerManager.Message.WarningVersionNotSupported" = "Sua instância do exo usa uma versão da Plataforma não suportada por esta aplicação. Recomendamos que você atualize para a Plataforma 6.2 ou use a versão 2 do aplicativo.";
 
 // Add Server
 
-"Add your eXo" = "New eXo Connection";
+"Add your eXo" = "Nova Conexão eXo";
 
 "Enter your eXo URL" = "Insira o seu endereço de conexão eXo";
 
