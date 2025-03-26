@@ -33,11 +33,11 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      # Setup Ruby 3.0
-      - name: Setup ruby 3.0
+      # Setup Ruby 3.2
+      - name: Setup ruby 3.2
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
+          ruby-version: 3.2
       # Install Bundler and dependencies gems
       - name: Install bundler and dependencies
         run: gem install bundler && bundle install
